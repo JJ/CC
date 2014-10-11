@@ -5,9 +5,18 @@ Cloud Computing es una asignatura anual del máster de ingeniería informática 
 
 La asignatura se imparte en el curso 2014-2015 los lunes de 16:30 a
 18:30 en el aula 1.8 y los jueves de 19:30 a 21:30 en la 2.1. Se usará
+
 [GitHub](http://github.com) para las prácticas y trabajo final.
 
-Estos son los [objetivos de la asignatura](documentos/objetivos.md). 
+Estos son los [objetivos de la asignatura](documentos/objetivos.md).
+
+En resumen, mi intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
+
+1. Definir el entorno de trabajo para desarrollo de una aplicación en particular y usarlo en PaaS.
+2. Usar ese entorno para configurar integración continua en una aplicación.
+3. Sea capaz de crear un entorno virtual para desarrollar y alojar la aplicación y comprenda el soporte físico de las técnicas usadas para crear tal entorno virtual.
+4. Entienda las técnicas de configuración automática de entornos virtuales y las sepa aplicar en los entornos anteriores.
+5. Use lo aprendido para despliegue masivo de aplicaciones en la nube. 
 
 Temario - Programa de la asignatura
 ------------------------------------------------------
@@ -37,18 +46,20 @@ alumno tendrá que aprender a su ritmo
 Prácticas - Actividades académicas dirigidas
 -------------
 
+Las prácticas consisten en la realización de un proyecto a lo largo de la asignatura, con diferentes hitos que correspondan a los objetivos cumplidos hasta ese momento. Los proyectos [siguen dos tipos de perfiles: PaaS/SaaS y DevOps](documentos/practicas/README.md). A grosso modo, los hitos se organizarán de la forma siguiente.
+
 1. Introducción a la computación virtual: [Platform as a Service](documentos/practicas/1.PaaS.md).
 2. Técnicas de virtualización [Creación de una jaula](documentos/practicas/2.Jaula.md).
 3. Diseño de sistemas usando [CPU y almacenamiento virtuales](documentos/practicas/3.MV.md).
-4. [Virtualización de aplicaciones.](documentos/practicas/4.Aplicaciones.md)
+4. [Virtualización de aplicaciones.](documentos/practicas/4.Aplicaciones.md).
 
 Tutorías virtuales
 ----
 
 Las tutorías virtuales se realizarán preferiblemente a través de
-[la plataforma de trabajo colaborativo GitHub](https://github.com/IV-GII/GII-2013/issues?state=open). Hay
+[la plataforma de trabajo colaborativo GitHub](https://github.com/JJ/GII-2014/issues?state=open). Hay
 también una
-[lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/iv-ugr-2013)
+[lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/iv-ugr-2014)
 que se puede usar para todo lo que no quepa en la anterior (preguntas
 administrativas, principalmente). Finalmente, el profesor está
 disponible por Skype y Google Hangouts (en ambos casos: `jjmerelo`)
@@ -60,5 +71,5 @@ Criterios de evaluación
 Los
 [criterios de evaluación figuran en la ficha de la asignatura en la web del grado](http://grados.ugr.es/informatica/pages/infoacademica/guias_docentes/espti/infraestructuravirtual),
 y
-[se especifican en el wiki de la clase](https://github.com/IV-GII/GII-2013/wiki/Metodologiaycriteriosdeevaluacion). 
->>>>>>> 89c41f193b8e5adc4362f1944d5b93c8bb33c935
+[se especifican en el repositorio de la clase](https://github.com/mgarenas/CloudComputing/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md). 
+
