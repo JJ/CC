@@ -1,3 +1,11 @@
+---
+layout: index
+
+
+previous: Intro_concepto_y_soporte_fisico
+next: Tecnicas_de_virtualizacion
+---
+
 Creando aplicaciones en la nube: Uso de PaaS
 ==
 
@@ -141,8 +149,8 @@ te explica cómo usarlo. No hay muchos vídeos en español, pero en
 A dónde ir desde aquí
 -----
 
-En el [siguiente tema](Tecnicas_de_virtualizacion.md) usaremos
+En el [siguiente tema](Tecnicas_de_virtualizacion) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
 y jaulas que aislan procesos, usuarios y recursos del resto del sistema. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../practicas/1.PaaS.md). 
+práctica correspondiente a esta materia](../practicas/1.PaaS). 
 

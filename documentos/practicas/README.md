@@ -1,3 +1,8 @@
+---
+layout: index
+
+---
+
 #Practicas de la asignatura Infraestuctura Virtual
 
 Lo primero y más importante que hay que tener en cuenta en los
@@ -9,7 +14,7 @@ objetivo del proyecto es crear un producto mínimamente viable que siga
 sea de uno de los dos tipos descritos a continuación.
 
 En años anteriores se hicieron las siguientes
-[propuestas](propuestas.md). Cada año se irán poniendo las propuestas
+[propuestas](propuestas). Cada año se irán poniendo las propuestas
 en el repositorio correspondiente. 
 
 En ese sentido, habrá dos tipos de proyectos

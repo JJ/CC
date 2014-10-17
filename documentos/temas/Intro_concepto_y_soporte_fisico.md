@@ -1,3 +1,10 @@
+---
+layout: index
+
+
+next: PaaS
+---
+
 Introducción a la infraestructura virtual: concepto y soporte físico
 ==
 
@@ -693,6 +700,6 @@ habitual](https://github.com/JJ/GII-2014/issues/72)
 A dónde ir desde aquí
 -----
 
-En el [siguiente tema](PaaS.md) veremos como usar sistemas de plataforma como servicio. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../practicas/1.Infraestructura.md). 
+En el [siguiente tema](PaaS) veremos como usar sistemas de plataforma como servicio. Previamente habrá que [realizar la
+práctica correspondiente a esta materia](../practicas/1.Infraestructura). 
 

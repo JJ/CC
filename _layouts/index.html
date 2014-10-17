@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Infraestructura Virtual by JJ</title>
+    <link rel="shortcut icon" href="{{site.path}}/documentos/img/iv.png" />
+    <link rel="stylesheet" href="{{site.path}}/stylesheets/styles.css">
+    <link rel="stylesheet" href="{{site.path}}/stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="{{site.path}}/stylesheets/IV.css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat|Lato|Telex|Lekton|PT+Sans|Arvo' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="{{site.path}}/javascripts/respond.js"></script>
+    <script src="{{site.path}}/javascripts/IV.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/JJ/IV">Ver en
+          GitHub</a></li>
+{% if page.prev  %}	
+	   <li class="nav"><a href="{{page.prev}}">Tema
+	   anterior</a></li>
+{% endif %}
+	  <li class="nav"><a href="/IV">Página principal
+	  Infraestructura Virtual</a></li>
+{% if page.next %}	
+	   <li class="nav"><a href="{{page.next}}">Tema
+	   siguiente</a></li>
+{% endif %}
+          <li class="downloads"><a href="https://github.com/JJ/IV/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/JJ/IV/tarball/master">TAR</a></li>
+          <li class="title">Descargas</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        {{ content }}
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-43482033-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

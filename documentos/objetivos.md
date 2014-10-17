@@ -1,3 +1,8 @@
+---
+layout: index
+
+---
+
 Objetivos perseguidos con la materia de la asignatura
 ================
 

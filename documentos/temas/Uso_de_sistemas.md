@@ -1,3 +1,11 @@
+---
+layout: index
+
+prev: Almacenamiento
+next: Gestion_de_configuraciones
+
+---
+
 Virtualización completa: uso de máquinas virtuales
 ==
 
@@ -32,7 +40,7 @@ del resto del sistema y que permita trabajar con sistemas
 virtualizados de forma flexible, escalable y adaptada a cualquier
 objetivo. Eventualmente, el objetivo de este este tema es aprender a
 crear
-[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico.md). Para
+[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico). Para
 ello necesitamos configurar una serie de infraestucturas virtuales,
 especialmente
 [almacenamiento como se vio en el tema anterior](Intro_concepto_y_soporte_fisico).
@@ -100,14 +108,14 @@ gráficos, será similar.
 
 Instalar los paquetes necesarios para usar KVM. Se pueden
 [seguir estas instrucciones](https://wiki.debian.org/KVM#Installation). Ya
-lo hicimos [en el primer tema](Intro_concepto_y_soporte_fisico.md),
+lo hicimos [en el primer tema](Intro_concepto_y_soporte_fisico),
 pero volver a comprobar si nuestro sistema está preparado para
 ejecutarlo o hay que conformarse con la paravirtualización.
 
 </div>
 
 A continuación hay que crear un
-[disco duro virtual en formato QCOW2](Almacenamiento.md) como hemos
+[disco duro virtual en formato QCOW2](Almacenamiento) como hemos
 visto anteriormente y descargar una distribución de algún sistema
 operativo, por ejemplo [Debian](http://www.debian.org/distrib/). 
 
@@ -230,7 +238,7 @@ Trabajando con máquinas virtuales en la nube
 ----
 
 Azure permite,
-[tras la creación de almacenamiento virtual](Almacenamiento.md), la
+[tras la creación de almacenamiento virtual](Almacenamiento), la
 creación de máquinas virtuales, como es natural. Se puede crear una
 máquina virtual desde el panel de control, pero también desde la [línea
 de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
@@ -292,7 +300,7 @@ nginx para poder acceder mediante web.
 En principio, para configurar la máquina virtual hay que hacerlo como
 siempre se ha hecho: trabajando desde línea de órdenes, editando ficheros de configuración e instalando
 los paquetes que hagan falta. Pero
-[conociendo `juju`](Contenedores.md) tambien
+[conociendo `juju`](Contenedores) tambien
 [se puede trabajar con él](https://juju.ubuntu.com/docs/config-azure.html)
 para instalar lo que haga falta. Se puede empezar, por ejemplo
 [instalando el GUI de juju](https://juju.ubuntu.com/docs/howto-gui-management.html)
@@ -323,7 +331,7 @@ menos parte de las herramientas necesarias y arrancar a partir de
 ahí. A este tipo de actividad se le llama *provisionar* y hay
 muchas herramientas útiles para ello, pero esencialmente todas hacen
 lo mismo: crear un
-[dispositivo virtual de almacenamiento](Almacenamiento.md) e instalar
+[dispositivo virtual de almacenamiento](Almacenamiento) e instalar
 paquetes en él sin necesidad de arrancar la máquina virtual. Este
 almacenamiento, posteriormente, se puede agregar luego a la máquina
 virtual que se desee o bien usarse para arrancar una máquina virtual

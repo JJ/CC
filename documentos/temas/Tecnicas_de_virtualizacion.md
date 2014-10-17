@@ -1,3 +1,11 @@
+---
+layout: index
+
+prev: Intro_concepto_y_soporte_fisico
+next: Contenedores
+
+---
+
 Técnicas de virtualización
 ==
 
@@ -530,6 +538,6 @@ diferentes y se verán más adelante.
 A dónde ir desde aquí
 -----
 
-En el [siguiente tema](Contenedores.md) se verá cómo trabajar con
+En el [siguiente tema](Contenedores) se verá cómo trabajar con
 sistemas *ligeros* de virtualización.
 

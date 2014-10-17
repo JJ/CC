@@ -1,3 +1,10 @@
+---
+layout: index
+
+prev: Uso_de_sistemas
+
+---
+
 Gestión de infraestructuras virtuales
 ===
 
@@ -28,7 +35,7 @@ provisionamiento y monitorizació más usados hoy en día.
 Introducción
 ---
 
-Los [contenedores](Contenedores.md) son un ejemplo de máquinas
+Los [contenedores](Contenedores) son un ejemplo de máquinas
 virtuales que ya tienen
 ciertas características de las mismas, como el aislamiento y la gestión
 independiente, que las asemeja a las máquinas virtuales *reales*. En
@@ -54,7 +61,7 @@ forma automática y masiva.
 
 A continuación veremos diferentes ejemplos de sistemas de
 configuración, empezando por Chef. En
-[temas anteriores](Contenedores.md) hemos visto `Juju`, un ejemplo de
+[temas anteriores](Contenedores) hemos visto `Juju`, un ejemplo de
 sistema de configuración también, aunque específico de Ubuntu. 
 
 Usando Chef para provisionamiento
@@ -561,5 +568,5 @@ seguir aprendiendo sobre devops en [el blog](http://devops.com/) o
 pueden ser también de ayuda.
 
 Si no lo has hecho ya, es hora de comenzar
-[la última práctica](../practicas/4.Aplicaciones.md). 
+[la última práctica](../practicas/4.Aplicaciones). 
 	

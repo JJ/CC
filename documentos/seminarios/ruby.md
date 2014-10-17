@@ -1,3 +1,8 @@
+---
+layout: index
+
+---
+
 Una introducción ligera al lenguaje Ruby
 ===
 

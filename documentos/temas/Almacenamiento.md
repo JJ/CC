@@ -1,3 +1,11 @@
+---
+layout: index
+
+prev: Contenedores
+next: Uso_de_sistemas
+
+---
+
 Virtualización del almacenamiento
 ===
 
@@ -684,9 +692,9 @@ se puede acceder al almacenamiento usando diferentes librerías, que,
 en consonancia con el espíritu libre (que no libertario) de la nube y
 en disonancia con el espíritu, ejem, todo lo contrario, de Microsoft,
 son libres. Dado que hemos hecho un
-[seminario de Ruby](../seminarios/ruby.md) vamos a usar ese lenguaje,
+[seminario de Ruby](../seminarios/ruby) vamos a usar ese lenguaje,
 pero hay SDKs para muchos otros lenguajes: node.js, Java y por
-supuesto los propios de Microsoft. Instalemos la [gema para Azure](https://github.com/WindowsAzure/azure-sdk-for-ruby/blob/master/README.md)
+supuesto los propios de Microsoft. Instalemos la [gema para Azure](https://github.com/WindowsAzure/azure-sdk-for-ruby/blob/master/README)
 
  sudo gem install azure
  

@@ -1,3 +1,11 @@
+---
+layout: index
+
+prev: Tecnicas_de_virtualizacion
+next: Almacenamiento
+
+---
+
 Virtualización *ligera* usando contenedores
 ===
 
@@ -79,7 +87,7 @@ sistema operativo que incluyen acceso a recursos, prioridades y
 control de los procesos. Los procesos dentro de un contenedor están
 *aislados* de forma que sólo pueden *ver* los procesos dentro del
 mismo, creando un entorno mucho más seguro que las anteriores
-*jaulas*. Estos [CGROUPS han sido ya vistos en el tema anterior](Intro:concepto_y_soporte_fisico.md). 
+*jaulas*. Estos [CGROUPS han sido ya vistos en el tema anterior](Intro:concepto_y_soporte_fisico). 
 
 Dentro de la familia de sistemas operativos Solaris (cuya última
 versión libre se denomina
@@ -765,7 +773,7 @@ commit.
 </div>
 
 Finalmente, `docker` tiene capacidades de provisionamiento similares a
-otros [sistemas (tales como Vagrant, que se verá más adelante](Gestion_de_configuraciones.md) usando
+otros [sistemas (tales como Vagrant, que se verá más adelante](Gestion_de_configuraciones) usando
 [*Dockerfiles*](http://docs.docker.io/en/latest/use/builder/). Por
 ejemplo, [se
 puede crear fácilmente un Dockerfile para instalar node.js con el
@@ -784,6 +792,6 @@ A dónde ir desde aquí
 En el [siguiente tema](Almacenamiento) veremos cómo crear y configurar el
 almacenamiento virtual que, en general, es independiente de la
 generación de una máquina virtual. También puedes ir directamente al
-[tema de uso de sistemas](Uso_de_sistemas.md) en el que se trabajará
+[tema de uso de sistemas](Uso_de_sistemas) en el que se trabajará
 con sistemas de virtualización completa. 
 	
