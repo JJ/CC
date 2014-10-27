@@ -4,9 +4,7 @@ Material docente para Cloud Computing
 Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
 La asignatura se imparte en el curso 2014-2015 los lunes de 16:30 a
-18:30 en el aula 1.8 y los jueves de 19:30 a 21:30 en la 2.1. Se usará
-
-[GitHub](http://github.com) para las prácticas y trabajo final.
+18:30 en el aula 1.8 y los jueves de 19:30 a 21:30 en el aula de usos múltiples (salvo algunas excepciones). Se usará [GitHub](http://github.com) para las prácticas y trabajo final.
 
 Estos son los [objetivos de la asignatura](documentos/objetivos.md).
 
