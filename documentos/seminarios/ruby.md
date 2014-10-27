@@ -18,11 +18,11 @@ Objetivos específicos
 
 
 ¿Ruby? Pero si es muy fácil
---
+---
 
 Si alguna vez habéis oído hablar de este lenguaje, posiblemente conozcáis [Ruby](http://ruby-lang.org) por [Ruby on Rails](http://rubyonrails.org), un marco
-  web que sigue el paradigma MVC (Model, View, Controller) creado alrededor de 2005 que usa Ruby como lenguaje
-  subyacente; mucha gente llega a Ruby desde la derecha (el On Rails)
+  web que sigue el paradigma MVC (*Model, View, Controller*) creado alrededor de 2005 que usa Ruby como lenguaje
+  subyacente; mucha gente llega a Ruby desde la derecha (el *On Rails*)
   y se piensan que es como un lenguaje de macros que imita a Python o
     a Perl o a ambos... Pero no es así.
 
@@ -123,7 +123,7 @@ Pero Ruby es un lenguaje orientado a objetos, o más bien empotrado
 
  Lo que consigue este program es escribir una cadena centrada en
  una línea de 20 caracteres y rodeada por dos guiones
-  (`--`). `&lt;&lt;` es el operador de 
+  (`--`). `<<` es el operador de 
  concatenación, que pega una cadena a la siguiente. Pero la 
  parte orientada a objetos está alrededor del 
     `.` .`center` es un método de la 
