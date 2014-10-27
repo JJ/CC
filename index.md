@@ -3,16 +3,13 @@ layout: index
 
 
 ---
-Material docente para Infraestructura Virtual
+Material docente para Cloud Computing
 ==
 
-[Infraestructura virtual](http://grados.ugr.es/informatica/pages/infoacademica/guias_docentes/espti/infraestructuravirtual)
-es una asignatura optativa del primer cuatrimestre del cuarto de Grado
-de Ingeniería Informática.
+Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
-La asignatura se imparte en el curso 2013-2014 los lunes de 9:30 a
-11:30 en la 3.2 y los martes de 10:30 a 12:30 en la 1.5. Se usará
-[GitHub](http://github.com) para las prácticas y trabajo final.
+La asignatura se imparte en el curso 2014-2015 los lunes de 16:30 a
+18:30 en el aula 1.8 y los jueves de 19:30 a 21:30 en el aula de usos múltiples (salvo algunas excepciones). Se usará [GitHub](http://github.com) para las prácticas y trabajo final.
 
 Estos son los [objetivos de la asignatura](documentos/objetivos).
 
@@ -29,8 +26,8 @@ Temario - Programa de la asignatura
 
 Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
-[GitHub](http://github.com/JJ/IV). La
-[temporización de la asignatura y los objetivos de cada sesión figuran en la bitácora de clase](https://github.com/JJ/GII-2014/blob/master/sesiones/README). 
+[GitHub](http://github.com/JJ/CC). La
+temporización de la asignatura y los objetivos de cada sesión figuran en la bitácora de clase.
 
 1. [Introducción: conceptos y soporte físico](documentos/temas/Intro_concepto_y_soporte_fisico)
 2. [Platform as a Service](documentos/temas/PaaS).
@@ -79,4 +76,5 @@ Criterios de evaluación
 Los
 [criterios de evaluación figuran en la ficha de la asignatura en la web del grado](http://grados.ugr.es/informatica/pages/infoacademica/guias_docentes/espti/infraestructuravirtual),
 y
-[se especifican en el repositorio de la clase](https://github.com/JJ/GII-2014/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
+[se especifican en el repositorio de la clase](https://github.com/mgarenas/CloudComputing/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
+
