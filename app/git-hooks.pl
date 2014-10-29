@@ -34,7 +34,7 @@ POST_COMMIT {
 	  $git->command('add', $f );
       } else {
 	  if ( $f eq 'README.md' ) {
-	      $f = index.md;
+	      $f = 'index.md';
 	  }
 	  $file_content = $layout_preffix."\n---\n".$file_content;
 	  write_file($f, $file_content );
