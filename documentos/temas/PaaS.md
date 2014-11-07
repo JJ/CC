@@ -47,7 +47,7 @@ qué versión del lenguaje se va a usar y también automatizar la tarea
 de instalación del mismo mediante el uso de una sola orden que
 seleccione la versión precisa que se va a usar. 
 
-Y estos entornos virtuales vienen del hedo de que los lenguajes de scripting tales como Perl, Python y Ruby tienen
+Y estos entornos virtuales vienen del hecho de que los lenguajes de scripting tales como Perl, Python y Ruby tienen
 ciclos de desarrollo muy rápidos que hacen que a veces convivan en
 producción diferentes versiones de los mismos, incluso *major*
 versions. Eso hace complicado desarrollar e incluso probar los
@@ -84,13 +84,13 @@ La mayoría de los servicios PaaS están ligados a una pila de
 soluciones determinada o a un vendedor determinado. Han surgido
 muchos, por ejemplo, en torno a [node.js](http://nodejs.org), un
 intérprete de JavaScript asíncrono que permite crear fácilmente
-aplicaciones REST.
+aplicaciones REST; Google App Engine, por otro lado, está creado alrededor de Python, aunque también admite lenguajes relativamente nuevos como Go. 
 
 Algunos servicios PaaS son específicos (sólo alojan una solución
 determinada, como [CloudAnt](https://cloudant.com/) que aloja una base
 de datos con CouchDB o genéricos, permitiendo una serie de soluciones
 en general relativamente limitada; [Heroku](http://www.heroku.com) y
-[OpenShift](http://www.openshift.com) están entre estos últimos. 
+[OpenShift](http://www.openshift.com) están entre estos últimos. Los dos mencionados son gratuitos a un nivel básico y sin limitación de tiempo; otros como [Nodejitsu](https://www.nodejitsu.com/) se pueden usar para pruebas, pero tienen ciertas limitaciones temporales. 
 
 <div class='ejercicios' markdown="1">
 
@@ -268,7 +268,7 @@ En la práctica, crear tests consiste en
 * Escribir una serie de ficheros en un directorio específico (`test` o
   `t`) a veces con una extensión específica (`t` en Perl, por ejemplo)
   que ejecuten las funciones con diferentes entradas y produzcan una
-  salida que suele ser OK para una prueba superada y *Not OK* para
+  salida que suele ser OK para una prueba superada y *Not OK* para una
   prueba fallida.
 * Uso de algún programa que ejecute todos esos tests y analice las
   salidas, dando un resumen sobre si ha fallado alguna prueba y
@@ -289,6 +289,6 @@ A dónde ir desde aquí
 
 En el [siguiente tema](Tecnicas_de_virtualizacion) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
-y jaulas que aislan procesos, usuarios y recursos del resto del sistema. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../practicas/1.PaaS). 
+y jaulas que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
+práctica correspondiente a esta materia](../practicas/2.XaaS). 
 
