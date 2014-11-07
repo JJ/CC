@@ -76,13 +76,13 @@ La mayoría de los servicios PaaS están ligados a una pila de
 soluciones determinada o a un vendedor determinado. Han surgido
 muchos, por ejemplo, en torno a [node.js](http://nodejs.org), un
 intérprete de JavaScript asíncrono que permite crear fácilmente
-aplicaciones REST.
+aplicaciones REST; Google App Engine, por otro lado, está creado alrededor de Python, aunque también admite lenguajes relativamente nuevos como Go. 
 
 Algunos servicios PaaS son específicos (sólo alojan una solución
 determinada, como [CloudAnt](https://cloudant.com/) que aloja una base
 de datos con CouchDB o genéricos, permitiendo una serie de soluciones
 en general relativamente limitada; [Heroku](http://www.heroku.com) y
-[OpenShift](http://www.openshift.com) están entre estos últimos. 
+[OpenShift](http://www.openshift.com) están entre estos últimos. Los dos mencionados son gratuitos a un nivel básico y sin limitación de tiempo; otros como [Nodejitsu](https://www.nodejitsu.com/) se pueden usar para pruebas, pero tienen ciertas limitaciones temporales. 
 
 <div class='ejercicios' markdown="1">
 
@@ -260,7 +260,7 @@ En la práctica, crear tests consiste en
 * Escribir una serie de ficheros en un directorio específico (`test` o
   `t`) a veces con una extensión específica (`t` en Perl, por ejemplo)
   que ejecuten las funciones con diferentes entradas y produzcan una
-  salida que suele ser OK para una prueba superada y *Not OK* para
+  salida que suele ser OK para una prueba superada y *Not OK* para una
   prueba fallida.
 * Uso de algún programa que ejecute todos esos tests y analice las
   salidas, dando un resumen sobre si ha fallado alguna prueba y
