@@ -11,17 +11,17 @@ next: Tecnicas_de_virtualizacion
 ##Objetivos 
 
 
-### Cubre los siguientes objetivos de la asignatura
+### De la asignatura
 
 2. Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica. 
 
 4. Justificar la necesidad de procesamiento virtual frente a real en el contexto de una infraestructura TIC de una organización.
 
-### Objetivos específicos
+### Específicos
 
 5. Comprender los conceptos necesarios para trabajar con diferentes
-   plataformas PaaS
+   plataformas PaaS.
 
 6. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
 
@@ -82,7 +82,7 @@ Algunos servicios PaaS son específicos (sólo alojan una solución
 determinada, como [CloudAnt](https://cloudant.com/) que aloja una base
 de datos con CouchDB o genéricos, permitiendo una serie de soluciones
 en general relativamente limitada; [Heroku](http://www.heroku.com) y
-[OpenShift](http://www.openshift.com) están entre estos últimos. Los dos mencionados son gratuitos a un nivel básico y sin limitación de tiempo; otros como [Nodejitsu](https://www.nodejitsu.com/) se pueden usar para pruebas, pero tienen ciertas limitaciones temporales. 
+[OpenShift](http://www.openshift.com) están entre estos últimos. Los dos mencionados son gratuitos a un nivel básico y sin limitación de tiempo; otros como [Nodejitsu](https://www.nodejitsu.com/) o [AppFog](https://www.appfog.com/) se pueden usar para pruebas, pero tienen ciertas limitaciones temporales. 
 
 <div class='ejercicios' markdown="1">
 
