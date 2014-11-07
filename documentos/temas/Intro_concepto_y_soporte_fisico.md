@@ -63,7 +63,7 @@ A partir de esto, un *recurso en la nube* es aquel al que se puede
 acceder *bajo demanda*, que es *escalable* y que, desde el punto de
 vista del usuario, se *facturable según uso*, no por el hecho de tener acceso.
 
-El [origen
+> El [origen
   de la palabra](http://en.wikipedia.org/wiki/Cloud_computing#Origin_of_the_term) viene de la tradicional representación de recursos
   en la red como una nube. 
 
@@ -106,7 +106,6 @@ desarrollo ágil. En concreto, *DevOps* comprende
 
 3. Despliegue en la nube: publicación de aplicaciones en servidores
    virtuales.
-
 
 4. [Ciclo de vida del software](http://es.slideshare.net/colmbennett/software-rollout)
    definición de las diferentes fases en la vida de una aplicación,
@@ -191,12 +190,12 @@ Todas estas ventajas hacen que,
 	  [en el año 2013, más de la mitad de los negocios americanos usan infraestructura virtual](http://www.forbes.com/sites/reuvencohen/2013/04/16/the-cloud-hits-the-mainstream-more-than-half-of-u-s-businesses-now-use-cloud-computing/). 
   
 <div class='ejercicios' markdown="1">
-Usando las tablas de precios de servicios de alojamiento en Internet y
-de proveedores de servicios en la nube, Comparar el coste durante un
-año de un ordenador con un procesador estándar (escogerlo de forma que
-sea el mismo tipo de procesador en los dos vendedores) y con el resto
-de las características similares (tamaño de disco duro equivalente a
-transferencia de disco duro) si la infraestructura comprada se usa
+Usando las tablas de precios de servicios *tradicionales* de alojamiento en Internet y
+de proveedores de servicios en la nube, comparar el coste durante un
+año de un alojamiento en ordenador con un procesador estándar, escogido de forma que
+sea el mismo tipo de procesador en los dos vendedores, y con el resto
+de las características equiparables (por ejemplo, tamaño de disco duro en el *tradicional* equivalente a
+transferencia de disco duro en el proveedor en la nube) si la infraestructura comprada se usa
 sólo el 1% o el 10% del tiempo.
 </div>
 
@@ -285,7 +284,7 @@ Hacer el
 [tutorial de línea de órdenes de docker](https://www.docker.com/tryit/)
 para comprender cómo funciona.
 
-*Avanzado* Instalarlo y crear una aplicación contenedorizada
+*Avanzado* Instalarlo y crear una aplicación contenedorizada.
 </div>
 
 
