@@ -19,17 +19,17 @@ next: Tecnicas_de_virtualizacion
 ##Objetivos 
 
 
-### Cubre los siguientes objetivos de la asignatura
+### De la asignatura
 
 2. Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica. 
 
 4. Justificar la necesidad de procesamiento virtual frente a real en el contexto de una infraestructura TIC de una organización.
 
-### Objetivos específicos
+### Específicos
 
 5. Comprender los conceptos necesarios para trabajar con diferentes
-   plataformas PaaS
+   plataformas PaaS.
 
 6. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
 
@@ -90,7 +90,7 @@ Algunos servicios PaaS son específicos (sólo alojan una solución
 determinada, como [CloudAnt](https://cloudant.com/) que aloja una base
 de datos con CouchDB o genéricos, permitiendo una serie de soluciones
 en general relativamente limitada; [Heroku](http://www.heroku.com) y
-[OpenShift](http://www.openshift.com) están entre estos últimos. Los dos mencionados son gratuitos a un nivel básico y sin limitación de tiempo; otros como [Nodejitsu](https://www.nodejitsu.com/) se pueden usar para pruebas, pero tienen ciertas limitaciones temporales. 
+[OpenShift](http://www.openshift.com) están entre estos últimos. Los dos mencionados son gratuitos a un nivel básico y sin limitación de tiempo; otros como [Nodejitsu](https://www.nodejitsu.com/) o [AppFog](https://www.appfog.com/) se pueden usar para pruebas, pero tienen ciertas limitaciones temporales. 
 
 <div class='ejercicios' markdown="1">
 
@@ -203,6 +203,7 @@ En general, este proceso está [automatizado](http://en.wikipedia.org/wiki/Build
 orden `make` hace ya más de treinta años. `make` automatiza el proceso
 de construcción en un fichero llamado `Makefile` con una sintaxis
 específica que se puede resumir en
+
 * unos *objetivos* que hay que cumplir y que dependen unos de
   otros. Por ejemplo, antes de construir el ejecutable hay que
   construir las librerías.
@@ -265,11 +266,13 @@ que dictan dónde hay que colocar los ficheros y qué salida tienen que
 dar los mismos.
 
 En la práctica, crear tests consiste en
+
 * Escribir una serie de ficheros en un directorio específico (`test` o
   `t`) a veces con una extensión específica (`t` en Perl, por ejemplo)
   que ejecuten las funciones con diferentes entradas y produzcan una
   salida que suele ser OK para una prueba superada y *Not OK* para una
   prueba fallida.
+  
 * Uso de algún programa que ejecute todos esos tests y analice las
   salidas, dando un resumen sobre si ha fallado alguna prueba y
   cuantas han fallado. Este programa se llama desde el entorno de
