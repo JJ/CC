@@ -54,7 +54,7 @@ Las prácticas consisten en la realización de un proyecto a lo largo de la asig
 2. Introducción a la computación virtual: [Platform as a Service](documentos/practicas/2.XaaS).
 2. Técnicas de virtualización [Creación de una jaula](documentos/practicas/2.Jaula).
 3. Diseño de sistemas usando [CPU y almacenamiento virtuales](documentos/practicas/3.MV).
-4. [Virtualización de aplicaciones.](documentos/practicas/4.Aplicaciones).
+4. [Virtualización de aplicaciones](documentos/practicas/4.Aplicaciones).
 
 Tutorías virtuales
 ----
