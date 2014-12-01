@@ -297,9 +297,9 @@ nube de Amazon. En este punto nos interesa también porque se puede
 usar directamente con contenedores LXC, mientras que no todos lo
 hacen.
 
-Para instalarlo conviene usar la última versión; la que hay en los
+Conviene instalar la última versión; la que hay en los
 repositorios de algunas versiones de Ubuntu no tiene todas las
-capacidades (aunque puedes usarla directamente con `sudo apt-get install juju` en Ubuntu 14.04. Por tanto:
+capacidades (aunque puedes usarla directamente con `sudo apt-get install juju` en Ubuntu 14.04). Por tanto:
 
 	sudo add-apt-repository ppa:juju/stable
 	sudo apt-get update && sudo apt-get install juju-core
