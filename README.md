@@ -59,9 +59,7 @@ Las tutorías virtuales se realizarán preferiblemente a través de
 también una
 [lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/cc-ugr-2014)
 que se puede usar para todo lo que no quepa en la anterior (preguntas
-administrativas, principalmente). Finalmente, el profesor está
-disponible por Skype y Google Hangouts (en ambos casos: `jjmerelo`)
-previa cita.
+administrativas, principalmente).
 
 Criterios de evaluación
 ---
@@ -71,3 +69,6 @@ Los
 y
 [se especifican en el repositorio de la clase](https://github.com/mgarenas/CloudComputing/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md). 
 
+Profesores
+--
+Hasta el 5 de diciembre, JJ Merelo. A partir del 12 de diciembre, Maribel García Arenas. En el mes de enero, Pedro Castillo Valdivieso.
