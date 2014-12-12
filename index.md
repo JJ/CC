@@ -52,7 +52,7 @@ Las prácticas consisten en la realización de un proyecto a lo largo de la asig
 
 1. [Organización de los grupos de práctica y creación del proyecto](documentos/practicas/1.Infraestructura)
 2. Introducción a la computación virtual: [Platform as a Service](documentos/practicas/2.XaaS).
-2. Técnicas de virtualización [Creación de una jaula](documentos/practicas/2.Jaula).
+2. Técnicas de virtualización [Contenedores para pruebas](documentos/practicas/3.Contenedores).
 3. Diseño de sistemas usando [CPU y almacenamiento virtuales](documentos/practicas/3.MV).
 4. [Virtualización de aplicaciones](documentos/practicas/4.Aplicaciones).
 
@@ -64,9 +64,7 @@ Las tutorías virtuales se realizarán preferiblemente a través de
 también una
 [lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/cc-ugr-2014)
 que se puede usar para todo lo que no quepa en la anterior (preguntas
-administrativas, principalmente). Finalmente, el profesor está
-disponible por Skype y Google Hangouts (en ambos casos: `jjmerelo`)
-previa cita.
+administrativas, principalmente).
 
 Criterios de evaluación
 ---
@@ -76,3 +74,6 @@ Los
 y
 [se especifican en el repositorio de la clase](https://github.com/mgarenas/CloudComputing/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
 
+Profesores
+--
+Hasta el 5 de diciembre, JJ Merelo. A partir del 12 de diciembre, Maribel García Arenas. En el mes de enero, Pedro Castillo Valdivieso.
