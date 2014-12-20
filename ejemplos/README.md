@@ -3,6 +3,11 @@ layout: index
 
 
 ---
+---
+layout: index
+
+
+---
 Material docente para Cloud Computing: Ejemplos
 ==
 
