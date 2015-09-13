@@ -602,8 +602,8 @@ Gestión de contenedores con `docker`
 
 [Docker](http://docker.io) es una herramienta de gestión de
 contenedores que permite no sólo instalarlos, sino trabajar con el
-conjunto de ellos instalados (orquestación) y exportarlos de forma que
-se puedan usar en diferentes instalaciones. La tecnología de
+conjunto de ellos instalados, es decir, orquestarlos y exportarlos de forma que
+se puedan usar en otros entornos. La tecnología de
 [Docker](http://en.wikipedia.org/wiki/Docker_%28software%29) es
 relativamente reciente, habiendo sido publicado en marzo de 2013;
 actualmente está sufriendo una gran expansión, sobre todo por su uso
