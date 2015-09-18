@@ -2,16 +2,16 @@
 layout: index
 
 
-prev: Tecnicas_de_virtualizacion
-next: Almacenamiento
+prev: Desarrollo_basado_en_pruebas
+next: Gestion_de_configuraciones
 ---
 
 Virtualización *ligera* usando contenedores
 ===
 
 <!--@
-prev: Tecnicas_de_virtualizacion
-next: Almacenamiento
+prev: Desarrollo_basado_en_pruebas
+next: Gestion_de_configuraciones
 -->
 
 <div class="objetivos" markdown="1">
