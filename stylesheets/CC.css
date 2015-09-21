@@ -4,6 +4,19 @@ BODY {
        font-size: 1.2em;
 }
 
+h1 
+{ 
+  color: green;        
+  font-size: 2.5em;
+  font-family: "ABeeZee", sans-serif;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+/* clases */
+
 div.objetivos, div.nota,  div.ejercicios { 
     max-width: 800px;
     margin: 60px;
@@ -16,9 +29,6 @@ div.objetivos, div.nota,  div.ejercicios {
     font-family: "Telex", sans-serif;
 }
 
-div.objetivos { 
-                background-color: #313C53;
-                }
 
 div.nota { 
     background-color: #455268;
@@ -34,38 +44,38 @@ div.ejercicios
   background-color: #B6C0D2;
 }
 
+/* Objetivos */ 
+
+div.objetivos 
+{ 
+  background-color: #313C53;
+}
+
 div.objetivos a:link, div.nota a:link,  div.ejercicios a:link 
 { 
   background-color:#020943
 }
 
 div.objetivos code, div.nota code,  div.ejercicios code 
- { 
-                  background-color:#020202;
-   color: green
+{ 
+  background-color:#020202;
+  color: green
 }
 
-div.objetivos h2{ 
-               color: #1f3f3f;        
-               font-size: 3em;
-               font-family: "Lato", sans-serif;
+div.objetivos h2
+{ 
+  color: #1f3f3f;        
+  font-size: 3em;
+  font-family: "Lato", sans-serif;
 }
 
-h1 { 
-     color: green;        
-     font-size: 2.5em;
-     font-family: "ABeeZee", sans-serif;
-     }
-
-div.objetivos h1{ 
-                  color: #1f3f3f;        
-                  font-size: 3em;
+div.objetivos h1
+{ 
+  color: #1f3f3f;        
+  font-size: 2.2em;
 }
 
-
-h2 {
-    font-size: 1.6em;
-}
+/* header */
 
 #header nav li.nav a {
   float: left;
