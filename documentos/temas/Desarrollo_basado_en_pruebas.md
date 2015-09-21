@@ -160,7 +160,10 @@ mínimas, máximas o exactas deben tener.
 
 >Primero, debe constar que esta aplicación sólo está aquí a efectos de
 >ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
->usar cualquier otro lenguaje o aplicación, se puede hacer.
+>usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
+>usar JavaScript,
+>[este curso te puede ayudar](https://github.com/JJ/curso-js), aunque
+>cualquier otro también. 
 
 Una porra de fútbol básicamente tiene un partido, que tendrá un nombre
 y si acaso una fecha o descripción (por ejemplo, *Jaén-Osasuna Copa
