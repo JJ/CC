@@ -29,13 +29,14 @@ div.ejercicios:before {
     counter-increment: ejercicios;  /* Add 1 to ejercicios */
 }
 
-div.ejercicios { 
-                 background-color: #B6C0D2;
-                 }
+div.ejercicios 
+{ 
+  background-color: #B6C0D2;
+}
 
 div.objetivos a:link, div.nota a:link,  div.ejercicios a:link 
- { 
-                  background-color:#020943
+{ 
+  background-color:#020943
 }
 
 div.objetivos code, div.nota code,  div.ejercicios code 
@@ -46,7 +47,7 @@ div.objetivos code, div.nota code,  div.ejercicios code
 
 div.objetivos h2{ 
                color: #1f3f3f;        
-               font-size: 2em;
+               font-size: 3em;
                font-family: "Lato", sans-serif;
 }
 
@@ -55,6 +56,12 @@ h1 {
      font-size: 2.5em;
      font-family: "ABeeZee", sans-serif;
      }
+
+div.objetivos h1{ 
+                  color: #1f3f3f;        
+                  font-size: 3em;
+}
+
 
 h2 {
     font-size: 1.6em;
