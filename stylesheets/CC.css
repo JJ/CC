@@ -62,14 +62,14 @@ div.objetivos code, div.nota code,  div.ejercicios code
   color: green
 }
 
-div.objetivos h2
+div.objetivos h3
 { 
   color: #1f3f3f;        
-  font-size: 3em;
+  font-size: 1.8em;
   font-family: "Lato", sans-serif;
 }
 
-div.objetivos h1
+div.objetivos h2
 { 
   color: #1f3f3f;        
   font-size: 2.2em;
