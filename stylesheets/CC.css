@@ -15,6 +15,12 @@ h2 {
     font-size: 1.6em;
 }
 
+
+h3 {
+  font-size: 1.3em;
+  margin: 1em 0;
+}
+
 /* clases */
 
 div.objetivos, div.nota,  div.ejercicios { 
@@ -64,14 +70,14 @@ div.objetivos code, div.nota code,  div.ejercicios code
 
 div.objetivos h3
 { 
-  color: #1f3f3f;        
+  color: white;        
   font-size: 1.8em;
   font-family: "Lato", sans-serif;
 }
 
 div.objetivos h2
 { 
-  color: #1f3f3f;        
+  color: white;        
   font-size: 2.2em;
 }
 
