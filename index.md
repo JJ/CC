@@ -8,8 +8,8 @@ Material docente para Cloud Computing
 
 Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
-La asignatura se imparte en el curso 2014-2015 los lunes de 19:30 a
-31:30 en el aula 2.4 y los miércoles de 18:30 a 20:30en el aula 1.6. Se usará [GitHub](http://github.com) para las prácticas y trabajo final.
+La asignatura se imparte en el curso 2015-2016 los lunes de 19:30 a
+21:30 en el aula 2.4 y los miércoles de 18:30 a 20:30en el aula 1.6. Se usará [GitHub](http://github.com) para las prácticas y trabajo final.
 
 Estos son los [objetivos de la asignatura](documentos/objetivos). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
 
@@ -27,11 +27,8 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 [GitHub](http://github.com/JJ/CC). La
 temporización de la asignatura y los objetivos de cada sesión figuran en la bitácora de clase.
 
-1. [Introducción: conceptos y soporte físico](documentos/temas/Intro_concepto_y_soporte_fisico)
-2. [Platform as a Service](documentos/temas/PaaS).
-2. [Técnicas de virtualización](documentos/temas/Tecnicas_de_virtualizacion)
+2. [Iniciación a DevOps: desarrollo basado en pruebas](documentos/temas/Desarrollo_basado_en_pruebas).
 3. [Usando contenedores](documentos/temas/Contenedores)
-4. [Almacenamiento virtual](documentos/temas/Almacenamiento)
 5. [Uso de sistemas de virtualización](documentos/temas/Uso_de_sistemas)
 6. [Gestión de configuraciones](documentos/temas/Gestion_de_configuraciones)
 
@@ -42,7 +39,7 @@ Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
 
 1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby). El seminario tendrá lugar el miércoles 19 de noviembre..
-2. Visita a las instalaciones de Trevenque el día 18 de noviembre.
+2. Visita a las instalaciones de Trevenque el día 14 de octubre.
 
 
 Prácticas - Actividades académicas dirigidas
