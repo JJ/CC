@@ -31,6 +31,10 @@ tanto de software como de hardware y ponerlos en práctica.
 
 ## Introducción
 
+>Si no lo has hecho antes, conviene que en este momento
+>[aprendas git](http://mini-git.github.io/) y te abras una cuenta en
+>Github. 
+
 Los ciclos de desarrollo de software actuales son ágiles y rápidos, de
 forma que continuamente se están arreglando errores, programando
 nuevas características y desplegándolas en producción. Para que esto
