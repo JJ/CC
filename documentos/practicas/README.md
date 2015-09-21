@@ -1,35 +1,44 @@
 ---
 layout: index
 
----
 
-#Practicas de la asignatura Infraestuctura Virtual
+---
+#Prácticas de la asignatura Cloud Computing
 
 Lo primero y más importante que hay que tener en cuenta en los
 proyectos que se van a llevar a cabo a lo largo de la asignatura es
 que son de la asignatura, es decir, que tienen que aplicar los
-conocimientos adquiridos en la asignatura, básicamente
-infraestructuras virtuales y uso de Platform/Software as a service. El
-objetivo del proyecto es crear un producto mínimamente viable que siga
-sea de uno de los dos tipos descritos a continuación.
+conocimientos adquiridos en la misma, uso de herramientas de
+*cloud*. El trabajo de la aplicación que se vaya a desplegar tendrá
+que evaluarse en la asignatura o proyecto correspondiente. Eso también
+quiere decir que es escoja un proyecto cuya definición de
+infraestructura, test y despliegue tenga una mínima complejidad. Un
+proyecto con dos herramientas y un script de dos líneas para
+desplegar, mientras que es válido (*a priori*, claro, esto tampoco
+implica que apruebe automáticamente) no se calificaría con una nota
+demasiado alta. 
 
-En años anteriores se hicieron las siguientes
-[propuestas](propuestas). Cada año se irán poniendo las propuestas
-en el repositorio correspondiente. 
+Por otro lado, el
+objetivo del proyecto es crear un proyecto de despliegue de aplicación
+en nube que sea mínimamente viable, del tipo *DevOps*. Los *proyectos son individuales* y cada persona será
+evaluada según el avance en su propio proyecto. Eso no quiere decir
+que un proyecto corresponda a una aplicación: una sola aplicación se
+puede dividir en varios proyectos individuales, pero cada uno de esos
+proyectos tiene que tocar un porcentaje considerable de objetivos de
+la asignatura. Es decir, no se puede dividir un proyecto en test,
+infraestructura y despliegue y que cada parte la haga una persona,
+pero sí puede haber un proyeco que consista en test y infraestructura
+y otro que consista en otra parte de la infraestructura y despliegue. 
 
-En ese sentido, habrá dos tipos de proyectos
-
-## Proyectos en la nube
-
-Se tratará de proyectos en los que se usarán las características
-únicas de un PaaS/SaaS para crear una aplicación, es decir, usar las
-capacidades de almacenamiento de datos, APIs y demás. Serán proyectos
-que usarán plataformas como Google AppSpot o similares, CouchBase o,
-en general, plataformas que ofrezcan un conjunto rico de servicios
-configurable o no. Estos proyectos serán más estrictamente de
-desarrollo.
-
-## Proyectos DevOps
+Los proyectos podrán usar el lenguaje y herramientas que se desee,
+siempre que sean libres o se usen de forma legal. Se valorará
+especialmente la originalidad de la herramienta usada (lo que viene a
+decir que si no usáis Django y Bootstrap, o cualquier otro lenguaje
+que os hayan enseñado en otra asignatura, igual que en DAI la
+puntuación podrá ser mayor). En todo caso, *la aplicación en sí* no
+forma parte del proyecto en general (salvo que se trate de una
+aplicación en una plataforma de software como servicio). Sólo la parte
+de *infraestructura virtual* formará parte de la aplicación.
 
 En estos proyectos se desarrolla principalmente la infraestructura
 necesaria para desarrollar, probar y desplegar una aplicación que no
@@ -38,7 +47,8 @@ partes
 
 * Configuración y gestión de la infraestructura de desarrollo:
   entornos virtuales y librerías y otros entornos necesarios para
-  trabajar.
+  trabajar, infraestructura de integración continua y de *staging*.
+  para desplegar la aplicación antes de llevarla a producción. 
 * Configuración de los tests necesarios para llevar a cabo integración
   y publicación continua. En caso de que no estén desarrollados, habrá
   que llevar a cabo ese desarrollo.
