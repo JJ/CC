@@ -26,9 +26,9 @@ tanto de software como de hardware y ponerlos en práctica.
 
 >Si no lo has hecho antes, conviene que en este momento
 >[aprendas git](http://mini-git.github.io/) y te abras una cuenta en
->Github. 
+>[GitHub](https://github.com). 
 
-Los ciclos de desarrollo de software actuales son ágiles y rápidos, de
+Los ciclos de [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software), de
 forma que continuamente se están arreglando errores, programando
 nuevas características y desplegándolas en producción. Para que esto
 sea posible todo este ciclo de vida del software debe estar automatizado en
@@ -39,11 +39,11 @@ sistema. La aparición de la [nube](https://es.wikipedia.org/wiki/Computaci%C3%B
 las partes del proceso, aparezcan recursos *elásticos* y disponibles bajo
 demanda, algunos de ellos gratuitos.
 
-Por eso, en esta parte del curso, veremos cómo desarrollar según la
+Para comenzar el curso vamos a ver cómo desarrollar según la
 metodología basada en pruebas con los
 entornos de computación en nube y cómo configurarlos y usarlos para
 hacer más rápida y eficiente el trabajo de un equipo de desarrollo,
-test, y sistemas.
+test y sistemas.
 
 El desarrollo basado en pruebas entra en relación con la computación nube dentro del concepto de
 [*DevOps*](http://en.wikipedia.org/wiki/DevOps), que
@@ -401,6 +401,7 @@ librerías que se pueden usar](http://stackoverflow.com/questions/14294567/asser
 forma parte de la estándar de JS, y por tanto la que vamos a usar. Se
 usa de la forma siguiente
 
+```node
 	var apuesta = require("./Apuesta.js"),
 	assert= require("assert");
 
@@ -408,6 +409,7 @@ usa de la forma siguiente
 	assert(nueva_apuesta, "Creada apuesta");
 	assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
 	console.log("Si has llegado aquí, han pasado todos los tests");
+```
 
 Este programa usa `assert` directamente y como se ve por la línea del
 final, no hace nada salvo que falle. `assert` no da error si existe el
@@ -435,6 +437,7 @@ que consiste en describir el comportamiento de un sistema más o menos
 de alto nivel. Como hay que escoger uno y parece que Mocha es más
 popular, nos quedamos con este para escribir este programa de test.
 
+```node
     var assert = require("assert"),
 		apuesta = require(__dirname+"/../Apuesta.js");
 
@@ -453,6 +456,7 @@ popular, nos quedamos con este para escribir este programa de test.
 		});
 		});
 	});
+```
 
 Mocha puede usar diferentes librerías de test. En este caso hemos
 escogido la que ya habíamos usado, `assert`. A bajo nivel, los tests
@@ -544,6 +548,7 @@ tests. Para ello se provisiona una máquina virtual (o contenedor), se
 le carga el sistema operativo y se instala lo necesario, indicado en
 el fichero de configuración tal como este para Travis.
 
+```YAML
 	language: node_js
 	node_js:
 	  - "0.10"
@@ -552,6 +557,7 @@ el fichero de configuración tal como este para Travis.
 	  - npm install -g mocha
 	  - cd src; npm install .
 	script: cd src; mocha
+```
 
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
@@ -600,8 +606,8 @@ para el despliegue continuo, que se verá más adelante.
 
 Una vez visto todo lo necesario para desplegar una aplicación, se
 puede pasar a estudiar los
-[*PaaS*, plataformas como servicio](PaaS.md), donde se exolica cómo se
+[*PaaS*, plataformas como servicio](PaaS), donde se exolica cómo se
 pueden desplegar aplicaciones para prototipo o para producción de
 forma relativamente simple, o bien al tema dedicado a los
-[*contenedores*](Contenedores.md), que es el siguiente en el temario
+[*contenedores*](Contenedores), que es el siguiente en el temario
 de la asignatura.
