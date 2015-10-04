@@ -52,7 +52,7 @@ tareas de creación de un puesto de trabajo para desarrollo, pero
 también la sistematización de pruebas, de despliegue y de las tareas
 de configuración relacionadas con la misma, todo ello en un entorno de
 desarrollo ágil. En concreto, *DevOps* comprende
-[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](https://www.rexify.org/): 
+[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](http://www.rexify.org/): 
 
 1. Automatización de tareas relacionadas con el desarrollo. En
    resumen, que no haya que recordar o tener apuntados en una libreta comandos para hacer todo tipo de
@@ -117,7 +117,7 @@ virtuales de desarrollo* tales como:
 *  [nodeenv](https://pypi.python.org/pypi/nodeenv/), [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
 *  [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
 *  [rbenv](https://github.com/sstephenson/rbenv) y [RVM](https://rvm.io)para Ruby
-*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](https://perlbrew.pl).
+*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](http://perlbrew.pl).
 
 Generalmente, estos programa funcionan instalando binarios en
 directorios del usuario y modificando el camino de ejecución para que se usen estas versiones en vez de las instaladas en el sistema. 
@@ -263,7 +263,7 @@ programa hasta que ocupe el mínimo espacio posible, para que sea más
 
 Todos los lenguajes de programación tienen su propia herramienta de
 construcción, pero en node.js se utilizan principalmente dos:
-[Grunt](https://gruntjs.com) y [Gulp](https://gulpjs.com).
+[Grunt](http://gruntjs.com) y [Gulp](http://gulpjs.com).
 
 >Aquí podíamos hacer una breve disquisición sobre
 >[el código y la configuración](https://coding.abel.nu/2013/06/code-or-configuration-or-configuration-in-code/),
@@ -394,7 +394,7 @@ efectivamente se está usando.
 
 Vamos a ir al nivel más bajo: el de las aserciones. Hay [múltiples
 librerías que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
-[Chai](https://chaijs.com/),
+[Chai](http://chaijs.com/),
 [Should.js](https://github.com/visionmedia/should.js),
 [Must.js](https://github.com/moll/js-must) y
 [`assert`](https://nodejs.org/api/assert.html) que es la librería que
@@ -517,7 +517,7 @@ Un sistema bastante popular de integración continua es
 Java. Jenkins lo puedes usar en la nube o instalarte tu propio
 ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java
 por lo que hay otros sistemas como [Travis](https://travis-ci.org) o
-[Shippable](https://apps.shippable.com/) que podemos usar también desde
+[Shippable](http://apps.shippable.com/) que podemos usar también desde
 la nube y, además, están preparados para más lenguajes de
 programación.
 
@@ -562,7 +562,7 @@ el fichero de configuración tal como este para Travis.
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
 - `language` indica qué lenguaje se va a usar. Travis tiene
-  [varios lenguajes](https://docs.travis-ci.com/user/getting-started/),
+  [varios lenguajes](http://docs.travis-ci.com/user/getting-started/),
   incluyendo por supuesto nodejs. Las máquinas virtuales no suelen
   estar configuradas para lenguajes arbitrarios, aunque por supuesto
   se puede poner un lenguaje tal como C y luego descargar lo necesario
