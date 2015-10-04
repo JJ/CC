@@ -28,13 +28,15 @@ tanto de software como de hardware y ponerlos en práctica.
 >[aprendas git](https://mini-git.github.io/) y te abras una cuenta en
 >[GitHub](https://github.com). 
 
-Los ciclos de [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software), de
+Los ciclos de
+[desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software),
+de 
 forma que continuamente se están arreglando errores, programando
-nuevas características y desplegándolas en producción. Para que esto
-sea posible todo este ciclo de vida del software debe estar automatizado en
-todo lo posible, para que todas las fases se hagan esencialmente sin
+nuevas características y desplegándolas para pruebas y en producción. Para que esto
+sea posible este ciclo de vida debe estar automatizado en
+todo lo posible, de forma que todas las fases se hagan esencialmente sin
 intervención humana y se minimice la posibilidad de que haya 
-en el proceso errores costosos de arreglar una vez echado a andar un
+en el proceso errores que sean costosos de arreglar una vez echado a andar un
 sistema. La aparición de la [nube](https://es.wikipedia.org/wiki/Computaci%C3%B3n_en_la_nube) ha hecho que en varias, o en todas,
 las partes del proceso, aparezcan recursos *elásticos* y disponibles bajo
 demanda, algunos de ellos gratuitos.
@@ -47,40 +49,44 @@ test y sistemas.
 
 El desarrollo basado en pruebas entra en relación con la computación nube dentro del concepto de
 [*DevOps*](https://en.wikipedia.org/wiki/DevOps), que
-abarca tanto sistemas, es decir, el soporte físico donde se van a ejecutar las aplicaciones, como desarrollo y test y que está a caballo entre los dos primeros. En primer lugar, *DevOps* implica la automatización de las
+abarca tanto sistemas, es decir, el soporte físico donde se van a
+ejecutar las aplicaciones, como desarrollo y test y que está a caballo
+entre los dos primeros. En primer lugar, *DevOps* implica la
+automatización de las 
 tareas de creación de un puesto de trabajo para desarrollo, pero
-también la sistematización de pruebas, de despliegue y de las tareas
+también la sistematización de los entornos de pruebas y de despliegue y de las tareas
 de configuración relacionadas con la misma, todo ello en un entorno de
 desarrollo ágil. En concreto, *DevOps* comprende
 [los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](http://www.rexify.org/): 
 
-1. Automatización de tareas relacionadas con el desarrollo. En
-   resumen, que no haya que recordar o tener apuntados en una libreta comandos para hacer todo tipo de
+1. *Automatización de tareas relacionadas con el desarrollo*. En
+   resumen, que no haya que recordar o tener apuntados en una libreta
+   comandos para hacer todo tipo de 
    cosas (instalación de librerías o configuración de una máquina)
    sino que haya *scripts* que lo homogeneicen y automaticen.
 
-2. Virtualización: uso de recursos virtuales para almacenamiento,
+2. *Virtualización*: uso de recursos virtuales para almacenamiento,
    publicación y, en general, todos los pasos del desarrollo y
    despliegue de software.
 
-5. Provisionamiento de los servidores: los servidores virtuales a los
+5. *Provisionamiento de los servidores*: los servidores virtuales a los
    que se despliegue deben estar preparados con todas las herramientas
    necesarias para publicar la aplicación.
 
-6. Gestión de configuraciones: la gestión de las configuraciones de
+6. *Gestión de configuraciones*: la gestión de las configuraciones de
    los servidores y las órdenes para provisionamiento deben estar
    controladas por un sistema de gestión de versiones que permita
    pruebas y también controlar en cada momento el entorno en el que
    efectivamente se está ejecutando el software.
 
-3. Despliegue en la nube: publicación de aplicaciones en servidores
+3. *Despliegue en la nube*: publicación de aplicaciones en servidores
    virtuales.
 
 4. [Ciclo de vida del software](https://es.slideshare.net/colmbennett/software-rollout)
    definición de las diferentes fases en la vida de una aplicación,
    desde el diseño hasta el soporte.
 
-7. Despliegue continuo: el ciclo de vida de una aplicación debe ir
+7. *Despliegue continuo*: el ciclo de vida de una aplicación debe ir
    ligado a ciclos de desarrollo ágiles en los que cada nueva
    característica se introduzca tan pronto esté lista y probada; el
    despliegue continuo implica integración continua de las nuevas
@@ -104,8 +110,8 @@ seleccione la versión precisa que se va a usar.
 
 Y estos entornos virtuales vienen del hecho de que los lenguajes de scripting tales como Perl, Python y Ruby tienen
 ciclos de desarrollo muy rápidos que hacen que a veces convivan en
-producción diferentes versiones de los mismos, incluso *major*
-versions. Eso hace complicado desarrollar e incluso probar los
+producción diferentes versiones de los mismos, incluso versiones
+*major*. Eso hace complicado desarrollar e incluso probar los 
 programas que se desarrollan: si el sistema operativo viene con Perl
 5.14, puede que haga falta probar o desarrollar para 5.16 o 5.18 o
 incluso probar la versión más avanzada.
@@ -602,11 +608,35 @@ control de calidad en el desarrollo. Y, finalmente, porque la
 integración continua y los tests correspondientes son un paso esencial
 para el despliegue continuo, que se verá más adelante.
 
+##Bibliografía y otros recursos
+
+Algunos recursos a los que puedes acceder desde la
+[Biblioteca de la UGR](http://biblioteca.ugr.es):
+
+- [DevOps: a software architect's perspective](http://bencore.ugr.es/iii/encore/record/C__Rb2526268__Sdevops__P0%2C2__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl),
+  un libro en general teórico y "a vista de pájaro" de la creación de
+  equipos de desarrollo y aplicaciones basadas en esa filosofía.
+
+- [DevOps for developers](http://bencore.ugr.es/iii/encore/record/C__Rb2516479__Sdevops__P0%2C9__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl)
+  también con poco código, pero con una visión a más bajo nivel de
+  cómo organizar y montar grupos DevOps.
+
+Esta
+[página](http://www.jedi.be/blog/2010/02/12/what-is-this-devops-thing-anyway/)
+lista una serie de recursos útiles, incluyendo blogs y canales de IRC,
+aparte de diferentes herramientas que deben estar en el carcaj del
+arquero DevOps, aunque la mayoría de los enlaces a estos están
+atrasados (y uno está en chino, así que no tengo ni idea). 
+
 ## A dónde ir desde aquí
 
-Una vez visto todo lo necesario para desplegar una aplicación, se
-puede pasar a estudiar los
-[*PaaS*, plataformas como servicio](PaaS), donde se exolica cómo se
+Una vez visto todo lo necesario para desplegar una aplicación se puede
+pasar al
+[primer hito del proyecto de la asignatura](http://jj.github.io/CC/documentos/practicas/1.Infraestructura).
+A continuación se
+puede echar un vistazo a los
+[*PaaS*, plataformas como servicio](PaaS), que pueden resultar útiles
+en la misma. En este tema donde se explica cómo se
 pueden desplegar aplicaciones para prototipo o para producción de
 forma relativamente simple, o bien al tema dedicado a los
 [*contenedores*](Contenedores), que es el siguiente en el temario
