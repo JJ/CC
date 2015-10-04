@@ -9,7 +9,10 @@ Material docente para Cloud Computing
 Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
 La asignatura se imparte en el curso 2015-2016 los lunes de 19:30 a
-21:30 en el aula 2.4 y los miércoles de 18:30 a 20:30en el aula 1.6. Se usará [GitHub](http://github.com) para las prácticas y trabajo final.
+21:30 en el aula 2.4 y los miércoles de 18:30 a 20:30en el
+aula 1.6. Se usará [GitHub](http://github.com) para los ejercicios y
+el proyecto; también para los objetivos semanales, que estarán (año
+2015-16) en [este repositorio](https://github.com/JJ/clases-CC-2015-16/).
 
 Estos son los [objetivos de la asignatura](documentos/objetivos). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
 
@@ -24,15 +27,14 @@ Temario - Programa de la asignatura
 
 Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
-[GitHub](http://github.com/JJ/CC). La
-temporización de la asignatura y los objetivos de cada sesión figuran en la bitácora de clase.
+[GitHub](http://github.com/JJ/CC).
 
 2. [Iniciación a DevOps: desarrollo basado en pruebas](documentos/temas/Desarrollo_basado_en_pruebas).
 3. [Usando contenedores](documentos/temas/Contenedores)
 5. [Uso de sistemas de virtualización](documentos/temas/Uso_de_sistemas)
 6. [Gestión de configuraciones](documentos/temas/Gestion_de_configuraciones)
 
-La temporización de la asignatura y la interacción entre alumnos y con el profesor están en [un repositorio de GitHub](http://github.com/JJ/clases-CC-2015-16).
+La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/clases-CC-2015-16).
 
 Seminarios
 ---------------
@@ -60,7 +62,7 @@ Tutorías virtuales
 Las tutorías virtuales se realizarán preferiblemente a través de
 [la plataforma de trabajo colaborativo GitHub](https://github.com/JJ/clases-CC-2015-16/issues?state=open). Hay
 también una
-[lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/cc-ugr-2014)
+[lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/cc-ugr-2015)
 que se puede usar para todo lo que no quepa en la anterior (preguntas
 administrativas, principalmente).
 
@@ -68,7 +70,7 @@ Criterios de evaluación
 ---
 
 Los
-[criterios de evaluación figuran en la ficha de la asignatura en la web del grado](http://masteres.ugr.es/ing-informatica/pages/info_academica/guias/201516/1semestre/cloudcomputingfundamentoseinfraestructuras/!),
+[criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado](http://masteres.ugr.es/ing-informatica/pages/info_academica/guias/201516/1semestre/cloudcomputingfundamentoseinfraestructuras/!),
 y
 [se especifican en el repositorio de la clase](https://github.com/JJ/clases-CC-2015-16/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
 
