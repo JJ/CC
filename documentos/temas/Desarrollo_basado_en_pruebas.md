@@ -25,7 +25,7 @@ tanto de software como de hardware y ponerlos en práctica.
 ## Introducción
 
 >Si no lo has hecho antes, conviene que en este momento
->[aprendas git](http://mini-git.github.io/) y te abras una cuenta en
+>[aprendas git](https://mini-git.github.io/) y te abras una cuenta en
 >[GitHub](https://github.com). 
 
 Los ciclos de [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software), de
@@ -46,13 +46,13 @@ hacer más rápida y eficiente el trabajo de un equipo de desarrollo,
 test y sistemas.
 
 El desarrollo basado en pruebas entra en relación con la computación nube dentro del concepto de
-[*DevOps*](http://en.wikipedia.org/wiki/DevOps), que
+[*DevOps*](https://en.wikipedia.org/wiki/DevOps), que
 abarca tanto sistemas, es decir, el soporte físico donde se van a ejecutar las aplicaciones, como desarrollo y test y que está a caballo entre los dos primeros. En primer lugar, *DevOps* implica la automatización de las
 tareas de creación de un puesto de trabajo para desarrollo, pero
 también la sistematización de pruebas, de despliegue y de las tareas
 de configuración relacionadas con la misma, todo ello en un entorno de
 desarrollo ágil. En concreto, *DevOps* comprende
-[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](http://www.rexify.org/): 
+[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](https://www.rexify.org/): 
 
 1. Automatización de tareas relacionadas con el desarrollo. En
    resumen, que no haya que recordar o tener apuntados en una libreta comandos para hacer todo tipo de
@@ -76,7 +76,7 @@ desarrollo ágil. En concreto, *DevOps* comprende
 3. Despliegue en la nube: publicación de aplicaciones en servidores
    virtuales.
 
-4. [Ciclo de vida del software](http://es.slideshare.net/colmbennett/software-rollout)
+4. [Ciclo de vida del software](https://es.slideshare.net/colmbennett/software-rollout)
    definición de las diferentes fases en la vida de una aplicación,
    desde el diseño hasta el soporte.
 
@@ -116,8 +116,8 @@ virtuales de desarrollo* tales como:
 *  [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
 *  [nodeenv](https://pypi.python.org/pypi/nodeenv/), [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
 *  [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
-*  [rbenv](https://github.com/sstephenson/rbenv) y [RVM](http://rvm.io)para Ruby
-*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](http://perlbrew.pl).
+*  [rbenv](https://github.com/sstephenson/rbenv) y [RVM](https://rvm.io)para Ruby
+*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](https://perlbrew.pl).
 
 Generalmente, estos programa funcionan instalando binarios en
 directorios del usuario y modificando el camino de ejecución para que se usen estas versiones en vez de las instaladas en el sistema. 
@@ -206,7 +206,7 @@ instalar y tener para ejecutarlo. En node se usa un fichero en formato
 JSON tal como este:
 
 	{
-	  "author": "J. J. Merelo <jjmerelo@gmail.com> (http://github.com/JJ/desarrollo-basado-pruebas)",
+	  "author": "J. J. Merelo <jjmerelo@gmail.com> (https://github.com/JJ/desarrollo-basado-pruebas)",
 	  "name": "porrio",
 	  "description": "Apuesta en una porra",
 	  "version": "0.0.1",
@@ -263,10 +263,10 @@ programa hasta que ocupe el mínimo espacio posible, para que sea más
 
 Todos los lenguajes de programación tienen su propia herramienta de
 construcción, pero en node.js se utilizan principalmente dos:
-[Grunt](http://gruntjs.com) y [Gulp](http://gulpjs.com).
+[Grunt](https://gruntjs.com) y [Gulp](https://gulpjs.com).
 
 >Aquí podíamos hacer una breve disquisición sobre
->[el código y la configuración](http://coding.abel.nu/2013/06/code-or-configuration-or-configuration-in-code/),
+>[el código y la configuración](https://coding.abel.nu/2013/06/code-or-configuration-or-configuration-in-code/),
 >algo a lo que nos vamos a enfrentar repetidamente en la nube. ¿Un
 >fichero de construcción es, o debe ser, configuración o código?
 >Diferentes herramientas toman diferentes aproximaciones al tema:
@@ -352,7 +352,7 @@ defecto simplemente ejecutando `grunt`. También se puede ejecutar con
 	docco: Apuesta.js -> docs/Apuesta.html
 	docco: Gruntfile.js -> docs/Gruntfile.html
 
-y producirá una documentación tal como [esta](src/docs/Apuesta.html).
+y producirá una documentación tal como [esta](https://jj.github.io/desarrollo-basado-pruebas/src/docs/Apuesta.html).
 
 La automatización de Grunt se puede usar tanto para prueba como para
 despliegue. Pero hay también otras formas de probar en la nube, y lo
@@ -393,11 +393,11 @@ primero es el marco de pruebas y el segundo la librería de pruebas que
 efectivamente se está usando.
 
 Vamos a ir al nivel más bajo: el de las aserciones. Hay [múltiples
-librerías que se pueden usar](http://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
-[Chai](http://chaijs.com/),
+librerías que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
+[Chai](https://chaijs.com/),
 [Should.js](https://github.com/visionmedia/should.js),
 [Must.js](https://github.com/moll/js-must) y
-[`assert`](http://nodejs.org/api/assert.html) que es la librería que
+[`assert`](https://nodejs.org/api/assert.html) que es la librería que
 forma parte de la estándar de JS, y por tanto la que vamos a usar. Se
 usa de la forma siguiente
 
@@ -425,14 +425,14 @@ función `as_string` es la esperada.
 Hay un segundo nivel, el marco de ejecución de los tests. Los marcos
 son programas que, a su vez, ejecutan los programas de test y escriben
 un informe sobre cuáles han fallado y cuáles no con más o menos
-parafernalia y farfolla. Una vez más, [hay varios marcos de testeo](http://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
+parafernalia y farfolla. Una vez más, [hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
 nodejs (y, por supuesto, uno propio para cada uno de los lenguajes de
 programación, aunque en algunos están realmente estandarizados).
 
 Cada uno de ellos tendrá sus promotores y detractores, pero
-[Mocha](http://mochajs.org/) y [Jasmine](http://jasmine.github.io/)
+[Mocha](https://mochajs.org/) y [Jasmine](https://jasmine.github.io/)
 parecen ser los más populares. Los dos usan un sistema denominado
-[Behavior Driven Development](http://en.wikipedia.org/wiki/Behavior-driven_development),
+[Behavior Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development),
 que consiste en describir el comportamiento de un sistema más o menos
 de alto nivel. Como hay que escoger uno y parece que Mocha es más
 popular, nos quedamos con este para escribir este programa de test.
@@ -513,11 +513,11 @@ sí con las librerías del lenguaje de programación en el que está
 desarrollado.
 
 Un sistema bastante popular de integración continua es
-[Jenkins](http://jenkins-ci.org/), pero está enfocado sobre todo a
+[Jenkins](https://jenkins-ci.org/), pero está enfocado sobre todo a
 Java. Jenkins lo puedes usar en la nube o instalarte tu propio
 ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java
-por lo que hay otros sistemas como [Travis](http://travis-ci.org) o
-[Shippable](https://www.shippable.com/) que podemos usar también desde
+por lo que hay otros sistemas como [Travis](https://travis-ci.org) o
+[Shippable](https://apps.shippable.com/) que podemos usar también desde
 la nube y, además, están preparados para más lenguajes de
 programación.
 
@@ -562,7 +562,7 @@ el fichero de configuración tal como este para Travis.
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
 - `language` indica qué lenguaje se va a usar. Travis tiene
-  [varios lenguajes](http://docs.travis-ci.com/user/getting-started/),
+  [varios lenguajes](https://docs.travis-ci.com/user/getting-started/),
   incluyendo por supuesto nodejs. Las máquinas virtuales no suelen
   estar configuradas para lenguajes arbitrarios, aunque por supuesto
   se puede poner un lenguaje tal como C y luego descargar lo necesario
