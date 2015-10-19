@@ -49,9 +49,10 @@ alumno tendrá que aprender a su ritmo
 Prácticas - Actividades académicas dirigidas
 -------------
 
-Las prácticas consisten en la realización de un proyecto a lo largo de la asignatura, con diferentes hitos que correspondan a los objetivos cumplidos hasta ese momento. Los proyectos [seguirán un perfil DevOps](documentos/practicas/README). A grosso modo, los hitos se organizarán de la forma siguiente.
+Las prácticas consisten en la realización de un proyecto a lo largo de la asignatura, con diferentes hitos que correspondan a los objetivos cumplidos hasta ese momento. Los proyectos [seguirán un perfil DevOps](documentos/practicas/README.md). A grosso modo, los hitos se organizarán de la forma siguiente.
 
 1. [Organización de los grupos de práctica y creación del proyecto](documentos/practicas/1.Infraestructura)
+2. [Infraestructura virtual de un proyecto](documentos/practicas/2.CI) con integración continua. 
 2. Técnicas de virtualización [Contenedores para pruebas](documentos/practicas/3.Contenedores).
 3. Diseño de sistemas usando [CPU y almacenamiento virtuales](documentos/practicas/3.MV).
 4. [Virtualización de aplicaciones](documentos/practicas/4.Aplicaciones).
