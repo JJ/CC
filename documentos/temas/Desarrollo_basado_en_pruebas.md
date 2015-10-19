@@ -637,9 +637,13 @@ atrasados (y uno está en chino, así que no tengo ni idea).
 
 ## A dónde ir desde aquí
 
-Una vez visto todo lo necesario para desplegar una aplicación se puede
-pasar al
-[primer hito del proyecto de la asignatura](http://jj.github.io/CC/documentos/practicas/1.Infraestructura).
+Durante la realización de los ejercicios de este tema se habrá tenido
+que hacer el
+[primer hito del proyecto de la asignatura](http://jj.github.io/CC/documentos/practicas/1.Infraestructura),
+para pasar al
+[segundo hito](http://jj.github.io/CC/documentos/practicas/2.CI)
+cuando se haya concluido.
+
 A continuación se
 puede echar un vistazo a los
 [*PaaS*, plataformas como servicio](PaaS), que pueden resultar útiles
