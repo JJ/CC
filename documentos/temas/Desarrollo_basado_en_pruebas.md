@@ -407,7 +407,7 @@ librerías que se pueden usar](https://stackoverflow.com/questions/14294567/asse
 forma parte de la estándar de JS, y por tanto la que vamos a usar. Se
 usa de la forma siguiente
 
-```node
+```
 	var apuesta = require("./Apuesta.js"),
 	assert= require("assert");
 
@@ -443,7 +443,7 @@ que consiste en describir el comportamiento de un sistema más o menos
 de alto nivel. Como hay que escoger uno y parece que Mocha es más
 popular, nos quedamos con este para escribir este programa de test.
 
-```node
+~~~~~javascript
     var assert = require("assert"),
 		apuesta = require(__dirname+"/../Apuesta.js");
 
@@ -462,7 +462,7 @@ popular, nos quedamos con este para escribir este programa de test.
 		});
 		});
 	});
-```
+~~~~~
 
 Mocha puede usar diferentes librerías de test. En este caso hemos
 escogido la que ya habíamos usado, `assert`. A bajo nivel, los tests
@@ -554,7 +554,7 @@ tests. Para ello se provisiona una máquina virtual (o contenedor), se
 le carga el sistema operativo y se instala lo necesario, indicado en
 el fichero de configuración tal como este para Travis.
 
-```YAML
+~~~~~YAML
 	language: node_js
 	node_js:
 	  - "0.10"
@@ -563,7 +563,7 @@ el fichero de configuración tal como este para Travis.
 	  - npm install -g mocha
 	  - cd src; npm install .
 	script: cd src; mocha
-```
+~~~~~
 
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
