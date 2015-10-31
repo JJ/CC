@@ -15,7 +15,7 @@ Estos son los [objetivos de la asignatura](documentos/objetivos.md). En resumen,
 2. Usar ese entorno para configurar integración continua en una aplicación.
 3. Sea capaz de crear un entorno virtual para desarrollar y alojar la aplicación y comprenda el soporte físico de las técnicas usadas para crear tal entorno virtual.
 4. Entienda las técnicas de configuración automática de entornos virtuales y las sepa aplicar en los entornos anteriores.
-5. Use lo aprendido para despliegue masivo de aplicaciones en la nube. 
+5. Use lo aprendido para despliegue masivo de aplicaciones en la nube.
 
 Temario - Programa de la asignatura
 ------------------------------------------------------
@@ -47,6 +47,7 @@ Prácticas - Actividades académicas dirigidas
 Las prácticas consisten en la realización de un proyecto a lo largo de la asignatura, con diferentes hitos que correspondan a los objetivos cumplidos hasta ese momento. Los proyectos [seguirán un perfil DevOps](documentos/practicas/README.md). A grosso modo, los hitos se organizarán de la forma siguiente.
 
 1. [Organización de los grupos de práctica y creación del proyecto](documentos/practicas/1.Infraestructura.md)
+2. [Infraestructura virtual de un proyecto](documentos/practicas/2.CI.md) con integración continua.
 2. Técnicas de virtualización [Contenedores para pruebas](documentos/practicas/3.Contenedores.md).
 3. Diseño de sistemas usando [CPU y almacenamiento virtuales](documentos/practicas/3.MV.md).
 4. [Virtualización de aplicaciones](documentos/practicas/4.Aplicaciones.md).
@@ -67,7 +68,7 @@ Criterios de evaluación
 Los
 [criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado](http://masteres.ugr.es/ing-informatica/pages/info_academica/guias/201516/1semestre/cloudcomputingfundamentoseinfraestructuras/!),
 y
-[se especifican en el repositorio de la clase](https://github.com/JJ/clases-CC-2015-16/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md). 
+[se especifican en el repositorio de la clase](https://github.com/JJ/clases-CC-2015-16/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md). 
 
 Profesores
 --
