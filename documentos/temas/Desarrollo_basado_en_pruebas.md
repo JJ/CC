@@ -41,7 +41,7 @@ sistema. La aparición de la [nube](https://es.wikipedia.org/wiki/Computaci%C3%B
 las partes del proceso, aparezcan recursos *elásticos* y disponibles bajo
 demanda, algunos de ellos gratuitos.
 
-Para comenzar el curso vamos a ver cómo desarrollar según la
+Por eso, en esta parte del curso, veremos cómo desarrollar según la
 metodología basada en pruebas con los
 entornos de computación en nube y cómo configurarlos y usarlos para
 hacer más rápida y eficiente el trabajo de un equipo de desarrollo,
@@ -120,13 +120,17 @@ Por eso desde hacer cierto tiempo se han venido usando *entornos
 virtuales de desarrollo* tales como:
 
 *  [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
-*  [nodeenv](https://pypi.python.org/pypi/nodeenv/), [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
+*  [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
 *  [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
-*  [rbenv](https://github.com/sstephenson/rbenv) y [RVM](https://rvm.io)para Ruby
+*  [rbenv](https://github.com/sstephenson/rbenv) y [RVM](http://rvm.io)para Ruby
 *  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](http://perlbrew.pl).
 
 Generalmente, estos programa funcionan instalando binarios en
-directorios del usuario y modificando el camino de ejecución para que se usen estas versiones en vez de las instaladas en el sistema. 
+directorios del usuario y modificando el camino de ejecución para que
+se usen estas versiones en vez de las instaladas en el sistema. En la
+mayoría de los casos se coordinan también con el *shell* para mostrar
+la versión que se está ejecutando en la línea de órdenes o para llevar
+a cabo autocompletado. 
 
 Una vez instalados, estos programas permiten instalar fácilmente
 nuevas versiones de tu lenguaje de programación (con las librerías
@@ -138,13 +142,14 @@ veremos a continuación.
 
 <div class='ejercicios' markdown='1'>
 
-Instalar alguno de los entornos virtuales de `node.js` y, con ellos,
+Instalar alguno de los entornos virtuales de `node.js` (o de cualquier
+otro lenguaje con el que se esté familiarizado) y, con ellos,
 instalar la última versión existente, la versión *minor* más actual
-de la 0.12 y lo mismo para la 0.11 o alguna impar. Si no se usa habitualmente este lenguaje, hacer lo mismo con cualquier otro lenguaje de scripting. 
+de la 4.x y lo mismo para la 0.11 o alguna impar (de desarrollo).
 
 </div>
 
-Generalmente las librerías asociadas a una aplicación determinada
+Generalmente, las librerías asociadas a una aplicación determinada, es decir, las dependencias, 
 siguen un método similar. En vez de instalar en el sistema todas las
 librerías necesarias (o instalar una cada vez que hay algún error),
 la mayor parte de los entornos de programación incluyen alguna forma
