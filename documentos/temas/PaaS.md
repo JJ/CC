@@ -616,8 +616,14 @@ cualquiera,
 encajan mejor dentro de este texto que de ningún otro sitio, aunque en
 realidad no son una solución completa, sino que se tienen que combinar
 con un PaaS o un IaaS para crear una aplicación. Sin embargo, es
-conveniente tener conocimiento de ellas, puesto que los PaaS a que se
-verán a continuación las usan.
+conveniente tener conocimiento de ellas, puesto que los PaaS que se
+han visto las usan. Por eso conviene conocerlas: permite que se tenga
+un backend totalmente independiente del despliegue que se vaya a
+hacer, sea en un sevidor propio, IaaS o un PaaS; permiten también
+prototipado rápido de una aplicación, al permitir usar una base de
+datos externa para integración continua y pruebas y, finalmente, en
+caso de despliegue final de la aplicación, permiten pagar sólo por lo
+que se usa, sin tener ningún tipo de infraestructura permanente.
 
 Los DBaaS ofrecen acceso tanto bases de datos clásicas, es decir, con
 el lenguaje SQL, como a bases de datos *sin esquemas* o NoSQL como
@@ -628,6 +634,10 @@ con tarjeta de crédito, tales como
 mayoría de los PaaS, por otro lado, ofrecen también DBaaS como
 añadidos a sus plataformas; es decir, tarde o temprano se acabarán
 usando.
+
+
+
+## Un ejemplo de base de datos NoSQL: Redis
 
 Vamos a aprovechar que estamos hablando de nuevas bases de datos para
 trabajar con [Redis](http://redis.io). Redis es una base de datos no
