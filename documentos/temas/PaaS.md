@@ -594,13 +594,13 @@ Teniendo en cuenta esto, no es difícil cambiar la aplicación para que pueda fu
 
 En la primera se establece la IP en la que tiene que escuchar la aplicación. En el caso por omisión, el segundo, la dirección `0.0.0.0` indica que Express escuchará en todas las IPs. Sin embargo, eso no es correcto ni posible en OpenShift, que tiene una IP específica, contenida en la variable de entorno `OPENSHIFT_NODEJS_IP` y que será una IP de tipo local (aunque realmente esto no tiene que importarnos salvo por el caso de que no podremos acceder a esa IP directamente).
 
-En cuanto al puerto, en los dos casos hay variables de entorno para definirlo. Simplemente las vamos comprobando con || (OR) y si no está establecida ninguna, se asigna el valor por defecto, que también sirve para la ejecución local.
+En cuanto al puerto, en los dos casos hay variables de entorno para definirlo. Simplemente las vamos comprobando con \|\| (OR) y si no está establecida ninguna, se asigna el valor por defecto, que también sirve para la ejecución local.
 
 <div class='ejercicios' markdown="1">
  Preparar la aplicación con la que se ha
  venido trabajando hasta este momento para ejecutarse en un PaaS, el
  que se haya elegido. 
-</a>
+</div>
 
 También en OpenShift se puede desplegar automáticamente usando Travis,
 por ejemplo. De hecho, incluso en Heroku se puede trabajar también con
