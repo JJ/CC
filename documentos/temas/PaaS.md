@@ -3,7 +3,7 @@ Desplegando aplicaciones en la nube: Uso de PaaS
 
 <!--@
 prev: Desarrollo_basado_en_pruebas
-next: Tecnicas_de_virtualizacion
+next: Contenedores
 -->
 
 <div class="objetivos" markdown="1">
@@ -26,7 +26,7 @@ tanto de software como de hardware y ponerlos en práctica.
 
 6. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
 
-7. Aplicar el sistema de control de fuentes `git` para despliegue de aplicaciones en la nube.
+7. Aplicar el sistema de control de fuentes `git` para despliegue de aplicaciones en la nube. 
 
 </div>
 
@@ -754,7 +754,7 @@ información.
 
 3. Ejecutar ejemplos de cualquier lenguaje de programación sobre la
 instalación realizada. 
-</a>
+</div>
 
 ## Poniendo en práctica Redis en porr.io
 
@@ -888,7 +888,6 @@ El último bloque del programa recupera todas las apuestas que haya
 almacenadas para una porra determinada, las tres que se han hecho. El
 resultado será algo así:
 
-
 	Reply: 1
 	Reply: 1
 	Reply: 1
@@ -999,8 +998,8 @@ aplicación de calificación de empresas realizada anteriormente.
 A dónde ir desde aquí
 -----
 
-En el [siguiente tema](Tecnicas_de_virtualizacion.md) usaremos
+En el [siguiente tema](Contenedores.md) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
-y jaulas que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../practicas/2.XaaS.md).
+ que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
+práctica correspondiente a esta materia](../practicas/3.PaaS.md).
 
