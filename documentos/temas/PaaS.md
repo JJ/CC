@@ -6,7 +6,7 @@ prev: Desarrollo_basado_en_pruebas
 next: Tecnicas_de_virtualizacion
 ---
 
-Desplegando aplicaciones en la nube: Uso de PaaS 
+Desplegando aplicaciones en la nube: Uso de PaaS
 ==
 
 <!--@
@@ -16,16 +16,16 @@ next: Tecnicas_de_virtualizacion
 
 <div class="objetivos" markdown="1">
 
-##Objetivos 
+##Objetivos
 
 
 ### Cubre los siguientes objetivos de la asignatura
 
 2. Conocer los conceptos relacionados con el proceso de virtualización
-tanto de software como de hardware y ponerlos en práctica. 
+tanto de software como de hardware y ponerlos en práctica.
 
 4. Justificar la necesidad de procesamiento virtual frente a real en
-   el contexto de una infraestructura TIC de una organización. 
+   el contexto de una infraestructura TIC de una organización.
 
 ### Objetivos específicos
 
@@ -46,7 +46,7 @@ que ofrece programar *plugins* (como en el SaaS), necesita un
 [Platform as a Service o PaaS](http://en.wikipedia.org/wiki/Platform_as_a_service). Un
 PaaS proporciona una pila que incluye, generalmente, almacenamiento de
 datos, un marco concreto para trabajar (tal como Django o Ruby on
-Rails) y, adicionalmente, un servidor web. 
+Rails) y, adicionalmente, un servidor web.
 
 Esto conlleva una cierta falta de flexibilidad: se pueden usar las
 pilas que proporciona en servicio y el usuario sólo puede subir su
@@ -54,12 +54,12 @@ aplicación que las use, no instalar elementos adicionales que necesiten permiso
 superusuario. Pero, por otro lado, ofrece la comodidad de tener que
 concentrarse sólo en la aplicación en sí y no en la
 infraestructura si se trata de una aplicación que use los marcos más
-comunes. Es, por eso, menos *DevOps* que una solución *IaaS*, 
+comunes. Es, por eso, menos *DevOps* que una solución *IaaS*,
 pero por otro lado también tiene una parte que es la configuración y
 despliegue de la aplicación en sí y los tests que se vayan a usar. Y
 los PaaS de hoy en día admiten tantas opciones de configuración que,
 salvo en casos muy específicos multi-máquina, pueden cubrir las
-necesidades de una organización pequeña o mediana. 
+necesidades de una organización pequeña o mediana.
 
 Usando un servicio PaaS
 -----
@@ -73,7 +73,7 @@ intérprete de JavaScript asíncrono que permite crear fácilmente
 aplicaciones REST.
 
 >Pila que se ha venido en llamar [MEAN](http://mean.io/#!/) y incluye
->también Mongo y Express. 
+>también Mongo y Express.
 
 Algunos servicios PaaS son específicos (sólo alojan una solución
 determinada, como [CloudAnt](https://cloudant.com/) que aloja una base
@@ -87,7 +87,7 @@ trabajan bien con
 node.js,
 [igual que nitrous.io](http://blog.blakepatches.me/blog/2013/11/04/comparison-of-node-dot-js-hosting/)
 o
-[IBM BlueMix](https://console.ng.bluemix.net/#/pricing/cloudOEPaneId=pricing). 
+[IBM BlueMix](https://console.ng.bluemix.net/#/pricing/cloudOEPaneId=pricing).
 
 >Después de probar casi todos los servicios anteriores, me da la
 >impresión de que poco hay más allá de Heroku y Openshift. AppFog y
@@ -97,7 +97,7 @@ o
 
 [dotCloud (que ya no se puede usar de forma gratuita)](https://docs.dotcloud.com/services/perl/)
 trabaja con Perl, por ejemplo, como
-[Stackato y otras](http://showmetheco.de/articles/2011/8/three-perl-cloud-hosting-platforms.html). 
+[Stackato y otras](http://showmetheco.de/articles/2011/8/three-perl-cloud-hosting-platforms.html).
 
 <div class='ejercicios' markdown="1">
 
@@ -133,7 +133,7 @@ un PaaS es que, aunque evidentemente haya que pagar por lo que se
 consume, sólo hay que hacerlo mientras se necesita; una vez pasado el
 pico, se puede escalar *hacia abajo* eliminando los nodos que uno no
 necesite; por supuesto, el propio PaaS suele proveer de herramientas
-que hagan esto de forma más o menos automática. 
+que hagan esto de forma más o menos automática.
 
 La interacción con los PaaS se hace en general a través de una
 herramienta de línea de órdenes que permite, para empezar, crear
@@ -142,7 +142,7 @@ características definidas; en ambos casos habrá que descargar una
 aplicación libre para llevar a cabo ciertas tareas como monitorizar el
 estatus y hacer tests básicos; una vez creado el fuente de la
 aplicación el despliegue en la máquina virtual se hace mediante
-`git` tal como hemos contado anteriormente. 
+`git` tal como hemos contado anteriormente.
 
 Los lenguajes más habituales en las PaaS son los de scripting, que
 permiten crear aplicaciones rápidamente; las bases de datos
@@ -162,7 +162,7 @@ enseñanza.
 <div class='ejercicios' markdown="1">
 
 Crear una aplicación en OpenShift y dentro de ella instalar
-WordPress. 
+WordPress.
 
 </div>
 
@@ -170,7 +170,7 @@ WordPress.
 >posiblemente virtual o de prepago, para trabajar con todo tipo de
 >infraestructuras de nube en pruebas; puedes acceder a muchos más
 >servicios y posibilidades y, aunque se excedan los límites gratuitos,
->el coste no suele ser grande. 
+>el coste no suele ser grande.
 
 Los PaaS no dejan acceso completo a la máquina virtual que ejecuta
 nuestra aplicación y, en muchos casos, tienen también otras
@@ -181,7 +181,7 @@ externo que se ofrezca de forma independiente (pero siguiendo el mismo
 modelo). También hay que tener en cuenta que las prestaciones que
 vamos a poder obtener de los *tier* gratuitos no van a ser como para
 poder montar una *startup* y forrarnos: son muy limitadas, tanto en
-latencia como en CPU como en memoria. 
+latencia como en CPU como en memoria.
 
 En general, el enfoque para este tipo de herramientas (y para casi
 todo el desarrollo web moderno) es trabajar con servidores REST que
@@ -201,7 +201,7 @@ en
 te explica cómo usarlo. No hay muchos vídeos en español, pero en
 [este explica cómo crear una aplicación Django y subirla a Heroku](http://www.youtube.com/watch?v=3k2eg0stnCI)
 y
-[este es una introducción general con ejemplos de Ruby](https://www.youtube.com/watch?v=ii9G9JMvoXM) 
+[este es una introducción general con ejemplos de Ruby](https://www.youtube.com/watch?v=ii9G9JMvoXM)
 
 </div>
 
@@ -213,7 +213,7 @@ es reflejar en el código, de la forma más natural posible, el diseño del
 interfaz REST.
 
 Pero primero hay que instalarlo. Node.js tiene un sistema de gestión de
-módulos bastante simple llamado [npm](https://npmjs.org/) que ya hemos usado. Tras seguir las instrucciones en el 
+módulos bastante simple llamado [npm](https://npmjs.org/) que ya hemos usado. Tras seguir las instrucciones en el
 sitio para instalarlo (o, en el caso de Ubuntu, instalarlo desde
 Synaptic o con `apt-get`), vamos al directorio en el que vayamos a crear
 el programa y escribimos
@@ -222,7 +222,7 @@ el programa y escribimos
 
 en general, no hace falta tener permiso de administrador, sólo el
 necesario para crear, leer y ejecutar ficheros en el directorio en el
-que se esté trabajando. `--save` guarda la dependencia en `package.json` siempre que esté en el mismo directorio, que convendría que estuviera, así no tenemos que recordar qué es lo que está instalado. 
+que se esté trabajando. `--save` guarda la dependencia en `package.json` siempre que esté en el mismo directorio, que convendría que estuviera, así no tenemos que recordar qué es lo que está instalado.
 
 Tras la instalación, el programa que hemos visto más arriba se
 transforma en el siguiente:
@@ -241,7 +241,7 @@ transforma en el siguiente:
 		res.send( { Portada: false} );
 	});  
 
-	app.listen(port); 
+	app.listen(port);
 	console.log('Server running at http://127.0.0.1:'+port+'/');
 
 
@@ -264,7 +264,7 @@ En los dos casos, las peticiones devuelven JSON. Una aplicación de
 este tipo puede devolver cualquier cosa, HTML o texto, pero conviene
 acostumbrarse a pensar en estas aplicaciones como servidores a los
 cuales se va a acceder desde un cliente, sea un programa que use un
-cliente REST o sea desde el navegador usando jQuery o JavaScript. 
+cliente REST o sea desde el navegador usando jQuery o JavaScript.
 
 >Realizar una aplicación básica que use `express` para devolver alguna
 >estructura de datos del modelo que se viene usando en el curso.
@@ -343,7 +343,7 @@ la función *callback* como atributos de la variable `req.params`,
 tales como `req.params.local` en las siguientes líneas.
 
 > Realizar u na app en express que incluya variables como en el caso
-> anterior. 
+> anterior.
 
 ## Probando nuestra aplicación en la nube
 
@@ -351,7 +351,7 @@ Porque esté en la nube no significa que no tengamos que testearla como cualquie
 
 Los tests podemos integrarlos, como es natural, en el mismo marco que el resto de la aplicación, sólo que tendremos que usar librerías de aserciones ligeramente diferentes, en este caso `supertest`
 
-	var request = require('supertest'), 
+	var request = require('supertest'),
 	app = require('../index.js');
 
 	describe( "PUT porra", function() {
@@ -374,11 +374,11 @@ con lo que se exporta la app que se crea; `require` ejecuta el código y recibe 
 
 Podemos hacer más pruebas, usando get, por ejemplo. Pero se deja como ejercicio al alumno.
 
-Estas pruebas permiten que no nos encontremos con sorpresas una vez que despeguemos en el PaaS. Así sabemos que, al menos, todas las rutas que hemos creado funcionan correctamente. 
+Estas pruebas permiten que no nos encontremos con sorpresas una vez que despeguemos en el PaaS. Así sabemos que, al menos, todas las rutas que hemos creado funcionan correctamente.
 
 <div class='ejercicios' markdown="1">
 
- Crear pruebas para las diferentes rutas de la aplicación. 
+ Crear pruebas para las diferentes rutas de la aplicación.
 
 </div>
 
@@ -437,7 +437,7 @@ Sólo hemos, por lo pronto, desplegado la aplicación por omisión.
 >Node o el que sea. Pero si eres un poco atrevido, puedes
 >[crear tu propio Buildpack](https://devcenter.heroku.com/articles/buildpack-api),
 >que puede estar escrito en cualquier lenguaje y consiste en realidad
->en tres scripts. 
+>en tres scripts.
 
 Se
 habrá generado un fichero denominado `index.js` que será,
@@ -538,7 +538,7 @@ con uno sólo? Efectivamente, [GitHub permite desplegar directamente a
 Heroku cuando se hace un `push` a la rama `master`](http://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository),
 aunque no es inmediato, sino que pasa por usar un servicio de
 integración continua, que se asegure de que todo funciona
-correctamente. 
+correctamente.
 
 Para eso, evidentemente, el sitio en el que se despliegue debe estar
 preparado. No es el caso de Heroku.
@@ -599,7 +599,7 @@ En cuanto al puerto, en los dos casos hay variables de entorno para definirlo. S
 <div class='ejercicios' markdown="1">
  Preparar la aplicación con la que se ha
  venido trabajando hasta este momento para ejecutarse en un PaaS, el
- que se haya elegido. 
+ que se haya elegido.
 </div>
 
 También en OpenShift se puede desplegar automáticamente usando Travis,
@@ -649,7 +649,7 @@ tiene buen soporte en JavaScript, tanto en cliente como en node.
 
 En vez de ir
 [característica por característica u orden por orden (que, además, son un montón)](http://redis.io/commands),
-vamos a empezar 
+vamos a empezar
 trabajando con un sistema cliente-servidor para hacer porras
 futbolísticas con el que seguiremos trabajando más adelante. Pero
 antes, una aproximación básica a Redis en [el siguiente programa](https://github.com/JJ/node-app-cc/blob/master/redis.js), que
@@ -698,7 +698,7 @@ esta forma:
 	export REDISCLOUD_URL=http://daigual:esta_es_la_clave@cosas.garantiadata.com:12345
 
 ; lo que tendrás que escribir en la línea de órdenes y nunca, nunca,
-dejar en el sistema de control de fuentes. 
+dejar en el sistema de control de fuentes.
 Es un URL un tanto complejo, pero la parte principal es la que hay
 detrás del `//`, de la forma `usuario:clave@dominio:puerto`. Es imprescindible
 autenticarse, para que sólo uno pueda usar el recurso. En realidad, el
@@ -761,8 +761,8 @@ y realizar desde él las operaciones básicas de creación y lectura de
 información.
 
 3. Ejecutar ejemplos de cualquier lenguaje de programación sobre la
-instalación realizada. 
-</a>
+instalación realizada.
+</div>
 
 ## Poniendo en práctica Redis en porr.io
 
@@ -852,7 +852,7 @@ El
 también se divide en varias partes. La primera parte es la conexión a
 la base de datos, que es exactamente igual que en el programa
 anterior. A continuación se crea una porra con elementos aleatorios
-(el año) para que se cree ligeramente diferente en cada ejecución. 
+(el año) para que se cree ligeramente diferente en cada ejecución.
 
 > Si tenéis curiosidad de qué se trata esta porra, es del célebre
 > [derby entre el Fluminense y el Flamingo](http://es.wikipedia.org/wiki/Fla-Flu),
@@ -912,7 +912,7 @@ resultado será algo así:
 		4: bet:UNO
 		5: bet:OTRO
 		6: bet:OTROMAS
-	End 
+	End
 
 
 Las primeras `Reply`s son el número de registros insertados. El resto
@@ -956,7 +956,7 @@ tradicional, como en el siguiente programa
 	var create_sql = fs.readFileSync("porrio.sql","utf8");
 	console.log(create_sql);
 	var query = client.query(create_sql);
-	query.on('end', function() { 
+	query.on('end', function() {
 
 		console.log("Creada");
 		client.end();
@@ -965,14 +965,14 @@ tradicional, como en el siguiente programa
 Este programa crea las dos tablas que se van a usar para almacenar los
 datos. `porrio.sql` contiene una declaración SQL así:
 
-	CREATE TABLE IF NOT EXISTS  apuesta(partido varchar(50), 
-       quien_apuesta varchar(50) not null, 
+	CREATE TABLE IF NOT EXISTS  apuesta(partido varchar(50),
+       quien_apuesta varchar(50) not null,
        goles_local  int not null,
        goles_visitante  int not null);
 
 	CREATE TABLE IF NOT EXISTS partido( id varchar(50) not null primary key,
        equipo_local varchar(50) not null,
-       equipo_visitante varchar(50) not null, 
+       equipo_visitante varchar(50) not null,
        competicion varchar(20)  not null,
        year  int not null);
 
@@ -1011,4 +1011,3 @@ En el [siguiente tema](Tecnicas_de_virtualizacion) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
 y jaulas que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
 práctica correspondiente a esta materia](../practicas/2.XaaS).
-
