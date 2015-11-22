@@ -2,7 +2,7 @@ Virtualización *ligera* usando contenedores
 ===
 
 <!--@
-prev: Desarrollo_basado_en_pruebas
+prev: PaaS
 next: Gestion_de_configuraciones
 -->
 
