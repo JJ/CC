@@ -21,12 +21,19 @@ tanto de software como de hardware y ponerlos en práctica.
 
 ### Objetivos específicos
 
+1. Entender el concepto de PaaS, su diferencia con respecto a los IaaS
+   y los productos específicos que hay en el mercado.
+   
 5. Comprender los conceptos necesarios para trabajar con diferentes
-   plataformas PaaS
+   plataformas PaaS.
 
 6. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
 
-7. Aplicar el sistema de control de fuentes `git` para despliegue de aplicaciones en la nube.
+7. Aplicar el sistema de control de fuentes `git` para despliegue de
+   aplicaciones en la nube.
+
+8. Entender la conexión entre repositorios y sistemas de producción y
+   configurarlos para despliegues automáticos. 
 
 </div>
 
