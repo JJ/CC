@@ -3,7 +3,7 @@ layout: index
 
 
 prev: Desarrollo_basado_en_pruebas
-next: Tecnicas_de_virtualizacion
+next: Contenedores
 ---
 
 Desplegando aplicaciones en la nube: Uso de PaaS 
@@ -11,7 +11,7 @@ Desplegando aplicaciones en la nube: Uso de PaaS
 
 <!--@
 prev: Desarrollo_basado_en_pruebas
-next: Tecnicas_de_virtualizacion
+next: Contenedores
 -->
 
 <div class="objetivos" markdown="1">
@@ -755,7 +755,8 @@ Redis), también funciona de esta forma.
 > por ejemplo.
 
 Es importante también que el cliente de Redis se cierre, como se hace
-en la penúltima línea con `client.end();`. Si no, el programa queda en espera. Esa orden,
+en la penúltima línea con `client.end();`. Si no, el programa queda en
+espera. Esa orden, 
 efectivamente, termina el programa (aparte del cliente de
 Redis). Cualquier programa en Redis tiene que terminar de esa forma.
 
@@ -768,8 +769,9 @@ y realizar desde él las operaciones básicas de creación y lectura de
 información.
 
 3. Ejecutar ejemplos de cualquier lenguaje de programación sobre la
-instalación realizada. 
-</a>
+instalación realizada.
+
+</div>
 
 ## Poniendo en práctica Redis en porr.io
 
@@ -903,7 +905,6 @@ El último bloque del programa recupera todas las apuestas que haya
 almacenadas para una porra determinada, las tres que se han hecho. El
 resultado será algo así:
 
-
 	Reply: 1
 	Reply: 1
 	Reply: 1
@@ -1014,8 +1015,8 @@ aplicación de calificación de empresas realizada anteriormente.
 A dónde ir desde aquí
 -----
 
-En el [siguiente tema](Tecnicas_de_virtualizacion) usaremos
+En el [siguiente tema](Contenedores) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
-y jaulas que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../practicas/2.XaaS).
+ que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
+práctica correspondiente a esta materia](../practicas/3.PaaS).
 
