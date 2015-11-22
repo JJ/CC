@@ -99,8 +99,7 @@ o
 >Después de probar casi todos los servicios anteriores, me da la
 >impresión de que poco hay más allá de Heroku y Openshift. AppFog y
 >Nodejitsu, después de la efervescencia inicial, dan 30 días de prueba
->solamente. Me falta por probar nitrous.io, pero del resto, al menos
->los que funcionan con node.js, poco más hay.  
+>solamente y nitrous.io sólo 7 días.  
 
 [dotCloud (que ya no se puede usar de forma gratuita)](https://docs.dotcloud.com/services/perl/)
 trabaja con Perl, por ejemplo, como
