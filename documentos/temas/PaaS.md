@@ -91,7 +91,11 @@ o
 >Después de probar casi todos los servicios anteriores, me da la
 >impresión de que poco hay más allá de Heroku y Openshift. AppFog y
 >Nodejitsu, después de la efervescencia inicial, dan 30 días de prueba
->solamente y nitrous.io sólo 7 días.  
+>solamente y nitrous.io sólo 7 días. En
+>[esta página](https://www.getapp.com/it-management-software/platform-as-a-service-paas/p/freemium/)
+>listan varios servicios, aunque no los he probado uno por uno y es
+>posible que algunos no estén ya operativos o no se ofrezcan en
+>Freemium. 
 
 [dotCloud (que ya no se puede usar de forma gratuita)](https://docs.dotcloud.com/services/perl/)
 trabaja con Perl, por ejemplo, como
@@ -130,7 +134,7 @@ entre los diferentes nodos que uno tenga. La ventaja es que te ofrece
 un PaaS es que, aunque evidentemente haya que pagar por lo que se
 consume, sólo hay que hacerlo mientras se necesita; una vez pasado el
 pico, se puede escalar *hacia abajo* eliminando los nodos que uno no
-necesite; por supuesto, el propio PaaS suele proveer de herramientas
+necesite; por supuesto, el propio PaaS suele proveer herramientas
 que hagan esto de forma más o menos automática. 
 
 La interacción con los PaaS se hace en general a través de una
