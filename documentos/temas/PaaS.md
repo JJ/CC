@@ -747,7 +747,8 @@ Redis), también funciona de esta forma.
 > por ejemplo.
 
 Es importante también que el cliente de Redis se cierre, como se hace
-en la penúltima línea con `client.end();`. Si no, el programa queda en espera. Esa orden,
+en la penúltima línea con `client.end();`. Si no, el programa queda en
+espera. Esa orden, 
 efectivamente, termina el programa (aparte del cliente de
 Redis). Cualquier programa en Redis tiene que terminar de esa forma.
 
@@ -760,7 +761,8 @@ y realizar desde él las operaciones básicas de creación y lectura de
 información.
 
 3. Ejecutar ejemplos de cualquier lenguaje de programación sobre la
-instalación realizada. 
+instalación realizada.
+
 </div>
 
 ## Poniendo en práctica Redis en porr.io

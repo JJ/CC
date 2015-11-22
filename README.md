@@ -25,6 +25,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 [GitHub](http://github.com/JJ/CC).
 
 2. [Iniciación a DevOps: desarrollo basado en pruebas](documentos/temas/Desarrollo_basado_en_pruebas.md).
+3. [Uso de plataformas como servicio para prototipado rápido](documentos/temas/PaaS.md)
 3. [Usando contenedores](documentos/temas/Contenedores.md)
 5. [Uso de sistemas de virtualización](documentos/temas/Uso_de_sistemas.md)
 6. [Gestión de configuraciones](documentos/temas/Gestion_de_configuraciones.md)
