@@ -548,18 +548,11 @@ con uno sólo? Efectivamente, [GitHub permite desplegar directamente a
 Heroku cuando se hace un `push` a la rama `master`](http://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository),
 aunque no es inmediato, sino que pasa por usar un servicio de
 integración continua, que se asegure de que todo funciona
-correctamente. 
-
-Para eso, evidentemente, el sitio en el que se despliegue debe estar
-preparado. No es el caso de Heroku.
-
->Heroku tiene, sin embargo,
->[una beta reciente en GitHub y posiblemente funcione en el futuro próximo](https://github.com/github/github-services/tree/master/docs), que necesita un servicio
->intermedio para llevarlo a cabo, aunque
->[se puede probar ahora mismo en beta](https://devcenter.heroku.com/articles/github-integration)
+correctamente. Para eso, evidentemente, el sitio en el que se despliegue debe estar
+preparado; los PaaS más populares ya lo están. 
 
 Otros sistemas, como
-[ AWS CodeDeploy de Amazon pueden desplegar a una instancia en la nube de esta empresa](https://medium.com/aws-activate-startup-blog/simplify-code-deployments-with-aws-codedeploy-e95599091304). Sin
+[AWS CodeDeploy de Amazon pueden desplegar a una instancia en la nube de esta empresa](https://medium.com/aws-activate-startup-blog/simplify-code-deployments-with-aws-codedeploy-e95599091304). Sin
 embargo,
 [no es complicado configurar un servicio de integración continua como Snap CI](http://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository). Después
 de [darte de alta en el Snap CI](https://snap-ci.com/), la
@@ -617,6 +610,57 @@ por ejemplo. De hecho, incluso en Heroku se puede trabajar también con
 Travis para el despliegue automático, aunque es mucho más simple
 hacerlo con Snap CI como se ha indicado más arriba.
 
+## Creando nuevas funcionalidades
+
+Tal como "sale de la caja", un PaaS permite usar sólo los lenguajes y
+add-ons que tiene previstos. De hecho, eso es lo que define un PaaS:
+una pila predefinida que se puede usar directamente.
+
+Sin embargo, la diferencia entre PaaS e IaaS se diluye cada vez
+más. Aunque ningún PaaS te va a permitir acceder al hipervisor y
+definir el sistema operativo y todo lo que incluye, sí es cierto que
+los más populares tienen una serie de mecanismos que permiten usar
+prácticamente cualquier lenguaje, biblioteca y mecanismo de despliegue
+de la aplicación.
+
+> El problema es que
+> [https://blog.openshift.com/paas-standards-standardize-on-what/] no
+> son estándar, con lo que es imposible llevar una aplicación definida
+> de esta forma de un PaaS a otro.
+
+Este sistema se llama
+[*buildpacks* en Heroku](https://devcenter.heroku.com/articles/buildpacks)
+y
+[otros PaaS](http://www.activestate.com/blog/2014/04/paas-buildpacks)
+basados en CloudFoundry y en Stackato y
+[*cartridges*](https://developers.openshift.com/en/languages-overview.html)
+en OpenShift. En general, estos mecanismos incluyen operaciones para
+
+* Detectar si los fuentes tienen los ficheros correctos para ser
+  desplegados. Por ejemplo, el `package.json` en el caso de node.js
+* Compilar los fuentes, o en general generar la aplicación que se vaya
+  a ejecutar directamente.
+* Informar al PaaS del resultado de estas operaciones.
+
+En Heroku se trata de tres scripts llamados de esa forma. Los
+[*cartridges* de OpenShift](https://docs.openshift.org/origin-m4/oo_cartridge_developers_guide.html)
+son algo más complicados pero, a cambio, son mucho más flexibles y
+permiten controlar de forma total qué se hace con los fuentes y cómo
+se despliega. No todos los ficheros son necesarios y en
+[este blog](https://blog.openshift.com/new-openshift-cartridge-format-part-2/)
+nos explica cómo empaquetarlos apra crear un paquete; básicamente
+hacen falta dos ficheros, `control` y `metadata/manifest.yml` que
+contiene datos sobre el paquete. El resto, inclusive algunos parecidos
+a los de arriba, con opcionales aunque convenientes. En general, de
+todas formas, parece mucho más simple extender Heroku que OpenShift y
+cualquiera de los casos algo más complicados que usar simplemente un
+IaaS para lo mismo.
+
+<div class='ejercicios' markdown="1">
+Crear una aplicación mínima y usar un buildpack no estándar para
+desplegarla en Heroku o un *cartridge* no estándar en OpenShift.
+
+</div>
 
 ## Bases de datos como servicio y su uso en PaaS
 
