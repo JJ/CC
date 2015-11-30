@@ -800,10 +800,10 @@ efectivamente, termina el programa (aparte del cliente de
 Redis). Cualquier programa en Redis tiene que terminar de esa forma.
 
 <div class='ejercicios' markdown="1">
-1.  Instalar o darse de alta en un servicio Redis en la nube y
+1.  Darse de alta en un servicio Redis en la nube y
 realizar sobre él las operaciones básicas desde el panel de control.
 
-2. Instalar un cliente de línea de órdenes de Redis o un cliente REST
+2. Instalar un cliente de línea de órdenes de Redis o una biblioteca cliente REST
 y realizar desde él las operaciones básicas de creación y lectura de
 información.
 
@@ -930,7 +930,6 @@ resultados de una porra:
 
 (se puede hacer algo equivalente desde el cliente en node). Y una vez
 localizado el resultado,
-
 
 	pub-redis-13876.us-east-1-2.3.ec2.garantiadata.com:13876> smembers "FLA-FLU-Premier-1998:3-2"
 	1) "OTRO"
