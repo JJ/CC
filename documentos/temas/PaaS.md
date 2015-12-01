@@ -38,8 +38,8 @@ tanto de software como de hardware y ponerlos en práctica.
 </div>
 
 
-Cuando uno quiere parte del trabajo de instalación ya hecho, o al menos preparado
-para hacer con la pulsación de un botón, a la vez que tiene
+Cuando uno quiere parte del trabajo de puesta a punto del servidor esté ya hecho, o al menos preparado
+para hacer con la pulsación de un botón a la vez que tiene
 flexibilidad para trabajar con marcos de aplicaciones más allá de lo
 que ofrece programar *plugins* (como en el SaaS), necesita un
 [Platform as a Service o PaaS](http://en.wikipedia.org/wiki/Platform_as_a_service). Un
@@ -48,14 +48,15 @@ datos, un marco concreto para trabajar (tal como Django o Ruby on
 Rails) y, adicionalmente, un servidor web. 
 
 Esto conlleva una cierta falta de flexibilidad: se pueden usar las
-pilas que proporciona en servicio y el usuario sólo puede subir su
+pilas que proporciona en servicio y el usuario sólo puede subir una
 aplicación que las use, no instalar elementos adicionales que necesiten permisos de
 superusuario. Pero, por otro lado, ofrece la comodidad de tener que
 concentrarse sólo en la aplicación en sí y no en la
-infraestructura si se trata de una aplicación que use los marcos más
+infraestructura, siempre que se trate de una aplicación que use los marcos más
 comunes. Es, por eso, menos *DevOps* que una solución *IaaS*, 
 pero por otro lado también tiene una parte que es la configuración y
-despliegue de la aplicación en sí y los tests que se vayan a usar. Y
+despliegue de la aplicación en sí y los tests que se vayan a
+usar. Aparte de esto,
 los PaaS de hoy en día admiten tantas opciones de configuración que,
 salvo en casos muy específicos multi-máquina, pueden cubrir las
 necesidades de una organización pequeña o mediana. 
