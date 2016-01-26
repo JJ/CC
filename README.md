@@ -49,9 +49,8 @@ Las prácticas consisten en la realización de un proyecto a lo largo de la asig
 
 1. [Organización de los grupos de práctica y creación del proyecto](documentos/practicas/1.Infraestructura.md)
 2. [Infraestructura virtual de un proyecto](documentos/practicas/2.CI.md) con integración continua.
-2. Técnicas de virtualización [Contenedores para pruebas](documentos/practicas/3.Contenedores.md).
-3. Diseño de sistemas usando [CPU y almacenamiento virtuales](documentos/practicas/3.MV.md).
-4. [Virtualización de aplicaciones](documentos/practicas/4.Aplicaciones.md).
+2. [Prototipado en PaaS](documentos/practicas/3.Paas.md).
+3. Diseño de sistemas usando [contenedores](documentos/practicas/4.Docker.md).
 
 Tutorías virtuales
 ----
