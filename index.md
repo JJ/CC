@@ -8,11 +8,11 @@ Material docente para Cloud Computing
 
 Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
-La asignatura se imparte en el curso 2015-2016 los lunes de 19:30 a
-21:30 en el aula 2.4 y los miércoles de 18:30 a 20:30en el
-aula 1.6. Se usará [GitHub](http://github.com) para los ejercicios y
+La asignatura se imparte en el curso 2016-2017 los lunes de 19:30 a
+21:30 en el aula 2.1 y los miércoles de 16:30 a 18:30 en el
+aula 1.6. Tendrás que llevar tu portátil a ambas clases. Se usará [GitHub](http://github.com) para los ejercicios y
 el proyecto; también para los objetivos semanales, que estarán (año
-2015-16) en [este repositorio](https://github.com/JJ/clases-CC-2015-16/).
+2016-17) en [este repositorio](https://github.com/JJ/CC16-17/).
 
 Estos son los [objetivos de la asignatura](documentos/objetivos). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
 
@@ -50,7 +50,11 @@ alumno tendrá que aprender a su ritmo
 Prácticas - Actividades académicas dirigidas
 -------------
 
-Las prácticas consisten en la realización de un proyecto a lo largo de la asignatura, con diferentes hitos que correspondan a los objetivos cumplidos hasta ese momento. Los proyectos [seguirán un perfil DevOps](documentos/practicas/README.md). A grosso modo, los hitos se organizarán de la forma siguiente.
+Las prácticas consisten en la realización de un proyecto a lo largo de
+la asignatura, con diferentes hitos que correspondan a los objetivos
+cumplidos hasta ese momento. Los proyectos
+[seguirán un perfil DevOps](documentos/practicas/README.md). A grosso
+modo, los hitos se organizarán de la forma siguiente. 
 
 1. [Organización de los grupos de práctica y creación del proyecto](documentos/practicas/1.Infraestructura)
 2. [Infraestructura virtual de un proyecto](documentos/practicas/2.CI) con integración continua.
@@ -61,9 +65,9 @@ Tutorías virtuales
 ----
 
 Las tutorías virtuales se realizarán preferiblemente a través de
-[la plataforma de trabajo colaborativo GitHub](https://github.com/JJ/clases-CC-2015-16/issues?state=open). Hay
+[la plataforma de trabajo colaborativo GitHub](https://github.com/JJ/CC-16-17/issues?state=open). Hay
 también una
-[lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/cc-ugr-2015)
+[lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/cc-ugr-2016)
 que se puede usar para todo lo que no quepa en la anterior (preguntas
 administrativas, principalmente).
 
@@ -73,8 +77,6 @@ Criterios de evaluación
 Los
 [criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado](http://masteres.ugr.es/ing-informatica/pages/info_academica/guias/201516/1semestre/cloudcomputingfundamentoseinfraestructuras/!),
 y
-[se especifican en el repositorio de la clase](https://github.com/JJ/clases-CC-2015-16/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
+[se especifican en el repositorio de la clase](https://github.com/JJ/CC16-17/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
 
-Profesores
---
-Hasta el mes de diciembre, JJ Merelo. A partir del 12 de diciembre, Maribel García Arenas. En el mes de enero, Pedro Castillo Valdivieso.
+
