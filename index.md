@@ -53,13 +53,13 @@ Prácticas - Actividades académicas dirigidas
 Las prácticas consisten en la realización de un proyecto a lo largo de
 la asignatura, con diferentes hitos que correspondan a los objetivos
 cumplidos hasta ese momento. Los proyectos
-[seguirán un perfil DevOps](documentos/practicas/README.md). A grosso
+[seguirán un perfil DevOps](documentos/proyecto/README.md). A grosso
 modo, los hitos se organizarán de la forma siguiente. 
 
-1. [Organización de los grupos de práctica y creación del proyecto](documentos/practicas/1.Infraestructura)
-2. [Infraestructura virtual de un proyecto](documentos/practicas/2.CI) con integración continua.
-2. [Prototipado en PaaS](documentos/practicas/3.Paas).
-3. Diseño de sistemas usando [contenedores](documentos/practicas/4.Docker).
+1. [Organización de los grupos de práctica y creación del proyecto](documentos/proyecto/1.Infraestructura)
+2. [Infraestructura virtual de un proyecto](documentos/proyecto/2.CI) con integración continua.
+2. [Prototipado en PaaS](documentos/proyecto/3.Paas).
+3. Diseño de sistemas usando [contenedores](documentos/proyecto/4.Docker).
 
 Tutorías virtuales
 ----
