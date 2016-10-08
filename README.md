@@ -38,8 +38,9 @@ Seminarios
 Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
 
-1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby.md). El seminario tendrá lugar el miércoles 19 de noviembre..
-2. Visita a las instalaciones de Trevenque el día 14 de octubre de 2015.
+1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby.md). La
+   fecha se anunciará más adelante.
+2. Visita a las instalaciones de Trevenque el día a determinar.
 
 
 Prácticas - Actividades académicas dirigidas
@@ -52,6 +53,7 @@ cumplidos hasta ese momento. Los proyectos
 de definición de infraestructura para un proyecto existente. A grosso
 modo, los hitos se organizarán de la forma siguiente. 
 
+1. [Puesta a punto del repositorio y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio.md)
 1. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md)
 2. [Infraestructura virtual de un proyecto](documentos/proyecto/2.CI.md) con integración continua.
 2. [Prototipado en PaaS](documentos/proyecto/3.Paas.md).
