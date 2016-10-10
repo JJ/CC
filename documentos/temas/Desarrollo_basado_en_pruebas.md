@@ -362,12 +362,6 @@ La automatización de Grunt se puede usar tanto para prueba como para
 despliegue. Pero hay también otras formas de probar en la nube, y lo
 veremos a continuación.
 
-<div class='ejercicios' markdown='1'>
-Automatizar con `grunt` y `docco` (o algún otro sistema) la generación de documentación de la librería
-que se cree. Previamente, por supuesto, habrá que documentar tal
-librería.
-</div>
-
 
 ## Desarrollo basado en pruebas
 
@@ -489,8 +483,11 @@ hacer un *benchmark* de tu código en los diferentes entornos en los
 que se ejecute.
 
 <div class='ejercicios' markdown='1'>
-Convertir los tests unitarios anteriores con assert a programas de
- test y ejecutarlos desde *mocha*, usando descripciones del test y
+Para la aplicación que se está haciendo, escribir una serie de
+aserciones y probar que efectivamente no fallan. Añadir tests para una
+nueva funcionalidad, probar que falla y escribir el código para que no
+lo haga. A continuación, ejecutarlos desde *mocha* (u otro módulo de
+test de alto nivel), usando descripciones del test y
  del grupo de test de forma correcta. Si hasta ahora no has subido el código que has venido realizando a GitHub, es el momento de hacerlo, porque lo vamos a necesitar un poco más adelante. 
 </div>
 
@@ -506,8 +503,11 @@ pasado o cuales no. Estas máquinas más adelante se combinan con las de
 despliegue continuo, no permitiendo el mismo si algún test no ha
 pasado.
 
-En general, la integración continua se hace *en la nube*: una máquina
-virtual creada ex profeso se descarga los ficheros, ejecuta los tests
+En general, la integración continua se hace *en la nube*; lo que no
+quiere decir que se haga siempre en un servicio *cloud* contratado,
+sino porque se suele hacer en máquinas dedicadas específicamente para
+ello; es más general, sin embargo que una máquina
+virtual se descarga los ficheros, ejecuta los tests
 y crea un informe, enviando también un correo al autor indicándole el
 resultado. Por tanto, para que haga esto tenemos que indicar en la
 configuración todo lo necesario para ejecutar los tests y,
