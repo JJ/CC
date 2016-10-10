@@ -189,7 +189,7 @@ sólo con un pequeño programa que sirva para ver que funciona.
 
 
 <div class='ejercicios' markdown='1'>
-Ejecutar el programa en diferentes versiones del lenguaje. ¿Funciona en
+Ejecutar un programa básico que trabaje con una base de datos en diferentes versiones del lenguaje. ¿Funciona en
 todas ellas?
 </div>
 
