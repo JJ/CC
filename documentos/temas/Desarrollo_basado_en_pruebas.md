@@ -7,18 +7,22 @@ next: Contenedores
 
 <div class="objetivos" markdown="1">
 
-##Objetivos 
+<h2>Objetivos </h2>
 
-### Cubre los siguientes objetivos de la asignatura
+<h3> Cubre los siguientes objetivos de la asignatura</h3>
 
-2. Conocer los conceptos relacionados con el proceso de virtualización
-tanto de software como de hardware y ponerlos en práctica.
+<ul>
+<li> Conocer los conceptos relacionados con el proceso de virtualización
+tanto de software como de hardware y ponerlos en práctica.</li>
+</ul>
 
-### Objetivos específicos
+<h3> Objetivos específicos </h3>
 
-1. Entender el concepto de *DevOps*.
-2. Usar herramientas para gestión de los ciclos de desarrollo de una aplicación y entender cuales son estos.
-3. Aprender a usar integración continua en cualquier aplicación.
+<ol>
+<li> Entender el concepto de <em>DevOps</em>.</li>
+<li> Usar herramientas para gestión de los ciclos de desarrollo de una aplicación y entender cuales son estos.</li>
+<li> Aprender a usar integración continua en cualquier aplicación.</li>
+</ol>
 
 </div>
 
