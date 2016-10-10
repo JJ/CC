@@ -6,7 +6,7 @@ BODY {
 
 h1 
 { 
-  color: green;        
+  color: #C13100; /* ColorCombo22*/        
   font-size: 2.5em;
   font-family: "ABeeZee", sans-serif;
 }
@@ -30,14 +30,14 @@ div.objetivos, div.nota,  div.ejercicios {
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.2), inset 0 0 50px rgba(255, 255, 255, 0.1);
     
-    color: #443300 ; 
+    color: #CC6600 ; 
     font-size: 1.5em;
     font-family: "Telex", sans-serif;
 }
 
 
 div.nota { 
-    background-color: #455268;
+    background-color: #FFFBD0;
 }
 
 div.ejercicios:before {
