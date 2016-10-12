@@ -36,19 +36,22 @@ provisionamiento y monitorización más usados hoy en día.
 Introducción
 ---
 
-Los [contenedores](Contenedores) son un ejemplo de máquinas
-virtuales que ya tienen
-ciertas características de las mismas, como el aislamiento y la gestión
-independiente, que las asemeja a las máquinas virtuales *reales*.
+Los [gestores de configuraciones](http://en.wikipedia.org/wiki/Configuration_management) trabajan sobre máquinas virtuales ya
+creadas y en funcionamiento, describiendo la configuración que
+necesitan para ejecutar una aplicación determinada. Estas aplicaciones
+se ejecutan directamente si ya tenemos tal máquina provisionada, pero
+es más eficiente e independiente de la configuración específica
+trabajar con ellos desde programas de orquestación de máquinas
+virtuales como
+[Vagrant](http://en.wikipedia.org/wiki/Vagrant_%28software%29)
 
-Estas herramientas se denominan, en general,
-[gestores de configuración](http://en.wikipedia.org/wiki/Configuration_management). [Vagrant](http://en.wikipedia.org/wiki/Vagrant_%28software%29)
-es uno de ellos, pero también hay otros: [Chef](http://www.getchef.com/chef/), Salt y Puppet, por
+Hay muchos gestores: [Chef](http://www.getchef.com/chef/), Salt y Puppet, por
 ejemplo. Todos son libres, pero
 [tienen características específicas](http://en.wikipedia.org/wiki/Comparison_of_open_source_configuration_management_software)
 que hay que tener en cuenta a la hora de elegir uno u otro. En el caso
 específico de
-[sistemas operativos](http://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management)
+[sistemas operativos](http://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management),
+que es del que vamos a hablar aquí, 
 se trata de gestionar automáticamente todas las tareas de
 configuración de un sistema, automatizando la edición de ficheros de
 configuración, instalación de software y configuración del mismo,
