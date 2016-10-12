@@ -36,7 +36,8 @@ Los ciclos de
 [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software),
 de 
 forma que continuamente se están arreglando errores, programando
-nuevas características y desplegándolas para pruebas y en producción. Para que esto
+nuevas características y desplegándolas, inicialmente para probarlas y
+eventualmente en producción. Para que esto
 sea posible este ciclo de vida debe estar automatizado en
 todo lo posible, de forma que todas las fases se hagan esencialmente sin
 intervención humana y se minimice la posibilidad de que haya 

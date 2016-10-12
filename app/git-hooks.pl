@@ -16,7 +16,6 @@ POST_COMMIT {
   my ($git) = @_;
   my $branch =  $git->command(qw/rev-parse --abbrev-ref HEAD/);
   my $commit_msg = $git->command("log", "-1 --pretty=%B" );
-  say $commit_msg;
 
   if ( $branch =~ /master/ ) {
     my $changed = $git->command(qw/show --name-status/);
