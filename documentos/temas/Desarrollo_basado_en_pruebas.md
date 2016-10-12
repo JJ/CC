@@ -1,6 +1,8 @@
 ---
 layout: index
+
 apuntes: T
+
 next: Gestion_de_configuraciones
 ---
 
@@ -15,14 +17,14 @@ next: Gestion_de_configuraciones
 
 <h2>Objetivos </h2>
 
-<h3> Cubre los siguientes objetivos de la asignatura</h3>
+<h3>De la asignatura</h3>
 
 <ul>
 <li> Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica.</li>
 </ul>
 
-<h3> Objetivos específicos </h3>
+<h3>Específicos </h3>
 
 <ol>
 <li> Entender el concepto de <em>DevOps</em>.</li>
