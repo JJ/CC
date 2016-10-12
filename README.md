@@ -25,12 +25,13 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 [GitHub](http://github.com/JJ/CC).
 
 2. [Iniciación a DevOps: desarrollo basado en pruebas](documentos/temas/Desarrollo_basado_en_pruebas.md).
+6. [Gestión de configuraciones](documentos/temas/Gestion_de_configuraciones.md)
 3. [Uso de plataformas como servicio para prototipado rápido](documentos/temas/PaaS.md)
 3. [Usando contenedores](documentos/temas/Contenedores.md)
 5. [Uso de sistemas de virtualización](documentos/temas/Uso_de_sistemas.md)
-6. [Gestión de configuraciones](documentos/temas/Gestion_de_configuraciones.md)
 
-La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/clases-CC-2015-16).
+
+La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/CC16-17).
 
 Seminarios
 ---------------
@@ -40,7 +41,7 @@ alumno tendrá que aprender a su ritmo
 
 1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby.md). La
    fecha se anunciará más adelante.
-2. Visita a las instalaciones de Trevenque el día a determinar.
+2. Visita a las instalaciones de Trevenque un día por determinar.
 
 
 Prácticas - Actividades académicas dirigidas
@@ -55,9 +56,6 @@ modo, los hitos se organizarán de la forma siguiente.
 
 1. [Puesta a punto del repositorio y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio.md)
 1. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md)
-2. [Infraestructura virtual de un proyecto](documentos/proyecto/2.CI.md) con integración continua.
-2. [Prototipado en PaaS](documentos/proyecto/3.Paas.md).
-3. Diseño de sistemas usando [contenedores](documentos/proyecto/4.Docker.md).
 
 Tutorías virtuales
 ----
