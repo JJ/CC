@@ -18,9 +18,9 @@ Estos son los [objetivos de la asignatura](documentos/objetivos). En resumen, la
 
 1. Definir el entorno de trabajo para desarrollo de una aplicación en particular y usarlo en IaaS.
 2. Usar ese entorno para configurar integración continua en una aplicación.
-3. Sea capaz de crear un entorno virtual para desarrollar y alojar la aplicación y comprenda el soporte físico de las técnicas usadas para crear tal entorno virtual.
-4. Entienda las técnicas de configuración automática de entornos virtuales y las sepa aplicar en los entornos anteriores.
-5. Use lo aprendido para despliegue masivo de aplicaciones en la nube.
+3. Crear un entorno virtual para desarrollar y alojar la aplicación y comprenda el soporte físico de las técnicas usadas para crear tal entorno virtual.
+4. Entender las técnicas de configuración automática de entornos virtuales y las sepa aplicar en los entornos anteriores.
+5. Usar lo aprendido para despliegue masivo de aplicaciones en la nube.
 
 Temario - Programa de la asignatura
 ------------------------------------------------------
@@ -43,8 +43,9 @@ Seminarios
 Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
 
-1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby). El seminario tendrá lugar el miércoles 19 de noviembre..
-2. Visita a las instalaciones de Trevenque el día 14 de octubre de 2015.
+1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby). La
+   fecha se anunciará más adelante.
+2. Visita a las instalaciones de Trevenque el día a determinar.
 
 
 Prácticas - Actividades académicas dirigidas
@@ -57,6 +58,7 @@ cumplidos hasta ese momento. Los proyectos
 de definición de infraestructura para un proyecto existente. A grosso
 modo, los hitos se organizarán de la forma siguiente. 
 
+1. [Puesta a punto del repositorio y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio)
 1. [Elección de un proyecto](documentos/proyecto/1.Infraestructura)
 2. [Infraestructura virtual de un proyecto](documentos/proyecto/2.CI) con integración continua.
 2. [Prototipado en PaaS](documentos/proyecto/3.Paas).
