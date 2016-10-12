@@ -2,7 +2,7 @@ Desarrollo basado en pruebas
 =========================
 
 <!--@
-next: Contenedores
+next: Gestion_de_configuraciones
 -->
 
 <div class="objetivos" markdown="1">
@@ -170,7 +170,8 @@ mínimas, máximas o exactas deben tener.
 >ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
 >usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
 >usar JavaScript,
->[este curso te puede ayudar](https://github.com/JJ/curso-js), aunque
+>[este curso](https://github.com/JJ/curso-js) o
+>[este libro](http://amzn.to/2dQCdAn) te pueden ayudar, aunque
 >cualquier otro también. 
 
 Una porra de fútbol básicamente tiene un partido, que tendrá un nombre
