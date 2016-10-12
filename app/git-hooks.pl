@@ -26,12 +26,12 @@ POST_COMMIT {
       $git->command( 'checkout', 'master', '--', $f );
       my $file_content = read_file( $f );
       $file_content =~ s/(?<!README)\.md\)/\)/g; # Change links
-      if ( $f =~ /practicas/ ) {
+      if ( $f =~ /proyecto/ ) {
 	  $file_content =~ s{/(\d)}{/$1.md}g; # Change back for links to prácticas
       }
       if ( $f =~ /temas/ ) {
 	  my ($breadcrumb) = ($file_content =~ /<!--@(.+)-->/gs);
-	  $file_content = $layout_preffix."$breadcrumb---\n\n".$file_content;
+	  $file_content = $layout_preffix."apuntes: T\n$breadcrumb---\n\n".$file_content;
 	  write_file($f, $file_content);
 	  $git->command('add', $f );
       } else {
@@ -43,7 +43,9 @@ POST_COMMIT {
 	  $git->command('add', 'index.md' );
 	  unlink('README.md');
       }
-      $git->command('commit','-am', "Sync $f de master a gh-pages");
+      my $commit_msg = $git->command("log", "-1 --pretty=%B" );
+      say $commit_msg;
+      $git->command('commit','-am', "Sync $f de master a gh-pages\n\nTras ==>\n$commit_msg");
       say "Procesando $f";
     }
     $git->command(qw/checkout master/); #back to original
