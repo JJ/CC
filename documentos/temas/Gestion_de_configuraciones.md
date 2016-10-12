@@ -1,8 +1,9 @@
 ---
 layout: index
 
-prev: Uso_de_sistemas
+apuntes: T
 
+prev: Uso_de_sistemas
 ---
 
 Gestión de infraestructuras virtuales
@@ -28,7 +29,7 @@ prev: Uso_de_sistemas
 1. Aprender lenguajes de configuración usados en infraestructuras virtuales.
 2. Saber cómo aplicarlos en un caso determinado.
 3. Conocer los sistemas de gestión de la configuración,
-provisionamiento y monitorizació más usados hoy en día.
+provisionamiento y monitorización más usados hoy en día.
 
 </div>
 
