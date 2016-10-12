@@ -15,6 +15,9 @@ EOT
 POST_COMMIT {
   my ($git) = @_;
   my $branch =  $git->command(qw/rev-parse --abbrev-ref HEAD/);
+  my $commit_msg = $git->command("log", "-1 --pretty=%B" );
+  say $commit_msg;
+
   if ( $branch =~ /master/ ) {
     my $changed = $git->command(qw/show --name-status/);
     my @changed_files = ($changed =~ /\s\w\s+(\S+)/g);
@@ -43,8 +46,6 @@ POST_COMMIT {
 	  $git->command('add', 'index.md' );
 	  unlink('README.md');
       }
-      my $commit_msg = $git->command("log", "-1 --pretty=%B" );
-      say $commit_msg;
       $git->command('commit','-am', "Sync $f de master a gh-pages\n\nTras ==>\n$commit_msg");
       say "Procesando $f";
     }
