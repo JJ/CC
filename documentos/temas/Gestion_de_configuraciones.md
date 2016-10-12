@@ -39,12 +39,7 @@ Introducción
 Los [contenedores](Contenedores) son un ejemplo de máquinas
 virtuales que ya tienen
 ciertas características de las mismas, como el aislamiento y la gestión
-independiente, que las asemeja a las máquinas virtuales *reales*. En
-un momento determinado puede hacer falta crear una serie de máquinas
-virtuales con características determinadas y usar un *script* con
-órdenes de `juju` puede llegar a ser un poco molesto. Se hace
-necesario que se usen herramientas para crear y configurar estos
-entornos.
+independiente, que las asemeja a las máquinas virtuales *reales*.
 
 Estas herramientas se denominan, en general,
 [gestores de configuración](http://en.wikipedia.org/wiki/Configuration_management). [Vagrant](http://en.wikipedia.org/wiki/Vagrant_%28software%29)
@@ -61,9 +56,7 @@ creación de usuarios y autenticación, de forma que se pueda hacer de
 forma automática y masiva. 
 
 A continuación veremos diferentes ejemplos de sistemas de
-configuración, empezando por Chef. En
-[temas anteriores](Contenedores) hemos visto `Juju`, un ejemplo de
-sistema de configuración también, aunque específico de Ubuntu. 
+configuración, empezando por Chef. 
 
 Usando Chef para provisionamiento
 -----
