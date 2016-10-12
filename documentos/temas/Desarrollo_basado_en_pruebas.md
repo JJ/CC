@@ -1,6 +1,5 @@
 ---
 layout: index
-
 apuntes: T
 next: Gestion_de_configuraciones
 ---
