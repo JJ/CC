@@ -185,18 +185,24 @@ El objeto básico, por tanto, será la `Apuesta` que irá asociada a un
 `Partido`.
 
 
-La aplicación tendrá más adelante un interfaz web, pero por lo pronto,
+La aplicación podrá tener, o no, un interfaz web, pero por lo pronto,
 y a efectos de la prueba continua de más adelante, vamos a quedarnos
-sólo con un pequeño programa que sirva para ver que funciona.
-
+sólo con un pequeño programa que sirva para comprobar que funciona.
 
 <div class='ejercicios' markdown='1'>
 Ejecutar un programa básico que trabaje con una base de datos en diferentes versiones del lenguaje. ¿Funciona en
 todas ellas?
 </div>
 
+### Configuración de una aplicación en node.
+
 Podemos almacenar esta información en una base de datos como SQLite
-(la clásica). Para instalarla, `npm install sqlite` que es la forma
+(la clásica).
+
+>Este "sistema de gestión de bases de datos" se usa solamente a
+>efectos educativos. No es una buena idea usarlo en producción
+
+Para instalarla, `npm install sqlite` que es la forma
 como se instalan los módulos de node. Además, se instala en
 local. Pero el objeto del desarrollo moderno es asegurarse de que todo
 lo necesario para programar algo está presente. Por eso, se usan
@@ -269,7 +275,7 @@ construcción, pero en node.js se utilizan principalmente dos:
 >[el código y la configuración](https://coding.abel.nu/2013/06/code-or-configuration-or-configuration-in-code/),
 >algo a lo que nos vamos a enfrentar repetidamente en la nube. ¿Un
 >fichero de construcción es, o debe ser, configuración o código?
->Diferentes herramientas toman diferentes aproximaciones al tema:
+>Diferentes herramientas hacen diferentes aproximaciones al tema:
 >`grunt` es, sobre todo, configuración, mientras que `gulp` es, sobre
 >todo, código.
 
@@ -355,8 +361,72 @@ defecto simplemente ejecutando `grunt`. También se puede ejecutar con
 y producirá una documentación tal como [esta](https://jj.github.io/desarrollo-basado-pruebas/src/docs/Apuesta.html).
 
 La automatización de Grunt se puede usar tanto para prueba como para
-despliegue. Pero hay también otras formas de probar en la nube, y lo
+despliegue. Pero hay también otras formas de realizar pruebas en la nube, y lo
 veremos a continuación.
+
+
+### Configuración en Scala: Usando Scala Build Tool
+
+A diferencia de node.js y de otros lenguajes,
+[Scala](http://www.scala-lang.org/) tiene una herramienta de
+configuración y construcción que forma parte del lenguaje y que se
+llama, precisamente, [`sbt` o Scala Build Tool](http://www.scala-sbt.org/). `sbt` incluye un DSL
+(Domain Specific Language) para configurar la aplicación, las
+versiones de todo que usa, inclusive el propio lenguaje, y las
+dependencias, y además un entorno de línea de órdenes desde el que se
+puede probar y ejecutar la aplicación.
+
+>Vamos a usar en este ejemplo
+>[el mismo tipo de programa para gestionar porras, pero en Scala](https://github.com/JJ/spray-test). Usa
+>un marco REST llamado Spray, que funciona sobre un marco de
+>concurrencia llamado Akka.
+
+Los ficheros de configuración para `sbt` llevan esa extensión y se
+suelen situar en el directorio principal. Para la aplicación
+mencionada anteriormente, este es el fichero:
+
+```
+organization  := "info.CC_MII"
+
+version       := "0.0.1"
+
+scalaVersion  := "2.11.7"
+
+scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
+
+libraryDependencies ++= {
+  val akkaV = "2.3.9"
+  val sprayV = "1.3.3"
+  Seq(
+    "io.spray"            %%  "spray-can"     % sprayV,
+    "io.spray"            %%  "spray-routing" % sprayV,
+    "io.spray"            %%  "spray-testkit" % sprayV  % "test",
+    "io.spray" 		  %%  "spray-json"    % "1.3.2",
+    "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
+    "com.typesafe.akka"   %%  "akka-testkit"  % akkaV   % "test",
+    "org.specs2"          %%  "specs2-core"   % "2.3.11" % "test"
+  )
+}
+
+Revolver.settings
+
+cancelable in Global := true
+```
+
+`sbt` usa el propio lenguaje Scala para su configuración, y tras
+declarar la organización que se ba a usar y la versión del propio
+paquete, declara una serie de versiones. Las declaraciones de
+dependencia de variables en `libraryDependencies` indican el paquete
+(tal como `io.spray`), el módulo específico (tal como `spray-can`) y
+finalmente la versión. El resto son opciones, de las cuales la más
+interesante es la última que permite que se interrumpa el programa
+desde `sbt`
+
+Al ejecutar `sbt` en el directorio donde se encuentre este fichero se
+cargará y se interpretará ese fichero y aparecerá una línea de
+órdenes, desde la que podemos ejecutar el programa o
+testearlo. También se pueden compilar los fuentes con `sbt compile`
+directamente desde la línea de órdenes. 
 
 
 ## Desarrollo basado en pruebas
@@ -486,6 +556,55 @@ lo haga. A continuación, ejecutarlos desde *mocha* (u otro módulo de
 test de alto nivel), usando descripciones del test y
  del grupo de test de forma correcta. Si hasta ahora no has subido el código que has venido realizando a GitHub, es el momento de hacerlo, porque lo vamos a necesitar un poco más adelante. 
 </div>
+
+### Realizando las pruebas en Scala
+
+En Scala, `sbt` realiza una función similar a `npm` en el mundo
+node. Sin embargo, el lenguaje en sí es un poco más estricto y tiene
+reglas más o menos precisas sobre dónde colocar los tests. Si las
+fuentes están en `src/main`, las pruebas estarán en `src/test` en el
+directorio correspondiente al nombre del paquete. Por ejemplo,
+`src/test/scala/info/CC_MII/` para el paquete `info.CC_MII` que es el
+que estamos usando en estos ejemplos.
+
+También Scala tiene diferentes formas de testear. Una similar a la que
+hemos usado anteriormente se llama `specs2`, una basada en
+comportamiento. La usamos por ejemplo a continuación:
+
+```Scala
+package info.CC_MII
+
+import org.specs2.mutable.Specification
+
+class ApuestaSpec extends Specification {
+  
+  "Apuesta" should {
+
+    "almacenar correctamente las variables" in {
+      val esta_apuesta = new Apuesta( 2,3,"Dude")
+      esta_apuesta.local must be_==(2)
+      esta_apuesta.visitante must be_==(3)
+      esta_apuesta.quien must beEqualTo("Dude")
+    }
+
+ 
+  }
+}
+```
+
+Tras importar el módulo correspondiente a los tests, estos se agrupan
+en una serie de sentencias "should" que serán ejecutadas
+secuancialmente. En este caso tenemos una sola, en la que creamos una
+instancia de la clase y comprobamos que efectivamente tiene los
+valores que debe tener. Las órdenes `must be_==` y `must beEqualTo`
+comprueban el valor de diferentes tipos y devuelven los valores
+correspondientes si se cumple ese comportamiento y si no se cumple.
+
+Se ejecutaría con `sbt test` o ejecutando `test` desde `sbt` y el
+resultado sería:
+
+[Resultado test de Scala](../img/test-scala.png)
+
 
 
 ##Añadiendo integración continua.
