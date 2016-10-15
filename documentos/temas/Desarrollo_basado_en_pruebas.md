@@ -249,7 +249,8 @@ sólo `npm install .`. Casi todos los lenguajes habituales tienen algún
 sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo. 
 
 <div class='ejercicios' markdown='1'>
- Crear una descripción del módulo usando `package.json`. En caso de que se trate de otro lenguaje, usar el método correspondiente. 
+ Crear una descripción del módulo usando `package.json`. En caso de
+ que se trate de otro lenguaje, usar el método correspondiente.  
 </div>
 
 `package.json` nos sirve para llevar un cierto control de qué es lo
@@ -317,8 +318,8 @@ Makefiles, `grunt` usa `Gruntfile.js` tal como este
 	  grunt.registerTask('default', ['docco']);
     };
 
-Para empezar, tenemos que instalar `docco` si queremos que funcione. Y
-`grunt` enfoca las tareas como una serie de *plugins* que hay que
+Es necesario instalar `docco` si queremos que funcione. Y
+`grunt` enfoca el procesamiento de las tareas como una serie de *plugins* que hay que
 instalar, en este caso `grunt-docco`. Para instalarlos se usa la
 herramienta habitual de instalación en node, `npm`, pero una vez que
 usamos `package.json`, `npm` puede editarlo y cambiar la configuración
