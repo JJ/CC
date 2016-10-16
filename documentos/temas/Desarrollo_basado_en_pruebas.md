@@ -387,7 +387,8 @@ puede probar y ejecutar la aplicación.
 >Vamos a usar en este ejemplo
 >[el mismo tipo de programa para gestionar porras, pero en Scala](https://github.com/JJ/spray-test). Usa
 >un marco REST llamado Spray, que funciona sobre un marco de
->concurrencia llamado Akka.
+>concurrencia llamado Akka. No es que sea el mejor y posiblemente sea
+>una mala idea usarlo, pero para un ejemplo vale. 
 
 Los ficheros de configuración para `sbt` llevan esa extensión y se
 suelen situar en el directorio principal. Para la aplicación
@@ -438,9 +439,11 @@ directamente desde la línea de órdenes.
 
 <div class='ejercicios' markdown='1'>
 
- Descargar el repositorio, instalar las herramientas necesarias
- (principalmente Scala y sbt) y ejecutar el ejemplo desde sbt. Puede
- ser ese ejemplo u otro similar.
+ Descargar el repositorio de ejemplo anterior, instalar las herramientas necesarias
+ (principalmente Scala y sbt) y ejecutar el ejemplo desde
+ `sbt`. Alternativamente, buscar otros marcos para REST en Scala tales
+ como Finatra o Scalatra y probar los ejemplos que se incluyan en el
+ repositorio. 
  
 </div>
 
