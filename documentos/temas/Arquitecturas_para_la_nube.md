@@ -106,6 +106,16 @@ desarrollo se hace un poco más complicado que en el caso anterior.
 Argunos marcos de aplicaciones como Java Swing usan este tipo de
 arquitectura.
 
+### Arquitectura microkernel
+
+Se trata de [una arquitectura](http://viralpatel.net/blogs/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
+central al que se pueden añadir funcionalidades mediante plugins. Un
+tipo de arquitectura clásico que se usa en CMSs como Joomla o en
+sistemas de aprendizaje como Moodle. El problema principal es la
+escalabilidad, ya que el núcleo puede representar un cuello de
+botella. 
+
+### 
 
 ##Bibliografía y otros recursos
 
