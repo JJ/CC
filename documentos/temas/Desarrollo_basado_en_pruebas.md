@@ -436,6 +436,13 @@ cargará y se interpretará ese fichero y aparecerá una línea de
 testearlo. También se pueden compilar los fuentes con `sbt compile`
 directamente desde la línea de órdenes. 
 
+<div class='ejercicios' markdown='1'>
+
+ Descargar el repositorio, instalar las herramientas necesarias
+ (principalmente Scala y sbt) y ejecutar el ejemplo desde sbt. Puede
+ ser ese ejemplo u otro similar.
+ 
+</div>
 
 ## Desarrollo basado en pruebas
 
