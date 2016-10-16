@@ -123,7 +123,75 @@ sistemas de aprendizaje como Moodle. El problema principal es la
 escalabilidad, ya que el núcleo puede representar un cuello de
 botella. 
 
-### 
+### Arquitectura basada en microservicios.
+
+Una de las arquitecturas más populares hoy en día, los
+[microservicios](http://microservices.io) se caracterizan por poder
+usar tecnologías subyacentes que van desde la virtualización completa
+en la nube hasta el uso de contenedores Docker en una sola máquina
+virtual.
+
+Lo principal en una arquitectura de microservicios es que se trata de
+unidades que se van a desplegar de forma independiente, diferentes
+servicios que trabajarán de forma totalmente independiente unos de
+otros. Un servicio es, en sí, un servicio tal como una base de datos o
+puede ser un objeto o grupo de objetos que ofrezca alguna
+funcionalidad que se pueda separar claramente del resto de la
+aplicación.
+
+Dentro de este tipo de arquitectura, el núcleo de la aplicación puede
+ser un simple API basado en REST, pero es mucho más común que sea un
+sistema con mensajería centralizada, donde un sistema de paso de
+mensajes recibe peticiones de servicio y las sirve a quienes lo han
+hecho de forma asíncrona. En este sentido, si los servicios están
+separados y consideramos que los mensajes son eventos, la arquitectura
+sería similar a la basada en eventos anterior, salvo que esta
+arquitectura suele estar más acoplada que la basada en eventos.
+
+Como la anterior, tiene la ventaja de poder desplegarse de forma
+independiente, poder escalar de forma independiente y, por tanto,
+constituye uno de los patrones de arquitectura más populares hoy en
+día.
+
+### Arquitectura basada en espacio
+
+Entre todas las arquitecturas vistas,
+[esta](https://en.wikipedia.org/wiki/Space-based_architecture) es la
+más antigua, usándose en arquitecturas distribuidas casi desde
+principio de los 90, con lenguajes como Linda introduciendo el
+concepto de
+[espacio de tuplas](https://en.wikipedia.org/wiki/Tuple_space).
+
+En esta arquitectura, un *espacio* es compartido por una serie de
+unidades de procesamiento, que se comunican entre sí principalmente a
+través de ese espacio. A diferencia de la arquitectura basada en
+eventos, ese espacio está desestructurado, aunque internamente tiene
+un espacio de mensajería tal como las arquitecturas mencionadas
+anteriormente. Sin embargo, es un [patrón](http://es.slideshare.net/amin59/an-introduction-to-space-based-architecture) con una implementación
+relativamente simple que puede servir para aplicaciones a pequeña
+escala, aunque es más complicado de desarrollar que otros.
+
+### Resumen
+
+Todos los patrones anteriores se usan en la actualidad junto con el
+patrón de aplicación cliente-servidor, que sigue perviviendo, pero que
+causa todo tipo de problemas de escalado, sobre todo, aparte de la
+dificultad de desarrollo si no se hace con cuidado.
+
+Todas estas arquitecturas, además, asumen un entorno de integración y
+despliegue continuo, que a su vez necesita una metodología de
+desarrollo basada en tests, tal como la que se verá más adelante. 
+
+Lo principal, en todo caso, es buscar la arquitectura más adecuada
+para una aplicación en vez de aceptar como un hecho una arquitectura
+cliente servidor o, peor, una arquitectura monolítica de un solo
+fichero que tiene toda la funcionalidad de una aplicación. Una
+aplicación casi siempre va a necesitar usar APIs de otras, siquiera
+para la autenticación, y decenas o posiblemente cientos de servicios
+diferentes. Cómo se lleva a la práctica esto y qué tipo de
+implicaciones tiene en las herramientas las veremos a continuación.
+
+
 
 ##Bibliografía y otros recursos
 
@@ -140,6 +208,10 @@ Algunos recursos a los que puedes acceder desde la
   [Practical software architecture](http://bencore.ugr.es/iii/encore/record/C__Rb2557607__Ssoftware%20architecture__Orightresult__U__X6?lang=spi&suite=pearl)
   Una visión más práctica de diferentes arquitecturas de software.
 
+-
+  [Building microservices](http://bencore.ugr.es/iii/encore/record/C__Rb2523920__Smicroservices__P0%2C3__Orightresult__U__X6?lang=spi&suite=pearl)
+  un recurso electrónico que explica cómo construir microservicios
+  desde cero, la fase de modelización a la de construcción del mismo.
 
 ## A dónde ir desde aquí
 
