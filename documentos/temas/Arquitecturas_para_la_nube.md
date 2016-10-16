@@ -191,6 +191,97 @@ para la autenticación, y decenas o posiblemente cientos de servicios
 diferentes. Cómo se lleva a la práctica esto y qué tipo de
 implicaciones tiene en las herramientas las veremos a continuación.
 
+## Desplegando en la nube: algunas consideraciones
+
+Casi todas las arquitecturas mencionadas anteriormente tienen
+características comunes. Primero, usan sistemas de mensajería, interna
+o externamente. Segundo, usan algún tipo de API, generalmente basada
+en REST. Tercero, están basadas en diferentes componentes. Y, por
+último, usan y/o despliegan servicios en la nube. A su vez, esto
+implica una serie de cosas que veremos a continuación.
+
+### Almacenes de datos: más allá del SQL
+
+Aunque las bases de datos tradicionales, relacionales y basadas en SQL
+se adaptan perfectamente a la nube, necesitan que se conozca de
+antemano la estructura de la información y sus relaciones, se adaptan
+relativamente mal a trabajar con texto desestructurado, y a menos que
+todos los datos almacenados tengan la misma estructura, se desperdicia
+una cantidad considerable de espacio. Por eso en estas arquitecturas
+modernas están complementadas por las bases de datos NoSQL, de las que
+lo primero que hay qeu aprender es que no se trata de sistemas que
+usen un lenguaje llamado NoSQL (aunque algunos lo están tratando de
+diseñar) sino de base de datos muy diversas y que usan lenguajes
+propios o empotrados para acceder a ellas. Hay diferentes tipos de
+almacenes de datos: clave-valor, basadas en documentos, orientadas a
+columna o a grafos. Una aplicación moderna usará una, o varias, desde
+MongoDB hasta Redis pasando por Cassandra o Elastic.
+
+### Lenguajes de programación: programación políglota
+
+Nada fuerza a que todos los servicios o componentes tengan que usar el
+mismo lenguaje. Los interfaces son genéricos, generalmente REST u otro
+tipo de servicios web, pero si no lo son, hay herramientas como Thrift
+que permiten definir de forma genérica APIs y compilarlas para un
+lenguaje determinado. Casi todas las aplicaciones van a usar
+JavaScript o alguna de sus variantes (CoffeeScript, TypeScript) en el
+interfaz de usuario, pero además habrá componentes que sea mejor
+escribir en Scala y otros que sea mejor escribir en Ruby o en
+Perl. También los servicios de despliegue y de construcción tendrán su
+propio lenguaje, Groovy (en Gradle) o Python. En general, trabajar con
+un solo lenguaje limita mucho el tipo de aplicaciones que puedes
+hacer, aunque si hay uno que pueda abarcarlo casi todo, ese es
+JavaScript.
+
+### De aquí a allí, todo son nubes.
+
+La nube, que parece algo genérico y que a veces se abstrae simplemente
+en máquinas virtuales que se pagan por uso, son un panorama mucho más
+complejo, que va desde servicios de mensajería hasta contenedores,
+pasando por todo tipo de servicios en la nube: almacenamiento, redes
+virtuales, conversión de ficheros y todo tipo de cosas. Los tres
+niveles clásicos de Infraestructura, Plataforma y Software comos
+servicio se combinan en una sola aplicación que puede usar una base de
+datos (SaaS) o almacén de datos (almacenamiento como servicio) junto
+con un sistema de mensajería almacenado en un PaaS y una serie de
+procesadores almacenados en máquinas virtuales instanciadas en
+diferentes proveedores. Por tanto, distinguir aplicaciones *para PaaS*
+de aplicaciones *para IaaS* es totalmente absurdo y cualquier
+arquitectura sana incluirá un poco de cada una, a gusto del
+arquitecto.
+
+### Los mensajeros están en las nubes
+
+La mayoría de estos sistemas usan mensajería para comunicarse, o para
+estar al corriente de eventos, o para gestionar toda la
+arquitectura. Este tipo de
+[colas de mensajes](https://en.wikipedia.org/wiki/Message_queue) son
+quizás las que diferencian más a estas arquitecturas de las
+monolíticas, que no las necesitan. Estos sistemas, también llamados
+buzones, implementan unos sistemas de comunicación asíncrona y también
+sistemas de publicación/suscripción, de forma que servicios pueden
+decidir a qué mensajes contestan o de qué tipo de eventos van a
+recibir comunicación. Las arquitecturas *serverless*, un tipo de
+arquitectura basada en microservicios, tienen estos buzones en su
+columna vertebral, usándose para transmitir de un servicio a otro los
+datos y también para activar los microservicios cuando suceda un
+evento determinado.
+
+Hay una serie de estándares de mensajería, pero muchas de las
+implementaciones existentes se acogen a varios para que sea más simple
+la interoperabilidad. Y aparte de las implementaciones libres que uno
+puede usar dentro de su arquitectura, los proveedores de cloud tienen
+sus propias implementaciones tales como
+[Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
+o [Google CM](https://developers.google.com/cloud-messaging/).
+
+### Resumiendo: hay todo un mundo ahí fuera
+
+Y es un mundo complejo, pero cuyo conocimiento os acercará mucho más a
+la creación de aplicaciones sólidas, eficientes y escalables. Todo lo
+de arriba se resume en que hay que continuar aprendiendo lenguajes,
+tecnologías, metodologías y arquitecturas. Y no parar de hacerlo, para
+la nube o para lo que venga más adelante. 
 
 
 ##Bibliografía y otros recursos
