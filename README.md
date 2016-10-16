@@ -24,7 +24,7 @@ Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
 [GitHub](http://github.com/JJ/CC).
 
-1. [Arquitecturas software para la nube](Arquitecturas_para_la_nube.md).
+1. [Arquitecturas software para la nube](documentos/temas/Arquitecturas_para_la_nube.md).
 2. [Iniciación a DevOps: desarrollo basado en pruebas](documentos/temas/Desarrollo_basado_en_pruebas.md).
 6. [Gestión de configuraciones](documentos/temas/Gestion_de_configuraciones.md)
 3. [Uso de plataformas como servicio para prototipado rápido](documentos/temas/PaaS.md)
