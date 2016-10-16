@@ -273,7 +273,7 @@ la interoperabilidad. Y aparte de las implementaciones libres que uno
 puede usar dentro de su arquitectura, los proveedores de cloud tienen
 sus propias implementaciones tales como
 [Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
-o [Google CM](https://developers.google.com/cloud-messaging/).
+o [Firebase de Google](https://firebase.google.com/docs/cloud-messaging/).
 
 ### Resumiendo: hay todo un mundo ahí fuera
 
