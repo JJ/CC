@@ -183,6 +183,14 @@ para la autenticación, y decenas o posiblemente cientos de servicios
 diferentes. Cómo se lleva a la práctica esto y qué tipo de
 implicaciones tiene en las herramientas las veremos a continuación.
 
+<div class='ejercicios' markdown='1'>
+
+Buscar una aplicación de ejemplo, preferiblemente propia, y deducir
+qué patrón es el que usa. ¿Qué habría que hacer para evolucionar a un
+patrón tipo microservicios?
+
+</div>
+
 ## Desplegando en la nube: algunas consideraciones
 
 Casi todas las arquitecturas mencionadas anteriormente tienen
@@ -273,7 +281,15 @@ Y es un mundo complejo, pero cuyo conocimiento os acercará mucho más a
 la creación de aplicaciones sólidas, eficientes y escalables. Todo lo
 de arriba se resume en que hay que continuar aprendiendo lenguajes,
 tecnologías, metodologías y arquitecturas. Y no parar de hacerlo, para
-la nube o para lo que venga más adelante. 
+la nube o para lo que venga más adelante.
+
+<div class='ejercicios' markdown='1'>
+
+En la aplicación que se ha usado como ejemplo en el ejercicio
+anterior, ¿podría usar diferentes lenguajes? ¿Qué almacenes de datos
+serían los más convenientes?
+
+</div>
 
 
 ##Bibliografía y otros recursos
