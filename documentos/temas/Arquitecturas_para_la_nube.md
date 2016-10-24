@@ -221,7 +221,7 @@ MongoDB hasta Redis pasando por Cassandra o Elastic.
 
 Nada fuerza a que todos los servicios o componentes tengan que usar el
 mismo lenguaje. Los interfaces son genéricos, generalmente REST u otro
-tipo de servicios web, pero si no lo son, hay herramientas como Thrift
+tipo de servicios web, pero si no lo son, hay herramientas como [Thrift](https://thrift.apache.org/)
 que permiten definir de forma genérica APIs y compilarlas para un
 lenguaje determinado. Casi todas las aplicaciones van a usar
 JavaScript o alguna de sus variantes (CoffeeScript, TypeScript) en el
@@ -269,7 +269,7 @@ evento determinado.
 
 Hay una serie de estándares de mensajería, pero muchas de las
 implementaciones existentes se acogen a varios para que sea más simple
-la interoperabilidad. Y aparte de las implementaciones libres que uno
+la interoperabilidad. Y aparte de las [implementaciones libres](http://queues.io/) que uno
 puede usar dentro de su arquitectura, los proveedores de cloud tienen
 sus propias implementaciones tales como
 [Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
@@ -302,7 +302,6 @@ Algunos recursos a los que puedes acceder desde la
   aunque es muy básico, por lo menos explica en qué se pueden usar los
   patrones de software y cómo aplicarlos en un momento determinado. 
   
-
 -
   [Practical software architecture](http://bencore.ugr.es/iii/encore/record/C__Rb2557607__Ssoftware%20architecture__Orightresult__U__X6?lang=spi&suite=pearl)
   Una visión más práctica de diferentes arquitecturas de software.
@@ -317,7 +316,7 @@ Algunos recursos a los que puedes acceder desde la
 Este tema sirve como introducción para elegir el proyecto que se va a
 desarrollar durante la asignatura. Habrá que realizar estos ejercicios
 para superar el
-[primer hito del proyecto](http://jj.github.io/CC/documentos/practicas/1.Infraestructura).
+[primer hito del proyecto](http://jj.github.io/CC/documentos/practicas/1.Infraestructura). 
 
 A continuación se
 puede echar un vistazo a los
