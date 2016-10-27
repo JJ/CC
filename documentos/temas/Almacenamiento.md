@@ -559,7 +559,7 @@ bloques desde las instancias EC2.
 Almacenamiento virtual en la nube
 ---
 
-Todos servicios IaaS poseen su propio *Storage as a ervice*, que se
+Todos servicios IaaS poseen su propio *Storage as a Service*, que se
 puede usar desde los servicios de computación o bien desde servicios
 basados en servidores (en nubes *mixtas*). En general, los servicios
 de almacenamiento en la nube, fuera de ofertas masivas como
