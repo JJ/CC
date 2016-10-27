@@ -3,14 +3,14 @@ layout: index
 
 apuntes: T
 
-next: Desarrollo basado en pruebas
+next: Gestion_de_configuraciones
 ---
 
 Arquitecturas software para la nube
 =========================
 
 <!--@
-next: Desarrollo basado en pruebas
+next: Gestion_de_configuraciones
 -->
 
 <div class="objetivos" markdown="1">
