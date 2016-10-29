@@ -50,8 +50,42 @@ configuración, instalación de software y configuración del mismo,
 creación de usuarios y autenticación, de forma que se pueda hacer de
 forma automática y masiva. 
 
-A continuación veremos diferentes ejemplos de sistemas de
-configuración, empezando por Chef. 
+Para poder configurar máquinas virtuales específicas primero hay que
+instanciarlas. Dejaremos para más adelante cómo hacerlo de forma
+independiente del proveedor de tales servicios y veremos a
+continuación cómo preparar una máquina virtual para ser provisionada.
+
+## Configurando una instancia
+
+Se puede crear una máquina virtual de muchas formas, usando el
+interfaz web o el de línea de órdenes del proveedor de servicios
+correspondiente. Consulta el manual de la misma sobre cómo
+hacerlo. Sin embargo, si quieres hacer el provisionamiento desde
+*fuera*, no puedes usar una imagen cualquiera. Esta imagen tendrá que
+tener:
+
+* Un servidor `ssh` activado. Casi todas las imágenes de sistemas
+  operativos en los servicios de nube lo tienen, pero a menudo también
+  hay que activar los puertos correspondientes (llamados
+  *endpoints*). Esto es imprescindible para la conexión.
+
+* Algún lenguaje de programación, el que sea necesario para el sistema
+  de provisionamiento que se use. Normalmente se trata de Python
+  (Ansible) o Perl (Rex), pero puede ser también otro lenguaje de
+  *scripting* como Ruby.
+
+* A veces hace falta instalar algún paquete adicional. Por ejemplo
+  `python-apt` si quieres usar directamente las órdenes
+  correspondientes de Ansible en vez de ejecutar otras órdenes. Chef
+  tiene que estar instalado en el destino o *target*, por lo que en
+  muchos casos los servicios de nube ofrecen imágenes con él ya
+  instalado.
+
+Cada imagen suele tener un usuario con privilegios de administrador
+configurado. Consultar en cada lugar cuál es, pero una vez hecho eso,
+el siguiente paso en el provisionamiento es crear un par de clave
+pública/privada y copiar la pública al objetivo. A partir de ahí ya se
+puede provisionar, empezando por Chef.
 
 Usando Chef para provisionamiento
 -----
