@@ -257,7 +257,42 @@ gestión de fuentes; de esta forma se pueden probar diferentes
 configuraciones, crear nuevas versiones de la misma pero, sobre todo,
 tener claro en cada momento qué configuración es la que se está
 ejecutando en producción, que será habitualmente la que esté en una
-rama designada de la misma. 
+rama designada de la misma.
+
+
+## Gestionando configuraciones con Salt
+
+[Salt](https://saltstack.com/) es otra herramienta de configuración
+que se ha hecho popular en los últimos años. Aunque algo más
+complicada de configurar que Ansible, tiene como ventaja que permite
+modularizar la configuración para poder adaptarla a sistemas de la
+forma más conveniente.
+
+La mejor forma de empezar es
+[instalarlo desde Github](https://github.com/saltstack/salt) aunque
+nosotros vamos a trabajar con
+[`salt-ssh`](https://docs.saltstack.com/en/latest/topics/ssh/), un
+sistema que no requiere ningún tipo de instalación en el ordenador
+objetivo y que se puede usar, hasta cierto punto, como Ansible. Vamos
+a usarlo para
+[instalar los servicios necesarios para el bot de Telegram en Scala](https://github.com/JJ/BoBot)
+que hemos visto en alguna otra ocasión.
+
+Una vez instalado `salt-ssh`, una de los principales problemas es que
+requiere una cierta cantidad de configuración global. Generalmente
+vamos a usar un directorio tal como `~/lib/salt/` como directorio de
+trabajo y configuración; y este directorio va a estar fuera del
+repositorio y en un directorio de superusuario por omisión. Se puede
+usar el directorio local, pero en ese caso habrá que decir
+específicamente donde se encuentra cada tipo de fichero. En el
+[`README.md` del bot](https://github.com/JJ/BoBot/tree/master/provision)
+vienen las instrucciones necesarias para crear ese fichero de
+provisionamiento y la configuración global. 
+
+Uno de los
+más importantes es el fichero `roster`:
+
+
 
 Otros sistemas de gestión de configuración
 ---
