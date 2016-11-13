@@ -289,10 +289,65 @@ específicamente donde se encuentra cada tipo de fichero. En el
 vienen las instrucciones necesarias para crear ese fichero de
 provisionamiento y la configuración global. 
 
-Uno de los
+Pero para configurar nuestro propio sistema, uno de los
 más importantes es el fichero `roster`:
 
+~~~
+app: 
+  host: 104.196.9.185
+  user: one_user
+sudo: True
+~~~
 
+Aquí no sólo se declara la dirección a la que vamos a conectar, sino
+también si hace falta ser sudo o no. Con esto podemos ejecutar ya
+parte de la configuración que vamos a ejecutar más adelante:
+
+	salt-ssh '*' --roster-file=./roster -r "sudo apt-get install python-apt" -c ~/lib/salt --force-color
+
+En este caso, se trata de ejecutar una orden para poder instalar
+`python-apt`, un módulo para poder ejecutar órdenes de instalación de
+paquetes directamente desde Python.
+
+Pero para efectivamente provisionar se usan ficheros `salt-stack`. Por
+ejemplo,
+[estos ficheros instalan Java](https://github.com/JJ/BoBot/tree/master/provision/java)
+en la versión necesaria para poder instalar más adelante Scala. Y
+Scala lo instalamos en
+[este fichero](https://github.com/JJ/BoBot/blob/master/provision/scala/scala.sls)
+
+~~~
+include:
+  - javasetup
+
+scala:
+pkg.installed
+~~~
+
+
+Este fichero se ejecutaría con
+
+	salt-ssh app state.apply scala --roster-file=./roster -c ~/lib/salt --force-color
+
+Este programa, como Ansible, actúa de manera descriptiva. Indica que
+el paquete scala tiene que estar instalado, pero para ello tiene que
+cumplir una serie de prerrequisitos incluidos en el fichero
+`javasetup.sls`. Este a su vez requiere la instalación de otra serie
+de paquetes, e incluye otro fichero. Lo bueno es que esos dos
+ficheros, `javasetup` y `java`, se pueden usar para todos los paquetes
+que usen esa máquina virtual; para instalar Scala sólo hay que crear
+este último fichero.
+
+Todos estos, por cierto, tienen que ejecutarse desde directorios
+específicos, al menos la forma más simple de hacerlo es copiar todos
+los ficheros `.sls` a `~/lib/salt/states` y hacerlo desde ahí.
+
+<div class='ejercicios' markdown='1'>
+
+Provisionar una máquina virtual en algún entorno con los que
+trabajemos habitualmente usando Salt. 
+	  
+</div>
 
 Otros sistemas de gestión de configuración
 ---
