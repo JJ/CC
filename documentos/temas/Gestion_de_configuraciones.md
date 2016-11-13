@@ -266,7 +266,9 @@ rama designada de la misma.
 que se ha hecho popular en los últimos años. Aunque algo más
 complicada de configurar que Ansible, tiene como ventaja que permite
 modularizar la configuración para poder adaptarla a sistemas de la
-forma más conveniente.
+forma más conveniente. `salt-ssh` está basado en Python y sólo
+requiere, en principio, que este lenguaje esté instalado en el sistema
+que se va a provisionar. 
 
 La mejor forma de empezar es
 [instalarlo desde Github](https://github.com/saltstack/salt) aunque
@@ -332,7 +334,8 @@ Este fichero se ejecutaría con
 Este programa, como Ansible, actúa de manera descriptiva. Indica que
 el paquete scala tiene que estar instalado, pero para ello tiene que
 cumplir una serie de prerrequisitos incluidos en el fichero
-`javasetup.sls`. Este a su vez requiere la instalación de otra serie
+`javasetup.sls`; el nombre de estado se tiene que corresponder con el
+nombre del fichero en sí. Este a su vez requiere la instalación de otra serie
 de paquetes, e incluye otro fichero. Lo bueno es que esos dos
 ficheros, `javasetup` y `java`, se pueden usar para todos los paquetes
 que usen esa máquina virtual; para instalar Scala sólo hay que crear
@@ -341,6 +344,12 @@ este último fichero.
 Todos estos, por cierto, tienen que ejecutarse desde directorios
 específicos, al menos la forma más simple de hacerlo es copiar todos
 los ficheros `.sls` a `~/lib/salt/states` y hacerlo desde ahí.
+
+En general, y por la forma que tiene un poco rígida de hacer las
+cosas, resulta algo más complicado usarlo que Ansible o incluso
+Chef. Sin embargo y limitado a `salt-ssh`, una vez que la
+configuración está completa y si se tienen configuraciones base,
+construir a partir de ellas es relativamente sencillo. 
 
 <div class='ejercicios' markdown='1'>
 
