@@ -444,9 +444,9 @@ o
 
 <div class='ejercicios' markdown='1'>
 
-Desplegar los fuentes de la aplicación de  DAI o cualquier otra aplicación que se
+Desplegar los fuentes de una aplicación cualquiera, propia o libre,  que se
 encuentre en un servidor git público en la máquina virtual Azure (o
-una máquina virtual local) usando ansible.
+una máquina virtual local) usando `ansible`.
 
 </div>
 
@@ -488,7 +488,7 @@ resultado que si se ejecutan una sola vez.
 
 <div class='ejercicios' markdown='1'>
 
-1. Desplegar la aplicación de DAI  con todos los módulos necesarios
+1. Desplegar la aplicación que se haya usado anteriormente  con todos los módulos necesarios
 usando un *playbook* de Ansible.
 
 </div>
