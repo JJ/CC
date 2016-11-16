@@ -227,14 +227,14 @@ Para usar `chef-solo` hay simplemente que instalar unos cuantos
 programas, pero en gran parte ya está automatizado:
 [aquí explica como usarlo en Ubuntu](http://gettingstartedwithchef.com/first-steps-with-chef.html),
 por ejemplo basándose en
-[este Gist (programas cortos en GitHug)](https://gist.github.com/wolfeidau/3328844)
+[este Gist (programas cortos en GitHub)](https://gist.github.com/wolfeidau/3328844)
 que instala todas las herramientas necesarias para comenzar a ejecutar
 chef. 
 
 <div class='nota' markdown='1'>
 
 Este
-[curso en video](http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/)
+[curso en vídeo](http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/)
 te enseña también a trabajar con Chef
 
 </div>
@@ -380,7 +380,7 @@ De todas ellas, vamos a
 que parece ser uno de los que se está desarrollando con más intensidad
 últimamente. [Ansible es](https://en.wikipedia.org/wiki/Ansible_%28software%29)
 sistema de gestión remota de configuración que permite gestionar
-simultáneamente miles de sistemas diferenets. Está basado en YAML para
+simultáneamente miles de sistemas diferentes. Está basado en YAML para
 la descripción de los sistemas y escrito en Python. 
 
 Se instala como un módulo de Python, usando por ejemplo la utilidad de
@@ -433,7 +433,7 @@ ejecutar comandos de forma remota
 
 	$ ansible azure -u jjmerelo -a df
 	
-nos mostraría en todas las máqunias de azure la organización del
+nos mostraría en todas las maquinas de azure la organización del
 sistema de ficheros (que es lo que hace el comando `df`). Una vez más,
 `-u` es opcional. 
 
@@ -452,9 +452,9 @@ o
 
 <div class='ejercicios' markdown='1'>
 
-Desplegar los fuentes de la aplicación de  DAI o cualquier otra aplicación que se
+Desplegar los fuentes de una aplicación cualquiera, propia o libre,  que se
 encuentre en un servidor git público en la máquina virtual Azure (o
-una máquina virtual local) usando ansible.
+una máquina virtual local) usando `ansible`.
 
 </div>
 
@@ -496,7 +496,7 @@ resultado que si se ejecutan una sola vez.
 
 <div class='ejercicios' markdown='1'>
 
-1. Desplegar la aplicación de DAI  con todos los módulos necesarios
+1. Desplegar la aplicación que se haya usado anteriormente  con todos los módulos necesarios
 usando un *playbook* de Ansible.
 
 </div>
@@ -620,8 +620,8 @@ se puede usar un fichero externo o incluso alojado en un sitio web
 
 </div>
 
-El poblema con los guiones de *shell* (y no sé por qué diablos pongo
-guiones si pongo shell, podía poner scripts de shell directametne y
+El problema con los guiones de *shell* (y no sé por qué diablos pongo
+guiones si pongo shell, podía poner scripts de shell directamente y
 todo el mundo me entendería, o guiones de la concha y nadie me
 entendería) es que son específicos de una máquina. Por eso Vagrant
 permite muchas otras formas de configuración, incluyendo casi todos
