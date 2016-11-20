@@ -3,14 +3,14 @@ layout: index
 
 apuntes: T
 
-prev: Arquitecturas_para_la_nube
+prev: Gestion_de_configuraciones
 ---
 
 Gestión de infraestructuras virtuales
 ===
 
 <!--@
-prev: Arquitecturas_para_la_nube
+prev: Gestion_de_configuraciones
 -->
 
 <div class="objetivos" markdown="1">
