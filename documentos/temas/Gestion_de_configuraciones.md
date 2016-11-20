@@ -4,6 +4,7 @@ layout: index
 apuntes: T
 
 prev: Arquitecturas_para_la_nube
+next: Orquestacion
 ---
 
 Gestión de infraestructuras virtuales
@@ -11,6 +12,7 @@ Gestión de infraestructuras virtuales
 
 <!--@
 prev: Arquitecturas_para_la_nube
+next: Orquestacion
 -->
 
 <div class="objetivos" markdown="1">
