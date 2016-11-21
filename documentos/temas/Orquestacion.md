@@ -83,17 +83,30 @@ hipervisores y provisionadores tales como los que hemos visto
 anteriormente.
 
 Con Vagrant [te puedes descargar directamente](https://gist.github.com/dergachev/3866825)
-[una máquina configurada de esta lista](http://www.vagrantbox.es/). Por
+[una máquina configurada de esta lista](http://www.vagrantbox.es/) o
+bien cualquier otra máquina configurada en el formato `box`, que es el
+que uno de los que usa Vagrant. Por
 ejemplo, 
 
-	vagrant box add centos65 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box
+	vagrant box add viniciusfs/centos7 https://atlas.hashicorp.com/viniciusfs/boxes/centos7/
+
+Para conocer todos los comandos de vagrant, `vagrant help` o `vagrant
+list-commands`. En este caso usamos un subcomando de `vagrant box`,
+que permite añadir nuevas imágenes a nuestro gestor de máquinas
+virtuales; `add` añade uno nuevo en este caso usando el gestor por
+omisión que es Virtual Box. El nombre añadido, `viniciusfs/centos7` es
+el indicado por la propia orden cuando se ejecuta con un nombre
+arbitrario. 
 
 El formato determinará en qué tipo de hipervisor se puede ejecutar; en
-general, Vagrant usa VirtualBox, y los `.box` se ejecutan precisamente
-en ese formato. Otras imágenes están configuradas para trabajar con
-VMWare, pero son las menos. A continuación,
+general, Vagrant usa VirtualBox, y los `.box` se pueden importar
+directamente en esta aplicación; los formatos vienen listados en la
+página anterior y en este caso el formato se denomina `libvirt`, una
+capa de abstracción sobre todo tipo de hipervisores. Otras imágenes de la lista anterior están configuradas para trabajar con
+VMWare, pero son las menos. En todo caso conviene usar para cada
+hipervisor la máquina adecuada. A continuación,
 
-	vagrant init centos65
+	vagrant init viniciusfs/centos7
 	
 crea un fichero `Vagrantfile` (y así te lo dice) que permite trabajar
 y llevar a cabo cualquier configuración adicional. Una vez hecho eso
