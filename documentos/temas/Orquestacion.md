@@ -52,7 +52,13 @@ que usan arranque remoto.
 La ventaja de Vagrant es que puede trabajar de forma indistinta con
 máquinas virtuales locales o remotas e incluso, en las últimas
 versiones, con contenedores, simplemente cambiando los *drivers* con
-los que va a trabajar. Lo veremos a continuación. 
+los que va a trabajar. Lo veremos a continuación.
+
+No vamos a dedicar demasiado tiempo a la creación y configuración de
+máquinas virtuales específicas, aunque en el tema adicional de
+[uso de sistemas en la nube](Uso_de_sistemas.md) se explica como
+trabajar con máquinas virtuales con `kvm` y cómo definir, desde la
+línea de órdenes, máquinas virtuales en sistemas en cloud como Azure. 
 
 
 Orquestación de máquinas virtuales
