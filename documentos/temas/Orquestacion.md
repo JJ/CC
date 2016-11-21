@@ -32,6 +32,36 @@ prev: Gestion_de_configuraciones
 
 </div>
 
+##Introducción
+
+Antes de poder provisionar una máquina o conjunto de máquinas
+virtuales, es necesario poder crearlas. En el espíritu DevOps, tiene
+que haber una forma de hacerlo automáticamente y de forma reproducible
+con código, usando el código como infraestructura; también de forma
+que sea totalmente portable de una infraestructura a otra; en general,
+debe haber una forma de que las infraestructuras como servicio (IaaS)
+sean controladas programáticamente, aparte de las otras dos formas que
+suelen ofrecer, a través de la web y a través de los interfaces de
+línea de órdenes. La primera forma no es escalable, porque sólo
+permite crear infraestructuras una por una; la segunda no es portable,
+porque cada web tiene sus propias órdenes. Sólo el código permite
+reproducir configuraciones de un vendedor a otro sin ningún problema.
+
+Estas herramientas se denominan herramientas de *orquestación* o de
+*gestión de configuraciones*, aunque estas herramientas también
+incluyen a otras de más bajo nivel como Ansible o Chef. En realidad
+hoy en día la única herramienta existente y en uso amplio es
+Vagrant. Otras herramientas, como Vortex, parecen abandonadas y otras
+como Juju o [Cobbler](http://cobbler.github.io/manuals/quickstart/)
+funcionan a otro nivel diferente, trabajando para configurar desde
+cero *bare metal* o máquinas sin ningún sistema operativo instalado
+que usan arranque remoto.
+
+La ventaja de Vagrant es que puede trabajar de forma indistinta con
+máquinas virtuales locales o remotas e incluso, en las últimas
+versiones, con contenedores, simplemente cambiando los *drivers* con
+los que va a trabajar. Lo veremos a continuación. 
+
 
 Orquestación de máquinas virtuales
 ---------------
