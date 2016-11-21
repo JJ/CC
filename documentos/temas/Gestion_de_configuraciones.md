@@ -515,7 +515,20 @@ A partir de aquí se puede
 seguir aprendiendo sobre devops en [el blog](http://devops.com/) o
 [en IBM](http://www.ibm.com/ibm/devops/us/en/). Libros como
 [DevOps for Developers](https://www.amazon.es/dp/B009D6ZB0G?tag=atalaya-21&camp=3634&creative=24822&linkCode=as4&creativeASIN=B009D6ZB0G&adid=0PB61Y2QD9K49W3EP8MN&)
-pueden ser también de ayuda.
+pueden ser también de ayuda. Esta
+[comparativa de sistemas de configuración](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software)
+te permite ver todos los que hay, ver la última columna cuáles son los
+más recientemente actualizados y qué esperar de cada uno de
+ellos. También en este
+[gist explica las diferencias entre herramientas en este área](https://gist.github.com/jaceklaskowski/bd3d06489ec004af6ed9),
+incluyendo también Puppet e incluso Docker. En
+[presentaciones como esta se habla de CAPS: Chef, Ansible, Puppet and Salt](http://es.slideshare.net/DanielKrook/caps-whats-best-for-deploying-and-managing-openstack-chef-vs-ansible-vs-puppet-vs-salt)
+como una categoría en sí. En
+[este artículo](http://www.infoworld.com/article/2609482/data-center/data-center-review-puppet-vs-chef-vs-ansible-vs-salt.html)
+también los comparan y en
+[este último](https://jjasghar.github.io/blog/2015/12/20/chef-puppet-ansible-salt-rosetta-stone/)
+llevan a cabo la configuración de un servidor simple usando los
+cuatro. 
 
 
 	
