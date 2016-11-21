@@ -241,8 +241,8 @@ y se puede empezar a trabajar en ella con
 ## Provisionando máquinas virtuales.
 
 Una vez creada la máquina virtual se puede entrar en ella y
-configurarla e instalar todo lo necesario. Pero, por supuesto,
-sabiendo lo que sabemos sobre provisionamiento, Vagrant permite
+configurarla e instalar todo lo necesario desde la línea de órdenes. Pero, por supuesto,
+sabiendo lo que sabemos sobre provisionamiento por el tema corresondiente, Vagrant permite
 [provisionarla de muchas maneras diferentes](https://www.vagrantup.com/docs/provisioning/index.html). En
 general, Vagrant usará opciones de configuración diferente dependiendo
 del provisionador, subirá un fichero a un directorio temporal del
@@ -265,7 +265,7 @@ el utilísimo editor `emacs`usando este
 	VAGRANTFILE_API_VERSION = "2"
 
 	Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-		config.vm.box = "centos65"
+		config.vm.box = "centos7"
 
 	    config.vm.provision "shell",
 			inline: "yum install -y emacs"
@@ -340,7 +340,7 @@ incluimos en el Vagrantfile. las órdenes para usarlo en
 	VAGRANTFILE_API_VERSION = "2"
 
 	Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-		config.vm.box = "centos63"
+		config.vm.box = "centos7"
 
 	    config.vm.provision "chef_solo" do |chef|
 			chef.add_recipe "emacs"
