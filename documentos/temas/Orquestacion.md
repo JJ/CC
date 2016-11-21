@@ -165,6 +165,17 @@ a Vagrant) tendrás que hacerlo así:
 
 	ssh vagrant@127.0.0.1 -p 2222
 
+
+Para suspender el estado de la máquina virtual y guardarlo se usa
+
+	vagrant suspend
+
+Esto dejará la máquina virtual en el estado en el que esté, que se
+podrá recuperar en la próxima sesión. Cuando quieras deshacerte de
+ella,
+
+	vagrant destroy
+
 <div class='ejercicios' markdown='1'>
 
 	Instalar una máquina virtual Debian usando Vagrant y conectar con ella.
@@ -211,15 +222,18 @@ ya podemos inicializar la máquina y trabajar con ella (pero antes voy
 a apagar la máquina Azure que tengo ejecutándose desde que empecé a
 contar lo anterior)
 
-	vagrant up --provider=libvirt
+	sudo vagrant up --provider=libvirt
 	
 donde la principal diferencia es que le estamos indicando que queremos
 usar el *proveedor* libvirt, en vez de el que usa por omisión, Virtual
-Box.
+Box. Dado que este proveedor conecta con un daemon que se ejecuta en
+modo privilegiado, habrá que usar `sudo` en este caso. 
 
 y se puede empezar a trabajar en ella con 
 
-	vagrant ssh
+	sudo vagrant ssh
+
+Y todos los demás comandos, también con `sudo`. 
 	
 <div class='ejercicios' markdown='1'>
 
