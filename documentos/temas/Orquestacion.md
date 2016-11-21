@@ -30,9 +30,10 @@ Orquestación de máquinas virtuales
 
 A un nivel superior al provisionamiento de máquinas virtuales está la configuración,
 orquestación y gestión de las mismas, herramientas como
-[Vagrant](http://vagrantup.com) ayudan a hacerlo, aunque también
+[Vagrant](https://vagrantup.com) ayudan a hacerlo, aunque también
 Puppet e incluso Juju pueden hacer muchas de las funciones de
-Vagrant. Algunas alternativas son
+Vagrant, salvo por el hecho de que no pueden trabajar directamente con
+el hipervisor. Algunas alternativas son
 [Vortex](https://www.npmjs.com/package/vortex), pero en general el
 mercado está bastante copado por Vagrant. 
 
@@ -136,7 +137,7 @@ este programa bajándose todas sus dependencias (y tardará un rato).
 <div class='nota' markdown='1'>
 
 El provisionamiento por *shell* admite
-[muchas más opciones](http://docs.vagrantup.com/v2/provisioning/shell.html):
+[muchas más opciones](http://docs.vagrantup.com/provisioning/shell.html):
 se puede usar un fichero externo o incluso alojado en un sitio web
 (por ejemplo, un Gist alojado en Github). Por ejemplo,
 [este para provisionar nginx y node](https://gist.github.com/DamonOehlman/5754302)
@@ -215,7 +216,7 @@ A donde ir desde aquí
 -------
 
 Este es el último tema del curso, pero a partir de aquí se puede
-seguir aprendiendo sobre devops en [el blog](http://devops.com/) o
+seguir aprendiendo sobre devops en [el blog](https://devops.com/) o
 [en IBM](http://www.ibm.com/ibm/devops/us/en/). Libros como
 [DevOps for Developers](https://www.amazon.es/dp/B009D6ZB0G?tag=atalaya-21&camp=3634&creative=24822&linkCode=as4&creativeASIN=B009D6ZB0G&adid=0PB61Y2QD9K49W3EP8MN&)
 pueden ser también de ayuda.
