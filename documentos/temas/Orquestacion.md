@@ -70,15 +70,33 @@ orquestación y gestión de las mismas, herramientas como
 Puppet e incluso Juju pueden hacer muchas de las funciones de
 Vagrant, salvo por el hecho de que no pueden trabajar directamente con
 el hipervisor. Algunas alternativas son
-[Vortex](https://www.npmjs.com/package/vortex), pero en general el
-mercado está bastante copado por Vagrant. 
+[Vortex](https://www.npmjs.com/package/vortex) que parece estar
+prácticamente sin desarrollo, pero en general el
+mercado está bastante copado por Vagrant para sistemas en nube o
+locales. 
 
 La ventaja de Vagrant es que permite gestionar el ciclo de vida
 completo de una máquina virtual, desde la creación hasta su
 destrucción pasando por el provisionamiento y la monitorización o
 conexión con la misma. Además, permite trabajar con todo tipo de
-hipervisores y provisionadores tales como los que hemos visto
-anteriormente.
+hipervisores y provisionadores tanto de contenedores, como en cloud,
+como en local.
+
+Sigue las
+[instrucciones en la web](https://www.vagrantup.com/downloads.html),
+para instalarte Vagrant. Es una aplicación escrita en Ruby, por lo que
+tendrás que tener una instalación preparada. Te aconsejamos que uses
+un gestor de versiones como [RVM](http://rvm.io) o RBEnv para poder
+trabajar con él en espacio de usuario fácilmente.
+
+>Tendrás que tener
+>[algunas nociones de Ruby](http://rubytutorial.wikidot.com/introduccion)
+>para trabajar con Vagrant, que no es sino un DSL (Domain Specific
+>Language) construido sobre él, al menos tendrás que saber como
+>instalar *gemas* (bibliotecas), que se usarán para los *plugin* de
+>Vagrant y también cómo trabajar con bucles y variables, que se usarán
+>en el fichero de definición de máquinas virtuales denominado
+>`Vagrantfile`. 
 
 Con Vagrant [te puedes descargar directamente](https://gist.github.com/dergachev/3866825)
 [una máquina configurada de esta lista](http://www.vagrantbox.es/) o
@@ -88,13 +106,7 @@ que uno de los que usa Vagrant.
 Trabajemos con la configuración por omisión añadiendo la siguiente
 `box`:
 
-	https://github.com/vezzoni/vagrant-vboxes/releases/download/0.0.1/centos-7-x86_64.box
-
-
-Por
-ejemplo, 
-
-	vagrant box add viniciusfs/centos7 https://atlas.hashicorp.com/viniciusfs/boxes/centos7/
+	vagrant box add centos7 https://github.com/vezzoni/vagrant-vboxes/releases/download/0.0.1/centos-7-x86_64.box
 
 Para conocer todos los comandos de vagrant, `vagrant help` o `vagrant
 list-commands`. En este caso usamos un subcomando de `vagrant box`,
@@ -107,32 +119,119 @@ arbitrario.
 El formato determinará en qué tipo de hipervisor se puede ejecutar; en
 general, Vagrant usa VirtualBox, y los `.box` se pueden importar
 directamente en esta aplicación; los formatos vienen listados en la
-página anterior y en este caso el formato se denomina `libvirt`, una
-capa de abstracción sobre todo tipo de hipervisores. Otras imágenes de la lista anterior están configuradas para trabajar con
-VMWare, pero son las menos. En todo caso conviene usar para cada
-hipervisor la máquina adecuada. A continuación,
+página anterior.
 
-	vagrant init viniciusfs/centos7
-	
-crea un fichero `Vagrantfile` (y así te lo dice) que permite trabajar
-y llevar a cabo cualquier configuración adicional. Una vez hecho eso
-ya podemos inicializar la máquina y trabajar con ella (pero antes voy
-a apagar la máquina Azure que tengo ejecutándose desde que empecé a
-contar lo anterior)
+A continuación
 
-	vagrant up --provider=libvirt
-	
-y se puede empezar a trabajar en ella con 
+	vagrant init centos7
+
+creará un `Vagrantfile` en el directorio en el que te encuentres, por
+lo que es conveniente que el directorio esté vacío. En este caso crea
+[este fichero](https://github.com/JJ/CC/blob/master/ejemplos/vbox-centos7/Vagrantfile)
+en el que realmente sólo se configura el nombre de la máquina
+(`centos7`) pero que a base de des-comentar otras líneas se puede
+llegar a configurar completa.
+
+Para comenzar a usar la máquina virtual se usa
+
+	vagrant up
+
+En ese momento Virtual Box arrancará la máquina y te podrás conectar a
+ella usando
 
 	vagrant ssh
-	
+
+Si quieres conectar por `ssh` desde algún otro programa, por ejemplo,
+Ansible, tendrás que fijarte en cómo se configura la conexión y que
+puerto se usa. Generalmente, una máquina virtual va a usar el puerto
+2222 de ssh y para que accedas desde *fuera* de Vagrant tendrás además
+que copiar tu clave pública, lo que puedes hacer copiando y pegándola
+desde un terminal o bien
+[usando el propio Vagrantfile](http://stackoverflow.com/questions/30075461/how-do-i-add-my-own-public-key-to-vagrant-vm)
+añadiendo las dos líneas siguientes:
+
+	#Copy public key
+	ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+	config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys", privileged: false
+
+Una vez creada la máquina, para que use estas líneas y se provisione
+hay que hacer
+
+	vagrant provision
+
+Hay que seguir teniendo en cuenta que se usa el puerto 2222, o sea que
+para conectarte a la máquina (o usar un provisionador de forma externa
+a Vagrant) tendrás que hacerlo así:
+
+	ssh vagrant@127.0.0.1 -p 2222
+
 <div class='ejercicios' markdown='1'>
 
 	Instalar una máquina virtual Debian usando Vagrant y conectar con ella.
 	
 </div>
 
+### Trabajando con otro tipo de máquinas virtuales e hipervisores.
+
+En [`vagrantbox.es`](http://vagrantbox.es) la mayor parte de las
+imágenes tienen formato VirtualBox, pero algunas tienen formato
+"Vagrant-lxc" (para usar en el sistema de virtualización lxc), VMWare,
+KVM, Parallels o `libvirt`. Ninguno de estos formatos está instalado
+por defecto en Vagrant y habrá que instalar un plugin. Instalemos el
+[plugin de `libvirt`](https://github.com/vagrant-libvirt/vagrant-libvirt),
+por ejemplo, siguiendo las instrucciones de su repositorio; de hecho,
+para instalar libvirt habrá que seguir también las instrucciones en el
+mismo repositorio, que incluyen instalar
+`qemu`. [libVir](https://libvirt.org/) es una librería que abstrae
+todas las funciones de virtualización, permitiendo trabajar de forma
+uniforme con diferentes hipervisores tales como Xen e incluso el
+propio `lxc` mencionado anteriormente. Una vez instalada esta
+biblioteca, no hay que preocuparse tanto por el sistema de
+virtualización que tengamos debajo e incluso podemos trabajar con ella
+de forma programática para crear y configurar máquinas virtuales sin
+tener que recurrir a sistemas de orquestación o provisionamiento.  
+
+Simultáneamente a la instalación, podemos descargarnos esta máquina
+virtual que está en ese formato. 
+
+	vagrant box add viniciusfs/centos7 https://atlas.hashicorp.com/viniciusfs/boxes/centos7/
+
+A continuación, la inicialización será de la misma forma
+
+	vagrant init viniciusfs/centos7
 	
+crea un fichero `Vagrantfile` (y así te lo dice) que ya sabemos que permite trabajar
+y llevar a cabo cualquier configuración adicional.
+
+>Podemos añadirle también la clave pública propia si queremos usarlo
+> "desde fuera".
+
+Una vez hecho eso
+ya podemos inicializar la máquina y trabajar con ella (pero antes voy
+a apagar la máquina Azure que tengo ejecutándose desde que empecé a
+contar lo anterior)
+
+	vagrant up --provider=libvirt
+	
+donde la principal diferencia es que le estamos indicando que queremos
+usar el *proveedor* libvirt, en vez de el que usa por omisión, Virtual
+Box.
+
+y se puede empezar a trabajar en ella con 
+
+	vagrant ssh
+	
+<div class='ejercicios' markdown='1'>
+
+	Instalar una máquina virtual ArchLinux o FreeBSD para KVM, otro
+    hipervisor libre, usando Vagrant y conectar con ella. 
+	
+</div>
+
+
+
+## Provisionando máquinas virtuales.
+
 Una vez creada la máquina virtual se puede entrar en ella y
 configurarla e instalar todo lo necesario. Pero, por supuesto,
 sabiendo lo que sabemos sobre provisionamiento, Vagrant permite
