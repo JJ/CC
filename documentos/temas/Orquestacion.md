@@ -229,7 +229,9 @@ usar el *proveedor* libvirt, en vez de el que usa por omisión, Virtual
 Box. Dado que este proveedor conecta con un daemon que se ejecuta en
 modo privilegiado, habrá que usar `sudo` en este caso. 
 
-y se puede empezar a trabajar en ella con 
+>Puede que tengas [un problema con libvirt](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/669) con "dhcp_leases: undefined method" o similar comprobad la versión que tenéis. Si estáis usando la 0.0.36 desinstaladla e instalad la 0.0.35 como indican en el mismo issue. 
+
+Usando este sudo,  puedes conectarte con la máquina usando
 
 	sudo vagrant ssh
 
