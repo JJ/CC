@@ -85,7 +85,15 @@ anteriormente.
 Con Vagrant [te puedes descargar directamente](https://gist.github.com/dergachev/3866825)
 [una máquina configurada de esta lista](http://www.vagrantbox.es/) o
 bien cualquier otra máquina configurada en el formato `box`, que es el
-que uno de los que usa Vagrant. Por
+que uno de los que usa Vagrant.
+
+Trabajemos con la configuración por omisión añadiendo la siguiente
+`box`:
+
+	https://github.com/vezzoni/vagrant-vboxes/releases/download/0.0.1/centos-7-x86_64.box
+
+
+Por
 ejemplo, 
 
 	vagrant box add viniciusfs/centos7 https://atlas.hashicorp.com/viniciusfs/boxes/centos7/
@@ -114,7 +122,7 @@ ya podemos inicializar la máquina y trabajar con ella (pero antes voy
 a apagar la máquina Azure que tengo ejecutándose desde que empecé a
 contar lo anterior)
 
-	vagrant up
+	vagrant up --provider=libvirt
 	
 y se puede empezar a trabajar en ella con 
 
