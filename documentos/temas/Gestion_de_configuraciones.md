@@ -138,7 +138,7 @@ La última tendrá que ser `sudo bash` en caso de que se quiera instalar como ad
 
 <div class='ejercicios' markdown='1'>
 
-Instalar chef en la máquina virtual que vayamos a usar
+Instalar `chef-solo` en la máquina virtual que vayamos a usar
 
 </div>
 
