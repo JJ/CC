@@ -3,14 +3,14 @@ layout: index
 
 apuntes: T
 
-prev: Gestion_de_configuraciones
+prev: Automatizando_cloud
 ---
 
 Gestión de infraestructuras virtuales
 ===
 
 <!--@
-prev: Gestion_de_configuraciones
+prev: Automatizando_cloud
 -->
 
 <div class="objetivos" markdown="1">
