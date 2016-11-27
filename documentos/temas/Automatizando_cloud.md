@@ -87,9 +87,55 @@ OpenStack u OpenNebula, o privativos, como los que se usan en la
 mayoría de los sistemas de la nube. Todos, sin embargo, permiten
 realizar una serie de tareas que veremos a continuación. 
 
+## Pasos a dar para creación de una instancia en la nube
+
+Aunque los proveedores de nube usan mecanismos diferentes, en realidad
+los pasos a dar son muy parecidos, lo que evidentemente es un paso
+para que luego se automatice con un interfaz uniforme. Para echar a
+andar una instancia, o máquina virtual, en la nube, habrá que hacer
+los siguientes pasos
+
+1. Localizar la imagen que deseamos. Esta imagen contendrá el sistema
+   operativo, así como alguna utilidad adicional que nos permita
+   trabajar fácilmente con sistemas de aprovisionamiento o configurar
+   alguna otra cosa. Para ello, suelen tener imágenes o *plantillas*
+   que se pueden usar de forma directa, algunas de ellas *oficiales* o
+   proporcionadas por los que publiquen el sistema operativo. Antes de
+   crear una instancia de la máquina virtual habrá que buscar la forma
+   de identificar estas imágenes para crear la instancia con ellas.
+
+2. Crear metadatos relativos a la instancia de la máquina
+   virtual. Cosas como el *grupo de recursos*, que indica cómo va a
+   escalar, el centro de datos en el que se va a alojar, y alguna cosa
+   adicional, como el tipo de instancia que se va a usar.
+
+3. Crear una forma automática de acceder a la máquina virtual,
+   generalmente mediante generación y copia a la instancia en
+   funcionamiento de la clave pública cuyo par está bajo tu
+   control. Dependiendo del sistema, se tendrá que hacer "a mano" o
+   usará las claves ya disponibles.
+
+4. Acceso a la propia máquina virtual en funcionamiento,
+   principalmente la consola y también a los registros, así como los
+   metadatos.
+
+Todas las plataformas suelen tener una utilidad de línea de órdenes, o
+varias, que permite acceder al API de la misma una vez identificados
+ahí. Generalmente son libres, así que también se pueden usar desde tu
+propio programa. A continuación veremos como trabajar en alguna de
+ellas. 
 
 Trabajando con máquinas virtuales en la nube
 ----
+
+Vamos a ver cómo funcionan algunas de estas utilidades de línea de
+órdenes, empezando por el CLI de Azure clásico, luego el moderno, y
+más adelante el de OpenStack
+
+### CLI de Azure (clásico)
+
+>Tendrás que instalártelo, previa instalación de node.js, que es en lo
+>que está basado. `npm install -g azure-cli` bastará. 
 
 Azure permite,
 [tras la creación de almacenamiento virtual](Almacenamiento.md), la
