@@ -192,34 +192,57 @@ innecesarios.
 
 <div class='ejercicios' markdown='1'>
 
-Crear una máquina virtual ubuntu e instalar en ella un servidor
+Crear una máquina virtual Ubuntu e instalar en ella un servidor
 nginx para poder acceder mediante web.
 
 </div>
 
-En principio, para configurar la máquina virtual hay que hacerlo como
-siempre se ha hecho: trabajando desde línea de órdenes, editando ficheros de configuración e instalando
-los paquetes que hagan falta. Pero
-[conociendo `juju`](Contenedores.md) tambien
-[se puede trabajar con él](https://juju.ubuntu.com/docs/config-azure.html)
-para instalar lo que haga falta. Se puede empezar, por ejemplo
-[instalando el GUI de juju](https://juju.ubuntu.com/docs/howto-gui-management.html)
-para poder a partir de ahí manejar despliegues en máquinas virtuales
-desde él. 
-
-<div class='ejercicios' markdown='1'>
-
-Usar `juju` para hacer el ejercicio anterior.
-
-</div>
-
-Trabajar con estas máquinas virtuales como se tratara de máquinas
+Trabajar con estas máquinas virtuales como si se tratara de máquinas
 reales no tiene mucho sentido. El uso de infraestructuras virtuales,
 precisamente, lo que permite es automatizar la creación y
 provisionamiento de las mismas de forma que se puedan crear y
 configurar máquinas en instantes y personalizarlas de forma
 masiva. Veremos como hacerlo en el
-[siguiente tema](Gestion_de_configuraciones). 
+[siguiente tema](Gestion_de_configuraciones).
+
+### Usando el nuevo CLI de Azure
+
+El
+[nuevo CLI de Azure](https://github.com/Azure/azure-cli#installation)
+está basado en Python y se puede instalar siguiendo las instrucciones
+arriba. Es bastante similar al anterior, pero hay muchas tareas que se
+realizan mucho más fácilmente usando valores por omisión relativamente
+fáciles. Además, devuelve los resultados en JSON por lo que es
+relativamente fácil trabajar con ellos de forma automática.
+
+Comencemos por crear un grupo de recursos
+
+	az resource group create -l westeurope -n CCGroupEU
+
+Esto crea un grupo de recursos en Europa Occidental. Vamos a usarlo
+más adelante para crear nuestras instancias.
+
+	az vm image list
+
+Te devolverá el grupo de máquinas virtuales disponibles. Pero, como se
+ha dicho antes, te lo devuelve en JSON, con lo que es conveniente
+filtrarlo. Para ello usaremos el tremendamente útil `jq`,
+[un lenguaje de peticiones para JSON](https://stedolan.github.io/jq/manual/)
+con cierta similitud con los selectores CSS.
+
+> Si se añade `--all` te devolverá todas las imágenes disponibles,
+> pero ahora mismo hay un
+> [bug registrado](https://github.com/Azure/azure-cli/issues/1209)
+> porque no se pueden usar en realidad con la línea de órdenes. Así
+> que nos ceñiremos a las imágenes disponibles localmente.
+
+	az vm image list | jq '.[] | select( .offer | contains("buntu"))'
+
+Esta te filtrará sólo aquellas imágenes que contengan `buntu` (no
+sabemos si va a estar en mayúsculas o minúsculas), devolviendo algo
+así:
+
+![Imágenes Ubuntu disponibles](../img/jq.png)
 
 A dónde ir desde aquí
 -----
