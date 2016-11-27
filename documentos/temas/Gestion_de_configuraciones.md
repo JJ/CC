@@ -3,7 +3,7 @@ Gestión de infraestructuras virtuales
 
 <!--@
 prev: Arquitecturas_para_la_nube
-next: Orquestacion
+next: Automatizando_cloud
 -->
 
 <div class="objetivos" markdown="1">
