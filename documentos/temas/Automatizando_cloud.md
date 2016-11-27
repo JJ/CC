@@ -253,15 +253,41 @@ así:
 
 ![Imágenes Ubuntu disponibles](../img/jq.png)
 
+De esta imagen hay que usar dos IDs: `urn` y `urnAlias`, que nos
+permitirán identificar la imagen con la que vamos a trabajar a
+continuación:
+
+	az vm create -g CCGroupEU -n bobot --image UbuntuLTS
+
+En este caso creamos la máquina virtual llamada `bobot` con una imagen
+de UbuntuLTS y `az` usa una clave SSH pública de nuestro directorio y
+nuestro nombre de usuario para copiarlo directamente a la instancia
+creada. Puede tardar un rato en crear la instancia, eso sí, pero
+devolverá un JSON que incluirá metadatos y su IP pública como
+`publicIpAddress`. Una vez hecho eso, te puedes conectar directamente
+a ella con su dirección IP y ssh.
+
+Una vez que se deje de usar, conviene pararla con
+
+	az vm stop -g CCGroupEU -n bobot
+
+Si no, seguirá disminuyendo el crédito.
+
+<div class='ejercicios' markdown='1'>
+
+Crear una instancia de una máquina virtual Debian y provisionarla
+usando alguna de las aplicaciones vistas en
+[el tema sobre herramientas de aprovisionamiento](Gestion_de_configuraciones)
+
+
 A dónde ir desde aquí
 -----
 
-En el [siguiente tema](Gestion_de_configuraciones) pondremos en
+Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones) pondremos en
 práctica todos los conceptos aprendidos en este tema y
-[el anterior](Almacenamiento) para crear configuraciones que sean
+[en el tema dedicado a almacenamiento](Almacenamiento) para crear configuraciones que sean
 fácilmente gestionables y adaptables a un fin determinado.
-Antes, habrá que hacer y entregar la
-[tercera práctica](../practicas/3.MV).
+
 
 Si lo que necesitas es un sistema ligero de virtualización, puedes
 mirar cómo virtualizar con [contenedores](Contenedores.mv).
