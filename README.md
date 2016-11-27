@@ -56,7 +56,9 @@ de definición de infraestructura para un proyecto existente. A grosso
 modo, los hitos se organizarán de la forma siguiente. 
 
 1. [Puesta a punto del repositorio y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio.md)
-1. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md)
+2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md)
+3. [Provisionamiento de máquinas virtuales](documentos/proyecto/2.Provisionamiento.md)
+
 
 Tutorías virtuales
 ----
