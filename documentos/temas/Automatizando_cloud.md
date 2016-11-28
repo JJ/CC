@@ -279,6 +279,64 @@ Crear una instancia de una máquina virtual Debian y provisionarla
 usando alguna de las aplicaciones vistas en
 [el tema sobre herramientas de aprovisionamiento](Gestion_de_configuraciones)
 
+</div>
+
+## CLI de OpenStack
+
+[OpenStack](http://docs.openstack.org) es un sistema libre de gestión
+de nubes privadas que se ha hecho muy popular incluso en revendedores
+de sistemas como IBM u otros, que en realidad ofrecen este tipo de
+acceso. Se puede probar en alguna instalación disponible en la
+Facultad o Escuela o bien en http://trystack.org si te admiten.
+
+Como arriba, hay también un
+[sistema de línea de órdenes](http://docs.openstack.org/user-guide/cli.html),
+inicialmente uno para cada uno de los subsistemas de OpenStack pero
+últimamente unificado a una sola orden, `openstack`. Para trabajar con
+él, tras descargar el cliente, hay que
+[configurar una serie de variables de entorno descargándose un fichero](http://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html),
+que él mismo pone las API keys y demás. Una vez ejecutado ese *script*
+de configuración se puede, por ejemplo, crear una clave para acceder
+a las instancias que se vayan a crear 
+
+	nova keypair-add Try > openstack-key.pem
+
+que crea una clave llamada `Try` y la guarda en un fichero de clave
+privada.
+
+Sin embargo, al menos en esta instalación de prueba, es más fácil
+trabajar con el interfaz gráfico que con la línea de órdenes. En
+[este tutorial](https://github.com/naturalis/openstack-docs/wiki/Howto:-Creating-and-using-OpenStack-SSH-keypairs-on-Linux-and-OSX)
+te explica cómo crear el par de claves. Una vez creada
+
+* Hay que añadir el puerto 22 de ssh al grupo de seguridad que se vaya
+  a usar
+
+* Se tiene que crear una red y una subred para conectar la instancia a
+  la subred.
+
+* Se tiene que crear un *router* al cual se conecta la red
+
+* Finalmente, se crea la instancia. Esto sí se puede hacer desde línea
+  de órdenes
+
+	openstack server create --flavor m1.smaller --image Ubuntu16.04 \
+	  --nic net-id=b96fdf8d-99ca-3333-5555-38ccd03a4a3c \
+	  --security-group default --key-name Try bobot-x
+
+* La orden anterior crea una instancia llamada `bobot-x` con una
+  imagen de Ubuntu (una de las que hay por defecto) y una red cuyo ID
+  se extrae desde el interfaz gráfico. El *flavor* es el tipo de
+  instancia, esta es una de las que hay disponibles.
+
+* Una vez creada la instancia, se le asigna una IP flotante para poder
+  acceder desde fuera, teóricamente de esta forma, aunque da error
+  (*Conflict*) al menos a mi
+
+	openstack floating ip create b96fdf8d-99ca-3333-5555-38ccd03a4a3c
+
+* Si eso falla, se puede asignar una IP flotante desde el interfaz
+  gráfico, yendo a la lista de instancias. 
 
 A dónde ir desde aquí
 -----
