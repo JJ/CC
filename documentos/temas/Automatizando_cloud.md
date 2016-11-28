@@ -329,6 +329,13 @@ te explica cómo crear el par de claves. Una vez creada
 * Si eso falla, se puede asignar una IP flotante desde el interfaz
   gráfico, yendo a la lista de instancias. 
 
+<div class='ejercicios' markdown='1'>
+
+Conseguir una cuenta de prueba en OpenStack y crear una instancia a la
+que se pueda acceder, provisionándola con algún *script* disponible. 
+
+</div>
+
 A dónde ir desde aquí
 -----
 
