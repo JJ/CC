@@ -319,6 +319,15 @@ nube de Amazon. En este punto nos interesa también porque se puede
 usar directamente con contenedores LXC, mientras que no todos lo
 hacen.
 
+En el caso de `lxc`, una forma fácil de gestionar configuraciones es
+hacerlo con Vagrant usando
+[el driver para lxc](https://github.com/fgrehm/vagrant-lxc). Usando
+alguna de las
+[*cajas base* de  Atlas](https://github.com/obnoxxx/vagrant-lxc-base-boxes),
+pero requiere cierta cantidad de trabajo para construir las plantillas
+con Vagrant; eventualmente las cajas se tienen que introducir en el
+directorio de plantillas de `lxc` para que se puedan usar.  
+
 
 Gestión de contenedores con `docker`
 ---
