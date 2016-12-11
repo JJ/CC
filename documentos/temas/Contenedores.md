@@ -104,7 +104,9 @@ espacios de nombres y grupos de control. `lxc` es la solución de
 creación de contenedores más fácil de usar hoy en día en Linux.
 
 <div class='ejercicios' markdown="1">
-Instala LXC en tu versión de Linux favorita. Normalmente la versión en desarrollo, disponible tanto en [GitHub](http://github.com/lxc/lxc) como en el [sitio web](http://linuxcontainers.org) está bastante más avanzada; para evitar problemas sobre todo con las herramientas que vamos a ver más adelante, conviene que te instales la última versión y si es posible una igual o mayor a la 1.0.
+
+Instala LXC en tu versión de Linux favorita. Normalmente la versión en desarrollo, disponible tanto en [GitHub](http://github.com/lxc/lxc) como en el [sitio web](http://linuxcontainers.org) está bastante más avanzada; para evitar problemas sobre todo con las herramientas que vamos a ver más adelante, conviene que te instales la última versión y si es posible una igual o mayor a la 2.0.
+
 </div>
 
 Esta virtualización *ligera* tiene, entre otras ventajas, una
@@ -134,17 +136,34 @@ siempre que tengamos una distro como Ubuntu relativamente moderna:
 
 	sudo lxc-create -t ubuntu -n una-caja
 	
-crea un contenedor denominado `una-caja` e instala Ubuntu en él. Esto
-tardará un rato mientras se bajan una serie de paquetes y se
-instalan. O se
+crea un contenedor denominado `una-caja` e instala Ubuntu en él. La
+versión que instala dependerá de la que tengas ya instalada; además,
+aparte de la instalación mínima, incluirá en el contenedor una serie
+de utilidades como `vim` o `ssh`. Todo esto lo indicará en la consola
+según se vaya instalando, lo que tardará un rato.
+
+Alternativamente, se
 puede usar una imagen similar a la que se usa en
-[EC2 de Amazon](https://aws.amazon.com/es/ec2/):
+[EC2 de Amazon](https://aws.amazon.com/es/ec2/), donde se denomina AMI:
 
 	sudo lxc-create -t ubuntu-cloud -n nubecilla
 
 que funciona de forma ligeramente diferente, porque se descarga un
-fichero `.tar.gz` usando `wget` (y tarda también un rato). Podemos
-listar los contenedores que tenemos disponibles con `lxc-list`, aunque
+fichero `.tar.gz` usando `wget` (y tarda también un rato). Las
+imágenes disponibles las podemos consultar en
+[esta web](https://us.images.linuxcontainers.org/), junto con los
+nombres que tienen. La opción `-t` es para las plantillas existentes
+instaladas en el sistema, que podemos consultar en el directorio
+`/usr/share/lxc/templates`. 
+
+>Entre ellas, varias de [Alpine Linux](https://alpinelinux.org/), una
+>distribución ligera precisamente dirigida a su uso dentro de
+>contenedores. También una llamada `plamo`, escrita en algún tipo de
+>letra oriental, posiblemente japonés. Se puede instalar, pero igual
+>no se entiende nada. 
+
+Podemos
+listar los contenedores que tenemos disponibles con `lxc-ls`, aunque
 en este momento cualquier contenedor debería estar en estado
 `STOPPED`.
 
@@ -152,7 +171,8 @@ Para arrancar el contenedor y conectarse a él,
 
 	sudo lxc-start -n nubecilla
 	
-Dependiendo del contenedor que se arranque, habrá una configuración
+, donde `-n` es la opción para dar el nombre del contenedor que se va
+a iniciar. Dependiendo del contenedor que se arranque, habrá una configuración
 inicial; en este caso, se configuran una serie de cosas y
 eventualmente sale el login, que será para todas las máquinas creadas
 de esta forma `ubuntu` (también clave). Lo que hace esta orden es
