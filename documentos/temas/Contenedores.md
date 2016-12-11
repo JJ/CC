@@ -146,7 +146,8 @@ siempre que tengamos una distro como Ubuntu relativamente moderna:
 	sudo lxc-create -t ubuntu -n una-caja
 	
 crea un contenedor denominado `una-caja` e instala Ubuntu en él. La
-versión que instala dependerá de la que tengas ya instalada; además,
+versión que instala dependerá de la que venga con la instalación de
+`lxc`, generalmente una de larga duración y en mi caso la 14.04.4; además,
 aparte de la instalación mínima, incluirá en el contenedor una serie
 de utilidades como `vim` o `ssh`. Todo esto lo indicará en la consola
 según se vaya instalando, lo que tardará un rato.
@@ -188,28 +189,35 @@ de esta forma `ubuntu` (también clave). Lo que hace esta orden es
 automatizar una serie de tareas tales como asignar los CGROUPS, crear
 los namespaces que sean necesarios, y crear un puente de red tal como
 hemos visto anteriormente. En general, creará un puente llamado
-`lxcbr0` y otro con el prefijo `veth`. 
+`lxcbr0` y otro con el prefijo `veth`.
+
+Te puedes conectar al contenedor desde otro terminal usando
+`lxc-console`
+
+	sudo lxc-console -n nubecilla
+
+La salida te dejará "pegado" al terminal. 
 
 <div class='ejercicios' markdown='1'>
 
-Comprobar qué interfaces puente se han creado y explicarlos.
+Instalar una distro tal como Alpine y conectarse a ella usando el
+nombre de usuario y clave que indicará en su creación
 
 </div>
 
 Una vez arrancados los
 contenedores, si se lista desde fuera aparecerá de esta forma:
 
-	jmerelo@penny:~/txt/docencia/infraestructuras-virtuales/IV/documentos$ sudo lxc-list
-	RUNNING
-		contenedor
-		nubecilla
+~~~
+$ sudo lxc-ls -f      
+NAME       STATE    IPV4        IPV6  AUTOSTART  
+-----------------------------------------------
+nubecilla  RUNNING  10.0.3.171  -     NO         
+una-caja   STOPPED  -           -     NO         
+~~~
 
-	FROZEN
-
-	STOPPED
-	
-Y, dentro de la misma, tendremos una máquina virtual con estas
-apariencias:
+Y, dentro de la misma, tendremos una máquina virtual con esta
+pinta:
 
 ![Dentro del contenedor LXC](../img/lxc.png)
 
@@ -235,6 +243,13 @@ Crear y ejecutar un contenedor basado en una distribución diferente
 
 </div>
 
+>La
+>[guía del usuario](https://help.ubuntu.com/lts/serverguide/lxc.html#lxc-startup)
+>indica también cómo usarlo como usuario sin privilegios, lo que
+>mayormente te ahorra la molestia de introducir sudo y en su caso la
+>clave cada vez. Si lo vas a usar con cierta frecuencia, sobre todo en
+>desarrollo, puede ser una mejor opción. 
+
 Los contenedores son la implementación de todas las tecnologías vistas
 anteriormente: espacios de nombres, CGroups y puentes de red y como
 tales pueden ser configurados para usar sólo una cantidad determinada
@@ -255,30 +270,14 @@ instalados y desde ella se pueden arrancar o parar.
 
 ![Página inicial de LXC-Webpanel](../img/Overview-lxc.png)
 
-<div class='ejercicios' markdown='1'>
-
-1. Instalar `lxc-webpanel` y usarlo para arrancar, parar y visualizar las
-máquinas virtuales que se tengan instaladas.
-
-2. Desde el panel restringir los recursos que pueden usar: CPU
-*shares*, CPUs que se pueden usar (en sistemas multinúcleo) o cantidad
-de memoria.
-</div>
-
 Cada solución de virtualización tiene sus ventajas e
-inconvenientes. La principal ventaja de los contenedores son el
+inconvenientes. La principal ventaja de este tipo de contenedores son el
 aislamiento de recursos y la posibilidad de manejarlos, lo que hace
 que se use de forma habitual en proveedores de infraestructuras
 virtuales. El hecho de que se virtualicen los recursos también implica
 que haya una diferencia en las prestaciones, que puede ser apreciable
 en ciertas circunstancias.
 
-<div class='ejercicios' markdown='1'>
-
-1. Comparar las prestaciones de un servidor web en una jaula y el
-mismo servidor en un contenedor. Usar nginx.
-
-</div>
 
 Configurando las aplicaciones en un táper
 ----
