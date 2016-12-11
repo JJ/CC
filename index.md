@@ -31,10 +31,11 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 
 1. [Arquitecturas software para la nube](documentos/temas/Arquitecturas_para_la_nube).
 6. [Gestión de configuraciones](documentos/temas/Gestion_de_configuraciones).
+3. [Creación de infraestructuras virtuales reproducibles](Automatizando_cloud)
 6. [Orquestación de máquinas virtuales](documentos/temas/Orquestacion).
-2. [Iniciación a DevOps: desarrollo basado en pruebas](documentos/temas/Desarrollo_basado_en_pruebas).
-3. [Uso de plataformas como servicio para prototipado rápido](documentos/temas/PaaS)
 3. [Usando contenedores](documentos/temas/Contenedores)
+
+
 
 
 La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/CC16-17).
