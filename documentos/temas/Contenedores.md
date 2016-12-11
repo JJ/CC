@@ -261,11 +261,7 @@ tápers (que así vamos a llamar a los contenedores a partir de ahora)
 es más fácil usar [lxc-webpanel](http://lxc-webpanel.github.io/), un
 centro de control por web que permite iniciar y parar las máquinas
 virtuales, aparte de controlar los recursos asignados a cada una de
-ellas y visualizarlos, tal como se muestra a continuación.
-
-![Visualizando uno de los tápers](../img/Minube-lxc.png)
-
-La página principal te da una visión general de los contenedores
+ellas y visualizarlos; la página principal te da una visión general de los contenedores
 instalados y desde ella se pueden arrancar o parar. 
 
 ![Página inicial de LXC-Webpanel](../img/Overview-lxc.png)
@@ -326,8 +322,25 @@ alguna de las
 [*cajas base* de  Atlas](https://github.com/obnoxxx/vagrant-lxc-base-boxes),
 pero requiere cierta cantidad de trabajo para construir las plantillas
 con Vagrant; eventualmente las cajas se tienen que introducir en el
-directorio de plantillas de `lxc` para que se puedan usar.  
+directorio de plantillas de `lxc` para que se puedan usar, o bien usar
+las de Atlas tales como esta
 
+	vagrant init fgrehm/wheezy64-lxc
+
+e iniciarlas con
+
+	sudo vagrant up --provider=lxc
+
+Con esto se puede provisionar o conectarse usando las herramientas habituales,
+siempre que la imagen tenga soporte para ello. Por ejemplo, se puede
+conectar uno a esta imagen de Debian con `vagrant ssh`  
+
+<div class='ejercicios' markdown="1">
+
+Provisionar un contenedor LXC usando Ansible o alguna otra herramienta
+de configuración que ya se haya usado
+
+</div>
 
 Gestión de contenedores con `docker`
 ---
