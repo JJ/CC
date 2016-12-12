@@ -423,13 +423,43 @@ este tipo de virtualización: es tan rápido arrancar que se puede usar
 para un simple comando y dejar de usarse a continuación. 
 
 Esta imagen de Alpine no contiene bash, pero si el shell básico
-llamado `Dash` y que está instalado en `sh`,
+llamado `ash` y que está instalado en `sh`,
 por lo que podremos *meternos* en la misma ejecutando
 
 	sudo docker run -it alpine sh
 
 Dentro de ella podemos trabajar como un consola cualquiera, pero
-teniendo acceso sólo a los recursos propios. 
+teniendo acceso sólo a los recursos propios.
+
+### Trabajando con Alpine Linux
+
+Alpine es una instalación peculiar y más bien mínima, pero es muy
+interesante para usarla como base para nuestros propios contenedores,
+por su minimalismo. Conviene
+[consultar el wiki](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
+para ver las tareas que se pueden realizar en ella.
+
+Una de las primeras cosas que habrá que hacer es actualizar la
+distribución. Alpine usa `apk` como gestor de paquetes, y la
+instalación base no permite hacer gran cosa, así que para empezar
+conviene hacer
+
+	apk update
+	apk upgrade
+
+Para que actualice la lista de paquetes disponibles. Después, se pueden instalar paquetes, por ejemplo  
+
+	apk add git
+	apk add perl
+
+Una vez añadido todo lo que queramos a la imagen, se puede almacenar o
+subir al registro. En todo caso, `apk search` te permite buscar los
+ficheros y paquetes que necesites para compilar o instalar algo. En
+algunos casos puede ser un poco más complicado que para otras distros,
+pero merece la pena. 
+
+
+### Tareas adicionales con contenedores Docker
 
 La máquina instalada la podemos usar con el nombre del SO, pero cada
 táper tiene un id único que se puede ver con 
@@ -469,7 +499,8 @@ que [indica](https://docs.docker.com/engine/reference/commandline/cli/) que
 se está creando un seudo-terminal (`-t`) y se está ejecutando el
 comando interactivamente (`-i`). A partir de ahí sale la línea de
 órdenes, con privilegios de superusuario, y podemos trabajar con la
-máquina e instalar lo que se nos ocurra.
+máquina e instalar lo que se nos ocurra. Esto, claro está, si tenemos
+ese contenedor instalado y ejecutándose. 
 
 Los contenedores se pueden arrancar de forma independiente con `start`
 
