@@ -340,12 +340,25 @@ actualmente está sufriendo una gran expansión, sobre todo por su uso
 dentro de [CoreOS](http://coreos.com/), un sistema operativo básico
 basado en Linux para despliegue masivo de servidores.
 
-Por lo pronto,
-[instalar `docker` es fácil, pero no directo](https://www.docker.com/). Por
-ejemplo, para
+[Instalar `docker` es fácil en las últimas versiones](https://www.docker.com/). Por
+ejemplo, para 
 [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 y no funcionará con versiones más antiguas de la 12.04 (y en este caso
-sólo si se instalan kernels posteriores).
+sólo si se instalan kernels posteriores). En las últimas versiones, de
+hecho, ya está en los repositorios y para instalarlo no hay más que
+hacer
+
+	sudo apt-get install docker.io
+
+aunque la versión en los repositorios puede ser más antigua que la que
+se descargue de la web. La instalación coloca también un servicio que
+se ejecutará como *daemon* y se arrancará con el inicio del
+sistema. La instalación desde docker.com siguiendo las instrucciones
+te instalará también una serie de imágenes genéricas con las que se
+puede empezar a trabajar de forma más o menos inmediata. Una vez
+intalado, el clásico
+
+	sudo docker run hello-world
 
 `docker` permite instalar contenedores y trabajar con
 ellos. Normalmente el ciclo de vida de un contenedor pasa por su
