@@ -379,7 +379,7 @@ de tareas.
 Así que comencemos desde el principio:
 [vamos a ejecutar `docker`y trabajar con el contenedor creado](https://docs.docker.com/engine/installation/linux/ubuntulinux/).
 
-Primero, se ejecuta como un servicio
+Si no se está ejecutando ya, se puede arrancar como un servicio
 
 	sudo docker -d &
 	
@@ -388,11 +388,15 @@ el estado de docker y demás. Cada una de las órdenes se ejecutará
 también como superusuario, al tener que contactar con este *daemon*
 usando un socket protegido.
 
+>Estamos trabajando con docker como superusuario, que es la forma
+>adecuada de
+>hacerlo. [Puedes seguir estas instrucciones para hacerlo desde un usuario](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin privilegios de administración.
+
 A partir de ahí, podemos crear un contenedor
 
-	sudo docker pull ubuntu
+	sudo docker pull alpine
 	
-Esta orden descarga un contenedor básico de ubuntu y lo instala. Hay
+Esta orden descarga un contenedor básico de [Alpine Linux](https://alpinelinux.org/) y lo instala. Hay
 muchas imágenes creadas y se pueden crear y compartir en el sitio web
 de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
@@ -409,7 +413,7 @@ adicional, por ejemplo de CentOS.
 
 </div>
 
-El contenedor tarda un poco en instalarse, mientras se baja o no la
+El contenedor tarda un poco en instalarse, mientras se baja la
 imagen. Una vez bajada, se pueden empezar a ejecutar comandos. Lo
 bueno de `docker` es que permite ejecutarlos directamente sin
 necesidad de conectarse a la máquina; la gestión de la conexión y
@@ -417,18 +421,31 @@ demás lo hace ello, al modo de Vagrant (lo que veremos más adelante).
 
 Podemos ejecutar, por ejemplo, un listado de los directorios
 
-	sudo docker run ubuntu ls
+	sudo docker run alpine ls
 	
 Tras el sudo, hace falta docker; `run` es el comando de docker que
-estamos usando, `ubuntu` es el id de la máquina y finalmente `ls`el
-comando que estamos ejecutando.
+estamos usando, `ubuntu` es el nombre de la máquina, el mismo que le
+hayamos dado antes cuando hemos hecho pull y finalmente `ls`, el
+comando que estamos ejecutando. Este comando arranca el contenedor, lo
+ejecuta y a continuación sale de él. Esta es una de las ventajas de
+este tipo de virtualización: es tan rápido arrancar que se puede usar
+para un simple comando y dejar de usarse a continuación. 
+
+Esta imagen de Alpine no contiene bash, pero si el shell básico
+llamado `Dash` y que está instalado en `sh`,
+por lo que podremos *meternos* en la misma ejecutando
+
+	sudo docker run -it alpine sh
+
+Dentro de ella podemos trabajar como un consola cualquiera, pero
+teniendo acceso sólo a los recursos propios. 
 
 La máquina instalada la podemos usar con el nombre del SO, pero cada
 táper tiene un id único que se puede ver con 
 
 	sudo docker ps -a=false
 	
-Obteniendo algo así:
+siempre que se esté ejecutando, obteniendo algo así:
 
 	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 b76f70b6c5ce        ubuntu:12.04        /bin/bash           About an hour ago   Up About an hour                        sharp_brattain     
