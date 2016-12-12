@@ -227,12 +227,6 @@ contenedores con otro tipo de sistemas, sean o no debianitas. Se
 pueden crear sistemas basados en Fedora; también clonar contenedores
 existentes para que vaya todo rápidamente. 
 
-<div class='ejercicios' markdown='1'>
-
-Crear y ejecutar un contenedor basado en una distribución diferente
-   a la que tienes instalada.
-
-</div>
 
 >La
 >[guía del usuario](https://help.ubuntu.com/lts/serverguide/lxc.html#lxc-startup)
@@ -353,12 +347,6 @@ ejemplo, para
 y no funcionará con versiones más antiguas de la 12.04 (y en este caso
 sólo si se instalan kernels posteriores).
 
-<div class='ejercicios' markdown='1'>
-
-Instalar docker.
-
-</div>
-
 `docker` permite instalar contenedores y trabajar con
 ellos. Normalmente el ciclo de vida de un contenedor pasa por su
 creación y, más adelante, ejecución de algún tipo de programa, por
@@ -394,10 +382,8 @@ también otros con una funcionalidad determinada.
 
 <div class='ejercicios' markdown='1'>
 
-1. Instalar a partir de docker una imagen alternativa de Ubuntu y alguna
+Instalar una imagen alternativa de Ubuntu y alguna
 adicional, por ejemplo de CentOS.
-
-2. Buscar e instalar una imagen que incluya MongoDB.
 
 </div>
 
