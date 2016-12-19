@@ -103,6 +103,17 @@ acceso al sistema de ficheros con otras restricciones aprovechando
 espacios de nombres y grupos de control. `lxc` es la solución de
 creación de contenedores más fácil de usar hoy en día en Linux.
 
+### Instalando LXC en Arch
+
+Para instalar LXC en una distribución Arch Linux lo que haremos será ejecutar el comando siguiente:
+
+```bash
+pacaur -S lxc arch-install-scripts
+```
+ así instalaremos LXC junto con otro módulo que se recomienda en la [documentación de Arch para este paquete](https://wiki.archlinux.org/index.php/Linux_Containers). Además hemos de señalar que, por cuestiones de seguridad, que también se comentan en esta documentación, los namespaces de usuario estarán desabilitados (como veremos al usar `lxc-checkconfig`) ya que no se puede arrancar servidores sin permisos de superusuario.
+ 
+Cuando queramos crear nuestro primer contenedor LXC usando las instrucciones que se detallan en este tema es posible que nos dé un error diciéndonos que no está disponible el comando debootstrap, solamente tendremos que instalarlo con la orden `sudo pacman -S debootstrap`, y ya podremos crear contenedores LXC sin problemas.
+
 <div class='ejercicios' markdown="1">
 
 Instala LXC en tu versión de Linux favorita. Normalmente la versión en
