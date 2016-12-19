@@ -546,6 +546,86 @@ ejemplo, [se
 puede crear fácilmente un Dockerfile para instalar node.js con el
 módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/). 
 
+
+## Usando Dockerfiles
+
+La infraestructura se debe crear usando código, y en Docker pasa
+exactamente igual. Tiene un mecanismo llamado Dockerfiles que permite
+construir contenedores o tápers de forma que lo que quede en control
+de versiones sea el código en sí, no el contenedor, con el
+consiguiente ahorro de espacio. La ventaja además es que
+en [el Docker hub](http://hub.docker.com) hay multitud de contenedores
+ya hechos, que se pueden usar directamente. Veamos un ejemplo, como es
+habitual para el bot en Scala que hemos venido usando.
+
+~~~
+FROM frolvlad/alpine-scala
+MAINTAINER JJ Merelo <jjmerelo@GMail.com>
+WORKDIR /root
+CMD ["/usr/local/bin/sbt"]
+
+RUN apk update && apk upgrade
+RUN apk add git
+RUN apk add curl
+
+RUN curl -sL "http://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz" -o /usr/local/sbt.tgz
+RUN cd /usr/local && tar xvfz sbt.tgz
+RUN mv /usr/local/sbt-launcher-packaging-0.13.13/bin/sbt-launch.jar /usr/local/bin
+COPY sbt /usr/local/bin
+RUN chmod 0755 /usr/local/bin/sbt
+RUN /usr/local/bin/sbt
+~~~
+
+En la primera línea se establece cuál es el contenedor de origen que
+estamos usando. Siempre es conveniente usar distros ligeras, y en este
+caso usamos la ya conocida Alpine, que tiene ya una versión que
+incluye Scala. A continuación se pone la dirección del mantenedor,
+servidor, y el directorio de trabajo `WORKDIR` en el que se va a
+entrar cuando se ejecute algo en el contenedor. El siguiente comando
+`CMD` indica qué se va a ejecutar en caso de que se ejecute el
+contenedor directamente; se trata de `sbt`, el Scala Build Tool. Como
+se ve, la estructura siempre es la misma: órdenes en mayúsculas, al
+principio de la
+línea. La
+[referencia de las mismas se encuentra en la web de Docker](https://docs.docker.com/engine/reference/builder/#copy). 
+
+Las siguientes órdenes son todas `apk`, el gestor de paquetes de
+Alpine. No tiene tantos empaquetados como las distros más conocidas,
+pero sí los básidos; siempre al principio habrá que actualizar los
+repos para que no haya problemas.
+
+El resto son otras órdenes `RUN`, que ejecutan directamente órdenes
+dentro del contenedor, y que en este caso descargan un paquete, que es
+la forma como se distribuye `sbt`, y lo ponen como ejecutable. Hay que
+hacer una cosa adicional: copiar mediante `COPY` un fichero local,
+`sbt`, para usarlo como base. 
+
+Para crear una imagen a partir de esto se usa 
+	
+	sudo docker build -t jjmerelo/bobot .
+	
+(o el nick que tengas en GitHub). El `-t` es, como es habitual, para
+asignar un *tag*, en este caso uno que se puede usar más adelante en
+el Docker Hub. Tardará un rato, sobre todo por la descarga de unas
+cuantes librerías por parte de sbt, lo que se hace en la última
+línea. Una vez hecho esto, si funciona la construcción, se
+podrá ejecutar con 
+
+	sudo docker run -it jjmerelo/bot
+	
+o con
+
+	sudo docker run -it jjmerelo/bot sh
+	
+para entrar directamente en la línea de órdenes. El repositorio está
+en [bobot](https://github.com/JJ/BoBot), como es habitual. 
+	
+<div class='ejercicios' markdown='1'>
+
+Reproducir los contenedores creados anteriormente usando un Dockerfile.
+
+</div>	
+
 	
 A dónde ir desde aquí
 -----
