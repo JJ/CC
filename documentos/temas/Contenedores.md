@@ -105,7 +105,12 @@ creación de contenedores más fácil de usar hoy en día en Linux.
 
 <div class='ejercicios' markdown="1">
 
-Instala LXC en tu versión de Linux favorita. Normalmente la versión en desarrollo, disponible tanto en [GitHub](http://github.com/lxc/lxc) como en el [sitio web](http://linuxcontainers.org) está bastante más avanzada; para evitar problemas sobre todo con las herramientas que vamos a ver más adelante, conviene que te instales la última versión y si es posible una igual o mayor a la 2.0.
+Instala LXC en tu versión de Linux favorita. Normalmente la versión en
+desarrollo, disponible tanto en [GitHub](http://github.com/lxc/lxc)
+como en el [sitio web](http://linuxcontainers.org) está bastante más
+avanzada; para evitar problemas sobre todo con las herramientas que
+vamos a ver más adelante, conviene que te instales la última versión y
+si es posible una igual o mayor a la 2.0. 
 
 </div>
 
@@ -235,9 +240,9 @@ existentes para que vaya todo rápidamente.
 >clave cada vez. Si lo vas a usar con cierta frecuencia, sobre todo en
 >desarrollo, puede ser una mejor opción. 
 
-Los contenedores son la implementación de todas las tecnologías vistas
-anteriormente: espacios de nombres, CGroups y puentes de red y como
-tales pueden ser configurados para usar sólo una cantidad determinada
+Los contenedores son la implementación de una serie de tecnologías
+[que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion.md): y como
+tales pueden ser configurados para usar sólo una cuota determinada
 de recursos, por ejemplo
 [la CPU](http://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275). Para
 ello se usan los ficheros de configuración de cada una de las máquinas
