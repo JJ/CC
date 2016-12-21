@@ -486,8 +486,7 @@ conviene hacer
 
 Para que actualice la lista de paquetes disponibles. Después, se pueden instalar paquetes, por ejemplo  
 
-	apk add git
-	apk add perl
+	apk add git perl
 
 Una vez añadido todo lo que queramos a la imagen, se puede almacenar o
 subir al registro. En todo caso, `apk search` te permite buscar los
@@ -663,7 +662,21 @@ Reproducir los contenedores creados anteriormente usando un Dockerfile.
 
 </div>	
 
-	
+
+## Otros contenedores
+
+La infraestructura basada en contenedores ha tenido tanto éxito que
+han surgido diferentes tipos y también iniciativas de
+estandarización. El principal competidor este área es
+[`rkt`](https://github.com/coreos/rkt), que además es nativo en el
+sistema operativo basado en contenedores CoreOS y que puede usar de
+forma nativa el formato de contenedores de Docker, aparte de tener el
+suyo propio llamado APPC y
+[su propio lenguaje para provisionar contenedores](https://github.com/coreos/rkt/blob/master/Documentation/getting-started-guide.md).
+A diferencia de Docker, se pueden firmar y verificar imágenes, para
+evitar su manipulación externa, y, al estar basado en estándares,
+puede usar herramientas de orquestación como Kubernetes u otras. 
+
 A dónde ir desde aquí
 -----
 
