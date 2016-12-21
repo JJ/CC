@@ -105,14 +105,24 @@ creación de contenedores más fácil de usar hoy en día en Linux.
 
 ### Instalando LXC en Arch
 
-Para instalar LXC en una distribución Arch Linux lo que haremos será ejecutar el comando siguiente:
+Para instalar LXC en una distribución ArchLinux lo que haremos será ejecutar el comando siguiente:
 
 ```bash
 pacaur -S lxc arch-install-scripts
 ```
- así instalaremos LXC junto con otro módulo que se recomienda en la [documentación de Arch para este paquete](https://wiki.archlinux.org/index.php/Linux_Containers). Además hemos de señalar que, por cuestiones de seguridad, que también se comentan en esta documentación, los namespaces de usuario estarán desabilitados (como veremos al usar `lxc-checkconfig`) ya que no se puede arrancar servidores sin permisos de superusuario.
+
+Así instalaremos LXC junto con otro módulo que se recomienda en la
+[documentación de Arch para este paquete](https://wiki.archlinux.org/index.php/Linux_Containers). Además
+hemos de señalar que, por cuestiones de seguridad que también se
+comentan en esta documentación, los *namespaces* de usuario estarán
+deshabilitados (como veremos al usar `lxc-checkconfig`) ya que no se
+puede arrancar servidores sin permisos de superusuario.
  
-Cuando queramos crear nuestro primer contenedor LXC usando las instrucciones que se detallan en este tema es posible que nos dé un error diciéndonos que no está disponible el comando debootstrap, solamente tendremos que instalarlo con la orden `sudo pacman -S debootstrap`, y ya podremos crear contenedores LXC sin problemas.
+Cuando queramos crear nuestro primer contenedor LXC usando las
+instrucciones que se detallan en este tema es posible que nos dé un
+error diciéndonos que no está disponible el comando `debootstrap`,
+solamente tendremos que instalarlo con la orden `sudo pacman -S
+debootstrap`, y ya podremos crear contenedores LXC sin problemas. 
 
 <div class='ejercicios' markdown="1">
 
@@ -124,6 +134,8 @@ vamos a ver más adelante, conviene que te instales la última versión y
 si es posible una igual o mayor a la 2.0. 
 
 </div>
+
+### Conclusiones
 
 Esta virtualización *ligera* tiene, entre otras ventajas, una
 *huella* escasa: un ordenador normal puede admitir 10 veces más contenedores
