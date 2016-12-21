@@ -683,7 +683,7 @@ Reproducir los contenedores creados anteriormente usando un Dockerfile.
 </div>
 
 
-## Otros contenedores
+## Otros gestores de contenedores
 
 La infraestructura basada en contenedores ha tenido tanto éxito que
 han surgido diferentes tipos y también iniciativas de
