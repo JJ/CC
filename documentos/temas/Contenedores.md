@@ -697,6 +697,17 @@ A diferencia de Docker, se pueden firmar y verificar imágenes, para
 evitar su manipulación externa, y, al estar basado en estándares,
 puede usar herramientas de orquestación como Kubernetes u otras.
 
+Por otro lado,
+la [*Open Container Initiative*](https://www.opencontainers.org/) está
+todavía en una fase muy preliminar. Aunque contiene especificaciones
+tanto apara ejecutarlos como para especificar imágenes, por lo pronto
+no hay muchas implementaciones de referencia que se puedan usar. Si
+acaba cuajando puede hacer que el campo de los contenedores evite
+monopolios, así que habrá que estar atentos al
+mismo. Hay
+[trabajo en curso](https://github.com/opencontainers/image-tools) para
+comprobar imágenes, por ejemplo. 
+
 A dónde ir desde aquí
 -----
 
