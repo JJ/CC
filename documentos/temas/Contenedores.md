@@ -103,6 +103,35 @@ acceso al sistema de ficheros con otras restricciones aprovechando
 espacios de nombres y grupos de control. `lxc` es la solución de
 creación de contenedores más fácil de usar hoy en día en Linux.
 
+
+Esta virtualización *ligera* tiene, entre otras ventajas, una
+*huella* escasa: un ordenador normal puede admitir 10 veces más contenedores
+(o *tápers*) que máquinas virtuales; su tiempo de arranque es de unos
+segundos y, además, tienes mayor control desde fuera (desde el anfitrión) del que se pueda
+tener usando máquinas virtuales. 
+
+Usando `lxc`
+--
+
+No todos los núcleos del sistema operativo pueden usar este tipo de container; para empezar,
+dependerá de cómo esté compilado, pero también del soporte que tenga
+el hardware. `lxc-checkconfig` permite comprobar si está preparado
+para usar este tipo de tecnología y también si se ha configurado correctamente. Parte de la configuración se
+refiere a la instalación de `cgroups`, que hemos visto antes; el resto
+a los espacios de nombres y a capacidades *misceláneas* relacionadas
+con la red y el sistema de ficheros. 
+
+![Usando lxc-chkconfig](../img/lxcchkconfig.png)
+
+Hay que tener en cuenta que si no aparece alguno de esas capacidades
+como activada, LXC no va a funcionar. 
+
+La instalación en Linux se hace usando el paquete en los
+repositorios. Por las diferencias entre la versión uno y la 2, en
+algunos aparecerán paquetes `lxc1` y `lxc2`. Es mejor instalar este
+último, con el nombre que sea. Al menos en Ubuntu y distribuciones
+derivadas de esta, como Mint, no debería de tener un gran problema. 
+
 ### Instalando LXC en Arch
 
 Para instalar LXC en una distribución ArchLinux lo que haremos será ejecutar el comando siguiente:
@@ -135,29 +164,9 @@ si es posible una igual o mayor a la 2.0.
 
 </div>
 
-### Conclusiones
+### Creando contenedores con `lxc`
 
-Esta virtualización *ligera* tiene, entre otras ventajas, una
-*huella* escasa: un ordenador normal puede admitir 10 veces más contenedores
-(o *tápers*) que máquinas virtuales; su tiempo de arranque es de unos
-segundos y, además, tienes mayor control desde fuera (desde el anfitrión) del que se pueda
-tener usando máquinas virtuales. 
-
-Usando `lxc`
---
-
-No todos los núcleos del sistema operativo pueden usar este tipo de container; para empezar,
-dependerá de cómo esté compilado, pero también del soporte que tenga
-el hardware. `lxc-checkconfig` permite comprobar si está preparado
-para usar este tipo de tecnología y también si se ha configurado correctamente. Parte de la configuración se
-refiere a la instalación de `cgroups`, que hemos visto antes; el resto
-a los espacios de nombres y a capacidades *misceláneas* relacionadas
-con la red y el sistema de ficheros. 
-
-![Usando lxc-chkconfig](../img/lxcchkconfig.png)
-
-Hay que tener en cuenta que si no aparece alguno de esas capacidades
-como activada, LXC no va a funcionar. Pero si no hay ningún problema y
+Si no hay ningún problema y
 todas están *enabled* se puede
 [usar lxc con relativa facilidad](http://www.stgraber.org/2012/05/04/lxc-in-ubuntu-12-04-lts/)
 siempre que tengamos una distro como Ubuntu relativamente moderna:
