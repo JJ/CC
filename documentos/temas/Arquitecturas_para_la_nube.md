@@ -3,14 +3,14 @@ layout: index
 
 apuntes: T
 
-next: Gestion_de_configuraciones
+next: Provision
 ---
 
 Arquitecturas software para la nube
 =========================
 
 <!--@
-next: Gestion_de_configuraciones
+next: Provision
 -->
 
 <div class="objetivos" markdown="1">
