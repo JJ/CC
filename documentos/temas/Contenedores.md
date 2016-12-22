@@ -3,16 +3,14 @@ layout: index
 
 apuntes: T
 
-prev: PaaS
-next: Gestion_de_configuraciones
+prev: Orquestacion
 ---
 
 Virtualización *ligera* usando contenedores
 ===
 
 <!--@
-prev: PaaS
-next: Gestion_de_configuraciones
+prev: Orquestacion
 -->
 
 <div class="objetivos" markdown="1">
