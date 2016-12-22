@@ -34,7 +34,7 @@ Objetivos
 
 </div>
 
-Un  paso más hacia la virtualización completa: *contenedores*
+Introducción a la virtualización ligera: *contenedores*
 -------
 
 El aislamiento de grupos de procesos formando una *jaula* o
