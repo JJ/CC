@@ -3,6 +3,7 @@ Gestión de infraestructuras virtuales
 
 <!--@
 prev: Automatizando_cloud
+next: Contenedores
 -->
 
 <div class="objetivos" markdown="1">
@@ -24,7 +25,7 @@ prev: Automatizando_cloud
 
 </div>
 
-##Introducción
+## Introducción
 
 Antes de poder provisionar una máquina o conjunto de máquinas
 virtuales, es necesario poder crearlas. En el espíritu DevOps, tiene

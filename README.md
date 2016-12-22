@@ -30,9 +30,6 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 6. [Orquestación de máquinas virtuales](documentos/temas/Orquestacion.md).
 3. [Usando contenedores](documentos/temas/Contenedores.md)
 
-
-
-
 La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/CC16-17).
 
 Seminarios
