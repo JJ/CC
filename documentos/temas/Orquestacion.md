@@ -394,6 +394,23 @@ VirtualBox y usar
 [`vagrant package`](https://www.vagrantup.com/docs/cli/package.html)
 para *empaquetarla* y usarla para su consumo posterior. 
 
+## Algunos ejemplos interesantes
+
+La migración a la nube ha hecho que se creen ciertos sistemas
+operativos cuyo fin sea servir de soporte exclusivamente a servicios
+en la misma. Uno de ellos es [Scotch Box](https://box.scotch.io/), que
+empaqueta una serie de herramientas de cliente servidor para ejecutar
+una pila de desarrollo completa,
+o
+[`bosh-lite`](https://atlas.hashicorp.com/cloudfoundry/boxes/bosh-lite) para
+[BOSH, una herramienta de gestión de sistemas distribuidos](https://bosh.io/) o
+[una máquina virtual para empezar con ciencia de datos](https://atlas.hashicorp.com/data-science-toolbox/boxes/dst).
+
+Pero una de las más interesantes que podemos usar
+es
+[CoreOS](https://coreos.com/os/docs/latest/booting-on-vagrant.html),
+un sistema operativo diseñado para ejecutar contenedores. 
+
 A donde ir desde aquí
 -------
 
