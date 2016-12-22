@@ -4,6 +4,7 @@ layout: index
 apuntes: T
 
 prev: Automatizando_cloud
+next: Contenedores
 ---
 
 Gestión de infraestructuras virtuales
@@ -11,6 +12,7 @@ Gestión de infraestructuras virtuales
 
 <!--@
 prev: Automatizando_cloud
+next: Contenedores
 -->
 
 <div class="objetivos" markdown="1">
@@ -32,7 +34,7 @@ prev: Automatizando_cloud
 
 </div>
 
-##Introducción
+## Introducción
 
 Antes de poder provisionar una máquina o conjunto de máquinas
 virtuales, es necesario poder crearlas. En el espíritu DevOps, tiene
@@ -239,7 +241,7 @@ modo privilegiado, habrá que usar `sudo` en este caso.
 
 >Puede que tengas [un problema con libvirt](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/669) con "dhcp_leases: undefined method" o similar comprobad la versión que tenéis. Si estáis usando la 0.0.36 desinstaladla e instalad la 0.0.35 como indican en el mismo issue. 
 
-y se puede empezar a trabajar en ella con 
+Usando este sudo,  puedes conectarte con la máquina usando
 
 	sudo vagrant ssh
 
