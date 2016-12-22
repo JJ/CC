@@ -2,7 +2,7 @@ Arquitecturas software para la nube
 =========================
 
 <!--@
-next: Gestion_de_configuraciones
+next: Provision
 -->
 
 <div class="objetivos" markdown="1">
