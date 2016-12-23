@@ -250,12 +250,16 @@ todos los datos almacenados tengan la misma estructura, se desperdicia
 una cantidad considerable de espacio. Por eso en estas arquitecturas
 modernas están complementadas por las bases de datos NoSQL, de las que
 lo primero que hay qeu aprender es que no se trata de sistemas que
-usen un lenguaje llamado NoSQL (aunque algunos lo están tratando de
+usen un lenguaje llamado [NoSQL](https://es.wikipedia.org/wiki/NoSQL) (aunque algunos lo están tratando de
 diseñar) sino de base de datos muy diversas y que usan lenguajes
 propios o empotrados para acceder a ellas. Hay diferentes tipos de
 almacenes de datos: clave-valor, basadas en documentos, orientadas a
 columna o a grafos. Una aplicación moderna usará una, o varias, desde
 MongoDB hasta Redis pasando por Cassandra o Elastic.
+
+En algunos casos también se pueden usar los sistemas de descubrimiento
+mencionados anteriormente, que esencialmente son almacenes
+clave-valor. 
 
 ### Lenguajes de programación: programación políglota
 
