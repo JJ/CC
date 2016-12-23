@@ -9,3 +9,5 @@ bin/*
 .kitchen/
 .kitchen.local.yml
 _site/
+
+*.epub
