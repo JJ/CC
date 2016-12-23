@@ -44,7 +44,7 @@ desplegables en la nube..</li>
 
 El panorama informático del siglo XXI está lleno de posibilidades:
 múltiples lugares donde ejecutar una aplicación, múltiples servicios
-que se pueden usar desde ella, todo conectado a través de Internet, y
+que se pueden usar desde ella, todos conectados a través de Internet, y
 metodologías específicas para desarrollar aplicaciones. Se hace
 difícil concretar en una arquitectura específica, entendiendo por
 arquitectura una visión de bloques de los diferentes componentes de
@@ -65,13 +65,17 @@ para la cual crear la arquitectura virtual.
 
 >En gran parte, este apartado está sacado de
 >[Software Architecture Patterns, de Mark Richards](http://www.oreilly.com/programming/free/software-architecture-patterns.csp?intcmp=il-prog-free-article-sa15_sa_patterns),
->un *ebook* gratuito que te puedes descargar dando tu email.
+>un *ebook* gratuito que te puedes descargar dando tu email, lo que
+>aconsejo vivamente que hagas. 
 
-En general, todas estas arquitecturas tienen en común que tratan de
-buscar la consistencia en la velocidad de respuesta al usuario, que
-usan recursos de diferentes empresas, propios y ajenos, y que se basan
+En general, las arquitecturas software modernas tienen como objetivo
+común el
+buscar la consistencia en la velocidad de respuesta al usuario. Otros
+elementos comunes son el uso de recursos propios combinados con
+recursos de diferentes empresas o *vendors*, y que se basan
 en unas metodologías de desarrollo ágil e integración y despliegue
-continuo. Veremos de qué arquitecturas se trata
+continuo. Veremos qué arquitecturas son las más comunes en este
+contexto. 
 
 ### Arquitectura en capas
 
@@ -145,7 +149,7 @@ independiente, poder escalar de forma independiente y, por tanto,
 constituye uno de los patrones de arquitectura más populares hoy en
 día.
 
-### Arquitectura basada en espacio
+### Arquitectura basada en *espacios*
 
 Entre todas las arquitecturas vistas,
 [esta](https://en.wikipedia.org/wiki/Space-based_architecture) es la
@@ -199,6 +203,34 @@ o externamente. Segundo, usan algún tipo de API, generalmente basada
 en REST. Tercero, están basadas en diferentes componentes. Y, por
 último, usan y/o despliegan servicios en la nube. A su vez, esto
 implica una serie de cosas que veremos a continuación.
+
+### Descubrimiento de servicios
+
+Una de las características que a veces no se consideran *a priori* de
+estas arquitecturas es su naturaleza dinámica. El hecho de que se
+añadan nuevos proveedores, procesadores o microservicios implica que
+estos nuevos servicios tienen que conocer la configuración del resto
+de la nube para coordinarse correctamente y también para que los
+sistemas de escalado automático sepan con qué nodos cuentan para
+ello. Estos sistemas de descubrimiento con, en una primera
+aproximación, unos ficheros de configuración dinámicos y
+distribuidos. 
+
+En casi todos los casos en que se despliegue una arquitectura en la
+nube se tendrá que hacer uso de este tipo de sistemas. Muchos
+*orquestadores* como Kubernetes tienen los suyos propios, pero
+familiarizarse con otros
+como
+[`etcd` o `consul`](https://www.consul.io/intro/vs/zookeeper.html)
+puede ayudar a entender su funcionamiento y, sobre todo, a usarlo en
+nuestras propias arquitecturas que no usen orquestadores. 
+
+Hay
+muchos
+[patrones de uso de estos sistemas de descubrimiento de servicios](https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/),
+pero en general se trata de tener, cuando se lanza un nuevo proveedor,
+un URL que proporcione información y un cliente que sea capaz de
+procesarla. 
 
 ### Almacenes de datos: más allá del SQL
 
