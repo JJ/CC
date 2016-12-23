@@ -3,3 +3,4 @@
 * [ ] Eliminar objetivos de la asignatura
 * [ ] Añadir un prólogo específico
 * [ ] Cambiar los *headings* de h2 a h1
+* [ ] Comprobar la ortografía
