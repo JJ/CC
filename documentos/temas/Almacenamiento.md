@@ -73,7 +73,7 @@ Objetivos
 
 Los
 [volúmenes lógicos](http://en.wikipedia.org/wiki/Logical_volume_management)
-son una virtualización habitual en los sistemas operativos.  Un
+son una infraestructura virtual habitual en los sistemas operativos.  Un
 volumen lógico crea un LE (*logical extent*) a partir de uno PE o
 varios en el caso de que se haga *mirroring* transparente. Los LEs se
 agrupan en volúmenes lógicos, que aparecen desde el punto de vista del
@@ -85,9 +85,9 @@ estos se suelen usar para manejar la partición extendida y crear más
 particiones que las cuatro que admite por defecto el formato de tabla
 de particiones usual. 
 
- <div class='ejercicios' markdown="1">
+<div class='ejercicios' markdown="1">
  
- 1. ¿Cómo tienes instalado tu disco duro? ¿Usas particiones? ¿Volúmenes lógicos? 
+1. ¿Cómo tienes instalado tu disco duro? ¿Usas particiones? ¿Volúmenes lógicos? 
  
 2. Si tienes acceso en tu escuela o facultad a un ordenador común para las prácticas, ¿qué almacenamiento físico utiliza? 
 
@@ -435,7 +435,7 @@ siguiente:
  o wollowitz o el que sea). 
  
  El dispositivo que se use en `devs` debe estar formateado con el
- formato XFS; en el caso de usar otro distema de ficheros (btrfs
+ formato XFS; en el caso de usar otro sistema de ficheros (btrfs
  principalmente) se indica previamente (como se indica en las
  instrucciones que se han enlazado anteriormente. 
  
@@ -636,8 +636,7 @@ anterior. Los containers se crean de forma más o menos obvia:
 	azure storage container create taper
 	
 pero esto crea un contenedor de acceso privado; los contenedores
-pueden ser públicos o privados y por defecto se crean privados; [los
-niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
+pueden ser públicos o privados y por defecto se crean privados; [los niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
 
  * Públicos para que se vean los contenidos.
  * Blobs públicos sólo.
