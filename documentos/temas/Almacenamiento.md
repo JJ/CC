@@ -58,8 +58,7 @@ Objetivos
  
  Cada disco, partición o LUN constituye un volumen físico que tiene
  una serie de bloques llamados *physical extents* (PEs, extensiones
- físicas) y se puede combinar en un [*physical volume group* (PVG,
- grupo de volúmenes físicos)](http://h30499.www3.hp.com/t5/LVM-and-VxVM/what-is-PVG-Physical-Volume-Group/td-p/4675294), de forma que un PE de cada volumen en el PVG se usará de forma combinada a la hora de escribir. 
+ físicas) y se puede combinar en un [*physical volume group* o PVG, grupo de volúmenes físicos](http://h30499.www3.hp.com/t5/LVM-and-VxVM/what-is-PVG-Physical-Volume-Group/td-p/4675294), de forma que un PE de cada volumen en el PVG se usará de forma combinada a la hora de escribir. 
  
  Esta estructura física se reflejará en la estructura lógica, pero la virtualización lo que hace es transformarla de forma que cada elemento lógico equivalga a uno, varios o ningún elemento físico.  
 
@@ -167,8 +166,7 @@ más espacio del que usan realmente.
 
 Este almacenamiento virtual puede tener muchos formatos
 diferentes. Cada hipervisor, librería, máquina virtual o incluso
-[*pools* de recursos admite unos
-cuantos; por ejemplo, `libvirt` admite hasta una docena](http://libvirt.org/storage.html). Cualquiera
+[*pools* de recursos admite unos cuantos; por ejemplo, `libvirt` admite hasta una docena](http://libvirt.org/storage.html). Cualquiera
 de estos recursos tendrá que estar disponible (es decir,
 *provisionado*) antes de la creación de la máquina virtual, por lo que
 conviene *tenerlo a mano* previamente, junto con las herramientas que
@@ -615,12 +613,9 @@ copiar en variables de entorno (que tendrás que cargar en tu
 	export AZURE_STORAGE_ACCOUNT=esacuenta
 	export	AZURE_STORAGE_ACCESS_KEY=unaclavemuylargaquetieneigualesalfinal==
 	
-Una vez creada la cuenta y establecida la configuración ya [se pueden
-crear cosas en ella](http://www.azure.microsoft.com/en-us/manage/linux/other-resources/command-line-tools/?fb=es-es)
+Una vez creada la cuenta y establecida la configuración ya [se pueden crear cosas en ella](http://www.azure.microsoft.com/en-us/manage/linux/other-resources/command-line-tools/?fb=es-es)
 se puede empezar a manejar la cuenta; una vez más,
-[se
-pueden crear diferentes contenedores desde el panel de
-control](http://www.azure.microsoft.com/en-us/manage/services/storage/what-is-a-storage-account/?fb=es-es),
+[se pueden crear diferentes contenedores desde el panel de control](http://www.azure.microsoft.com/en-us/manage/services/storage/what-is-a-storage-account/?fb=es-es),
 pero es más práctico hacerlo desde la línea de órdenes.
 
 Azure divide su cuenta en
