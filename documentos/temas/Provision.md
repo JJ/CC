@@ -503,7 +503,7 @@ aprenderá a trabajar con configuraciones más complejas que usen varias
 máquinas virtuales a la vez. 
 
 A partir de aquí se puede
-seguir aprendiendo sobre devops en [el blog](http://devops.com/) o
+seguir aprendiendo sobre DevOps en [el blog](http://devops.com/) o
 [en IBM](http://www.ibm.com/ibm/devops/us/en/). Libros como
 [DevOps for Developers](https://www.amazon.es/dp/B009D6ZB0G?tag=atalaya-21&camp=3634&creative=24822&linkCode=as4&creativeASIN=B009D6ZB0G&adid=0PB61Y2QD9K49W3EP8MN&)
 pueden ser también de ayuda. Esta

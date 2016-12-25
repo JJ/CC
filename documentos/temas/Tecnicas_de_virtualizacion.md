@@ -116,8 +116,7 @@ base de los contenedores que se verán en este tema.
 
 `unshare`tiene sus limitaciones, y la principal es que sólo se puede
 *entrar* en un *namespace* ejecutando un comando, no "desde fuera". A
-partir de la versión 2.23 de util-linux (la versión en mi Ubuntu 12.04
-es la 2.20) [un nuevo comando `nsenter`](http://karelzak.blogspot.com.es/2013/04/umount8-mount8-and-nsenter1.html) permitirá entrar dando el
+partir de la versión 2.23 de `util-linux` [un nuevo comando `nsenter`](http://karelzak.blogspot.com.es/2013/04/umount8-mount8-and-nsenter1.html) permitirá entrar dando el
 PID del proceso dentro del que se haya creado. 
 
 <div class='nota' markdown='1'>
@@ -137,13 +136,12 @@ conectarse al exterior a través de la tarjeta de red del ordenador
 anfitrión o entre sí entre diferentes máquinas virtuales del mismo
 anfitrión. Además de actuar como tal, el interfaz de red virtual
 tendrá que actuar como *puente*, enrutando todos los paquetes Ethernet
-del invitado al anfitrió o a donde corresponda. Por eso las máquinas
+del invitado al anfitrión o a donde corresponda. Por eso las máquinas
 virtuales usan interfaces de red virtuales llamados *puentes*. Para
-usarlos necesitaremos instalar un [paquete de linux (y sus
-dependencias) denominado `bridge-utils`](http://www.linuxfromscratch.org/blfs/view/svn/basicnet/bridge-utils.html).
+usarlos necesitaremos instalar un [paquete de linux (y sus dependencias) denominado `bridge-utils`](http://www.linuxfromscratch.org/blfs/view/svn/basicnet/bridge-utils.html).
 
-La principal orden que provee este paquete es [`brctl` que podemos usar
-directamente](https://wiki.debian.org/BridgeNetworkConnections) para crear este puente.
+La principal orden que provee este paquete
+es [`brctl` que podemos usar directamente](https://wiki.debian.org/BridgeNetworkConnections) para crear este puente.
 
 	sudo brctl addbr alcantara
 

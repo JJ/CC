@@ -1042,7 +1042,7 @@ de PostgreSQL: transacciones y tipos, por ejemplo.
 
 <div class='ejercicios'>
 Realizar un pequeño programa, en el lenguaje elegido y sobre la base
-de datos "tradicional" elegida (PostgreSQL o cualquier otro online)
+de datos "tradicional" elegida (PostgreSQL o cualquiera que se pueda usar online)
 que realice el ciclo básico de una base de datos. Puede ser la
 aplicación de calificación de empresas realizada anteriormente.
 </div>
@@ -1051,7 +1051,7 @@ aplicación de calificación de empresas realizada anteriormente.
 A dónde ir desde aquí
 -----
 
-En el [siguiente tema](Contenedores.md) usaremos
+En el [capítulo sobre contenedores](Contenedores.md) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
  que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
 práctica correspondiente a esta materia](../practicas/3.PaaS.md).
