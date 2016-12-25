@@ -135,7 +135,8 @@ virtuales de desarrollo* tales como:
 *  [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
 *  [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
 *  [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
-*  [rbenv](https://github.com/sstephenson/rbenv) y [RVM](http://rvm.io)para Ruby
+*  [rbenv](https://github.com/sstephenson/rbenv)
+   y [RVM](http://rvm.io) para Ruby
 *  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](http://perlbrew.pl).
 
 Generalmente, estos programa funcionan instalando binarios en
