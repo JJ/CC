@@ -537,8 +537,7 @@ definido.
 
 Ahora tienes dos repositorios: el que está efectivamente desplegado y
 el que contiene los fuentes. ¿No sería una buena idea que se trabajara
-con uno sólo? Efectivamente, [GitHub permite desplegar directamente a
-Heroku cuando se hace un `push` a la rama `master`](http://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository),
+con uno sólo? Efectivamente, [GitHub permite desplegar directamente a Heroku cuando se hace un `push` a la rama `master`](http://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository),
 aunque no es inmediato, sino que pasa por usar un servicio de
 integración continua, que se asegure de que todo funciona
 correctamente. Para eso, evidentemente, el sitio en el que se despliegue debe estar
@@ -616,9 +615,7 @@ los más populares tienen una serie de mecanismos que permiten usar
 prácticamente cualquier lenguaje, biblioteca y mecanismo de despliegue
 de la aplicación.
 
-> El problema es que
-> [https://blog.openshift.com/paas-standards-standardize-on-what/] no
-> son estándar, con lo que es imposible llevar una aplicación definida
+> El problema es que [no son estándar](https://blog.openshift.com/paas-standards-standardize-on-what/), con lo que es imposible llevar una aplicación definida
 > de esta forma de un PaaS a otro.
 
 Este sistema se llama
@@ -641,7 +638,7 @@ son algo más complicados pero, a cambio, son mucho más flexibles y
 permiten controlar de forma total qué se hace con los fuentes y cómo
 se despliega. No todos los ficheros son necesarios y en
 [este blog](https://blog.openshift.com/new-openshift-cartridge-format-part-2/)
-nos explica cómo empaquetarlos apra crear un paquete; básicamente
+nos explica cómo empaquetarlos para crear un paquete; básicamente
 hacen falta dos ficheros, `control` y `metadata/manifest.yml` que
 contiene datos sobre el paquete. El resto, inclusive algunos parecidos
 a los de arriba, con opcionales aunque convenientes. En general, de
@@ -666,7 +663,7 @@ con un PaaS o un IaaS para crear una aplicación. Sin embargo, es
 conveniente tener conocimiento de ellas, puesto que los PaaS que se
 han visto las usan. Por eso conviene conocerlas: permite que se tenga
 un backend totalmente independiente del despliegue que se vaya a
-hacer, sea en un sevidor propio, IaaS o un PaaS; permiten también
+hacer, sea en un servidor propio, IaaS o un PaaS; permiten también
 prototipado rápido de una aplicación, al permitir usar una base de
 datos externa para integración continua y pruebas y, finalmente, en
 caso de despliegue final de la aplicación, permiten pagar sólo por lo
