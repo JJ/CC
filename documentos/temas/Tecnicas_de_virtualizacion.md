@@ -501,7 +501,7 @@ conectar por ssh a tu propia máquina usando el nombre de usuario y
 clave creada o bien sacar un terminal con Ctrl-Alt-F1 o Ctrl-Alt-F2
 usando este nombre de usuario.
 
-<div class='ejercicios' mardown='1'>
+<div class='ejercicios' markdown='1'>
 
 Crear una jaula y enjaular un usuario usando `jailkit`, que previamente se habrá tenido que instalar. 
 
