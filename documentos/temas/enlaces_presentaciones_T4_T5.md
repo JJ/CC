@@ -14,7 +14,7 @@ Cloud Computing. Tema 4.
 
 [Cloud Computing. T4 - Virtualización. Azure](http://es.slideshare.net/pacvslideshare/cloud-computing-virtualizacin-azure)
 
-[Cloud Computing. T4 - Virtualización. IBM Bluemix](http://es.slideshare.net/pacvslideshare/cloud-computing-virtualizacin-ibm-bluemix)
+[Cloud Computing. T4 - Virtualización. IBM BlueMix](http://es.slideshare.net/pacvslideshare/cloud-computing-virtualizacin-ibm-bluemix)
 
 
 Cloud Computing. Tema 5.
