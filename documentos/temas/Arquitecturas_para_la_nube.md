@@ -107,7 +107,7 @@ rearrancar cada uno de los procesadores de forma independiente.
 El principal problema es que es más difícil de testear y también su
 desarrollo se hace un poco más complicado que en el caso anterior.
 
-Argunos marcos de aplicaciones como Java Swing usan este tipo de
+Algunos marcos de aplicaciones como Java Swing usan este tipo de
 arquitectura.
 
 ### Arquitectura microkernel
@@ -241,7 +241,7 @@ relativamente mal a trabajar con texto desestructurado, y a menos que
 todos los datos almacenados tengan la misma estructura, se desperdicia
 una cantidad considerable de espacio. Por eso en estas arquitecturas
 modernas están complementadas por las bases de datos NoSQL, de las que
-lo primero que hay qeu aprender es que no se trata de sistemas que
+lo primero que hay que aprender es que no se trata de sistemas que
 usen un lenguaje llamado [NoSQL](https://es.wikipedia.org/wiki/NoSQL) (aunque algunos lo están tratando de
 diseñar) sino de base de datos muy diversas y que usan lenguajes
 propios o empotrados para acceder a ellas. Hay diferentes tipos de
@@ -276,7 +276,7 @@ en máquinas virtuales que se pagan por uso, son un panorama mucho más
 complejo, que va desde servicios de mensajería hasta contenedores,
 pasando por todo tipo de servicios en la nube: almacenamiento, redes
 virtuales, conversión de ficheros y todo tipo de cosas. Los tres
-niveles clásicos de Infraestructura, Plataforma y Software comos
+niveles clásicos de Infraestructura, Plataforma y Software como
 servicio se combinan en una sola aplicación que puede usar una base de
 datos (SaaS) o almacén de datos (almacenamiento como servicio) junto
 con un sistema de mensajería almacenado en un PaaS y una serie de
