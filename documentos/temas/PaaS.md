@@ -1,6 +1,7 @@
 ---
 layout: index
 
+apuntes: T
 
 prev: Desarrollo_basado_en_pruebas
 next: Contenedores
@@ -98,7 +99,7 @@ o
 [IBM BlueMix](https://console.ng.bluemix.net/#/pricing/cloudOEPaneId=pricing). 
 
 >Después de probar casi todos los servicios anteriores, me da la
->impresión de que poco hay más allá de Heroku y Openshift. AppFog y
+>impresión de que poco hay más allá de Heroku y OpenShift. AppFog y
 >Nodejitsu, después de la efervescencia inicial, dan 30 días de prueba
 >solamente y nitrous.io sólo 7 días. En
 >[esta página](https://www.getapp.com/it-management-software/platform-as-a-service-paas/p/freemium/)
@@ -218,8 +219,8 @@ y
 
 ## Creando una aplicación para su despliegue en un PaaS
 
-Para diseñar interfaces REST de forma bastante simple, hay un [módulo de
-node.js llamado express](http://expressjs.com/). La idea de este módulo
+Para diseñar interfaces REST de forma bastante simple, hay
+un [módulo de node.js llamado express](http://expressjs.com/). La idea de este módulo
 es reflejar en el código, de la forma más natural posible, el diseño del
 interfaz REST.
 
@@ -397,7 +398,7 @@ Estas pruebas permiten que no nos encontremos con sorpresas una vez que despegue
 
 Podemos, por ejemplo, desplegarlo en Heroku.
 
-> Sitios como Openshift o Nodester tienen sistemas también similares,
+> Sitios como OpenShift o Nodester tienen sistemas también similares,
 > pero por lo pronto vamos a usar este, que tiene un sistema un poco
 > más abierto y completo.
 
@@ -588,7 +589,7 @@ Hay que dar un paso atrás y ver qué es necesario para desplegar en Heroku, apa
 2. El fichero `Procfile` con el trabaja Foreman y que distribuye las tareas entre los diferentes *dynos*: `web`, `worker` y los demás.
 3. Requisitos específicos de IP y puerto al que escuchar y que se pasan a `app.listen`. Estos parámetros se definen como variables de entorno.
 
-Teniendo en cuenta esto, no es difícil cambiar la aplicación para que pueda funcionar correctamente al menos en esos dos PaaS, que son los más populares. En Openshift, en realidad, no hace falta `Procfile`. Como no tiene el concepto de diferentes tipos de dynos, usa directamente `package.json` para iniciar la aplicación. Por otro lado, los requisitos específicos de puerto e IP se tienen en cuenta en estas dos órdenes:
+Teniendo en cuenta esto, no es difícil cambiar la aplicación para que pueda funcionar correctamente al menos en esos dos PaaS, que son los más populares. En OpenShift, en realidad, no hace falta `Procfile`. Como no tiene el concepto de diferentes tipos de dynos, usa directamente `package.json` para iniciar la aplicación. Por otro lado, los requisitos específicos de puerto e IP se tienen en cuenta en estas dos órdenes:
 
 	var server_ip_address = process.env.OPENSHIFT_NODEJS_IP
 	                          || '0.0.0.0';
