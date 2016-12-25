@@ -66,8 +66,7 @@ hipervisores alojados que se ejecutan desde un sistema operativo.
 ![Ilustración de los dos tipos de hipervisores (alojada en la Wikipedia)](http://upload.wikimedia.org/wikipedia/commons/e/e1/Hyperviseur.png)
 
 Para apoyar la virtualización, casi todos los procesadores actuales y
-especialmente [los de las líneas más populares basadas en la
-arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](http://en.wikipedia.org/wiki/X86_virtualization). Esta
+especialmente [los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](http://en.wikipedia.org/wiki/X86_virtualization). Esta
 arquitectura tiene dos ramas: la Intel y la AMD, cada uno de los
 cuales tiene un conjunto de instrucciones diferentes para llevarla a
 cabo. Aunque la mayoría de los procesadores lo incluyen, los
@@ -79,8 +78,7 @@ en la que los hipervisores tienen que *interpretar* cada imagen del
 sistema operativo que alojan (llamado *invitado*) y convertirla en
 instrucciones del que aloja (llamado *anfitrión* o *host*). La mayor
 parte de los hipervisores, como
-[Xen](http://en.wikipedia.org/wiki/Xen) o [KVM](
-http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
+[Xen](http://en.wikipedia.org/wiki/Xen) o [KVM](http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
 también la capacidad de paravirtualizar ciertos sistemas operativos en
 caso de que los anfitriones no tengan soporte; por ejemplo, KVM se ha
 asociado con [QEMU](http://en.wikipedia.org/wiki/QEMU) que lo usa en
@@ -149,16 +147,15 @@ más adelante el de OpenStack
 Azure permite,
 [tras la creación de almacenamiento virtual](Almacenamiento), la
 creación de máquinas virtuales, como es natural. Se puede crear una
-máquina virtual desde el panel de control, pero también desde la [línea
-de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
+máquina virtual desde el panel de control, pero también desde
+la [línea de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
 hay que saber qué imágenes hay disponibles:
 
 	azure vm image list
 
 Por ejemplo, se puede escoger la imagen
 `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-trusty-14_04-LTS-amd64-server-20131221-en-us-30GB`
-de la última versión de Ubuntu (para salir dentro de cuator meses) o
-alguna más probada como la
+de una versión LTS de Ubuntu o de otra como la
 `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB`
 Con
 
@@ -188,7 +185,7 @@ muestra las máquinas virtuales que tenemos y el nombre que se le ha
 asignado y finalmente con `azure vm start` se arranca la máquina y
 podemos conectarnos con ella usando `ssh` Una de las primeras cosas
 que hay que hacer cuando se arranque es actualizar el sistema para
-evitar problemas de seguridad. A partir de ahi, podemos instalar lo
+evitar problemas de seguridad. A partir de ahí, podemos instalar lo
 que queramos. El arranque tarda cierto tiempo y dependerá de la
 disponibilidad de recursos; evidentemente, mientras no esté arrancada
 no se puede usar, pero conviene de todas formas apagarla con 
@@ -287,7 +284,7 @@ usando alguna de las aplicaciones vistas en
 de nubes privadas que se ha hecho muy popular incluso en revendedores
 de sistemas como IBM u otros, que en realidad ofrecen este tipo de
 acceso. Se puede probar en alguna instalación disponible en la
-Facultad o Escuela o bien en http://trystack.org si te admiten.
+Facultad o Escuela o bien en [TryStack](http://trystack.org) si te admiten.
 
 Como arriba, hay también un
 [sistema de línea de órdenes](http://docs.openstack.org/user-guide/cli.html),
