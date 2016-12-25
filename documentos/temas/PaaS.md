@@ -666,7 +666,7 @@ desplegarla en Heroku o un *cartridge* no estándar en OpenShift.
 Como las bases de datos son, en realidad, una aplicación como otra
 cualquiera,
 [las bases de datos como servicio, bases de datos en la nube o *DBaaS*](http://en.wikipedia.org/wiki/Cloud_database)
-encajan mejor dentro de este texto que de ningún otro sitio, aunque en
+encajan mejor dentro de este capítulo que de ningún otro sitio, aunque en
 realidad no son una solución completa, sino que se tienen que combinar
 con un PaaS o un IaaS para crear una aplicación. Sin embargo, es
 conveniente tener conocimiento de ellas, puesto que los PaaS que se
