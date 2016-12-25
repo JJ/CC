@@ -182,7 +182,7 @@ conectada.
 
 Ahora este interfaz actuará como cualquier otro a la hora de
 configurarlo: podemos asignarle una IP fija o asignársela con DHCP
-cuando se *levante*, pero en cuanlquier caso podremos usarlo como una
+cuando se *levante*, pero en cualquier caso podremos usarlo como una
 tarjeta de red virtual para las máquinas virtuales que vayamos a
 usar. Es posible que si hemos instalado algún paquete de
 virtualización ya tengamos alguna creada, `brctl show` muestra todos
@@ -238,7 +238,7 @@ sistema operativo, como las que vamos a ver, hay partes del sistema
 órdenes mínimas para dotar a la *máquina* de una serie de recursos
 para funcionar.
 
-por supuesto, una de las formas de hacerlo es simplemente ir copiendo
+por supuesto, una de las formas de hacerlo es simplemente ir copiando
 las partes necesarias del sistema de ficheros raíz al nuevo
 sistema. Pero hay una serie de utilidades en Linux que lo hacen más
 fácil. En el mundo Debian (que incluye Debian, Ubuntu y Guadalinex) se
