@@ -8,6 +8,7 @@ About
 Admin
 Akka
 Alpine
+Alt
 Amazon
 Ansible
 AppFog
@@ -100,6 +101,7 @@ Firebase
 Flamingo
 Foreman
 FreeBSD
+GALPon
 GUI
 Gems
 Gist
@@ -149,6 +151,7 @@ LEs
 LTS
 LUN
 LXC
+LXDE
 Language
 Linux
 LinuxMagazineSpain
@@ -213,6 +216,7 @@ Puppet
 PyYAML
 Python
 QEMU
+RAM
 RBEnv
 REPOSITORY
 REST
@@ -281,6 +285,7 @@ Unit
 Unix
 Utility
 VMDK
+VMM
 VMWare
 VNC
 VagrantBoxes
@@ -311,6 +316,7 @@ aleatoriamente
 alimón
 all
 alpine
+amd
 an
 and
 another
@@ -596,6 +602,7 @@ instalártelo
 instanciadas
 instanciarlas
 int
+intel
 inter
 interactivamente
 interface
@@ -723,6 +730,8 @@ namespace
 namespaces
 nbd
 net
+netinst
+netutils
 networks
 new
 next
@@ -924,7 +933,6 @@ send
 server
 serverless
 setup
-setup
 seudo
 sh
 shell
@@ -939,12 +947,12 @@ snapshots
 sobreescribe
 socket
 sockets
+some
 source
 sparse
 split
 sql
 src
-srv
 srv
 ssh
 sshfs
@@ -990,6 +998,7 @@ toString
 tool
 toolbelt
 transpas
+ttylinux
 tuplas
 type
 táper
@@ -1038,6 +1047,7 @@ virtualizar
 vm
 vmbuilder
 vmserver
+vnc
 volume
 webpanel
 westeurope
@@ -1055,15 +1065,3 @@ yml
 yum
 zipi
 zuuz
-netutils
-Alt
-amd
-intel
-netinst
-some
-GALPon
-ttylinux
-VMM
-vnc
-RAM
-LXDE

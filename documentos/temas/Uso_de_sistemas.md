@@ -69,8 +69,7 @@ en la que los hipervisores tienen que *interpretar* cada imagen del
 sistema operativo que alojan (llamado *invitado*) y convertirla en
 instrucciones del que aloja (llamado *anfitrión* o *host*). La mayor
 parte de los hipervisores, como
-[Xen](http://en.wikipedia.org/wiki/Xen) o [KVM](
-http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
+[Xen](http://en.wikipedia.org/wiki/Xen) o [KVM](http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
 también la capacidad de paravirtualizar ciertos sistemas operativos en
 caso de que los anfitriones no tengan soporte; por ejemplo, KVM se ha
 asociado con [QEMU](http://en.wikipedia.org/wiki/QEMU) que lo usa en
@@ -176,7 +175,7 @@ Parallels.
 
 En [esta guía](http://www.dedoimedo.com/computers/kvm-intro.html) se
 explica cómo trabajar con KVM usando VMM, o *virtual machine manager*,
-una herramienta gráfica que trabaja sobre KVM
+una herramienta gráfica que trabaja sobre KVM.
 
 </div>
 
