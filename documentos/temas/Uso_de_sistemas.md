@@ -191,8 +191,7 @@ una herramienta gráfica que trabaja sobre KVM
 </div>
 
 La máquina virtual, una vez instalada, se puede arrancar directamente
-desde el fichero en el que la hemos instalado, usando una orden [tal
-como esta](https://wiki.archlinux.org/index.php/QEMU#Creating_new_virtualized_system) 
+desde el fichero en el que la hemos instalado, usando una orden [tal como esta](https://wiki.archlinux.org/index.php/QEMU#Creating_new_virtualized_system) 
 
 	qemu-system-x86_64 -boot order=c -drive	file=/media/Backup/Isos/discovirtual.img,if=virtio
 	
@@ -241,20 +240,15 @@ Trabajando con máquinas virtuales en la nube
 Azure permite,
 [tras la creación de almacenamiento virtual](Almacenamiento), la
 creación de máquinas virtuales, como es natural. Se puede crear una
-máquina virtual desde el panel de control, pero también desde la [línea
-de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
+máquina virtual desde el panel de control, pero también desde
+la [línea de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
 hay que saber qué imágenes hay disponibles:
 
 	azure vm image list
 
 Por ejemplo, se puede escoger la imagen
 `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-trusty-14_04-LTS-amd64-server-20131221-en-us-30GB`
-de la última versión de Ubuntu (para salir dentro de cuator meses) o
-alguna más probada como la
-`b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB`
-Con
-
-	azure vm image show b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB
+de Ubuntu LTS.
 	
 nos muestra detalles sobre la imagen; entre otras cosas dónde está
 disponible y sobre si es Premium o no (en este caso no lo es). Con
@@ -280,7 +274,7 @@ muestra las máquinas virtuales que tenemos y el nombre que se le ha
 asignado y finalmente con `azure vm start` se arranca la máquina y
 podemos conectarnos con ella usando `ssh` Una de las primeras cosas
 que hay que hacer cuando se arranque es actualizar el sistema para
-evitar problemas de seguridad. A partir de ahi, podemos instalar lo
+evitar problemas de seguridad. A partir de ahí, podemos instalar lo
 que queramos. El arranque tarda cierto tiempo y dependerá de la
 disponibilidad de recursos; evidentemente, mientras no esté arrancada
 no se puede usar, pero conviene de todas formas apagarla con 
@@ -301,7 +295,7 @@ nginx para poder acceder mediante web.
 En principio, para configurar la máquina virtual hay que hacerlo como
 siempre se ha hecho: trabajando desde línea de órdenes, editando ficheros de configuración e instalando
 los paquetes que hagan falta. Pero
-[conociendo `juju`](Contenedores) tambien
+conociendo `juju` también
 [se puede trabajar con él](https://juju.ubuntu.com/docs/config-azure.html)
 para instalar lo que haga falta. Se puede empezar, por ejemplo
 [instalando el GUI de juju](https://juju.ubuntu.com/docs/howto-gui-management.html)
