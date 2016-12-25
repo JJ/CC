@@ -74,7 +74,7 @@ Objetivos
 Los
 [volúmenes lógicos](http://en.wikipedia.org/wiki/Logical_volume_management)
 son una virtualización habitual en los sistemas operativos.  Un
-volúmen lógico crea un LE (*logical extent*) a partir de uno PE o
+volumen lógico crea un LE (*logical extent*) a partir de uno PE o
 varios en el caso de que se haga *mirroring* transparente. Los LEs se
 agrupan en volúmenes lógicos, que aparecen desde el punto de vista del
 sistema operativo como cualquier otra partición. En realidad, el
@@ -620,7 +620,7 @@ copiar en variables de entorno (que tendrás que cargar en tu
 `.profile` o bien establecerlas cada vez que vayas a usarlo con
 
 	export AZURE_STORAGE_ACCOUNT=esacuenta
-	export	AZURE_STORAGE_ACCESS_KEY=unaclavemuylargaquetieneigualesalfinal==
+	export AZURE_STORAGE_ACCESS_KEY=unaclavemuylargaquetieneigualesalfinal==
 	
 Una vez creada la cuenta y establecida la configuración ya [se pueden crear cosas en ella](http://www.azure.microsoft.com/en-us/manage/linux/other-resources/command-line-tools/?fb=es-es)
 se puede empezar a manejar la cuenta; una vez más,
