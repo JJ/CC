@@ -82,7 +82,7 @@ mismo, creando un entorno mucho más seguro que las anteriores
 
 Dentro de la familia de sistemas operativos Solaris (cuya última
 versión libre se denomina
-[illumos](https://en.wikipedia.org/wiki/Illumos), y tiene también otras
+[Illumos](https://en.wikipedia.org/wiki/Illumos), y tiene también otras
 versiones como SmartOS) la tecnología
 correspondiente se denomina
 [zonas](https://en.wikipedia.org/wiki/Solaris_Zones). La principal
@@ -545,8 +545,7 @@ de la imagen:
 
 		sudo docker run b750fe79269d du
 
-En vez de ejecutar las cosas una a una podemos directamente [ejecutar
-un shell](https://docs.docker.com/engine/getstarted/step_two/):
+En vez de ejecutar las cosas una a una podemos directamente [ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
 
 	sudo docker run -i -t ubuntu /bin/bash
 
@@ -576,8 +575,8 @@ te dirá toda la información sobre la misma, incluyendo qué es lo que
 está haciendo en un momento determinado. Para finalizar, se puede
 parar usando `stop`.
 
-Hasta ahora el uso de docker [no es muy diferente del contenedor, pero
-lo interesante](http://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
+Hasta ahora el uso de
+docker [no es muy diferente del contenedor, pero lo interesante](http://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/cli/#commit)
 
 	sudo docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
@@ -597,9 +596,8 @@ Crear a partir del contenedor anterior una imagen persistente con
 Finalmente, `docker` tiene capacidades de provisionamiento similares a
 otros [sistemas (tales como Vagrant](Gestion_de_configuraciones.md) usando
 [*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
-ejemplo, [se
-puede crear fácilmente un Dockerfile para instalar node.js con el
-módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
+ejemplo,
+[se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
 
 
 ## Usando Dockerfiles
@@ -646,7 +644,7 @@ línea. La
 
 Las siguientes órdenes son todas `apk`, el gestor de paquetes de
 Alpine. No tiene tantos empaquetados como las distros más conocidas,
-pero sí los básidos; siempre al principio habrá que actualizar los
+pero sí los básicos; siempre al principio habrá que actualizar los
 repos para que no haya problemas.
 
 El resto son otras órdenes `RUN`, que ejecutan directamente órdenes
@@ -662,7 +660,7 @@ Para crear una imagen a partir de esto se usa
 (o el nick que tengas en GitHub). El `-t` es, como es habitual, para
 asignar un *tag*, en este caso uno que se puede usar más adelante en
 el Docker Hub. Tardará un rato, sobre todo por la descarga de unas
-cuantes librerías por parte de sbt, lo que se hace en la última
+cuantas bibliotecas por parte de sbt, lo que se hace en la última
 línea. Una vez hecho esto, si funciona la construcción, se
 podrá ejecutar con
 
