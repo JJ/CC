@@ -644,7 +644,7 @@ pueden ser públicos o privados y por defecto se crean privados; [los niveles de
  
  Este último es el permiso por defecto, pero si queremos que se acceda
  a los *blobs* se crea con
- 
+
 	 azure storage container create otrotaper -p blob
 	 
 En este caso, se contesta con
