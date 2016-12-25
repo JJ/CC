@@ -605,21 +605,21 @@ class ApuestaSpec extends Specification {
 ```
 
 Tras importar el módulo correspondiente a los tests, estos se agrupan
-en una serie de sentencias "should" que serán ejecutadas
+en una serie de sentencias `should` que serán ejecutadas
 secuencialmente. En este caso tenemos una sola, en la que creamos una
 instancia de la clase y comprobamos que efectivamente tiene los
 valores que debe tener. Las órdenes `must be_==` y `must beEqualTo`
 comprueban el valor de diferentes tipos y devuelven los valores
 correspondientes si se cumple ese comportamiento y si no se cumple.
 
-Se ejecutaría con `sbt test` o ejecutando `test` desde `sbt` y el
+Se ejecutaría con `sbt test` o ejecutando `test` desde `sbt`; el
 resultado sería:
 
-[Resultado test de Scala](../img/test-scala.png)
+[Resultado del test de Scala](../img/test-scala.png)
 
 
 
-##Añadiendo integración continua.
+## Añadiendo integración continua.
 
 A un primer nivel, la integración continua consiste en integrar los
 cambios hechos por un miembro del equipo en el momento que estén y

@@ -194,7 +194,7 @@ por defecto en Vagrant y habrá que instalar un plugin. Instalemos el
 por ejemplo, siguiendo las instrucciones de su repositorio; de hecho,
 para instalar libvirt habrá que seguir también las instrucciones en el
 mismo repositorio, que incluyen instalar
-`qemu`. [libVir](https://libvirt.org/) es una librería que abstrae
+`qemu`. [libVirt](https://libvirt.org/) es una librería que abstrae
 todas las funciones de virtualización, permitiendo trabajar de forma
 uniforme con diferentes hipervisores tales como Xen e incluso el
 propio `lxc` mencionado anteriormente. Una vez instalada esta
@@ -251,7 +251,7 @@ Y todos los demás comandos, también con `sudo`.
 
 Una vez creada la máquina virtual se puede entrar en ella y
 configurarla e instalar todo lo necesario desde la línea de órdenes. Pero, por supuesto,
-sabiendo lo que sabemos sobre provisionamiento por el tema corresondiente, Vagrant permite
+sabiendo lo que sabemos sobre provisionamiento por el tema correspondiente, Vagrant permite
 [provisionarla de muchas maneras diferentes](https://www.vagrantup.com/docs/provisioning/index.html). En
 general, Vagrant usará opciones de configuración diferente dependiendo
 del provisionador, subirá un fichero a un directorio temporal del
