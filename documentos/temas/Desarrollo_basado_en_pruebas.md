@@ -248,8 +248,10 @@ sólo `npm install .`. Casi todos los lenguajes habituales tienen algún
 sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo. 
 
 <div class='ejercicios' markdown='1'>
+
  Crear una descripción del módulo usando `package.json`. En caso de
  que se trate de otro lenguaje, usar el método correspondiente.  
+
 </div>
 
 `package.json` nos sirve para llevar un cierto control de qué es lo
@@ -467,8 +469,7 @@ que es en el que nos estamos fijando, hay dos niveles en el test: el
 primero es el marco de pruebas y el segundo la librería de pruebas que
 efectivamente se está usando.
 
-Vamos a ir al nivel más bajo: el de las aserciones. Hay [múltiples
-librerías que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
+Vamos a ir al nivel más bajo: el de las aserciones. Hay [múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
 [Chai](http://chaijs.com/),
 [Should.js](https://github.com/visionmedia/should.js),
 [Must.js](https://github.com/moll/js-must) y
@@ -605,7 +606,7 @@ class ApuestaSpec extends Specification {
 
 Tras importar el módulo correspondiente a los tests, estos se agrupan
 en una serie de sentencias "should" que serán ejecutadas
-secuancialmente. En este caso tenemos una sola, en la que creamos una
+secuencialmente. En este caso tenemos una sola, en la que creamos una
 instancia de la clase y comprobamos que efectivamente tiene los
 valores que debe tener. Las órdenes `must be_==` y `must beEqualTo`
 comprueban el valor de diferentes tipos y devuelven los valores
