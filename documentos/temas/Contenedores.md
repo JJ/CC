@@ -167,7 +167,7 @@ Podemos comprobar que se ha instalado correctamente ejecutando
 ```
 lxc-checkconfig
 ```
-Lo que nos debería de dar todo enabled, tambíen podemos comprobar la versión de LXC instalada con
+Lo que nos debería de dar todo enabled; también podemos comprobar la versión de LXC instalada con
 ```
 lxc-info --version
 ```
@@ -409,10 +409,10 @@ hacer
 aunque la versión en los repositorios puede ser más antigua que la que
 se descargue de la web. La instalación coloca también un servicio que
 se ejecutará como *daemon* y se arrancará con el inicio del
-sistema. La instalación desde docker.com siguiendo las instrucciones
+sistema. La instalación desde `docker.com` siguiendo las instrucciones
 te instalará también una serie de imágenes genéricas con las que se
 puede empezar a trabajar de forma más o menos inmediata. Una vez
-intalado, el clásico
+instalado, el clásico
 
 	sudo docker run hello-world
 
