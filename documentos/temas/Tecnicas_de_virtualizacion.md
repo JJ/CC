@@ -1,6 +1,7 @@
 ---
 layout: index
 
+apuntes: T
 
 prev: PaaS
 next: Contenedores
@@ -47,15 +48,13 @@ Introducción
 ------------------
 
 Una vez vista la introducción a la infraestructura virtual y algunas
-técnicas usadas por la misma, en este tema pondremos en práctica lo
-anterior trabajando con diferentes técnicas de virtualización a nivel
-de sistema operativo y a nivel de hardware.
+técnicas usadas por la misma, en este tema las pondremos en práctica trabajando con  virtualización a nivel de sistema operativo y a nivel de hardware.
 
 Comenzaremos por aprender a usar *contenedores*, un entorno de
 virtualización a nivel de sistema operativo que permite trabajar con
 muchas de las técnicas habituales en virtualización sin introducir un
 *overhead* excesivo; previamente veremos los mecanismos incluidos en
-el núcleo que permiten construirlos.
+el núcleo del sistema operativo que permiten construirlos.
 
 Espacios de nombres
 -------------------------------
@@ -69,7 +68,7 @@ coincidir con otro existente en otro espacio de nombres, o se puede
 montar un recurso de forma que sea invisible al resto del sistema o
 simplemente tenga un nombre diferente.
 
-Hay seis tipos de *namespaces*, algunso de los cuales son
+Hay seis tipos de *namespaces*, algunos de los cuales son
 relativamente modernos y otros proceden de las versiones 2.4 y 2.6 del
 núcleo:
 
@@ -117,7 +116,7 @@ nos explican como hacerlo, usando el dispositivo *loopback*
 </div>
 
 El mecanismo de espacios de nombres es diferente al usado en 
-[`cgroups`](Intro:concepto_y_soporte_fisico#restriccin_y_medicin_del_uso_de_recursos_),
+[`cgroups`](Intro_concepto_y_soporte_fisico#restriccin_y_medicin_del_uso_de_recursos_),
 tal como se vio en el tema anterior: teóricamente, un PID dentro de un
 CGROUP es visible a todos los demás procesos; sin embargo, es
 complementario porque mientras que uno aisla la visibilidad o el
@@ -126,8 +125,7 @@ base de los contenedores que se verán en este tema.
 
 `unshare`tiene sus limitaciones, y la principal es que sólo se puede
 *entrar* en un *namespace* ejecutando un comando, no "desde fuera". A
-partir de la versión 2.23 de util-linux (la versión en mi Ubuntu 12.04
-es la 2.20) [un nuevo comando `nsenter`](http://karelzak.blogspot.com.es/2013/04/umount8-mount8-and-nsenter1.html) permitirá entrar dando el
+partir de la versión 2.23 de `util-linux` [un nuevo comando `nsenter`](http://karelzak.blogspot.com.es/2013/04/umount8-mount8-and-nsenter1.html) permitirá entrar dando el
 PID del proceso dentro del que se haya creado. 
 
 <div class='nota' markdown='1'>
@@ -147,13 +145,12 @@ conectarse al exterior a través de la tarjeta de red del ordenador
 anfitrión o entre sí entre diferentes máquinas virtuales del mismo
 anfitrión. Además de actuar como tal, el interfaz de red virtual
 tendrá que actuar como *puente*, enrutando todos los paquetes Ethernet
-del invitado al anfitrió o a donde corresponda. Por eso las máquinas
+del invitado al anfitrión o a donde corresponda. Por eso las máquinas
 virtuales usan interfaces de red virtuales llamados *puentes*. Para
-usarlos necesitaremos instalar un [paquete de linux (y sus
-dependencias) denominado `bridge-utils`](http://www.linuxfromscratch.org/blfs/view/svn/basicnet/bridge-utils.html).
+usarlos necesitaremos instalar un [paquete de linux (y sus dependencias) denominado `bridge-utils`](http://www.linuxfromscratch.org/blfs/view/svn/basicnet/bridge-utils.html).
 
-La principal orden que provee este paquete es [`brctl` que podemos usar
-directamente](https://wiki.debian.org/BridgeNetworkConnections) para crear este puente.
+La principal orden que provee este paquete
+es [`brctl` que podemos usar directamente](https://wiki.debian.org/BridgeNetworkConnections) para crear este puente.
 
 	sudo brctl addbr alcantara
 
@@ -249,49 +246,49 @@ usa `debootstrap`.
 
 Una vez instalado, se puede usar de esta forma
 	
-		sudo debootstrap --arch=amd64 quantal /home/jaulas/quantal/	http://archive.ubuntu.com/ubuntu
+		sudo debootstrap --arch=amd64 saucy /home/jaulas/saucy/	http://archive.ubuntu.com/ubuntu
 
 La primera parte indica el tipo de arquitectura que se va a usar. Una
 de las ventajas que tiene `debootstrap` es que puedes crear
 instalaciones de 32 bits (`arch=i386`) dentro de un anfitrión de 64
 bits (al revés, no, claro). El segundo argumento es el nombre de la
-distro que se va a buscar en el repositorio, en este caso Quantal Quetzal. A continuación, el
+distro que se va a buscar en el repositorio, en este caso Saucy Salamander. A continuación, el
 directorio en el que lo vamos a instalar, que habremos creado
 previamente, y finalmente la dirección del repositorio, que en este
 caso de la de Ubuntu; la de Debian sería
 `http://ftp.debian.org/debian/` y en el caso de Guadalinex sería un
 tanto diferente, con diferentes directorios para cada distro, por
 ejemplo `http://ftp.cica.es/Guadalinex/guadalinex-buho/`para Búho, la
-última (aunque ya he probado que no funciona). 
+última (que puede funcionar o no). 
 
 En realidad, `debootstrap` es un conjunto de archivos del shell que
 localizan la descripción de la distro y la descargan, y para hacer eso
 tienen una serie de ficheros con las características de cada distro,
-que en realidad se reducen a unos cuantos ficheros para las distros
+que al final se reducen a unos cuantos ficheros para las distros
 debian y enlaces simbólicos a las mismas. Para cualquier otra distro
 que sea parecida a Debian (por ejemplo, Guadalinex) habrá que buscar
 la más cercana, pero sin garantía de éxito; por ello no se trata de
-una herramienta universal, ni siquiera para todas las *debian-like*
+una herramienta universal, ni siquiera para todas las *debian-like*.
 
 Otras distros tienen herramientas similares, adaptadas a sus
 características y sistemas de paquetes. Por ejemplo,
-[`urpmi` se puede usar en Mandriva](http://wiki.mandriva.com/en/Development/Howto/Chroot)
+[`urpmi` se puede usar en Mandriva](http://ext4.wordpress.com/2010/01/08/manual-de-urpmi-para-mandriva/)
 (aunque es más bien un sistema para instalar paquetes en cualquier
 sitio) y, aunque también existe en Fedora `febootstrap` lo más
 flexible es usar
 [`mock`](http://fedoraproject.org/wiki/Projects/Mock), aunque de hecho
 `mock`va un poco más allá pudiendo trabajar directamente con las
-jaulas `chroot`; otro sistema se denomina
+jaulas `chroot`. Otro sistema para Fedora se denomina
 [Rinse](http://www.steve.org.uk/Software/rinse/) y se puede usar, en
 principio, en cualquier distribución basada en RPM y desde cualquier
 distribución tipo Debian. Rinse tiene una línea de órdenes similar a
 `debootstrap`, pero permite instalar sistemas tales como Fedora dentro
 de una distro Debian y siempre que compartan el Kernel, como es
-natural.  
+natural.
 
 <div class='ejercicios' markdown="1">
 
-1. Usar debootstrap (o herramienta similar en otra distro) para crear un
+1. Usar `debootstrap` (o herramienta similar en otra distro) para crear un
 sistema mínimo que se pueda ejecutar más adelante. 
 
 2. Experimentar con la creación de un sistema Fedora dentro de Debian
@@ -299,7 +296,7 @@ usando Rinse.
 
 </div>
 
-Una alternativa a `debootstrap` es
+Incluso dentro del mundo Debian, una alternativa a `debootstrap` es
 [`multistrap`](https://wiki.debian.org/Multistrap), una herramienta de
 Debian mucho más flexible que permite, por ejemplo, mezclar diferentes
 repositorios a la hora de crear una instalación a medida. Para que
@@ -431,9 +428,9 @@ más de la cuenta, pero es más o menos completo.
 Lo primero que hay que hacer es crear una definición para cada uno de
 los entornos en el fichero `/etc/schroot/schroot.conf` tal como esta:
 
-	[quantal]
-	description=Quantal Quetzal (Ubuntu)
-	location=/home/jaulas/quantal
+	[saucy]
+	description=Saucy Lagartija (Ubuntu)
+	location=/home/jaulas/saucy
 	type=directory
 	users=jmerelo
 	root-groups=root
@@ -443,7 +440,7 @@ los entornos en el fichero `/etc/schroot/schroot.conf` tal como esta:
 	run-exec-scripts=true
 	
 [Esta configuración](https://wiki.debian.org/Schroot) define un
-entorno llamado `quantal` con alias `ubuntu1210` que está en el
+entorno llamado `saucy` con alias `ubuntu1210` que está en el
 directorio que se indica y que puede ser usado, aparte de por el
 superusuario, por el usuario
 jmerelo. [Las opciones completas están en la página de manual](http://manpages.ubuntu.com/manpages/maverick/en/man1/schroot.1.html),
@@ -453,7 +450,7 @@ usuarios, no nuevas capacidades.
 <div class='nota' markdown='1'>
 
 En la familia
-[BSD existe Warden](http://wiki.pcbsd.org/index.php/Warden%C2%AE), una
+[BSD existe Warden](http://wiki.pcbsd.org/index.php/Warden), una
 utilidad con interfaz gráfico que permite crear jaulas tanto BSD como
 Linux; con la limitación, por supuesto, de que la versión Linux tenga
 el mismo núcleo.
@@ -498,7 +495,7 @@ las dependencias pertinentes. A estos alias se le denominan
 configuración. 
 
 Esta jaula se puede usar directamente con `chroot`, pero [jailkit
-también permite *enjaular* usuarios](http://www.binarytides.com/setup-a-jail-shell-with-jailkit-on-ubuntu/). Tras
+también permite *enjaular* usuarios](http://www.binarytides.com/setup-jailed-shell-jailkit-ubuntu/). Tras
 crear el usuario de la forma habitual
 en Linux
 
