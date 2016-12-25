@@ -349,8 +349,8 @@ puede provisionar, por ejemplo, una máquina CentOS.
 
 Una vez preinstalado chef (lo que también podíamos haber hecho con
 [una máquina que ya lo tuviera instalado, de las que hay muchas en `vagrantbox.es`](http://www.vagrantbox.es/)git co
-y de hecho es la mejor opción porque chef-solo no se puede instalar en
-la versión 6.5 de Centos fácilmente por no tener una versión
+y de hecho es la mejor opción porque `chef-solo` no se puede instalar en
+la versión 6.5 de CentOS fácilmente por no tener una versión
 actualizada de Ruby)
 incluimos en el Vagrantfile. las órdenes para usarlo en
 [este Vagrantfile](../../ejemplos/vagrant/provision/chef/Vagrantfile) 
