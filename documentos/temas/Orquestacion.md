@@ -311,8 +311,8 @@ este programa bajándose todas sus dependencias (y tardará un rato).
 
 <div class='ejercicios' markdown='1'>
 
-	Crear un script para provisionar `nginx` o cualquier otro servidor
-	web que pueda ser útil para alguna otra práctica
+	Crear un script para provisionar de forma básica una máquina
+    virtual para el proyecto que se esté llevando a cabo en la asignatura. 
 	
 </div>
 
@@ -393,6 +393,92 @@ y provisionadores como Chef o Puppet. Se puede crear directamente en
 VirtualBox y usar
 [`vagrant package`](https://www.vagrantup.com/docs/cli/package.html)
 para *empaquetarla* y usarla para su consumo posterior. 
+
+## Configuración de sistemas distribuidos.
+
+Vagrant es sumamente útil cuando se trata de configurar varios
+sistemas a la vez, por la posibilidad que tiene de trabajar con
+diferentes proveedores pero también por tratarse de un programa en
+Ruby que puede simplemente guardar el estado común e implantarlo en
+las máquinas virtuales que se vayan creando.
+
+A la vez, sistemas operativos como CoreOS son interesantes
+precisamente por la facilidad para configurarlos como sistemas
+distribuidos, que proviene de su diseño para ser anfitriones de
+contenedores pero también a su uso de `etcd`, una base de datos
+clave-valor distribuida que se usa en este caso principalmente para
+guardar las configuraciones. 
+
+Veamos en el siguiente ejemplo cómo se
+puede
+[configurar un sistema con varias máquinas virtuales coordinadas usando CoreOS](https://github.com/JJ/vagrant-coreos/blob/master/Vagrantfile) (originalmente
+estaba [aquí](https://github.com/coreos/coreos-vagrant). Es un fichero
+un tanto largo y complicado, pero veamos las partes más
+interesantes. Primero, usa un fichero externo de
+configuración,
+[`config.rb`](https://github.com/JJ/vagrant-coreos/blob/master/config.rb). A
+pesar de su nombre, no es un fichero de Chef, simplemente un fichero
+que se va a incluir en la configuración de Vagrant que se llama así. 
+
+~~~
+# Size of the CoreOS cluster created by Vagrant
+$num_instances=3
+
+# Used to fetch a new discovery token for a cluster of size $num_instances
+$new_discovery_url="https://discovery.etcd.io/new?size=#{$num_instances}"
+
+# Automatically replace the discovery token on 'vagrant up'
+
+if File.exists?('user-data') && ARGV[0].eql?('up')
+  require 'open-uri'
+  require 'yaml'
+
+  token = open($new_discovery_url).read
+
+  data = YAML.load(IO.readlines('user-data')[1..-1].join)
+
+  if data.key? 'coreos' and data['coreos'].key? 'etcd'
+    data['coreos']['etcd']['discovery'] = token
+  end
+
+  if data.key? 'coreos' and data['coreos'].key? 'etcd2'
+    data['coreos']['etcd2']['discovery'] = token
+  end
+
+  # Fix for YAML.load() converting reboot-strategy from 'off' to `false`
+  if data.key? 'coreos' and data['coreos'].key? 'update' and data['coreos']['update'].key? 'reboot-strategy'
+    if data['coreos']['update']['reboot-strategy'] == false
+      data['coreos']['update']['reboot-strategy'] = 'off'
+    end
+  end
+
+  yaml = YAML.dump(data)
+  File.open('user-data', 'w') { |file| file.write("#cloud-config\n\n#{yaml}") }
+end
+~~~
+Este fichero, después de definir el número de máquinas virtuales que
+  tenemos, busca un fichero llamado `user-data` que es privado porque
+  contiene un *token* obtenido de https://discovery.etcd.io. Este
+  token da acceso al registro de todas las instancias de `etcd` con
+  las que vamos a
+  trabajar. En
+  [la muestra](https://github.com/JJ/vagrant-coreos/blob/master/user-data.sample) indica
+  qué es lo que hay que hacer para obtenerla. Por lo demás, lo único
+  que hay que cambiar es el número de instancias que se desean. 
+  
+El `Vagrantfile`, por otro lado, realiza una serie de adaptaciones de
+la máquina virtual usada y crea una red privada virtual que una a las
+tres máquinas, de forma que se puedan comunicar de forma segura. Una
+vez ejecutado `vagrant up` se puede acceder a las máquinas por ssh con
+el nombre definido (`core-0x`) pero también se pueden usar para
+escalar aplicaciones basadas en contenedores en
+el
+[*cluster* de CoreOS](https://coreos.com/os/docs/latest/cluster-architectures.html) creado,
+con el que puedes
+ejecutar
+[múltiples copias de tu aplicación](https://coreos.com/os/docs/latest/cluster-architectures.html) para
+replicación o escalado automático. 
+
 
 ## Algunos ejemplos interesantes
 
