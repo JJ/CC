@@ -516,7 +516,8 @@ pero merece la pena.
 
 ### Tareas adicionales con contenedores Docker
 
-La máquina instalada la podemos usar con el nombre del SO, pero cada
+La máquina instalada la podemos arrancar usando como ID el nombre de
+la imagen de la que procede, pero cada
 táper tiene un id único que se puede ver con
 
 	sudo docker ps -a=false
@@ -563,9 +564,15 @@ Los contenedores se pueden arrancar de forma independiente con `start`
 pero hay que usar el ID largo que se obtiene dando la orden de esta
 forma
 
-	sudo docker images -notrunc
+	sudo docker ps -a
+	
+en la primera columna, donde indica el ID del contenedor.
+	
+Con esta orden
 
-Para entrar en ese contenedor tienes que averiguar qué IP está usando
+	sudo docker images --no-trunc
+
+se obtiene el ID largo. Para inspeccionar las imágenes  tienes que averiguar qué IP está usando
 y los usuarios y claves y por supuesto tener ejecutándose un cliente
 de `ssh` en la misma. Para averiguar la IP:
 
