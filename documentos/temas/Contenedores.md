@@ -692,7 +692,10 @@ Docker es una aplicación cliente-servidor que se ejecuta
 localmente. Gestionar contenedores remotos implicaría, generalmente,
 trabajar con ejecutores remotos tipo Ansible lo que, en caso de que
 haya que trabajar con muchos contenedores, generaría todo tipo de
-inconvenientes. Para eso está [`docker-machine`](https://blog.docker.com/2015/02/announcing-docker-machine-beta/), que en general sirve
+inconvenientes. Para eso
+está
+[`docker-machine`](https://blog.docker.com/2015/02/announcing-docker-machine-beta/),
+que en general sirve 
 para trabajar con gestores de contenedores en la nube o con
 hipervisores locales, aunque sólo funciona con unos pocos, y
 generalmente privativos. 
@@ -799,7 +802,7 @@ usar los drivers correspondientes.
 
 <div class='ejercicios' markdown='1'>
 
-Crear con docker-machine un entorno local y ejecutar en él
+Crear con docker-machine una máquina virtual local que permita desplegar contenedores y ejecutar en él
 contenedores creados con antelación. 
 
 </div>
