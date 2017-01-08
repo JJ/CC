@@ -520,6 +520,18 @@ usando un *playbook* de Ansible.
 
 </div>
 
+## Bibliografía
+
+Uno de los libros maś interesantes
+es
+[Infraestructure as Code, de Kief Morris](http://amzn.to/2i3svim). Hace
+un resumen muy acertado de todos los principios que rigen la gestión
+de infraestructura virtual a través de código y un repaso de todas las
+herramientas usadas en el mismo. También está disponible
+como
+[recurso electrónico](http://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
+la biblioteca de la UGR. 
+
 A donde ir desde aquí
 -------
 
