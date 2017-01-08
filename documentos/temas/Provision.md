@@ -56,6 +56,32 @@ instanciarlas. Dejaremos para más adelante cómo hacerlo de forma
 independiente del proveedor de tales servicios y veremos a
 continuación cómo preparar una máquina virtual para ser provisionada.
 
+En general, estas herramientas suelen usar
+un
+[lenguaje de dominio específico](https://en.wikipedia.org/wiki/Domain-specific_language),
+con una pequeña cantidad de órdenes relacionada con lo que hacen:
+establecer una configurción determinada en un servidor. Este lenguaje
+puede consistir en versiones reducidas de lenguajes como Ruby o en
+conjuntos de diccionarios específicos de JSON o de YAML, dos lenguajes
+de serialización de estructuras de datos.
+
+Generalmente, también, se trata
+de
+[lenguajes declarativos](https://en.wikipedia.org/wiki/Declarative_programming) en
+el sentido que suelen especificar la configuración que se quiere
+alcanzar, no qué acciones hay que llevar a cabo para alcanzar esa
+configuración; la propia lógica de la herramienta suele encargarse de
+ello. Por esa misma razón se usa el concepto de *idempotencia* si se
+aplica dos veces una configuración, el resultado es el mismo. 
+
+En cualquier caso, la configuración más simple que se puede hacer es
+usar un lenguaje de scripting como `bash` o algún otro que se sepa que
+va a estar instalado en el ordenador a configurar; Perl y Python
+suelen ser buenos candidatos porque están instalados en casi todas las
+configuraciones base. El problema que tiene, sobre todo el primero, es
+la falta de idempotencia, la mala gestión de los errores, y, sobre
+todo, la no idempotencia. 
+
 ## Configurando una instancia
 
 Se puede crear una máquina virtual de muchas formas, usando el
