@@ -694,6 +694,88 @@ Reproducir los contenedores creados anteriormente usando un `Dockerfile`.
 
 </div>
 
+Se pueden construir contenedores más complejos. Una funcionalidad interesante
+de los contenedores es la posibilidad de usarlos como *sustitutos* de
+una orden, de forma que sea mucho más fácil trabajar con alguna
+configuración específica de una aplicación o de un lenguaje de
+programación determinado. 
+
+Por
+ejemplo,
+[esta, llamada `alpine-perl6`](https://hub.docker.com/r/jjmerelo/alpine-perl6/) que
+se puede usar en lugar del intérprete de Perl6 y usa como base la
+distro ligera Alpine:
+
+~~~
+FROM alpine:latest
+MAINTAINER JJ Merelo <jjmerelo@GMail.com>
+WORKDIR /root
+ENTRYPOINT ["perl6"]
+
+#Basic setup
+RUN apk update
+RUN apk upgrade
+
+#Add basic programs
+RUN apk add gcc git linux-headers make musl-dev perl
+
+#Download and install rakudo
+RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
+RUN echo 'export PATH=~/.rakudobrew/bin:$PATH' >> /etc/profile
+RUN echo 'eval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile
+ENV PATH="/root/.rakudobrew/bin:${PATH}"
+RUN rakudobrew init
+
+#Build moar
+RUN rakudobrew build moar
+
+#Build other utilities
+RUN rakudobrew build panda
+RUN panda install Linenoise
+
+#Mount point
+RUN mkdir /app
+VOLUME /app
+~~~
+
+Como ya hemos visto anteriormente, usa `apk`, la orden de Alpine para
+instalar paquetes e instala lo necesario para que eche a andar el
+gestor de intérpretes de Perl6 llamado `rakudobrew`. Este gestor tarda
+un buen rato, hasta minutos, en construir el intérprete a través de
+diferentes fases de compilación, por eso este contenedor sustituye eso
+por la simple descarga del mismo. Instala además alguna utilidad
+relativamente común, pero lo que lo hace trabajar "como" el intérprete
+es la orden `ENTRYPOINT ["perl6"]`. `ENTRYPOINT` se usa para señalar
+a qué orden se va a concatenar el resto de los argumentos en la línea
+de órdenes, en este caso, tratándose del intérprete de Perl 6, se
+comportará exactamente como él. Para que esto funcione también se ha
+definido una variable de entorno en:
+
+	ENV PATH="/root/.rakudobrew/bin:${PATH}"
+
+que añade al `PATH` el directorio donde se encuentra. Con estas dos
+características se puede ejecutar el contenedor con:
+
+    sudo docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+
+Si tuviéramos perl6 instalado en local, se podría escribir
+directamente 
+
+	perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+	
+o algún
+otro
+[*one-liner* de Perl6](https://gist.github.com/JJ/9953ba0a98800fed205eaae5b5a6410a). 
+
+En caso de que se trate de un servicio o algún otro tipo de programa
+de ejecución continua, se puede usar directamente `CMD`. En este caso,
+`ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando 
+
+	sudo docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
+	
+que accederá directamente a la línea de órdenes, en este caso
+`busybox`, que es el *shell* que provee Alpine. 
+
 ## Gestionando contenedores remotos
 
 Docker es una aplicación cliente-servidor que se ejecuta
