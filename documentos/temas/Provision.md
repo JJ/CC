@@ -60,7 +60,7 @@ En general, estas herramientas suelen usar
 un
 [lenguaje de dominio específico](https://en.wikipedia.org/wiki/Domain-specific_language),
 con una pequeña cantidad de órdenes relacionada con lo que hacen:
-establecer una configurción determinada en un servidor. Este lenguaje
+establecer una configuración determinada en un servidor. Este lenguaje
 puede consistir en versiones reducidas de lenguajes como Ruby o en
 conjuntos de diccionarios específicos de JSON o de YAML, dos lenguajes
 de serialización de estructuras de datos.
@@ -522,7 +522,7 @@ usando un *playbook* de Ansible.
 
 ## Bibliografía
 
-Uno de los libros maś interesantes
+Uno de los libros más interesantes
 es
 [Infraestructure as Code, de Kief Morris](http://amzn.to/2i3svim). Hace
 un resumen muy acertado de todos los principios que rigen la gestión
