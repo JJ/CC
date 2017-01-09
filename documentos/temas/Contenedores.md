@@ -223,7 +223,7 @@ instaladas en el sistema, que podemos consultar en el directorio
 
 >Entre ellas, varias de [Alpine Linux](https://alpinelinux.org/), una
 >distribución ligera precisamente dirigida a su uso dentro de
->contenedores. También una llamada `plamo`, escrita en algún tipo de
+>contenedores. También hay una llamada `plamo`, escrita en algún tipo de
 >letra oriental, posiblemente japonés. Se puede instalar, pero igual
 >no se entiende nada.
 
@@ -690,7 +690,7 @@ en [bobot](https://github.com/JJ/BoBot), como es habitual.
 
 <div class='ejercicios' markdown='1'>
 
-Reproducir los contenedores creados anteriormente usando un Dockerfile.
+Reproducir los contenedores creados anteriormente usando un `Dockerfile`.
 
 </div>
 
@@ -814,6 +814,24 @@ Crear con docker-machine una máquina virtual local que permita desplegar conten
 contenedores creados con antelación. 
 
 </div>
+
+## Limpieza de contenedores
+
+Una vez que se lleva trabajando con Docker un rato, puede que nos
+encontremos con diferentes contenedores en diferente estado de
+construcción, así como las imágenes a partir de las cuales se han
+creado esos contenedores. Todo eso ocupa una cierta cantidad de
+espacio, y conviene de vez en cuando liberarlo para que no acaben
+llenando el disco duro de la máquina que se use para desarrollo. Antes
+de llegar a eso, conviene recordar la opción `--rm` para ejecutar
+órdenes dentro del contenedor, que limpia automáticamente el
+contenedor y lo elimina cuando se sale del mismo:
+
+~~~
+sudo docker run --rm -t -v
+  /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test jjmerelo/test-perl6 /test/t
+~~~
+
 
 
 ## Otros gestores de contenedores
