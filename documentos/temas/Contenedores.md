@@ -768,6 +768,27 @@ de ejecución continua, se puede usar directamente `CMD`. En este caso,
 que accederá directamente a la línea de órdenes, en este caso
 `busybox`, que es el *shell* que provee Alpine. 
 
+Por otro lado, otra característica que tiene este contenedor es que, a
+través de `VOLUME`, hemos creado un directorio sobre el que podemos
+*montar* un directorio externo, tal como hacemos aquí:
+
+	sudo docker run --rm -t -v `pwd`:/app  \
+	    jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
+
+En realidad, usando `-v` se puede montar cualquier directorio externo
+en cualquier directorio interno. `VOLUME` únicamente *marca* un
+directorio específico para ese tipo de labor, de forma que se pueda
+usar de forma genérica para interaccionar con el contenedor a través
+de ficheros externos o para *copiar* (en realidad, simplemente hacer
+accesibles) estos ficheros al contenedor. En el caso anterior,
+podíamos haber sustituido `/app` en los dos lugares donde aparece por
+cualquier otro valor y habría funcionado igualmente. 
+
+En este caso, además, usamos `--rm` para borrar el contenedor una vez
+se haya usado y `-t` en vez de `-it` para indicar que sólo estamos
+interesados en que se asigne un terminal y la salida del mismo, no
+vamos a interaccionar con él. 
+
 ## Gestionando contenedores remotos
 
 Docker es una aplicación cliente-servidor que se ejecuta
