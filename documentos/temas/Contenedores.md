@@ -665,8 +665,9 @@ repos para que no haya problemas.
 El resto son otras órdenes `RUN`, que ejecutan directamente órdenes
 dentro del contenedor, y que en este caso descargan un paquete, que es
 la forma como se distribuye `sbt`, y lo ponen como ejecutable. Hay que
-hacer una cosa adicional: copiar mediante `COPY` un fichero local,
-`sbt`, para usarlo como base.
+hacer una cosa adicional: copiar mediante `COPY` un par de ficheros
+locales, el `.jar` que contiene el programa y el fichero de hitos que
+se va a usar para responder al usuario.
 
 Para crear una imagen a partir de esto se usa
 
@@ -679,14 +680,20 @@ cuantas bibliotecas por parte de sbt, lo que se hace en la última
 línea. Una vez hecho esto, si funciona la construcción, se
 podrá ejecutar con
 
-	sudo docker run -it jjmerelo/bot
+	sudo docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot 
 
-o con
+donde --env se usa para pasar la variable de entorno de Telegram que
+necesita el bot para funcionar.
+
+Si queremos simplemente examinar el contenedor, podemos entrar en él
+de la forma habitual 
 
 	sudo docker run -it jjmerelo/bot sh
 
 para entrar directamente en la línea de órdenes. El repositorio está
-en [bobot](https://github.com/JJ/BoBot), como es habitual.
+en [bobot](https://github.com/JJ/BoBot), como es habitual. En este
+caso usamos `CMD` para ejecutar la orden, ya que el contenedor no
+recibe ningún parámetro adicional.
 
 <div class='ejercicios' markdown='1'>
 
