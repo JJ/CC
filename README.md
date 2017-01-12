@@ -58,7 +58,8 @@ modo, los hitos se organizarán de la forma siguiente.
 3. [Provisionamiento de máquinas virtuales](documentos/proyecto/2.Provisionamiento.md)
 4. [Orquestación de máquinas virtuales](documentos/proyecto/3.Orquestacion.md)
 4. [Uso de contenedores](documentos/proyecto/4.Docker.md)
-
+4. [Combinación de infraestructuras virtuales](documentos/proyecto/5.Despliegue.md) para
+   desplegar una aplicación completa. 
 
 Tutorías virtuales
 ----
