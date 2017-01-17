@@ -152,6 +152,14 @@ ellos y llevar a cabo diferentes actividades no deseadas. Es
 importante, por ejemplo, que siempre que sea posible se ejecute la
 aplicación como un usuario no privilegiado. 
 
+### Recomendaciones a la hora de construir un contenedor
+
+[Docker da una serie de recomendaciones a la hora de construir contenedores](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/). Para
+hacerlo reproducible, se deben usar Dockerfile o el equivalente en
+otro tipo de contenedores, y las órdenes que se
+deben usar y cómo usarlas constituye un acervo que conviene conocer y
+usar. 
+
 Usando `lxc`
 --
 
