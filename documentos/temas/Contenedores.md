@@ -391,13 +391,13 @@ de configuración que ya se haya usado
 
 </div>
 
-Gestión de contenedores con `docker`
+Introducción a Docker
 ---
 
 [Docker](http://docker.com) es una herramienta de gestión de
 contenedores que permite no sólo instalarlos, sino trabajar con el
 conjunto de ellos instalados (orquestación) y exportarlos de forma que
-se puedan usar en diferentes instalaciones. La tecnología de
+se puedan desplegar en diferentes servicios en la nube. La tecnología de
 [Docker](https://en.wikipedia.org/wiki/Docker_%28software%29) es
 relativamente reciente, habiendo sido publicado en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
@@ -405,13 +405,40 @@ desarrollo paralelo de sistemas operativos tales como
 [CoreOS](http://coreos.com/), 
 basado en Linux y que permite despliegue masivo de servidores. 
 
-El enfoque de la virtualización ligera de Docker y de otras soluciones
-como `lxc/lxd`
-[es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/),
-manteniendo en común el hecho de que se trata de soluciones de
-virtualización *por software* o *ligera*. 
+El enfoque de la virtualización ligera de
+Docker [es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/) al
+de otras soluciones como `lxc/lxd`, que lo precedieron en el tiempo,
+aunque las tecnologías subyacentes de virtualización por software son
+las mismas y también el hecho de que se trata de soluciones de
+virtualización *por software* o *ligera*. Sin embargo, Docker hace
+énfasis en la gestión centralizada de recursos y, en una línea que va
+desde la virtualización por hardware hasta la generación de un
+ejecutable para su uso en cualquier otra máquina, estaría mucho más
+cerca de ésta que de la primera, mientras que `lxc/lxd` estarían más
+enfocados a empaquetar máquinas virtuales completas o casi. En la
+práctica, muchas aplicaciones, como la creación de máquinas virtuales
+efímeras para ejecución de aplicaciones, van a ser las mismas, pero
+los casos de uso son también diferentes, con Docker tendiendo más
+hacia uso de contenedores de *usar y tirar* y 'lxc/lxd' a una
+alternativa ligera al uso de máquinas firtuales completas.
 
-[Instalar `docker` es fácil en las últimas versiones](https://www.docker.com/). Por
+En todo caso, Docker se ha convertido últimamente en una herramienta
+fundamental para el diseño de arquitecturas de software escalables,
+sobre todo por su combinación con otra serie de herramientas como
+Swarm o Kubernetes para orquestar conjuntos de contenedores, dando
+también lugar a todo un ecosistema de aplicaciones y servicios que
+permiten usarlo fácilmente e integrarlo dentro de los entornos de
+desarrollo de software habituales, especialmente los denominados
+*DevOps*. 
+
+A continuación vamos a ver cómo podemos usar Docker como simples
+usuarios, para ver a continuación como se puede diseñar una
+arquitectura usándolo.
+
+## Instalación de Docker
+
+[Instalar `docker` es sencillo en las últimas versiones](https://www.docker.com/). 
+Por
 ejemplo, para
 [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 y no funcionará con versiones más antiguas de la 12.04 (y en este caso
@@ -441,6 +468,15 @@ de tareas.
 Así que comencemos desde el principio:
 [vamos a ejecutar `docker`y trabajar con el contenedor creado](https://docs.docker.com/engine/installation/linux/ubuntulinux/).
 
+>Hay
+>también
+>[diferentes opciones para instalar Docker en Windows](https://docs.docker.com/engine/installation/windows/) o
+>en
+>[un Macintosh](https://docs.docker.com/engine/installation/mac/). 
+
+
+## Comenzando a ejecutar Docker
+
 Si no se está ejecutando ya, se puede arrancar como un servicio
 
 	sudo docker -d &
@@ -452,7 +488,8 @@ usando un socket protegido.
 
 >Estamos trabajando con docker como superusuario, que es la forma
 >adecuada de
->hacerlo. [Puedes seguir estas instrucciones para hacerlo desde un usuario](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin privilegios de administración.
+>hacerlo. [Puedes seguir estas instrucciones para hacerlo desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
+>privilegios de administración.
 
 A partir de ahí, podemos crear un contenedor
 
