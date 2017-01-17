@@ -109,57 +109,6 @@ Esta virtualización *ligera* tiene, entre otras ventajas, una
 segundos y, además, tienes mayor control desde fuera (desde el anfitrión) del que se pueda
 tener usando máquinas virtuales.
 
-## Algunas buenas prácticas en el uso de virtualización ligera
-
-Una de las principales ventajas que tiene este tipo de virtualización,
-sea cual sea como se implemente, es precisamente el hecho de que sea
-*ligera*, y que por lo tanto los contenedores se puedan crear, activar
-y desactivar rápidamente. Por eso, aunque pueda parecer a priori que
-es otra forma de crear máquinas virtuales, su ámbito de aplicación es
-totalmente diferente al de estas. Conviene seguir este tipo de reglas,
-sacadas entre otros sitios de
-[esta lista de buenas prácticas con Docker](https://github.com/FuriKuri/docker-best-practices)
-y
-[esta otra](http://containerjournal.com/2016/03/21/5-docker-best-practices-follow/).
-
-### Simplicidad
-
-Los contenedores deben de ser lo más simples posible, y llevar esta
-regla desde el principio al final. Idealmente, los contenedores
-ejecutarán un solo proceso. Esto facilita el escalado mediante
-replicación, y permite también separar las tareas en diferentes
-contenedores, que pueden ser desplegados o actualizados de forma
-totalmente independiente. Esto también facilita el uso de contenedores
-estándar, bien depurados y cuya configuración sea lo más segura
-posible.
-
-Esto también implica una serie de cosas: usar la distribución más
-ligera que soporte la configuración, por ejemplo. El usar una
-distribución ligera y adaptada a contenedores como
-[Alpine Linux](https://alpinelinux.org/) o
-[Atomic Host](https://www.projectatomic.io/) hará que se creen
-contenedores mucho más ligeros y rápidos de cargar y que tengan toda
-la funcionalidad que se necesita. También conviene eliminar toda
-aquella funcionalidad que no se necesite y que se haya usado solamente
-para construir el contenedor, tales como compiladores o ficheros
-intermedios. 
-
-### Seguridad
-
-Los contenedores docker se ejecutan de forma aislada del resto del
-sistema operativo, pero eso no significa que no se pueda penetrar en
-ellos y llevar a cabo diferentes actividades no deseadas. Es
-importante, por ejemplo, que siempre que sea posible se ejecute la
-aplicación como un usuario no privilegiado. 
-
-### Recomendaciones a la hora de construir un contenedor
-
-[Docker da una serie de recomendaciones a la hora de construir contenedores](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/). Para
-hacerlo reproducible, se deben usar Dockerfile o el equivalente en
-otro tipo de contenedores, y las órdenes que se
-deben usar y cómo usarlas constituye un acervo que conviene conocer y
-usar. 
-
 Usando `lxc`
 --
 
@@ -663,6 +612,57 @@ otros [sistemas (tales como Vagrant](Gestion_de_configuraciones.md) usando
 [*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
 ejemplo,
 [se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
+
+## Algunas buenas prácticas en el uso de virtualización ligera
+
+Una de las principales ventajas que tiene este tipo de virtualización,
+sea cual sea como se implemente, es precisamente el hecho de que sea
+*ligera*, y que por lo tanto los contenedores se puedan crear, activar
+y desactivar rápidamente. Por eso, aunque pueda parecer a priori que
+es otra forma de crear máquinas virtuales, su ámbito de aplicación es
+totalmente diferente al de estas. Conviene seguir este tipo de reglas,
+sacadas entre otros sitios de
+[esta lista de buenas prácticas con Docker](https://github.com/FuriKuri/docker-best-practices)
+y
+[esta otra](http://containerjournal.com/2016/03/21/5-docker-best-practices-follow/).
+
+### Simplicidad
+
+Los contenedores deben de ser lo más simples posible, y llevar esta
+regla desde el principio al final. Idealmente, los contenedores
+ejecutarán un solo proceso. Esto facilita el escalado mediante
+replicación, y permite también separar las tareas en diferentes
+contenedores, que pueden ser desplegados o actualizados de forma
+totalmente independiente. Esto también facilita el uso de contenedores
+estándar, bien depurados y cuya configuración sea lo más segura
+posible.
+
+Esto también implica una serie de cosas: usar la distribución más
+ligera que soporte la configuración, por ejemplo. El usar una
+distribución ligera y adaptada a contenedores como
+[Alpine Linux](https://alpinelinux.org/) o
+[Atomic Host](https://www.projectatomic.io/) hará que se creen
+contenedores mucho más ligeros y rápidos de cargar y que tengan toda
+la funcionalidad que se necesita. También conviene eliminar toda
+aquella funcionalidad que no se necesite y que se haya usado solamente
+para construir el contenedor, tales como compiladores o ficheros
+intermedios. 
+
+### Seguridad
+
+Los contenedores docker se ejecutan de forma aislada del resto del
+sistema operativo, pero eso no significa que no se pueda penetrar en
+ellos y llevar a cabo diferentes actividades no deseadas. Es
+importante, por ejemplo, que siempre que sea posible se ejecute la
+aplicación como un usuario no privilegiado. 
+
+### Recomendaciones a la hora de construir un contenedor
+
+[Docker da una serie de recomendaciones a la hora de construir contenedores](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/). Para
+hacerlo reproducible, se deben usar Dockerfile o el equivalente en
+otro tipo de contenedores, y las órdenes que se
+deben usar y cómo usarlas constituye un acervo que conviene conocer y
+usar. 
 
 
 ## Usando Dockerfiles
