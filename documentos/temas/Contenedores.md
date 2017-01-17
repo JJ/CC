@@ -412,7 +412,7 @@ práctica, muchas aplicaciones, como la creación de máquinas virtuales
 efímeras para ejecución de aplicaciones, van a ser las mismas, pero
 los casos de uso son también diferentes, con Docker tendiendo más
 hacia uso de contenedores de *usar y tirar* y 'lxc/lxd' a una
-alternativa ligera al uso de máquinas firtuales completas.
+alternativa ligera al uso de máquinas virtuales completas.
 
 En todo caso, Docker se ha convertido últimamente en una herramienta
 fundamental para el diseño de arquitecturas de software escalables,
@@ -464,7 +464,7 @@ Así que comencemos desde el principio:
 >también
 >[diferentes opciones para instalar Docker en Windows](https://docs.docker.com/engine/installation/windows/) o
 >en
->[un Macintosh](https://docs.docker.com/engine/installation/mac/). 
+>[un Mac](https://docs.docker.com/engine/installation/mac/). 
 
 
 ## Comenzando a ejecutar Docker
