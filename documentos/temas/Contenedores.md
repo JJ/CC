@@ -109,6 +109,38 @@ Esta virtualización *ligera* tiene, entre otras ventajas, una
 segundos y, además, tienes mayor control desde fuera (desde el anfitrión) del que se pueda
 tener usando máquinas virtuales.
 
+## Algunas buenas prácticas en el uso de virtualización ligera
+
+Una de las principales ventajas que tiene este tipo de virtualización,
+sea cual sea como se implemente, es precisamente el hecho de que sea
+*ligera*, y que por lo tanto los contenedores se puedan crear, activar
+y desactivar rápidamente. Por eso, aunque pueda parecer a priori que
+es otra forma de crear máquinas virtuales, su ámbito de aplicación es
+totalmente diferente al de estas. Conviene seguir este tipo de reglas,
+sacadas entre otros sitios de
+[esta lista de buenas prácticas con Docker](https://github.com/FuriKuri/docker-best-practices)
+y
+[esta otra](http://containerjournal.com/2016/03/21/5-docker-best-practices-follow/).
+
+### Simplicidad
+
+Los contenedores deben de ser lo más simples posible, y llevar esta
+regla desde el principio al final. Idealmente, los contenedores
+ejecutarán un solo proceso. Esto facilita el escalado mediante
+replicación, y permite también separar las tareas en diferentes
+contenedores, que pueden ser desplegados o actualizados de forma
+totalmente independiente. Esto también facilita el uso de contenedores
+estándar, bien depurados y cuya configuración sea lo más segura
+posible.
+
+Esto también implica una serie de cosas: usar la distribución más
+ligera que soporte la configuración, por ejemplo. El usar una
+distribución ligera y adaptada a contenedores como
+[Alpine Linux](https://alpinelinux.org/) o
+[Atomic Host](https://www.projectatomic.io/) hará que se creen
+contenedores mucho más ligeros y rápidos de cargar y que tengan toda
+la funcionalidad que se necesita. 
+
 Usando `lxc`
 --
 
