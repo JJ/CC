@@ -107,8 +107,8 @@ tener el mismo kernel y misma CPU que la máquina anfitriona, pero si
 esto no es un problema, puede resultar una alternativa útil y ligera a
 la misma. A diferencia de las jaulas, combina restricciones en el
 acceso al sistema de ficheros con otras restricciones aprovechando
-espacios de nombres y grupos de control. `lxc` es la solución de
-creación de contenedores más fácil de usar hoy en día en Linux.
+espacios de nombres y grupos de control. `lxc` una de las soluciones de
+creación de contenedores más fácil de usar hoy en día en Linux, sobre todo si se quiere usar desde un programa a nivel de librería. Evidentemente, desde que ha salido Docker no es la más popular, aunque es una solución madura y estable. 
 
 
 Esta virtualización *ligera* tiene, entre otras ventajas, una
@@ -120,7 +120,7 @@ tener usando máquinas virtuales.
 Usando `lxc`
 --
 
-No todos los núcleos del sistema operativo pueden usar este tipo de container; para empezar,
+No todas las versiones de los núcleos del sistema operativo pueden usar este tipo de container; para empezar,
 dependerá de cómo esté compilado, pero también del soporte que tenga
 el hardware. `lxc-checkconfig` permite comprobar si está preparado
 para usar este tipo de tecnología y también si se ha configurado correctamente. Parte de la configuración se
@@ -400,9 +400,16 @@ conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan usar en diferentes instalaciones. La tecnología de
 [Docker](https://en.wikipedia.org/wiki/Docker_%28software%29) es
 relativamente reciente, habiendo sido publicado en marzo de 2013;
-actualmente está sufriendo una gran expansión, sobre todo por su uso
-dentro de [CoreOS](http://coreos.com/), un sistema operativo básico
-basado en Linux para despliegue masivo de servidores.
+actualmente está sufriendo una gran expansión, lo que ha llevado al
+desarrollo paralelo de sistemas operativos tales como
+[CoreOS](http://coreos.com/), 
+basado en Linux y que permite despliegue masivo de servidores. 
+
+El enfoque de la virtualización ligera de Docker y de otras soluciones
+como `lxc/lxd`
+[es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/),
+manteniendo en común el hecho de que se trata de soluciones de
+virtualización *por software* o *ligera*. 
 
 [Instalar `docker` es fácil en las últimas versiones](https://www.docker.com/). Por
 ejemplo, para
@@ -613,6 +620,57 @@ otros [sistemas (tales como Vagrant](Gestion_de_configuraciones) usando
 [*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
 ejemplo,
 [se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
+
+## Algunas buenas prácticas en el uso de virtualización ligera
+
+Una de las principales ventajas que tiene este tipo de virtualización,
+sea cual sea como se implemente, es precisamente el hecho de que sea
+*ligera*, y que por lo tanto los contenedores se puedan crear, activar
+y desactivar rápidamente. Por eso, aunque pueda parecer a priori que
+es otra forma de crear máquinas virtuales, su ámbito de aplicación es
+totalmente diferente al de estas. Conviene seguir este tipo de reglas,
+sacadas entre otros sitios de
+[esta lista de buenas prácticas con Docker](https://github.com/FuriKuri/docker-best-practices)
+y
+[esta otra](http://containerjournal.com/2016/03/21/5-docker-best-practices-follow/).
+
+### Simplicidad
+
+Los contenedores deben de ser lo más simples posible, y llevar esta
+regla desde el principio al final. Idealmente, los contenedores
+ejecutarán un solo proceso. Esto facilita el escalado mediante
+replicación, y permite también separar las tareas en diferentes
+contenedores, que pueden ser desplegados o actualizados de forma
+totalmente independiente. Esto también facilita el uso de contenedores
+estándar, bien depurados y cuya configuración sea lo más segura
+posible.
+
+Esto también implica una serie de cosas: usar la distribución más
+ligera que soporte la configuración, por ejemplo. El usar una
+distribución ligera y adaptada a contenedores como
+[Alpine Linux](https://alpinelinux.org/) o
+[Atomic Host](https://www.projectatomic.io/) hará que se creen
+contenedores mucho más ligeros y rápidos de cargar y que tengan toda
+la funcionalidad que se necesita. También conviene eliminar toda
+aquella funcionalidad que no se necesite y que se haya usado solamente
+para construir el contenedor, tales como compiladores o ficheros
+intermedios. 
+
+### Seguridad
+
+Los contenedores docker se ejecutan de forma aislada del resto del
+sistema operativo, pero eso no significa que no se pueda penetrar en
+ellos y llevar a cabo diferentes actividades no deseadas. Es
+importante, por ejemplo, que siempre que sea posible se ejecute la
+aplicación como un usuario no privilegiado. 
+
+### Recomendaciones a la hora de construir un contenedor
+
+[Docker da una serie de recomendaciones a la hora de construir contenedores](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/). Para
+hacerlo reproducible, se deben usar Dockerfile o el equivalente en
+otro tipo de contenedores, y las órdenes que se
+deben usar y cómo usarlas constituye un acervo que conviene conocer y
+usar. 
 
 
 ## Usando Dockerfiles
