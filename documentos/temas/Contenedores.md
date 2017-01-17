@@ -139,7 +139,18 @@ distribución ligera y adaptada a contenedores como
 [Alpine Linux](https://alpinelinux.org/) o
 [Atomic Host](https://www.projectatomic.io/) hará que se creen
 contenedores mucho más ligeros y rápidos de cargar y que tengan toda
-la funcionalidad que se necesita. 
+la funcionalidad que se necesita. También conviene eliminar toda
+aquella funcionalidad que no se necesite y que se haya usado solamente
+para construir el contenedor, tales como compiladores o ficheros
+intermedios. 
+
+### Seguridad
+
+Los contenedores docker se ejecutan de forma aislada del resto del
+sistema operativo, pero eso no significa que no se pueda penetrar en
+ellos y llevar a cabo diferentes actividades no deseadas. Es
+importante, por ejemplo, que siempre que sea posible se ejecute la
+aplicación como un usuario no privilegiado. 
 
 Usando `lxc`
 --
