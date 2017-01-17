@@ -99,8 +99,8 @@ tener el mismo kernel y misma CPU que la máquina anfitriona, pero si
 esto no es un problema, puede resultar una alternativa útil y ligera a
 la misma. A diferencia de las jaulas, combina restricciones en el
 acceso al sistema de ficheros con otras restricciones aprovechando
-espacios de nombres y grupos de control. `lxc` es la solución de
-creación de contenedores más fácil de usar hoy en día en Linux.
+espacios de nombres y grupos de control. `lxc` una de las soluciones de
+creación de contenedores más fácil de usar hoy en día en Linux, sobre todo si se quiere usar desde un programa a nivel de librería. Evidentemente, desde que ha salido Docker no es la más popular, aunque es una solución madura y estable. 
 
 
 Esta virtualización *ligera* tiene, entre otras ventajas, una
