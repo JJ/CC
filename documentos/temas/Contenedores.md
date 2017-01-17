@@ -163,7 +163,7 @@ usar.
 Usando `lxc`
 --
 
-No todos los núcleos del sistema operativo pueden usar este tipo de container; para empezar,
+No todas las versiones de los núcleos del sistema operativo pueden usar este tipo de container; para empezar,
 dependerá de cómo esté compilado, pero también del soporte que tenga
 el hardware. `lxc-checkconfig` permite comprobar si está preparado
 para usar este tipo de tecnología y también si se ha configurado correctamente. Parte de la configuración se
@@ -443,9 +443,16 @@ conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan usar en diferentes instalaciones. La tecnología de
 [Docker](https://en.wikipedia.org/wiki/Docker_%28software%29) es
 relativamente reciente, habiendo sido publicado en marzo de 2013;
-actualmente está sufriendo una gran expansión, sobre todo por su uso
-dentro de [CoreOS](http://coreos.com/), un sistema operativo básico
-basado en Linux para despliegue masivo de servidores.
+actualmente está sufriendo una gran expansión, lo que ha llevado al
+desarrollo paralelo de sistemas operativos tales como
+[CoreOS](http://coreos.com/), 
+basado en Linux y que permite despliegue masivo de servidores. 
+
+El enfoque de la virtualización ligera de Docker y de otras soluciones
+como `lxc/lxd`
+[es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/),
+manteniendo en común el hecho de que se trata de soluciones de
+virtualización *por software* o *ligera*. 
 
 [Instalar `docker` es fácil en las últimas versiones](https://www.docker.com/). Por
 ejemplo, para
