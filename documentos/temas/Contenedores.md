@@ -515,6 +515,11 @@ ellos. El resultado de esta orden será un mensaje que te muestra que
 Docker está funcionando. Sin embargo, veamos por partes qué es lo que
 hace esta orden.
 
+1. Usa `sudo` para ejecutar el cliente de línea de órdenes de
+   Docker. Es más seguro, porque te fuerza a dar la clave de
+   administrador en cada terminal que se ejecute. Puede configurarse
+   docker para que lo pueda usar cualquier usuario, aunque es menos
+   seguro y no lo aconsejamos. 
 1. Busca una *imagen* de Docker llamada `hello-world`. 
 
 ~~~
@@ -545,7 +550,39 @@ más adelante se verán.
    contenedor deja de ejecutarse. La imagen se queda almacenada
    localmente, para la próxima vez que se vaya a ejecutar. 
 
+De los pasos anteriores habrás deducido que se ha descargado una
+imagen cuyo nombre es `hello world` y se ha creado un contenedor, en
+principio sin nombre. Puedes listar las imágenes que tienes con 
 
+	sudo socker images
+	
+que, en principio, sólo listará una llamada `hello-world` en la
+segunda columna, etiquetada IMAGES. Pero esto incluye sólo las
+imágenes en sí. Para listas los contenedores que tienes, 
+
+	sudo docker ps -a
+	
+listará los contenedores que efectivamente se han creado, por ejemplo:
+
+~~~
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
+1e9e7dfe46e3        hello-world         "/hello"            3 seconds ago       Exited (0) 2 seconds ago                           focused_poincare
+ec9ba7a27e93        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       dreamy_goldstine
+~~~
+
+Vemos dos contenedores, con dos IDs de contenedor diferentes, ambas
+correspondientes a la misma imagen, `hello-world`. Cada vez que
+ejecutemos la imagen crearemos un contenedor nuevo, por lo que
+conviene que recordemos ejecutarlo con
+
+	sudo docker run --rm hello-world
+
+que borrará el contenedor creado una vez ejecutada la orden. Así se
+mantiene el número de contenedores bajo y sobre todo se guardan sólo y
+exclusivamente los que se piensen mantener o trabajar más
+adelante. Esta orden pone también de manifiesto la idea de
+*contenedores de usar y tirar*. Una vez ejecutado el contenedor, se
+dispone de la memoria y el disco que usa. 
 
 A partir de ahí, podemos crear un contenedor
 
