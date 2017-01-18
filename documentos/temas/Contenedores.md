@@ -482,7 +482,7 @@ Así que comencemos desde el principio. Veremos a continuación cómo empezar a 
 
 Si no se está ejecutando ya, se puede arrancar como un servicio
 
-	sudo docker -d &
+	sudo dockerd &
 
 La línea de órdenes de docker conectará con este daemon, que mantendrá
 el estado de docker y demás. Cada una de las órdenes se ejecutará
@@ -494,18 +494,56 @@ usando un socket protegido.
 >hacerlo. [Puedes seguir estas instrucciones para hacerlo desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
 >privilegios de administración.
 
+Con una instalación estándar, 
+
+	sudo status docker
+	
+debería responder si se está ejecutando o no. Si está parado,
+
+	sudo start docker
+	
+comenzará a ejecutarlo. 
 
 Una vez
-instalado, el clásico
+instalado, se puede ejecutar el clásico
 
 	sudo docker run hello-world
 
-`docker` permite instalar contenedores y trabajar con
-ellos. Normalmente el ciclo de vida de un contenedor pasa por su
-creación y, más adelante, ejecución de algún tipo de programa, por
-ejemplo de instalación de los servicios que queramos; luego se puede
-salvar el estado del táper y clonarlo o realizar cualquier otro tipo
-de tareas.
+Generalmente, vamos a usar Docker usando su herramienta de la línea de
+órdenes, `docker`, que permite instalar contenedores y trabajar con
+ellos. El resultado de esta orden será un mensaje que te muestra que
+Docker está funcionando. Sin embargo, veamos por partes qué es lo que
+hace esta orden.
+
+1. Busca una *imagen* de Docker llamada `hello-world`. 
+
+~~~
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+78445dd45222: Pull complete 
+Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
+Status: Downloaded newer image for hello-world:latest
+~~~
+
+Al no encontrar esa imagen localmente, la descarga del
+[Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+se suben las imágenes de Docker y donde puedes encontrar muchas más;
+más adelante se verán. 
+
+2. Crea un *contenedor* usando como base esa imagen, es decir, el
+   equivalente a *arrancar* un sistema usando como disco duro esa
+   imagen. 
+
+2. Ejecuta un programa llamado `hello` situado *dentro* de esa
+   imagen. Ese probrama simplemente muestra el mensaje que nos
+   aparece. Este es un programa que el autor ha configurado para que
+   sea ejecutado cuando se ejecute el comando `run` sobre esa
+   imagen. Este programa se está ejecutando *dentro* del contenedor y,
+   por tanto, aislado del resto del sistema. 
+   
+3. Sale del contenedor y te deposita en la línea de órdenes. El
+   contenedor deja de ejecutarse. La imagen se queda almacenada
+   localmente, para la próxima vez que se vaya a ejecutar. 
 
 
 
