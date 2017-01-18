@@ -459,8 +459,11 @@ hacer
 
 	sudo apt-get install docker.io
 
-aunque la versión en los repositorios puede ser más antigua que la que
-se descargue de la web. La instalación coloca también un servicio que
+aunque la versión en los repositorios oficiales suele ser más antigua que la que
+se descargue de la web o los repositorios adicionales. 
+
+
+La instalación coloca también un servicio que
 se ejecutará como *daemon* y se arrancará con el inicio del
 sistema. La instalación desde `docker.com` siguiendo las instrucciones
 te instalará también una serie de imágenes genéricas con las que se
