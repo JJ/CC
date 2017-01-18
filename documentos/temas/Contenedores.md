@@ -395,7 +395,18 @@ relativamente reciente, habiendo sido publicado en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
 desarrollo paralelo de sistemas operativos tales como
 [CoreOS](http://coreos.com/), 
-basado en Linux y que permite despliegue masivo de servidores. 
+basado en Linux y que permite despliegue masivo de servidores. Pero no
+adelantemos acontecimientos. 
+
+>Docker funciona mejor en Linux, fue creado para Linux y es donde
+>tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
+>última versión de Windows, la 10, funciona relativamente bien también
+>en este sistema operativo. Si no tienes esa versión no te molestes;
+>en todo caso, también en Windows 10 puedes usar el subsistema Linux
+>(Ubuntu y últimamente OpenSuSE) para interactuar con
+>Docker. Finalmente, aunque es usable desde Mac, en realidad el
+>sistema operativo no tiene soporte para el mismo. Es mejor que en
+>este caso se use una máquina virtual local o en la nube. 
 
 El enfoque de la virtualización ligera de
 Docker [es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/) al
@@ -425,7 +436,7 @@ desarrollo de software habituales, especialmente los denominados
 
 A continuación vamos a ver cómo podemos usar Docker como simples
 usuarios, para ver a continuación como se puede diseñar una
-arquitectura usándolo.
+arquitectura usándolo, empezando por el principio, como instalarlo. 
 
 ## Instalación de Docker
 
@@ -440,8 +451,11 @@ hacer
 
 	sudo apt-get install docker.io
 
-aunque la versión en los repositorios puede ser más antigua que la que
-se descargue de la web. La instalación coloca también un servicio que
+aunque la versión en los repositorios oficiales suele ser más antigua que la que
+se descargue de la web o los repositorios adicionales. 
+
+
+La instalación coloca también un servicio que
 se ejecutará como *daemon* y se arrancará con el inicio del
 sistema. La instalación desde `docker.com` siguiendo las instrucciones
 te instalará también una serie de imágenes genéricas con las que se
