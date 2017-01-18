@@ -449,30 +449,12 @@ sólo si se instalan kernels posteriores). En las últimas versiones, de
 hecho, ya está en los repositorios y para instalarlo no hay más que
 hacer
 
-	sudo apt-get install docker.io
+	sudo apt-get install docker-engine
 
 aunque la versión en los repositorios oficiales suele ser más antigua que la que
-se descargue de la web o los repositorios adicionales. 
-
-
-La instalación coloca también un servicio que
-se ejecutará como *daemon* y se arrancará con el inicio del
-sistema. La instalación desde `docker.com` siguiendo las instrucciones
-te instalará también una serie de imágenes genéricas con las que se
-puede empezar a trabajar de forma más o menos inmediata. Una vez
-instalado, el clásico
-
-	sudo docker run hello-world
-
-`docker` permite instalar contenedores y trabajar con
-ellos. Normalmente el ciclo de vida de un contenedor pasa por su
-creación y, más adelante, ejecución de algún tipo de programa, por
-ejemplo de instalación de los servicios que queramos; luego se puede
-salvar el estado del táper y clonarlo o realizar cualquier otro tipo
-de tareas.
-
-Así que comencemos desde el principio:
-[vamos a ejecutar `docker`y trabajar con el contenedor creado](https://docs.docker.com/engine/installation/linux/ubuntulinux/).
+se descargue de la web o los repositorios adicionales. Este paquete incluye varias aplicaciones: un *daemon*, `dockerd`, y un cliente de línea de órdenes, `docker`. La instalación dejará este *daemon* ejecutándose y lo configurará para que se   arranque con el inicio del
+sistema. También una serie de *imágenes* genéricas con las que se
+puede empezar a trabajar de forma más o menos inmediata. 
 
 >Hay
 >también
@@ -480,6 +462,7 @@ Así que comencemos desde el principio:
 >en
 >[un Mac](https://docs.docker.com/engine/installation/mac/). 
 
+Así que comencemos desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
 
 ## Comenzando a ejecutar Docker
 
@@ -496,6 +479,21 @@ usando un socket protegido.
 >adecuada de
 >hacerlo. [Puedes seguir estas instrucciones para hacerlo desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
 >privilegios de administración.
+
+
+Una vez
+instalado, el clásico
+
+	sudo docker run hello-world
+
+`docker` permite instalar contenedores y trabajar con
+ellos. Normalmente el ciclo de vida de un contenedor pasa por su
+creación y, más adelante, ejecución de algún tipo de programa, por
+ejemplo de instalación de los servicios que queramos; luego se puede
+salvar el estado del táper y clonarlo o realizar cualquier otro tipo
+de tareas.
+
+
 
 A partir de ahí, podemos crear un contenedor
 
