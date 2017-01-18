@@ -438,6 +438,12 @@ A continuación vamos a ver cómo podemos usar Docker como simples
 usuarios, para ver a continuación como se puede diseñar una
 arquitectura usándolo, empezando por el principio, como instalarlo. 
 
+>Conviene que, en este momento o un poco más adelante, tengas preparad
+>una instalación de un hipervisor o gestor de máquinas virtuales tipo
+>VirtualBox o similar. Sea porque quieras tener una máquina virtual
+>Linux específica para esto, o para tener varias máquinas virtuales
+>funcionando a la vez. 
+
 ## Instalación de Docker
 
 [Instalar `docker` es sencillo en las últimas versiones](https://www.docker.com/). 
@@ -462,6 +468,14 @@ puede empezar a trabajar de forma más o menos inmediata.
 >en
 >[un Mac](https://docs.docker.com/engine/installation/mac/). 
 
+Otra posibilidad para trabajar con Docker es usar
+[el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/). CoreOS es una distribución diseñada
+para trabajar casi de forma exclusiva con contenedores, y aparte de
+una serie de características interesantes, como el uso de `etcd` para
+configuración distribuida, tiene un gestor de Docker instalado en la
+configuración base. Si es para experimentar Docker sin afectar la
+instalación de nuestro propio ordenador, se aconseja que se instale
+[Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html) 
 Así que comencemos desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
 
 ## Comenzando a ejecutar Docker
