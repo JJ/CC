@@ -581,7 +581,7 @@ ec9ba7a27e93        hello-world         "/hello"            About an hour ago   
 Vemos dos contenedores, con dos IDs de contenedor diferentes, ambas
 correspondientes a la misma imagen, `hello-world`. Cada vez que
 ejecutemos la imagen crearemos un contenedor nuevo, por lo que
-conviene que recordemos ejecutarlo con
+conviene que recordemos ejecutarlo, siempre que no vayamos a necesitarlo, con
 
 	sudo docker run --rm hello-world
 
@@ -592,7 +592,33 @@ adelante. Esta orden pone también de manifiesto la idea de
 *contenedores de usar y tirar*. Una vez ejecutado el contenedor, se
 dispone de la memoria y el disco que usa. 
 
-A partir de ahí, podemos crear un contenedor
+Como vemos, los contenedores pueden actuar como un *ejecutable*, una
+forma de distribuir aplicacioens de forma independiente de la versión
+de Linux y de forma efímera. De hecho, como tal ejecutable, se le
+pueden pasar argumentos por línea de órdenes
+
+	sudo  sudo docker run --rm jjmerelo/docker-daleksay -f smiling-octopus Uso argumentos, ea
+
+que usa
+[el contenedor `daleksay`](https://hub.docker.com/r/jjmerelo/docker-daleksay/) para
+imprimir a un pulpo sonriente diciendo cosas. Como vemos, se le pasa
+como argumentos `-f smiling-octopus Uso argumentos, ea` de forma que
+el contenedor actúa, para casi todos los efectos, como el propio
+programa al que aísla. 
+
+<div class='ejercicios' markdown='1'>
+
+Buscar alguna demo interesante de Docker y ejecutarla localmente, o en
+su defecto, ejecutar la imagen anterior y ver cómo funciona y los
+procesos que se llevan a cabo la primera vez que se ejecuta y las
+siguientes ocaciones. 
+
+</div>
+
+## Trabajando *dentro* de contenedores. 
+
+Pero no sólo podemos descargar y ejecutar contenedores de forma
+efímera. A partir de ahí, podemos crear un contenedor
 
 	sudo docker pull alpine
 
