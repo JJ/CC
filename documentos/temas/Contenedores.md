@@ -540,13 +540,11 @@ hace esta orden.
    seguro y no lo aconsejamos. 
 1. Busca una *imagen* de Docker llamada `hello-world`. 
 
-~~~
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-78445dd45222: Pull complete 
-Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
-Status: Downloaded newer image for hello-world:latest
-~~~
+    Unable to find image 'hello-world:latest' locally
+    latest: Pulling from library/hello-world
+    78445dd45222: Pull complete 
+    Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
+    Status: Downloaded newer image for hello-world:latest
 
 Al no encontrar esa imagen localmente, la descarga del
 [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
