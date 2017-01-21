@@ -530,7 +530,10 @@ hace esta orden.
    administrador en cada terminal que se ejecute. Puede configurarse
    docker para que lo pueda usar cualquier usuario, aunque es menos
    seguro y no lo aconsejamos. 
-1. Busca una *imagen* de Docker llamada `hello-world`. Al no encontrar esa imagen localmente, la descarga del[Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+1. Busca una *imagen* de Docker llamada `hello-world`. Una imagen es
+equivalente a un *disco de instalación* que contiene los elementos que
+se van a aislar dentro del contenedor. 
+Al no encontrar esa imagen localmente, la descarga del[Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
 se suben las imágenes de Docker y donde puedes encontrar muchas más;
 más adelante se verán. 
 
