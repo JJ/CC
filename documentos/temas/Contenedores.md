@@ -403,7 +403,18 @@ relativamente reciente, habiendo sido publicado en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
 desarrollo paralelo de sistemas operativos tales como
 [CoreOS](http://coreos.com/), 
-basado en Linux y que permite despliegue masivo de servidores. 
+basado en Linux y que permite despliegue masivo de servidores. Pero no
+adelantemos acontecimientos. 
+
+>Docker funciona mejor en Linux, fue creado para Linux y es donde
+>tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
+>última versión de Windows, la 10, funciona relativamente bien también
+>en este sistema operativo. Si no tienes esa versión no te molestes;
+>en todo caso, también en Windows 10 puedes usar el subsistema Linux
+>(Ubuntu y últimamente OpenSuSE) para interactuar con
+>Docker. Finalmente, aunque es usable desde Mac, en realidad el
+>sistema operativo no tiene soporte para el mismo. Es mejor que en
+>este caso se use una máquina virtual local o en la nube. 
 
 El enfoque de la virtualización ligera de
 Docker [es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/) al
@@ -433,7 +444,13 @@ desarrollo de software habituales, especialmente los denominados
 
 A continuación vamos a ver cómo podemos usar Docker como simples
 usuarios, para ver a continuación como se puede diseñar una
-arquitectura usándolo.
+arquitectura usándolo, empezando por el principio, como instalarlo. 
+
+>Conviene que, en este momento o un poco más adelante, tengas preparad
+>una instalación de un hipervisor o gestor de máquinas virtuales tipo
+>VirtualBox o similar. Sea porque quieras tener una máquina virtual
+>Linux específica para esto, o para tener varias máquinas virtuales
+>funcionando a la vez. 
 
 ## Instalación de Docker
 
@@ -446,27 +463,12 @@ sólo si se instalan kernels posteriores). En las últimas versiones, de
 hecho, ya está en los repositorios y para instalarlo no hay más que
 hacer
 
-	sudo apt-get install docker.io
+	sudo apt-get install docker-engine
 
-aunque la versión en los repositorios puede ser más antigua que la que
-se descargue de la web. La instalación coloca también un servicio que
-se ejecutará como *daemon* y se arrancará con el inicio del
-sistema. La instalación desde `docker.com` siguiendo las instrucciones
-te instalará también una serie de imágenes genéricas con las que se
-puede empezar a trabajar de forma más o menos inmediata. Una vez
-instalado, el clásico
-
-	sudo docker run hello-world
-
-`docker` permite instalar contenedores y trabajar con
-ellos. Normalmente el ciclo de vida de un contenedor pasa por su
-creación y, más adelante, ejecución de algún tipo de programa, por
-ejemplo de instalación de los servicios que queramos; luego se puede
-salvar el estado del táper y clonarlo o realizar cualquier otro tipo
-de tareas.
-
-Así que comencemos desde el principio:
-[vamos a ejecutar `docker`y trabajar con el contenedor creado](https://docs.docker.com/engine/installation/linux/ubuntulinux/).
+aunque la versión en los repositorios oficiales suele ser más antigua que la que
+se descargue de la web o los repositorios adicionales. Este paquete incluye varias aplicaciones: un *daemon*, `dockerd`, y un cliente de línea de órdenes, `docker`. La instalación dejará este *daemon* ejecutándose y lo configurará para que se   arranque con el inicio del
+sistema. También una serie de *imágenes* genéricas con las que se
+puede empezar a trabajar de forma más o menos inmediata. 
 
 >Hay
 >también
@@ -474,12 +476,31 @@ Así que comencemos desde el principio:
 >en
 >[un Mac](https://docs.docker.com/engine/installation/mac/). 
 
+Otra posibilidad para trabajar con Docker es usar
+[el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/). *Container
+Linux* es una distribución diseñada
+para usar aplicaciones distribuidas, casi de forma exclusiva, en contenedores, y aparte de
+una serie de características interesantes, como el uso de `etcd` para
+configuración distribuida, tiene un gestor de Docker instalado en la
+configuración base. Si es para experimentar Docker sin afectar la
+instalación de nuestro propio ordenador, se aconseja que se instale
+[Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html).
+
+
+Con cualquiera de las formas que hayamos elegido para instalar Docker,
+vamos a comenzar desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
 
 ## Comenzando a ejecutar Docker
 
-Si no se está ejecutando ya, se puede arrancar como un servicio
+Docker consiste, entre otras cosas, en un servicio que se encarga de
+gestionar los contenedores y una herramienta de línea de ordenes que
+es la que vamos a usar, en general, para trabajar con él. 
 
-	sudo docker -d &
+Los paquetes de instalación estándar generalmente instalan Docker como
+servicio para que comience a ejecutarse en el momento que arranque el
+sistema. Si no se está ejecutando ya, se puede arrancar como un servicio
+
+	sudo dockerd &
 
 La línea de órdenes de docker conectará con este daemon, que mantendrá
 el estado de docker y demás. Cada una de las órdenes se ejecutará
@@ -490,6 +511,96 @@ usando un socket protegido.
 >adecuada de
 >hacerlo. [Puedes seguir estas instrucciones para hacerlo desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
 >privilegios de administración.
+
+Con una instalación estándar, 
+
+	sudo status docker
+	
+debería responder si se está ejecutando o no. Si está parado,
+
+	sudo start docker
+	
+comenzará a ejecutarlo. 
+
+Una vez
+instalado, se puede ejecutar el clásico
+
+	sudo docker run hello-world
+
+Generalmente, vamos a usar Docker usando su herramienta de la línea de
+órdenes, `docker`, que permite instalar contenedores y trabajar con
+ellos. El resultado de esta orden será un mensaje que te muestra que
+Docker está funcionando. Sin embargo, veamos por partes qué es lo que
+hace esta orden.
+
+1. Usa `sudo` para ejecutar el cliente de línea de órdenes de
+   Docker. Es más seguro, porque te fuerza a dar la clave de
+   administrador en cada terminal que se ejecute. Puede configurarse
+   docker para que lo pueda usar cualquier usuario, aunque es menos
+   seguro y no lo aconsejamos. 
+1. Busca una *imagen* de Docker llamada `hello-world`. 
+
+~~~
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+78445dd45222: Pull complete 
+Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
+Status: Downloaded newer image for hello-world:latest
+~~~
+
+Al no encontrar esa imagen localmente, la descarga del
+[Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+se suben las imágenes de Docker y donde puedes encontrar muchas más;
+más adelante se verán. 
+
+2. Crea un *contenedor* usando como base esa imagen, es decir, el
+   equivalente a *arrancar* un sistema usando como disco duro esa
+   imagen. 
+
+2. Ejecuta un programa llamado `hello` situado *dentro* de esa
+   imagen. Ese programa simplemente muestra el mensaje que nos
+   aparece. Este es un programa que el autor ha configurado para que
+   sea ejecutado cuando se ejecute el comando `run` sobre esa
+   imagen. Este programa se está ejecutando *dentro* del contenedor y,
+   por tanto, aislado del resto del sistema. 
+   
+3. Sale del contenedor y te deposita en la línea de órdenes. El
+   contenedor deja de ejecutarse. La imagen se queda almacenada
+   localmente, para la próxima vez que se vaya a ejecutar. 
+
+De los pasos anteriores habrás deducido que se ha descargado una
+imagen cuyo nombre es `hello world` y se ha creado un contenedor, en
+principio sin nombre. Puedes listar las imágenes que tienes con 
+
+	sudo docker images
+	
+que, en principio, sólo listará una llamada `hello-world` en la
+segunda columna, etiquetada IMAGES. Pero esto incluye sólo las
+imágenes en sí. Para listas los contenedores que tienes, 
+
+	sudo docker ps -a
+	
+listará los contenedores que efectivamente se han creado, por ejemplo:
+
+~~~
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
+1e9e7dfe46e3        hello-world         "/hello"            3 seconds ago       Exited (0) 2 seconds ago                           focused_poincare
+ec9ba7a27e93        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       dreamy_goldstine
+~~~
+
+Vemos dos contenedores, con dos IDs de contenedor diferentes, ambas
+correspondientes a la misma imagen, `hello-world`. Cada vez que
+ejecutemos la imagen crearemos un contenedor nuevo, por lo que
+conviene que recordemos ejecutarlo con
+
+	sudo docker run --rm hello-world
+
+que borrará el contenedor creado una vez ejecutada la orden. Así se
+mantiene el número de contenedores bajo y sobre todo se guardan sólo y
+exclusivamente los que se piensen mantener o trabajar más
+adelante. Esta orden pone también de manifiesto la idea de
+*contenedores de usar y tirar*. Una vez ejecutado el contenedor, se
+dispone de la memoria y el disco que usa. 
 
 A partir de ahí, podemos crear un contenedor
 
