@@ -469,18 +469,28 @@ puede empezar a trabajar de forma más o menos inmediata.
 >[un Mac](https://docs.docker.com/engine/installation/mac/). 
 
 Otra posibilidad para trabajar con Docker es usar
-[el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/). CoreOS es una distribución diseñada
-para trabajar casi de forma exclusiva con contenedores, y aparte de
+[el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/). *Container
+Linux* es una distribución diseñada
+para usar aplicaciones distribuidas, casi de forma exclusiva, en contenedores, y aparte de
 una serie de características interesantes, como el uso de `etcd` para
 configuración distribuida, tiene un gestor de Docker instalado en la
 configuración base. Si es para experimentar Docker sin afectar la
 instalación de nuestro propio ordenador, se aconseja que se instale
-[Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html) 
-Así que comencemos desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
+[Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html).
+
+
+Con cualquiera de las formas que hayamos elegido para instalar Docker,
+vamos a comenzar desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
 
 ## Comenzando a ejecutar Docker
 
-Si no se está ejecutando ya, se puede arrancar como un servicio
+Docker consiste, entre otras cosas, en un servicio que se encarga de
+gestionar los contenedores y una herramienta de línea de ordenes que
+es la que vamos a usar, en general, para trabajar con él. 
+
+Los paquetes de instalación estándar generalmente instalan Docker como
+servicio para que comience a ejecutarse en el momento que arranque el
+sistema. Si no se está ejecutando ya, se puede arrancar como un servicio
 
 	sudo dockerd &
 
@@ -540,7 +550,7 @@ más adelante se verán.
    imagen. 
 
 2. Ejecuta un programa llamado `hello` situado *dentro* de esa
-   imagen. Ese probrama simplemente muestra el mensaje que nos
+   imagen. Ese programa simplemente muestra el mensaje que nos
    aparece. Este es un programa que el autor ha configurado para que
    sea ejecutado cuando se ejecute el comando `run` sobre esa
    imagen. Este programa se está ejecutando *dentro* del contenedor y,
@@ -554,7 +564,7 @@ De los pasos anteriores habrás deducido que se ha descargado una
 imagen cuyo nombre es `hello world` y se ha creado un contenedor, en
 principio sin nombre. Puedes listar las imágenes que tienes con 
 
-	sudo socker images
+	sudo docker images
 	
 que, en principio, sólo listará una llamada `hello-world` en la
 segunda columna, etiquetada IMAGES. Pero esto incluye sólo las
