@@ -808,29 +808,36 @@ mismo comando
 
 	sudo docker run -it ubuntu /bin/bash
 
-(donde hemos abreviado las opciones juntándolas) crearía, a partir de
+(donde hemos abreviado las opciones `-i` y `-t` juntándolas) crearía, a partir de
 la imagen de Ubuntu, un nuevo contenedor. 
 
-## Reutilización de contenedores creados
+En cualquiera de los casos, cuando se ejecuta `exit` o `Control-D`
+para salir del contenedor, este deja de ejecutarse. Ejecutar
 
-Los contenedores se pueden arrancar de forma independiente con `start`
-
-	sudo docker start	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
-
-pero hay que usar el ID largo que se obtiene dando la orden de esta
-forma
-
-	sudo docker ps -a
+	sudo docker ps -l
 	
-en la primera columna, donde indica el ID del contenedor.
+mostrará  que ese contenedor está `exited`, es decir, que ha salido,
+pero también mostrará en la primera columna el ID del
+mismo. *Arrancarlo* de nuevo no nos traerá la línea de órdenes, pero
+sí se arrancará el entorno de ejecución; si queremos volver a ejecutar
+algo como la línea de órdenes, tendremos que arrancarlo y a
+continuación efectivamente ejecutar algo como el *shell*
+
+	sudo docker start 6dc8ddb51cd6 && sudo docker exec -it 6dc8ddb51cd6 sh
 	
-Con esta orden
+Sin embargo, en este caso simplemente salir del shell no dejará de
+ejecutar el contenedor, por lo que habrá que pararlo
 
-	sudo docker images --no-trunc
+	sudo docker stop 6dc8ddb51cd6
 
-se obtiene el ID largo. Para inspeccionar las imágenes  tienes que averiguar qué IP está usando
-y los usuarios y claves y por supuesto tener ejecutándose un cliente
-de `ssh` en la misma. Para averiguar la IP:
+y, a continuación, si no se va a usar más el contenedor, borrarlo
+
+	sudo docker rm 6dc8ddb51cd6
+
+
+Las imágenes que se han creado se pueden examinar con `inspect`, lo
+que nos da información sobre qué metadatos se le han asignado por
+omisión, incluyendo una IP. 
 
 	sudo docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
 
