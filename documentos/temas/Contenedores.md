@@ -473,13 +473,12 @@ arquitectura usándolo, empezando por el principio, como instalarlo.
 
 ## Instalación de Docker
 
-[Instalar `docker` es sencillo en las últimas versiones](https://www.docker.com/). 
-Por
-ejemplo, para
-[Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
+[Instalar `docker`](https://www.docker.com/) es sencillo desde que se
+publicó la versión 1.0, especialmente en distribuciones de Linux. Por
+ejemplo, para [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 y no funcionará con versiones más antiguas de la 12.04 (y en este caso
 sólo si se instalan kernels posteriores). En las últimas versiones, de
-hecho, ya está en los repositorios y para instalarlo no hay más que
+hecho, ya está en los repositorios oficiales de Ubuntu y para instalarlo no hay más que
 hacer
 
 	sudo apt-get install docker-engine
@@ -791,6 +790,18 @@ comando interactivamente (`-i`). A partir de ahí sale la línea de
 órdenes, con privilegios de superusuario, y podemos trabajar con el
 contenedor e instalar lo que se nos ocurra. Esto, claro está, si tenemos
 ese contenedor instalado y ejecutándose.
+
+Cuando se ejecuta `bash` se está haciendo precisamente eso, ejecutando
+un intérprete de línea de órdenes o *shell* de forma aislada del resto
+de los recursos. Hablar de *conectarte* a un contenedor, en este caso,
+no tendría mucho sentido, o al menos tanto sentido como *conectarse* a
+un proceso que está ejecutándose. De hecho, una segunda ejecución del
+mismo comando 
+
+	sudo docker run -it ubuntu /bin/bash
+
+(donde hemos abreviado las opciones juntándolas) crearía, a partir de
+la imagen de Ubuntu, un nuevo contenedor. 
 
 ## Reutilización de contenedores creados
 
