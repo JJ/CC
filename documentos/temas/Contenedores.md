@@ -799,7 +799,12 @@ como está usando [commit](https://docs.docker.com/engine/reference/commandline/
 	sudo docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
 
 que guardará el estado del contenedor tal como está en ese
-momento. Este `commit` es equivalente al que se hace en un
+momento, convirtiéndolo en una nueva imagen, a la que podemos acceder
+si usamos
+
+	sudo docker images 
+	
+Este `commit` es equivalente al que se hace en un
 repositorio; para enviarlo al repositorio habrá que usar `push` (pero
 sólo si uno se ha dado de alta antes).
 
@@ -809,6 +814,12 @@ Crear a partir del contenedor anterior una imagen persistente con
 *commit*.
 
 </div>
+
+## Almacenamiento de datos y creación de imágenes Docker.
+
+Ya hemos visto cómo se convierte un contenedor en imagen, al menos de
+forma local, con `commit`. Pero veamos exactamente qué es lo que
+sucede y cómo se lleva a cabo.
 
 
 
