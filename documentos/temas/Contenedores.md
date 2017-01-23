@@ -593,7 +593,7 @@ adelante. Esta orden pone también de manifiesto la idea de
 dispone de la memoria y el disco que usa. 
 
 Como vemos, los contenedores pueden actuar como un *ejecutable*, una
-forma de distribuir aplicacioens de forma independiente de la versión
+forma de distribuir aplicaciones de forma independiente de la versión
 de Linux y de forma efímera. De hecho, como tal ejecutable, se le
 pueden pasar argumentos por línea de órdenes
 
@@ -611,18 +611,33 @@ programa al que aísla.
 Buscar alguna demo interesante de Docker y ejecutarla localmente, o en
 su defecto, ejecutar la imagen anterior y ver cómo funciona y los
 procesos que se llevan a cabo la primera vez que se ejecuta y las
-siguientes ocaciones. 
+siguientes ocasiones. 
 
 </div>
 
 ## Trabajando *dentro* de contenedores. 
 
 Pero no sólo podemos descargar y ejecutar contenedores de forma
-efímera. A partir de ahí, podemos crear un contenedor
+efímera. También se puede crear un contenedor y trabajar en
+él. Realmente, no es la forma adecuada de trabajar, que debería ser
+reproducible y automática, pero se puede usar para crear prototipos o
+para probar cosas sobre contenedores cuya creación se automatizará a
+continuación. Comencemos por descargar la imagen.
 
 	sudo docker pull alpine
 
-Esta orden descarga un contenedor básico de [Alpine Linux](https://alpinelinux.org/) y lo instala. Hay
+Esta orden descarga una imagen de
+[Alpine Linux](https://alpinelinux.org/) y la instala, haciéndola
+disponible para que se creen, a partir de ella, contenedores. Como se
+ha visto antes, las imágenes que hay disponibles en el sistema se
+listan con 
+
+	sudo docker images
+
+Si acabas de hacer el pull anterior, aparecerá esa y otras que hayas
+creado anteriormente. 
+
+Hay
 muchas imágenes creadas y se pueden crear y compartir en el sitio web
 de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
@@ -634,8 +649,8 @@ también otros con una funcionalidad determinada.
 
 <div class='ejercicios' markdown='1'>
 
-Instalar una imagen alternativa de Ubuntu y alguna
-adicional, por ejemplo de CentOS.
+Comparar el tamaño de las imágenes de diferentes sistemas operativos
+base, Fedora, CentOS y Alpine, por ejemplo. 
 
 </div>
 
