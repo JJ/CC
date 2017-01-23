@@ -635,9 +635,14 @@ listan con
 	sudo docker images
 
 Si acabas de hacer el pull anterior, aparecerá esa y otras que hayas
-creado anteriormente. 
+creado anteriormente. También aparecerá el tamaño de la imagen, que es
+solamente de unos 4 megabytes. Otras imágenes, como las de Ubuntu,
+tendrán alrededor de 200 MBs, por lo que siempre se aconseja que se
+use este tipo de imágenes, mucho más ligeras, que hace que la descarga
+sea mucho más rápida.
 
-Hay
+Se pueden usar, sin embargo, las imágenes que sean más adecuadas para
+la tarea, el prototipo o la prueba que se quiera realizar. Hay
 muchas imágenes creadas y se pueden crear y compartir en el sitio web
 de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
@@ -645,7 +650,11 @@ Debian. Se pueden
 o
 [buscar las imágenes más populares](https://hub.docker.com/explore/). Estas
 imágenes contienen no sólo sistemas operativos *bare bones*, sino
-también otros con una funcionalidad determinada.
+también otros con una funcionalidad determinada. Por ejemplo, una de
+las imágenes más populares es la de
+[`nginx`](https://hub.docker.com/_/nginx/), la de Redis o la de
+Busybox, un sustituto del *shell* que incluye también una serie de
+utilidades externas y que se pueden usar como imagen base. 
 
 <div class='ejercicios' markdown='1'>
 
@@ -654,23 +663,26 @@ base, Fedora, CentOS y Alpine, por ejemplo.
 
 </div>
 
-El contenedor tarda un poco en instalarse, mientras se baja la
-imagen. Una vez bajada, se pueden empezar a ejecutar comandos. Lo
-bueno de `docker` es que permite ejecutarlos directamente sin
-necesidad de conectarse a la máquina; la gestión de la conexión y
-demás lo hace ello, al modo de Vagrant (lo que veremos más adelante).
+Si usas otra imagen, se tendrá que descargar lo que tardará más o
+menos dependiendo de la conexión; hay también otro factor que veremos
+más adelante. Una vez bajada, se pueden empezar a ejecutar comandos. Lo
+bueno de `docker` es que permite ejecutarlos directamente, y en esto
+tenemos que tener en cuenta que se va a tratar de comandos *aislados*
+y que, en realidad, no tenemos una máquina virtual *diferente*. 
 
 Podemos ejecutar, por ejemplo, un listado de los directorios
 
-	sudo docker run alpine ls
+	sudo docker run --rm alpine ls
 
-Tras el sudo, hace falta docker; `run` es el comando de docker que
-estamos usando, `ubuntu` es el nombre de la máquina, el mismo que le
+Tras el sudo, hace falta el comando docker; `run` es el comando de docker que
+estamos usando, `--rm` hace que la máquina se borre una vez ejecutado
+el comando. `alpine` es el nombre de la máquina, el mismo que le
 hayamos dado antes cuando hemos hecho pull y finalmente `ls`, el
 comando que estamos ejecutando. Este comando arranca el contenedor, lo
 ejecuta y a continuación sale de él. Esta es una de las ventajas de
 este tipo de virtualización: es tan rápido arrancar que se puede usar
-para un simple comando y dejar de usarse a continuación.
+para un simple comando y dejar de usarse a continuación, y de hecho
+hasta se puede borrar el contenedor correspondiente.
 
 Esta imagen de Alpine no contiene bash, pero si el shell básico
 llamado `ash` y que está instalado en `sh`,
@@ -726,7 +738,7 @@ referirnos a ella en otros comandos. También se puede usar
 
 	sudo docker images
 
-Que devolverá algo así:
+Que, una vez más, devolverá algo así:
 
 	REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 ubuntu              latest              8dbd9e392a96        9 months ago        128 MB
@@ -740,6 +752,8 @@ de la imagen:
 
 		sudo docker run b750fe79269d du
 
+## Cómo crear imágenes docker interactivamente.
+
 En vez de ejecutar las cosas una a una podemos directamente [ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
 
 	sudo docker run -i -t ubuntu /bin/bash
@@ -747,9 +761,11 @@ En vez de ejecutar las cosas una a una podemos directamente [ejecutar un shell](
 que [indica](https://docs.docker.com/engine/reference/commandline/cli/) que
 se está creando un seudo-terminal (`-t`) y se está ejecutando el
 comando interactivamente (`-i`). A partir de ahí sale la línea de
-órdenes, con privilegios de superusuario, y podemos trabajar con la
-máquina e instalar lo que se nos ocurra. Esto, claro está, si tenemos
+órdenes, con privilegios de superusuario, y podemos trabajar con el
+contenedor e instalar lo que se nos ocurra. Esto, claro está, si tenemos
 ese contenedor instalado y ejecutándose.
+
+## Reutilización de contenedores creados
 
 Los contenedores se pueden arrancar de forma independiente con `start`
 
@@ -777,7 +793,7 @@ está haciendo en un momento determinado. Para finalizar, se puede
 parar usando `stop`.
 
 Hasta ahora el uso de
-docker [no es muy diferente del contenedor, pero lo interesante](http://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
+docker [no es muy diferente de `lxc`, pero lo interesante](http://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/cli/#commit)
 
 	sudo docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
@@ -794,11 +810,7 @@ Crear a partir del contenedor anterior una imagen persistente con
 
 </div>
 
-Finalmente, `docker` tiene capacidades de provisionamiento similares a
-otros [sistemas (tales como Vagrant](Gestion_de_configuraciones.md) usando
-[*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
-ejemplo,
-[se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
+
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
@@ -1040,6 +1052,16 @@ En este caso, además, usamos `--rm` para borrar el contenedor una vez
 se haya usado y `-t` en vez de `-it` para indicar que sólo estamos
 interesados en que se asigne un terminal y la salida del mismo, no
 vamos a interaccionar con él. 
+
+
+## Provisión de contenedores docker con herramientas estándar
+
+`docker` tiene capacidades de provisionamiento similares a
+otros [sistemas (tales como Vagrant](Gestion_de_configuraciones.md) usando
+[*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
+ejemplo,
+[se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/). 
+
 
 ## Gestionando contenedores remotos
 
