@@ -800,8 +800,33 @@ mismo comando
 
 	sudo docker run -it ubuntu /bin/bash
 
-(donde hemos abreviado las opciones juntándolas) crearía, a partir de
+(donde hemos abreviado las opciones `-i` y `-t` juntándolas) crearía, a partir de
 la imagen de Ubuntu, un nuevo contenedor. 
+
+En cualquiera de los casos, cuando se ejecuta `exit` o `Control-D`
+para salir del contenedor, este deja de ejecutarse. Ejecutar
+
+	sudo docker ps -l
+	
+mostrará  que ese contenedor está `exited`, es decir, que ha salido,
+pero también mostrará en la primera columna el ID del
+mismo. *Arrancarlo* de nuevo no nos traerá la línea de órdenes, pero
+sí se arrancará el entorno de ejecución; si queremos volver a ejecutar
+algo como la línea de órdenes, tendremos que arrancarlo y a
+continuación efectivamente ejecutar algo como el *shell*
+
+	sudo docker start 6dc8ddb51cd6 && sudo docker exec -it 6dc8ddb51cd6 sh
+	
+Sin embargo, en este caso simplemente salir del shell no dejará de
+ejecutar el contenedor, por lo que habrá que pararlo
+
+	sudo docker stop 6dc8ddb51cd6
+
+y, a continuación, si no se va a usar más el contenedor, borrarlo
+
+	sudo docker rm 6dc8ddb51cd6
+
+
 
 ## Reutilización de contenedores creados
 
