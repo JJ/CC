@@ -1,3 +1,11 @@
+---
+layout: index
+
+apuntes: T
+
+prev: Orquestacion
+---
+
 Virtualización *ligera* usando contenedores
 ===
 
@@ -78,7 +86,7 @@ sistema operativo que incluyen acceso a recursos, prioridades y
 control de los procesos. Los procesos dentro de un contenedor están
 *aislados* de forma que sólo pueden *ver* los procesos dentro del
 mismo, creando un entorno mucho más seguro que las anteriores
-*jaulas*. Estos [CGROUPS han sido ya vistos en otro tema](Intro_concepto_y_soporte_fisico.md).
+*jaulas*. Estos [CGROUPS han sido ya vistos en otro tema](Intro_concepto_y_soporte_fisico).
 
 Dentro de la familia de sistemas operativos Solaris (cuya última
 versión libre se denomina
@@ -294,7 +302,7 @@ existentes para que vaya todo rápidamente.
 >desarrollo, puede ser una mejor opción.
 
 Los contenedores son la implementación de una serie de tecnologías
-[que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion.md): y como
+[que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion): y como
 tales pueden ser configurados para usar sólo una cuota determinada
 de recursos, por ejemplo
 [la CPU](http://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275). Para
@@ -827,32 +835,18 @@ y, a continuación, si no se va a usar más el contenedor, borrarlo
 	sudo docker rm 6dc8ddb51cd6
 
 
-
-## Reutilización de contenedores creados
-
-Los contenedores se pueden arrancar de forma independiente con `start`
-
-	sudo docker start	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
-
-pero hay que usar el ID largo que se obtiene dando la orden de esta
-forma
-
-	sudo docker ps -a
-	
-en la primera columna, donde indica el ID del contenedor.
-	
-Con esta orden
-
-	sudo docker images --no-trunc
-
-se obtiene el ID largo. Para inspeccionar las imágenes  tienes que averiguar qué IP está usando
-y los usuarios y claves y por supuesto tener ejecutándose un cliente
-de `ssh` en la misma. Para averiguar la IP:
+Las imágenes que se han creado se pueden examinar con `inspect`, lo
+que nos da información sobre qué metadatos se le han asignado por
+omisión, incluyendo una IP. 
 
 	sudo docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
 
 te dirá toda la información sobre la misma, incluyendo qué es lo que
-está haciendo en un momento determinado. Para finalizar, se puede
+está haciendo en un momento determinado. 
+
+
+
+Para finalizar, se puede
 parar usando `stop`.
 
 Hasta ahora el uso de
@@ -1131,7 +1125,7 @@ vamos a interaccionar con él.
 ## Provisión de contenedores docker con herramientas estándar
 
 `docker` tiene capacidades de provisionamiento similares a
-otros [sistemas (tales como Vagrant](Gestion_de_configuraciones.md) usando
+otros [sistemas (tales como Vagrant](Gestion_de_configuraciones) usando
 [*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
 ejemplo,
 [se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/). 
@@ -1286,7 +1280,7 @@ estandarización. El principal competidor este área es
 sistema operativo basado en contenedores CoreOS y que puede usar de
 forma nativa el formato de contenedores de Docker, aparte de tener el
 suyo propio llamado APPC y
-[su propio lenguaje para provisionar contenedores](https://github.com/coreos/rkt/blob/master/Documentation/getting-started-guide.md).
+[su propio lenguaje para provisionar contenedores](https://github.com/coreos/rkt/blob/master/Documentation/getting-started-guide).
 A diferencia de Docker, se pueden firmar y verificar imágenes, para
 evitar su manipulación externa, y, al estar basado en estándares,
 puede usar herramientas de orquestación como Kubernetes u otras.
@@ -1305,9 +1299,9 @@ comprobar imágenes, por ejemplo.
 A dónde ir desde aquí
 -----
 
-Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/4.Docker.md).
+Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/4.Docker).
 
 Si te interesa, puedes consultar cómo se [virtualiza el almacenamiento](Almacenamiento) que, en general, es independiente de la
 generación de una máquina virtual. También puedes ir directamente al
-[tema de uso de sistemas](Uso_de_sistemas.md) en el que se trabajará
+[tema de uso de sistemas](Uso_de_sistemas) en el que se trabajará
 con sistemas de virtualización completa.
