@@ -100,8 +100,10 @@ esto no es un problema, puede resultar una alternativa útil y ligera a
 la misma. A diferencia de las jaulas, combina restricciones en el
 acceso al sistema de ficheros con otras restricciones aprovechando
 espacios de nombres y grupos de control. `lxc` una de las soluciones de
-creación de contenedores más fácil de usar hoy en día en Linux, sobre todo si se quiere usar desde un programa a nivel de librería. Evidentemente, desde que ha salido Docker no es la más popular, aunque es una solución madura y estable. 
-
+creación de contenedores más fácil de usar hoy en día en Linux, sobre
+todo si se quiere usar desde un programa a nivel de
+librería. Evidentemente, desde que ha salido Docker no es la más
+popular, aunque es una solución madura y estable.
 
 Esta virtualización *ligera* tiene, entre otras ventajas, una
 *huella* escasa: un ordenador normal puede admitir 10 veces más contenedores
@@ -386,12 +388,29 @@ de configuración que ya se haya usado
 Introducción a Docker
 ---
 
+Docker es una herramienta que permite *aislar* aplicaciones, creando
+*contenedores* que pueden almacenarse de forma permanente para
+permitir el despliegue de esas mismas aplicaciones en la nube. Por lo
+tanto, en una primera aproximación, Docker serían similares a otras
+aplicaciones tales como LXC/LXD o incluso las *jaulas `chroot`*, es
+decir, una forma de empaquetar una aplicación con todo lo necesario
+para que opere de forma independiente del resto de las aplicaciones y
+se pueda, por tanto, replicar, escalar, desplegar, arrancar y destruir
+de forma también independiente. 
+
+>Una traducción más precisa de *container*
+>sería
+>[táper](http://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
+>es decir, un recipìente, generalmente de plástico, usado en
+>cocina. Si me refiero a un táper a continuación, es simplemente por
+>esta rzón.
+
 [Docker](http://docker.com) es una herramienta de gestión de
 contenedores que permite no sólo instalarlos, sino trabajar con el
 conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan desplegar en diferentes servicios en la nube. La tecnología de
 [Docker](https://en.wikipedia.org/wiki/Docker_%28software%29) es
-relativamente reciente, habiendo sido publicado en marzo de 2013;
+relativamente reciente, habiendo sido publicada en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
 desarrollo paralelo de sistemas operativos tales como
 [CoreOS](http://coreos.com/), 
@@ -408,12 +427,14 @@ adelantemos acontecimientos.
 >sistema operativo no tiene soporte para el mismo. Es mejor que en
 >este caso se use una máquina virtual local o en la nube. 
 
-El enfoque de la virtualización ligera de
-Docker [es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/) al
-de otras soluciones como `lxc/lxd`, que lo precedieron en el tiempo,
+Aunque en una primera aproximación Docker es, como hemos dicho arriba,
+similar a otras aplicaciones de virtualización *ligera*  como
+`lxc/lxd`, que lo precedieron en el tiempo, sin embargo el enfoque de
+Docker
+[es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/) es
+fundamentalmente diferente, 
 aunque las tecnologías subyacentes de virtualización por software son
-las mismas y también el hecho de que se trata de soluciones de
-virtualización *por software* o *ligera*. Sin embargo, Docker hace
+las mismas. La principal diferencia es que Docker hace
 énfasis en la gestión centralizada de recursos y, en una línea que va
 desde la virtualización por hardware hasta la generación de un
 ejecutable para su uso en cualquier otra máquina, estaría mucho más
@@ -432,7 +453,13 @@ Swarm o Kubernetes para orquestar conjuntos de contenedores, dando
 también lugar a todo un ecosistema de aplicaciones y servicios que
 permiten usarlo fácilmente e integrarlo dentro de los entornos de
 desarrollo de software habituales, especialmente los denominados
-*DevOps*. 
+*DevOps*. Y sí conviene tener en cuenta que un contenedor Docker sería
+más parecido al ejecutable de una aplicación (con todo lo necesario
+para que esta funcione), que a una máquina virtual, por lo que es más
+preciso decir que *ejecutamos* un táper (que utilizaremos a partir de
+ahora como sinónimo de "contenedor Docker") que *estamos ejecutando
+algo en un táper*, de la misma forma que ejecutaríamos algo en una
+máquina virtual. 
 
 A continuación vamos a ver cómo podemos usar Docker como simples
 usuarios, para ver a continuación como se puede diseñar una
