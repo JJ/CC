@@ -6,6 +6,14 @@ apuntes: T
 prev: Orquestacion
 ---
 
+---
+layout: index
+
+apuntes: T
+
+prev: Orquestacion
+---
+
 Virtualización *ligera* usando contenedores
 ===
 
@@ -842,7 +850,11 @@ omisión, incluyendo una IP.
 	sudo docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
 
 te dirá toda la información sobre la misma, incluyendo qué es lo que
-está haciendo en un momento determinado. Para finalizar, se puede
+está haciendo en un momento determinado. 
+
+
+
+Para finalizar, se puede
 parar usando `stop`.
 
 Hasta ahora el uso de
