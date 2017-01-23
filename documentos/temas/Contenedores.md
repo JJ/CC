@@ -880,6 +880,36 @@ Crear a partir del contenedor anterior una imagen persistente con
 
 </div>
 
+El hacer `commit` de una imagen crea una capa adicional, identificada
+por un SHA específico, en el sistema de ficheros de Docker. Por
+ejemplo, si trabajamos con una imagen cualquiera y hacemos commit de
+esta forma 
+
+	sudo docker commit 3465c7cef2ba jjmerelo/bbtest
+	
+creamos una nueva imagen, que vamos a llamar `jjmerelo/bbtest`. Esta
+imagen contendrá, sobre la capa original, la capa adicional que hemos
+creado. Este comando devolverá un determinado SHA, de la forma:
+
+	sha256:d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
+
+Para examinar las capas, 
+
+	 sudo jq '.' /var/lib/docker/image/aufs/imagedb/content/sha256/d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
+
+nos mostrará un JSON bien formateado (por eso usamos `jq`, una
+herramienta imprescindible) que, en el elemento `diff_ids`, nos
+mostrará las capas. Si repetimos esta operación cada vez que hagamos
+un commit sobre una nueva imagen, nos mostrará las capas adicionales
+que se van formando. 
+
+<div class='ejercicios' markdown='1'>
+
+Examinar la estructura de capas que se forma al crear imágenes nuevas
+a partir de contenedores que se han estado ejecutando.
+
+</div>
+
 ## Almacenamiento de datos y creación de imágenes Docker.
 
 Ya hemos visto cómo se convierte un contenedor en imagen, al menos de
