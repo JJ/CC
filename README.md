@@ -42,7 +42,7 @@ alumno tendrá que aprender a su ritmo
 
 1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby.md). La
    fecha se anunciará más adelante
-.
+
 
 Prácticas - Actividades académicas dirigidas
 -------------
@@ -67,10 +67,8 @@ Tutorías virtuales
 
 Las tutorías virtuales se realizarán preferiblemente a través de
 [la plataforma de trabajo colaborativo GitHub](https://github.com/JJ/CC-16-17/issues?state=open). Hay
-también una
-[lista de correo cerrada para los alumnos de la asignatura](https://groups.google.com/forum/#!forum/cc-ugr-2016)
-que se puede usar para todo lo que no quepa en la anterior (preguntas
-administrativas, principalmente).
+también un grupo de Telegram que se comparte con los estudiantes de
+otros años de la misma asignatura.
 
 Criterios de evaluación
 ---
