@@ -7,31 +7,30 @@ next: Provision
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos </h2>
+## Objetivos 
 
-<h3>De la asignatura</h3>
+### De la asignatura
 
-<ul>
-<li> Conocer los conceptos relacionados con el proceso de virtualización
-tanto de software como de hardware y ponerlos en práctica.</li>
-<li>Justificar la necesidad de procesamiento virtual frente a real en
-el contexto de una infraestructura TIC de una organización.</li>
-<li>Optimizar aplicaciones sobre plataformas virtuales.</li>
-<li>Conocer diferentes tecnologías relacionadas con la virtualización (Computación Nube, Utility Computing, Software as a Service) e implementaciones tales como Google AppSpot, OpenShift o Heroku.</li>
-</ul>
 
-<h3>Específicos </h3>
+-  Conocer los conceptos relacionados con el proceso de virtualización
+tanto de software como de hardware y ponerlos en práctica.
+- Justificar la necesidad de procesamiento virtual frente a real en
+el contexto de una infraestructura TIC de una organización.
+- Optimizar aplicaciones sobre plataformas virtuales.
+- Conocer diferentes tecnologías relacionadas con la virtualización (Computación Nube, Utility Computing, Software as a Service) e implementaciones tales como Google AppSpot, OpenShift o Heroku.</li>
 
-<ol>
-<li>Comprender los ecosistemas de despliegue de aplicaciones modernos
-y su relación con la nube.</li>
-<li> Entender las diferentes arquitecturas de software modernas y su
-relación con <em>cloud computing</em>.</li>
-<li> Aprender diseños que se puedan usar más adelante en aplicaciones
-desplegables en la nube..</li>
-</ol>
+
+### Específicos 
+
+1. Comprender los ecosistemas de despliegue de aplicaciones modernos
+y su relación con la nube.
+2. Entender las diferentes arquitecturas de software modernas y su
+relación con *cloud computing*.
+3. Aprender diseños que se puedan usar más adelante en aplicaciones
+desplegables en la nube.
 
 </div>
+
 
 ## Introducción
 
@@ -328,7 +327,7 @@ serían los más convenientes?
 </div>
 
 
-##Bibliografía y otros recursos
+## Bibliografía y otros recursos
 
 Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](http://biblioteca.ugr.es):
@@ -352,7 +351,7 @@ Algunos recursos a los que puedes acceder desde la
 Este tema sirve como introducción para elegir el proyecto que se va a
 desarrollar durante la asignatura. Habrá que realizar estos ejercicios
 para superar el
-[primer hito del proyecto](http://jj.github.io/CC/documentos/practicas/1.Infraestructura). 
+[primer hito del proyecto](http://jj.github.io/CC/documentos/proyecto/1.Infraestructura). 
 
 A continuación se
 puede echar un vistazo a los
