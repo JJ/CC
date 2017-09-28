@@ -17,6 +17,7 @@ Arch
 ArchLinux
 Architecture
 Area
+Atomic
 Autonomic
 Azure
 BD
@@ -35,6 +36,7 @@ Build
 Building
 Buildpack
 Buildpacks
+Busybox
 CAPS
 CCGroupEU
 CGROUP
@@ -45,7 +47,6 @@ CLI
 CMS
 CMSs
 CPU
-CREATED
 CREATED
 CRUD
 CSS
@@ -59,6 +60,7 @@ Clojure
 CloudAnt
 CloudFoundry
 Cobbler
+Code
 CodeDeploy
 Codeship
 CoffeeScript
@@ -78,11 +80,13 @@ DebianInstaller
 DevOps
 Development
 Device
+Digest
 Django
 Docker
 Dockerfile
 Dockerfiles
 Domain
+Downloaded
 Driven
 Dropbox
 DynamoDB
@@ -145,6 +149,7 @@ Joy
 Juju
 KVM
 Kernel
+Kief
 Kubernetes
 LEEME
 LEs
@@ -158,9 +163,11 @@ LinuxMagazineSpain
 Logical
 MAC
 MB
+MBs
 MULTICAST
 MV
 MVs
+Mac
 Makefile
 Makefiles
 Mandriva
@@ -171,6 +178,7 @@ Microsoft
 Mint
 MongoDB
 Moodle
+Morris
 Must
 MySQL
 NAMES
@@ -190,9 +198,11 @@ OpenNebula
 OpenSSH
 OpenShift
 OpenStack
+OpenSuSE
 OpenVZ
 Orquestacion
 Osasuna
+PATH
 PEs
 PHP
 PORT
@@ -238,6 +248,7 @@ SCM
 SCSI
 SDK
 SDKs
+SHA
 SQL
 SQLite
 SQS
@@ -266,6 +277,7 @@ StackOverflow
 Stackato
 Storage
 Store
+Swarm
 Swift
 Synaptic
 TAG
@@ -281,6 +293,7 @@ UGR
 URL
 UTS
 UbuntuLTS
+Unable
 Unit
 Unix
 Utility
@@ -295,6 +308,7 @@ Vortex
 Warden
 West
 Wikipedia
+Windows
 WindowsAzure
 WordPress
 XXI
@@ -302,6 +316,7 @@ Xen
 YAML
 ZFS
 account
+acervo
 action
 action
 add
@@ -332,6 +347,7 @@ architect
 architecture
 array
 at
+aufs
 autenticación
 auth
 author
@@ -347,6 +363,7 @@ bare
 bash
 basicshell
 baz
+bbtest
 begin
 benchmark
 bet
@@ -358,7 +375,6 @@ blob
 blobs
 bobot
 bones
-boot
 boot
 bot
 box
@@ -395,6 +411,7 @@ cli
 client
 cloud
 cloudapp
+cluster
 co
 co
 colorines
@@ -434,6 +451,8 @@ createClient
 curl
 daemon
 daigual
+dalek
+daleksay
 db
 dd
 debian
@@ -461,6 +480,7 @@ developers
 devs
 df
 directory
+discovery
 discovirtual
 disponible
 disponibles
@@ -468,10 +488,10 @@ disquisición
 distributed
 distro
 distros
-distros
 div
 docco
 docker
+dockerd
 docs
 domain
 dotCloud
@@ -498,9 +518,11 @@ empaquetarlos
 enabled
 end
 endpoints
+engine
 engines
 enrutado
 enrutando
+entrypoint
 env
 err
 esacuenta
@@ -509,6 +531,7 @@ escalable
 escalables
 estandarización
 etc
+etcd
 ether
 ethernet
 eval
@@ -527,6 +550,7 @@ fetch
 ff
 fgrehm
 filesystem
+find
 first
 fizzy
 flavor
@@ -569,6 +593,7 @@ hipervisor
 hipervisores
 hkeys
 home
+horadam
 host
 hostname
 hosts
@@ -579,6 +604,7 @@ http
 https
 hub
 i
+idempotencia
 idempotente
 idempotentes
 if
@@ -591,6 +617,7 @@ index
 indexarlos
 infraestructura
 infraestructuras
+infrastructure
 inicialización
 inicializar
 init
@@ -626,6 +653,7 @@ jq
 js
 json
 juju
+juntándolas
 kernel
 kernels
 key
@@ -639,9 +667,11 @@ li
 lib
 lib64
 libVirt
+library
 libvirt
 like
 line
+liner
 link
 linux
 list
@@ -651,6 +681,7 @@ loadNpmTasks
 loaded
 locale
 localhost
+locally
 location
 log
 logical
@@ -662,6 +693,7 @@ losetup
 ls
 lspools
 lxc
+lxd
 m
 m
 machine
@@ -733,7 +765,9 @@ net
 netinst
 netutils
 networks
+never
 new
+newer
 next
 nginx
 nic
@@ -752,12 +786,14 @@ nsenter
 nubecilla
 null
 nvm
+octopus
 of
 offer
 offset
 ohai
 ol
 on
+one
 online
 ons
 openstack
@@ -850,6 +886,7 @@ ps
 pub
 public
 pull
+pulling
 push
 put
 puts
@@ -864,6 +901,7 @@ r
 rados
 rados
 raj
+rakudobrew
 random
 raring
 rb
@@ -888,6 +926,7 @@ releases
 remote
 remotes
 reparticionar
+replicación
 replies
 reply
 repo
@@ -915,6 +954,7 @@ sadd
 salt
 saucy
 save
+say
 sbin
 sbin
 sbt
@@ -930,6 +970,7 @@ seek
 select
 selinux
 send
+serialización
 server
 serverless
 setup
@@ -943,6 +984,7 @@ sistematización
 size
 smaller
 smembers
+smiling
 snapshots
 sobreescribe
 socket
@@ -959,8 +1001,8 @@ sshfs
 start
 startup
 state
-state
 static
+status
 stop
 storage
 strict
@@ -969,6 +1011,7 @@ strip
 subcomando
 subdirectorio
 subred
+subsistema
 subsistemas
 subtarea
 sueltecillos
@@ -995,9 +1038,11 @@ this
 tier
 tmp
 toString
+token
 tool
 toolbelt
 transpas
+trunc
 ttylinux
 tuplas
 type
@@ -1065,48 +1110,7 @@ yml
 yum
 zipi
 zuuz
-trunc
-token
-discovery
-etcd
-cluster
-replicación
-PATH
-rakudobrew
-say
 π
-one
-liner
-entrypoint
-serialización
-idempotencia
-infrastructure
-Code
-Kief
-Morris
-horadam
-acervo
-Atomic
-Swarm
-Windows
-lxd
-subsistema
-OpenSuSE
-Mac
-engine
-dockerd
-status
-Unable
-find
-locally
-pulling
-library
-Digest
-Downloaded
-never
-octopus
-dalek
-smiling
-newer
+imagedb
 
 
