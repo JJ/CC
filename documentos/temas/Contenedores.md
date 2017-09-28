@@ -417,9 +417,9 @@ de forma también independiente.
 >Una traducción más precisa de *container*
 >sería
 >[táper](http://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
->es decir, un recipìente, generalmente de plástico, usado en
+>es decir, un recipiente, generalmente de plástico, usado en
 >cocina. Si me refiero a un táper a continuación, es simplemente por
->esta rzón.
+>esta razón.
 
 [Docker](http://docker.com) es una herramienta de gestión de
 contenedores que permite no sólo instalarlos, sino trabajar con el
@@ -575,7 +575,7 @@ hace esta orden.
 1. Busca una *imagen* de Docker llamada `hello-world`. Una imagen es
 equivalente a un *disco de instalación* que contiene los elementos que
 se van a aislar dentro del contenedor. 
-Al no encontrar esa imagen localmente, la descarga del[Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+Al no encontrar esa imagen localmente, la descarga del [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
 se suben las imágenes de Docker y donde puedes encontrar muchas más;
 más adelante se verán.
 
