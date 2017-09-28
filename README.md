@@ -1,6 +1,8 @@
 Material docente para Cloud Computing
 ==
 
+[![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
+
 Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
 La asignatura se imparte en el curso 2016-2017 los lunes de 19:30 a
@@ -39,9 +41,8 @@ Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
 
 1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby.md). La
-   fecha se anunciará más adelante.
-2. Visita a las instalaciones de Trevenque un día por determinar.
-
+   fecha se anunciará más adelante
+.
 
 Prácticas - Actividades académicas dirigidas
 -------------
