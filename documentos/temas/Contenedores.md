@@ -548,18 +548,24 @@ usando un socket protegido.
 
 Con una instalación estándar, 
 
-	sudo status docker
-	
+```
+sudo status docker
+```
+
 debería responder si se está ejecutando o no. Si está parado,
 
-	sudo start docker
-	
+```
+sudo start docker
+```
+
 comenzará a ejecutarlo. 
 
 Una vez
 instalado, se puede ejecutar el clásico
 
-	sudo docker run hello-world
+```
+sudo docker run hello-world
+```
 
 Generalmente, vamos a usar Docker usando su herramienta de la línea de
 órdenes, `docker`, que permite instalar contenedores y trabajar con
@@ -579,11 +585,13 @@ Al no encontrar esa imagen localmente, la descarga del [Hub de Docker](https://h
 se suben las imágenes de Docker y donde puedes encontrar muchas más;
 más adelante se verán.
 
-		Unable to find image 'hello-world:latest' locally
-		latest: Pulling from library/hello-world
-		78445dd45222: Pull complete 
-		Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
-		Status: Downloaded newer image for hello-world:latest
+```
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+78445dd45222: Pull complete 
+Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
+Status: Downloaded newer image for hello-world:latest
+```
 
 2. Crea un *contenedor* usando como base esa imagen, es decir, el
    equivalente a *arrancar* un sistema usando como disco duro esa
@@ -604,14 +612,18 @@ De los pasos anteriores habrás deducido que se ha descargado una
 imagen cuyo nombre es `hello world` y se ha creado un contenedor, en
 principio sin nombre. Puedes listar las imágenes que tienes con 
 
-	sudo docker images
-	
+```
+sudo docker images
+```
+
 que, en principio, sólo listará una llamada `hello-world` en la
 segunda columna, etiquetada IMAGES. Pero esto incluye sólo las
 imágenes en sí. Para listas los contenedores que tienes, 
 
-	sudo docker ps -a
-	
+```
+sudo docker ps -a
+```
+
 listará los contenedores que efectivamente se han creado, por ejemplo:
 
 ~~~
@@ -625,7 +637,9 @@ correspondientes a la misma imagen, `hello-world`. Cada vez que
 ejecutemos la imagen crearemos un contenedor nuevo, por lo que
 conviene que recordemos ejecutarlo, siempre que no vayamos a necesitarlo, con
 
-	sudo docker run --rm hello-world
+```
+sudo docker run --rm hello-world
+```
 
 que borrará el contenedor creado una vez ejecutada la orden. Así se
 mantiene el número de contenedores bajo y sobre todo se guardan sólo y
@@ -639,7 +653,9 @@ forma de distribuir aplicaciones de forma independiente de la versión
 de Linux y de forma efímera. De hecho, como tal ejecutable, se le
 pueden pasar argumentos por línea de órdenes
 
-	sudo  sudo docker run --rm jjmerelo/docker-daleksay -f smiling-octopus Uso argumentos, ea
+```bash
+sudo  sudo docker run --rm jjmerelo/docker-daleksay -f smiling-octopus Uso argumentos, ea
+```
 
 que usa
 [el contenedor `daleksay`](https://hub.docker.com/r/jjmerelo/docker-daleksay/) para
@@ -666,7 +682,9 @@ reproducible y automática, pero se puede usar para crear prototipos o
 para probar cosas sobre contenedores cuya creación se automatizará a
 continuación. Comencemos por descargar la imagen.
 
-	sudo docker pull alpine
+```
+sudo docker pull alpine
+```
 
 Esta orden descarga una imagen de
 [Alpine Linux](https://alpinelinux.org/) y la instala, haciéndola
@@ -674,7 +692,9 @@ disponible para que se creen, a partir de ella, contenedores. Como se
 ha visto antes, las imágenes que hay disponibles en el sistema se
 listan con 
 
-	sudo docker images
+```
+sudo docker images
+```
 
 Si acabas de hacer el pull anterior, aparecerá esa y otras que hayas
 creado anteriormente. También aparecerá el tamaño de la imagen, que es
@@ -714,7 +734,9 @@ y que, en realidad, no tenemos una máquina virtual *diferente*.
 
 Podemos ejecutar, por ejemplo, un listado de los directorios
 
-	sudo docker run --rm alpine ls
+```
+sudo docker run --rm alpine ls
+```
 
 Tras el sudo, hace falta el comando docker; `run` es el comando de docker que
 estamos usando, `--rm` hace que la máquina se borre una vez ejecutado
@@ -730,7 +752,9 @@ Esta imagen de Alpine no contiene bash, pero si el shell básico
 llamado `ash` y que está instalado en `sh`,
 por lo que podremos *meternos* en la misma ejecutando
 
-	sudo docker run -it alpine sh
+```
+sudo docker run -it alpine sh
+``` 
 
 Dentro de ella podemos trabajar como un consola cualquiera, pero
 teniendo acceso sólo a los recursos propios.
@@ -748,12 +772,15 @@ distribución. Alpine usa `apk` como gestor de paquetes, y la
 instalación base no permite hacer gran cosa, así que para empezar
 conviene hacer
 
-	apk update
-	apk upgrade
+```
+apk update
+apk upgrade
+```
 
 Para que actualice la lista de paquetes disponibles. Después, se pueden instalar paquetes, por ejemplo  
-
-	apk add git perl
+```
+apk add git perl
+```
 
 Una vez añadido todo lo que queramos a la imagen, se puede almacenar o
 subir al registro. En todo caso, `apk search` te permite buscar los
@@ -772,33 +799,43 @@ táper tiene un id único que se puede ver con
 
 siempre que se esté ejecutando, obteniendo algo así:
 
+```
 	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 b76f70b6c5ce        ubuntu:12.04        /bin/bash           About an hour ago   Up About an hour                        sharp_brattain     
+```
 
 El primer número es el ID de la máquina que podemos usar también para
 referirnos a ella en otros comandos. También se puede usar
 
-	sudo docker images
+```
+sudo docker images
+```
 
 Que, una vez más, devolverá algo así:
 
+```
 	REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 ubuntu              latest              8dbd9e392a96        9 months ago        128 MB
 ubuntu              precise             8dbd9e392a96        9 months ago        128 MB
 ubuntu              12.10               b750fe79269d        9 months ago        175.3 MB
 ubuntu              quantal             b750fe79269d        9 months ago        175.3 MB
+```
 
 El *IMAGE ID* es el ID interno del contenedor, que se puede usar para
 trabajar en una u otra máquina igual que antes hemos usado el nombre
 de la imagen:
 
-		sudo docker run b750fe79269d du
+```
+sudo docker run b750fe79269d du
+```
 
 ## Cómo crear imágenes docker interactivamente.
 
 En vez de ejecutar las cosas una a una podemos directamente [ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
 
-	sudo docker run -i -t ubuntu /bin/bash
+```
+sudo docker run -i -t ubuntu /bin/bash
+```
 
 que [indica](https://docs.docker.com/engine/reference/commandline/cli/) que
 se está creando un seudo-terminal (`-t`) y se está ejecutando el
@@ -847,28 +884,31 @@ Las imágenes que se han creado se pueden examinar con `inspect`, lo
 que nos da información sobre qué metadatos se le han asignado por
 omisión, incluyendo una IP. 
 
-	sudo docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
+```
+sudo docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
+```
 
 te dirá toda la información sobre la misma, incluyendo qué es lo que
 está haciendo en un momento determinado. 
 
-
-
-Para finalizar, se puede
-parar usando `stop`.
+Para finalizar, se puede parar usando `stop`.
 
 Hasta ahora el uso de
 docker [no es muy diferente de `lxc`, pero lo interesante](http://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/cli/#commit)
 
-	sudo docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
+```
+sudo docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
+```
 
 que guardará el estado del contenedor tal como está en ese
 momento, convirtiéndolo en una nueva imagen, a la que podemos acceder
 si usamos
 
-	sudo docker images 
-	
+```
+sudo docker images 
+```
+
 Este `commit` es equivalente al que se hace en un
 repositorio; para enviarlo al repositorio habrá que usar `push` (pero
 sólo si uno se ha dado de alta antes).
@@ -1026,7 +1066,9 @@ se va a usar para responder al usuario.
 
 Para crear una imagen a partir de esto se usa
 
-	sudo docker build -t jjmerelo/bobot .
+```
+sudo docker build -t jjmerelo/bobot .
+```
 
 (o el nick que tengas en GitHub). El `-t` es, como es habitual, para
 asignar un *tag*, en este caso uno que se puede usar más adelante en
@@ -1035,7 +1077,9 @@ cuantas bibliotecas por parte de sbt, lo que se hace en la última
 línea. Una vez hecho esto, si funciona la construcción, se
 podrá ejecutar con
 
-	sudo docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot 
+```
+sudo docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot 
+```
 
 donde --env se usa para pasar la variable de entorno de Telegram que
 necesita el bot para funcionar.
@@ -1043,7 +1087,9 @@ necesita el bot para funcionar.
 Si queremos simplemente examinar el contenedor, podemos entrar en él
 de la forma habitual 
 
-	sudo docker run -it jjmerelo/bot sh
+```
+sudo docker run -it jjmerelo/bot sh
+```
 
 para entrar directamente en la línea de órdenes. El repositorio está
 en [bobot](https://github.com/JJ/BoBot), como es habitual. En este
@@ -1142,8 +1188,10 @@ Por otro lado, otra característica que tiene este contenedor es que, a
 través de `VOLUME`, hemos creado un directorio sobre el que podemos
 *montar* un directorio externo, tal como hacemos aquí:
 
-	sudo docker run --rm -t -v `pwd`:/app  \
+```
+sudo docker run --rm -t -v `pwd`:/app  \
 	    jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
+``` 
 
 En realidad, usando `-v` se puede montar cualquier directorio externo
 en cualquier directorio interno. `VOLUME` únicamente *marca* un
