@@ -40,14 +40,27 @@ Introducción
 
 Los [gestores de configuraciones](https://en.wikipedia.org/wiki/Configuration_management) trabajan sobre máquinas virtuales ya
 creadas y en funcionamiento, describiendo la configuración que
-necesitan para ejecutar una aplicación determinada. Estas aplicaciones
-se ejecutan directamente si ya tenemos tal máquina provisionada, pero
+necesitan para ejecutar una aplicación
+determinada. Proporcionan
+[infraestructura como código](https://en.wikipedia.org/wiki/Infrastructure_as_Code),
+permitiendo describir los sistemas en los que se va a ejecutar código
+como si de un programa se tratara, con todo lo que ello conlleva:
+control de código y testeo, por ejemplo.
+
+Las *recetas* usadas por los gestores de configuraciones
+se ejecutan directamente si ya tenemos tal máquina provisionada con al
+menos un sistema operativo, pero
 es más eficiente e independiente de la configuración específica
 trabajar con ellos desde programas de orquestación de máquinas
 virtuales como
 [Vagrant](https://en.wikipedia.org/wiki/Vagrant_%28software%29)
 
-Hay muchos gestores de configuraciones: [Chef](https://www.chef.io/chef/), [Salt](https://docs.saltstack.com/en/latest/) y Puppet, por
+Hay muchos gestores de
+configuraciones:
+[Chef](https://www.chef.io/chef/),
+[Salt](https://docs.saltstack.com/en/latest/),
+Ansible, [`mgmt`](https://github.com/purpleidea/mgmt) (este último un
+poco experimental) y Puppet, por
 ejemplo. Todos son libres, pero
 [tienen características específicas](https://en.wikipedia.org/wiki/Comparison_of_open_source_configuration_management_software)
 que hay que tener en cuenta a la hora de elegir uno u otro. En el caso
@@ -561,7 +574,7 @@ de infraestructura virtual a través de código y un repaso de todas las
 herramientas usadas en el mismo. También está disponible
 como
 [recurso electrónico](http://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
-la biblioteca de la UGR. 
+la biblioteca de la [UGR](https://www.ugr.es). 
 
 A donde ir desde aquí
 -------
