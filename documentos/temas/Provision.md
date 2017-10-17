@@ -38,7 +38,7 @@ trabajar con ellos desde programas de orquestación de máquinas
 virtuales como
 [Vagrant](https://en.wikipedia.org/wiki/Vagrant_%28software%29)
 
-Hay muchos gestores: [Chef](http://www.getchef.com/chef/), Salt y Puppet, por
+Hay muchos gestores de configuraciones: [Chef](http://www.getchef.com/chef/), [Salt](https://docs.saltstack.com/en/latest/) y Puppet, por
 ejemplo. Todos son libres, pero
 [tienen características específicas](https://en.wikipedia.org/wiki/Comparison_of_open_source_configuration_management_software)
 que hay que tener en cuenta a la hora de elegir uno u otro. En el caso
