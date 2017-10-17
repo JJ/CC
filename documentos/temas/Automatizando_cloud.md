@@ -2,8 +2,8 @@ Automatización de tareas en la nube
 ==
 
 <!--@
-prev: Almacenamiento
-next: Automatizando_cloud
+prev: Provision
+next: Orquestacion
 -->
 
 <div class="objetivos" markdown="1">
