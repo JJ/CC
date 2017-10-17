@@ -569,7 +569,8 @@ A donde ir desde aquí
 El siguiente tema sería el de
 [orquestación de máquinas virtuales](Orquestacion), donde se
 aprenderá a trabajar con configuraciones más complejas que usen varias
-máquinas virtuales a la vez. 
+máquinas virtuales a la vez. Y por supuesto hay que
+hacer [el hito del proyecto correspondiente](../proyecto/2.Provisionamiento).
 
 A partir de aquí se puede
 seguir aprendiendo sobre DevOps en [el blog](http://devops.com/) o
