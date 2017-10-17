@@ -151,7 +151,9 @@ máquina virtual desde el panel de control, pero también desde
 la [línea de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
 hay que saber qué imágenes hay disponibles:
 
-	azure vm image list
+```
+azure vm image list
+```
 
 Por ejemplo, se puede escoger la imagen
 `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-trusty-14_04-LTS-amd64-server-20131221-en-us-30GB`
@@ -159,13 +161,17 @@ de una versión LTS de Ubuntu o de otra como la
 `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB`
 Con
 
-	azure vm image show b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB
-	
+```
+azure vm image show b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB
+```
+
 nos muestra detalles sobre la imagen; entre otras cosas dónde está
 disponible y sobre si es Premium o no (en este caso no lo es). Con
 esta (o con otra) podemos crear una máquina virtual
 
-	azure vm create peasomaquina b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB peasousuario PeasoD2clav= --location "West Europe" --ssh
+```
+azure vm create peasomaquina b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB peasousuario PeasoD2clav= --location "West Europe" --ssh
+```
 
 En esta clave tenemos que asignar un nombre de máquina (que se
 convertirá en un nombre de dominio `peasomaquina.cloudapp.net`, un
@@ -190,16 +196,19 @@ que queramos. El arranque tarda cierto tiempo y dependerá de la
 disponibilidad de recursos; evidentemente, mientras no esté arrancada
 no se puede usar, pero conviene de todas formas apagarla con 
 
-	azure vm shutdown maquina
-	
+```
+azure vm shutdown maquina
+```
+
 cuando terminemos la sesión y no sea necesaria, sobre todo porque,
 dado que se pagan por tiempo de uso, se puede incurrir en costes
-innecesarios. 
+innecesarios o en agotamiento de los recursos gratuitos
+proporcionados. 
 
 <div class='ejercicios' markdown='1'>
 
 Crear una máquina virtual Ubuntu e instalar en ella un servidor
-nginx para poder acceder mediante web.
+`nginx` para poder acceder mediante web.
 
 </div>
 
@@ -223,7 +232,9 @@ relativamente fácil trabajar con ellos de forma automática.
 
 Comencemos por crear un grupo de recursos
 
-	az resource group create -l westeurope -n CCGroupEU
+```
+az resource group create -l westeurope -n CCGroupEU
+```
 
 Esto crea un grupo de recursos en Europa Occidental. Vamos a usarlo
 más adelante para crear nuestras instancias.
@@ -266,8 +277,9 @@ a ella con su dirección IP y ssh.
 
 Una vez que se deje de usar, conviene pararla con
 
-	az vm stop -g CCGroupEU -n bobot
-
+```
+az vm stop -g CCGroupEU -n bobot
+```
 Si no, seguirá disminuyendo el crédito.
 
 <div class='ejercicios' markdown='1'>
@@ -296,7 +308,9 @@ que él mismo pone las API keys y demás. Una vez ejecutado ese *script*
 de configuración se puede, por ejemplo, crear una clave para acceder
 a las instancias que se vayan a crear 
 
-	nova keypair-add Try > openstack-key.pem
+```
+nova keypair-add Try > openstack-key.pem
+```
 
 que crea una clave llamada `Try` y la guarda en un fichero de clave
 privada.
@@ -312,7 +326,7 @@ te explica cómo crear el par de claves. Una vez creada
 * Se tiene que crear una red y una subred para conectar la instancia a
   la subred.
 
-* Se tiene que crear un *router* al cual se conecta la red
+* Se tiene que crear un *router* al cual se conecta la red.
 
 * Finalmente, se crea la instancia. Esto sí se puede hacer desde línea
   de órdenes
