@@ -28,7 +28,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 
 1. [Arquitecturas software para la nube](documentos/temas/Arquitecturas_para_la_nube.md).
 6. [Gestión de configuraciones](documentos/temas/Provision.md).
-3. [Creación de infraestructuras virtuales reproducibles](Automatizando_cloud.md)
+3. [Creación de infraestructuras virtuales reproducibles]((documentos/temas/Automatizando_cloud.md)
 6. [Orquestación de máquinas virtuales](documentos/temas/Orquestacion.md).
 3. [Usando contenedores](documentos/temas/Contenedores.md)
 
