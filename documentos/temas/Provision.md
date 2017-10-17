@@ -38,7 +38,7 @@ trabajar con ellos desde programas de orquestación de máquinas
 virtuales como
 [Vagrant](https://en.wikipedia.org/wiki/Vagrant_%28software%29)
 
-Hay muchos gestores de configuraciones: [Chef](http://www.getchef.com/chef/), [Salt](https://docs.saltstack.com/en/latest/) y Puppet, por
+Hay muchos gestores de configuraciones: [Chef](https://www.chef.io/chef/), [Salt](https://docs.saltstack.com/en/latest/) y Puppet, por
 ejemplo. Todos son libres, pero
 [tienen características específicas](https://en.wikipedia.org/wiki/Comparison_of_open_source_configuration_management_software)
 que hay que tener en cuenta a la hora de elegir uno u otro. En el caso
@@ -117,7 +117,7 @@ puede provisionar, empezando por Chef.
 Usando Chef para provisionamiento
 -----
 
- [Chef](http://www.chef.io/chef/) es una herramienta que, en
+ [Chef](https://www.chef.io/chef/) es una herramienta que, en
  general, se usa en un servidor que se encarga no sólo de gestionar la
  configuración, sino también las versiones. Empezar a usarlo
  [es complicado](https://docs.chef.io/).
@@ -141,26 +141,23 @@ Usando Chef para provisionamiento
  
  </div>
  
+
+En [esta página](https://downloads.chef.io/chefdk#ubuntu) indican como
+ descargar Chef para todo tipo de distribuciones. Vamos a usar
+ principalmente `chef-solo`, una herramienta que se tiene que ejecutar
+ desde el ordenador que queramos provisionar. 
  
-En una máquina tipo ubuntu, hay que comenzar instalando Ruby y Ruby
-Gems, el gestor de librerías  
+<div class='note' markdown='1'>
+La forma que se aconseja usar es esta, pero se instala el programa en
+un lugar no estándar, `/opt/chefdk/bin`. Habrá que añadirlo al `PATH`
+o tenerlo en cuenta a la hora de ejecutarlo. 
 
-	sudo apt-get install ruby1.9.1 ruby1.9.1-dev rubygems
-	
-`chef` se distribuye como una gema, por lo que se puede instalar
-siempre como
+```
+$ /opt/chefdk/bin/chef-solo --version 
+Chef: 13.4.19
+```
 
-	sudo gem install ohai chef
-	
-[ohai](https://github.com/chef/ohai) acompaña a `chef` y es usado
-desde el mismo para comprobar características del nodo antes de
-ejecutar cualquier receta.
-
-Una [forma más rápida de instalar Chef](http://gettingstartedwithchef.com/first-steps-with-chef.html) es descargarlo directamente desde la página web:
-
-	curl -L https://www.opscode.com/chef/install.sh | bash
-
-La última tendrá que ser `sudo bash` en caso de que se quiera instalar como administrador (que será lo normal).
+Esta es la versión actual a fecha de octubre de 2017.
 
 <div class='ejercicios' markdown='1'>
 
@@ -169,14 +166,20 @@ Instalar `chef-solo` en la máquina virtual que vayamos a usar
 </div>
 
 Una *receta* de Chef
-[consiste en crear una serie de ficheros](http://www.mechanicalrobotfish.com/blog/2013/01/01/configure-a-server-with-chef-solo-in-five-minutes/):
+[consiste en crear una serie de ficheros](http://www.mechanicalfish.net/configure-a-server-with-chef-solo-in-five-minutes/):
 una *lista de ejecución* que especifica qué es lo que se va a
 configurar; esta lista se incluye en un fichero `node.json`, 
 o *recetario* (*cookbook*) que incluye una serie de *recetas* que
 configuran, efectivamente, los recursos y, finalmente, un fichero de
 configuración que dice dónde están los dos ficheros anteriores y
 cualquier otro recursos que haga falta. Estos últimos dos ficheros
-están escritos en Ruby. 
+están escritos en Ruby. La estructura de directorios se puede generar
+[directamente en las últimas versiones](https://docs.chef.io/quick_start.html) con 
+
+```
+chef generate app first_cookbook
+```
+
 
 Vamos a empezar a escribir una recetilla del Chef. Generalmente,
 [escribir una receta es algo más complicado](http://reiddraper.com/first-chef-recipe/),
@@ -188,21 +191,25 @@ directorio irán diferentes ficheros.
 El fichero que contendrá efectivamente la receta se
 llamará [`default.rb`](../../ejemplos/chef/default.rb)
 
-	package 'emacs'
-	directory '/home/jmerelo/Documentos'
-	file "/home/jmerelo/Documentos/LEEME" do
-		owner "jmerelo"
-		group "jmerelo"
-		mode 00544
-		action :create
-		content "Directorio para documentos diversos"
-	end
+```
+package 'emacs'
+directory '/home/jmerelo/Documentos'
+file "/home/jmerelo/Documentos/LEEME" do
+	owner "jmerelo"
+	group "jmerelo"
+	mode 00544
+	action :create
+	content "Directorio para documentos diversos"
+end
+```
 
 El nombre del fichero indica que se trata de la receta por omisión,
 pero el nombre de la receta viene determinado por el directorio en el
 que se meta, que podemos crear de un tirón con
 
-	mkdir -p chef/cookbooks/emacs/recipes
+```
+mkdir -p chef/cookbooks/emacs/recipes
+```
 
 Este fichero tiene tres partes: instala el paquete `emacs`, crea un
 directorio para documentos y dentro de él un fichero que explica, por
@@ -213,9 +220,11 @@ máquina virtual que estemos configurando.
 El siguiente fichero, [`node.json`](../../ejemplos/chef/node.json),
 incluirá una referencia a esta receta
 
-	{
-		"run_list": [ "recipe[emacs]" ]
-	}
+```
+{
+	"run_list": [ "recipe[emacs]" ]
+}
+```
 
 Este fichero hace referencia a un recetario, `emacs` y dado que no se
 especifica nada más se ejecutará la receta por defecto. 
@@ -229,7 +238,9 @@ Finalmente, el [fichero de configuración `solo.rb`](../../ejemplos/solo.rb) inc
 Una vez más, *cambiando los caminos por los que correspondan*. Para
 ejecutarlo,
 
-	sudo chef-solo -c chef/solo.rb
+```
+sudo chef-solo -c chef/solo.rb
+```
 
 (si se ejecuta desde el directorio raíz). Esta orden producirá una
 serie de mensajes para cada una de las órdenes y, si todo va bien,
@@ -254,7 +265,8 @@ chef.
 
 Este
 [curso en vídeo](http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/)
-te enseña también a trabajar con Chef
+te enseña también a trabajar con Chef, aunque con la edad que tiene es
+posible que esté un poco obsoleto.
 
 </div>
 
@@ -388,16 +400,16 @@ trabajemos habitualmente usando Salt.
 Otros sistemas de gestión de configuración
 ---
 
-Las principales alternativas a Chef son [Ansible](https://ansible.com),
-[Salt]() y [Puppet](https://docs.puppet.com/puppet/3.8/reference/pre_install.html). Todos ellos se comparan en
-[este artículo](http://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html),
+Las principales alternativas a Chef son [Ansible](https://www.ansible.com),
+[Salt]() y [Puppet](https://docs.puppet.com/puppet/3.8/pre_install.html). Todos ellos se comparan en
+[este artículo](https://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html),
 aunque los principales contendientes son
-[Puppet y Chef, sin que ninguno de los dos sea perfecto](http://www.infoworld.com/d/data-center/puppet-or-chef-the-configuration-management-dilemma-215279?source=fssr). 
+[Puppet y Chef, sin que ninguno de los dos sea perfecto](https://www.infoworld.com/d/data-center/puppet-or-chef-the-configuration-management-dilemma-215279?source=fssr). 
 
 De todas ellas, vamos a
-[ver Ansible](http://davidwinter.me/articles/2013/11/23/introduction-to-ansible/)
+[ver Ansible](https://semaphoreci.com/community/tutorials/introduction-to-ansible)
 que parece ser uno de los que se está desarrollando con más intensidad
-últimamente. [Ansible es](https://en.wikipedia.org/wiki/Ansible_%28software%29)
+últimamente. [Ansible es](https://en.wikipedia.org/wiki/Ansible_%28software%29) un
 sistema de gestión remota de configuración que permite gestionar
 simultáneamente miles de sistemas diferentes. Está basado en YAML para
 la descripción de los sistemas y escrito en Python. 
@@ -405,8 +417,12 @@ la descripción de los sistemas y escrito en Python.
 Se instala como un módulo de Python, usando por ejemplo la utilidad de
 instalación de módulos `pip` (que habrá que instalar si no se tiene)
 
-	sudo pip install paramiko PyYAML jinja2 httplib2 ansible
-	
+```
+sudo pip install paramiko PyYAML jinja2 httplib2 ansible
+```
+
+>`sudo` no hace falta si usas un gestor de entornos como `pyenv`
+
 El resto de las utilidades son también necesarias y en realidad se
 instalan automáticamente al instalar ansible. Estas utilidades se
 tienen que instalar *en el anfitrión*, no hace falta instalarlas en el
@@ -420,8 +436,10 @@ un
 que contiene las diferentes máquinas controladas por el mismo. Por
 ejemplo
 
-	 $ echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
-	
+```
+ $ echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
+```
+
 se puede ejecutar desde el *shell* para meter (`echo`) una cadena con
 una dirección (en este caso, una máquina virtual de Azure) en el
 fichero `ansible_hosts` situado en mi directorio raíz. El lugar de ese
@@ -482,19 +500,23 @@ Finalmente, el concepto similar a las recetas de Chef en Ansible son los
 ficheros en YAML que le dicen a la máquina virtual qué es lo que hay
 que instalar en *tareas*, de la forma siguiente
 
+```
 	---
 	- hosts: azure
 	  sudo: yes
 	  tasks:
 		- name: Update emacs
 		  apt: pkg=emacs state=present
+```
 
 Esto se guarda en un fichero y se
 [le llama, por ejemplo, emacs.yml](../../ejemplos/ansible/emacs.yml),
 y se ejecuta con 
 
-  ansible-playbook ../../ejemplos/ansible/emacs.yml 
-  
+```
+ansible-playbook ../../ejemplos/ansible/emacs.yml 
+```
+
 (recordando siempre el temita del nombre de usuario), lo que dará, si
 todo ha ido bien, un resultado como el siguiente
 
@@ -542,7 +564,7 @@ máquinas virtuales a la vez.
 
 A partir de aquí se puede
 seguir aprendiendo sobre DevOps en [el blog](http://devops.com/) o
-[en IBM](http://www.ibm.com/ibm/devops/us/en/). Libros como
+[en IBM](https://www.ibm.com/cloud-computing/products/devops/). Libros como
 [DevOps for Developers](https://www.amazon.es/dp/B009D6ZB0G?tag=atalaya-21&camp=3634&creative=24822&linkCode=as4&creativeASIN=B009D6ZB0G&adid=0PB61Y2QD9K49W3EP8MN&)
 pueden ser también de ayuda. Esta
 [comparativa de sistemas de configuración](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software)
@@ -553,7 +575,7 @@ ellos. También en este
 incluyendo también Puppet e incluso Docker. En
 [presentaciones como esta se habla de CAPS: Chef, Ansible, Puppet and Salt](http://es.slideshare.net/DanielKrook/caps-whats-best-for-deploying-and-managing-openstack-chef-vs-ansible-vs-puppet-vs-salt)
 como una categoría en sí. En
-[este artículo](http://www.infoworld.com/article/2609482/data-center/data-center-review-puppet-vs-chef-vs-ansible-vs-salt.html)
+[este artículo](https://www.infoworld.com/article/2609482/data-center/data-center-review-puppet-vs-chef-vs-ansible-vs-salt.html)
 también los comparan y en
 [este último](https://jjasghar.github.io/blog/2015/12/20/chef-puppet-ansible-salt-rosetta-stone/)
 llevan a cabo la configuración de un servidor simple usando los
