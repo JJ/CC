@@ -3,16 +3,16 @@ layout: index
 
 apuntes: T
 
-prev: Almacenamiento
-next: Automatizando_cloud
+prev: Provision
+next: Orquestacion
 ---
 
 Automatización de tareas en la nube
 ==
 
 <!--@
-prev: Almacenamiento
-next: Automatizando_cloud
+prev: Provision
+next: Orquestacion
 -->
 
 <div class="objetivos" markdown="1">
