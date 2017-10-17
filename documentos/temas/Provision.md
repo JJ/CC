@@ -47,7 +47,7 @@ trabajar con ellos desde programas de orquestación de máquinas
 virtuales como
 [Vagrant](https://en.wikipedia.org/wiki/Vagrant_%28software%29)
 
-Hay muchos gestores: [Chef](http://www.getchef.com/chef/), Salt y Puppet, por
+Hay muchos gestores de configuraciones: [Chef](http://www.getchef.com/chef/), [Salt](https://docs.saltstack.com/en/latest/) y Puppet, por
 ejemplo. Todos son libres, pero
 [tienen características específicas](https://en.wikipedia.org/wiki/Comparison_of_open_source_configuration_management_software)
 que hay que tener en cuenta a la hora de elegir uno u otro. En el caso
@@ -69,7 +69,7 @@ En general, estas herramientas suelen usar
 un
 [lenguaje de dominio específico](https://en.wikipedia.org/wiki/Domain-specific_language),
 con una pequeña cantidad de órdenes relacionada con lo que hacen:
-establecer una configurción determinada en un servidor. Este lenguaje
+establecer una configuración determinada en un servidor. Este lenguaje
 puede consistir en versiones reducidas de lenguajes como Ruby o en
 conjuntos de diccionarios específicos de JSON o de YAML, dos lenguajes
 de serialización de estructuras de datos.
@@ -531,9 +531,9 @@ usando un *playbook* de Ansible.
 
 ## Bibliografía
 
-Uno de los libros maś interesantes
+Uno de los libros más interesantes
 es
-[Infraestructure as Code, de Kief Morris](http://amzn.to/2i3svim). Hace
+[Infrastructure as Code, de Kief Morris](http://amzn.to/2i3svim). Hace
 un resumen muy acertado de todos los principios que rigen la gestión
 de infraestructura virtual a través de código y un repaso de todas las
 herramientas usadas en el mismo. También está disponible
