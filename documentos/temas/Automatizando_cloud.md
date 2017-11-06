@@ -253,7 +253,9 @@ con cierta similitud con los selectores CSS.
 > porque no se pueden usar en realidad con la línea de órdenes. Así
 > que nos ceñiremos a las imágenes disponibles localmente.
 
-	az vm image list | jq '.[] | select( .offer | contains("buntu"))'
+```
+az vm image list | jq '.[] | select( .offer | contains("buntu"))'
+```
 
 Esta te filtrará sólo aquellas imágenes que contengan `buntu` (no
 sabemos si va a estar en mayúsculas o minúsculas), devolviendo algo
@@ -265,7 +267,9 @@ De esta imagen hay que usar dos IDs: `urn` y `urnAlias`, que nos
 permitirán identificar la imagen con la que vamos a trabajar a
 continuación:
 
-	az vm create -g CCGroupEU -n bobot --image UbuntuLTS
+```
+az vm create -g CCGroupEU -n bobot --image UbuntuLTS
+```
 
 En este caso creamos la máquina virtual llamada `bobot` con una imagen
 de UbuntuLTS y `az` usa una clave SSH pública de nuestro directorio y
@@ -331,9 +335,11 @@ te explica cómo crear el par de claves. Una vez creada
 * Finalmente, se crea la instancia. Esto sí se puede hacer desde línea
   de órdenes
 
-	openstack server create --flavor m1.smaller --image Ubuntu16.04 \
+```
+openstack server create --flavor m1.smaller --image Ubuntu16.04 \
 	  --nic net-id=b96fdf8d-99ca-3333-5555-38ccd03a4a3c \
 	  --security-group default --key-name Try bobot-x
+```
 
 * La orden anterior crea una instancia llamada `bobot-x` con una
   imagen de Ubuntu (una de las que hay por defecto) y una red cuyo ID
@@ -344,7 +350,9 @@ te explica cómo crear el par de claves. Una vez creada
   acceder desde fuera, teóricamente de esta forma, aunque da error
   (*Conflict*) al menos a mi
 
-	openstack floating ip create b96fdf8d-99ca-3333-5555-38ccd03a4a3c
+```
+openstack floating ip create b96fdf8d-99ca-3333-5555-38ccd03a4a3c
+```
 
 * Si eso falla, se puede asignar una IP flotante desde el interfaz
   gráfico, yendo a la lista de instancias. 
