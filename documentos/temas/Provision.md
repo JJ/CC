@@ -570,11 +570,17 @@ la biblioteca de la [UGR](https://www.ugr.es).
 A donde ir desde aquí
 -------
 
-El siguiente tema sería el de
+Para empezar, hay que
+hacer [el hito del proyecto correspondiente](../proyecto/2.Provisionamiento.md).
+
+Desde aquí puedes ir directamente al tema de 
 [orquestación de máquinas virtuales](Orquestacion.md), donde se
 aprenderá a trabajar con configuraciones más complejas que usen varias
-máquinas virtuales a la vez. Y por supuesto hay que
-hacer [el hito del proyecto correspondiente](../proyecto/2.Provisionamiento.md).
+máquinas virtuales a la vez, pero en la asignatura continuaremos
+con [la automatización de tareas en la nube](Automatizando_cloud.md)
+para aprender como trabajar con diferentes proveedores cloud usando
+sus propias herramientas.  
+
 
 A partir de aquí se puede
 seguir aprendiendo sobre DevOps en [el blog](http://devops.com/) o

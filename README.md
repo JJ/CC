@@ -5,7 +5,7 @@ Material docente para Cloud Computing
 
 Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
-La asignatura se imparte en el curso 2016-2017 los martes de 19:30 a
+La asignatura se imparte en el curso 2017-2018 los martes de 19:30 a
 21:30 en el aula 2.1 y los miércoles de 16:30 a 18:30 en el
 aula 1.6. Tendrás que llevar tu portátil a ambas clases. Se usará [GitHub](http://github.com) para los ejercicios y
 el proyecto; también para los objetivos semanales, que estarán (año
