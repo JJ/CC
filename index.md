@@ -62,7 +62,7 @@ modo, los hitos se organizarán de la forma siguiente.
 1. [Puesta a punto del repositorio y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio).
 2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura).
 3. [Provisionamiento de máquinas virtuales](documentos/proyecto/2.Provisionamiento).
-4. [Orquestación de máquinas virtuales](documentos/proyecto/3.Orquestacion).
+4. [Herramientas de automatización en la nube](documentos/proyecto/3.IaaS).
 4. [Uso de contenedores](documentos/proyecto/4.Docker).
 4. [Combinación de infraestructuras virtuales](documentos/proyecto/5.Despliegue) para
    desplegar una aplicación completa. 
