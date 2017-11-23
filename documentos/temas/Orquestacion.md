@@ -553,6 +553,11 @@ otro sistema operativo, como CoreOS, diseñado para ejecutar
 contenedores. En el repo dice que ya no se apoya esa versión, pero se
 puede al menos ejecutar y probar si se desea.
 
+También se puede probar [NixOps](https://nixos.org/nixops/), que
+aunque está diseñado especialmente para una versión del sistema
+operativo llamado NixOS, puede usarse también para orquestar máquinas
+virtuales en una serie de entornos. 
+
 A donde ir desde aquí
 -------
 
