@@ -608,7 +608,6 @@ dt {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
 }
 #header nav {
-  max-width: 1024px;
   margin: 0 auto;
   padding: 0 10px;
   background: blue;
@@ -682,7 +681,6 @@ dt {
 }
 
 section {
-  max-width: 1024px;
   padding: 30px 0px 50px 0px;
   margin: 20px 0;
   margin-top: 70px;
@@ -718,7 +716,7 @@ section #title .credits.right {
   float: right;
 }
 
-@media print, screen and (max-width: 720px) {
+@media print, screen and (max-width: 1024px) {
   #title .credits {
     display: block;
     width: 100%;
