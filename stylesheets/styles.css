@@ -507,10 +507,9 @@ strong {
 }
 
 .wrapper {
-  max-width: 1024px;
   margin: 0 auto;
   position: relative;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 section img {
