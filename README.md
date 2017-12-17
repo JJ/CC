@@ -9,7 +9,7 @@ La asignatura se imparte en el curso 2017-2018 los martes de 19:30 a
 21:30 en el aula 2.1 y los miércoles de 16:30 a 18:30 en el
 aula 1.6. Tendrás que llevar tu portátil a ambas clases. Se usará [GitHub](http://github.com) para los ejercicios y
 el proyecto; también para los objetivos semanales, que estarán (año
-2016-17) en [este repositorio](https://github.com/JJ/CC-17-18/).
+2017-18) en [este repositorio](https://github.com/JJ/CC-17-18/).
 
 Estos son los [objetivos de la asignatura](documentos/objetivos.md). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
 
