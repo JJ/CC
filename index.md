@@ -63,7 +63,8 @@ modo, los hitos se organizarán de la forma siguiente.
 2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura).
 3. [Provisionamiento de máquinas virtuales](documentos/proyecto/2.Provisionamiento).
 4. [Herramientas de automatización en la nube](documentos/proyecto/3.IaaS).
-4. [Uso de contenedores](documentos/proyecto/4.Docker).
+4. [Orquestación de máquinas virtuales](documentos/proyecto/4.Orquestacion).
+4. [Uso de contenedores](documentos/proyecto/5.Docker).
 4. [Combinación de infraestructuras virtuales](documentos/proyecto/5.Despliegue) para
    desplegar una aplicación completa. 
 
