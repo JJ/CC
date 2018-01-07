@@ -81,7 +81,7 @@ Orquestación de máquinas virtuales
 
 A un nivel superior al provisionamiento de máquinas virtuales está la configuración,
 orquestación y gestión de las mismas, herramientas como
-[Vagrant](https://vagrantup.com) ayudan a hacerlo, aunque también
+[Vagrant](https://www.vagrantup.com) ayudan a hacerlo, aunque también
 Puppet e incluso Juju pueden hacer muchas de las funciones de
 Vagrant, salvo por el hecho de que no pueden trabajar directamente con
 el hipervisor.  
@@ -177,7 +177,7 @@ puerto se usa. Generalmente, una máquina virtual va a usar el puerto
 2222 de ssh y para que accedas desde *fuera* de Vagrant tendrás además
 que copiar tu clave pública, lo que puedes hacer copiando y pegándola
 desde un terminal o bien
-[usando el propio Vagrantfile](http://stackoverflow.com/questions/30075461/how-do-i-add-my-own-public-key-to-vagrant-vm)
+[usando el propio Vagrantfile](https://stackoverflow.com/questions/30075461/how-do-i-add-my-own-public-key-to-vagrant-vm)
 añadiendo las dos líneas siguientes:
 
 ~~~
@@ -315,7 +315,7 @@ especificadas en el fichero de configuración.
 En general, trabajar con un provisionador requiere especificar de cuál
 se trata y luego dar una serie de órdenes específicas. Comenzaremos
 por el
-[*shell*](http://docs.vagrantup.com/v2/provisioning/shell.html), que
+[*shell*](https://www.vagrantup.com/docs/provisioning/shell.html), que
 es el más simple y, en realidad, equivale a entrar en la máquina y dar
 las órdenes a mano. Instalaremos, como hemos hecho en otras ocasiones,
 el utilísimo editor `emacs`usando este
@@ -361,7 +361,7 @@ este programa bajándose todas sus dependencias (y tardará un rato).
 <div class='nota' markdown='1'>
 
 El provisionamiento por *shell* admite
-[muchas más opciones](http://docs.vagrantup.com/provisioning/shell.html):
+[muchas más opciones](https://www.vagrantup.com/docs/provisioning/shell.html):
 se puede usar un fichero externo o incluso alojado en un sitio web
 (por ejemplo, un Gist alojado en Github). Por ejemplo,
 [este para provisionar nginx y node](https://gist.github.com/DamonOehlman/5754302)
@@ -541,10 +541,10 @@ en la misma. Uno de ellos es [Scotch Box](https://box.scotch.io/), que
 empaqueta una serie de herramientas de cliente servidor para ejecutar
 una pila de desarrollo completa,
 o
-[`bosh-lite`](https://atlas.hashicorp.com/cloudfoundry/boxes/bosh-lite) para
+[`bosh-lite`](https://app.vagrantup.com/cloudfoundry/boxes/bosh-lite) para
 [BOSH, una herramienta de gestión de sistemas distribuidos](https://bosh.io/). Otra
 posibilidad es
-[una máquina virtual para empezar con ciencia de datos](https://atlas.hashicorp.com/data-science-toolbox/boxes/dst).
+[una máquina virtual para empezar con ciencia de datos](https://app.vagrantup.com/data-science-toolbox/boxes/dst).
 
 Pero una de las más interesantes que podemos usar
 es
@@ -563,7 +563,7 @@ A donde ir desde aquí
 
 Este es el último tema del curso, pero a partir de aquí se puede
 seguir aprendiendo sobre DevOps en [el blog](https://devops.com/) o
-[en IBM](http://www.ibm.com/ibm/devops/us/en/). Libros como
+[en IBM](https://www.ibm.com/cloud/devops). Libros como
 [DevOps for Developers](https://www.amazon.es/dp/B009D6ZB0G?tag=atalaya-21&camp=3634&creative=24822&linkCode=as4&creativeASIN=B009D6ZB0G&adid=0PB61Y2QD9K49W3EP8MN&)
 pueden ser también de ayuda.
 
