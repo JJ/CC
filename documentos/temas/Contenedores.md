@@ -956,6 +956,24 @@ Ya hemos visto cómo se convierte un contenedor en imagen, al menos de
 forma local, con `commit`. Pero veamos exactamente qué es lo que
 sucede y cómo se lleva a cabo.
 
+Docker crea
+un
+[sistema de ficheros superpuesto u *overlay*](http://www.computerweekly.com/feature/Docker-storage-101-How-storage-works-in-Docker). Este
+[sistema de ficheros superpuesto](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/) puede
+tener varias formas posibles, igual que en Linux hay varios tipos de
+sistemas de ficheros posibles; Docker usa diferentes drivers
+(denominados `overlay` u `overlay2`) para
+estructurar la información dentro del contenedor pero generalmente usa
+un sistema *copy on write* que escribe en sistema de ficheros
+anfitrión cada vez que se produce una modificación en el sistema de
+ficheros superpuesto. 
+
+En general, salvo que haya algún problema crítico de prestaciones, es
+mejor usar el driver que se use por defecto; dependerá de la
+implementación de Docker (CE o EE) y de la versión del
+kernel. En
+[esta página](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
+indica como configurar el driver que se va a usar. 
 
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
