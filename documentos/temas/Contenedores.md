@@ -967,6 +967,20 @@ kernel. En
 [esta página](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
 indica como configurar el driver que se va a usar. 
 
+Hay una forma de usar contenedores sólo para almacenar datos, sin que
+haya ningún proceso que se ejecute en ellos usando los
+llamados
+[volúmenes](https://docs.docker.com/engine/reference/commandline/volume_create/#related-commands). Se
+crea usando `volume create`
+
+```
+sudo docker volume create log
+```
+
+Igual que un contenedor Docker es algo así como un proceso con
+esteroides, un volumen de Docker es una especie de disco
+transportable, que almacena información y que puedes llevar de un lado
+a otro. 
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
