@@ -871,7 +871,6 @@ y, a continuación, si no se va a usar más el contenedor, borrarlo
 
 	sudo docker rm 6dc8ddb51cd6
 
-
 Las imágenes que se han creado se pueden examinar con `inspect`, lo
 que nos da información sobre qué metadatos se le han asignado por
 omisión, incluyendo una IP. 
@@ -984,7 +983,31 @@ a otro. De la misma forma, la arquitectura de las aplicaciones
 varía. No vamos a tener una aplicación monolítica que escriba en el
 log, lo analice y lo lea, sino diferentes contenedores que
 interaccionarán no directamente, sino a través de este contenedor de
-almacenamiento. 
+almacenamiento.
+
+
+Estos volúmenes, en general, se crean para ser usados por otros
+contenedores con algún tipo de aplicación, por tanto. Por ejemplo,
+podemos usarlo con
+[este microservicio en Perl Dancer2](https://github.com/JJ/p5-hitos)
+de la forma siguiente
+
+```
+sudo docker run -it --rm -v log:/log -p5000:5000 jjmerelo/p5hitos
+```
+
+En este caso, con `-p` le indicamos los puertos que tiene que usar;
+antes de : será el puerto "externo" y tras él el puerto que usa
+internamente. El volumen se usa con `-v log:/log`; el primer parámetro
+es el nombre del volumen externo que estamos usando, en el segundo el
+nombre del directorio o sistema de ficheros interno en el que se ha
+montado.
+
+La aplicación, efectivamente, tendrá que estar de alguna forma
+configurada para que ese sea el directorio donde se vayan a escribir
+los logs; no hace falta crear el directorio, pero sí que la
+configuración sea la correcta. 
+
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
