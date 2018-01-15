@@ -980,7 +980,11 @@ sudo docker volume create log
 Igual que un contenedor Docker es algo así como un proceso con
 esteroides, un volumen de Docker es una especie de disco
 transportable, que almacena información y que puedes llevar de un lado
-a otro. 
+a otro. De la misma forma, la arquitectura de las aplicaciones
+varía. No vamos a tener una aplicación monolítica que escriba en el
+log, lo analice y lo lea, sino diferentes contenedores que
+interaccionarán no directamente, sino a través de este contenedor de
+almacenamiento. 
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
