@@ -985,7 +985,6 @@ log, lo analice y lo lea, sino diferentes contenedores que
 interaccionarán no directamente, sino a través de este contenedor de
 almacenamiento.
 
-
 Estos volúmenes, en general, se crean para ser usados por otros
 contenedores con algún tipo de aplicación, por tanto. Por ejemplo,
 podemos usarlo con
@@ -995,6 +994,8 @@ de la forma siguiente
 ```
 sudo docker run -it --rm -v log:/log -p5000:5000 jjmerelo/p5hitos
 ```
+
+> Se tendrá que haber construido antes el contenedor Docker, claro.
 
 En este caso, con `-p` le indicamos los puertos que tiene que usar;
 antes de : será el puerto "externo" y tras él el puerto que usa
@@ -1006,7 +1007,29 @@ montado.
 La aplicación, efectivamente, tendrá que estar de alguna forma
 configurada para que ese sea el directorio donde se vayan a escribir
 los logs; no hace falta crear el directorio, pero sí que la
-configuración sea la correcta. 
+configuración sea la correcta.
+
+Lo que se hace en este caso es que `log` actúa como un volumen de
+datos, efectivamente. Y ese volumen de datos es persistente, por lo
+que los datos que se escriben ahí se pueden guardar o enviar; también
+se puede usar simultáneamente por parte de otro contenedor,
+*montándolo* de esta forma:
+
+```
+sudo docker run -it --rm -v log:/log jjmerelo/checklog
+```
+
+Una vez más, el volumen de docker `log` se monta en el directorio
+`/log`, un nombre arbitrario, porque igual que los puntos de montaje
+del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
+crea ese directorio y lo hace accesible a un programa, en este caso
+[un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
+que pasa del formato en texto plano de los logs de
+[Dancer2](http://perldancer.org/) a un formato JSON que puede ser
+almacenado incluso en otro volumen si se desea.
+
+
+
 
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
