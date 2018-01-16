@@ -1064,6 +1064,77 @@ a partir de contenedores que se han estado ejecutando.
 
 </div>
 
+## Contenedores "de datos"
+
+El problema con los volúmenes es que son una construcción local y es
+difícil desplegarlos. Para solucionar esto se pueden usar simples
+contenedores de datos, contenedores cuya principal misión es llevar un
+conjunto de datos de un lugar a otro de forma que puedan ser
+compartidos. Crear un contenedor de datos se puede hacer de la forma
+siguiente:
+
+```
+FROM busybox
+
+WORKDIR /data
+VOLUME /data
+COPY hitos.json .
+```
+
+Es decir, simplemente se copia un fichero que estará *empaquetado*
+dentro del contenedor. Habrá que construirlo. A diferencia de los
+volúmenes de datos, estos contenedores de datos sí hay que
+ejecutarlos. En realidad es igual lo que se esté ejecutando, por lo
+que generalmente se ejecutan de esta forma:
+
+```
+sudo docker run -d -it --rm jjmerelo/datos sh
+```
+
+Esta orden escribe un número hexa en la consola, que habrá que tener
+en cuenta por que es el `CONTAINER ID`, lo que vamos a usar más
+adelante. Como se ve, se ejecuta como *daemon* `-d` y se ejecuta
+simplemente `sh`. En este contenedor se estará ejecutando de forma
+continua ese proceso, lo que puede ser interesante a la hora de
+monitorizarlo, pero lo interesante de él es que se va a usar para
+cargar ese fichero de configuración desde diferentes contenedores, de
+esta forma:
+
+```
+sudo docker run -it --rm --volumes-from 8d1e385 jjmerelo/p5hitos
+```
+
+`--volumes-from` usa el ID que se haya asignado al contenedor
+ejecutándose, o bien el nombre del mismo, que no es el tag con el que
+le hemos llamado, sino un nombre generado aleatoriamente
+`deeste_estilo`. En este caso no hemos añadido una definición de
+volúmenes, por lo que el contenedor se ejecutará y tendrá en `/data`
+el mismo contenido. Se puede montar también el contenedor en modo de
+sólo lectura:
+
+```
+sudo docker run -it --rm --volumes-from 8d1e385:ro jjmerelo/p5hitos
+```
+
+con la etiqueta `ro` añadida al final del ID del contenedor que se
+está usando.
+
+Como se ve, se ejecutan varios pasos uno de los cuales implica "tomar"
+un ID e usarlo más adelante en el montaje. No es difícil de resolver
+con un script del shell, pero como es una necesidad habitual se han
+habilitado otras herramientas para poder hacer esto de forma ágil:
+`compose`
+
+## Composición de servicios con `docker compose`
+
+
+[Docker compose](https://docs.docker.com/compose/install/#install-compose)
+tiene que instalarse, no forma parte del conjunto de herramientas que
+se instalan por omisión. Su principal tarea es crear aplicaciones que
+usen diferentes contenedores, entre los que se citan
+[entornos de desarrollo, entornos de prueba o en general despliegues que usen un solo nodo](https://docs.docker.com/compose/overview/#common-use-cases). Para
+entornos que escalen automáticamente, o entornos que se vayan a
+desplegar en la nube las herramientas necesarias son muy diferentes.
 
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
