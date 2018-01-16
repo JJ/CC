@@ -1136,6 +1136,67 @@ usen diferentes contenedores, entre los que se citan
 entornos que escalen automáticamente, o entornos que se vayan a
 desplegar en la nube las herramientas necesarias son muy diferentes.
 
+`docker-compose` es una herramienta que parte de una descripción de
+las relaciones entre diferentes contenedores y que construye y arranca
+los mismos, relacionando los puertos y los volúmenes; por ejemplo,
+puede usarse para conectar un contenedor con otro contenedor de datos,
+de la forma siguiente:
+
+```
+version: '2'
+
+services:
+  config:
+    build: config
+  web:
+    build: .
+    ports:
+      - "80:5000"
+    volumes_from:
+      - config:ro
+```
+
+La especificación de la versión indica de qué versión del interfaz se
+trata. Hay hasta una versión 3,
+con
+[cambios sustanciales](https://docs.docker.com/compose/compose-file/). En
+este caso, esta versión permite crear dos servicios, uno que
+denominamos `config`, que será el contenedor que tenga la
+configuración en un fichero, y otro que se llama `web`. YAML se
+organiza como un *hash* o diccionario, de forma que `services` tiene
+dos claves `config` y `web`. Dentro de cada una de las claves se
+especifica como se levantan esos servicios. En el primer caso se trata
+de `build` o construir el servicio a partir del Dockerfile, y se
+especifica el directorio donde se encuentra; sólo puede haber un
+Dockerfile por directorio, así que para construir varios servicios
+tendrán que tendrán que ponerse en directorios diferentes, como
+en [este caso](https://github.com/JJ/p5-hitos). El segundo servicio
+está en el mismo directorio que el fichero, que tiene que llamarse
+`docker-compose.yml`, pero en este estamos indicando un mapeo de
+puertos, con el 5000 interno cambiando al 80 externo (que, recordemos,
+es un puerto privilegiado) y usando `volumes_from` para usar los
+volúmenes, es decir, los datos, contenidos en el fichero
+correspondiente. 
+
+Para ejecutarlo, 
+
+
+```
+docker-compose up
+```
+
+Esto construirá las imágenes de los servicios, si no existen, y les
+asignará un nombre que tiene que ver con el nombre del servicio;
+también ejecutará el programa, en este caso de `web`. Evidentemente,
+`docker-compose down` parará la máquina virtual. 
+
+<div class='ejercicios' markdown='1'>
+
+Usar un miniframework REST para crear un servicio web y introducirlo
+en un contenedor, y componerlo con un cliente REST que sea el que
+finalmente se ejecuta y sirve como "frontend".
+
+</div>
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
