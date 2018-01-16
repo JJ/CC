@@ -937,7 +937,7 @@ que se van formando.
 <div class='ejercicios' markdown='1'>
 
 Examinar la estructura de capas que se forma al crear imágenes nuevas
-a partir de contenedores que se han estado ejecutando.
+a partir de contenedores que se hayan estado ejecutando.
 
 </div>
 
@@ -1028,7 +1028,12 @@ que pasa del formato en texto plano de los logs de
 [Dancer2](http://perldancer.org/) a un formato JSON que puede ser
 almacenado incluso en otro volumen si se desea.
 
+<div class='ejercicios' markdown='1'>
 
+Examinar la estructura de capas que se forma al crear imágenes nuevas
+a partir de contenedores que se han estado ejecutando.
+
+</div>
 
 
 
@@ -1188,7 +1193,7 @@ ejemplo,
 se puede usar en lugar del intérprete de Perl6 y usa como base la
 distro ligera Alpine:
 
-~~~
+```
 FROM alpine:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
@@ -1218,7 +1223,7 @@ RUN panda install Linenoise
 #Mount point
 RUN mkdir /app
 VOLUME /app
-~~~
+```
 
 Como ya hemos visto anteriormente, usa `apk`, la orden de Alpine para
 instalar paquetes e instala lo necesario para que eche a andar el
