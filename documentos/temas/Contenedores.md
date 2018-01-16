@@ -1088,7 +1088,6 @@ otro tipo de contenedores, y las órdenes que se
 deben usar y cómo usarlas constituye un acervo que conviene conocer y
 usar. 
 
-
 ## Usando Dockerfiles
 
 La infraestructura se debe crear usando código, y en Docker pasa
@@ -1238,18 +1237,24 @@ de órdenes, en este caso, tratándose del intérprete de Perl 6, se
 comportará exactamente como él. Para que esto funcione también se ha
 definido una variable de entorno en:
 
-	ENV PATH="/root/.rakudobrew/bin:${PATH}"
+```
+ENV PATH="/root/.rakudobrew/bin:${PATH}"
+```
 
 que añade al `PATH` el directorio donde se encuentra. Con estas dos
 características se puede ejecutar el contenedor con:
 
-    sudo docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```
+sudo docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```
 
 Si tuviéramos perl6 instalado en local, se podría escribir
 directamente 
 
-	perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
-	
+```
+perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```
+
 o algún
 otro
 [*one-liner* de Perl6](https://gist.github.com/JJ/9953ba0a98800fed205eaae5b5a6410a). 
@@ -1258,8 +1263,10 @@ En caso de que se trate de un servicio o algún otro tipo de programa
 de ejecución continua, se puede usar directamente `CMD`. En este caso,
 `ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando 
 
-	sudo docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
-	
+```
+sudo docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
+```
+
 que accederá directamente a la línea de órdenes, en este caso
 `busybox`, que es el *shell* que provee Alpine. 
 
@@ -1385,16 +1392,20 @@ export DOCKER_MACHINE_NAME="maquinilla"
 
 Si estamos ejecutando desde superusuario, habrá que ejecutar
 
-	eval $(sudo docker-machine env maquinilla)
-	
+```
+eval $(sudo docker-machine env maquinilla)
+```
+
 Esa orden exporta las variables anteriores, que le indicarán a docker
 qué tiene que usar en ese *shell* explícitamente. Cada nuevo shell
 tendrá también que exportar esas variables para poder usar la máquina
 virtual. Las órdenes docker que se ejecuten a continuación se
 ejecutarán en esa máquina; por ejemplo, 
 
-	sudo -E docker pull jjmerelo/alpine-perl6
-	
+```
+sudo -E docker pull jjmerelo/alpine-perl6
+```
+
 descargará dentro de la máquina virtual esa imagen y se ejecutará
 dentro de ella cualquier orden. En este caso, -E sirve para que las
 variables de entorno del shell local, que hemos establecido
@@ -1431,9 +1442,9 @@ contenedor y lo elimina cuando se sale del mismo:
 
 ~~~
 sudo docker run --rm -t -v
-  /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test jjmerelo/test-perl6 /test/t
+    /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test
+      jjmerelo/test-perl6 /test/t
 ~~~
-
 
 
 ## Otros gestores de contenedores
