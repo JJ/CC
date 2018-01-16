@@ -985,9 +985,38 @@ log, lo analice y lo lea, sino diferentes contenedores que
 interaccionarán no directamente, sino a través de este contenedor de
 almacenamiento.
 
-Estos volúmenes, en general, se crean para ser usados por otros
-contenedores con algún tipo de aplicación, por tanto. Por ejemplo,
-podemos usarlo con
+Por ejemplo, podemos usar un volumen para montar el `/app` de
+diferentes sistemas operativos, de forma que podamos probar una
+aplicación determinada en los mismos. Hagamos
+
+```
+sudo docker volume create benchmark
+sudo docker pull fedora
+sudo docker run -it --rm -v benchmark:/app fedora /bin/bash
+```
+
+Una vez dentro, se puede crear un minibenchmark, que diga por ejemplo
+el número de ficheros `ls -R / | wc` y se guarda en `/app`. Una vez
+hecho eso, puedes ejecutar ese programa en cualquier distro, de esta
+forma:
+
+```
+sudo docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh    
+  87631   81506 1240789
+sudo docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
+    72284     67414    974042
+sudo docker run -it --rm -v benchmark:/app busybox sh /app/bm.sh
+    72141     67339    972158
+``` 
+> Incidentalmente, se observa que de las tres imágenes de
+> contenedores, la que tiene una mínima cantidad de ficheros es
+> `busybox`. Alpine, como se ha comentado antes, es una distribución
+> también bastante ligera con casi 14000 ficheros/directorios menos
+> que fedora.
+
+La utilidad para este tipo de aplicaciones es relativamente limitada;
+estos volúmenes, en general, se crean para ser usados por otros 
+contenedores con algún tipo de aplicación, por tanto. Por ejemplo con
 [este microservicio en Perl Dancer2](https://github.com/JJ/p5-hitos)
 de la forma siguiente
 
