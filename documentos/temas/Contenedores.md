@@ -941,7 +941,7 @@ a partir de contenedores que se hayan estado ejecutando.
 
 </div>
 
-## Almacenamiento de datos y creación de imágenes Docker.
+## Almacenamiento de datos y creación de volúmenes Docker.
 
 Ya hemos visto cómo se convierte un contenedor en imagen, al menos de
 forma local, con `commit`. Pero veamos exactamente qué es lo que
