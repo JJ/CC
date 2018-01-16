@@ -879,7 +879,6 @@ y, a continuación, si no se va a usar más el contenedor, borrarlo
 
 	sudo docker rm 6dc8ddb51cd6
 
-
 Las imágenes que se han creado se pueden examinar con `inspect`, lo
 que nos da información sobre qué metadatos se le han asignado por
 omisión, incluyendo una IP. 
@@ -946,11 +945,11 @@ que se van formando.
 <div class='ejercicios' markdown='1'>
 
 Examinar la estructura de capas que se forma al crear imágenes nuevas
-a partir de contenedores que se han estado ejecutando.
+a partir de contenedores que se hayan estado ejecutando.
 
 </div>
 
-## Almacenamiento de datos y creación de imágenes Docker.
+## Almacenamiento de datos y creación de volúmenes Docker.
 
 Ya hemos visto cómo se convierte un contenedor en imagen, al menos de
 forma local, con `commit`. Pero veamos exactamente qué es lo que
@@ -988,7 +987,224 @@ sudo docker volume create log
 Igual que un contenedor Docker es algo así como un proceso con
 esteroides, un volumen de Docker es una especie de disco
 transportable, que almacena información y que puedes llevar de un lado
-a otro. 
+a otro. De la misma forma, la arquitectura de las aplicaciones
+varía. No vamos a tener una aplicación monolítica que escriba en el
+log, lo analice y lo lea, sino diferentes contenedores que
+interaccionarán no directamente, sino a través de este contenedor de
+almacenamiento.
+
+Por ejemplo, podemos usar un volumen para montar el `/app` de
+diferentes sistemas operativos, de forma que podamos probar una
+aplicación determinada en los mismos. Hagamos
+
+```
+sudo docker volume create benchmark
+sudo docker pull fedora
+sudo docker run -it --rm -v benchmark:/app fedora /bin/bash
+```
+
+Una vez dentro, se puede crear un minibenchmark, que diga por ejemplo
+el número de ficheros `ls -R / | wc` y se guarda en `/app`. Una vez
+hecho eso, puedes ejecutar ese programa en cualquier distro, de esta
+forma:
+
+```
+sudo docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh    
+  87631   81506 1240789
+sudo docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
+    72284     67414    974042
+sudo docker run -it --rm -v benchmark:/app busybox sh /app/bm.sh
+    72141     67339    972158
+``` 
+> Incidentalmente, se observa que de las tres imágenes de
+> contenedores, la que tiene una mínima cantidad de ficheros es
+> `busybox`. Alpine, como se ha comentado antes, es una distribución
+> también bastante ligera con casi 14000 ficheros/directorios menos
+> que fedora.
+
+La utilidad para este tipo de aplicaciones es relativamente limitada;
+estos volúmenes, en general, se crean para ser usados por otros 
+contenedores con algún tipo de aplicación, por tanto. Por ejemplo con
+[este microservicio en Perl Dancer2](https://github.com/JJ/p5-hitos)
+de la forma siguiente
+
+```
+sudo docker run -it --rm -v log:/log -p5000:5000 jjmerelo/p5hitos
+```
+
+> Se tendrá que haber construido antes el contenedor Docker, claro.
+
+En este caso, con `-p` le indicamos los puertos que tiene que usar;
+antes de : será el puerto "externo" y tras él el puerto que usa
+internamente. El volumen se usa con `-v log:/log`; el primer parámetro
+es el nombre del volumen externo que estamos usando, en el segundo el
+nombre del directorio o sistema de ficheros interno en el que se ha
+montado.
+
+La aplicación, efectivamente, tendrá que estar de alguna forma
+configurada para que ese sea el directorio donde se vayan a escribir
+los logs; no hace falta crear el directorio, pero sí que la
+configuración sea la correcta.
+
+Lo que se hace en este caso es que `log` actúa como un volumen de
+datos, efectivamente. Y ese volumen de datos es persistente, por lo
+que los datos que se escriben ahí se pueden guardar o enviar; también
+se puede usar simultáneamente por parte de otro contenedor,
+*montándolo* de esta forma:
+
+```
+sudo docker run -it --rm -v log:/log jjmerelo/checklog
+```
+
+Una vez más, el volumen de docker `log` se monta en el directorio
+`/log`, un nombre arbitrario, porque igual que los puntos de montaje
+del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
+crea ese directorio y lo hace accesible a un programa, en este caso
+[un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
+que pasa del formato en texto plano de los logs de
+[Dancer2](http://perldancer.org/) a un formato JSON que puede ser
+almacenado incluso en otro volumen si se desea.
+
+<div class='ejercicios' markdown='1'>
+
+Examinar la estructura de capas que se forma al crear imágenes nuevas
+a partir de contenedores que se han estado ejecutando.
+
+</div>
+
+## Contenedores "de datos"
+
+El problema con los volúmenes es que son una construcción local y es
+difícil desplegarlos. Para solucionar esto se pueden usar simples
+contenedores de datos, contenedores cuya principal misión es llevar un
+conjunto de datos de un lugar a otro de forma que puedan ser
+compartidos. Crear un contenedor de datos se puede hacer de la forma
+siguiente:
+
+```
+FROM busybox
+
+WORKDIR /data
+VOLUME /data
+COPY hitos.json .
+```
+
+Es decir, simplemente se copia un fichero que estará *empaquetado*
+dentro del contenedor. Habrá que construirlo. A diferencia de los
+volúmenes de datos, estos contenedores de datos sí hay que
+ejecutarlos. En realidad es igual lo que se esté ejecutando, por lo
+que generalmente se ejecutan de esta forma:
+
+```
+sudo docker run -d -it --rm jjmerelo/datos sh
+```
+
+Esta orden escribe un número hexa en la consola, que habrá que tener
+en cuenta por que es el `CONTAINER ID`, lo que vamos a usar más
+adelante. Como se ve, se ejecuta como *daemon* `-d` y se ejecuta
+simplemente `sh`. En este contenedor se estará ejecutando de forma
+continua ese proceso, lo que puede ser interesante a la hora de
+monitorizarlo, pero lo interesante de él es que se va a usar para
+cargar ese fichero de configuración desde diferentes contenedores, de
+esta forma:
+
+```
+sudo docker run -it --rm --volumes-from 8d1e385 jjmerelo/p5hitos
+```
+
+`--volumes-from` usa el ID que se haya asignado al contenedor
+ejecutándose, o bien el nombre del mismo, que no es el tag con el que
+le hemos llamado, sino un nombre generado aleatoriamente
+`deeste_estilo`. En este caso no hemos añadido una definición de
+volúmenes, por lo que el contenedor se ejecutará y tendrá en `/data`
+el mismo contenido. Se puede montar también el contenedor en modo de
+sólo lectura:
+
+```
+sudo docker run -it --rm --volumes-from 8d1e385:ro jjmerelo/p5hitos
+```
+
+con la etiqueta `ro` añadida al final del ID del contenedor que se
+está usando.
+
+Como se ve, se ejecutan varios pasos uno de los cuales implica "tomar"
+un ID e usarlo más adelante en el montaje. No es difícil de resolver
+con un script del shell, pero como es una necesidad habitual se han
+habilitado otras herramientas para poder hacer esto de forma ágil:
+`compose`
+
+## Composición de servicios con `docker compose`
+
+
+[Docker compose](https://docs.docker.com/compose/install/#install-compose)
+tiene que instalarse, no forma parte del conjunto de herramientas que
+se instalan por omisión. Su principal tarea es crear aplicaciones que
+usen diferentes contenedores, entre los que se citan
+[entornos de desarrollo, entornos de prueba o en general despliegues que usen un solo nodo](https://docs.docker.com/compose/overview/#common-use-cases). Para
+entornos que escalen automáticamente, o entornos que se vayan a
+desplegar en la nube las herramientas necesarias son muy diferentes.
+
+`docker-compose` es una herramienta que parte de una descripción de
+las relaciones entre diferentes contenedores y que construye y arranca
+los mismos, relacionando los puertos y los volúmenes; por ejemplo,
+puede usarse para conectar un contenedor con otro contenedor de datos,
+de la forma siguiente:
+
+```
+version: '2'
+
+services:
+  config:
+    build: config
+  web:
+    build: .
+    ports:
+      - "80:5000"
+    volumes_from:
+      - config:ro
+```
+
+La especificación de la versión indica de qué versión del interfaz se
+trata. Hay hasta una versión 3,
+con
+[cambios sustanciales](https://docs.docker.com/compose/compose-file/). En
+este caso, esta versión permite crear dos servicios, uno que
+denominamos `config`, que será el contenedor que tenga la
+configuración en un fichero, y otro que se llama `web`. YAML se
+organiza como un *hash* o diccionario, de forma que `services` tiene
+dos claves `config` y `web`. Dentro de cada una de las claves se
+especifica como se levantan esos servicios. En el primer caso se trata
+de `build` o construir el servicio a partir del Dockerfile, y se
+especifica el directorio donde se encuentra; sólo puede haber un
+Dockerfile por directorio, así que para construir varios servicios
+tendrán que tendrán que ponerse en directorios diferentes, como
+en [este caso](https://github.com/JJ/p5-hitos). El segundo servicio
+está en el mismo directorio que el fichero, que tiene que llamarse
+`docker-compose.yml`, pero en este estamos indicando un mapeo de
+puertos, con el 5000 interno cambiando al 80 externo (que, recordemos,
+es un puerto privilegiado) y usando `volumes_from` para usar los
+volúmenes, es decir, los datos, contenidos en el fichero
+correspondiente. 
+
+Para ejecutarlo, 
+
+
+```
+docker-compose up
+```
+
+Esto construirá las imágenes de los servicios, si no existen, y les
+asignará un nombre que tiene que ver con el nombre del servicio;
+también ejecutará el programa, en este caso de `web`. Evidentemente,
+`docker-compose down` parará la máquina virtual. 
+
+<div class='ejercicios' markdown='1'>
+
+Usar un miniframework REST para crear un servicio web y introducirlo
+en un contenedor, y componerlo con un cliente REST que sea el que
+finalmente se ejecuta y sirve como "frontend".
+
+</div>
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
@@ -1040,7 +1256,6 @@ hacerlo reproducible, se deben usar Dockerfile o el equivalente en
 otro tipo de contenedores, y las órdenes que se
 deben usar y cómo usarlas constituye un acervo que conviene conocer y
 usar. 
-
 
 ## Usando Dockerfiles
 
@@ -1146,7 +1361,7 @@ ejemplo,
 se puede usar en lugar del intérprete de Perl6 y usa como base la
 distro ligera Alpine:
 
-~~~
+```
 FROM alpine:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
@@ -1176,7 +1391,7 @@ RUN panda install Linenoise
 #Mount point
 RUN mkdir /app
 VOLUME /app
-~~~
+```
 
 Como ya hemos visto anteriormente, usa `apk`, la orden de Alpine para
 instalar paquetes e instala lo necesario para que eche a andar el
@@ -1191,18 +1406,24 @@ de órdenes, en este caso, tratándose del intérprete de Perl 6, se
 comportará exactamente como él. Para que esto funcione también se ha
 definido una variable de entorno en:
 
-	ENV PATH="/root/.rakudobrew/bin:${PATH}"
+```
+ENV PATH="/root/.rakudobrew/bin:${PATH}"
+```
 
 que añade al `PATH` el directorio donde se encuentra. Con estas dos
 características se puede ejecutar el contenedor con:
 
-    sudo docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```
+sudo docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```
 
 Si tuviéramos perl6 instalado en local, se podría escribir
 directamente 
 
-	perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
-	
+```
+perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```
+
 o algún
 otro
 [*one-liner* de Perl6](https://gist.github.com/JJ/9953ba0a98800fed205eaae5b5a6410a). 
@@ -1211,8 +1432,10 @@ En caso de que se trate de un servicio o algún otro tipo de programa
 de ejecución continua, se puede usar directamente `CMD`. En este caso,
 `ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando 
 
-	sudo docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
-	
+```
+sudo docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
+```
+
 que accederá directamente a la línea de órdenes, en este caso
 `busybox`, que es el *shell* que provee Alpine. 
 
@@ -1338,16 +1561,20 @@ export DOCKER_MACHINE_NAME="maquinilla"
 
 Si estamos ejecutando desde superusuario, habrá que ejecutar
 
-	eval $(sudo docker-machine env maquinilla)
-	
+```
+eval $(sudo docker-machine env maquinilla)
+```
+
 Esa orden exporta las variables anteriores, que le indicarán a docker
 qué tiene que usar en ese *shell* explícitamente. Cada nuevo shell
 tendrá también que exportar esas variables para poder usar la máquina
 virtual. Las órdenes docker que se ejecuten a continuación se
 ejecutarán en esa máquina; por ejemplo, 
 
-	sudo -E docker pull jjmerelo/alpine-perl6
-	
+```
+sudo -E docker pull jjmerelo/alpine-perl6
+```
+
 descargará dentro de la máquina virtual esa imagen y se ejecutará
 dentro de ella cualquier orden. En este caso, -E sirve para que las
 variables de entorno del shell local, que hemos establecido
@@ -1384,9 +1611,9 @@ contenedor y lo elimina cuando se sale del mismo:
 
 ~~~
 sudo docker run --rm -t -v
-  /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test jjmerelo/test-perl6 /test/t
+    /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test
+      jjmerelo/test-perl6 /test/t
 ~~~
-
 
 
 ## Otros gestores de contenedores
