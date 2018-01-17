@@ -1051,8 +1051,8 @@ almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
 
-Examinar la estructura de capas que se forma al crear imágenes nuevas
-a partir de contenedores que se han estado ejecutando.
+Crear un volumen y usarlo, por ejemplo, para escribir la salida de un
+programa determinado. 
 
 </div>
 
