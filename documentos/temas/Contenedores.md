@@ -1,11 +1,3 @@
----
-layout: index
-
-apuntes: T
-
-prev: Orquestacion
----
-
 Virtualización *ligera* usando contenedores
 ===
 
@@ -1247,6 +1239,10 @@ incluirá el nombre del servicio en compose). Si es así, el test
 pasará, si no, el test fallará, con lo que podremos comprobar offline
 si el código es correcto o no. 
 
+> Estos tests se pueden hacer también con simples Dockerfile, y de
+> hecho sería conveniente combinar los tests de los servicios
+> conjuntos con los tests de Dockerfile. Cualquier infraestructura es
+> código, y como tal si no está testeado está roto. 
 
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
