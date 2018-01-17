@@ -1206,6 +1206,14 @@ finalmente se ejecuta y sirve como "frontend".
 
 </div>
 
+> En
+> [este artículo](https://medium.freecodecamp.org/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a) se
+> explica cómo se puede montar un entorno de desarrollo con Python y
+> Postgres usando Docker Compose. Montar entornos de desarrollo
+> independientemente del sistema operativo en el que se encuentre el
+> usuario es, precisamente, uno de los casos de uso de esta
+> herramienta. 
+
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
 Una de las principales ventajas que tiene este tipo de virtualización,
