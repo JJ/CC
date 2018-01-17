@@ -6,14 +6,6 @@ apuntes: T
 prev: Orquestacion
 ---
 
----
-layout: index
-
-apuntes: T
-
-prev: Orquestacion
----
-
 Virtualización *ligera* usando contenedores
 ===
 
@@ -1067,8 +1059,8 @@ almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
 
-Examinar la estructura de capas que se forma al crear imágenes nuevas
-a partir de contenedores que se han estado ejecutando.
+Crear un volumen y usarlo, por ejemplo, para escribir la salida de un
+programa determinado. 
 
 </div>
 
@@ -1213,6 +1205,53 @@ finalmente se ejecuta y sirve como "frontend".
 > independientemente del sistema operativo en el que se encuentre el
 > usuario es, precisamente, uno de los casos de uso de esta
 > herramienta. 
+
+La ventaja de describir la infraestructura como código es que, entre
+ otras cosas, se puede introducir en un entorno de test tal como
+ [Travis](https://travis.ci.org). Travis permite instalar cualquier
+ tipo de servicio y lanzar tests; estos tests se interpretan de forma
+ que se da un aprobado global a los tests o se indica cuales no han
+ pasado.
+
+Y en estos tests podemos usar `docker-compose` y lanzarlo:
+
+```
+services:
+  - docker
+env:
+  - DOCKER_COMPOSE_VERSION=1.17.0
+  
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker-compose up
+  
+script:
+  - docker ps -a | grep -q web
+```
+
+Como se ve más o menos, este fichero de configuración en YAML
+reproduce diferentes fases del test. Después de seleccionar la versión
+con la que vamos a trabajar, en la fase `before_install` borramos (por
+si hubiera una versión anterior) e instalamos desde cero
+`docker-compose`, y finalmente hacemos un `build` usando el fichero
+`docker-compose.yml` que debe estar en el directorio principal; con
+`up` además levantamos el servicio. Si hay
+algún problema a la hora de construir el test parará; si no lo hay,
+además, en la fase `script` que es la que efectivamente lleva a cabo
+los tests se comprueba que haya un contenedor que incluya el nombre
+`web` (el nombre real será algo así como `web-algo-1`, pero siempre
+incluirá el nombre del servicio en compose). Si es así, el test
+pasará, si no, el test fallará, con lo que podremos comprobar offline
+si el código es correcto o no. 
+
+> Estos tests se pueden hacer también con simples Dockerfile, y de
+> hecho sería conveniente combinar los tests de los servicios
+> conjuntos con los tests de Dockerfile. Cualquier infraestructura es
+> código, y como tal si no está testeado está roto. 
+
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
