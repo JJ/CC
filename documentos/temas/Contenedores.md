@@ -1,4 +1,4 @@
-Virtualización *ligera* usando contenedores
+Contenedores y cómo usarlos
 ===
 
 <!--@
@@ -39,11 +39,11 @@ Introducción a la virtualización ligera: *contenedores*
 
 El aislamiento de grupos de procesos formando una *jaula* o
 *contenedor* ha sido una característica de ciertos sistemas operativos
-de la rama Unix desde los años 80, en forma del programa
+descendientes de Unix desde los años 80, en forma del programa
 [chroot](https://es.wikipedia.org/wiki/Chroot) (creado por Bill Joy, el
 que más adelante sería uno de los padres de Java). La restricción de
 uso de recursos de las *jaulas `chroot`*, que ya hemos visto, se limitaba a la protección
-del acceso a ciertos recursos del sistema de archivos, aunque son
+del acceso a ciertos recursos del sistema de archivos, aunque eran
 relativamente fáciles de superar; incluso así, fue durante mucho
 tiempo la forma principal de configurar servidores de alojamiento
 compartidos y sigue siendo una forma simple de crear virtualizaciones *ligeras*. Las
@@ -83,7 +83,7 @@ mismo, creando un entorno mucho más seguro que las anteriores
 Dentro de la familia de sistemas operativos Solaris (cuya última
 versión libre se denomina
 [Illumos](https://en.wikipedia.org/wiki/Illumos), y tiene también otras
-versiones como SmartOS) la tecnología
+versiones como [SmartOS](https://www.joyent.com/smartos), centradas precisamente en el uso de contenedores) la tecnología
 correspondiente se denomina
 [zonas](https://en.wikipedia.org/wiki/Solaris_Zones). La principal
 diferencia es el bajo *overhead* que le añaden al sistema operativo y
