@@ -131,7 +131,7 @@ Usando Chef para provisionamiento
 -----
 
  [Chef](https://www.chef.io/chef/) es una herramienta que, en
- general, se usa en un servidor que se encarga no sólo de gestionar la
+ general, se usa en un servidor que se encarga no solo de gestionar la
  configuración, sino también las versiones. Empezar a usarlo
  [es complicado](https://docs.chef.io/).
  Sin embargo, como
@@ -318,7 +318,7 @@ rama designada de la misma.
 que se ha hecho popular en los últimos años. Aunque algo más
 complicada de configurar que Ansible, tiene como ventaja que permite
 modularizar la configuración para poder adaptarla a sistemas de la
-forma más conveniente. `salt-ssh` está basado en Python y sólo
+forma más conveniente. `salt-ssh` está basado en Python y solo
 requiere, en principio, que este lenguaje esté instalado en el sistema
 que se va a provisionar. 
 
@@ -353,7 +353,7 @@ app:
 sudo: True
 ~~~
 
-Aquí no sólo se declara la dirección a la que vamos a conectar, sino
+Aquí no solo se declara la dirección a la que vamos a conectar, sino
 también si hace falta ser sudo o no. Con esto podemos ejecutar ya
 parte de la configuración que vamos a ejecutar más adelante:
 
@@ -390,7 +390,7 @@ cumplir una serie de prerrequisitos incluidos en el fichero
 nombre del fichero en sí. Este a su vez requiere la instalación de otra serie
 de paquetes, e incluye otro fichero. Lo bueno es que esos dos
 ficheros, `javasetup` y `java`, se pueden usar para todos los paquetes
-que usen esa máquina virtual; para instalar Scala sólo hay que crear
+que usen esa máquina virtual; para instalar Scala solo hay que crear
 este último fichero.
 
 Todos estos, por cierto, tienen que ejecutarse desde directorios
