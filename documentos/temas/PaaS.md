@@ -345,7 +345,7 @@ principio y cuatro parámetros. Estos parámetros se recuperan dentro de
 la función *callback* como atributos de la variable `req.params`,
 tales como `req.params.local` en las siguientes líneas.
 
-> Realizar u na app en express que incluya variables como en el caso
+> Realizar una app en `express` cuyas rutas incluyan variables como en el caso
 > anterior. 
 
 ## Probando nuestra aplicación en la nube
