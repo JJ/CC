@@ -93,7 +93,7 @@ cliente-servidor, creando 3 o más capas entre las que se suele incluir
 la capa de presentación, la de aplicación, la de lógica de negocio y
 la de acceso a datos. Muchos marcos de desarrollo modernos trabajan de
 esta forma y son relativamente simples de desarrollar. El problema
-principal es que sólo permiten escalado dentro de cada una de las
+principal es que solo permiten escalado dentro de cada una de las
 capas, siendo al final alguna de ellas un cuello de botella.
 
 ### Arquitectura dirigida por eventos
