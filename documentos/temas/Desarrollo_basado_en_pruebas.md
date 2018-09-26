@@ -176,7 +176,7 @@ mínimas, máximas o exactas deben tener.
 
 ## Vamos a hacer una aplicación: gestionar porras de fútbol
 
->Primero, debe constar que esta aplicación sólo está aquí a efectos de
+>Primero, debe constar que esta aplicación solo está aquí a efectos de
 >ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
 >usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
 >usar JavaScript,
@@ -196,7 +196,7 @@ El objeto básico, por tanto, será la `Apuesta` que irá asociada a un
 
 La aplicación podrá tener, o no, un interfaz web, pero por lo pronto,
 y a efectos de la prueba continua de más adelante, vamos a quedarnos
-sólo con un pequeño programa que sirva para comprobar que funciona.
+solo con un pequeño programa que sirva para comprobar que funciona.
 
 <div class='ejercicios' markdown='1'>
 Ejecutar un programa básico que trabaje con una base de datos en diferentes versiones del lenguaje. ¿Funciona en
@@ -252,7 +252,7 @@ sí un test: donde se va a desplegar o lo tiene o no lo tiene, en cuyo
 caso no se permitirá la ejecución.
 
 Este fichero, además, permite instalar todas las dependencias usando
-sólo `npm install .`. Casi todos los lenguajes habituales tienen algún
+solo `npm install .`. Casi todos los lenguajes habituales tienen algún
 sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo. 
 
 <div class='ejercicios' markdown='1'>
@@ -266,7 +266,7 @@ sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo.
 que necesita nuestra aplicación y, por tanto, nos va a ser bastante
 útil cuando digamos de desplegarlo o testearlo en la nube.
 
-No sólo eso, sino que es la referencia para otra serie de
+No solo eso, sino que es la referencia para otra serie de
 herramientas, como las herramientas de construcción. Las herramientas
 de construcción o de control de tareas se vienen usando
 tradicionalmente en todos los entornos de programación. Quién no ha
@@ -355,7 +355,7 @@ pronto, no vamos a hacerlo). Luego, definimos la tarea llamada
 `docco`, que a su vez tiene una subtarea llamada `debug`: toma los
 fuentes contenidos en el array indicado y deposita la salida en el
 directorio que le indicamos. No existe en Grunt una forma general de
-expresar este tipo de dependencias como en los Makefiles, sólo una
+expresar este tipo de dependencias como en los Makefiles, solo una
 buena práctica: usar `src`, por ejemplo, para las fuentes. 
 
 La siguiente parte carga el plugin de `grunt` necesario para ejecutar
