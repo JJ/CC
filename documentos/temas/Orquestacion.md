@@ -46,12 +46,12 @@ hacerlo de forma que sea totalmente portable de una infraestructura a otra; en g
 debe haber un procedimiento para que las infraestructuras como servicio (IaaS)
 sean controladas programáticamente, aparte de las otras dos formas que
 suelen ofrecer, a través de la web y a través de los interfaces de
-línea de órdenes. Trabajar con la web no es escalable y apenas es reproducible, porque sólo
+línea de órdenes. Trabajar con la web no es escalable y apenas es reproducible, porque solo
 permite crear infraestructuras una por una o por grupos si es que son similares; la segunda no es portable,
 porque cada servicio *cloud* tiene sus propias órdenes como se ha
 visto
 en
-[el tema de automatizar servicios *cloud*](Automatizando_cloud). Sólo
+[el tema de automatizar servicios *cloud*](Automatizando_cloud). Solo
 el trabajar con código desde una herramienta que permita trabajar con
 cualquier servicio cloud permite
 reproducir configuraciones de un vendedor a otro sin ningún problema.
@@ -163,7 +163,7 @@ vagrant init centos7
 creará un `Vagrantfile` en el directorio en el que te encuentres, por
 lo que es conveniente que el directorio esté vacío. En este caso crea
 [este fichero](https://github.com/JJ/CC/blob/master/ejemplos/vbox-centos7/Vagrantfile)
-en el que realmente sólo se configura el nombre de la máquina
+en el que realmente solo se configura el nombre de la máquina
 (`centos7`) pero que a base de des-comentar otras líneas se puede
 llegar a configurar de forma más completa.
 
