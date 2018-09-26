@@ -6,7 +6,7 @@ apuntes: T
 prev: Orquestacion
 ---
 
-Virtualización *ligera* usando contenedores
+Contenedores y cómo usarlos
 ===
 
 <!--@
@@ -47,11 +47,11 @@ Introducción a la virtualización ligera: *contenedores*
 
 El aislamiento de grupos de procesos formando una *jaula* o
 *contenedor* ha sido una característica de ciertos sistemas operativos
-de la rama Unix desde los años 80, en forma del programa
+descendientes de Unix desde los años 80, en forma del programa
 [chroot](https://es.wikipedia.org/wiki/Chroot) (creado por Bill Joy, el
 que más adelante sería uno de los padres de Java). La restricción de
 uso de recursos de las *jaulas `chroot`*, que ya hemos visto, se limitaba a la protección
-del acceso a ciertos recursos del sistema de archivos, aunque son
+del acceso a ciertos recursos del sistema de archivos, aunque eran
 relativamente fáciles de superar; incluso así, fue durante mucho
 tiempo la forma principal de configurar servidores de alojamiento
 compartidos y sigue siendo una forma simple de crear virtualizaciones *ligeras*. Las
@@ -59,7 +59,7 @@ compartidos y sigue siendo una forma simple de crear virtualizaciones *ligeras*.
 sistema más avanzado, implementando una
 [virtualización a nivel de sistema operativo](https://en.wikipedia.org/wiki/Operating_system-level_virtualization)
 que creaba un entorno virtual prácticamente indistinguible de una
-máquina real (o máquina virtual real). Estas *jaulas* no sólo impiden
+máquina real (o máquina virtual real). Estas *jaulas* no solo impiden
 el acceso a ciertas partes del sistema de ficheros, sino que también
 restringían lo que los procesos podían hacer en relación con el resto
 del sistema. Tiene como limitación, sin embargo, la obligación de
@@ -84,14 +84,14 @@ una capacidad del núcleo de Linux desde la versión 2.6.24 que crea
 *contenedores* de procesos unificando diferentes capacidades del
 sistema operativo que incluyen acceso a recursos, prioridades y
 control de los procesos. Los procesos dentro de un contenedor están
-*aislados* de forma que sólo pueden *ver* los procesos dentro del
+*aislados* de forma que solo pueden *ver* los procesos dentro del
 mismo, creando un entorno mucho más seguro que las anteriores
 *jaulas*. Estos [CGROUPS han sido ya vistos en otro tema](Intro_concepto_y_soporte_fisico).
 
 Dentro de la familia de sistemas operativos Solaris (cuya última
 versión libre se denomina
 [Illumos](https://en.wikipedia.org/wiki/Illumos), y tiene también otras
-versiones como SmartOS) la tecnología
+versiones como [SmartOS](https://www.joyent.com/smartos), centradas precisamente en el uso de contenedores) la tecnología
 correspondiente se denomina
 [zonas](https://en.wikipedia.org/wiki/Solaris_Zones). La principal
 diferencia es el bajo *overhead* que le añaden al sistema operativo y
@@ -303,7 +303,7 @@ existentes para que vaya todo rápidamente.
 
 Los contenedores son la implementación de una serie de tecnologías
 [que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion): y como
-tales pueden ser configurados para usar sólo una cuota determinada
+tales pueden ser configurados para usar solo una cuota determinada
 de recursos, por ejemplo
 [la CPU](http://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275). Para
 ello se usan los ficheros de configuración de cada una de las máquinas
@@ -414,7 +414,7 @@ de forma también independiente.
 >esta razón.
 
 [Docker](http://docker.com) es una herramienta de gestión de
-contenedores que permite no sólo instalarlos, sino trabajar con el
+contenedores que permite no solo instalarlos, sino trabajar con el
 conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan desplegar en diferentes servicios en la nube. La tecnología de
 [Docker](https://en.wikipedia.org/wiki/Docker_%28software%29) es
@@ -485,7 +485,7 @@ arquitectura usándolo, empezando por el principio, como instalarlo.
 publicó la versión 1.0, especialmente en distribuciones de Linux. Por
 ejemplo, para [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 y no funcionará con versiones más antiguas de la 12.04 (y en este caso
-sólo si se instalan kernels posteriores). En las últimas versiones, de
+solo si se instalan kernels posteriores). En las últimas versiones, de
 hecho, ya está en los repositorios oficiales de Ubuntu y para instalarlo no hay más que
 hacer
 
@@ -608,8 +608,8 @@ principio sin nombre. Puedes listar las imágenes que tienes con
 sudo docker images
 ```
 
-que, en principio, sólo listará una llamada `hello-world` en la
-segunda columna, etiquetada IMAGES. Pero esto incluye sólo las
+que, en principio, solo listará una llamada `hello-world` en la
+segunda columna, etiquetada IMAGES. Pero esto incluye solo las
 imágenes en sí. Para listas los contenedores que tienes, 
 
 ```
@@ -634,7 +634,7 @@ sudo docker run --rm hello-world
 ```
 
 que borrará el contenedor creado una vez ejecutada la orden. Así se
-mantiene el número de contenedores bajo y sobre todo se guardan sólo y
+mantiene el número de contenedores bajo y sobre todo se guardan solo y
 exclusivamente los que se piensen mantener o trabajar más
 adelante. Esta orden pone también de manifiesto la idea de
 *contenedores de usar y tirar*. Una vez ejecutado el contenedor, se
@@ -667,7 +667,7 @@ siguientes ocasiones.
 
 ## Trabajando *dentro* de contenedores. 
 
-Pero no sólo podemos descargar y ejecutar contenedores de forma
+Pero no solo podemos descargar y ejecutar contenedores de forma
 efímera. También se puede crear un contenedor y trabajar en
 él. Realmente, no es la forma adecuada de trabajar, que debería ser
 reproducible y automática, pero se puede usar para crear prototipos o
@@ -703,7 +703,7 @@ Debian. Se pueden
 [buscar todas las imágenes de un tipo determinado, como Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
 o
 [buscar las imágenes más populares](https://hub.docker.com/explore/). Estas
-imágenes contienen no sólo sistemas operativos *bare bones*, sino
+imágenes contienen no solo sistemas operativos *bare bones*, sino
 también otros con una funcionalidad determinada. Por ejemplo, una de
 las imágenes más populares es la de
 [`nginx`](https://hub.docker.com/_/nginx/), la de Redis o la de
@@ -749,7 +749,7 @@ sudo docker run -it alpine sh
 ``` 
 
 Dentro de ella podemos trabajar como un consola cualquiera, pero
-teniendo acceso sólo a los recursos propios.
+teniendo acceso solo a los recursos propios.
 
 ### Trabajando con Alpine Linux
 
@@ -902,7 +902,7 @@ sudo docker images
 
 Este `commit` es equivalente al que se hace en un
 repositorio; para enviarlo al repositorio habrá que usar `push` (pero
-sólo si uno se ha dado de alta antes).
+solo si uno se ha dado de alta antes).
 
 <div class='ejercicios' markdown='1'>
 
@@ -966,7 +966,7 @@ kernel. En
 [esta página](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
 indica como configurar el driver que se va a usar. 
 
-Hay una forma de usar contenedores sólo para almacenar datos, sin que
+Hay una forma de usar contenedores solo para almacenar datos, sin que
 haya ningún proceso que se ejecute en ellos usando los
 llamados
 [volúmenes](https://docs.docker.com/engine/reference/commandline/volume_create/#related-commands). Se
@@ -1110,7 +1110,7 @@ le hemos llamado, sino un nombre generado aleatoriamente
 `deeste_estilo`. En este caso no hemos añadido una definición de
 volúmenes, por lo que el contenedor se ejecutará y tendrá en `/data`
 el mismo contenido. Se puede montar también el contenedor en modo de
-sólo lectura:
+solo lectura:
 
 ```
 sudo docker run -it --rm --volumes-from 8d1e385:ro jjmerelo/p5hitos
@@ -1167,7 +1167,7 @@ organiza como un *hash* o diccionario, de forma que `services` tiene
 dos claves `config` y `web`. Dentro de cada una de las claves se
 especifica como se levantan esos servicios. En el primer caso se trata
 de `build` o construir el servicio a partir del Dockerfile, y se
-especifica el directorio donde se encuentra; sólo puede haber un
+especifica el directorio donde se encuentra; solo puede haber un
 Dockerfile por directorio, así que para construir varios servicios
 tendrán que tendrán que ponerse en directorios diferentes, como
 en [este caso](https://github.com/JJ/p5-hitos). El segundo servicio
@@ -1505,7 +1505,7 @@ podíamos haber sustituido `/app` en los dos lugares donde aparece por
 cualquier otro valor y habría funcionado igualmente. 
 
 En este caso, además, usamos `--rm` para borrar el contenedor una vez
-se haya usado y `-t` en vez de `-it` para indicar que sólo estamos
+se haya usado y `-t` en vez de `-it` para indicar que solo estamos
 interesados en que se asigne un terminal y la salida del mismo, no
 vamos a interaccionar con él. 
 
@@ -1530,7 +1530,7 @@ está
 [`docker-machine`](https://blog.docker.com/2015/02/announcing-docker-machine-beta/),
 que en general sirve 
 para trabajar con gestores de contenedores en la nube o con
-hipervisores locales, aunque sólo funciona con unos pocos, y
+hipervisores locales, aunque solo funciona con unos pocos, y
 generalmente privativos. 
 
 [Docker machine se descarga desde Docker](https://docs.docker.com/machine/) y
@@ -1634,7 +1634,7 @@ jjmerelo/alpine-perl6   latest              837fc8bf9307        10
 hours ago        491.5 MB
 ~~~
 
-De la misma forma podemos operar con servidores en la nube, con sólo
+De la misma forma podemos operar con servidores en la nube, con solo
 usar los drivers correspondientes.
 
 <div class='ejercicios' markdown='1'>
