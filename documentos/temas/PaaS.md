@@ -57,10 +57,10 @@ datos, un marco concreto para trabajar (tal como Django o Ruby on
 Rails) y, adicionalmente, un servidor web. 
 
 Esto conlleva una cierta falta de flexibilidad: se pueden usar las
-pilas que proporciona en servicio y el usuario sólo puede subir una
+pilas que proporciona en servicio y el usuario solo puede subir una
 aplicación que las use, no instalar elementos adicionales que necesiten permisos de
 superusuario. Pero, por otro lado, ofrece la comodidad de tener que
-concentrarse sólo en la aplicación en sí y no en la
+concentrarse solo en la aplicación en sí y no en la
 infraestructura, siempre que se trate de una aplicación que use los marcos más
 comunes. Es, por eso, menos *DevOps* que una solución *IaaS*, 
 pero por otro lado también tiene una parte que es la configuración y
@@ -84,7 +84,7 @@ aplicaciones REST.
 >Pila que se ha venido en llamar [MEAN](http://mean.io/#!/) y incluye
 >también Mongo y Express. 
 
-Algunos servicios PaaS son específicos (sólo alojan una solución
+Algunos servicios PaaS son específicos (solo alojan una solución
 determinada, como [CloudAnt](https://cloudant.com/) que aloja una base
 de datos con CouchDB o genéricos), permitiendo una serie de soluciones
 en general relativamente limitada; [Heroku](https://www.heroku.com) y
@@ -101,7 +101,7 @@ o
 >Después de probar casi todos los servicios anteriores, me da la
 >impresión de que poco hay más allá de Heroku y OpenShift. AppFog y
 >Nodejitsu, después de la efervescencia inicial, dan 30 días de prueba
->solamente y nitrous.io sólo 7 días. En
+>solamente y nitrous.io solo 7 días. En
 >[esta página](https://www.getapp.com/it-management-software/platform-as-a-service-paas/p/freemium/)
 >listan varios servicios, aunque no los he probado uno por uno y es
 >posible que algunos no estén ya operativos o no se ofrezcan en
@@ -142,7 +142,7 @@ la carga
 
 entre los diferentes nodos que uno tenga. La ventaja es que te ofrece
 un PaaS es que, aunque evidentemente haya que pagar por lo que se
-consume, sólo hay que hacerlo mientras se necesita; una vez pasado el
+consume, solo hay que hacerlo mientras se necesita; una vez pasado el
 pico, se puede escalar *hacia abajo* eliminando los nodos que uno no
 necesite; por supuesto, el propio PaaS suele proveer herramientas
 que hagan esto de forma más o menos automática. 
@@ -232,7 +232,7 @@ el programa y escribimos
 
 `npm install express --save`
 
-en general, no hace falta tener permiso de administrador, sólo el
+en general, no hace falta tener permiso de administrador, solo el
 necesario para crear, leer y ejecutar ficheros en el directorio en el
 que se esté trabajando. `--save` guarda la dependencia en `package.json` siempre que esté en el mismo directorio, que convendría que estuviera, así no tenemos que recordar qué es lo que está instalado. 
 
@@ -361,7 +361,7 @@ tales como `req.params.local` en las siguientes líneas.
 
 Porque esté en la nube no significa que no tengamos que testearla como cualquier hija de vecina. En este caso no vamos a usar tests unitarios, sino test funcionales (o como se llamen); de lo que se trata es que tenemos que levantar la web y que vaya todo medianamente bien.
 
-Los tests podemos integrarlos, como es natural, en el mismo marco que el resto de la aplicación, sólo que tendremos que usar librerías de aserciones ligeramente diferentes, en este caso `supertest`
+Los tests podemos integrarlos, como es natural, en el mismo marco que el resto de la aplicación, solo que tendremos que usar librerías de aserciones ligeramente diferentes, en este caso `supertest`
 
 	var request = require('supertest'), 
 	app = require('../index.js');
@@ -442,7 +442,7 @@ post-`push`,
 
 </div>
 
-Sólo hemos, por lo pronto, desplegado la aplicación por omisión.
+Solo hemos, por lo pronto, desplegado la aplicación por omisión.
 
 >Y en esta aplicación por omisión se ha usado también el *buildpack*,
 >es decir, el proceso y herramientas de construcción, que esté programado para tu pila, el de
@@ -477,7 +477,7 @@ interrumpirlo simplemente tecleando Ctrl-C.
 
 [`foreman`](http://blog.daviddollar.org/2011/05/06/introducing-foreman.html)
 actúa como un envoltorio de tu aplicación, ejecutando todo lo
-necesario para que funcione (no sólo la web, sino bases de datos o
+necesario para que funcione (no solo la web, sino bases de datos o
 cualquier otra cosa que haya que levantar antes) codificando por
 colores la salida correspondiente a cada proceso y presentando también
 el registro o *log* de la misma de forma más amigable.
@@ -546,7 +546,7 @@ definido.
 
 Ahora tienes dos repositorios: el que está efectivamente desplegado y
 el que contiene los fuentes. ¿No sería una buena idea que se trabajara
-con uno sólo? Efectivamente, [GitHub permite desplegar directamente a Heroku cuando se hace un `push` a la rama `master`](http://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository),
+con uno solo? Efectivamente, [GitHub permite desplegar directamente a Heroku cuando se hace un `push` a la rama `master`](http://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository),
 aunque no es inmediato, sino que pasa por usar un servicio de
 integración continua, que se asegure de que todo funciona
 correctamente. Para eso, evidentemente, el sitio en el que se despliegue debe estar
@@ -613,7 +613,7 @@ hacerlo con Snap CI como se ha indicado más arriba.
 
 ## Creando nuevas funcionalidades
 
-Tal como "sale de la caja", un PaaS permite usar sólo los lenguajes y
+Tal como "sale de la caja", un PaaS permite usar solo los lenguajes y
 add-ons que tiene previstos. De hecho, eso es lo que define un PaaS:
 una pila predefinida que se puede usar directamente.
 
@@ -675,7 +675,7 @@ un backend totalmente independiente del despliegue que se vaya a
 hacer, sea en un servidor propio, IaaS o un PaaS; permiten también
 prototipado rápido de una aplicación, al permitir usar una base de
 datos externa para integración continua y pruebas y, finalmente, en
-caso de despliegue final de la aplicación, permiten pagar sólo por lo
+caso de despliegue final de la aplicación, permiten pagar solo por lo
 que se usa, sin tener ningún tipo de infraestructura permanente.
 
 Los DBaaS ofrecen acceso tanto bases de datos clásicas, es decir, con
@@ -754,14 +754,14 @@ esta forma:
 dejar en el sistema de control de fuentes. 
 Es un URL un tanto complejo, pero la parte principal es la que hay
 detrás del `//`, de la forma `usuario:clave@dominio:puerto`. Es imprescindible
-autenticarse, para que sólo uno pueda usar el recurso. En realidad, el
+autenticarse, para que solo uno pueda usar el recurso. En realidad, el
 usuario no se usa, por eso pone `daigual`, sin embargo la clave es la
 que estableceremos para el recurso cuando nos demos de alta; por
 defecto, es la misma que se usa para la cuenta general, aunque puedes
 establecer claves específicas para cada uno de los depósitos de
 datos. Previamente a esto habrá que haber creado una *suscripción* de
 Redis en "My Resources -> Manage"; hay derecho al menos a uno gratuito
-por persona aunque sólo te permiten
+por persona aunque solo te permiten
 [25 MB y 10 conexiones simultáneas](https://redislabs.com/pricing).
 
 >Redis, de todas formas, es software libre y puedes instalarlo sin
@@ -823,7 +823,7 @@ instalación realizada.
 
 El problema principal con Redis es rediseñar la aplicación desde
 nuestra mente base-de-datos-relacional para aprovechar sus
-fortalezas. Redis almacena estructuras de datos sólo indexadas por
+fortalezas. Redis almacena estructuras de datos solo indexadas por
 clave. Se puede acceder a todas las claves o hacer búsquedas con
 patrones. Con los resultados del ejemplo anterior se puede instalar el
 cliente de redis (`sudo apt-get redis-cli`) y acceder de esta forma
