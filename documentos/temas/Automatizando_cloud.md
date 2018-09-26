@@ -257,7 +257,7 @@ con cierta similitud con los selectores CSS.
 az vm image list | jq '.[] | select( .offer | contains("buntu"))'
 ```
 
-Esta te filtrará sólo aquellas imágenes que contengan `buntu` (no
+Esta te filtrará solo aquellas imágenes que contengan `buntu` (no
 sabemos si va a estar en mayúsculas o minúsculas), devolviendo algo
 así:
 
