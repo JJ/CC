@@ -43,10 +43,10 @@ desplegables en la nube.
 ## Introducción
 
 >Puedes echarle un vistazo a
->[esta colección de transpas](http://www.slideshare.net/jjmerelo/clipboards/my-clips)
+>[esta colección de transpas](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
 >con información de un par de presentaciones sobre arquitectura
 >moderna de aplicaciones. Aunque centrado en microservicios,
->[este conjunto de patrones](http://microservices.io/patterns/index.html)
+>[este conjunto de patrones](https://microservices.io/patterns/index.html)
 >menciona también algunos de los que veremos aquí.
 
 El panorama informático del siglo XXI está lleno de posibilidades:
@@ -71,7 +71,7 @@ para la cual crear la arquitectura virtual.
 ## Arquitecturas software
 
 >En gran parte, este apartado está sacado de
->[Software Architecture Patterns, de Mark Richards](http://www.oreilly.com/programming/free/software-architecture-patterns.csp?intcmp=il-prog-free-article-sa15_sa_patterns),
+>[Software Architecture Patterns, de Mark Richards](https://www.oreilly.com/programming/free/software-architecture-patterns.csp?intcmp=il-prog-free-article-sa15_sa_patterns),
 >un *ebook* gratuito que te puedes descargar dando tu email, lo que
 >aconsejo vivamente que hagas. 
 
@@ -119,7 +119,7 @@ arquitectura.
 
 ### Arquitectura microkernel
 
-Se trata de [una arquitectura](http://viralpatel.net/blogs/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
+Se trata de [una arquitectura](https://viralpatel.net/blogs/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
 central al que se pueden añadir funcionalidades mediante plugins. Un
 tipo de arquitectura clásico que se usa en CMSs como Joomla o en
 sistemas de aprendizaje como Moodle. El problema principal es la
@@ -129,7 +129,7 @@ botella.
 ### Arquitectura basada en microservicios.
 
 Una de las arquitecturas más populares hoy en día, los
-[microservicios](http://microservices.io) se caracterizan por poder
+[microservicios](https://microservices.io) se caracterizan por poder
 usar tecnologías subyacentes que van desde la virtualización completa
 en la nube hasta el uso de contenedores Docker en una sola máquina
 virtual.
@@ -170,7 +170,7 @@ unidades de procesamiento, que se comunican entre sí principalmente a
 través de ese espacio. A diferencia de la arquitectura basada en
 eventos, ese espacio está desestructurado, aunque internamente tiene
 un espacio de mensajería tal como las arquitecturas mencionadas
-anteriormente. Sin embargo, es un [patrón](http://es.slideshare.net/amin59/an-introduction-to-space-based-architecture) con una implementación
+anteriormente. Sin embargo, es un [patrón](https://es.slideshare.net/amin59/an-introduction-to-space-based-architecture) con una implementación
 relativamente simple que puede servir para aplicaciones a pequeña
 escala, aunque es más complicado de desarrollar que otros.
 
@@ -312,7 +312,7 @@ evento determinado.
 
 Hay una serie de estándares de mensajería, pero muchas de las
 implementaciones existentes se acogen a varios para que sea más simple
-la interoperabilidad. Y aparte de las [implementaciones libres](http://queues.io/) que uno
+la interoperabilidad. Y aparte de las [implementaciones libres](https://queues.io/) que uno
 puede usar dentro de su arquitectura, los proveedores de cloud tienen
 sus propias implementaciones tales como
 [Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
@@ -338,19 +338,19 @@ serían los más convenientes?
 ## Bibliografía y otros recursos
 
 Algunos recursos a los que puedes acceder desde la
-[Biblioteca de la UGR](http://biblioteca.ugr.es):
+[Biblioteca de la UGR](https://biblioteca.ugr.es):
 
 -
-  [Pattern-oriented software architecture for dummies](http://bencore.ugr.es/iii/encore/record/C__Rb2243562__Ssoftware%20architecture%20patterns.__P1%2C29__Orightresult__X1?lang=spi&suite=pearl),
+  [Pattern-oriented software architecture for dummies](https://bencore.ugr.es/iii/encore/record/C__Rb2243562__Ssoftware%20architecture%20patterns.__P1%2C29__Orightresult__X1?lang=spi&suite=pearl),
   aunque es muy básico, por lo menos explica en qué se pueden usar los
   patrones de software y cómo aplicarlos en un momento determinado. 
   
 -
-  [Practical software architecture](http://bencore.ugr.es/iii/encore/record/C__Rb2557607__Ssoftware%20architecture__Orightresult__U__X6?lang=spi&suite=pearl)
+  [Practical software architecture](https://bencore.ugr.es/iii/encore/record/C__Rb2557607__Ssoftware%20architecture__Orightresult__U__X6?lang=spi&suite=pearl)
   Una visión más práctica de diferentes arquitecturas de software.
 
 -
-  [Building microservices](http://bencore.ugr.es/iii/encore/record/C__Rb2523920__Smicroservices__P0%2C3__Orightresult__U__X6?lang=spi&suite=pearl)
+  [Building microservices](https://bencore.ugr.es/iii/encore/record/C__Rb2523920__Smicroservices__P0%2C3__Orightresult__U__X6?lang=spi&suite=pearl)
   un recurso electrónico que explica cómo construir microservicios
   desde cero, la fase de modelización a la de construcción del mismo.
 
@@ -359,7 +359,7 @@ Algunos recursos a los que puedes acceder desde la
 Este tema sirve como introducción para elegir el proyecto que se va a
 desarrollar durante la asignatura. Habrá que realizar estos ejercicios
 para superar el
-[primer hito del proyecto](http://jj.github.io/CC/documentos/proyecto/1.Infraestructura). 
+[primer hito del proyecto](https://jj.github.io/CC/documentos/proyecto/1.Infraestructura). 
 
 A continuación se
 puede echar un vistazo a los
