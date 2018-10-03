@@ -75,7 +75,7 @@ Criterios de evaluación
 ---
 
 Los
-[criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado](http://masteres.ugr.es/ing-informatica/pages/info_academica/guias/201819/1semestre/cloudcomputingfundamentoseinfraestructuras/!),
+[criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado](http://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada/!),
 y
 [se especifican en el repositorio de la clase](https://github.com/JJ/CC-18-19/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md). 
 
