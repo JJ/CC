@@ -233,7 +233,7 @@ relativamente fácil trabajar con ellos de forma automática.
 Comencemos por crear un grupo de recursos
 
 ```
-az resource group create -l westeurope -n CCGroupEU
+az group create -l westeurope -n CCGroupEU
 ```
 
 Esto crea un grupo de recursos en Europa Occidental. Vamos a usarlo
