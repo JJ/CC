@@ -418,7 +418,7 @@ cancelable in Global := true
 ```
 
 `sbt` usa el propio lenguaje Scala para su configuración, y tras
-declarar la organización que se ba a usar y la versión del propio
+declarar la organización que se va a usar y la versión del propio
 paquete, declara una serie de versiones. Las declaraciones de
 dependencia de variables en `libraryDependencies` indican el paquete
 (tal como `io.spray`), el módulo específico (tal como `spray-can`) y
