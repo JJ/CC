@@ -154,9 +154,9 @@ Usando Chef para provisionamiento
  
  Hay varios tutoriales que te permiten, con relativa rapidez, comenzar
  a trabajar con Chef-solo en un servidor;
- [este te proporciona una serie de ficheros que puedes usar](http://www.opinionatedprogrammer.com/2011/06/chef-solo-tutorial-managing-a-single-server-with-chef/)
+ [este te proporciona una serie de ficheros que puedes usar](https://www.opinionatedprogrammer.com/2011/06/chef-solo-tutorial-managing-a-single-server-with-chef/)
  y
- [este otro es más directo, dando una serie de órdenes](http://www.mechanicalfish.net/configure-a-server-with-chef-solo-in-five-minutes/). En
+ [este otro es más directo, dando una serie de órdenes](https://reinhard.codes/2015/06/14/reinstalling-and-configuring-a-server-with-chef/). En
  todo caso, se trata básicamente tener acceso a un servidor o máquina
  virtual, instalar una serie de aplicaciones en él y ejecutarlas sobre
  un fichero de configuración
@@ -188,7 +188,7 @@ Instalar `chef-solo` en la máquina virtual que vayamos a usar
 </div>
 
 Una *receta* de Chef
-[consiste en crear una serie de ficheros](http://www.mechanicalfish.net/configure-a-server-with-chef-solo-in-five-minutes/):
+consiste en crear una serie de ficheros:
 una *lista de ejecución* que especifica qué es lo que se va a
 configurar; esta lista se incluye en un fichero `node.json`, 
 o *recetario* (*cookbook*) que incluye una serie de *recetas* que
@@ -204,7 +204,7 @@ chef generate app first_cookbook
 
 
 Vamos a empezar a escribir una recetilla del Chef. Generalmente,
-[escribir una receta es algo más complicado](http://reiddraper.com/first-chef-recipe/),
+[escribir una receta es algo más complicado](https://reiddraper.com/first-chef-recipe/),
 pero comenzaremos por una receta muy simple que instale el
 imprescindible `emacs` y le asigne un nombre al nodo. Creamos el
 directorio `chef` en algún sitio conveniente y dentro de ese
@@ -277,7 +277,7 @@ directorio y fichero que uses de forma habitual.
 
 Para usar `chef-solo` hay simplemente que instalar unos cuantos
 programas, pero en gran parte ya está automatizado:
-[aquí explica como usarlo en Ubuntu](http://gettingstartedwithchef.com/first-steps-with-chef.html),
+[aquí explica como usarlo en Ubuntu](https://gettingstartedwithchef.com/first-steps-with-chef.html),
 por ejemplo basándose en
 [este Gist (programas cortos en GitHub)](https://gist.github.com/wolfeidau/3328844)
 que instala todas las herramientas necesarias para comenzar a ejecutar
@@ -286,7 +286,7 @@ chef.
 <div class='nota' markdown='1'>
 
 Este
-[curso en vídeo](http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/)
+[curso en vídeo](https://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/)
 te enseña también a trabajar con Chef, aunque con la edad que tiene es
 posible que esté un poco obsoleto.
 
@@ -297,9 +297,9 @@ posible que esté un poco obsoleto.
 De ninguna manera JSON es un lenguaje universal para gestión de
 configuraciones. Prácticamente todo el resto de los sistemas de
 configuración usan
-[YAML (*yet another markup language*)](http://yaml.org). Recientemente
+[YAML (*yet another markup language*)](https://yaml.org). Recientemente
 se ha
-[publicado una introducción al tema](http://pharalax.com/blog/yaml-introduccion-al-lenguaje-yaml/)
+[publicado una introducción al tema](https://pharalax.com/blog/yaml-introduccion-al-lenguaje-yaml/)
 que será suficiente para el uso que le vamos a dar más adelante
 
 </div>
@@ -323,7 +323,7 @@ rama designada de la misma.
 
 ## Gestionando configuraciones con Salt
 
-[Salt](https://saltstack.com/) es otra herramienta de configuración
+[Salt](https://www.saltstack.com/) es otra herramienta de configuración
 que se ha hecho popular en los últimos años. Aunque algo más
 complicada de configurar que Ansible, tiene como ventaja que permite
 modularizar la configuración para poder adaptarla a sistemas de la
@@ -423,7 +423,7 @@ Otros sistemas de gestión de configuración
 ---
 
 Las principales alternativas a Chef son [Ansible](https://www.ansible.com),
-[Salt]() y [Puppet](https://docs.puppet.com/puppet/3.8/pre_install.html). Todos ellos se comparan en
+[Salt]() y [Puppet](https://puppet.com/docs/puppet/3.8/pre_install.html). Todos ellos se comparan en
 [este artículo](https://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html),
 aunque los principales contendientes son
 [Puppet y Chef, sin que ninguno de los dos sea perfecto](https://www.infoworld.com/d/data-center/puppet-or-chef-the-configuration-management-dilemma-215279?source=fssr). 
@@ -454,7 +454,7 @@ acceder a ella.
 
 Cada máquina que se añada al control de Ansible se tiene que añadir a
 un
-[fichero, llamado inventario](http://docs.ansible.com/intro_inventory.html),
+[fichero, llamado inventario](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html),
 que contiene las diferentes máquinas controladas por el mismo. Por
 ejemplo
 
@@ -482,7 +482,7 @@ poder acceder a ella sin clave.
 
 De forma básica, lo que hace Ansible es simplemente ejecutar comandos
 de forma remota y simultáneamente. Para hacerlo, podemos usar el
-[inventario para agrupar los servidores](http://docs.ansible.com/intro_inventory.html), por ejemplo
+[inventario para agrupar los servidores](https://docs.ansible.com/intro_inventory.html), por ejemplo
 
 	[azure]
 	iv-ansible.cloudapp.net
@@ -502,12 +502,12 @@ esta forma:
 	$ ansible azure -m shell ls
 	
 haciendo uso del módulo `shell`. Hay muchos
-[más módulos](http://docs.ansible.com/modules.html) a los que se le
+[más módulos](https://docs.ansible.com/modules.html) a los que se le
 pueden enviar comandos del tipo "variable = valor". Por ejemplo, se
 puede trabajar con servidores web o
-[copiar ficheros](http://docs.ansible.com/intro_adhoc.html#file-transfer)
+[copiar ficheros](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#file-transfer)
 o
-[incluso desplegar aplicaciones directamente usando el módulo `git`](http://docs.ansible.com/intro_adhoc.html#managing-packages)
+[incluso desplegar aplicaciones directamente usando el módulo `git`](https://docs.ansible.com/intro_adhoc.html#managing-packages)
 
 <div class='ejercicios' markdown='1'>
 
@@ -568,12 +568,12 @@ usando un *playbook* de Ansible.
 
 Uno de los libros más interesantes
 es
-[Infrastructure as Code, de Kief Morris](http://amzn.to/2i3svim). Hace
+[Infrastructure as Code, de Kief Morris](https://amzn.to/2i3svim). Hace
 un resumen muy acertado de todos los principios que rigen la gestión
 de infraestructura virtual a través de código y un repaso de todas las
 herramientas usadas en el mismo. También está disponible
 como
-[recurso electrónico](http://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
+[recurso electrónico](https://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
 la biblioteca de la [UGR](https://www.ugr.es). 
 
 A donde ir desde aquí
@@ -592,7 +592,7 @@ sus propias herramientas.
 
 
 A partir de aquí se puede
-seguir aprendiendo sobre DevOps en [el blog](http://devops.com/) o
+seguir aprendiendo sobre DevOps en [el blog](https://devops.com/) o
 [en IBM](https://www.ibm.com/cloud-computing/products/devops/). Libros como
 [DevOps for Developers](https://www.amazon.es/dp/B009D6ZB0G?tag=atalaya-21&camp=3634&creative=24822&linkCode=as4&creativeASIN=B009D6ZB0G&adid=0PB61Y2QD9K49W3EP8MN&)
 pueden ser también de ayuda. Esta
@@ -602,7 +602,7 @@ más recientemente actualizados y qué esperar de cada uno de
 ellos. También en este
 [gist explica las diferencias entre herramientas en este área](https://gist.github.com/jaceklaskowski/bd3d06489ec004af6ed9),
 incluyendo también Puppet e incluso Docker. En
-[presentaciones como esta se habla de CAPS: Chef, Ansible, Puppet and Salt](http://es.slideshare.net/DanielKrook/caps-whats-best-for-deploying-and-managing-openstack-chef-vs-ansible-vs-puppet-vs-salt)
+[presentaciones como esta se habla de CAPS: Chef, Ansible, Puppet and Salt](https://es.slideshare.net/DanielKrook/caps-whats-best-for-deploying-and-managing-openstack-chef-vs-ansible-vs-puppet-vs-salt)
 como una categoría en sí. En
 [este artículo](https://www.infoworld.com/article/2609482/data-center/data-center-review-puppet-vs-chef-vs-ansible-vs-salt.html)
 también los comparan y en
