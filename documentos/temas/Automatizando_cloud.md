@@ -224,7 +224,7 @@ relativamente fácil trabajar con ellos de forma automática.
 Comencemos por crear un grupo de recursos
 
 ```
-az resource group create -l westeurope -n CCGroupEU
+az group create -l westeurope -n CCGroupEU
 ```
 
 Esto crea un grupo de recursos en Europa Occidental. Vamos a usarlo
@@ -248,7 +248,7 @@ con cierta similitud con los selectores CSS.
 az vm image list | jq '.[] | select( .offer | contains("buntu"))'
 ```
 
-Esta te filtrará sólo aquellas imágenes que contengan `buntu` (no
+Esta te filtrará solo aquellas imágenes que contengan `buntu` (no
 sabemos si va a estar en mayúsculas o minúsculas), devolviendo algo
 así:
 

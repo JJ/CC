@@ -48,7 +48,7 @@ Objetivos
  [LUN (*Logical Unit Number*)](http://en.wikipedia.org/wiki/Logical_Unit_Number),
  un dispositivo al que se accede usando el protocolo SCSI, un
  protocolo veterano de acceso a discos que permitía conectar varios
- discos cuando nuestro querido SATA sólo podía tener un maestro y un
+ discos cuando nuestro querido SATA solo podía tener un maestro y un
  esclavo y que se ha licenciado como protocolo para sistemas de discos
  accesibles desde la red, es decir,
  [Storage Area Networks](http://en.wikipedia.org/wiki/Storage_area_network). En
@@ -112,7 +112,7 @@ repositorio remoto de `git` podría usarse de esa forma, accediendo a
 ficheros en el mismo como si se tratara de ficheros locales (y, de
 hecho, eso es lo que hace
 [este programa, `gitfuse`](https://github.com/davesque/gitfuse)), que
-sólo permite visualizarlos y que está escrito en Python. 
+solo permite visualizarlos y que está escrito en Python. 
 
 En Linux se usa la librería [FUSE](http://fuse.sourceforge.net/) para
 implementarlo. Se puede usar directamente o mediante alguna adaptación
@@ -143,7 +143,7 @@ estructura de datos remota, o compleja, o simplemente extraña, en una
 serie de operaciones perfectamente familiares como leer y escribir en
 ficheros o navegar por directorios. Se puede usar tanto
 pedagógicamente como para convertir recursos muy diferentes en algo
-que pueda ser manejado desde un programa que sólo, o principalmente,
+que pueda ser manejado desde un programa que solo, o principalmente,
 sepa manejar ficheros. En cualquier caso, se trata de un ejemplo
 estupendo de virtualización de recursos y de un tipo de recurso que,
 también, se puede usar dentro de máquinas virtuales. 
@@ -600,7 +600,7 @@ control de Azure o bien
 te presentará una lista de las localizaciones y habrá que elegir la
 más conveniente (según lo indicado antes). El nombre de la cuenta no
 admite guiones. Dependiendo del tipo de suscripción te permitirá crear
-una o más cuentas, pero seguramente sólo una.
+una o más cuentas, pero seguramente solo una.
 
 Para manejar esta cuenta se necesitan una serie de claves. Con 
 
@@ -630,7 +630,7 @@ pero esto crea un contenedor de acceso privado; los contenedores
 pueden ser públicos o privados y por defecto se crean privados; [los niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
 
  * Públicos para que se vean los contenidos.
- * Blobs públicos sólo.
+ * Blobs públicos solo.
  * Sin acceso público.
  
  Este último es el permiso por defecto, pero si queremos que se acceda
