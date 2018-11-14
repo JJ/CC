@@ -1095,5 +1095,5 @@ A dónde ir desde aquí
 En el [capítulo sobre contenedores](Contenedores.md) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
  que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../practicas/3.PaaS.md).
+práctica correspondiente a esta materia](../proyecto/2.PaaS.md).
 
