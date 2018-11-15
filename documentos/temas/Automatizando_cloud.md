@@ -362,7 +362,7 @@ Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones.md) pondre
 práctica todos los conceptos aprendidos en este tema y
 [en el tema dedicado a almacenamiento](Almacenamiento.md) para crear configuraciones que sean
 fácilmente gestionables y adaptables a un fin determinado. También se
-puede ir a [el hito del proyecto](../3.IaaS.md) para aplicarlo al mismo.
+puede ir a [el hito del proyecto](../proyecto/3.Provisionamiento.md) para aplicarlo al mismo.
 
 
 Si lo que necesitas es un sistema ligero de virtualización, puedes
