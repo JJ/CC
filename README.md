@@ -3,7 +3,7 @@ Material docente para Cloud Computing
 
 [![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
 
-Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
+*Cloud Computing* es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
 La asignatura se imparte en el curso 2018-2019 los miércoles de 19:30 a
 21:30 en el aula 2.1 y los jueves de 17:30 a 19:30 en el
@@ -55,8 +55,8 @@ modo, los hitos se organizarán de la forma siguiente.
 
 1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio.md).
 2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md).
-3. [Provisionamiento de máquinas virtuales](documentos/proyecto/2.Paas.md).
-4. [Herramientas de automatización en la nube](documentos/proyecto/3.Provisionamiento.md).
+3. [Creación de arquitecturas de servicios web en la nube](documentos/proyecto/2.Paas.md).
+4. [Provisionamiento de máquinas virtuales](documentos/proyecto/3.Provisionamiento.md).
 4. [Orquestación de máquinas virtuales](documentos/proyecto/3.IaaS.md).
 4. [Uso de contenedores](documentos/proyecto/5.Docker.md).
 4. [Combinación de infraestructuras virtuales](documentos/proyecto/6.Compose.md) para
