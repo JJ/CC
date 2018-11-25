@@ -2,7 +2,7 @@ Provisionamiento en infraestructuras virtuales
 ===
 
 <!--@
-prev: Arquitecturas_para_la_nube
+prev: PaaS
 next: Automatizando_cloud
 -->
 
@@ -29,10 +29,11 @@ provisionamiento y monitorización más usados hoy en día.
 Introducción
 ---
 
-Los [gestores de configuraciones](https://en.wikipedia.org/wiki/Configuration_management) trabajan sobre máquinas virtuales ya
-creadas y en funcionamiento, describiendo la configuración que
-necesitan para ejecutar una aplicación
-determinada. Proporcionan
+Los
+[gestores de configuraciones](https://en.wikipedia.org/wiki/Configuration_management)
+trabajan sobre máquinas virtuales o reales ya creadas y en
+funcionamiento, describiendo o creando la configuración que necesitan
+para ejecutar una aplicación determinada. Proporcionan
 [infraestructura como código](https://en.wikipedia.org/wiki/Infrastructure_as_Code),
 permitiendo describir los sistemas en los que se va a ejecutar código
 como si de un programa se tratara, con todo lo que ello conlleva:
@@ -44,56 +45,68 @@ menos un sistema operativo, pero
 es más eficiente e independiente de la configuración específica
 trabajar con ellos desde programas de orquestación de máquinas
 virtuales como
-[Vagrant](https://en.wikipedia.org/wiki/Vagrant_%28software%29)
+[Vagrant](https://en.wikipedia.org/wiki/Vagrant_%28software%29). Aunque
+es conveniente, no es estrictamente necesario y por tanto en principio
+se explicarán de forma independiente.
 
-Hay muchos gestores de
-configuraciones:
+La expansión de la creación de aplicaciones en la nube hasta ser la
+arquitectura contemporánea con más extensión hace que haya muchas
+herramientas de gestión de
+configuraciones libres:
 [Chef](https://www.chef.io/chef/),
 [Salt](https://docs.saltstack.com/en/latest/),
 Ansible, [`mgmt`](https://github.com/purpleidea/mgmt) (este último un
 poco experimental) y Puppet, por
 ejemplo. Todos son libres, pero
 [tienen características específicas](https://en.wikipedia.org/wiki/Comparison_of_open_source_configuration_management_software)
-que hay que tener en cuenta a la hora de elegir uno u otro. En el caso
+que hay que tener en cuenta a la hora de elegir uno u otro; entre
+otras cosas, se dividen entre herramientas de configuración de
+sistemas operativos (que asumen que el sistema operativo ya está
+instalado) y otro tipo de herramientas; en el caso
 específico de
 [sistemas operativos](https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management),
 que es del que vamos a hablar aquí, 
 se trata de gestionar automáticamente todas las tareas de
 configuración de un sistema, automatizando la edición de ficheros de
 configuración, instalación de software y configuración del mismo,
-creación de usuarios y autenticación, de forma que se pueda hacer de
+creación de usuarios y autenticación y comprobación del estado de ejecución, de forma que se pueda hacer de
 forma automática y masiva. 
 
-Para poder configurar máquinas virtuales específicas primero hay que
-instanciarlas. Dejaremos para más adelante cómo hacerlo de forma
-independiente del proveedor de tales servicios y veremos a
-continuación cómo preparar una máquina virtual para ser provisionada.
+> Para poder configurar máquinas virtuales específicas primero hay que
+> instanciarlas. Dejaremos para más adelante cómo hacerlo de forma
+> independiente del proveedor de tales servicios y veremos a
+> continuación cómo preparar una máquina virtual para ser provisionada.
 
-En general, estas herramientas suelen usar
+En general, herramientas suelen usar
 un
-[lenguaje de dominio específico](https://en.wikipedia.org/wiki/Domain-specific_language),
+[lenguaje de dominio específico](https://en.wikipedia.org/wiki/Domain-specific_language)
+(DSL),
 con una pequeña cantidad de órdenes relacionada con lo que hacen:
 establecer una configuración determinada en un servidor. Este lenguaje
 puede consistir en versiones reducidas de lenguajes como Ruby o en
-conjuntos de diccionarios específicos de JSON o de YAML, dos lenguajes
+conjuntos de diccionarios específicos de JSON o de YAML (en algunos
+casos, TOML), dos lenguajes
 de serialización de estructuras de datos.
 
-Generalmente, también, se trata
-de
+Estos DSL, en general, son 
 [lenguajes declarativos](https://en.wikipedia.org/wiki/Declarative_programming) en
-el sentido que suelen especificar la configuración que se quiere
+el sentido que suelen especificar o declarar la configuración que se quiere
 alcanzar, no qué acciones hay que llevar a cabo para alcanzar esa
 configuración; la propia lógica de la herramienta suele encargarse de
-ello. Por esa misma razón se usa el concepto de *idempotencia* si se
-aplica dos veces una configuración, el resultado es el mismo. 
+ello. Por esa misma razón se usa el concepto de *idempotencia*: si se
+aplica dos veces una configuración, el resultado en los dos casos va a
+ser el mismo.
 
-En cualquier caso, la configuración más simple que se puede hacer es
+En el caso más simple, los sistemas de gestión de configuraciones se
+reducen a programas que permiten gestionar la ejecución remota de
+aplicaciones; en muchos casos, la configuración más simple que se puede hacer es
 usar un lenguaje de scripting como `bash` o algún otro que se sepa que
 va a estar instalado en el ordenador a configurar; Perl y Python
 suelen ser buenos candidatos porque están instalados en casi todas las
 configuraciones base. El problema que tiene, sobre todo el primero, es
 la falta de idempotencia, la mala gestión de los errores, y, sobre
-todo, la no idempotencia. 
+todo, el hecho de que no son independientes del sistema operativos ni,
+en algunos casos, de la versión o *sabor* específico del mismo.
 
 ## Configurando una instancia
 
@@ -121,16 +134,26 @@ tener:
   muchos casos los servicios de nube ofrecen imágenes con él ya
   instalado.
 
+* Configuración del sistema a provisionar de forma que se pueda usar
+  con privilegios de superusuario sin necesidad de introducir la
+  clave. Esto permite que se puedan ejecutar órdenes sin intervención
+  del usuario.
+
 Cada imagen suele tener un usuario con privilegios de administrador
-configurado. Consultar en cada lugar cuál es, pero una vez hecho eso,
+configurado. Consultar en cada caso específico cuál es, pero una vez hecho eso,
 el siguiente paso en el provisionamiento es crear un par de clave
-pública/privada y copiar la pública al objetivo. A partir de ahí ya se
-puede provisionar, empezando por Chef.
+pública/privada y copiar la pública al objetivo.
+
+> En muchos casos, la herramienta que se usa para crear la instancia
+> como el proveedor de cloud o Vagrant, crean su propio par y copian
+> la clave pública; en este caso hay que buscar dónde se almacena la
+> clave privada para indicarle al sistema de aprovisionamiento dónde
+> está.
 
 
 ## Gestionando configuraciones con Salt
 
-[Salt](https://www.saltstack.com/) es otra herramienta de configuración
+[Salt](https://www.saltstack.com/) es una herramienta de configuración
 que se ha hecho popular en los últimos años. Aunque algo más
 complicada de configurar que Ansible, tiene como ventaja que permite
 modularizar la configuración para poder adaptarla a sistemas de la
@@ -141,26 +164,27 @@ que se va a provisionar.
 La mejor forma de empezar es
 [instalarlo desde Github](https://github.com/saltstack/salt) aunque
 nosotros vamos a trabajar con
-[`salt-ssh`](https://docs.saltstack.com/en/latest/topics/ssh/), un
-sistema que no requiere ningún tipo de instalación en el ordenador
+[`salt-ssh`](https://docs.saltstack.com/en/latest/topics/ssh/), una
+herramienta de línea de órdenes que no requiere ningún tipo de instalación en el ordenador
 objetivo y que se puede usar, hasta cierto punto, como Ansible. Vamos
 a usarlo para
 [instalar los servicios necesarios para el bot de Telegram en Scala](https://github.com/JJ/BoBot)
-que hemos visto en alguna otra ocasión.
+que hemos visto en alguna otra ocasión. 
 
-Una vez instalado `salt-ssh`, una de los principales problemas es que
+Una vez instalado `salt-ssh`, uno de los principales problemas es que
 requiere una cierta cantidad de configuración global. Generalmente
-vamos a usar un directorio tal como `~/lib/salt/` como directorio de
-trabajo y configuración; y este directorio va a estar fuera del
-repositorio y en un directorio de superusuario por omisión. Se puede
-usar el directorio local, pero en ese caso habrá que decir
+vamos a usar como directorio de trabajo y configuración algo así como
+`~/lib/salt/`; y este directorio va a estar fuera del
+repositorio y en un directorio de superusuario por omisión, es decir,
+un directorio que sea accesible para todos los usuarios del sistema. Se puede
+usar el directorio local de usuario, pero en ese caso habrá que decir
 específicamente donde se encuentra cada tipo de fichero. En el
 [`README.md` del bot](https://github.com/JJ/BoBot/tree/master/provision)
 vienen las instrucciones necesarias para crear ese fichero de
 provisionamiento y la configuración global. 
 
-Pero para configurar nuestro propio sistema, uno de los
-más importantes es el fichero `roster`:
+Para configurar la instancia específica sobre la que vamos a trabajar,
+uno de los ficheros más importantes es el fichero `roster`:
 
 ~~~
 app: 
@@ -170,7 +194,7 @@ sudo: True
 ~~~
 
 Aquí no solo se declara la dirección a la que vamos a conectar, sino
-también si hace falta ser sudo o no. Con esto podemos ejecutar ya
+también si hace falta ser `sudo` o no. Con esto podemos ejecutar ya
 parte de la configuración que vamos a ejecutar más adelante:
 
 	salt-ssh '*' --roster-file=./roster -r "sudo apt-get install python-apt" -c ~/lib/salt --force-color
@@ -179,7 +203,9 @@ En este caso, se trata de ejecutar una orden para poder instalar
 `python-apt`, un módulo para poder ejecutar órdenes de instalación de
 paquetes directamente desde Python.
 
-Pero para efectivamente provisionar se usan ficheros `salt-stack`. Por
+Con esto se configuran las intancias a provisionar; para provisionar
+efectivamente se usan ficheros `salt-stack` (que por eso usan la
+extensión `sls`). Por
 ejemplo,
 [estos ficheros instalan Java](https://github.com/JJ/BoBot/tree/master/provision/java)
 en la versión necesaria para poder instalar más adelante Scala. Y
@@ -199,8 +225,9 @@ Este fichero se ejecutaría con
 
 	salt-ssh app state.apply scala --roster-file=./roster -c ~/lib/salt --force-color
 
-Este programa, como Ansible, actúa de manera descriptiva. Indica que
-el paquete scala tiene que estar instalado, pero para ello tiene que
+Este programa, como otras herramientas de configuración, actúa de
+manera descriptiva. Indica que 
+el paquete `scala` tiene que estar instalado, pero para ello tiene que
 cumplir una serie de prerrequisitos incluidos en el fichero
 `javasetup.sls`; el nombre de estado se tiene que corresponder con el
 nombre del fichero en sí. Este a su vez requiere la instalación de otra serie
@@ -216,21 +243,22 @@ los ficheros `.sls` a `~/lib/salt/states` y hacerlo desde ahí.
 En general, y por la forma que tiene un poco rígida de hacer las
 cosas, resulta algo más complicado usarlo que Ansible o incluso
 Chef. Sin embargo y limitado a `salt-ssh`, una vez que la
-configuración está completa y si se tienen configuraciones base,
-construir a partir de ellas es relativamente sencillo. 
+configuración está completa y si se tienen ya programadas una serie de
+configuraciones base, construir a partir de ellas es relativamente sencillo. 
 
 <div class='ejercicios' markdown='1'>
 
 Provisionar una máquina virtual en algún entorno con los que
-trabajemos habitualmente usando Salt. 
+trabajemos habitualmente (incluyendo el programa que se haya realizado
+para los hitos anteriores) usando Salt. 
 	  
 </div>
 
-Otros sistemas de gestión de configuración
+Otros sistemas de gestión de configuración Ansible
 ---
 
 Las principales alternativas a Chef son [Ansible](https://www.ansible.com),
-[Salt]() y [Puppet](https://puppet.com/docs/puppet/3.8/pre_install.html). Todos ellos se comparan en
+y [Puppet](https://puppet.com/docs/puppet/3.8/pre_install.html). Todos ellos se comparan en
 [este artículo](https://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html),
 aunque los principales contendientes son
 [Puppet y Chef, sin que ninguno de los dos sea perfecto](https://www.infoworld.com/d/data-center/puppet-or-chef-the-configuration-management-dilemma-215279?source=fssr). 
@@ -239,15 +267,16 @@ De todas ellas, vamos a
 [ver Ansible](https://semaphoreci.com/community/tutorials/introduction-to-ansible)
 que parece ser uno de los que se está desarrollando con más intensidad
 últimamente. [Ansible es](https://en.wikipedia.org/wiki/Ansible_%28software%29) un
-sistema de gestión remota de configuración que permite gestionar
-simultáneamente miles de sistemas diferentes. Está basado en YAML para
-la descripción de los sistemas y escrito en Python. 
+sistema de gestión remota de configuración que permite trabajar
+simultáneamente miles de sistemas diferentes. Está escrito en Python y
+para la descripción de las
+configuraciones de los sistemas usa YAML.
 
 Se instala como un módulo de Python, usando por ejemplo la utilidad de
 instalación de módulos `pip` (que habrá que instalar si no se tiene)
 
 ```
-sudo pip install paramiko PyYAML jinja2 httplib2 ansible
+pip install paramiko PyYAML jinja2 httplib2 ansible
 ```
 
 >`sudo` no hace falta si usas un gestor de entornos como `pyenv`
