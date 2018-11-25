@@ -8,11 +8,11 @@ Material docente para Cloud Computing
 
 [![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
 
-Cloud Computing es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
+*Cloud Computing* es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
 
 La asignatura se imparte en el curso 2018-2019 los miércoles de 19:30 a
-21:30 en el aula 2.1 y los viernes de 16:30 a 18:30 en el
-aula 1.6. Tendrás que llevar tu portátil a ambas clases. Se usará [GitHub](http://github.com) para los ejercicios y
+21:30 en el aula 2.1 y los jueves de 17:30 a 19:30 en el
+aula 3.1. Tendrás que llevar tu portátil a ambas clases. Se usará [GitHub](http://github.com) para los ejercicios y
 el proyecto; también para los objetivos semanales, que estarán (año
 2018-19) en [este repositorio](https://github.com/JJ/CC-18-19/).
 
@@ -40,42 +40,44 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 
 La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/CC-18-19).
 
-Seminarios
+Seminarios y material adicional
 ---------------
 
 Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
 
-1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby). La
-   fecha se anunciará más adelante
+1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby).
 
 
 Prácticas - Actividades académicas dirigidas
 -------------
 
-Las prácticas consisten en la realización de un proyecto a lo largo de
-la asignatura, con diferentes hitos que correspondan a los objetivos
+El objetivo de la asignatura es la realización de un proyecto con diferentes hitos que correspondan a los objetivos
 cumplidos hasta ese momento. Los proyectos
 [seguirán un perfil DevOps](documentos/proyecto/README.md), es decir,
-de definición de infraestructura para un proyecto existente. A grosso
+de definición de infraestructura para un proyecto existente o que se irá mejorando a lo largo del cuatrimestre. A grosso
 modo, los hitos se organizarán de la forma siguiente. 
 
 1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio).
 2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura).
-3. [Provisionamiento de máquinas virtuales](documentos/proyecto/2.Provisionamiento).
-4. [Herramientas de automatización en la nube](documentos/proyecto/3.IaaS).
-4. [Orquestación de máquinas virtuales](documentos/proyecto/4.Orquestacion).
+3. [Creación de arquitecturas de servicios web en la nube](documentos/proyecto/2.Paas).
+4. [Provisionamiento de máquinas virtuales](documentos/proyecto/3.Provisionamiento).
+4. [Orquestación de máquinas virtuales](documentos/proyecto/3.IaaS).
 4. [Uso de contenedores](documentos/proyecto/5.Docker).
 4. [Combinación de infraestructuras virtuales](documentos/proyecto/6.Compose) para
    desplegar una aplicación completa en varios contenedores. 
 
-Tutorías virtuales
+Tutorías virtuales y presenciales
 ----
 
-Las tutorías virtuales se realizarán preferiblemente a través de
-[la plataforma de trabajo colaborativo GitHub](https://github.com/JJ/CC-17-18/issues?state=open). Hay
-también un grupo de Telegram que se comparte con los estudiantes de
-otros años de la misma asignatura.
+Las tutorías virtuales se realizarán preferiblemente a través del
+grupo de Telegram que se comparte con los estudiantes de otros años de
+la misma asignatura. Se aconseja a todo estudiante matriculado que
+solicite una tutoría al principio de curso para recibir orientación
+sobre la misma. Las tutorías presenciales se llevarán a cabo lunes,
+miércoles y viernes por la mañana fuera de las horas de clase, y
+excepcionalmente y bajo cita previa, martes y jueves, inclusive jueves
+por la tarde de 19:30 a 20:30 en la 3.1.
 
 Criterios de evaluación
 ---
@@ -85,4 +87,8 @@ Los
 y
 [se especifican en el repositorio de la clase](https://github.com/JJ/CC-18-19/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
 
+Sesiones, objetivos e hitos de años anteriores
+---
 
+* [Año 16-17](https://github.com/JJ/CC16-17)
+* [Año 17-18](https://github.com/JJ/CC-17-18)
