@@ -203,7 +203,7 @@ En este caso, se trata de ejecutar una orden para poder instalar
 `python-apt`, un módulo para poder ejecutar órdenes de instalación de
 paquetes directamente desde Python.
 
-Con esto se configuran las intancias a provisionar; para provisionar
+Con esto se configuran las instancias a provisionar; para provisionar
 efectivamente se usan ficheros `salt-stack` (que por eso usan la
 extensión `sls`). Por
 ejemplo,
@@ -280,7 +280,7 @@ pip install paramiko PyYAML jinja2 httplib2 ansible
 ```
 
 > Estamos asumiendo que usas un gestor de versiones tal como `pyenv`,
-> lo que aconsejamos vivamente, no sólo para este lenguaje, sino para
+> lo que aconsejamos vivamente, no solo para este lenguaje, sino para
 > todos los demás.
 
 El resto de las utilidades son también necesarias; en realidad se
