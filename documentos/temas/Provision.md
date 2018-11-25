@@ -279,14 +279,15 @@ instalación de módulos `pip` (que habrá que instalar si no se tiene)
 pip install paramiko PyYAML jinja2 httplib2 ansible
 ```
 
->`sudo` no hace falta si usas un gestor de entornos como `pyenv`
+> Estamos asumiendo que usas un gestor de versiones tal como `pyenv`,
+> lo que aconsejamos vivamente, no sólo para este lenguaje, sino para
+> todos los demás.
 
-El resto de las utilidades son también necesarias y en realidad se
-instalan automáticamente al instalar ansible. Estas utilidades se
+El resto de las utilidades son también necesarias; en realidad se
+instalan automáticamente al instalar Ansible. Estas utilidades se
 tienen que instalar *en el anfitrión*, no hace falta instalarlas en el
-invitado, que lo único que necesitará, en principio, es tener activada
-la conexión por ssh y tener una cuenta válida y forma válida de
-acceder a ella.
+invitado, que tendrá que cumplir los requisitos que se indican más
+arriba en la sección de configuración de instancias.
 
 Cada máquina que se añada al control de Ansible se tiene que añadir a
 un
@@ -295,12 +296,13 @@ que contiene las diferentes máquinas controladas por el mismo. Por
 ejemplo
 
 ```
- $ echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
+ $ echo "ansible-iv.cloudapp.net" > ~/.ansible/ansible_hosts
 ```
 
 se puede ejecutar desde el *shell* para meter (`echo`) una cadena con
 una dirección (en este caso, una máquina virtual de Azure) en el
-fichero `ansible_hosts` situado en mi directorio raíz. El lugar de ese
+fichero `ansible_hosts` situado en un subdirectorio específico para
+Ansible de nuestro directorio raíz. El lugar de ese
 fichero es arbitrario, por lo que habrá que avisar a Ansible donde
 está usando una variable de entorno:
 
@@ -311,13 +313,13 @@ Y, con un nodo, ya se puede comprobar si Ansible funciona con
 	$ ansible all -u jjmerelo -m ping
 	
 Esta orden hace un *ping*, es decir, simplemente comprueba si la
-máquina es accesible desde la máquina local. `-u ` incluye el nombre
+máquina es accesible (y configurable) desde nuestro usuario. `-u ` incluye el nombre
 del usuario (si es diferente del de la máquina local); habrá que
 añadir `--ask-pass` si no se ha configurado la máquina remota para
 poder acceder a ella sin clave. 
 
 De forma básica, lo que hace Ansible es simplemente ejecutar comandos
-de forma remota y simultáneamente. Para hacerlo, podemos usar el
+de forma remota y simultáneamente (para todos los *hosts* definidos). Para hacerlo, podemos usar el
 [inventario para agrupar los servidores](https://docs.ansible.com/intro_inventory.html), por ejemplo
 
 	[azure]
@@ -347,15 +349,17 @@ o
 
 <div class='ejercicios' markdown='1'>
 
-Desplegar los fuentes de una aplicación cualquiera, propia o libre,  que se
-encuentre en un servidor git público en la máquina virtual Azure (o
-una máquina virtual local) usando `ansible`.
+Instalar los prerrequisitos para ejecutar alguna aplicación propia (la
+del proyecto de la asignatura u otra) usando Ansible.
 
 </div>
 
-Finalmente, el concepto similar a las recetas de Chef en Ansible son los
+Evidentemente, donde se encuentra la potencia de ansible no es en la
+ejecución aislada de comandos, sino en la creación de *recetas* o
+especificaciones de configuraciones o estados de las instancias
+gestionadas; estas recetas en Ansible se denominan
 [*playbooks*](https://davidwinter.me/introduction-to-ansible/),
-ficheros en YAML que le dicen a la máquina virtual qué es lo que hay
+ficheros en YAML que le indican a la máquina virtual qué es lo que hay
 que instalar en *tareas*, de la forma siguiente
 
 ```
@@ -416,9 +420,9 @@ A donde ir desde aquí
 -------
 
 Para empezar, hay que
-hacer [el hito del proyecto correspondiente](../proyecto/2.Provisionamiento.md).
+hacer [el hito del proyecto correspondiente](../proyecto/3.Provisionamiento.md).
 
-Desde aquí puedes ir directamente al tema de 
+Desde aquí se podría ir directamente al tema de 
 [orquestación de máquinas virtuales](Orquestacion.md), donde se
 aprenderá a trabajar con configuraciones más complejas que usen varias
 máquinas virtuales a la vez, pero en la asignatura continuaremos
