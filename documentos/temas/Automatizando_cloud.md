@@ -220,10 +220,11 @@ configurar máquinas en instantes y personalizarlas de forma
 masiva. Veremos como hacerlo en el
 [siguiente tema](Gestion_de_configuraciones).
 
-### Usando el nuevo CLI de Azure
+### Usando el CLI de Azure
 
 El
-[nuevo CLI de Azure](https://github.com/Azure/azure-cli#installation)
+[CLI de Azure](https://github.com/Azure/azure-cli#installation) en su
+segunda versión 
 está basado en Python y se puede instalar siguiendo las instrucciones
 arriba. Es bastante similar al anterior, pero hay muchas tareas que se
 realizan mucho más fácilmente usando valores por omisión relativamente
@@ -368,10 +369,11 @@ A dónde ir desde aquí
 -----
 
 Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones) pondremos en
-práctica todos los conceptos aprendidos en este tema y
-[en el tema dedicado a almacenamiento](Almacenamiento) para crear configuraciones que sean
-fácilmente gestionables y adaptables a un fin determinado. También se
-puede ir a [el hito del proyecto](../3.IaaS) para aplicarlo al mismo.
+práctica todos los conceptos aprendidos en este tema. También se
+puede ir a [el hito del proyecto](../proyecto/3.Provisionamiento)
+para aplicarlo al mismo. Puedes consultar como documentación adicional
+[el tema dedicado a almacenamiento](Almacenamiento) para crear configuraciones que sean
+fácilmente gestionables y adaptables a un fin determinado.
 
 
 Si lo que necesitas es un sistema ligero de virtualización, puedes
