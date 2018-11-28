@@ -57,7 +57,7 @@ modo, los hitos se organizarán de la forma siguiente.
 2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md).
 3. [Creación de arquitecturas de servicios web en la nube](documentos/proyecto/2.Paas.md).
 4. [Provisionamiento de máquinas virtuales](documentos/proyecto/3.Provisionamiento.md).
-4. [Orquestación de máquinas virtuales](documentos/proyecto/3.IaaS.md).
+4. [Orquestación de máquinas virtuales](documentos/proyecto/4.nube-CLI.md).
 4. [Uso de contenedores](documentos/proyecto/5.Docker.md).
 4. [Combinación de infraestructuras virtuales](documentos/proyecto/6.Compose.md) para
    desplegar una aplicación completa en varios contenedores. 
