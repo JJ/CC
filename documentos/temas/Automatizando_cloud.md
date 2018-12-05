@@ -322,6 +322,17 @@ usando alguna de las aplicaciones vistas en
 
 </div>
 
+Tanto la elección de la imagen como del centro de datos debe obedecer
+a criterios medibles, tales como las prestaciones que se puedan
+alcanzar con los mismos. Para ello se pueden
+instalar
+[benchmarks tales como estos](https://geekflare.com/web-performance-benchmark/) y
+diseñar uno que permite elegir en cuál nos vamos a quedar. También se
+puede simplemenet medir cuanto tardan los tests de la aplicación en
+cada uno de los lugares, aunque será conveniente medir también la
+latencia, al menos desde local (o desde otra localización de posibles
+clientes) de cada uno de los centros de datos.
+
 ## CLI de OpenStack
 
 [OpenStack](http://docs.openstack.org) es un sistema libre de gestión
