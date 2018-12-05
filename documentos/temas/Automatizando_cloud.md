@@ -220,7 +220,7 @@ configurar máquinas en instantes y personalizarlas de forma
 masiva. Veremos como hacerlo en el
 [siguiente tema](Gestion_de_configuraciones).
 
-### Usando el CLI de Azure
+### CLI de Azure (versión 2.0)
 
 El
 [CLI de Azure](https://github.com/Azure/azure-cli#installation) en su
@@ -248,11 +248,9 @@ filtrarlo. Para ello usaremos el tremendamente útil `jq`,
 [un lenguaje de peticiones para JSON](https://stedolan.github.io/jq/manual/)
 con cierta similitud con los selectores CSS.
 
-> Si se añade `--all` te devolverá todas las imágenes disponibles,
-> pero ahora mismo hay un
-> [bug registrado](https://github.com/Azure/azure-cli/issues/1209)
-> porque no se pueden usar en realidad con la línea de órdenes. Así
-> que nos ceñiremos a las imágenes disponibles localmente.
+Si se añade `--all` te devolverá todas las imágenes disponibles, pero
+eso puede tardar bastante tiempo. En todo caso, se puede filtrar de
+esta forma.
 
 ```
 az vm image list | jq '.[] | select( .offer | contains("buntu"))'
@@ -263,6 +261,44 @@ sabemos si va a estar en mayúsculas o minúsculas), devolviendo algo
 así:
 
 ![Imágenes Ubuntu disponibles](../img/jq.png)
+
+Se puede trabajar también de forma interactiva, lo que tiene al menos
+la ventaja de que se completan automáticamente las opciones, y puedes
+ver las formas de filtrar. 
+
+![Imágenes de Ubuntu desde az interactive](../img/az-vm-image.png)
+
+Con esto se pueden buscar, y
+filtrar,
+[las imágenes que cumplan](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage) unas
+condiciones:
+
+    vm image list --publisher RedHat --output table --all
+
+Esta orden listará todas las imágenes de RedHat, y además usará un
+formato algo más fácil de navegar. `--all` listará todas las imágenes
+disponibles, localmente o no. Algunos *publisher* interesantes pueden
+ser RedHat, SUSE, saltstack, PuppetLabs, y muchas más que proporcionan
+imágenes específicas para aplicaciones tales como Neo4j, mariadb,
+gitlab o Postgres.
+
+También se pueden buscar los proveedores de una imagen
+determinada. Por ejemplo
+
+    vm image list --offer CentOS --all --location uksouth --output table
+
+listará todas las imágenes que incluyan esa cadena en la `location`
+indicada. Esta, por ejemplo,
+
+    vm image list --offer BSD --all --location uksouth --output table
+    
+mostrará todos los BSD que se ofrecen, la mayoría procedentes de
+MicrosoftOSTC (Microsoft Open Source Technology Center). Esta tabla te
+muestra también el `URN`, que usaremos a continuación.
+
+> Se ha evitado el centro de datos `westeurope` porque tenía, en el
+> momento de las pruebas, un error. En todo caso, se puede usar
+> cualquier centro de datos disponible en la suscripción.
 
 De esta imagen hay que usar dos IDs: `urn` y `urnAlias`, que nos
 permitirán identificar la imagen con la que vamos a trabajar a
