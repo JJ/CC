@@ -89,7 +89,7 @@ casos, TOML), dos lenguajes
 de serialización de estructuras de datos.
 
 Estos DSL, en general, son 
-[lenguajes declarativos](https://en.wikipedia.org/wiki/Declarative_programming) en
+[declarativos](https://en.wikipedia.org/wiki/Declarative_programming) en
 el sentido que suelen especificar o declarar la configuración que se quiere
 alcanzar, no qué acciones hay que llevar a cabo para alcanzar esa
 configuración; la propia lógica de la herramienta suele encargarse de

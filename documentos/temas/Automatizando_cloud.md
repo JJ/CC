@@ -1,3 +1,12 @@
+---
+layout: index
+
+apuntes: T
+
+prev: Provision
+next: Orquestacion
+---
+
 Automatización de tareas en la nube
 ==
 
@@ -32,10 +41,10 @@ del resto del sistema y que permita trabajar con sistemas
 virtualizados de forma flexible, escalable y adaptada a cualquier
 objetivo. Eventualmente, el objetivo de este este tema es aprender a
 crear
-[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico.md). Para
+[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico). Para
 ello necesitamos configurar una serie de infraestructuras virtuales,
 especialmente
-[almacenamiento como se vio en el tema anterior](Almacenamiento.md).
+[almacenamiento como se vio en el tema anterior](Almacenamiento).
 
 Los programas que permiten crear infraestructuras virtuales completas
 se denominan
@@ -136,7 +145,7 @@ más adelante el de OpenStack
 >que está basado. `npm install -g azure-cli` bastará. 
 
 Azure permite,
-[tras la creación de almacenamiento virtual](Almacenamiento.md), la
+[tras la creación de almacenamiento virtual](Almacenamiento), la
 creación de máquinas virtuales, como es natural. Se puede crear una
 máquina virtual desde el panel de control, pero también desde
 la [línea de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
@@ -412,14 +421,14 @@ que se pueda acceder, provisionándola con algún *script* disponible.
 A dónde ir desde aquí
 -----
 
-Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones.md) pondremos en
+Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones) pondremos en
 práctica todos los conceptos aprendidos en este tema. También se
-puede ir a [el hito del proyecto](../proyecto/3.Provisionamiento.md)
+puede ir a [el hito del proyecto](../proyecto/3.Provisionamiento)
 para aplicarlo al mismo. Puedes consultar como documentación adicional
-[el tema dedicado a almacenamiento](Almacenamiento.md) para crear configuraciones que sean
+[el tema dedicado a almacenamiento](Almacenamiento) para crear configuraciones que sean
 fácilmente gestionables y adaptables a un fin determinado.
 
 
 Si lo que necesitas es un sistema ligero de virtualización, puedes
-mirar cómo virtualizar con [contenedores](Contenedores.md).
+mirar cómo virtualizar con [contenedores](Contenedores).
 
