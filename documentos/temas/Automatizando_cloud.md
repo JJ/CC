@@ -352,7 +352,7 @@ alcanzar con los mismos. Para ello se pueden
 instalar
 [benchmarks tales como estos](https://geekflare.com/web-performance-benchmark/) y
 diseñar uno que permite elegir en cuál nos vamos a quedar. También se
-puede simplemenet medir cuanto tardan los tests de la aplicación en
+puede simplemente medir cuanto tardan los tests de la aplicación en
 cada uno de los lugares, aunque será conveniente medir también la
 latencia, al menos desde local (o desde otra localización de posibles
 clientes) de cada uno de los centros de datos.
