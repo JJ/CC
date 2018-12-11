@@ -577,5 +577,17 @@ seguir aprendiendo sobre DevOps en [el blog](https://devops.com/) o
 [DevOps for Developers](https://www.amazon.es/dp/B009D6ZB0G?tag=atalaya-21&camp=3634&creative=24822&linkCode=as4&creativeASIN=B009D6ZB0G&adid=0PB61Y2QD9K49W3EP8MN&)
 pueden ser también de ayuda.
 
+Herramientas alternativas a Vagrant pueden
+ser
+[Vagga](https://vagga.readthedocs.io/en/latest/compare_to_vagrant.html),
+aunque está enfocada más bien a entornos de desarrollo, y por
+supuesto [Terraform](https://www.terraform.io/).
+
+Por otro lado, [Kubernetes](https://kubernetes.io/) es el estándar
+para trabajar con contenedores y orquestarlos, aunque hay otras
+alternativas. Los contenedores,
+precisamente,
+[son el objetivo del siguiente tema](http://jj.github.io/CC/documentos/temas/Contenedores). 
+
 
 	
