@@ -36,7 +36,8 @@ next: Contenedores
 
 ## Introducción
 
-Antes de poder provisionar una máquina o conjunto de máquinas
+Antes de poder provisionar, es decir, configurar los servicios en una
+máquina o conjunto de máquinas 
 virtuales, es necesario poder crearlas a partir de imágenes de
 sistemas operativos, en un remedo de *arranque* tal como se hace en
 una máquina real. En el espíritu DevOps, tiene
@@ -225,7 +226,7 @@ ella,
 
 ### Trabajando con otro tipo de máquinas virtuales e hipervisores.
 
-En [`vagrantbox.es`](http://vagrantbox.es) la mayor parte de las
+En [`vagrantbox.es`](http://www.vagrantbox.es) la mayor parte de las
 imágenes tienen formato VirtualBox, pero algunas tienen formato
 `Vagrant-lxc` (para usar en el sistema de virtualización ligera `lxc`), VMWare,
 KVM, Parallels o `libvirt`. Ninguno de estos formatos está instalado
@@ -296,12 +297,12 @@ sudo vagrant ssh
 ~~~
 
 Y todos los demás comandos, también con `sudo`, por lo indicado anteriormente.
-	
+
 <div class='ejercicios' markdown='1'>
 
 Instalar una máquina virtual ArchLinux o FreeBSD para KVM, otro
 hipervisor libre, usando Vagrant y conectar con ella. 
-	
+
 </div>
 
 
