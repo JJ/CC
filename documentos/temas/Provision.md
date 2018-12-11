@@ -20,8 +20,8 @@ next: Automatizando_cloud
 <h2>Objetivos de la asignatura</h2>
 
 * Diseñar, construir y analizar las prestaciones de un centro de
-  proceso de datos virtual. 
-  
+  proceso de datos virtual.
+
 * Documentar y mantener una plataforma virtual.
 
 * Realizar tareas de administración en infraestructura virtual.
@@ -263,7 +263,7 @@ para los hitos anteriores) usando Salt.
 	  
 </div>
 
-Otros sistemas de gestión de configuración Ansible
+Usando Ansible
 ---
 
 Las principales alternativas a Chef son [Ansible](https://www.ansible.com),
@@ -285,7 +285,8 @@ Se instala como un módulo de Python, usando por ejemplo la utilidad de
 instalación de módulos `pip` (que habrá que instalar si no se tiene)
 
 ```
-pip install paramiko PyYAML jinja2 httplib2 ansible
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get install ansible
 ```
 
 > Estamos asumiendo que usas un gestor de versiones tal como `pyenv`,
@@ -412,6 +413,18 @@ resultado que si se ejecutan una sola vez.
 usando un *playbook* de Ansible.
 
 </div>
+
+## Chef
+
+Chef es una herramienta de provisionamiento bastante
+popular. En [este vídeo](https://www.youtube.com/watch?v=dTIyS816dOA)
+se explica cómo se instala y cómo dar los primeros pasos con él para
+provisionar máquinas virtuales. Recientemente se ha
+publicado
+[Chef Workstation](https://blog.chef.io/2018/05/23/introducing-chef-workstation/),
+que permite trabajar con él fácilmente, desde un ordenador cliente,
+sin tener que preocuparse por instalar previametne `chef-client`, como
+ocurría en versiones anteriores.
 
 ## Bibliografía
 
