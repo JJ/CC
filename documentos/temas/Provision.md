@@ -98,7 +98,7 @@ casos, TOML), dos lenguajes
 de serialización de estructuras de datos.
 
 Estos DSL, en general, son 
-[lenguajes declarativos](https://en.wikipedia.org/wiki/Declarative_programming) en
+[declarativos](https://en.wikipedia.org/wiki/Declarative_programming) en
 el sentido que suelen especificar o declarar la configuración que se quiere
 alcanzar, no qué acciones hay que llevar a cabo para alcanzar esa
 configuración; la propia lógica de la herramienta suele encargarse de
@@ -423,7 +423,7 @@ provisionar máquinas virtuales. Recientemente se ha
 publicado
 [Chef Workstation](https://blog.chef.io/2018/05/23/introducing-chef-workstation/),
 que permite trabajar con él fácilmente, desde un ordenador cliente,
-sin tener que preocuparse por instalar previametne `chef-client`, como
+sin tener que preocuparse por instalar previamente `chef-client`, como
 ocurría en versiones anteriores.
 
 ## Bibliografía
