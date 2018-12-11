@@ -212,8 +212,61 @@ ella,
 <div class='ejercicios' markdown='1'>
 
 	Instalar una máquina virtual Debian usando Vagrant y conectar con ella.
-	
+
 </div>
+
+### Trabajando con proveedores cloud.
+
+Vagrant tiene una serie de drivers para trabajar con los 
+[proveedores de cloud más habituales](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins#providers), así como con herramientas libres como
+[OpenStack](https://github.com/mat128/vagrant-openstack-cloud-provider). Vagrant
+trabaja con el API de estos servicios, que en la jerga de Vagrant se
+denominan *providers* o proveedores. En algunos casos, estos
+proveedores son extraoficiales, aunque dado que trabajan contra APIs
+abiertos, funcionan generalmente bien.
+
+Por
+ejemplo,
+[el *driver* para Azure](https://github.com/Azure/vagrant-azure) se
+configura como una aplicación cliente de Azure.
+
+> Para lo que es conveniente ver el 
+> tutorial de uso de Azure desde la línea de
+> órdenes](https://www.youtube.com/watch?v=c9Wg1R-bCqQ), donde explica
+> entre otras cosas el concepto de Service Principal, usado para
+> configurar el driver.
+
+En general, dado que estos drivers trabajan con el API, hay dos cosas
+a tener en cuenta a la hora de crear el Vagrantfile
+
+* Se deben usar variables de entorno para todos los IDs y claves que
+  se usen, o alguna otra forma segura, como ficheros JSON almacenados
+  en los mismos directorios (o con la misma protección) que las claves
+  privadas de ssh. **Nunca** deben usarse valores de estas variables
+  en ficheros que estén almacenados en un sistema de entorno de
+  versiones, ni siquiera algunos, como los ID, que no puedan usarse si
+  no es en conjunción con otros. Aparte de por una razón de seguridad
+  básica, también por el hecho de que usar variables de entorno u otro
+  sistema es configurable para cada uno de los usuarios.
+  
+* Vagrant, en general, tiene un modelo abstracto y un acceso al API
+  del sistema nube en el que la trata como si se tratara de un un
+  conjunto de máquinas virtuales. Se puede gestionar también
+  directamente usando variables, pero procedimientos que no encajen
+  de forma directa dentro de este concepto, como por ejemplo, la
+  creación de un *service principal* que es necesaria para acceder
+  desde el propio Vagrant, requerirán de otra herramienta o del uso de
+  scripts de línea de órdenes o del SDK. 
+  
+>  Un Vagrantfile es un programa
+>  en Ruby y por tanto se podrá usar el SDK de Ruby para la nube
+>  correspondiente para realizar este tipo de tareas. En la práctica,
+>  no he visto ningún Vagrantfile que haga este tipo de cosas, porque
+>  si se tiene que usar el SDK, finalmente es más práctico que la
+>  orquestación se haga también desde el SDK.
+  
+
+
 
 ### Trabajando con otro tipo de máquinas virtuales e hipervisores.
 
@@ -281,7 +334,7 @@ modo privilegiado, habrá que usar `sudo` en este caso.
 >pasar de este ejemplo, que era simplemente una forma de ilustrar
 >diferentes proveedores aparte del que aparece por defecto.
 
-Usando este sudo,  puedes conectarte con la máquina usando
+Usando esta orden (pero solo en este caso),  puedes conectarte con la máquina usando
 
 ~~~
 sudo vagrant ssh
@@ -576,9 +629,7 @@ supuesto [Terraform](https://www.terraform.io/).
 
 Por otro lado, [Kubernetes](https://kubernetes.io/) es el estándar
 para trabajar con contenedores y orquestarlos, aunque hay otras
-alternativas. Los contenedores,
-precisamente,
-[son el objetivo del siguiente tema](http://jj.github.io/CC/documentos/temas/Contenedores). 
+alternativas. Los contenedores, precisamente, [son el objetivo del siguiente tema](http://jj.github.io/CC/documentos/temas/Contenedores).
 
 
 	
