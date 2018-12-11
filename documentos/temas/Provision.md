@@ -414,7 +414,7 @@ provisionar máquinas virtuales. Recientemente se ha
 publicado
 [Chef Workstation](https://blog.chef.io/2018/05/23/introducing-chef-workstation/),
 que permite trabajar con él fácilmente, desde un ordenador cliente,
-sin tener que preocuparse por instalar previametne `chef-client`, como
+sin tener que preocuparse por instalar previamente `chef-client`, como
 ocurría en versiones anteriores.
 
 ## Bibliografía
