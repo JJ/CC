@@ -7,6 +7,15 @@ prev: Provision
 next: Orquestacion
 ---
 
+---
+layout: index
+
+apuntes: T
+
+prev: Provision
+next: Orquestacion
+---
+
 Automatización de tareas en la nube
 ==
 
@@ -266,32 +275,38 @@ Se puede trabajar también de forma interactiva, lo que tiene al menos
 la ventaja de que se completan automáticamente las opciones, y puedes
 ver las formas de filtrar. 
 
-![Imágenes de Ubuntu desde az interactive](../img/az-vm-image.png)
+![Imágenes de Ubuntu desde `az interactive`](../img/az-vm-image.png)
 
 Con esto se pueden buscar, y
 filtrar,
 [las imágenes que cumplan](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage) unas
 condiciones:
 
-    vm image list --publisher RedHat --output table --all
+```
+vm image list --publisher RedHat --output table --all
+```
 
 Esta orden listará todas las imágenes de RedHat, y además usará un
 formato algo más fácil de navegar. `--all` listará todas las imágenes
 disponibles, localmente o no. Algunos *publisher* interesantes pueden
 ser RedHat, SUSE, saltstack, PuppetLabs, y muchas más que proporcionan
-imágenes específicas para aplicaciones tales como Neo4j, mariadb,
+imágenes específicas para aplicaciones tales como Neo4j, MariaDB,
 gitlab o Postgres.
 
 También se pueden buscar los proveedores de una imagen
 determinada. Por ejemplo
 
-    vm image list --offer CentOS --all --location uksouth --output table
+```
+vm image list --offer CentOS --all --location uksouth --output table
+```
 
 listará todas las imágenes que incluyan esa cadena en la `location`
 indicada. Esta, por ejemplo,
 
-    vm image list --offer BSD --all --location uksouth --output table
-    
+```
+vm image list --offer BSD --all --location uksouth --output table
+```
+
 mostrará todos los BSD que se ofrecen, la mayoría procedentes de
 MicrosoftOSTC (Microsoft Open Source Technology Center). Esta tabla te
 muestra también el `URN`, que usaremos a continuación.
