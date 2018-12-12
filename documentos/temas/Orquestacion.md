@@ -144,7 +144,15 @@ directamente en esta aplicación; los formatos vienen listados en la
 página anterior. Las *boxes* disponibles se pueden consultar
 en [Vagrantbox.es](http://www.vagrantbox.es/); en esa dirección hay
 diferentes sistemas operativos en diferentes formatos, aunque
-generalmente la mayoría son para VirtualBox. 
+generalmente la mayoría son para VirtualBox.
+
+> Las imágenes no son simplemente sistemas operativos instalados,
+> deben de tener una serie de *ganchos* para que Vagrant pueda
+> trabajar con ellas a través del hipervisor sue
+> use. En
+> [este tutorial](https://www.vagrantup.com/docs/boxes/base.html)
+> explica los pasos necesarios para crear una imagen, para lo que
+> aconsejan usar [Packer](https://www.packer.io/).
 
 A continuación
 
@@ -198,6 +206,11 @@ a Vagrant) tendrás que hacerlo así:
 
 	ssh vagrant@127.0.0.1 -p 2222
 
+
+> Lo que también se puede hacer con `vagrant ssh`, claro. El hacerlo
+> así es para que quede claro cómo se hace la conexión directa desde
+> ssh para poder provisionar directamente la máquina virtual sin pasar
+> necesariamente por vagrant. 
 
 Para suspender el estado de la máquina virtual y guardarlo se usa
 
@@ -273,7 +286,7 @@ a tener en cuenta a la hora de crear el Vagrantfile
 >  no he visto ningún Vagrantfile que haga este tipo de cosas, porque
 >  si se tiene que usar el SDK, finalmente es más práctico que la
 >  orquestación se haga también desde el SDK.
-  
+
 
 
 
@@ -492,7 +505,7 @@ que usa
 [este fichero shell](../../ejemplos/vagrant/provision/chef-with-shell/chef-solo.sh)
 puede provisionar, por ejemplo, una máquina CentOS. 
 
-Una vez preinstalado chef 
+Una vez preinstalado Chef 
 
 >Lo que también podíamos haber hecho con
 >[una máquina que ya lo tuviera instalado, de las que hay muchas en `vagrantbox.es`](http://www.vagrantbox.es/)
