@@ -62,7 +62,7 @@ Estas herramientas se denominan herramientas de *orquestación* o de
 incluyen a otras de más bajo nivel como Ansible o Chef. En realidad
 hoy en día la única herramienta existente y en uso amplio es
 Vagrant. Otras herramientas, como Vortex, parecen abandonadas y otras
-como Juju o [Cobbler](http://cobbler.github.io/manuals/quickstart/)
+como [Juju](https://docs.jujucharms.com/2.4/en/getting-started) o [Cobbler](http://cobbler.github.io/manuals/quickstart/)
 funcionan a otro nivel diferente, trabajando para configurar desde
 cero *bare metal* o máquinas sin ningún sistema operativo instalado
 que usan arranque
