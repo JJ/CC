@@ -215,6 +215,15 @@ ella,
 
 </div>
 
+Desde Vagrant se pueden configurar, adicionalmente, algunos aspectos
+de la máquina virtual relacionados con la red, por ejemplo,
+[los puertos](https://www.oreilly.com/library/view/vagrant-up-and/9781449336103/ch04.html)
+o incluso la IP. En general, esto requiere de la instalación de una
+serie de servicios en el sistema operativo, por lo que lo habitual es
+que las imágenes estén preparadas específicamente para hacerlo; si no,
+no se podrá hacer desde Vagrant sino desde alguna otra herramienta
+(como Ansible o Chef).
+
 ### Trabajando con proveedores cloud.
 
 Vagrant tiene una serie de drivers para trabajar con los 
@@ -349,7 +358,43 @@ hipervisor libre, usando Vagrant y conectar con ella.
 
 </div>
 
+## Orquestando varias máquinas virtuales.
 
+Una de las capacidades más interesantes de Vagrant es la posibilidad
+de *orquestar*, es decir, configurar varias máquinas simultáneamente
+de forma que tengan una configuración común y estén conectadas entre
+sí. En esto hay que tener en cuenta que se pueden configurar
+diferentes aspectos de las mismas y su conexión, tal como IPs. Por
+ejemplo, con este `Vagrantfile`:
+
+```
+Vagrant.configure("2") do |config|
+  config.vm.define 'public' do |public|
+    public.vm.box = "debian/stretch64"
+    public.vm.network "private_network", ip: "192.168.0.10"
+  end
+  config.vm.define 'db' do |db|
+    db.vm.box = "fnando/dev-xenial64"
+    db.vm.network "private_network", ip: "192.168.0.11"
+  end
+end
+```
+
+En este Vagrantfile se muestra como se configuran dos máquinas
+virtuales unidas a la misma red privada, cada una de ellas con una IP
+fija. De esta forma puedes configurar los servicios en ellas para que
+sólo escuchen a esa IP las peticiones como medida adicional de
+seguridad.
+
+> Conviene tener en cuenta que para tener esta red privada virtual, el
+> sistema operativo contenido en la imagen tiene que permitirlo. En
+> algunos casos (en concreto, en una imagen basada en Alpine) no lo
+> permitía. Los sabores de Linux habituales como Debian, CentOS o
+> Ubuntu no tendrían que tener ningún problema.
+
+La imagen que se usa en el segundo caso es una que incluye Redis y
+PostgreSQL, y que por tanto se puede usar como base para cualquier
+aplicación que las use. 
 
 ## Provisionando máquinas virtuales.
 
