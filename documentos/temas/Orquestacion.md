@@ -153,7 +153,15 @@ directamente en esta aplicación; los formatos vienen listados en la
 página anterior. Las *boxes* disponibles se pueden consultar
 en [Vagrantbox.es](http://www.vagrantbox.es/); en esa dirección hay
 diferentes sistemas operativos en diferentes formatos, aunque
-generalmente la mayoría son para VirtualBox. 
+generalmente la mayoría son para VirtualBox.
+
+> Las imágenes no son simplemente sistemas operativos instalados,
+> deben de tener una serie de *ganchos* para que Vagrant pueda
+> trabajar con ellas a través del hipervisor sue
+> use. En
+> [este tutorial](https://www.vagrantup.com/docs/boxes/base.html)
+> explica los pasos necesarios para crear una imagen, para lo que
+> aconsejan usar [Packer](https://www.packer.io/).
 
 A continuación
 
@@ -208,6 +216,11 @@ a Vagrant) tendrás que hacerlo así:
 	ssh vagrant@127.0.0.1 -p 2222
 
 
+> Lo que también se puede hacer con `vagrant ssh`, claro. El hacerlo
+> así es para que quede claro cómo se hace la conexión directa desde
+> ssh para poder provisionar directamente la máquina virtual sin pasar
+> necesariamente por vagrant. 
+
 Para suspender el estado de la máquina virtual y guardarlo se usa
 
 	vagrant suspend
@@ -223,6 +236,15 @@ ella,
 	Instalar una máquina virtual Debian usando Vagrant y conectar con ella.
 
 </div>
+
+Desde Vagrant se pueden configurar, adicionalmente, algunos aspectos
+de la máquina virtual relacionados con la red, por ejemplo,
+[los puertos](https://www.oreilly.com/library/view/vagrant-up-and/9781449336103/ch04.html)
+o incluso la IP. En general, esto requiere de la instalación de una
+serie de servicios en el sistema operativo, por lo que lo habitual es
+que las imágenes estén preparadas específicamente para hacerlo; si no,
+no se podrá hacer desde Vagrant sino desde alguna otra herramienta
+(como Ansible o Chef).
 
 ### Trabajando con proveedores cloud.
 
@@ -273,7 +295,7 @@ a tener en cuenta a la hora de crear el Vagrantfile
 >  no he visto ningún Vagrantfile que haga este tipo de cosas, porque
 >  si se tiene que usar el SDK, finalmente es más práctico que la
 >  orquestación se haga también desde el SDK.
-  
+
 
 
 
@@ -358,7 +380,43 @@ hipervisor libre, usando Vagrant y conectar con ella.
 
 </div>
 
+## Orquestando varias máquinas virtuales.
 
+Una de las capacidades más interesantes de Vagrant es la posibilidad
+de *orquestar*, es decir, configurar varias máquinas simultáneamente
+de forma que tengan una configuración común y estén conectadas entre
+sí. En esto hay que tener en cuenta que se pueden configurar
+diferentes aspectos de las mismas y su conexión, tal como IPs. Por
+ejemplo, con este `Vagrantfile`:
+
+```
+Vagrant.configure("2") do |config|
+  config.vm.define 'public' do |public|
+    public.vm.box = "debian/stretch64"
+    public.vm.network "private_network", ip: "192.168.0.10"
+  end
+  config.vm.define 'db' do |db|
+    db.vm.box = "fnando/dev-xenial64"
+    db.vm.network "private_network", ip: "192.168.0.11"
+  end
+end
+```
+
+En este Vagrantfile se muestra como se configuran dos máquinas
+virtuales unidas a la misma red privada, cada una de ellas con una IP
+fija. De esta forma puedes configurar los servicios en ellas para que
+sólo escuchen a esa IP las peticiones como medida adicional de
+seguridad.
+
+> Conviene tener en cuenta que para tener esta red privada virtual, el
+> sistema operativo contenido en la imagen tiene que permitirlo. En
+> algunos casos (en concreto, en una imagen basada en Alpine) no lo
+> permitía. Los sabores de Linux habituales como Debian, CentOS o
+> Ubuntu no tendrían que tener ningún problema.
+
+La imagen que se usa en el segundo caso es una que incluye Redis y
+PostgreSQL, y que por tanto se puede usar como base para cualquier
+aplicación que las use. 
 
 ## Provisionando máquinas virtuales.
 
@@ -456,7 +514,7 @@ que usa
 [este fichero shell](../../ejemplos/vagrant/provision/chef-with-shell/chef-solo.sh)
 puede provisionar, por ejemplo, una máquina CentOS. 
 
-Una vez preinstalado chef 
+Una vez preinstalado Chef 
 
 >Lo que también podíamos haber hecho con
 >[una máquina que ya lo tuviera instalado, de las que hay muchas en `vagrantbox.es`](http://www.vagrantbox.es/)
