@@ -148,7 +148,7 @@ generalmente la mayoría son para VirtualBox.
 
 > Las imágenes no son simplemente sistemas operativos instalados,
 > deben de tener una serie de *ganchos* para que Vagrant pueda
-> trabajar con ellas a través del hipervisor sue
+> trabajar con ellas a través del hipervisor que
 > use. En
 > [este tutorial](https://www.vagrantup.com/docs/boxes/base.html)
 > explica los pasos necesarios para crear una imagen, para lo que
@@ -253,8 +253,7 @@ ejemplo,
 configura como una aplicación cliente de Azure.
 
 > Para lo que es conveniente ver el 
-> tutorial de uso de Azure desde la línea de
-> órdenes](https://www.youtube.com/watch?v=c9Wg1R-bCqQ), donde explica
+> [tutorial de uso de Azure desde la línea de órdenes](https://www.youtube.com/watch?v=c9Wg1R-bCqQ), donde explica
 > entre otras cosas el concepto de Service Principal, usado para
 > configurar el driver.
 
@@ -396,7 +395,7 @@ end
 En este Vagrantfile se muestra como se configuran dos máquinas
 virtuales unidas a la misma red privada, cada una de ellas con una IP
 fija. De esta forma puedes configurar los servicios en ellas para que
-sólo escuchen a esa IP las peticiones como medida adicional de
+solo escuchen a esa IP las peticiones como medida adicional de
 seguridad.
 
 > Conviene tener en cuenta que para tener esta red privada virtual, el
