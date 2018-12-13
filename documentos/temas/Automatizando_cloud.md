@@ -1,15 +1,3 @@
----
-layout: index
-
-apuntes: T
-
-prev: Provision
-next: Orquestacion
----
-
-Automatización de tareas en la nube
-==
-
 <!--@
 prev: Provision
 next: Orquestacion
