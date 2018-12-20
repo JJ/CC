@@ -60,7 +60,7 @@ ejecutar la misma versión del núcleo del sistema.
 <div class='nota' markdown='1'>
 
 En
-[esta presentación](http://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275)
+[esta presentación](https://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275)
 explica como los espacios de nombres son la clave para la creación de
 contenedores y cuáles son sus ventajas frente a otros métodos de
 virtualización
@@ -177,8 +177,8 @@ lxc-info --version
 <div class='ejercicios' markdown="1">
 
 Instala LXC en tu versión de Linux favorita. Normalmente la versión en
-desarrollo, disponible tanto en [GitHub](http://github.com/lxc/lxc)
-como en el [sitio web](http://linuxcontainers.org) está bastante más
+desarrollo, disponible tanto en [GitHub](https://github.com/lxc/lxc)
+como en el [sitio web](https://linuxcontainers.org) está bastante más
 avanzada; para evitar problemas sobre todo con las herramientas que
 vamos a ver más adelante, conviene que te instales la última versión y
 si es posible una igual o mayor a la 2.0.
@@ -189,7 +189,7 @@ si es posible una igual o mayor a la 2.0.
 
 Si no hay ningún problema y
 todas están *enabled* se puede
-[usar lxc con relativa facilidad](http://www.stgraber.org/2012/05/04/lxc-in-ubuntu-12-04-lts/)
+[usar lxc con relativa facilidad](https://www.stgraber.org/2012/05/04/lxc-in-ubuntu-12-04-lts/)
 siempre que tengamos una distro como Ubuntu relativamente moderna:
 
 	sudo lxc-create -t ubuntu -n una-caja
@@ -297,11 +297,11 @@ Los contenedores son la implementación de una serie de tecnologías
 [que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion): y como
 tales pueden ser configurados para usar solo una cuota determinada
 de recursos, por ejemplo
-[la CPU](http://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275). Para
+[la CPU](https://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275). Para
 ello se usan los ficheros de configuración de cada una de las máquinas
 virtuales. Sin embargo, tanto para controlar como para visualizar los
 tápers (que así vamos a llamar a los contenedores a partir de ahora)
-es más fácil usar [lxc-webpanel](http://lxc-webpanel.github.io/), un
+es más fácil usar [lxc-webpanel](https://lxc-webpanel.github.io/), un
 centro de control por web que permite iniciar y parar las máquinas
 virtuales, aparte de controlar los recursos asignados a cada una de
 ellas y visualizarlos; la página principal te da una visión general de los contenedores
@@ -330,13 +330,13 @@ desde el anfitrión una MV, se puede configurar para que ejecute unos
 servicios y programas determinados.
 
 A este tipo de aplicaciones y sistemas se les denomina
-[SCM por *software configuration management*](http://en.wikipedia.org/wiki/Software_configuration_management);
+[SCM por *software configuration management*](https://en.wikipedia.org/wiki/Software_configuration_management);
 a pesar de ese nombre, se dedican principalmente a configurar
 hardware, no software. Un sistema de este estilo permite, por ejemplo,
 crear un táper (o, para el caso, una máquina virtual, o muchas de
 ellas) y automáticamente *provisionarla* con el software necesario
 para comportarse como un
-[PaaS](http://jj.github.io/IV/documentos/temas/Intro_concepto_y_soporte_fisico#usando_un_servicio_paas)
+[PaaS](https://jj.github.io/IV/documentos/temas/Intro_concepto_y_soporte_fisico#usando_un_servicio_paas)
 o simplemente como una máquina de servicio al cliente.
 
 En general, un SCM permite crear métodos para instalar una aplicación
@@ -348,11 +348,11 @@ pueden establecer *relaciones* entre ellos para que el CMS use la BD
 para almacenar sus tablas.
 
 Hay
-[decenas de sistemas CMS](http://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software),
+[decenas de sistemas CMS](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software),
 aunque hoy en día los hay que tienen cierta popularidad, como Salt, Rex,
 Ansible, Chef, Juju y Puppet. Todos ellos tienen sus ventajas e
 inconvenientes, pero para la configuración de tápers se puede usar
-directamente [Juju](http://juju.ubuntu.com), creado por Canonical
+directamente [Juju](https://juju.ubuntu.com), creado por Canonical
 especialmente para máquinas virtuales de ubuntu que se ejecuten en la
 nube de Amazon. En este punto nos interesa también porque se puede
 usar directamente con contenedores LXC, mientras que no todos lo
@@ -400,12 +400,12 @@ de forma también independiente.
 
 >Una traducción más precisa de *container*
 >sería
->[táper](http://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
+>[táper](https://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
 >es decir, un recipiente, generalmente de plástico, usado en
 >cocina. Si me refiero a un táper a continuación, es simplemente por
 >esta razón.
 
-[Docker](http://docker.com) es una herramienta de gestión de
+[Docker](https://docker.com) es una herramienta de gestión de
 contenedores que permite no solo instalarlos, sino trabajar con el
 conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan desplegar en diferentes servicios en la nube. La tecnología de
@@ -413,7 +413,7 @@ se puedan desplegar en diferentes servicios en la nube. La tecnología de
 relativamente reciente, habiendo sido publicada en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
 desarrollo paralelo de sistemas operativos tales como
-[CoreOS](http://coreos.com/), 
+[CoreOS](https://coreos.com/), 
 basado en Linux y que permite despliegue masivo de servidores. Pero no
 adelantemos acontecimientos. 
 
@@ -877,7 +877,7 @@ está haciendo en un momento determinado.
 Para finalizar, se puede parar usando `stop`.
 
 Hasta ahora el uso de
-docker [no es muy diferente de `lxc`, pero lo interesante](http://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
+docker [no es muy diferente de `lxc`, pero lo interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/cli/#commit)
 
 ```
@@ -941,7 +941,7 @@ sucede y cómo se lleva a cabo.
 
 Docker crea
 un
-[sistema de ficheros superpuesto u *overlay*](http://www.computerweekly.com/feature/Docker-storage-101-How-storage-works-in-Docker). Este
+[sistema de ficheros superpuesto u *overlay*](https://www.computerweekly.com/feature/Docker-storage-101-How-storage-works-in-Docker). Este
 [sistema de ficheros superpuesto](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/) puede
 tener varias formas posibles, igual que en Linux hay varios tipos de
 sistemas de ficheros posibles; Docker usa diferentes drivers
@@ -1046,7 +1046,7 @@ del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
 crea ese directorio y lo hace accesible a un programa, en este caso
 [un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
 que pasa del formato en texto plano de los logs de
-[Dancer2](http://perldancer.org/) a un formato JSON que puede ser
+[Dancer2](https://perldancer.org/) a un formato JSON que puede ser
 almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
@@ -1256,7 +1256,7 @@ totalmente diferente al de estas. Conviene seguir este tipo de reglas,
 sacadas entre otros sitios de
 [esta lista de buenas prácticas con Docker](https://github.com/FuriKuri/docker-best-practices)
 y
-[esta otra](http://containerjournal.com/2016/03/21/5-docker-best-practices-follow/).
+[esta otra](https://containerjournal.com/2016/03/21/5-docker-best-practices-follow/).
 
 ### Simplicidad
 
@@ -1303,7 +1303,7 @@ exactamente igual. Tiene un mecanismo llamado Dockerfiles que permite
 construir contenedores o tápers de forma que lo que quede en control
 de versiones sea el código en sí, no el contenedor, con el
 consiguiente ahorro de espacio. La ventaja además es que
-en [el Docker hub](http://hub.docker.com) hay multitud de contenedores
+en [el Docker hub](https://hub.docker.com) hay multitud de contenedores
 ya hechos, que se pueden usar directamente. Veamos un ejemplo, como es
 habitual para el bot en Scala que hemos venido usando.
 
@@ -1317,7 +1317,7 @@ RUN apk update && apk upgrade
 RUN apk add git
 RUN apk add curl
 
-RUN curl -sL "http://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz" -o /usr/local/sbt.tgz
+RUN curl -sL "https://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz" -o /usr/local/sbt.tgz
 RUN cd /usr/local && tar xvfz sbt.tgz
 RUN mv /usr/local/sbt-launcher-packaging-0.13.13/bin/sbt-launch.jar /usr/local/bin
 COPY sbt /usr/local/bin
