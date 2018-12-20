@@ -336,6 +336,39 @@ cada uno de los lugares, aunque será conveniente medir también la
 latencia, al menos desde local (o desde otra localización de posibles
 clientes) de cada uno de los centros de datos.
 
+Para crear una imagen que tenga no sólo una IP pública, sino también
+una entrada DNS, que puede ser conveniente para referirse a ella en el
+futuro, se puede usar la orden siguiente:
+
+```
+az vm create --name cc-hito-4 --nsg-rule ssh --ssh-key-value\
+    @~/.ssh/id_rsa.pub --output tsv --image UbuntuLTS\
+    --public-ip-address-dns-name cc-hito-4
+```
+
+Aquí no sólo hemos creado una máquina cuyo nombre interno es
+`cc-hito-4`, sino que también usaremos el mismo nombre para referirnos
+a ella desde nuestra máquina local. El nombre completo (Fully
+    Qualified DNS, FQDNS) será el resultado de componer este nombre +
+    la *location* + `cloudapp.azure.net`. Por ejemplo,
+    `cc-hito-4.westeurope.cloudapp.azure.com`.
+    
+Dado que estamos escribiendo la salida en TSV ese nombre se presentará
+al salir, pero no hace falta capturarlo, porque se puede calcular
+automáticamente de esa forma. Si hace falta tener en todo caso la IP o
+el nombre, se pueden usar también las peticiones habituales de la
+línea de ódenes:
+
+```
+az vm show -d -n cc-hito-4 --query "fqdns"
+az vm show -d -n cc-hito-4 --query "publicIps"
+```
+
+Para conocer esos JMESpath que se están escogiendo, conviene mirar la
+documentación o simplemente hacer una ejecución inicial sin `--query`
+y ver que se devuelve un diccionario o hash con estas dos claves, que
+contienen la información indicada.
+
 ## CLI de OpenStack
 
 [OpenStack](http://docs.openstack.org) es un sistema libre de gestión
