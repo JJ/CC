@@ -949,7 +949,7 @@ sucede y cómo se lleva a cabo.
 
 Docker crea
 un
-[sistema de ficheros superpuesto u *overlay*](https://www.computerweekly.com/feature/Docker-storage-101-How-storage-works-in-Docker). Este
+[sistema de ficheros superpuesto u *overlay*](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72). Este
 [sistema de ficheros superpuesto](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/) puede
 tener varias formas posibles, igual que en Linux hay varios tipos de
 sistemas de ficheros posibles; Docker usa diferentes drivers
@@ -1208,7 +1208,7 @@ finalmente se ejecuta y sirve como "frontend".
 
 La ventaja de describir la infraestructura como código es que, entre
  otras cosas, se puede introducir en un entorno de test tal como
- [Travis](https://travis.ci.org). Travis permite instalar cualquier
+ [Travis](https://travis-ci.org). Travis permite instalar cualquier
  tipo de servicio y lanzar tests; estos tests se interpretan de forma
  que se da un aprobado global a los tests o se indica cuales no han
  pasado.
@@ -1691,7 +1691,7 @@ comprobar imágenes, por ejemplo.
 A dónde ir desde aquí
 -----
 
-Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/4.Docker).
+Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/6.Docker).
 
 Si te interesa, puedes consultar cómo se [virtualiza el almacenamiento](Almacenamiento) que, en general, es independiente de la
 generación de una máquina virtual. También puedes ir directamente al
