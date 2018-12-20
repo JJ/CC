@@ -1,3 +1,12 @@
+---
+layout: index
+
+apuntes: T
+
+prev: Provision
+next: Orquestacion
+---
+
 Automatizando el despliegue en la nube
 ======================================
 
