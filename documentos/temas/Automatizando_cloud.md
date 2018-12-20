@@ -7,6 +7,19 @@ prev: Provision
 next: Orquestacion
 ---
 
+---
+layout: index
+
+apuntes: T
+
+prev: Provision
+next: Orquestacion
+---
+
+Automatizando el despliegue en la nube
+======================================
+
+
 <!--@
 prev: Provision
 next: Orquestacion
