@@ -1,0 +1,11 @@
+{
+    "builders": [
+	{
+	    "type": "virtualbox-ovf",
+	    "source_path": "https://sourceforge.net/projects/osboxes/files/v/vb/14-D-b/9.5/9564.7z/download",
+	    "ssh_username": "packer",
+	    "ssh_password": "packer",
+	    "shutdown_command": "echo 'Packed' | sudo -S shutdown -P now"
+	}
+    ]
+}
