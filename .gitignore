@@ -10,4 +10,5 @@ bin/*
 .kitchen.local.yml
 _site/
 
-*.epub
+*.epubpacker_cache
+packer_cache/
