@@ -47,11 +47,13 @@ alumno tendrá que aprender a su ritmo
 Prácticas - Actividades académicas dirigidas
 -------------
 
-El objetivo de la asignatura es la realización de un proyecto con diferentes hitos que correspondan a los objetivos
-cumplidos hasta ese momento. Los proyectos
-[seguirán un perfil DevOps](documentos/proyecto/README.md), es decir,
-de definición de infraestructura para un proyecto existente o que se irá mejorando a lo largo del cuatrimestre. A grosso
-modo, los hitos se organizarán de la forma siguiente. 
+El objetivo de la asignatura es la realización de un proyecto con
+diferentes hitos que correspondan a los objetivos cumplidos hasta ese
+momento. Los
+proyectos [seguirán un perfil DevOps](documentos/proyecto/README.md),
+es decir, de definición de infraestructura para un proyecto existente
+o que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
+hitos se organizarán de la forma siguiente.
 
 1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio.md).
 2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md).
@@ -59,7 +61,7 @@ modo, los hitos se organizarán de la forma siguiente.
 4. [Provisionamiento de máquinas virtuales](documentos/proyecto/3.Provisionamiento.md).
 4. [Automatización de creación de máquinas virtuales](documentos/proyecto/4.nube-CLI.md).
 5. [Orquestación de máquinas virtuales](documents/proyecto/5.Orquestacion.md).
-4. [Uso de contenedores](documentos/proyecto/5.Docker.md).
+4. [Uso de contenedores](documentos/proyecto/6.Docker.md).
 
 
 Tutorías virtuales y presenciales
