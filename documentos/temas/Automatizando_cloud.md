@@ -1,12 +1,3 @@
----
-layout: index
-
-apuntes: T
-
-prev: Provision
-next: Orquestacion
----
-
 Automatizando el despliegue en la nube
 ======================================
 
@@ -349,7 +340,7 @@ cada uno de los lugares, aunque será conveniente medir también la
 latencia, al menos desde local (o desde otra localización de posibles
 clientes) de cada uno de los centros de datos.
 
-Para crear una imagen que tenga no sólo una IP pública, sino también
+Para crear una imagen que tenga no solo una IP pública, sino también
 una entrada DNS, que puede ser conveniente para referirse a ella en el
 futuro, se puede usar la orden siguiente:
 
@@ -359,7 +350,7 @@ az vm create --name cc-hito-4 --nsg-rule ssh --ssh-key-value\
     --public-ip-address-dns-name cc-hito-4
 ```
 
-Aquí no sólo hemos creado una máquina cuyo nombre interno es
+Aquí no solo hemos creado una máquina cuyo nombre interno es
 `cc-hito-4`, sino que también usaremos el mismo nombre para referirnos
 a ella desde nuestra máquina local. El nombre completo (Fully
     Qualified DNS, FQDNS) será el resultado de componer este nombre +
@@ -370,7 +361,7 @@ Dado que estamos escribiendo la salida en TSV ese nombre se presentará
 al salir, pero no hace falta capturarlo, porque se puede calcular
 automáticamente de esa forma. Si hace falta tener en todo caso la IP o
 el nombre, se pueden usar también las peticiones habituales de la
-línea de ódenes:
+línea de órdenes:
 
 ```
 az vm show -d -n cc-hito-4 --query "fqdns"
