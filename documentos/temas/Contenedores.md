@@ -37,6 +37,11 @@ Objetivos
 Introducción a la virtualización ligera: *contenedores*
 -------
 
+> Llamar a los contenedores sistemas de *virtualización ligera* no
+> deja de ser inexacto. Sólo desde el punto de vista de un usuario del
+> mismo contenedor aparecería que estás dentro de una máquina
+> virtual
+
 El aislamiento de grupos de procesos formando una *jaula* o
 *contenedor* ha sido una característica de ciertos sistemas operativos
 descendientes de Unix desde los años 80, en forma del programa
@@ -526,8 +531,8 @@ también como superusuario, al tener que contactar con este *daemon*
 usando un socket protegido.
 
 >Estamos trabajando con docker como superusuario, que es la forma
->adecuada de
->hacerlo. [Puedes seguir estas instrucciones para hacerlo desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
+>más segura de
+>hacerlo. [Puedes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
 >privilegios de administración.
 
 Con una instalación estándar, 
@@ -1325,6 +1330,18 @@ RUN chmod 0755 /usr/local/bin/sbt
 RUN /usr/local/bin/sbt
 ~~~
 
+Para empezar, puede ser que dentro de la UGR y de alguna otra
+instalación similar tengáis problemas de acceso a Internet desde
+dentro de un contenedor. En ese caso, meted esto en el `daemon.json`
+en el directorio `/etc/docker`
+
+```
+{"dns": ["150.214.204.10", "8.8.8.8"] }
+```
+
+> La primera IP es solamente para la UGR. Fuera de la UGR tendréis que
+> averiguar uno de los servidores DNS que os sirva.
+
 En la primera línea se establece cuál es el contenedor de origen que
 estamos usando. Siempre es conveniente usar distros ligeras, y en este
 caso usamos la ya conocida Alpine, que tiene ya una versión que
@@ -1424,7 +1441,7 @@ RUN rakudobrew init
 RUN rakudobrew build moar
 
 #Build other utilities
-RUN rakudobrew build panda
+RUN rakudobrew build zef
 RUN panda install Linenoise
 
 #Mount point
