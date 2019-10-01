@@ -33,9 +33,9 @@ Introducción a la virtualización ligera: *contenedores*
 -------
 
 > Llamar a los contenedores sistemas de *virtualización ligera* no
-> deja de ser inexacto. Sólo desde el punto de vista de un usuario del
+> deja de ser inexacto. Solo desde el punto de vista de un usuario del
 > mismo contenedor aparecería que estás dentro de una máquina
-> virtual
+> virtual.
 
 El aislamiento de grupos de procesos formando una *jaula* o
 *contenedor* ha sido una característica de ciertos sistemas operativos
