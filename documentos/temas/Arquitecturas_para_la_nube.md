@@ -63,7 +63,7 @@ para la cual crear la arquitectura virtual.
 ## Arquitecturas software
 
 >En gran parte, este apartado está sacado de
->[Software Architecture Patterns, de Mark Richards](https://www.oreilly.com/programming/free/software-architecture-patterns.csp?intcmp=il-prog-free-article-sa15_sa_patterns),
+>[Software Architecture Patterns, de Mark Richards](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/?intcmp=il-prog-free-article-sa15_sa_patterns),
 >un *ebook* gratuito que te puedes descargar dando tu email, lo que
 >aconsejo vivamente que hagas. 
 
@@ -111,7 +111,7 @@ arquitectura.
 
 ### Arquitectura microkernel
 
-Se trata de [una arquitectura](https://viralpatel.net/blogs/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
+Se trata de [una arquitectura](https://viralpatel.net/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
 central al que se pueden añadir funcionalidades mediante plugins. Un
 tipo de arquitectura clásico que se usa en CMSs como Joomla o en
 sistemas de aprendizaje como Moodle. El problema principal es la
