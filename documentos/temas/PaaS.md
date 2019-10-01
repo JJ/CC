@@ -3,7 +3,7 @@ layout: index
 
 apuntes: T
 
-prev: Arquitecturas_para_la_nube
+prev: Desarrollo_basado_en_pruebas
 next: Provision
 ---
 
@@ -11,7 +11,7 @@ Desplegando aplicaciones en la nube: Uso de PaaS y DBaaS
 ==
 
 <!--@
-prev: Arquitecturas_para_la_nube
+prev: Desarrollo_basado_en_pruebas
 next: Provision
 -->
 
@@ -1104,5 +1104,5 @@ A dónde ir desde aquí
 En el [capítulo sobre contenedores](Contenedores) usaremos
 diferentes técnicas de virtualización para la creación de contenedores
  que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../practicas/3.PaaS).
+práctica correspondiente a esta materia](../proyecto/2.PaaS).
 
