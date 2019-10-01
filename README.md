@@ -34,7 +34,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 6. [Orquestación de máquinas virtuales](documentos/temas/Orquestacion.md).
 3. [Usando contenedores](documentos/temas/Contenedores.md)
 
-La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/CC-18-19).
+La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/CC-19-20).
 
 Seminarios y material adicional
 ---------------
@@ -90,3 +90,4 @@ Sesiones, objetivos e hitos de años anteriores
 
 * [Año 16-17](https://github.com/JJ/CC16-17)
 * [Año 17-18](https://github.com/JJ/CC-17-18)
+* [Año 18-19](https://github.com/JJ/CC-18-19)
