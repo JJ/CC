@@ -2,7 +2,7 @@ Desplegando aplicaciones en la nube: Uso de PaaS y DBaaS
 ==
 
 <!--@
-prev: Arquitecturas_para_la_nube
+prev: Desarrollo_basado_en_pruebas
 next: Provision
 -->
 
