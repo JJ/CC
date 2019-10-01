@@ -34,6 +34,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 
 1. [Arquitecturas software para la nube](documentos/temas/Arquitecturas_para_la_nube).
 1. [Desarrollo basado en pruebas](http://jj.github.io/CC/documentos/temas/Desarrollo_basado_en_pruebas).
+2. [Uso de PaaS](http://jj.github.io/CC/documentos/temas/PaaS).
 6. [Gestión de configuraciones](documentos/temas/Provision).
 3. [Creación de infraestructuras virtuales reproducibles](documentos/temas/Automatizando_cloud)
 6. [Orquestación de máquinas virtuales](documentos/temas/Orquestacion).
