@@ -31,17 +31,24 @@ Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
 [GitHub][cc-general-repo].
 
-1. [Arquitecturas software para la nube](documentos/temas/Arquitecturas_para_la_nube.md).
-2. [Desarrollo basado en pruebas](/documentos/temas/Desarrollo_basado_en_pruebas).
-3. [Uso de PaaS](documentos/temas/PaaS.md).
-4. [Gestión de configuraciones](documentos/temas/Provision.md).
-5. [Creación de infraestructuras virtuales reproducibles](documentos/temas/Automatizando_cloud.md)
-6. [Orquestación de máquinas virtuales](documentos/temas/Orquestacion.md).
-7. [Usando contenedores](documentos/temas/Contenedores.md)
+1. [Arquitecturas software para la nube][t1]
+2. [Desarrollo basado en pruebas][t2]
+3. [Uso de PaaS][t3]
+4. [Gestión de configuraciones][t4]
+5. [Creación de infraestructuras virtuales reproducibles][t5]
+6. [Orquestación de máquinas virtuales][t6]
+7. [Usando contenedores][t7]
 
 La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub][cc-course-repo].
 
 [cc-general-repo]: http://github.com/JJ/CC
+[t1]: documentos/temas/Arquitecturas_para_la_nube.md
+[t2]: documentos/temas/Desarrollo_basado_en_pruebas.md
+[t3]: documentos/temas/PaaS.md
+[t4]: documentos/temas/Provision.md
+[t5]: documentos/temas/Automatizando_cloud.md
+[t6]: documentos/temas/Orquestacion.md
+[t7]: documentos/temas/Contenedores.md
 
 Seminarios y material adicional
 ---------------
@@ -49,7 +56,9 @@ Seminarios y material adicional
 Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
 
-1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby.md).
+1. [Introducción ligera al lenguaje Ruby][s1]
+
+[s1]: documentos/seminarios/ruby.md
 
 Prácticas - Actividades académicas dirigidas
 -------------
@@ -57,18 +66,27 @@ Prácticas - Actividades académicas dirigidas
 El objetivo de la asignatura es la realización de un proyecto con
 diferentes hitos que correspondan a los objetivos cumplidos hasta ese
 momento. Los
-proyectos [seguirán un perfil DevOps](documentos/proyecto/README.md),
+proyectos [seguirán un perfil DevOps][proyecto],
 es decir, de definición de infraestructura para un proyecto existente
 o que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
 
-1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio.md).
-2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura.md).
-3. [Creación de arquitecturas de servicios web en la nube](documentos/proyecto/2.Paas.md).
-4. [Provisionamiento de máquinas virtuales](documentos/proyecto/3.Provisionamiento.md).
-5. [Automatización de creación de máquinas virtuales](documentos/proyecto/4.nube-CLI.md).
-6. [Orquestación de máquinas virtuales](documents/proyecto/5.Orquestacion.md).
-7. [Uso de contenedores](documentos/proyecto/6.Docker.md).
+1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos][p1]
+2. [Elección de un proyecto][p2]
+3. [Creación de arquitecturas de servicios web en la nube][p3]
+4. [Provisionamiento de máquinas virtuales][p4]
+5. [Automatización de creación de máquinas virtuales][p5]
+6. [Orquestación de máquinas virtuales][p6]
+7. [Uso de contenedores][p7]
+
+[proyecto]: documentos/proyecto/README.md
+[p1]: documentos/proyecto/0.Repositorio.md
+[p2]: documentos/proyecto/1.Infraestructura.md
+[p3]: documentos/proyecto/2.Paas.md
+[p4]: documentos/proyecto/3.Provisionamiento.md
+[p5]: documentos/proyecto/4.nube-CLI.md
+[p6]: documents/proyecto/5.Orquestacion.md
+[p7]: documentos/proyecto/6.Docker.md
 
 Tutorías virtuales y presenciales
 ----
