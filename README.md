@@ -6,10 +6,10 @@ Material docente para Cloud Computing
 *Cloud Computing* es una asignatura anual del máster de ingeniería informática en la [UGR][ugr-website].
 
 La asignatura se imparte en el curso 2019-2020 los lunes de 16:30 a
-18:30 en la 1.6 y de 18:30 a
-20:30 en el aula 3.5 y los jueves de 17:30 a 19:30 en el
-aula 2.1. Tendrás que llevar tu portátil a todas las clases. Se usará [GitHub][github-website] para los ejercicios y
-el proyecto; también para los objetivos semanales, que estarán (año
+18:30 en la 1.6 y de 18:30 a 20:30 en el aula 3.5 y los jueves de
+17:30 a 19:30 en el aula 2.1. Tendrás que llevar tu portátil a todas
+las clases. Se usará [GitHub][github-website] para los ejercicios y el
+proyecto; también para los objetivos semanales, que estarán (año
 2019-20) en [este repositorio][cc-course-repo].
 
 Estos son los [objetivos de la asignatura](documentos/objetivos.md). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
@@ -65,10 +65,9 @@ Prácticas - Actividades académicas dirigidas
 
 El objetivo de la asignatura es la realización de un proyecto con
 diferentes hitos que correspondan a los objetivos cumplidos hasta ese
-momento. Los
-proyectos [seguirán un perfil DevOps][proyecto],
-es decir, de definición de infraestructura para un proyecto existente
-o que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
+momento. Los proyectos [seguirán un perfil DevOps][proyecto], es
+decir, de definición de infraestructura para un proyecto existente o
+que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
 
 1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos][p1]

@@ -17,7 +17,9 @@ tanto de software como de hardware y ponerlos en práctica.
 - Justificar la necesidad de procesamiento virtual frente a real en
 el contexto de una infraestructura TIC de una organización.
 - Optimizar aplicaciones sobre plataformas virtuales.
-- Conocer diferentes tecnologías relacionadas con la virtualización (Computación Nube, Utility Computing, Software as a Service) e implementaciones tales como Google AppSpot, OpenShift o Heroku.</li>
+- Conocer diferentes tecnologías relacionadas con la virtualización
+  (Computación Nube, Utility Computing, Software as a Service) e
+  implementaciones tales como Google AppSpot, OpenShift o Heroku. 
 
 
 ### Específicos 
