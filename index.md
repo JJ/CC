@@ -8,14 +8,14 @@ Material docente para Cloud Computing
 
 [![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
 
-*Cloud Computing* es una asignatura anual del máster de ingeniería informática en la [UGR](http://www.ugr.es).
+*Cloud Computing* es una asignatura anual del máster de ingeniería informática en la [UGR][ugr-website].
 
 La asignatura se imparte en el curso 2019-2020 los lunes de 16:30 a
-18:30 en la 1.6 y de 18:30 a
-20:30 en el aula 3.5 y los jueves de 17:30 a 19:30 en el
-aula 2.1. Tendrás que llevar tu portátil a todas las clases. Se usará [GitHub](http://github.com) para los ejercicios y
-el proyecto; también para los objetivos semanales, que estarán (año
-2019-20) en [este repositorio](https://github.com/JJ/CC-19-20/).
+18:30 en la 1.6 y de 18:30 a 20:30 en el aula 3.5 y los jueves de
+17:30 a 19:30 en el aula 2.1. Tendrás que llevar tu portátil a todas
+las clases. Se usará [GitHub][github-website] para los ejercicios y el
+proyecto; también para los objetivos semanales, que estarán (año
+2019-20) en [este repositorio][cc-course-repo].
 
 Estos son los [objetivos de la asignatura](documentos/objetivos). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
 
@@ -25,22 +25,35 @@ Estos son los [objetivos de la asignatura](documentos/objetivos). En resumen, la
 4. Entender las técnicas de configuración automática de entornos virtuales y las sepa aplicar en los entornos anteriores.
 5. Usar lo aprendido para despliegue masivo de aplicaciones en la nube.
 
+[ugr-website]: https://www.ugr.es
+[github-website]: https://github.com
+[cc-course-repo]: https://github.com/JJ/CC-19-20/
+
 Temario - Programa de la asignatura
 ------------------------------------------------------
 
 Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
-[GitHub](http://github.com/JJ/CC).
+[GitHub][cc-general-repo].
 
-1. [Arquitecturas software para la nube](documentos/temas/Arquitecturas_para_la_nube).
-1. [Desarrollo basado en pruebas](http://jj.github.io/CC/documentos/temas/Desarrollo_basado_en_pruebas).
-2. [Uso de PaaS](http://jj.github.io/CC/documentos/temas/PaaS).
-6. [Gestión de configuraciones](documentos/temas/Provision).
-3. [Creación de infraestructuras virtuales reproducibles](documentos/temas/Automatizando_cloud)
-6. [Orquestación de máquinas virtuales](documentos/temas/Orquestacion).
-3. [Usando contenedores](documentos/temas/Contenedores)
+1. [Arquitecturas software para la nube][t1]
+2. [Desarrollo basado en pruebas][t2]
+3. [Uso de PaaS][t3]
+4. [Gestión de configuraciones][t4]
+5. [Creación de infraestructuras virtuales reproducibles][t5]
+6. [Orquestación de máquinas virtuales][t6]
+7. [Usando contenedores][t7]
 
-La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub](http://github.com/JJ/CC-19-20).
+La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub][cc-course-repo].
+
+[cc-general-repo]: http://github.com/JJ/CC
+[t1]: documentos/temas/Arquitecturas_para_la_nube.md
+[t2]: documentos/temas/Desarrollo_basado_en_pruebas.md
+[t3]: documentos/temas/PaaS.md
+[t4]: documentos/temas/Provision.md
+[t5]: documentos/temas/Automatizando_cloud.md
+[t6]: documentos/temas/Orquestacion.md
+[t7]: documentos/temas/Contenedores.md
 
 Seminarios y material adicional
 ---------------
@@ -48,28 +61,36 @@ Seminarios y material adicional
 Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
 
-1. [Introducción ligera al lenguaje Ruby](documentos/seminarios/ruby).
+1. [Introducción ligera al lenguaje Ruby][s1]
 
+[s1]: documentos/seminarios/ruby.md
 
 Prácticas - Actividades académicas dirigidas
 -------------
 
 El objetivo de la asignatura es la realización de un proyecto con
 diferentes hitos que correspondan a los objetivos cumplidos hasta ese
-momento. Los
-proyectos [seguirán un perfil DevOps](documentos/proyecto/README.md),
-es decir, de definición de infraestructura para un proyecto existente
-o que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
+momento. Los proyectos [seguirán un perfil DevOps][proyecto], es
+decir, de definición de infraestructura para un proyecto existente o
+que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
 
-1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos](documentos/proyecto/0.Repositorio).
-2. [Elección de un proyecto](documentos/proyecto/1.Infraestructura).
-3. [Creación de arquitecturas de servicios web en la nube](documentos/proyecto/2.Paas).
-4. [Provisionamiento de máquinas virtuales](documentos/proyecto/3.Provisionamiento).
-4. [Automatización de creación de máquinas virtuales](documentos/proyecto/4.nube-CLI).
-5. [Orquestación de máquinas virtuales](documents/proyecto/5.Orquestacion).
-4. [Uso de contenedores](documentos/proyecto/6.Docker).
+1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos][p1]
+2. [Elección de un proyecto][p2]
+3. [Creación de arquitecturas de servicios web en la nube][p3]
+4. [Provisionamiento de máquinas virtuales][p4]
+5. [Automatización de creación de máquinas virtuales][p5]
+6. [Orquestación de máquinas virtuales][p6]
+7. [Uso de contenedores][p7]
 
+[proyecto]: documentos/proyecto/README.md
+[p1]: documentos/proyecto/0.Repositorio.md
+[p2]: documentos/proyecto/1.Infraestructura.md
+[p3]: documentos/proyecto/2.Paas.md
+[p4]: documentos/proyecto/3.Provisionamiento.md
+[p5]: documentos/proyecto/4.nube-CLI.md
+[p6]: documents/proyecto/5.Orquestacion.md
+[p7]: documentos/proyecto/6.Docker.md
 
 Tutorías virtuales y presenciales
 ----
@@ -86,10 +107,10 @@ por la tarde de 19:30 a 20:30 en la 3.1.
 Criterios de evaluación
 ---
 
-Los
-[criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado](http://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada/!),
-y
-[se especifican en el repositorio de la clase](https://github.com/JJ/CC-18-19/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n). 
+Los [criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado][guia-docente], y [se especifican en el repositorio de la clase][evaluacion].
+
+[guia-docente]: https://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada/!
+[evaluacion]: https://github.com/JJ/CC-19-20/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
 
 Sesiones, objetivos e hitos de años anteriores
 ---
