@@ -63,7 +63,7 @@ tareas de creación de un puesto de trabajo para desarrollo, pero
 también la sistematización de los entornos de pruebas y de despliegue y de las tareas
 de configuración relacionadas con la misma, todo ello en un entorno de
 desarrollo ágil. En concreto, *DevOps* comprende
-[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](http://www.rexify.org/): 
+[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](https://www.rexify.org/): 
 
 1. *Automatización de tareas relacionadas con el desarrollo*. En
    resumen, que no haya que recordar o tener apuntados en una libreta
@@ -129,8 +129,8 @@ virtuales de desarrollo* tales como:
 *  [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
 *  [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
 *  [rbenv](https://github.com/sstephenson/rbenv)
-   y [RVM](http://rvm.io) para Ruby
-*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](http://perlbrew.pl).
+   y [RVM](https://rvm.io) para Ruby
+*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](https://perlbrew.pl).
 
 Generalmente, estos programa funcionan instalando binarios en
 directorios del usuario y modificando el camino de ejecución para que
@@ -174,7 +174,7 @@ mínimas, máximas o exactas deben tener.
 >usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
 >usar JavaScript,
 >[este curso](https://github.com/JJ/curso-js) o
->[este libro](http://amzn.to/2dQCdAn) te pueden ayudar, aunque
+>[este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
 >cualquier otro también. 
 
 Una porra de fútbol básicamente tiene un partido, que tendrá un nombre
@@ -273,7 +273,7 @@ programa hasta que ocupe el mínimo espacio posible, para que sea más
 
 Todos los lenguajes de programación tienen su propia herramienta de
 construcción, pero en node.js se utilizan principalmente dos:
-[Grunt](http://gruntjs.com) y [Gulp](http://gulpjs.com).
+[Grunt](https://gruntjs.com) y [Gulp](https://gulpjs.com).
 
 >Aquí podíamos hacer una breve disquisición sobre
 >[el código y la configuración](https://coding.abel.nu/2013/06/code-or-configuration-or-configuration-in-code/),
@@ -372,9 +372,9 @@ veremos a continuación.
 ### Configuración en Scala: Usando Scala Build Tool
 
 A diferencia de node.js y de otros lenguajes,
-[Scala](http://www.scala-lang.org/) tiene una herramienta de
+[Scala](https://www.scala-lang.org/) tiene una herramienta de
 configuración y construcción que forma parte del lenguaje y que se
-llama, precisamente, [`sbt` o Scala Build Tool](http://www.scala-sbt.org/). `sbt` incluye un DSL
+llama, precisamente, [`sbt` o Scala Build Tool](https://www.scala-sbt.org/). `sbt` incluye un DSL
 (Domain Specific Language) para configurar la aplicación, las
 versiones de todo que usa, inclusive el propio lenguaje, y las
 dependencias, y además un entorno de línea de órdenes desde el que se
@@ -471,7 +471,7 @@ primero es el marco de pruebas y el segundo la librería de pruebas que
 efectivamente se está usando.
 
 Vamos a ir al nivel más bajo: el de las aserciones. Hay [múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
-[Chai](http://chaijs.com/),
+[Chai](https://chaijs.com/),
 [Should.js](https://github.com/visionmedia/should.js),
 [Must.js](https://github.com/moll/js-must) y
 [`assert`](https://nodejs.org/api/assert.html) que es la librería que
@@ -616,7 +616,7 @@ correspondientes si se cumple ese comportamiento y si no se cumple.
 Se ejecutaría con `sbt test` o ejecutando `test` desde `sbt`; el
 resultado sería:
 
-[Resultado del test de Scala](../img/test-scala.png)
+![Resultado del test de Scala](/documentos/img/test-scala.png)
 
 
 
@@ -645,11 +645,11 @@ sí con las librerías del lenguaje de programación en el que está
 desarrollado.
 
 Un sistema bastante popular de integración continua es
-[Jenkins](https://jenkins-ci.org/), pero está enfocado sobre todo a
+[Jenkins](https://jenkins.io/), pero está enfocado sobre todo a
 Java. Jenkins lo puedes usar en la nube o instalarte tu propio
 ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java
 por lo que hay otros sistemas como [Travis](https://travis-ci.org) o
-[Shippable](http://apps.shippable.com/) que podemos usar también desde
+[Shippable](https://www.shippable.com/) que podemos usar también desde
 la nube y, además, están preparados para más lenguajes de
 programación.
 
@@ -694,7 +694,7 @@ el fichero de configuración tal como este para Travis.
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
 - `language` indica qué lenguaje se va a usar. Travis tiene
-  [varios lenguajes](http://docs.travis-ci.com/user/getting-started/),
+  [varios lenguajes](https://docs.travis-ci.com/user/getting-started/),
   incluyendo por supuesto nodejs. Las máquinas virtuales no suelen
   estar configuradas para lenguajes arbitrarios, aunque por supuesto
   se puede poner un lenguaje tal como C y luego descargar lo necesario
@@ -737,18 +737,18 @@ para el despliegue continuo, que se verá más adelante.
 ##Bibliografía y otros recursos
 
 Algunos recursos a los que puedes acceder desde la
-[Biblioteca de la UGR](http://biblioteca.ugr.es):
+[Biblioteca de la UGR](https://biblioteca.ugr.es):
 
-- [DevOps: a software architect's perspective](http://bencore.ugr.es/iii/encore/record/C__Rb2526268__Sdevops__P0%2C2__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl),
+- [DevOps: a software architect's perspective](https://bencore.ugr.es/iii/encore/record/C__Rb2526268__Sdevops__P0%2C2__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl),
   un libro en general teórico y "a vista de pájaro" de la creación de
   equipos de desarrollo y aplicaciones basadas en esa filosofía.
 
-- [DevOps for developers](http://bencore.ugr.es/iii/encore/record/C__Rb2516479__Sdevops__P0%2C9__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl)
+- [DevOps for developers](https://bencore.ugr.es/iii/encore/record/C__Rb2516479__Sdevops__P0%2C9__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl)
   también con poco código, pero con una visión a más bajo nivel de
   cómo organizar y montar grupos DevOps.
 
 Esta
-[página](http://www.jedi.be/blog/2010/02/12/what-is-this-devops-thing-anyway/)
+[página](https://www.jedi.be/blog/2010/02/12/what-is-this-devops-thing-anyway/)
 lista una serie de recursos útiles, incluyendo blogs y canales de IRC,
 aparte de diferentes herramientas que deben estar en el carcaj del
 arquero DevOps, aunque la mayoría de los enlaces a estos están
@@ -758,9 +758,9 @@ atrasados (y uno está en chino, así que no tengo ni idea).
 
 Durante la realización de los ejercicios de este tema se habrá tenido
 que hacer el
-[primer hito del proyecto de la asignatura](http://jj.github.io/CC/documentos/practicas/1.Infraestructura),
+[primer hito del proyecto de la asignatura](https://jj.github.io/CC/documentos/poyecto/1.Infraestructura),
 para pasar al
-[segundo hito](http://jj.github.io/CC/documentos/practicas/2.CI)
+[segundo hito](https://jj.github.io/CC/documentos/proyecto/2.CI)
 cuando se haya concluido.
 
 A continuación se
