@@ -110,17 +110,18 @@ configuraciones; a continuación,  la automatización. El uso de entornos
 virtuales cubre las dos necesidades: te permite independizar la
 versión usada de la que proporcione el sistema, instalarla sin
 necesidad de tener privilegios de superusuario, compartirla entre
-todos los miembros del equipo y también automatizar la tarea 
+todos los miembros del equipo y también automatizar la tarea
 de instalación del mismo mediante el uso de una sola orden que
-seleccione la versión precisa que se va a usar. 
+seleccione la versión precisa que se va a usar.
 
-Y estos entornos virtuales vienen del hecho de que los lenguajes de scripting tales como Perl, Python y Ruby tienen
-ciclos de desarrollo muy rápidos que hacen que a veces convivan en
-producción diferentes versiones de los mismos, incluso versiones
-*major*. Eso hace complicado desarrollar e incluso probar los 
-programas que se desarrollan: si el sistema operativo viene con Perl
-5.14, puede que haga falta probar o desarrollar para 5.16 o 5.18 o
-incluso probar la versión más avanzada.
+Y estos entornos virtuales vienen del hecho de que los lenguajes de
+scripting tales como Perl, Python y Ruby tienen ciclos de desarrollo
+muy rápidos que hacen que a veces convivan en producción diferentes
+versiones de los mismos, incluso versiones *major*. Eso hace
+complicado desarrollar e incluso probar los programas que se
+desarrollan: si el sistema operativo viene con Perl 5.14, puede que
+haga falta probar o desarrollar para 5.16 o 5.18 o incluso probar la
+versión más avanzada.
 
 Por eso desde hacer cierto tiempo se han venido usando *entornos
 virtuales de desarrollo* tales como:
@@ -190,11 +191,6 @@ El objeto básico, por tanto, será la `Apuesta` que irá asociada a un
 La aplicación podrá tener, o no, un interfaz web, pero por lo pronto,
 y a efectos de la prueba continua de más adelante, vamos a quedarnos
 solo con un pequeño programa que sirva para comprobar que funciona.
-
-<div class='ejercicios' markdown='1'>
-Ejecutar un programa básico que trabaje con una base de datos en diferentes versiones del lenguaje. ¿Funciona en
-todas ellas?
-</div>
 
 ### Configuración de una aplicación en node.
 
@@ -292,7 +288,7 @@ directamente.
 
 `-g` indica que se trata de una instalación global, aunque también se
 puede instalar localmente. 
-	
+
 Igual que make usa
 Makefiles, `grunt` usa `Gruntfile.js` tal como este
 
@@ -494,11 +490,6 @@ objeto, es decir, si no ha habido ningún error en la carga o creación
 del mismo, y `equal` comprueba que efectivamente la salida que da la
 función `as_string` es la esperada.
 
-<div class='ejercicios' markdown='1'>
-
- Para la aplicación que se está haciendo, escribir una serie de aserciones y probar que efectivamente no fallan. Añadir tests para una nueva funcionalidad, probar que falla y escribir el código para que no lo haga (vamos, lo que viene siendo TDD).
-</div>
-
 Hay un segundo nivel, el marco de ejecución de los tests. Los marcos
 son programas que, a su vez, ejecutan los programas de test y escriben
 un informe sobre cuáles han fallado y cuáles no con más o menos
@@ -619,7 +610,6 @@ resultado sería:
 ![Resultado del test de Scala](/documentos/img/test-scala.png)
 
 
-
 ## Añadiendo integración continua.
 
 A un primer nivel, la integración continua consiste en integrar los
@@ -734,7 +724,7 @@ control de calidad en el desarrollo. Y, finalmente, porque la
 integración continua y los tests correspondientes son un paso esencial
 para el despliegue continuo, que se verá más adelante.
 
-##Bibliografía y otros recursos
+## Bibliografía y otros recursos
 
 Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](https://biblioteca.ugr.es):
