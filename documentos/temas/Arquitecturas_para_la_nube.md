@@ -62,6 +62,8 @@ arquitecturas de software con ejemplos concretos, ejemplos que se
 podrán usar, siquiera de una forma básica, para elegir una aplicación
 para la cual crear la arquitectura virtual.
 
+> Las aplicaciones en la nube también tienen sus propios patrones de diseño, que son específicos y apuntan a dividir la aplicación en partes que se puedan implementar generalmente en un microservicio (aunque también puede haber servicios completos, y funciones sin estado). Para el diseño completo los principios de [diseño dirigido por el dominio](https://www.ibm.com/garage/method/practices/code/domain-driven-design/), que dividen el dominio del problema en entidades (que pueden ser agregadas), servicios, repositorios y objetos-valor que son indistinguibles. Adicionalmente, artículos como [este](https://hackernoon.com/clean-domain-driven-design-in-10-minutes-6037a59c8b7b) aclaran el concepto y permiten usarlo con más profundidad.
+
 ## Arquitecturas software
 
 >En gran parte, este apartado está sacado de
