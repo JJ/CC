@@ -11,7 +11,6 @@ next: Desarrollo_basado_en_pruebas
 
 ### De la asignatura
 
-
 -  Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica.
 - Justificar la necesidad de procesamiento virtual frente a real en
@@ -117,7 +116,7 @@ arquitectura.
 
 Se trata de [una arquitectura](https://viralpatel.net/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
 central al que se pueden añadir funcionalidades mediante plugins. Un
-tipo de arquitectura clásico que se usa en CMSs como Joomla o en
+tipo de arquitectura clásico que se usa en CMSs como Joomla o WordPress o en
 sistemas de aprendizaje como Moodle. El problema principal es la
 escalabilidad, ya que el núcleo puede representar un cuello de
 botella. 
@@ -207,6 +206,19 @@ en REST. Tercero, están basadas en diferentes componentes. Y, por
 último, usan y/o despliegan servicios en la nube. A su vez, esto
 implica una serie de cosas que veremos a continuación.
 
+Para definir estas arquitecturas se usan principios como el 
+[diseño dirigido por el dominio](https://medium.com/@jonathanloscalzo/domain-driven-design-principios-beneficios-y-elementos-primera-parte-aad90f30aa35). Aparte
+de las reglas en las que se crearán diferentes entidades y se
+implementarán como servidores de tareas o microservicios, hay que
+distinguir entre el dominio de nuestro problema y su modelo y los
+*servicios* que vayamos a usar desde él. Los servicios incluirán
+diferentes funcionalidades que haga falta usar desde cualquier
+aplicación que implementemos, tales como servicios de registro
+(*logs*), servicios de configuración remota o servicios de
+monitorización. Cualquier arquitectura deberá incluir todos estos
+servicios, y usarán para conectarse con nuestra lógica programada el
+interfaz más adecuado en cada caso.
+
 ### Descubrimiento de servicios
 
 Una de las características que a veces no se consideran *a priori* de
@@ -286,7 +298,8 @@ con un sistema de mensajería almacenado en un PaaS y una serie de
 procesadores almacenados en máquinas virtuales instanciadas en
 diferentes proveedores. Por tanto, distinguir aplicaciones *para PaaS*
 de aplicaciones *para IaaS* es totalmente absurdo y cualquier
-arquitectura sana incluirá un poco de cada una, a gusto del
+arquitectura sana incluirá un poco de cada una con un poco de
+arquitectura *serverless*, a gusto del
 arquitecto.
 
 ### Los mensajeros están en las nubes
