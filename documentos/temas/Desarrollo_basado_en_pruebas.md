@@ -99,7 +99,7 @@ desarrollo ágil. En concreto, *DevOps* comprende
    características y arreglos, tanto en el software como el hardware. 
 
 
-En esta sesión veremos la mayoría; en siguientes sesiones se verá la
+En este tema veremos la mayoría; en los siguientes se verá la
 gestión de configuraciones, provisionamiento de los servidores,
 despliegue continuo y virtualización.
 
@@ -284,7 +284,7 @@ vamos a usar `grunt` para documentar el código. Tras la instalación de
 `grunt`, que no viene instalado por defecto en nodejs, se puede usar
 directamente.
 
-	sudo npm install -g grunt-cli
+	npm install -g grunt-cli
 
 `-g` indica que se trata de una instalación global, aunque también se
 puede instalar localmente. 
@@ -544,7 +544,7 @@ el resultado de ejecutarlo será:
 
     2 passing (6ms)
 
-(pero con más colorines)
+(pero con más colorines).
 
 >Y la verdad es que debería haber puesto los mensajes en español.
 
