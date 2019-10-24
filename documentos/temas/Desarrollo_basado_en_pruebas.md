@@ -34,18 +34,19 @@ tanto de software como de hardware y ponerlos en práctica.</li>
 >[GitHub](https://github.com). 
 
 Los ciclos de
-[desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software),
-de 
-forma que continuamente se están arreglando errores, programando
-nuevas características y desplegándolas, inicialmente para probarlas y
-eventualmente en producción. Para que esto
-sea posible este ciclo de vida debe estar automatizado en
-todo lo posible, de forma que todas las fases se hagan esencialmente sin
-intervención humana y se minimice la posibilidad de que haya 
-en el proceso errores que sean costosos de arreglar una vez echado a andar un
-sistema. La aparición de la [nube](https://es.wikipedia.org/wiki/Computaci%C3%B3n_en_la_nube) ha hecho que en varias, o en todas,
-las partes del proceso, aparezcan recursos *elásticos* y disponibles bajo
-demanda, algunos de ellos gratuitos.
+[desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software):
+
+continuamente se están arreglando errores, programando nuevas
+características y desplegándolas, inicialmente para probarlas y
+eventualmente en producción. Para que esto sea posible este ciclo de
+vida debe estar automatizado en todo lo posible, de forma que todas
+las fases se hagan esencialmente sin intervención humana y se minimice
+la posibilidad de que haya en el proceso errores que sean costosos de
+arreglar una vez echado a andar un sistema. La aparición de
+la [nube](https://es.wikipedia.org/wiki/Computaci%C3%B3n_en_la_nube)
+ha hecho que en varias, o en todas, las partes del proceso, aparezcan
+recursos *elásticos* y disponibles bajo demanda, algunos de ellos
+gratuitos.
 
 Por eso, en esta parte del curso, veremos cómo desarrollar según la
 metodología basada en pruebas con los
@@ -186,7 +187,6 @@ basar la aplicación.
 
 El objeto básico, por tanto, será la `Apuesta` que irá asociada a un
 `Partido`.
-
 
 La aplicación podrá tener, o no, un interfaz web, pero por lo pronto,
 y a efectos de la prueba continua de más adelante, vamos a quedarnos
