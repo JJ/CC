@@ -1,0 +1,12 @@
+name: "Saluda"
+on: [issues]
+
+jobs:
+  pr-greeter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Saluda"
+        uses: JJ/issue-greeting-action@releases/v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          greeting: ":+1: Hola **#** y bienvenido/a a este repo. Echaremos un vistazo a tu petición; muchas gracias por tu colaboración"
