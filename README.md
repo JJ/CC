@@ -81,7 +81,7 @@ hitos se organizarán de la forma siguiente.
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
 [p2]: documentos/proyecto/1.Infraestructura.md
-[p3]: documentos/proyecto/2.Paas.md
+[p3]: documentos/proyecto/2.CI.md
 [p4]: documentos/proyecto/3.Provisionamiento.md
 [p5]: documentos/proyecto/4.nube-CLI.md
 [p6]: documents/proyecto/5.Orquestacion.md
