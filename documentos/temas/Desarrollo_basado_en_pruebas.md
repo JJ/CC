@@ -748,7 +748,7 @@ atrasados (y uno está en chino, así que no tengo ni idea).
 
 Durante la realización de los ejercicios de este tema se habrá tenido
 que hacer el
-[primer hito del proyecto de la asignatura](https://jj.github.io/CC/documentos/poyecto/1.Infraestructura),
+[primer hito del proyecto de la asignatura](https://jj.github.io/CC/documentos/proyecto/1.Infraestructura),
 para pasar al
 [segundo hito](https://jj.github.io/CC/documentos/proyecto/2.CI)
 cuando se haya concluido.
