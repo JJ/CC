@@ -44,7 +44,6 @@ tanto de software como de hardware y ponerlos en práctica.</li>
 
 Los ciclos de
 [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software):
-
 continuamente se están arreglando errores, programando nuevas
 características y desplegándolas, inicialmente para probarlas y
 eventualmente en producción. Para que esto sea posible este ciclo de
@@ -112,6 +111,10 @@ desarrollo ágil. En concreto, *DevOps* comprende
 En este tema veremos la mayoría; en los siguientes se verá la
 gestión de configuraciones, provisionamiento de los servidores,
 despliegue continuo y virtualización.
+
+> Este tema (y bastante más) están cubiertos en
+> el [curso de calidad en el software](https://jj.github.io/curso-tdd)
+> que se ha impartido en octubre-noviembre de 2019.
 
 ## Entornos virtuales de desarrollo.
 
@@ -475,7 +478,9 @@ que es en el que nos estamos fijando, hay dos niveles en el test: el
 primero es el marco de pruebas y el segundo la librería de pruebas que
 efectivamente se está usando.
 
-Vamos a ir al nivel más bajo: el de las aserciones. Hay [múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
+Vamos a ir al nivel más bajo: el de las
+aserciones. Hay
+[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js): 
 [Chai](https://chaijs.com/),
 [Should.js](https://github.com/visionmedia/should.js),
 [Must.js](https://github.com/moll/js-must) y
@@ -747,7 +752,7 @@ Algunos recursos a los que puedes acceder desde la
   cómo organizar y montar grupos DevOps.
 
 Esta
-[página](https://www.jedi.be/blog/2010/02/12/what-is-this-devops-thing-anyway/)
+[página](https://blog.newrelic.com/engineering/devops-for-beginners/)
 lista una serie de recursos útiles, incluyendo blogs y canales de IRC,
 aparte de diferentes herramientas que deben estar en el carcaj del
 arquero DevOps, aunque la mayoría de los enlaces a estos están
@@ -757,7 +762,7 @@ atrasados (y uno está en chino, así que no tengo ni idea).
 
 Durante la realización de los ejercicios de este tema se habrá tenido
 que hacer el
-[primer hito del proyecto de la asignatura](https://jj.github.io/CC/documentos/poyecto/1.Infraestructura),
+[primer hito del proyecto de la asignatura](https://jj.github.io/CC/documentos/proyecto/1.Infraestructura),
 para pasar al
 [segundo hito](https://jj.github.io/CC/documentos/proyecto/2.CI)
 cuando se haya concluido.
