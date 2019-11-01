@@ -473,6 +473,12 @@ funcionalidades queremos, cómo queremos que respondan y qué
 *contratos* o *aserciones* van a ser verdaderas cuando se ejecute el
 código antes siquiera de escribirlo.
 
+Lejos de ser una pérdida de tiempo, usar
+pruebas
+[ahorra tiempo de programación](https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80),
+al evitar errores en producción y el tiempo que se pierde en
+localizarlos y evitarlos.
+
 En la mayoría de los entornos de programación y especialmente en node,
 que es en el que nos estamos fijando, hay dos niveles en el test: el
 primero es el marco de pruebas y el segundo la librería de pruebas que
@@ -759,6 +765,13 @@ arquero DevOps, aunque la mayoría de los enlaces a estos están
 atrasados (y uno está en chino, así que no tengo ni idea). 
 
 ## A dónde ir desde aquí
+
+Este artículo te
+cuenta
+[qué hacer cuando testear es complicado](https://www.thoughtworks.com/insights/blog/test-driven-development-best-thing-has-happened-software-design). Una
+serie de técnicas, como mocking, te ayudan a probar en circunstancias
+que podrían ser complicadas o simplemente específicas (como la hora
+del día).
 
 Durante la realización de los ejercicios de este tema se habrá tenido
 que hacer el
