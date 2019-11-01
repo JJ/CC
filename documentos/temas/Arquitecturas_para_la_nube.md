@@ -64,6 +64,12 @@ aplicación, no resulta adecuada para las aplicaciones modernas ni por
 sus características de escalado ni por el reparto de tareas y datos
 entre diferentes partes de un equipo de desarrollo.
 
+> Este
+> [póster](https://raw.githubusercontent.com/cncf/trailmap/master/CNCF_TrailMap_latest.png) da
+> una visión completa, aunque centrada en herramientas de la Cloud
+> Native Computing Foundation, de todo lo necesario para la creación
+> de aplicaciones nativas en la nube.
+
 En este tema introductorio a la asignatura veremos diferentes
 arquitecturas de software con ejemplos concretos, ejemplos que se
 podrán usar, siquiera de una forma básica, para elegir una aplicación
