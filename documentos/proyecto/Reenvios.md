@@ -11,7 +11,7 @@ Entrega de la práctica
 --------------------------------
 
 1. Edita el fichero correspondiente al hito, cambiando la versión
-   *major* del mismo e indicando claramente (negrita, cursiva o algún
+   *minor* del mismo e indicando claramente (negrita, cursiva o algún
    resalte de la versión) que se trata de un reenvío. Se trata de que, al mirar el
    fichero (puede no ser en el momento del pull request) se puedan
    identificar claramente cuales se han reenviado. La versión tiene
