@@ -16,7 +16,7 @@ Entrega de la práctica
 --------------------------------
 
 1. Edita el fichero correspondiente al hito, cambiando la versión
-   *major* del mismo e indicando claramente (negrita, cursiva o algún
+   *minor* del mismo e indicando claramente (negrita, cursiva o algún
    resalte de la versión) que se trata de un reenvío. Se trata de que, al mirar el
    fichero (puede no ser en el momento del pull request) se puedan
    identificar claramente cuales se han reenviado. La versión tiene
@@ -43,7 +43,7 @@ Valoración
 
 Cada reenvío puntuará sobre un punto menos que la nota máxima,
 multiplicado por el número de semanas desde corrección de la misma. Es
-decir, primera semana, un eenvío, -1 punto; segunda semana, -2 puntos
+decir, primera semana, un eenvío, -0.5 puntos; segunda semana, -1 punto
 y así sucesivamente.
 
 No hay compromiso de fecha de corrección para reenvíos. En general, se
