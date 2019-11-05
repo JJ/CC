@@ -72,7 +72,7 @@ hitos se organizarán de la forma siguiente.
 
 1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos][p1]
 2. [Elección de un proyecto][p2]
-3. [Creación de arquitecturas de servicios web en la nube][p3]
+3. [Creación de tests y configuración de integración continua][p3]
 4. [Provisionamiento de máquinas virtuales][p4]
 5. [Automatización de creación de máquinas virtuales][p5]
 6. [Orquestación de máquinas virtuales][p6]
