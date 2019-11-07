@@ -697,7 +697,7 @@ del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
 crea ese directorio y lo hace accesible a un programa, en este caso
 [un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
 que pasa del formato en texto plano de los logs de
-[Dancer2]http://perldancer.org/) a un formato JSON que puede ser
+[Dancer2](http://perldancer.org/) a un formato JSON que puede ser
 almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
