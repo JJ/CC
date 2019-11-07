@@ -60,7 +60,7 @@ de forma también independiente.
 >cocina. Si me refiero a un táper a continuación, es simplemente por
 >esta razón.
 
-[Docker](https://docker.com) es una herramienta de gestión de
+[Docker](https://www.docker.com) es una herramienta de gestión de
 contenedores que permite no solo instalarlos, sino trabajar con el
 conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan desplegar en diferentes servicios en la nube. La tecnología de
@@ -348,7 +348,7 @@ de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
 [buscar todas las imágenes de un tipo determinado, como Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
 o
-[buscar las imágenes más populares](https://hub.docker.com/explore/). Estas
+[buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image). Estas
 imágenes contienen no solo sistemas operativos *bare bones*, sino
 también otros con una funcionalidad determinada. Por ejemplo, una de
 las imágenes más populares es la de
@@ -531,7 +531,7 @@ está haciendo en un momento determinado.
 Para finalizar, se puede parar usando `stop`.
 
 Hasta ahora el uso de
-docker [no es muy diferente de `lxc`, pero lo interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
+Docker [no es muy diferente de `lxc`, pero lo interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-lxc-tools-the-userspace-lxc-tools) es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/cli/#commit)
 
 ```
@@ -609,7 +609,7 @@ En general, salvo que haya algún problema crítico de prestaciones, es
 mejor usar el driver que se use por defecto; dependerá de la
 implementación de Docker (CE o EE) y de la versión del
 kernel. En
-[esta página](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
+[esta página](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
 indica como configurar el driver que se va a usar. 
 
 Hay una forma de usar contenedores solo para almacenar datos, sin que
@@ -700,7 +700,7 @@ del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
 crea ese directorio y lo hace accesible a un programa, en este caso
 [un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
 que pasa del formato en texto plano de los logs de
-[Dancer2](https://perldancer.org/) a un formato JSON que puede ser
+[Dancer2]http://perldancer.org/) a un formato JSON que puede ser
 almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
@@ -845,7 +845,7 @@ finalmente se ejecuta y sirve como "frontend".
 </div>
 
 > En
-> [este artículo](https://medium.freecodecamp.org/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a) se
+> [este artículo](https://www.freecodecamp.org/news/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a/) se
 > explica cómo se puede montar un entorno de desarrollo con Python y
 > Postgres usando Docker Compose. Montar entornos de desarrollo
 > independientemente del sistema operativo en el que se encuentre el
@@ -1185,7 +1185,7 @@ trabajar con ejecutores remotos tipo Ansible lo que, en caso de que
 haya que trabajar con muchos contenedores, generaría todo tipo de
 inconvenientes. Para eso
 está
-[`docker-machine`](https://blog.docker.com/2015/02/announcing-docker-machine-beta/),
+[`docker-machine`](https://docs.docker.com/machine/overview/),
 que en general sirve 
 para trabajar con gestores de contenedores en la nube o con
 hipervisores locales, aunque solo funciona con unos pocos, y
@@ -1349,7 +1349,7 @@ comprobar imágenes, por ejemplo.
 A dónde ir desde aquí
 -----
 
-Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/6.Docker).
+Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto//6.Docker).
 
 Si te interesa, puedes consultar cómo se [virtualiza el almacenamiento](Almacenamiento) que, en general, es independiente de la
 generación de una máquina virtual. También puedes ir directamente al
