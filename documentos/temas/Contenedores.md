@@ -180,10 +180,6 @@ el estado de docker y demás. Cada una de las órdenes se ejecutará
 también como superusuario, al tener que contactar con este *daemon*
 usando un socket protegido.
 
->Estamos trabajando con docker como superusuario, que es la forma
->más segura de
->hacerlo. [Puedes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
->privilegios de administración.
 
 Con una instalación estándar, 
 
@@ -198,6 +194,9 @@ sudo start docker
 ```
 
 comenzará a ejecutarlo. 
+
+
+>Una vez instalado, [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user). 
 
 Una vez
 instalado, se puede ejecutar el clásico
