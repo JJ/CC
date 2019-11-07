@@ -33,11 +33,11 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 
 1. [Arquitecturas software para la nube][t1]
 2. [Desarrollo basado en pruebas][t2]
-3. [Uso de PaaS][t3]
+7. [Usando contenedores][t7]
 4. [Gestión de configuraciones][t4]
 5. [Creación de infraestructuras virtuales reproducibles][t5]
 6. [Orquestación de máquinas virtuales][t6]
-7. [Usando contenedores][t7]
+
 
 La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub][cc-course-repo].
 
@@ -73,10 +73,11 @@ hitos se organizarán de la forma siguiente.
 1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos][p1]
 2. [Elección de un proyecto][p2]
 3. [Creación de tests y configuración de integración continua][p3]
+7. [Uso de contenedores][p7]
 4. [Provisionamiento de máquinas virtuales][p4]
 5. [Automatización de creación de máquinas virtuales][p5]
 6. [Orquestación de máquinas virtuales][p6]
-7. [Uso de contenedores][p7]
+
 
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
@@ -85,7 +86,7 @@ hitos se organizarán de la forma siguiente.
 [p4]: documentos/proyecto/3.Provisionamiento.md
 [p5]: documentos/proyecto/4.nube-CLI.md
 [p6]: documents/proyecto/5.Orquestacion.md
-[p7]: documentos/proyecto/6.Docker.md
+[p7]: documentos/proyecto/3.Docker.md
 
 Tutorías virtuales y presenciales
 ----
