@@ -163,6 +163,8 @@ instalación de nuestro propio ordenador, se aconseja que se instale
 Con cualquiera de las formas que hayamos elegido para instalar Docker,
 vamos a comenzar desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
 
+> Recientemente (2019), Red Hat ha liberado un gestor "serverless" de contenedores llamado [Podman](https://podman.io/). Podman usa exactamente las mismas órdenes que Docker, pero no necesita un daemon con privilegios para funcionar.
+
 ## Comenzando a ejecutar Docker
 
 Docker consiste, entre otras cosas, en un servicio que se encarga de
@@ -196,7 +198,7 @@ sudo start docker
 comenzará a ejecutarlo. 
 
 
->Una vez instalado, [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user). 
+>Tras instalarlo [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user). 
 
 Una vez
 instalado, se puede ejecutar el clásico
@@ -211,15 +213,10 @@ ellos. El resultado de esta orden será un mensaje que te muestra que
 Docker está funcionando. Sin embargo, veamos por partes qué es lo que
 hace esta orden.
 
-1. Usa `sudo` para ejecutar el cliente de línea de órdenes de
-   Docker. Es más seguro, porque te fuerza a dar la clave de
-   administrador en cada terminal que se ejecute. Puede configurarse
-   docker para que lo pueda usar cualquier usuario, aunque es menos
-   seguro y no lo aconsejamos. 
 1. Busca una *imagen* de Docker llamada `hello-world`. Una imagen es
 equivalente a un *disco de instalación* que contiene los elementos que
 se van a aislar dentro del contenedor. 
-Al no encontrar esa imagen localmente, la descarga del [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+2. Al no encontrar esa imagen localmente, la descarga del [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
 se suben las imágenes de Docker y donde puedes encontrar muchas más;
 más adelante se verán.
 
@@ -231,23 +228,23 @@ Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
 Status: Downloaded newer image for hello-world:latest
 ```
 
-2. Crea un *contenedor* usando como base esa imagen, es decir, el
+3. Crea un *contenedor* usando como base esa imagen, es decir, el
    equivalente a *arrancar* un sistema usando como disco duro esa
    imagen. 
 
-2. Ejecuta un programa llamado `hello` situado *dentro* de esa
+4. Ejecuta un programa llamado `hello` situado *dentro* de esa
    imagen. Ese programa simplemente muestra el mensaje que nos
    aparece. Este es un programa que el autor ha configurado para que
    sea ejecutado cuando se ejecute el comando `run` sobre esa
    imagen. Este programa se está ejecutando *dentro* del contenedor y,
    por tanto, aislado del resto del sistema. 
    
-3. Sale del contenedor y te deposita en la línea de órdenes. El
+5. Sale del contenedor y te deposita en la línea de órdenes. El
    contenedor deja de ejecutarse. La imagen se queda almacenada
    localmente, para la próxima vez que se vaya a ejecutar. 
 
 De los pasos anteriores habrás deducido que se ha descargado una
-imagen cuyo nombre es `hello world` y se ha creado un contenedor, en
+imagen cuyo nombre es `hello-world` y se ha creado un contenedor, en
 principio sin nombre. Puedes listar las imágenes que tienes con 
 
 ```
