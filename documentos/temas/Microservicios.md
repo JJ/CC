@@ -31,12 +31,10 @@ tanto de software como de hardware y ponerlos en práctica.
 
 ## Introducción
 
->Esta [presentación](https://jj.github.io/pispaas/#/) es un resumen del concepto de Plataforma como Servicio
->(PaaS) y alguna cosa adicional que no está incluida en este tema pero que conviene conocer de todas formas.
-
-En general, un microservicio será un decorador o fachada que se
+En general, un microservicio consistirá en una serie de funciones que
+actuarán como decorador o fachada que se
 añadirá a una clase o módulo para acceder a esa funcionalidad a través
-de Internet en el contexto de un grupo de microservicios desplegados
+de Internet; esto se hará en el contexto de un grupo de microservicios desplegados
 dentro de una aplicación. Un microservicio es, en sí, también una
 funcionalidad que, como tal, habrá que testear de forma específica.
 
