@@ -61,9 +61,9 @@ Metodologías
 como
 [diseño dirigido por el dominio](https://devexperto.com/domain-driven-design-1/) nos
 enseñan a dividir un problema en partes y tomar cada una de esas
-partes para convertirla en un microservicio. Los difetentes
+partes para convertirla en un microservicio. Los diferentes
 microservicios trabajarán con diferentes estructuras de datos y se
-comunicarán entre sí usando diferntes interfaces; en general será o
+comunicarán entre sí usando diferentes interfaces; en general será o
 peticiones REST, o sockets, o sistemas de mensajería tales como
 RabbitMQ o sistemas de mensajería específicos.
 
@@ -129,7 +129,7 @@ console.log('Server running at http://127.0.0.1:'+port+'/');
 Para empezar, `express` nos evita todas las molestias de tener que
 procesar nosotros el URL: directamente escribimos una
 función para cada respuesta que queramos tener, lo que facilita mucho la
-programación. Las órdenes  de expressreflejan directamente las órdenes de
+programación. Las órdenes de `express` reflejan directamente las órdenes de
 HTTP a las que queremos responder, en este caso `get` y por
 otro lado se pone directamente la función para cada una de ellas. Dentro
 de cada función de respuesta podemos procesar las órdenes que
@@ -250,7 +250,7 @@ incluya variables como en el caso anterior.
 
 </div>
 
-El proceso será más o menos similar en otros lenguages. Vamos a
+El proceso será más o menos similar en otros lenguajes. Vamos a
 llevarlo a cabo en Python diferenciando de forma explícita la clase y
 el servicio web construido sobre ella. Empezaremos con
 [esta clase, `HitosIV`](https://github.com/JJ/tests-python/blob/master/HitosIV/core.py),
@@ -451,7 +451,7 @@ Crear pruebas para las diferentes rutas de la aplicación.
 
 </div>
 
-## Microervicios en producción.
+## Microservicios en producción.
 
 En general, todos los microframeworks tienen un servidor web que es
 usable principalmente para desarrollo. Casi ninguno te aconseja que se
@@ -470,7 +470,7 @@ En la base, sin embargo, muchos lenguajes de programación usan
 simplemente **gestores de procesos** que son capaces de ejecutar
 varias instancias de un servidor a la vez. Por ejemplo, en node uno de
 los más populares es [`pm2`](http://pm2.keymetrics.io/), un gestor de
-proesos que permite arrancar, rearrancar y gestionas las diferentes
+procesos que permite arrancar, rearrancar y gestionas las diferentes
 instancias de un proceso.
 
 Si lo aplicamos al programa de gestión de porras anterior, podemos
@@ -501,7 +501,7 @@ En lenguajes como este, los gestores de de procesos tendrán además un
 interfaz WSGI para conectar directamente con las
 funciones. Generalmente, el interfaz es un objeto creado
 automáticamente por el microframework; en otros casos tendremos que
-programarlo específicamente. Estos programas hacen más enfasis en el
+programarlo específicamente. Estos programas hacen más énfasis en el
 hecho de que se tratan de un servidor HTTP con WSGI que con el hecho
 de que puedan gestionar diferentes tareas, lo que en todo caso se
 puede hacer con una capa por encima.  Por ejemplo, podemos ejecutar el
@@ -509,7 +509,9 @@ programa
 [anterior](https://github.com/JJ/tests-python/blob/master/HitosIV/hugitos.py)
 usando [Green Unicorn](https://gunicorn.org/)
 
-    gunicorn HitosIV.hugitos:__hug_wsgi__ --log-file -
+```
+gunicorn HitosIV.hugitos:__hug_wsgi__ --log-file -
+```
 
 (desde el directorio principal). A `gunicorn` se le pasa el nombre del
 módulo que va a ejecutar, y, separado por dos puntos, el nombre del
@@ -528,7 +530,9 @@ ahí.
 
 También podemos ejecutar varios *workers* a la vez:
 
-    gunicorn -w 4 -b 0.0.0.0:31415 HitosIV.hugitos:__hug_wsgi__ --log-file -
+```
+gunicorn -w 4 -b 0.0.0.0:31415 HitosIV.hugitos:__hug_wsgi__ --log-file -
+```
 
 Y a la vez hacer un *binding* a un puerto y un rango de direcciones
 específico, en este caso 4 workers y el puerto 31415. Como este puerto
@@ -546,12 +550,16 @@ esté escrita también en Python. Esta herramienta puede ser `fabric`
 (de la que se hablará más adelante), pero mientras tanto pm2 es
 perfectamente adecuada para ello.
 
-    pm2 start 'gunicorn -w 4 -b 0.0.0.0:31415 HitosIV.hugitos:__hug_wsgi__ --log-file -'
+```
+pm2 start 'gunicorn -w 4 -b 0.0.0.0:31415 HitosIV.hugitos:__hug_wsgi__ --log-file -'
+```
 
 Aunque, de hecho, se puede ejecutar directamente y se encargará de
 gestionar los procesos
 
-    pm2 start -i 4 HitosIV/hugitos.py
+```
+pm2 start -i 4 HitosIV/hugitos.py
+```
 
 En resumen: `pm2` es una herramienta excelente, que merece la pena
 usar con cualquier programa que necesite ejecutar varias instancias.
@@ -610,17 +618,21 @@ gulp.task('stop', shell.task(['pm2 stop Porra' ]));
 
 [`gulp`](https://gulpjs.com/) es un programa para automatizar el
 workflow que funciona de forma asíncrona y que permite definir con
-código las tareas a realizar. En este caso sólo tres tareas: test,
+código las tareas a realizar. En este caso solo tres tareas: test,
 start y stop, y para ello usamos una serie de *plug-ins* que integran
 gulp con utilidades como `mocha` o el shell.
 
 Usando esto, con
 
-    gulp start &
+```
+gulp start &
+```
 
 se puede arrancar el programa, y con
 
-    gulp stop
+```
+gulp stop
+```
 
 se detiene, invocando en los dos casos a `pm2`, en el primer caso
 usando el API y en el segundo usando directamente una orden lanzada en
