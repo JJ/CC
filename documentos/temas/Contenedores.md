@@ -3,14 +3,14 @@ layout: index
 
 apuntes: T
 
-prev: Orquestacion
+prev: Microservicios
 ---
 
 Contenedores y cómo usarlos
 ===
 
 <!--@
-prev: Orquestacion
+prev: Microservicios
 -->
 
 <div class="objetivos" markdown="1">
@@ -68,7 +68,7 @@ de forma también independiente.
 >cocina. Si me refiero a un táper a continuación, es simplemente por
 >esta razón.
 
-[Docker](https://docker.com) es una herramienta de gestión de
+[Docker](https://www.docker.com) es una herramienta de gestión de
 contenedores que permite no solo instalarlos, sino trabajar con el
 conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan desplegar en diferentes servicios en la nube. La tecnología de
@@ -171,6 +171,8 @@ instalación de nuestro propio ordenador, se aconseja que se instale
 Con cualquiera de las formas que hayamos elegido para instalar Docker,
 vamos a comenzar desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
 
+> Recientemente (2019), Red Hat ha liberado un gestor "serverless" de contenedores llamado [Podman](https://podman.io/). Podman usa exactamente las mismas órdenes que Docker, pero no necesita un daemon con privilegios para funcionar.
+
 ## Comenzando a ejecutar Docker
 
 Docker consiste, entre otras cosas, en un servicio que se encarga de
@@ -188,10 +190,6 @@ el estado de docker y demás. Cada una de las órdenes se ejecutará
 también como superusuario, al tener que contactar con este *daemon*
 usando un socket protegido.
 
->Estamos trabajando con docker como superusuario, que es la forma
->más segura de
->hacerlo. [Puedes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user) sin
->privilegios de administración.
 
 Con una instalación estándar, 
 
@@ -207,11 +205,14 @@ sudo start docker
 
 comenzará a ejecutarlo. 
 
+
+>Tras instalarlo [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user). 
+
 Una vez
 instalado, se puede ejecutar el clásico
 
 ```
-sudo docker run hello-world
+docker run hello-world
 ```
 
 Generalmente, vamos a usar Docker usando su herramienta de la línea de
@@ -220,15 +221,10 @@ ellos. El resultado de esta orden será un mensaje que te muestra que
 Docker está funcionando. Sin embargo, veamos por partes qué es lo que
 hace esta orden.
 
-1. Usa `sudo` para ejecutar el cliente de línea de órdenes de
-   Docker. Es más seguro, porque te fuerza a dar la clave de
-   administrador en cada terminal que se ejecute. Puede configurarse
-   docker para que lo pueda usar cualquier usuario, aunque es menos
-   seguro y no lo aconsejamos. 
 1. Busca una *imagen* de Docker llamada `hello-world`. Una imagen es
 equivalente a un *disco de instalación* que contiene los elementos que
 se van a aislar dentro del contenedor. 
-Al no encontrar esa imagen localmente, la descarga del [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+2. Al no encontrar esa imagen localmente, la descarga del [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
 se suben las imágenes de Docker y donde puedes encontrar muchas más;
 más adelante se verán.
 
@@ -240,27 +236,27 @@ Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
 Status: Downloaded newer image for hello-world:latest
 ```
 
-2. Crea un *contenedor* usando como base esa imagen, es decir, el
+3. Crea un *contenedor* usando como base esa imagen, es decir, el
    equivalente a *arrancar* un sistema usando como disco duro esa
    imagen. 
 
-2. Ejecuta un programa llamado `hello` situado *dentro* de esa
+4. Ejecuta un programa llamado `hello` situado *dentro* de esa
    imagen. Ese programa simplemente muestra el mensaje que nos
    aparece. Este es un programa que el autor ha configurado para que
    sea ejecutado cuando se ejecute el comando `run` sobre esa
    imagen. Este programa se está ejecutando *dentro* del contenedor y,
    por tanto, aislado del resto del sistema. 
    
-3. Sale del contenedor y te deposita en la línea de órdenes. El
+5. Sale del contenedor y te deposita en la línea de órdenes. El
    contenedor deja de ejecutarse. La imagen se queda almacenada
    localmente, para la próxima vez que se vaya a ejecutar. 
 
 De los pasos anteriores habrás deducido que se ha descargado una
-imagen cuyo nombre es `hello world` y se ha creado un contenedor, en
+imagen cuyo nombre es `hello-world` y se ha creado un contenedor, en
 principio sin nombre. Puedes listar las imágenes que tienes con 
 
 ```
-sudo docker images
+docker images
 ```
 
 que, en principio, solo listará una llamada `hello-world` en la
@@ -268,7 +264,7 @@ segunda columna, etiquetada IMAGES. Pero esto incluye solo las
 imágenes en sí. Para listas los contenedores que tienes, 
 
 ```
-sudo docker ps -a
+docker ps -a
 ```
 
 listará los contenedores que efectivamente se han creado, por ejemplo:
@@ -285,7 +281,7 @@ ejecutemos la imagen crearemos un contenedor nuevo, por lo que
 conviene que recordemos ejecutarlo, siempre que no vayamos a necesitarlo, con
 
 ```
-sudo docker run --rm hello-world
+docker run --rm hello-world
 ```
 
 que borrará el contenedor creado una vez ejecutada la orden. Así se
@@ -301,7 +297,7 @@ de Linux y de forma efímera. De hecho, como tal ejecutable, se le
 pueden pasar argumentos por línea de órdenes
 
 ```bash
-sudo  sudo docker run --rm jjmerelo/docker-daleksay -f smiling-octopus Uso argumentos, ea
+docker run --rm jjmerelo/docker-daleksay -f smiling-octopus Uso argumentos, ea
 ```
 
 que usa
@@ -330,7 +326,7 @@ para probar cosas sobre contenedores cuya creación se automatizará a
 continuación. Comencemos por descargar la imagen.
 
 ```
-sudo docker pull alpine
+docker pull alpine
 ```
 
 Esta orden descarga una imagen de
@@ -340,7 +336,7 @@ ha visto antes, las imágenes que hay disponibles en el sistema se
 listan con 
 
 ```
-sudo docker images
+docker images
 ```
 
 Si acabas de hacer el pull anterior, aparecerá esa y otras que hayas
@@ -357,7 +353,7 @@ de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
 [buscar todas las imágenes de un tipo determinado, como Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
 o
-[buscar las imágenes más populares](https://hub.docker.com/explore/). Estas
+[buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image). Estas
 imágenes contienen no solo sistemas operativos *bare bones*, sino
 también otros con una funcionalidad determinada. Por ejemplo, una de
 las imágenes más populares es la de
@@ -382,7 +378,7 @@ y que, en realidad, no tenemos una máquina virtual *diferente*.
 Podemos ejecutar, por ejemplo, un listado de los directorios
 
 ```
-sudo docker run --rm alpine ls
+docker run --rm alpine ls
 ```
 
 Tras el sudo, hace falta el comando docker; `run` es el comando de docker que
@@ -400,7 +396,7 @@ llamado `ash` y que está instalado en `sh`,
 por lo que podremos *meternos* en la misma ejecutando
 
 ```
-sudo docker run -it alpine sh
+docker run -it alpine sh
 ``` 
 
 Dentro de ella podemos trabajar como un consola cualquiera, pero
@@ -442,7 +438,7 @@ La máquina instalada la podemos arrancar usando como ID el nombre de
 la imagen de la que procede, pero cada
 táper tiene un id único que se puede ver con
 
-	sudo docker ps -a=false
+	docker ps -a=false
 
 siempre que se esté ejecutando, obteniendo algo así:
 
@@ -455,7 +451,7 @@ El primer número es el ID de la máquina que podemos usar también para
 referirnos a ella en otros comandos. También se puede usar
 
 ```
-sudo docker images
+docker images
 ```
 
 Que, una vez más, devolverá algo así:
@@ -473,7 +469,7 @@ trabajar en una u otra máquina igual que antes hemos usado el nombre
 de la imagen:
 
 ```
-sudo docker run b750fe79269d du
+docker run b750fe79269d du
 ```
 
 ## Cómo crear imágenes docker interactivamente.
@@ -481,7 +477,7 @@ sudo docker run b750fe79269d du
 En vez de ejecutar las cosas una a una podemos directamente [ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
 
 ```
-sudo docker run -i -t ubuntu /bin/bash
+docker run -i -t ubuntu /bin/bash
 ```
 
 que [indica](https://docs.docker.com/engine/reference/commandline/cli/) que
@@ -498,7 +494,7 @@ no tendría mucho sentido, o al menos tanto sentido como *conectarse* a
 un proceso que está ejecutándose. De hecho, una segunda ejecución del
 mismo comando 
 
-	sudo docker run -it ubuntu /bin/bash
+	docker run -it ubuntu /bin/bash
 
 (donde hemos abreviado las opciones `-i` y `-t` juntándolas) crearía, a partir de
 la imagen de Ubuntu, un nuevo contenedor. 
@@ -506,7 +502,7 @@ la imagen de Ubuntu, un nuevo contenedor.
 En cualquiera de los casos, cuando se ejecuta `exit` o `Control-D`
 para salir del contenedor, este deja de ejecutarse. Ejecutar
 
-	sudo docker ps -l
+	docker ps -l
 	
 mostrará  que ese contenedor está `exited`, es decir, que ha salido,
 pero también mostrará en la primera columna el ID del
@@ -515,23 +511,23 @@ sí se arrancará el entorno de ejecución; si queremos volver a ejecutar
 algo como la línea de órdenes, tendremos que arrancarlo y a
 continuación efectivamente ejecutar algo como el *shell*
 
-	sudo docker start 6dc8ddb51cd6 && sudo docker exec -it 6dc8ddb51cd6 sh
+	docker start 6dc8ddb51cd6 && docker exec -it 6dc8ddb51cd6 sh
 	
 Sin embargo, en este caso simplemente salir del shell no dejará de
 ejecutar el contenedor, por lo que habrá que pararlo
 
-	sudo docker stop 6dc8ddb51cd6
+	docker stop 6dc8ddb51cd6
 
 y, a continuación, si no se va a usar más el contenedor, borrarlo
 
-	sudo docker rm 6dc8ddb51cd6
+	docker rm 6dc8ddb51cd6
 
 Las imágenes que se han creado se pueden examinar con `inspect`, lo
 que nos da información sobre qué metadatos se le han asignado por
 omisión, incluyendo una IP. 
 
 ```
-sudo docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
+docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
 ```
 
 te dirá toda la información sobre la misma, incluyendo qué es lo que
@@ -540,11 +536,11 @@ está haciendo en un momento determinado.
 Para finalizar, se puede parar usando `stop`.
 
 Hasta ahora el uso de
-docker [no es muy diferente de `lxc`, pero lo interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-just-plain-lxc) es que se puede guardar el estado de un contenedor tal
+Docker [no es muy diferente de `lxc`, pero lo interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-lxc-tools-the-userspace-lxc-tools) es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/cli/#commit)
 
 ```
-sudo docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
+docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
 ```
 
 que guardará el estado del contenedor tal como está en ese
@@ -552,7 +548,7 @@ momento, convirtiéndolo en una nueva imagen, a la que podemos acceder
 si usamos
 
 ```
-sudo docker images 
+docker images 
 ```
 
 Este `commit` es equivalente al que se hace en un
@@ -571,7 +567,7 @@ por un SHA específico, en el sistema de ficheros de Docker. Por
 ejemplo, si trabajamos con una imagen cualquiera y hacemos commit de
 esta forma 
 
-	sudo docker commit 3465c7cef2ba jjmerelo/bbtest
+	docker commit 3465c7cef2ba jjmerelo/bbtest
 	
 creamos una nueva imagen, que vamos a llamar `jjmerelo/bbtest`. Esta
 imagen contendrá, sobre la capa original, la capa adicional que hemos
@@ -618,7 +614,7 @@ En general, salvo que haya algún problema crítico de prestaciones, es
 mejor usar el driver que se use por defecto; dependerá de la
 implementación de Docker (CE o EE) y de la versión del
 kernel. En
-[esta página](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
+[esta página](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
 indica como configurar el driver que se va a usar. 
 
 Hay una forma de usar contenedores solo para almacenar datos, sin que
@@ -628,7 +624,7 @@ llamados
 crea usando `volume create`
 
 ```
-sudo docker volume create log
+docker volume create log
 ```
 
 Igual que un contenedor Docker es algo así como un proceso con
@@ -645,9 +641,9 @@ diferentes sistemas operativos, de forma que podamos probar una
 aplicación determinada en los mismos. Hagamos
 
 ```
-sudo docker volume create benchmark
-sudo docker pull fedora
-sudo docker run -it --rm -v benchmark:/app fedora /bin/bash
+docker volume create benchmark
+docker pull fedora
+docker run -it --rm -v benchmark:/app fedora /bin/bash
 ```
 
 Una vez dentro, se puede crear un minibenchmark, que diga por ejemplo
@@ -656,11 +652,11 @@ hecho eso, puedes ejecutar ese programa en cualquier distro, de esta
 forma:
 
 ```
-sudo docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh    
+docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh    
   87631   81506 1240789
-sudo docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
+docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
     72284     67414    974042
-sudo docker run -it --rm -v benchmark:/app busybox sh /app/bm.sh
+docker run -it --rm -v benchmark:/app busybox sh /app/bm.sh
     72141     67339    972158
 ``` 
 > Incidentalmente, se observa que de las tres imágenes de
@@ -676,7 +672,7 @@ contenedores con algún tipo de aplicación, por tanto. Por ejemplo con
 de la forma siguiente
 
 ```
-sudo docker run -it --rm -v log:/log -p5000:5000 jjmerelo/p5hitos
+docker run -it --rm -v log:/log -p5000:5000 jjmerelo/p5hitos
 ```
 
 > Se tendrá que haber construido antes el contenedor Docker, claro.
@@ -700,7 +696,7 @@ se puede usar simultáneamente por parte de otro contenedor,
 *montándolo* de esta forma:
 
 ```
-sudo docker run -it --rm -v log:/log jjmerelo/checklog
+docker run -it --rm -v log:/log jjmerelo/checklog
 ```
 
 Una vez más, el volumen de docker `log` se monta en el directorio
@@ -709,7 +705,7 @@ del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
 crea ese directorio y lo hace accesible a un programa, en este caso
 [un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
 que pasa del formato en texto plano de los logs de
-[Dancer2](https://perldancer.org/) a un formato JSON que puede ser
+[Dancer2](http://perldancer.org/) a un formato JSON que puede ser
 almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
@@ -743,7 +739,7 @@ ejecutarlos. En realidad es igual lo que se esté ejecutando, por lo
 que generalmente se ejecutan de esta forma:
 
 ```
-sudo docker run -d -it --rm jjmerelo/datos sh
+docker run -d -it --rm jjmerelo/datos sh
 ```
 
 Esta orden escribe un número hexa en la consola, que habrá que tener
@@ -756,7 +752,7 @@ cargar ese fichero de configuración desde diferentes contenedores, de
 esta forma:
 
 ```
-sudo docker run -it --rm --volumes-from 8d1e385 jjmerelo/p5hitos
+docker run -it --rm --volumes-from 8d1e385 jjmerelo/p5hitos
 ```
 
 `--volumes-from` usa el ID que se haya asignado al contenedor
@@ -768,7 +764,7 @@ el mismo contenido. Se puede montar también el contenedor en modo de
 solo lectura:
 
 ```
-sudo docker run -it --rm --volumes-from 8d1e385:ro jjmerelo/p5hitos
+docker run -it --rm --volumes-from 8d1e385:ro jjmerelo/p5hitos
 ```
 
 con la etiqueta `ro` añadida al final del ID del contenedor que se
@@ -854,7 +850,7 @@ finalmente se ejecuta y sirve como "frontend".
 </div>
 
 > En
-> [este artículo](https://medium.freecodecamp.org/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a) se
+> [este artículo](https://www.freecodecamp.org/news/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a/) se
 > explica cómo se puede montar un entorno de desarrollo con Python y
 > Postgres usando Docker Compose. Montar entornos de desarrollo
 > independientemente del sistema operativo en el que se encuentre el
@@ -1028,7 +1024,7 @@ se va a usar para responder al usuario.
 Para crear una imagen a partir de esto se usa
 
 ```
-sudo docker build -t jjmerelo/bobot .
+docker build -t jjmerelo/bobot .
 ```
 
 (o el nick que tengas en GitHub). El `-t` es, como es habitual, para
@@ -1039,7 +1035,7 @@ línea. Una vez hecho esto, si funciona la construcción, se
 podrá ejecutar con
 
 ```
-sudo docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot 
+docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot 
 ```
 
 donde --env se usa para pasar la variable de entorno de Telegram que
@@ -1049,7 +1045,7 @@ Si queremos simplemente examinar el contenedor, podemos entrar en él
 de la forma habitual 
 
 ```
-sudo docker run -it jjmerelo/bot sh
+docker run -it jjmerelo/bot sh
 ```
 
 para entrar directamente en la línea de órdenes. El repositorio está
@@ -1128,7 +1124,7 @@ que añade al `PATH` el directorio donde se encuentra. Con estas dos
 características se puede ejecutar el contenedor con:
 
 ```
-sudo docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
 ```
 
 Si tuviéramos perl6 instalado en local, se podría escribir
@@ -1147,7 +1143,7 @@ de ejecución continua, se puede usar directamente `CMD`. En este caso,
 `ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando 
 
 ```
-sudo docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
+docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
 ```
 
 que accederá directamente a la línea de órdenes, en este caso
@@ -1158,7 +1154,7 @@ través de `VOLUME`, hemos creado un directorio sobre el que podemos
 *montar* un directorio externo, tal como hacemos aquí:
 
 ```
-sudo docker run --rm -t -v `pwd`:/app  \
+docker run --rm -t -v `pwd`:/app  \
 	    jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
 ``` 
 
@@ -1194,7 +1190,7 @@ trabajar con ejecutores remotos tipo Ansible lo que, en caso de que
 haya que trabajar con muchos contenedores, generaría todo tipo de
 inconvenientes. Para eso
 está
-[`docker-machine`](https://blog.docker.com/2015/02/announcing-docker-machine-beta/),
+[`docker-machine`](https://docs.docker.com/machine/overview/),
 que en general sirve 
 para trabajar con gestores de contenedores en la nube o con
 hipervisores locales, aunque solo funciona con unos pocos, y
@@ -1209,7 +1205,7 @@ entornos remotos.
 
 Vamos a trabajar con VirtualBox localmente. Ejecutando 
 
-	sudo docker-machine create --driver=virtualbox maquinilla
+	docker-machine create --driver=virtualbox maquinilla
 	
 se le indica a `docker-machine` que vamos a crear una máquina llamada
 `maquinilla` y que vamos a usar el driver de VirtualBox. Esta orden,
@@ -1223,7 +1219,7 @@ Con `ls` listamos las máquinas virtuales que hemos gestionado, así
 como alguna información adicional: 
 
 ~~~
-$ sudo docker-machine ls                                                                                
+$ docker-machine ls                                                                                
 NAME     ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
 maquinilla   -    virtualbox   Running   tcp://192.168.99.104:2376        v1.12.5   
 vbox-test    -    virtualbox   Running   tcp://192.168.99.100:2376        v1.12.5   
@@ -1234,7 +1230,7 @@ a usar para conectarnos a ellas directamente o desde nuestro cliente
 docker. Por ejemplo, hacer `ssh`
 
 ~~~
-$ sudo docker-machine ssh maquinilla
+$ docker-machine ssh maquinilla
                         ##         .
                   ## ## ##        ==
                ## ## ## ## ##    ===
@@ -1260,7 +1256,7 @@ para desplegar y demás.
 Si queremos usarlo más en serio, desde nuestra línea de órdenes,
 tenemos que ejecutar 
 
-	sudo docker-machine env maquinilla
+	docker-machine env maquinilla
 	
 Que devolverá algo así:
 
@@ -1276,7 +1272,7 @@ export DOCKER_MACHINE_NAME="maquinilla"
 Si estamos ejecutando desde superusuario, habrá que ejecutar
 
 ```
-eval $(sudo docker-machine env maquinilla)
+eval $(docker-machine env maquinilla)
 ```
 
 Esa orden exporta las variables anteriores, que le indicarán a docker
@@ -1324,7 +1320,7 @@ de llegar a eso, conviene recordar la opción `--rm` para ejecutar
 contenedor y lo elimina cuando se sale del mismo:
 
 ~~~
-sudo docker run --rm -t -v
+docker run --rm -t -v
     /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test
       jjmerelo/test-perl6 /test/t
 ~~~
@@ -1358,7 +1354,7 @@ comprobar imágenes, por ejemplo.
 A dónde ir desde aquí
 -----
 
-Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/6.Docker).
+Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto//6.Docker).
 
 Si te interesa, puedes consultar cómo se [virtualiza el almacenamiento](Almacenamiento) que, en general, es independiente de la
 generación de una máquina virtual. También puedes ir directamente al
