@@ -574,7 +574,21 @@ ejemplo en la sección anterior.
 </div>
 
 
-> Adicionalmente, la herramienta `systemd` que es común en todos los sistemas Linux actuales se puede usar también [para gestionar procesos](http://alesnosek.com/blog/2016/12/04/controlling-a-multi-service-application-with-systemd/). Como desventaja, aparte de no ser portable a diferentes sistemas operativos, es que hacen falta ficheros de configuración específicos por cada uno de los servicios.
+> Adicionalmente, la herramienta `systemd` que es común en todos los
+> sistemas Linux actuales se puede usar
+> también
+> [para gestionar procesos](http://alesnosek.com/blog/2016/12/04/controlling-a-multi-service-application-with-systemd/). Como
+> desventaja, aparte de no ser portable a diferentes sistemas
+> operativos, es que hacen falta ficheros de configuración específicos
+> por cada uno de los servicios.
+
+Siempre conviene usar la herramienta de gestión de procesos que use el
+mismo lenguaje de programación que uno está usando en el
+microservicio. Pero teniendo en cuenta que en muchos casos se usan
+varios microservicios programados en lenguajes diferentes, y que
+muchos lenguajes de programación no tienen tal tipo de herramienta (o
+está irremediablemente obsoleta) lo mejor es optar por herramientas
+estándar como al anterior u otras como [`monit`](https://mmonit.com/monit/).
 
 ### Arrancando desde una herramienta común
 
@@ -583,7 +597,7 @@ a cabo los tests y arrancar un servicio web, resulta bastante
 conveniente usar una sola herramienta para que una orden +
 `test|start|stop` sea capaz de gestionarlo y de una forma más o menos
 estándar. Normalmente las herramientas de construcción o gestores de
-tareas como gulp, babel, yarn o grunt pueden encargarse de este tipo de cosas.
+tareas como gulp, babel, `yarn` o `grunt` pueden encargarse de este tipo de cosas.
 
 Por ejemplo, podemos usar `gulp` con el servidor de porras anterior:
 
