@@ -259,7 +259,7 @@ un fichero JSON que estará en otro directorio; esto se hace en el
 fichero `__init__.py` que está en el mismo directorio.
 
 Sobre esa clase vamos a construir un microservicio basado en el
-microframerowk [`hug`](https://hug.rest), un microframework
+microframework [`hug`](https://hug.rest), un microframework
 alternativo al más célebre, que hace su labor
 perfectamente. [Esta](https://github.com/JJ/tests-python/blob/master/HitosIV/hugitos.py)
 es la clase, y también el programa principal, que la implementa:
