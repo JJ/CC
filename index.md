@@ -38,6 +38,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 
 1. [Arquitecturas software para la nube][t1]
 2. [Desarrollo basado en pruebas][t2]
+3. [Microservicios][t3]
 7. [Usando contenedores][t7]
 4. [Gestión de configuraciones][t4]
 5. [Creación de infraestructuras virtuales reproducibles][t5]
@@ -49,7 +50,7 @@ La temporización de la asignatura y la interacción entre alumnos y con los pro
 [cc-general-repo]: http://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
 [t2]: documentos/temas/Desarrollo_basado_en_pruebas.md
-[t3]: documentos/temas/PaaS.md
+[t3]: documentos/temas/Microservicios.md
 [t4]: documentos/temas/Provision.md
 [t5]: documentos/temas/Automatizando_cloud.md
 [t6]: documentos/temas/Orquestacion.md
