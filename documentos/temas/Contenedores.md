@@ -1346,7 +1346,7 @@ comprobar imágenes, por ejemplo.
 A dónde ir desde aquí
 -----
 
-Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto//6.Docker).
+Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/3.Docker).
 
 Si te interesa, puedes consultar cómo se [virtualiza el almacenamiento](Almacenamiento) que, en general, es independiente de la
 generación de una máquina virtual. También puedes ir directamente al
