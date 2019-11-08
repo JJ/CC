@@ -7,7 +7,7 @@ Material docente para Cloud Computing
 
 La asignatura se imparte en el curso 2019-2020 los lunes de 16:30 a
 18:30 en la 1.6 y de 18:30 a 20:30 en el aula 3.5 y los jueves de
-17:30 a 19:30 en el aula 2.1. Tendrás que llevar tu portátil a todas
+19:30 a 21:30 en el aula 2.1. Tendrás que llevar tu portátil a todas
 las clases. Se usará [GitHub][github-website] para los ejercicios y el
 proyecto; también para los objetivos semanales, que estarán (año
 2019-20) en [este repositorio][cc-course-repo].

@@ -2,7 +2,7 @@ Contenedores y cómo usarlos
 ===
 
 <!--@
-prev: Orquestacion
+prev: Microservicios
 -->
 
 <div class="objetivos" markdown="1">
