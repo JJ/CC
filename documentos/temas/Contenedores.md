@@ -41,7 +41,7 @@ Introducción a Docker
 
 > Previamente a este tema conviene consultar la historia del
 > aislamiento de aplicaciones en [este capítulo](Aislamiento.md), que
-> se ha eliminado del temario eventualmente.
+> se ha eliminado del temario en esta edición..
 
 Docker es una herramienta que permite *aislar* aplicaciones, creando
 *contenedores* que pueden almacenarse de forma permanente para
