@@ -355,8 +355,9 @@ utilidades externas y que se pueden usar como imagen base.
 
 <div class='ejercicios' markdown='1'>
 
-Comparar el tamaño de las imágenes de diferentes sistemas operativos
-base, Fedora, CentOS y Alpine, por ejemplo. 
+Tomar algún programa simple, "Hola mundo" impreso desde el intérprete
+de línea de órdenes, y comparar el tamaño de las imágenes de diferentes sistemas operativos
+base, Fedora, CentOS y Alpine, por ejemplo.
 
 </div>
 
