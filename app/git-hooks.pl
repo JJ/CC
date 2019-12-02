@@ -57,7 +57,7 @@ run_hook($0, @ARGV);
 
 sub run_command {
   my $git = shift;
-  my $command = shift;
+  my $command = @_;
   say "git $git command $command";
   my $run_command = $git->command( $command );
   my $output = $run_command->final_output;
