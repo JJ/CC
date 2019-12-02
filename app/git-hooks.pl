@@ -15,10 +15,10 @@ EOT
 POST_COMMIT {
   my ($git) = @_;
   my $branch =  run_command($git, qw/rev-parse --abbrev-ref HEAD/);
-  my $commit_msg = run_command($git, qw/log -1 --pretty=%B/ );
-  say "$branch $commit_msg";
   if ( $branch =~ /master/ ) {
+    my $commit_msg = run_command($git, qw/log -1 --pretty=%B/ );
     my $changed = run_command($git, qw/show --name-status/);
+    say "Changed $changed";
     my @changed_files = ($changed =~ /\s\w\s+(\S+)/g);
     my @mds = grep ( /\.md/, @changed_files );
     #Now change branch and process
