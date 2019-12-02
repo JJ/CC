@@ -15,12 +15,11 @@ EOT
 POST_COMMIT {
   my ($git) = @_;
   my $branch =  run_command($git, qw/rev-parse --abbrev-ref HEAD/);
-  say "Branch $branch";
   if ( $branch =~ /master/ ) {
     my $commit_msg = run_command($git, qw/log -1 --pretty=%B/ );
     my $changed = run_command($git, qw/show --name-status/);
-    say "Changed $changed";
     my @changed_files = ($changed =~ /\s\w\s+(\S+)/g);
+    say "Files @changed_files";
     my @mds = grep ( /\.md/, @changed_files );
     #Now change branch and process
     #Inspired by http://stackoverflow.com/questions/15214762/how-can-i-sync-documentation-with-github-pages
