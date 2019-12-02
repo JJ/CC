@@ -15,6 +15,7 @@ EOT
 POST_COMMIT {
   my ($git) = @_;
   my $branch =  run_command($git, qw/rev-parse --abbrev-ref HEAD/);
+  say "Branch $branch";
   if ( $branch =~ /master/ ) {
     my $commit_msg = run_command($git, qw/log -1 --pretty=%B/ );
     my $changed = run_command($git, qw/show --name-status/);
