@@ -19,7 +19,6 @@ POST_COMMIT {
     my $commit_msg = run_command($git, qw/log -1 --pretty=%B/ );
     my $changed = run_command($git, qw/show --name-status/);
     my @changed_files = ($changed =~ /\s\w\s+(\S+)/g);
-    say "Files @changed_files";
     my @mds = grep ( /\.md/, @changed_files );
     #Now change branch and process
     #Inspired by http://stackoverflow.com/questions/15214762/how-can-i-sync-documentation-with-github-pages

@@ -42,7 +42,9 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 6. [Orquestación de máquinas virtuales][t6]
 
 
-La temporización de la asignatura y la interacción entre estudiantes y con los profesores están en [un repositorio de GitHub][cc-course-repo].
+La temporización de la asignatura y la interacción entre estudiantes y
+con los profesores están en 
+[un repositorio de GitHub][cc-course-repo]. 
 
 [cc-general-repo]: http://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
@@ -95,13 +97,13 @@ Tutorías virtuales y presenciales
 ----
 
 Las tutorías virtuales se realizarán preferiblemente a través del
-grupo de Telegram que se comparte con los estudiantes de otros años de
+grupo de Telegram, que se comparte con los estudiantes de otros años de
 la misma asignatura. Se aconseja a todo estudiante matriculado que
 solicite una tutoría al principio de curso para recibir orientación
 sobre la misma. Las tutorías presenciales se llevarán a cabo lunes,
 miércoles y viernes por la mañana fuera de las horas de clase, y
-excepcionalmente y bajo cita previa, martes y jueves, inclusive jueves
-por la tarde de 19:30 a 20:30 en la 3.1.
+excepcionalmente y bajo cita previa, lunes y jueves de 19:30 a 20:30
+en la 2.1 y 3.5.
 
 Criterios de evaluación
 ---
