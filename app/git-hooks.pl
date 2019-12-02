@@ -59,7 +59,10 @@ sub run_command {
   my $git = shift;
   my $command = shift;
   my $run_command = $git->command( $command );
-  return $run_command->final_output;
+  say %$run_command;
+  my $output = $run_command->final_output;
+  say $output;
+  return $output ;
 }
 
 =head1 NAME
