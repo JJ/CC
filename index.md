@@ -17,7 +17,9 @@ las clases. Se usará [GitHub][github-website] para los ejercicios y el
 proyecto; también para los objetivos semanales, que estarán (año
 2019-20) en [este repositorio][cc-course-repo].
 
-Estos son los [objetivos de la asignatura](documentos/objetivos). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
+Estos son los [objetivos de la
+asignatura](documentos/objetivos). En resumen, el objetivo
+principal es que el estudiante, al final de la asignatura, sea capaz de hacer lo siguiente:
 
 1. Definir el entorno de trabajo para desarrollo de una aplicación en particular y usarlo en IaaS.
 2. Usar ese entorno para configurar integración continua en una aplicación.
@@ -45,7 +47,9 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 6. [Orquestación de máquinas virtuales][t6]
 
 
-La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub][cc-course-repo].
+La temporización de la asignatura y la interacción entre estudiantes y
+con los profesores están en 
+[un repositorio de GitHub][cc-course-repo]. 
 
 [cc-general-repo]: http://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
@@ -98,13 +102,13 @@ Tutorías virtuales y presenciales
 ----
 
 Las tutorías virtuales se realizarán preferiblemente a través del
-grupo de Telegram que se comparte con los estudiantes de otros años de
+grupo de Telegram, que se comparte con los estudiantes de otros años de
 la misma asignatura. Se aconseja a todo estudiante matriculado que
 solicite una tutoría al principio de curso para recibir orientación
 sobre la misma. Las tutorías presenciales se llevarán a cabo lunes,
 miércoles y viernes por la mañana fuera de las horas de clase, y
-excepcionalmente y bajo cita previa, martes y jueves, inclusive jueves
-por la tarde de 19:30 a 20:30 en la 3.1.
+excepcionalmente y bajo cita previa, lunes y jueves de 19:30 a 20:30
+en la 2.1 y 3.5.
 
 Criterios de evaluación
 ---
