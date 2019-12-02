@@ -59,9 +59,8 @@ sub run_command {
   my $git = shift;
   my $command = shift;
   my $run_command = $git->command( $command );
-  say %$run_command;
   my $output = $run_command->final_output;
-  say $output;
+  say "Salida $output";
   return $output ;
 }
 
