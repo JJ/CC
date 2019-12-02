@@ -12,7 +12,9 @@ las clases. Se usará [GitHub][github-website] para los ejercicios y el
 proyecto; también para los objetivos semanales, que estarán (año
 2019-20) en [este repositorio][cc-course-repo].
 
-Estos son los [objetivos de la asignatura](documentos/objetivos.md). En resumen, la intención es que el alumno, al final de la asignatura, sea capaz de hacer lo siguiente:
+Estos son los [objetivos de la
+asignatura](documentos/objetivos.md). En resumen, el objetivo
+principal es que el estudiante, al final de la asignatura, sea capaz de hacer lo siguiente:
 
 1. Definir el entorno de trabajo para desarrollo de una aplicación en particular y usarlo en IaaS.
 2. Usar ese entorno para configurar integración continua en una aplicación.
@@ -40,7 +42,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 6. [Orquestación de máquinas virtuales][t6]
 
 
-La temporización de la asignatura y la interacción entre alumnos y con los profesores están en [un repositorio de GitHub][cc-course-repo].
+La temporización de la asignatura y la interacción entre estudiantes y con los profesores están en [un repositorio de GitHub][cc-course-repo].
 
 [cc-general-repo]: http://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
