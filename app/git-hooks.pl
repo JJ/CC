@@ -14,11 +14,11 @@ EOT
 
 POST_COMMIT {
   my ($git) = @_;
-  my $branch =  $git->command(qw/rev-parse --abbrev-ref HEAD/);
-  my $commit_msg = $git->command("log", "-1 --pretty=%B" );
-
+  my $branch =  run_command(qw/rev-parse --abbrev-ref HEAD/);
+  my $commit_msg = run_command(qw/log -1 --pretty=%B/ );
+  say "$branch $commit_msg";
   if ( $branch =~ /master/ ) {
-    my $changed = $git->command(qw/show --name-status/);
+    my $changed = run_command(qw/show --name-status/);
     my @changed_files = ($changed =~ /\s\w\s+(\S+)/g);
     my @mds = grep ( /\.md/, @changed_files );
     #Now change branch and process
@@ -53,6 +53,12 @@ POST_COMMIT {
 };
 
 run_hook($0, @ARGV);
+
+sub run_command {
+  my $command = shift;
+  my $run_command = $git->command( $command );
+  return $run_command->final_output;
+}
 
 =head1 NAME
 
