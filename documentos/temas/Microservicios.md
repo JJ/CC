@@ -490,7 +490,6 @@ para parar todos los procesos que gestione. Los logs se almacenan en un director
     pm2 logs
 
 
-
 Hay [muchos otros gestores de procesos](https://www.tecmint.com/process-managers-for-node-js-applications-in-linux/), pero esto incluye también el systemd de Linux, un gestor que se puede usar con éxito en sistemas que lo implementen, como es natural, y que está incluido en cualquier distribución.
 
 Pero en muchos lenguajes, estos gestores de procesos van un poco más allá, y tienen un interfaz específico para llamar a las funciones a través de un interfaz web. Este tipo de interfaz, que se llama genéricamente `*SGI`, de *services (o server) gateway interface*, se implementa en lenguajes como Python, Perl y Ruby de diferentes formas. Dado que el ejemplo que hemos hecho antes es en Python, donde se llama [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface), o *web server gateway interface*.
@@ -657,6 +656,12 @@ programación para programar diferentes tareas que se puedan lanzar
 fácilmente desde la línea de órdenes.
 
 </div>
+
+## Diseño de microservicios replicables
+
+## Niveles de servicio, medida y mejora
+
+Las prestaciones de un microservicio se deben de tener en cuenta, como la calidad y la seguridad, desde el principio, y de hecho el nivel de servicio esperado, en términos de *uptime* y de número de peticiones por segundo a las que se va a responder, es algo que se debe establecer en la fase de diseño.
 
 
 ## A dónde ir desde aquí
