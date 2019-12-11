@@ -1,4 +1,4 @@
-1164
+1205
 AMD
 API
 APIs
@@ -128,7 +128,9 @@ Guadalinex
 Gulp
 HTTP
 Hastexo
+Hat
 Heroku
+HitosIV
 Hug
 I
 IBM
@@ -234,6 +236,7 @@ Patterns
 Perl
 Pg
 Platform
+Podman
 PostgreSQL
 Postgres
 Practical
@@ -254,6 +257,7 @@ REPOSITORY
 REST
 RPM
 RVM
+RabbitMQ
 Rails
 RancherOS
 RedHat
@@ -322,6 +326,7 @@ URL
 UTS
 UbuntuLTS
 Unable
+Unicorn
 Unit
 Unix
 Utility
@@ -335,6 +340,7 @@ Vagrantbox
 Vagrantfile
 VirtualBox
 Vortex
+WSGI
 Warden
 West
 Wikipedia
@@ -350,6 +356,7 @@ ZFS
 account
 acercársele
 acervo
+aconsejable
 action
 action
 add
@@ -405,6 +412,7 @@ bettors
 bin
 bin
 binarytides
+binding
 blob
 blobs
 bobot
@@ -448,6 +456,7 @@ cloudapp
 cluster
 co
 co
+colocarles
 colorines
 com
 commit
@@ -602,8 +611,11 @@ forEach
 foreman
 fork
 format
+framework
+frameworks
 freemium
 from
+front
 frontend
 fs
 ftp
@@ -612,6 +624,7 @@ fusefs
 futbolísticas
 g
 garantiadata
+gateway
 gem
 gestionables
 get
@@ -623,6 +636,8 @@ gmail
 group
 groups
 grunt
+gulp
+gunicorn
 hardware
 hash
 hashes
@@ -646,6 +661,7 @@ html
 http
 https
 hub
+hugitos
 i
 idempotencia
 idempotente
@@ -667,6 +683,7 @@ inicializar
 init
 initConfig
 inline
+ins
 inspect
 install
 instalártelo
@@ -680,6 +697,7 @@ interface
 interoperabilidad
 io
 ip
+irremediablemente
 iso
 issue
 it
@@ -730,6 +748,7 @@ localhost
 locally
 location
 log
+logging
 logical
 login
 logs
@@ -768,6 +787,8 @@ metadatos
 method
 metiéndolos
 metutils
+microframework
+microframeworks
 microkernel
 micromarco
 microservices
@@ -899,6 +920,7 @@ pkg
 playbook
 playbooks
 plenv
+plug
 plugin
 plugins
 png
@@ -941,6 +963,7 @@ provisionar
 provisionarla
 provisione
 provisionándola
+proxy
 ps
 pub
 public
@@ -986,6 +1009,7 @@ releases
 remote
 remotes
 reparticionar
+replicables
 replicación
 replies
 reply
@@ -1035,6 +1059,7 @@ serialización
 server
 serverless
 service
+services
 setup
 seudo
 sh
@@ -1084,6 +1109,7 @@ svn
 sys
 system
 system
+systemd
 síncrona
 t
 tag
@@ -1121,6 +1147,7 @@ up
 update
 upgrade
 upload
+uptime
 url
 us
 usable
@@ -1162,6 +1189,8 @@ westeurope
 whatever
 wiki
 wollowitz
+workers
+workflow
 world
 write
 www
@@ -1175,30 +1204,3 @@ zeit
 zipi
 zuuz
 π
-Podman
-Hat
-aconsejable
-framework
-colocarles
-proxy
-RabbitMQ
-microframework
-logging
-systemd
-services
-gateway
-WSGI
-Unicorn
-gunicorn
-HitosIV
-hugitos
-workers
-binding
-front
-plug
-ins
-gulp
-workflow
-irremediablemente
-frameworks
-microframeworks
