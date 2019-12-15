@@ -78,20 +78,20 @@ hitos se organizarán de la forma siguiente.
 1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos][p1]
 2. [Elección de un proyecto][p2]
 3. [Creación de tests y configuración de integración continua][p3]
-7. [Uso de contenedores][p7]
-4. [Provisionamiento de máquinas virtuales][p4]
-5. [Automatización de creación de máquinas virtuales][p5]
-6. [Orquestación de máquinas virtuales][p6]
+7. [Uso de contenedores][p4]
+5. [Medición de prestaciones de MVs][p5]
+4. [Provisionamiento de máquinas virtuales][p6]
+
 
 
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
 [p2]: documentos/proyecto/1.Infraestructura.md
 [p3]: documentos/proyecto/2.CI.md
-[p4]: documentos/proyecto/3.Provisionamiento.md
-[p5]: documentos/proyecto/4.nube-CLI.md
-[p6]: documents/proyecto/5.Orquestacion.md
-[p7]: documentos/proyecto/3.Docker.md
+[p4]: documentos/proyecto/3.Docker.md
+[p5]: documentos/proyecto/4.Prestaciones.md
+[p6]: documents/proyecto/5.Provisionamiento.md
+
 
 Tutorías virtuales y presenciales
 ----
