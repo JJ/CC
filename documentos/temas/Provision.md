@@ -396,13 +396,13 @@ en la conexión también están en ese fichero: el nombre de usuario y la
 dirección IP. Además, usamos el nombre `debianita` que es el que le
 vamos a asignar a estas máquinas virtuales. El término `vagrantboxes`
 permite que nos refiramos de forma genérica a una serie de máquinas,
-aunque en este caso tengamos sólo una.
+aunque en este caso tengamos solo una.
 
 Como se ve, este fichero de hosts permite definir parámetros para una
 o varias máquinas. En el caso de usar un host en la nube se haría de
 forma similar.
 
-Pero esto es sólo la configuración inicial para llevar a cabo el
+Pero esto es solo la configuración inicial para llevar a cabo el
 verdadero provisionamiento, usando *recetas* que en el caso de Ansible
 se denominan 
 [*playbooks*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html).
@@ -425,7 +425,7 @@ que instalar en *tareas* o `tasks`, de la forma que se ve en
 En este caso `all` va a ser una denominación genérica de todos los
 hosts, pero a continuación le indicamos con `become` que es necesario
 adquirir privilegios para ejecutar el resto del fichero. Las tareas se
-llevarán a cabo secuencialmente, pero sólo tenemos una, que invoca el
+llevarán a cabo secuencialmente, pero solo tenemos una, que invoca el
 comando `apt`, indicándole que el paquete git tiene que estar presente.
 
 ```
@@ -449,7 +449,7 @@ falta. Comprobará que está presente, y no hará nada más.
 
 <div class='ejercicios' markdown='1'>
 
-Desplegar la aplicación de DAI o de cualquier otra asignatura donde se
+Desplegar la aplicación de cualquier otra asignatura donde se
 tenga ya el código fuente con todos los módulos necesarios
 usando un *playbook* de Ansible.
 
@@ -536,7 +536,7 @@ ansible-galaxy install geerlingguy.nodejs
 
 Se
 usa en un [playbook](/ejemplos/vagrant/Debian2018/node-versions.yml)
-usando el nombre completo, tras intalarlo:
+usando el nombre completo, tras instalarlo:
 
 ```
 ---
