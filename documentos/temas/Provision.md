@@ -273,22 +273,33 @@ para la descripción de las
 configuraciones de los sistemas usa YAML.
 
 Se instala como un módulo de Python, usando por ejemplo la utilidad de
-instalación de módulos `pip` (que habrá que instalar si no se tiene)
-
-```
-sudo apt-add-repository ppa:ansible/ansible
-sudo apt-get install ansible
-```
+instalación de módulos `pip` (que habrá que instalar si no se tiene).
 
 > Estamos asumiendo que usas un gestor de versiones tal como `pyenv`,
 > lo que aconsejamos vivamente, no solo para este lenguaje, sino para
 > todos los demás.
 
-El resto de las utilidades son también necesarias; en realidad se
-instalan automáticamente al instalar Ansible. Estas utilidades se
-tienen que instalar *en el anfitrión*, no hace falta instalarlas en el
-invitado, que tendrá que cumplir los requisitos que se indican más
-arriba en la sección de configuración de instancias.
+Si no usas un gestor de versiones, lo más conveniente instalarlo desde su propio repositorio PPA. 
+
+```
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get install ansible
+```
+Ansible va a necesitar tres ficheros para provisionar una máquina virtual.
+* Un fichero de configuración general, que se suele llamar `ansible.cfg`
+* Un fichero de configuración específica de los *hosts* con los que se va a trabajar o inventario , que habitualmente se llama `ansible_hosts`.
+* Una o varias recetas o *playbooks* que indican qué se va a instalar, y declara el estado en el que se debe encontrar el sistema al final. 
+
+Comencemos por el fichero de configuración, tal como [este](/ejemplos/vagrant/Debian2018/ansible.cfg):
+
+```
+[defaults]
+host_key_checking = False
+inventory = ./ansible_hosts
+```
+
+Lo principal es la primera opción, que permite que la conexión con nuevas máquinas virtuales por `ssh` no pregunte si se acepta la clave nueva de una nueva MAC detectada. La segunda instrucción indica dónde se va a encontrar, por omisión, el fichero de inventario, en este caso en el mismo directorio.
+
 
 Cada máquina que se añada al control de Ansible se tiene que añadir a
 un
@@ -297,113 +308,255 @@ que contiene las diferentes máquinas controladas por el mismo. Por
 ejemplo
 
 ```
- $ echo "ansible-iv.cloudapp.net" > ~/.ansible/ansible_hosts
+$ echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
 ```
 
 se puede ejecutar desde el *shell* para meter (`echo`) una cadena con
 una dirección (en este caso, una máquina virtual de Azure) en el
-fichero `ansible_hosts` situado en un subdirectorio específico para
-Ansible de nuestro directorio raíz. El lugar de ese
+fichero `ansible_hosts` situado en mi directorio raíz. El lugar de ese
 fichero es arbitrario, por lo que habrá que avisar a Ansible donde
 está usando una variable de entorno:
 
-	export ANSIBLE_HOSTS=~/ansible_hosts
-	
+```
+export ANSIBLE_HOSTS=~/ansible_hosts
+```
+
 Y, con un nodo, ya se puede comprobar si Ansible funciona con 
 
-	$ ansible all -u jjmerelo -m ping
-	
+```
+$ ansible all -u jjmerelo -m ping
+```
+
 Esta orden hace un *ping*, es decir, simplemente comprueba si la
-máquina es accesible (y configurable) desde nuestro usuario. `-u ` incluye el nombre
+máquina es accesible desde la máquina local. `-u` incluye el nombre
 del usuario (si es diferente del de la máquina local); habrá que
 añadir `--ask-pass` si no se ha configurado la máquina remota para
 poder acceder a ella sin clave. 
 
 De forma básica, lo que hace Ansible es simplemente ejecutar comandos
-de forma remota y simultáneamente (para todos los *hosts* definidos). Para hacerlo, podemos usar el
-[inventario para agrupar los servidores](https://docs.ansible.com/intro_inventory.html), por ejemplo
+de forma remota y simultáneamente. Para hacerlo, podemos usar el
+[inventario para agrupar los servidores](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html), por ejemplo
 
-	[azure]
-	iv-ansible.cloudapp.net
+```
+[azure]
+iv-ansible.cloudapp.net
+```
 
 crearía un grupo `azure` (con un solo ordenador), en el cual podemos
 ejecutar comandos de forma remota
 
+```
 	$ ansible azure -u jjmerelo -a df
-	
-nos mostraría en todas las maquinas de azure la organización del
+```
+
+nos mostraría en todas las máquinas de Azure la organización del
 sistema de ficheros (que es lo que hace el comando `df`). Una vez más,
 `-u` es opcional. 
 
 Esta orden usa un *módulo* de ansible y se puede ejecutar también de
 esta forma:
 
+```
 	$ ansible azure -m shell ls
-	
+```
+
 haciendo uso del módulo `shell`. Hay muchos
-[más módulos](https://docs.ansible.com/modules.html) a los que se le
+[más módulos](https://docs.ansible.com/ansible/latest/user_guide/modules.html) a los que se le
 pueden enviar comandos del tipo "variable = valor". Por ejemplo, se
 puede trabajar con servidores web o
-[copiar ficheros](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#file-transfer)
+[copiar ficheros](https://www.infoworld.com/article/2614204/puppet-or-chef--the-configuration-management-dilemma.html)
 o
-[incluso desplegar aplicaciones directamente usando el módulo `git`](https://docs.ansible.com/intro_adhoc.html#managing-packages)
+[incluso desplegar aplicaciones directamente usando el módulo `git`](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#managing-packages).
 
-<div class='ejercicios' markdown='1'>
-
-Instalar los prerrequisitos para ejecutar alguna aplicación propia (la
-del proyecto de la asignatura u otra) usando Ansible.
-
-</div>
-
-Evidentemente, donde se encuentra la potencia de ansible no es en la
-ejecución aislada de comandos, sino en la creación de *recetas* o
-especificaciones de configuraciones o estados de las instancias
-gestionadas; estas recetas en Ansible se denominan
-[*playbooks*](https://davidwinter.me/introduction-to-ansible/),
-ficheros en YAML que le indican a la máquina virtual qué es lo que hay
-que instalar en *tareas*, de la forma siguiente
+Nosotros nos vamos a conectar a una máquina virtual local creada con Vagrant, usando [este](/ejemplos/vagrant/Debian2018/ansible_hosts) inventario:
 
 ```
-	---
-	- hosts: azure
-	  sudo: yes
-	  tasks:
-		- name: Update emacs
-		  apt: pkg=emacs state=present
+[vagrantboxes]
+debianita ansible_ssh_port=2222 ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+[vagrantboxes:vars]
+ansible_ssh_host=127.0.0.1
+ansible_ssh_user=vagrant
 ```
 
-Esto se guarda en un fichero y se
-[le llama, por ejemplo, emacs.yml](../../ejemplos/ansible/emacs.yml),
-y se ejecuta con 
+Como se ha creado con `vagrant`, la máquina local va a usar por
+omisión el puerto 2222 y además la clave privada que se usa (y que
+generalmente no tenemos que encontrar si accedemos con vagrant ssh)
+está en el camino indicado. Las variables por omisión que vamos a usar
+en la conexión también están en ese fichero: el nombre de usuario y la
+dirección IP. Además, usamos el nombre `debianita` que es el que le
+vamos a asignar a estas máquinas virtuales. El término `vagrantboxes`
+permite que nos refiramos de forma genérica a una serie de máquinas,
+aunque en este caso tengamos sólo una.
+
+Como se ve, este fichero de hosts permite definir parámetros para una
+o varias máquinas. En el caso de usar un host en la nube se haría de
+forma similar.
+
+Finalmente, el concepto similar a las recetas de Chef en Ansible son los
+[*playbooks*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html),
+ficheros en YAML que le dicen a la máquina virtual qué es lo que hay
+que instalar en *tareas* o `tasks`, de la forma que se ve en
+[este fichero](/ejemplos/vagrant/Debian2018/basico.yaml).
 
 ```
-ansible-playbook ../../ejemplos/ansible/emacs.yml 
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Instala git
+      apt: pkg=git state=present
+
 ```
 
-(recordando siempre el temita del nombre de usuario), lo que dará, si
-todo ha ido bien, un resultado como el siguiente
+En este caso `all` va a ser una denominación genérica de todos los
+hosts, pero a continuación le indicamos con `become` que es necesario
+adquirir privilegios para ejecutar el resto del fichero. Las tareas se
+llevarán a cabo secuencialmente, pero sólo tenemos una, que invoca el
+comando `apt`, indicándole que el paquete git tiene que estar presente.
+
+```
+ansible-playbook basico.yaml
+```
+
+Esto dará, si
+todo ha ido bien, un resultado como el siguiente (para uno que
+instalara emacs en una versión anterior)
 
 ![Instalación de emacs usando ansible](../img/ansible.png)
 
-En el fichero YAML lo que se está expresando es un array asociativo
-con las claves `hosts`, `sudo` y `tasks`. En el primero ponemos el
-bloque de servidores en el que vamos a actuar, en el segundo si hace
-falta hacer sudo o no y en el tercero las tareas que vamos a ejecutar,
-en este caso una sola. El apartado de tareas es un vector de hashes,
-cada uno de los cuales tiene en `name` el nombre de la tarea, a título
-informativo y en las otras claves lo que se va a hacer; `apt` indicará
-que hay que instalar un paquete (`pkg`) llamado `emacs` y que hay que
-comprobar si está presente o no (`state`). El que se trabaje con
-*estados* y no de forma imperativa hace que los *playbooks* sean
-*idempotentes*, es decir, si se ejecutan varias veces darán el mismo
-resultado que si se ejecutan una sola vez. 
+Ejecuciones sucesivas arrojarán el mismo resultado, pero en la salida
+`ansible` indicará que ya está instalado, por lo que no hace
+falta. Comprobará que está presente, y no hará nada más.
 
 <div class='ejercicios' markdown='1'>
 
-1. Desplegar la aplicación que se haya usado anteriormente  con todos los módulos necesarios
+Desplegar la aplicación de DAI o de cualquier otra asignatura donde se
+tenga ya el código fuente con todos los módulos necesarios
 usando un *playbook* de Ansible.
 
 </div>
+
+También se pueden instalar varios paquetes a la vez, como en 
+[este playbook](/ejemplos/vagrant/Debian2018/basico.yaml)  que instala
+node:
+
+```yaml
+---
+- hosts: vagrantboxes
+  become: yes
+  tasks:
+    - name: Instala paquetes
+      apt:
+        pkg: ['curl', 'build-essential', 'libssl-dev', 'nodejs', 'npm']
+```
+
+En vez de usar un genérico `all` en este caso estamos especificando un
+conjunto de nodos, que en realidad es el mismo, porque no tenemos
+más. El formato de instalación de paquetes es ligeramente diferente,
+pero nos permite instalar diferentes paquetes a la vez.
+
+Ansible usa el concepto de [*rol*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) para agrupar en un directorio una
+serie de tareas que puedan estar relacionadas; por ejemplo, un
+framework específico junto con lo que ese framework necesite, como un
+conjunto de herramientas. A un nivel muy básico, un rol es el
+equivalente a un paquete, módulo o clase, simplemente una agrupación
+de funciones dentro de un directorio que permite estructurar el
+provisionamiento de un módulo o conjunto de módulos.
+
+> Los roles fueron introducidos en la versión 1.2 de ansible, en el
+> año 2013. Es poco probable que tengas una versión anterior, pero
+> podría suceder.
+
+
+Un rol abarca variables, tareas y otro tipo de metadatos, y se
+agruparán en un directorio con un nombre determinado, por ejemplo, el
+rol `ol` estará en el directorio (a partir del playbook que lo use)
+`roles/ol`. Dentro de ese directorio habrá diferentes subdirectorios,
+tales como `tasks` para tareas o `vars` para variables. Por ejemplo,
+vamos a declarar un rol `common` que suele usarse para agrupar tareas
+que van a ser comunes a varios playbooks en un proyecto. Este será el
+[playbook](/ejemplos/vagrant/Debian2018/express.yaml):
+
+```
+---
+- hosts: all
+  become: yes
+  roles:
+    - common
+```
+
+> Normalmente, habría otras tareas (no comunes) en este playbook. 
+
+En el directorio `roles/common/tasks` estará este [fichero](/ejemplos/vagrant/Debian2018/roles/common/tasks/main.yaml)
+
+```
+---
+- name: Instala básicos
+  apt:
+    pkg: ['git','make','perl']
+```
+
+Como ya está calificado como tareas, en este fichero se pondría
+directamente lo que estaría dentro de la lista de `tasks` en un
+playbook. 
+
+Este sistema de roles, además, permite extender ansible con un sistema llamado
+[*Galaxy*](https://galaxy.ansible.com/), una colección de roles libres
+aportados por la comunidad. Estos roles se pueden descargar e instalar
+en el propio repositorio, pero también se pueden instalar en un lugar
+común para todos.  Por ejemplo, podemos instalar uno para trabajar con
+diferentes versiones de node
+llamado
+[`geerlingguy.nodejs`](https://github.com/geerlingguy/ansible-role-nodejs) de
+esta forma:
+
+```
+ansible-galaxy install geerlingguy.nodejs
+```
+
+
+Se
+usa en un [playbook](/ejemplos/vagrant/Debian2018/node-versions.yml)
+usando el nombre completo, tras intalarlo:
+
+```
+---
+- hosts: debianita
+  become: yes
+  vars_files:
+    - vars/main.yml
+  roles:
+    - geerlingguy.nodejs
+```
+
+En este caso el rol lo que incluye son variables, en vez de tareas,
+con concreto la indicada en la clave `vars_files`. Ese fichero
+contiene solamente:
+
+```
+nodejs_version: "12.x"
+```
+
+indicando la versión del fichero que se va a instalar. Esa variable la
+usará el rol para instalar la versión de node correspondiente.
+
+> Un tutorial bastante extenso de diferentes capacidades de ansible
+> en [Guru99](https://www.guru99.com/ansible-tutorial.html). Digital
+> Ocean también nos
+> enseña
+> [aquí](https://www.digitalocean.com/community/tutorials/configuration-management-101-writing-ansible-playbooks) diferentes
+> características de los playbooks que se pueden usar.
+
+
+<div class='ejercicios' markdown='1'>
+
+Crear un rol `common` que haga ciertas tareas comunes que vayamos a
+usar en todas las máquinas virtuales de los microservicios de la
+asignatura (o, para el caso, cualquier otra asignatura).
+
+</div>
+
 
 ## Chef
 
