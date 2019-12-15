@@ -40,7 +40,7 @@ especialmente
 
 Los programas que permiten crear infraestructuras virtuales completas
 se denominan
-[hipervisores](http://en.wikipedia.org/wiki/Hypervisor). Un hipervisor
+[hipervisores](https://en.wikipedia.org/wiki/Hypervisor). Un hipervisor
 permite manejar las diferentes infraestructuras desde línea de órdenes
 o mediante un programa, y a su vez se habla de dos tipos de
 hipervisores: los de *tipo I* o *bare metal* que se ejecutan
@@ -55,25 +55,25 @@ y en todo caso la distinción es más académica que funcional; en la
 práctica, en la mayoría de los casos nos vamos a encontrar con
 hipervisores alojados que se ejecutan desde un sistema operativo.
 
-![Ilustración de los dos tipos de hipervisores (alojada en la Wikipedia)](http://upload.wikimedia.org/wikipedia/commons/e/e1/Hyperviseur.png)
+![Ilustración de los dos tipos de hipervisores (alojada en la Wikipedia)](https://upload.wikimedia.org/wikipedia/commons/e/e1/Hyperviseur.png)
 
 Para apoyar la virtualización, casi todos los procesadores actuales y
-especialmente [los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](http://en.wikipedia.org/wiki/X86_virtualization). Esta
+especialmente [los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](https://en.wikipedia.org/wiki/X86_virtualization). Esta
 arquitectura tiene dos ramas: la Intel y la AMD, cada uno de los
 cuales tiene un conjunto de instrucciones diferentes para llevarla a
 cabo. Aunque la mayoría de los procesadores lo incluyen, los
 portátiles de gama baja y algunos ordenadores de sobremesa antiguos no
 la incluyen, por lo que habrá que comprobar si nuestro procesador lo
 hace. Si no lo hiciera, se habla de
-[paravirtualización](http://en.wikipedia.org/wiki/Paravirtualization)
+[paravirtualización](https://en.wikipedia.org/wiki/Paravirtualization)
 en la que los hipervisores tienen que *interpretar* cada imagen del
 sistema operativo que alojan (llamado *invitado*) y convertirla en
 instrucciones del que aloja (llamado *anfitrión* o *host*). La mayor
 parte de los hipervisores, como
-[Xen](http://en.wikipedia.org/wiki/Xen) o [KVM](http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
+[Xen](https://xenproject.org/) o [KVM](https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
 también la capacidad de paravirtualizar ciertos sistemas operativos en
 caso de que los anfitriones no tengan soporte; por ejemplo, KVM se ha
-asociado con [QEMU](http://en.wikipedia.org/wiki/QEMU) que lo usa en
+asociado con [QEMU](https://en.wikipedia.org/wiki/QEMU) que lo usa en
 caso de que el procesador tenga soporte. 
 
 Por encima de los hipervisores están los sistemas de gestión de
@@ -295,18 +295,18 @@ contienen la información indicada.
 
 ## CLI de OpenStack
 
-[OpenStack](http://docs.openstack.org) es un sistema libre de gestión
+[OpenStack](https://docs.openstack.org) es un sistema libre de gestión
 de nubes privadas que se ha hecho muy popular incluso en revendedores
 de sistemas como IBM u otros, que en realidad ofrecen este tipo de
 acceso. Se puede probar en alguna instalación disponible en la
-Facultad o Escuela o bien en [TryStack](http://trystack.org) si te admiten.
+Facultad o Escuela o bien en [OpenStack Public Cloud Passport](https://www.openstack.org/passport/) si te admiten.
 
 Como arriba, hay también un
-[sistema de línea de órdenes](http://docs.openstack.org/user-guide/cli.html),
+[sistema de línea de órdenes](https://docs.openstack.org/user-guide/cli.html),
 inicialmente uno para cada uno de los subsistemas de OpenStack pero
 últimamente unificado a una sola orden, `openstack`. Para trabajar con
 él, tras descargar el cliente, hay que
-[configurar una serie de variables de entorno descargándose un fichero](http://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html),
+[configurar una serie de variables de entorno descargándose un fichero](https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html),
 que él mismo pone las API keys y demás. Una vez ejecutado ese *script*
 de configuración se puede, por ejemplo, crear una clave para acceder
 a las instancias que se vayan a crear 
