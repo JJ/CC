@@ -45,7 +45,7 @@ crear
 [infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico). Para
 ello necesitamos configurar una serie de infraestructuras virtuales,
 especialmente
-[almacenamiento como se vio en el tema anterior](Almacenamiento).
+[almacenamiento como se explica en el tema dedicado a almacenamiento](Almacenamiento).
 
 Los programas que permiten crear infraestructuras virtuales completas
 se denominan
@@ -140,88 +140,8 @@ Vamos a ver cómo funcionan algunas de estas utilidades de línea de
 órdenes, empezando por el CLI de Azure clásico, luego el moderno, y
 más adelante el de OpenStack
 
-### CLI de Azure (clásico)
 
->Tendrás que instalártelo, previa instalación de node.js, que es en lo
->que está basado. `npm install -g azure-cli` bastará. 
-
-Azure permite,
-[tras la creación de almacenamiento virtual](Almacenamiento), la
-creación de máquinas virtuales, como es natural. Se puede crear una
-máquina virtual desde el panel de control, pero también desde
-la [línea de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
-hay que saber qué imágenes hay disponibles:
-
-```
-azure vm image list
-```
-
-Por ejemplo, se puede escoger la imagen
-`b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-trusty-14_04-LTS-amd64-server-20131221-en-us-30GB`
-de una versión LTS de Ubuntu o de otra como la
-`b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB`
-Con
-
-```
-azure vm image show b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB
-```
-
-nos muestra detalles sobre la imagen; entre otras cosas dónde está
-disponible y sobre si es Premium o no (en este caso no lo es). Con
-esta (o con otra) podemos crear una máquina virtual
-
-```
-azure vm create peasomaquina b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB peasousuario PeasoD2clav= --location "West Europe" --ssh
-```
-
-En esta clave tenemos que asignar un nombre de máquina (que se
-convertirá en un nombre de dominio `peasomaquina.cloudapp.net`, un
-nombre de usuario (como `peasousuario`) que será el superusuario de la
-máquina, una clave como `PeasoD2clav=` que debe incluir mayúsculas,
-minúsculas, números y caracteres especiales (no uséis esta, hombre),
-una localización que en nuestro caso, para producción, será
-conveniente que sea *West Europa* pero que para probar podéis
-llevárosla a la localización exótica que queráis y, finalmente, para
-poder acceder a ella mediante ssh, la última opción, si no no tengo
-muy claro cómo se podrá acceder. Una vez hecho esto, conviene que se
-cree un par clave pública/privada y se copie al mismo para poder
-acceder fácilmente.
-
-La máquina todavía no está funcionando. Con `azure vm list` nos
-muestra las máquinas virtuales que tenemos y el nombre que se le ha
-asignado y finalmente con `azure vm start` se arranca la máquina y
-podemos conectarnos con ella usando `ssh` Una de las primeras cosas
-que hay que hacer cuando se arranque es actualizar el sistema para
-evitar problemas de seguridad. A partir de ahí, podemos instalar lo
-que queramos. El arranque tarda cierto tiempo y dependerá de la
-disponibilidad de recursos; evidentemente, mientras no esté arrancada
-no se puede usar, pero conviene de todas formas apagarla con 
-
-```
-azure vm shutdown maquina
-```
-
-cuando terminemos la sesión y no sea necesaria, sobre todo porque,
-dado que se pagan por tiempo de uso, se puede incurrir en costes
-innecesarios o en agotamiento de los recursos gratuitos
-proporcionados. 
-
-<div class='ejercicios' markdown='1'>
-
-Crear una máquina virtual Ubuntu e instalar en ella un servidor
-`nginx` para poder acceder mediante web.
-
-</div>
-
-Trabajar con estas máquinas virtuales como si se tratara de máquinas
-reales no tiene mucho sentido. El uso de infraestructuras virtuales,
-precisamente, lo que permite es automatizar la creación y
-provisionamiento de las mismas de forma que se puedan crear y
-configurar máquinas en instantes y personalizarlas de forma
-masiva. Veremos como hacerlo en el
-[siguiente tema](Gestion_de_configuraciones).
-
-### CLI de Azure (versión 2.0)
+### CLI de Azure
 
 El
 [CLI de Azure](https://github.com/Azure/azure-cli#installation) en su
