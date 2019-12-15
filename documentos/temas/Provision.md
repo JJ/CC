@@ -314,7 +314,7 @@ Cada máquina que se añada al control de Ansible se tiene que añadir a
 un
 [fichero, llamado inventario](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html),
 que contiene las diferentes máquinas controladas por el mismo. Por
-ejemplo
+ejemplo esta orden
 
 ```
 $ echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
@@ -355,7 +355,7 @@ crearía un grupo `azure` (con un solo ordenador), en el cual podemos
 ejecutar comandos de forma remota
 
 ```
-	$ ansible azure -u jjmerelo -a df
+$ ansible azure -u jjmerelo -a df
 ```
 
 nos mostraría en todas las máquinas de Azure la organización del
@@ -366,7 +366,7 @@ Esta orden usa un *módulo* de ansible y se puede ejecutar también de
 esta forma:
 
 ```
-	$ ansible azure -m shell ls
+$ ansible azure -m shell ls
 ```
 
 haciendo uso del módulo `shell`. Hay muchos
@@ -390,7 +390,7 @@ ansible_ssh_user=vagrant
 
 Como se ha creado con `vagrant`, la máquina local va a usar por
 omisión el puerto 2222 y además la clave privada que se usa (y que
-generalmente no tenemos que encontrar si accedemos con vagrant ssh)
+generalmente no tenemos que encontrar si accedemos con `vagrant ssh`)
 está en el camino indicado. Las variables por omisión que vamos a usar
 en la conexión también están en ese fichero: el nombre de usuario y la
 dirección IP. Además, usamos el nombre `debianita` que es el que le
@@ -402,11 +402,15 @@ Como se ve, este fichero de hosts permite definir parámetros para una
 o varias máquinas. En el caso de usar un host en la nube se haría de
 forma similar.
 
-Finalmente, el concepto similar a las recetas de Chef en Ansible son los
-[*playbooks*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html),
+Pero esto es sólo la configuración inicial para llevar a cabo el
+verdadero provisionamiento, usando *recetas* que en el caso de Ansible
+se denominan 
+[*playbooks*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html).
 ficheros en YAML que le dicen a la máquina virtual qué es lo que hay
 que instalar en *tareas* o `tasks`, de la forma que se ve en
 [este fichero](/ejemplos/vagrant/Debian2018/basico.yaml).
+
+
 
 ```
 ---
@@ -438,6 +442,11 @@ Ejecuciones sucesivas arrojarán el mismo resultado, pero en la salida
 `ansible` indicará que ya está instalado, por lo que no hace
 falta. Comprobará que está presente, y no hará nada más.
 
+> Ansible es una solución completa, que permite controlar y llevar
+> registro de todas las instalaciones
+> usando [Ansible Tower](https://www.ansible.com/products/tower). Esto
+> se escapa de los límites de esta asignatura, sin embargo.
+
 <div class='ejercicios' markdown='1'>
 
 Desplegar la aplicación de DAI o de cualquier otra asignatura donde se
@@ -461,7 +470,7 @@ node:
 ```
 
 En vez de usar un genérico `all` en este caso estamos especificando un
-conjunto de nodos, que en realidad es el mismo, porque no tenemos
+conjunto de nodos definido en `ansible_hosts`, que en realidad es el mismo, porque no tenemos
 más. El formato de instalación de paquetes es ligeramente diferente,
 pero nos permite instalar diferentes paquetes a la vez.
 
