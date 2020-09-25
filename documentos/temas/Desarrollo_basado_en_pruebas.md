@@ -103,14 +103,14 @@ En este tema veremos la mayoría; en los siguientes se verá la
 gestión de configuraciones, provisionamiento de los servidores,
 despliegue continuo y virtualización.
 
-> Este tema (y bastante más) están cubiertos en
+> Este tema (y bastantes más) están cubiertos en
 > el [curso de calidad en el software](https://jj.github.io/curso-tdd)
 > que se ha impartido en octubre-noviembre de 2019.
 
 ## Entornos virtuales de desarrollo.
 
 Una de las partes esenciales de la cultura *DevOps* es la gestión de
-configuraciones; a continuación,  la automatización. El uso de entornos
+configuraciones y posteriormente,  la automatización. El uso de entornos
 virtuales cubre las dos necesidades: te permite independizar la
 versión usada de la que proporcione el sistema, instalarla sin
 necesidad de tener privilegios de superusuario, compartirla entre
@@ -118,8 +118,9 @@ todos los miembros del equipo y también automatizar la tarea
 de instalación del mismo mediante el uso de una sola orden que
 seleccione la versión precisa que se va a usar.
 
-Y estos entornos virtuales vienen del hecho de que los lenguajes de
-scripting tales como Perl, Python y Ruby tienen ciclos de desarrollo
+Estos entornos virtuales vienen del hecho de que los lenguajes de
+scripting o también conocidos como lenguajes interpretados tales 
+como Perl, Python y Ruby tienen ciclos de desarrollo
 muy rápidos que hacen que a veces convivan en producción diferentes
 versiones de los mismos, incluso versiones *major*. Eso hace
 complicado desarrollar e incluso probar los programas que se
@@ -234,13 +235,13 @@ JSON tal como este:
 
 Las partes que más nos interesan están hacia el final: las
 dependencias diversas (`dependencies`). Es un *hash* que dice qué
-módulo se usan (en este caso, `sqlite` solo) y qué versiones harán
+módulo se usan (en este caso, `sqlite` sólo) y qué versiones harán
 falta. Al desplegarse, el entorno dependerá de muchas cuestiones y hay 
 que asegurarse de que donde va a acabar el programa tiene todo lo
 necesario. En caso de que no lo tuviera, el programa no se instalará.
 
 A este nivel, la descripción del entorno de trabajo ya constituye en
-sí un test: donde se va a desplegar o lo tiene o no lo tiene, en cuyo
+sí un test: donde se va a desplegar lo tiene o no lo tiene, en cuyo
 caso no se permitirá la ejecución.
 
 Este fichero, además, permite instalar todas las dependencias usando
@@ -744,7 +745,7 @@ Algunos recursos a los que puedes acceder desde la
   un libro en general teórico y "a vista de pájaro" de la creación de
   equipos de desarrollo y aplicaciones basadas en esa filosofía.
 
-- [DevOps for developers](https://bencore.ugr.es/iii/encore/record/C__Rb2516479__Sdevops__P0%2C9__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl)
+- [DevOps for developers](https://granatensis.ugr.es/discovery/fulldisplay?docid=alma991013959592104990&context=L&vid=34CBUA_UGR:VU1&lang=es&search_scope=MyInstitution&adaptor=Local%20Search%20Engine&tab=Granada&query=any,contain,DevOps%20for%20developers%20&offset=0)
   también con poco código, pero con una visión a más bajo nivel de
   cómo organizar y montar grupos DevOps.
 
