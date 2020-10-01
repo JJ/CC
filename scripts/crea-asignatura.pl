@@ -8,7 +8,7 @@ use File::Copy;
 use v5.16;
 
 my $dir = shift || ".";
-my $previo = shift || "CC-18-19";
+my $previo = shift || "CC-19-20";
 
 for my $d ( qw( objetivos proyectos sesiones ) ) {
     eval {
