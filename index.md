@@ -10,12 +10,15 @@ Material docente para Cloud Computing
 
 *Cloud Computing* es una asignatura anual del máster de ingeniería informática en la [UGR][ugr-website].
 
-La asignatura se imparte en el curso 2019-2020 los lunes de 16:30 a
-18:30 en la 1.6 y de 18:30 a 20:30 en el aula 3.5 y los jueves de
-19:30 a 21:30 en el aula 2.1. Tendrás que llevar tu portátil a todas
+La asignatura se imparte en el curso 2020-2021 de los lunes de lunes a
+miércoles de 15:30 a 17:30. Las clases de "prácticas" de lunes y
+miércoles serán virtuales. Las clases de "teoría" de los martes serán
+presenciales en el aula 1.6.
+
+Tendrás que llevar tu portátil a todas
 las clases. Se usará [GitHub][github-website] para los ejercicios y el
 proyecto; también para los objetivos semanales, que estarán (año
-2019-20) en [este repositorio][cc-course-repo].
+2020-21) en [este repositorio][cc-course-repo].
 
 Estos son los [objetivos de la
 asignatura](documentos/objetivos). En resumen, el objetivo
@@ -29,7 +32,7 @@ principal es que el estudiante, al final de la asignatura, sea capaz de hacer lo
 
 [ugr-website]: https://www.ugr.es
 [github-website]: https://github.com
-[cc-course-repo]: https://github.com/JJ/CC-19-20/
+[cc-course-repo]: https://github.com/JJ/CC-20-21/
 
 Temario - Programa de la asignatura
 ------------------------------------------------------
@@ -105,18 +108,15 @@ Las tutorías virtuales se realizarán preferiblemente a través del
 grupo de Telegram, que se comparte con los estudiantes de otros años de
 la misma asignatura. Se aconseja a todo estudiante matriculado que
 solicite una tutoría al principio de curso para recibir orientación
-sobre la misma. Las tutorías presenciales se llevarán a cabo lunes,
-miércoles y viernes por la mañana fuera de las horas de clase, y
-excepcionalmente y bajo cita previa, lunes y jueves de 19:30 a 20:30
-en la 2.1 y 3.5.
+sobre el mismo.
 
 Criterios de evaluación
 ---
 
 Los [criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado][guia-docente], y [se especifican en el repositorio de la clase][evaluacion].
 
-[guia-docente]: https://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada/!
-[evaluacion]: https://github.com/JJ/CC-19-20/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
+[guia-docente]: https://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada
+[evaluacion]: https://github.com/JJ/CC-20-21/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
 
 Sesiones, objetivos e hitos de años anteriores
 ---
@@ -124,3 +124,4 @@ Sesiones, objetivos e hitos de años anteriores
 * [Año 16-17](https://github.com/JJ/CC16-17)
 * [Año 17-18](https://github.com/JJ/CC-17-18)
 * [Año 18-19](https://github.com/JJ/CC-18-19)
+* [Año 19-20](https://github.com/JJ/CC-19-20)
