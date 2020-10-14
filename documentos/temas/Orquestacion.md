@@ -1,5 +1,4 @@
-Gestión de infraestructuras virtuales
-===
+# Gestión de infraestructuras virtuales
 
 <!--@
 prev: Automatizando_cloud
@@ -8,7 +7,7 @@ next: Contenedores
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos de la asignatura</h2>
+## Objetivos de la asignatura
 
 * Diseñar, construir y analizar las prestaciones de un centro de
   proceso de datos virtual. 
@@ -17,7 +16,7 @@ next: Contenedores
 
 * Realizar tareas de administración en infraestructura virtual.
 
-<h2>Objetivos específicos</h2>
+## Objetivos específicos
 
 1. Aprender lenguajes de configuración usados en infraestructuras virtuales.
 2. Saber cómo aplicarlos en un caso determinado.
@@ -77,8 +76,7 @@ trabajar con máquinas virtuales con `kvm` y cómo definir, desde la
 línea de órdenes, máquinas virtuales en sistemas en cloud como Azure. 
 
 
-Orquestación de máquinas virtuales
----------------
+## Orquestación de máquinas virtuales
 
 A un nivel superior al provisionamiento de máquinas virtuales está la configuración,
 orquestación y gestión de las mismas, herramientas como
@@ -669,8 +667,7 @@ aunque está diseñado especialmente para una versión del sistema
 operativo llamado NixOS, puede usarse también para orquestar máquinas
 virtuales en una serie de entornos. 
 
-A donde ir desde aquí
--------
+## A donde ir desde aquí
 
 Este es el último tema del curso, pero a partir de aquí se puede
 seguir aprendiendo sobre DevOps en [el blog](https://devops.com/) o

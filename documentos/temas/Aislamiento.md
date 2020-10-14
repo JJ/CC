@@ -1,5 +1,4 @@
-Aislamiento de recursos: el camino a Docker
-===
+# Aislamiento de recursos: el camino a Docker
 
 <!--@
 prev: Orquestacion
@@ -7,8 +6,7 @@ prev: Orquestacion
 
 <div class="objetivos" markdown="1">
 
-Objetivos
---
+## Objetivos
 
 ### Cubre los siguientes objetivos de la asignatura
 
@@ -29,8 +27,7 @@ Objetivos
 
 </div>
 
-Introducción a la virtualización ligera: *contenedores*
--------
+## Introducción a la virtualización ligera: *contenedores*
 
 > Llamar a los contenedores sistemas de *virtualización ligera* no
 > deja de ser inexacto. Solo desde el punto de vista de un usuario del
@@ -114,8 +111,7 @@ Esta virtualización *ligera* tiene, entre otras ventajas, una
 segundos y, además, tienes mayor control desde fuera (desde el anfitrión) del que se pueda
 tener usando máquinas virtuales.
 
-Usando `lxc`
---
+## Usando `lxc`
 
 No todas las versiones de los núcleos del sistema operativo pueden
 usar este tipo de container; para empezar, dependerá de cómo esté
@@ -323,8 +319,7 @@ que haya una diferencia en las prestaciones, que puede ser apreciable
 en ciertas circunstancias.
 
 
-Configurando las aplicaciones en un táper
-----
+## Configurando las aplicaciones en un táper
 
 Una vez creados los tápers, son en casi todos los aspectos como una
 instalación normal de un sistema operativo: se puede instalar lo que
@@ -391,8 +386,7 @@ de configuración que ya se haya usado
 </div>
 
 
-A dónde ir desde aquí
------
+## A dónde ir desde aquí
 
 Lo más conveniente es ir al capítulo sobre [Docker](Contenedores).
 
