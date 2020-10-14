@@ -48,10 +48,9 @@ recursos *elásticos* y disponibles bajo demanda, algunos de ellos
 gratuitos.
 
 Por eso, en esta parte del curso, veremos cómo desarrollar según la
-metodología basada en pruebas con los
-entornos de computación en nube y cómo configurarlos y usarlos para
-hacer más rápida y eficiente el trabajo de un equipo de desarrollo,
-test y sistemas.
+metodología basada en pruebas con los entornos de computación en nube
+y cómo configurarlos y usarlos para hacer más rápida y eficiente el
+trabajo de un equipo de desarrollo, test y sistemas.
 
 El desarrollo basado en pruebas entra en relación con la computación nube dentro del concepto de
 [*DevOps*](https://en.wikipedia.org/wiki/DevOps), que
