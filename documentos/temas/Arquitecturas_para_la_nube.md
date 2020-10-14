@@ -36,7 +36,7 @@ desplegables en la nube.
 ## Introducción
 
 >Puedes echarle un vistazo a
->[esta colección de transpas](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
+>[esta colección de transparencias](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
 >con información de un par de presentaciones sobre arquitectura
 >moderna de aplicaciones. Aunque centrado en microservicios,
 >[este conjunto de patrones](https://microservices.io/patterns/index.html)
@@ -388,6 +388,9 @@ Algunos recursos a los que puedes acceder desde la
   un recurso electrónico que explica cómo construir microservicios
   desde cero, la fase de modelización a la de construcción del mismo.
 
+-
+  [What are microservices really all about? - Microservices Basics Tutorial](https://youtu.be/j1gU2oGFayY) Video explicativo sobre ventajas y desventajas de diferentes arquitecturas software en referencia a los microservicios.
+
 ## A dónde ir desde aquí
 
 Este tema sirve como introducción para elegir el proyecto que se va a
@@ -403,3 +406,4 @@ pueden desplegar aplicaciones para prototipo o para producción de
 forma relativamente simple, o bien al tema dedicado a los
 [*contenedores*](Contenedores), que es el siguiente en el temario
 de la asignatura.
+
