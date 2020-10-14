@@ -8,9 +8,10 @@ Material docente para Cloud Computing
 
 [![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
 
-*Cloud Computing* es una asignatura anual del máster de ingeniería informática en la [UGR][ugr-website].
+*Cloud Computing* es una asignatura anual del máster de ingeniería
+informática en la [UGR][ugr-website].
 
-La asignatura se imparte en el curso 2020-2021 de los lunes de lunes a
+La asignatura se imparte en el curso 2020-2021 de lunes a
 miércoles de 15:30 a 17:30. Las clases de "prácticas" de lunes y
 miércoles serán virtuales. Las clases de "teoría" de los martes serán
 presenciales en el aula 1.6.
