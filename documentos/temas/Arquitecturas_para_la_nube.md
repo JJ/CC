@@ -1,4 +1,4 @@
-Arquitecturas software para la nube
+ Arquitecturas software para la nube
 =========================
 
 <!--@
@@ -7,7 +7,7 @@ next: Desarrollo_basado_en_pruebas
 
 <div class="objetivos" markdown="1">
 
-## Objetivos 
+## Objetivos
 
 ### De la asignatura
 
@@ -18,10 +18,10 @@ el contexto de una infraestructura TIC de una organización.
 - Optimizar aplicaciones sobre plataformas virtuales.
 - Conocer diferentes tecnologías relacionadas con la virtualización
   (Computación Nube, Utility Computing, Software as a Service) e
-  implementaciones tales como Google AppSpot, OpenShift o Heroku. 
+  implementaciones tales como Google AppSpot, OpenShift o Heroku.
 
 
-### Específicos 
+### Específicos
 
 1. Comprender los ecosistemas de despliegue de aplicaciones modernos
 y su relación con la nube.
@@ -36,7 +36,7 @@ desplegables en la nube.
 ## Introducción
 
 >Puedes echarle un vistazo a
->[esta colección de transpas](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
+>[esta colección de transparencias](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
 >con información de un par de presentaciones sobre arquitectura
 >moderna de aplicaciones. Aunque centrado en microservicios,
 >[este conjunto de patrones](https://microservices.io/patterns/index.html)
@@ -74,7 +74,7 @@ para la cual crear la arquitectura virtual.
 >En gran parte, este apartado está sacado de
 >[Software Architecture Patterns, de Mark Richards](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/?intcmp=il-prog-free-article-sa15_sa_patterns),
 >un *ebook* gratuito que te puedes descargar dando tu email, lo que
->aconsejo vivamente que hagas. 
+>aconsejo vivamente que hagas.
 
 En general, las arquitecturas software modernas tienen como objetivo
 común el
@@ -83,7 +83,7 @@ elementos comunes son el uso de recursos propios combinados con
 recursos de diferentes empresas o *vendors*, y que se basan
 en unas metodologías de desarrollo ágil e integración y despliegue
 continuo. Veremos qué arquitecturas son las más comunes en este
-contexto. 
+contexto.
 
 ### Arquitectura en capas
 
@@ -125,7 +125,7 @@ central al que se pueden añadir funcionalidades mediante plugins. Un
 tipo de arquitectura clásico que se usa en CMSs como Joomla o WordPress o en
 sistemas de aprendizaje como Moodle. El problema principal es la
 escalabilidad, ya que el núcleo puede representar un cuello de
-botella. 
+botella.
 
 ### Arquitectura basada en microservicios.
 
@@ -184,7 +184,7 @@ dificultad de desarrollo si no se hace con cuidado.
 
 Todas estas arquitecturas, además, asumen un entorno de integración y
 despliegue continuo, que a su vez necesita una metodología de
-desarrollo basada en tests, tal como la que se verá más adelante. 
+desarrollo basada en tests, tal como la que se verá más adelante.
 
 Lo principal, en todo caso, es buscar la arquitectura más adecuada
 para una aplicación en vez de aceptar como un hecho una arquitectura
@@ -235,7 +235,7 @@ de la nube para coordinarse correctamente y también para que los
 sistemas de escalado automático sepan con qué nodos cuentan para
 ello. Estos sistemas de descubrimiento con, en una primera
 aproximación, unos ficheros de configuración dinámicos y
-distribuidos. 
+distribuidos.
 
 En casi todos los casos en que se despliegue una arquitectura en la
 nube se tendrá que hacer uso de este tipo de sistemas. Muchos
@@ -244,14 +244,14 @@ familiarizarse con otros
 como
 [`etcd` o `consul`](https://zookeeper.apache.org/)
 puede ayudar a entender su funcionamiento y, sobre todo, a usarlo en
-nuestras propias arquitecturas que no usen orquestadores. 
+nuestras propias arquitecturas que no usen orquestadores.
 
 Hay
 muchos
 [patrones de uso de estos sistemas de descubrimiento de servicios](https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/),
 pero en general se trata de tener, cuando se lanza un nuevo proveedor,
 un URL que proporcione información y un cliente que sea capaz de
-procesarla. 
+procesarla.
 
 ### Almacenes de datos: más allá del SQL
 
@@ -272,7 +272,7 @@ MongoDB hasta Redis pasando por Cassandra o Elastic.
 
 En algunos casos también se pueden usar los sistemas de descubrimiento
 mencionados anteriormente, que esencialmente son almacenes
-clave-valor. 
+clave-valor.
 
 ### Lenguajes de programación: programación políglota
 
@@ -377,8 +377,8 @@ Algunos recursos a los que puedes acceder desde la
 -
   [Pattern-oriented software architecture for dummies](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991004762519704990),
   aunque es muy básico, por lo menos explica en qué se pueden usar los
-  patrones de software y cómo aplicarlos en un momento determinado. 
-  
+  patrones de software y cómo aplicarlos en un momento determinado.
+
 -
   [Practical software architecture](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014009511104990)
   Una visión más práctica de diferentes arquitecturas de software.
@@ -388,12 +388,15 @@ Algunos recursos a los que puedes acceder desde la
   un recurso electrónico que explica cómo construir microservicios
   desde cero, la fase de modelización a la de construcción del mismo.
 
+-
+  [What are microservices really all about? - Microservices Basics Tutorial](https://youtu.be/j1gU2oGFayY) Video explicativo sobre ventajas y desventajas de diferentes arquitecturas software en referencia a los microservicios.
+
 ## A dónde ir desde aquí
 
 Este tema sirve como introducción para elegir el proyecto que se va a
 desarrollar durante la asignatura. Habrá que realizar estos ejercicios
 para superar el
-[primer hito del proyecto](http://jj.github.io/CC/documentos/proyecto/0.Repositorio). 
+[primer hito del proyecto](http://jj.github.io/CC/documentos/proyecto/0.Repositorio).
 
 A continuación se
 puede echar un vistazo a los
