@@ -339,7 +339,21 @@ la interoperabilidad. Y aparte de las [implementaciones libres](https://www.rabb
 puede usar dentro de su arquitectura, los proveedores de cloud tienen
 sus propias implementaciones tales como
 [Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
-o [Firebase de Google](https://firebase.google.com/docs/cloud-messaging/).
+o
+[Firebase de Google](https://firebase.google.com/docs/cloud-messaging/).
+
+### *Service mesh* y otros conceptos
+
+En arquitecturas complejas con decenas de microservicios, hay una
+malla de servicios que necesita responder a todas las peticiones y
+enrutarlas a donde sea conveniente. En este contexto, resulta
+imposible hacer que cada microservicio conozca las rutas y los
+endpoints del resto de los microservicios, que pueden además cambiar
+durante la vida de una aplicación. Una
+[malla o red de servicios, o *service mesh*](https://www.redhat.com/es/topics/microservices/what-is-a-service-mesh) te
+resuelve ese problema, usando configuraciones distribuidas y
+descubrimiento de servicios para poder enrutar toda petición a donde
+sea capaz de servirla.
 
 ### Resumiendo: hay todo un mundo ahí fuera
 
