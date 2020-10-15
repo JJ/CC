@@ -1,5 +1,4 @@
-Desarrollo basado en pruebas
-=========================
+# Desarrollo basado en pruebas
 
 <!--@
 prev: Arquitecturas_para_la_nube
@@ -8,16 +7,16 @@ next: Microservicios
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos </h2>
+## Objetivos 
 
-<h3>De la asignatura</h3>
+### De la asignatura
 
 <ul>
 <li> Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica.</li>
 </ul>
 
-<h3>Específicos </h3>
+### Específicos 
 
 <ol>
 <li> Entender el concepto de <em>DevOps</em>.</li>

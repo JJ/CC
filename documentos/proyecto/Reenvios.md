@@ -1,14 +1,11 @@
-Instrucciones para reenviar un hito
-=====================================
+# Instrucciones para reenviar un hito
 
-Descripción
------------------
+## Descripción
 
 Puedes reenviar los hitos las veces que quieras, pero sigue estas instrucciones para que se pueda evaluar correctamente.
 
 
-Entrega de la práctica
---------------------------------
+## Entrega de la práctica
 
 1. Edita el fichero correspondiente al hito, cambiando la versión
    *minor* del mismo e indicando claramente (negrita, cursiva o algún
@@ -33,8 +30,7 @@ pasar los tests, incluyendo tests adicionales que hayan podido
 introducirse durante la corrección del mismo (y que no se hayan pasado
 en la entrega por ser anterior a la introducción de dicho test).
 
-Valoración
---------------
+## Valoración
 
 Cada reenvío puntuará sobre un punto menos que la nota máxima,
 multiplicado por el número de semanas desde corrección de la misma. Es

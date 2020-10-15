@@ -1,5 +1,4 @@
-Técnicas de virtualización
-==
+# Técnicas de virtualización
 
 <!--@
 prev: PaaS
@@ -8,8 +7,7 @@ next: Contenedores
 
 <div class="objetivos" markdown="1">
 
-Cubre los siguientes objetivos de la asignatura
----
+## Cubre los siguientes objetivos de la asignatura
 
 * Conocer los conceptos relacionados con el proceso de virtualización
   tanto de software como de hardware. 
@@ -22,7 +20,7 @@ Cubre los siguientes objetivos de la asignatura
 
 * Realizar tareas de administración en infraestructura virtual.
 
-<h2>Objetivos específicos</h2>
+## Objetivos específicos
 
 1.  Conocer las diferentes tecnologías y herramientas de
 virtualización tanto para procesamiento, comunicación y
@@ -35,8 +33,7 @@ almacenamiento.
 </div>
 
 
-Introducción
-------------------
+## Introducción
 
 Una vez vista la introducción a la infraestructura virtual y algunas
 técnicas usadas por la misma, en este tema las pondremos en práctica trabajando con  virtualización a nivel de sistema operativo y a nivel de hardware.
@@ -47,8 +44,7 @@ muchas de las técnicas habituales en virtualización sin introducir un
 *overhead* excesivo; previamente veremos los mecanismos incluidos en
 el núcleo del sistema operativo que permiten construirlos.
 
-Espacios de nombres
--------------------------------
+## Espacios de nombres
 
 Los
 [espacios de nombres o *namespaces* del núcleo](http://lwn.net/Articles/531114/)
@@ -126,8 +122,7 @@ Los espacios de nombres permiten aislar todo tipo de aplicaciones; en
 
 </div>
 
-Puentes de red
-----------------------
+## Puentes de red
 
 Tras las técnicas que se han visto de aislamiento y
 compartimentalización de recursos hace falta ver alguna forma de crear
@@ -210,8 +205,7 @@ Un
 
 </div>
 
-Creando el contenido de nuevas máquinas y metiéndolos en jaulas
---------------------------------------------------------------
+## Creando el contenido de nuevas máquinas y metiéndolos en jaulas
 
 En el mundo del software libre y de las distribuciones de Linux
 siempre es fácil añadir el contenido a una nueva máquina virtual; dado
@@ -523,8 +517,7 @@ jaula, sino en cómo se accede a ella. Sin embargo, las técnicas
 necesarias para crear un sistema con virtualización completa son
 diferentes y se verán más adelante.
 
-A dónde ir desde aquí
------
+## A dónde ir desde aquí
 
 En el [siguiente tema](Contenedores.md) se verá cómo trabajar con
 sistemas *ligeros* de virtualización.

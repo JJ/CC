@@ -1,5 +1,4 @@
-Material docente para Cloud Computing
-==
+# Material docente para Cloud Computing
 
 [![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
 
@@ -30,8 +29,7 @@ principal es que el estudiante, al final de la asignatura, sea capaz de hacer lo
 [github-website]: https://github.com
 [cc-course-repo]: https://github.com/JJ/CC-20-21/
 
-Temario - Programa de la asignatura
-------------------------------------------------------
+## Temario - Programa de la asignatura
 
 Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
@@ -59,8 +57,7 @@ con los profesores están en
 [t6]: documentos/temas/Orquestacion.md
 [t7]: documentos/temas/Contenedores.md
 
-Seminarios y material adicional
----------------
+## Seminarios y material adicional
 
 Material adicional de la asignatura, que se usará en clase pero que el
 alumno tendrá que aprender a su ritmo
@@ -69,8 +66,7 @@ alumno tendrá que aprender a su ritmo
 
 [s1]: documentos/seminarios/ruby.md
 
-Prácticas - Actividades académicas dirigidas
--------------
+## Prácticas - Actividades académicas dirigidas
 
 El objetivo de la asignatura es la realización de un proyecto con
 diferentes hitos que correspondan a los objetivos cumplidos hasta ese
@@ -97,8 +93,7 @@ hitos se organizarán de la forma siguiente.
 [p6]: documents/proyecto/5.Provisionamiento.md
 
 
-Tutorías virtuales y presenciales
-----
+## Tutorías virtuales y presenciales
 
 Las tutorías virtuales se realizarán preferiblemente a través del
 grupo de Telegram, que se comparte con los estudiantes de otros años de
@@ -106,16 +101,14 @@ la misma asignatura. Se aconseja a todo estudiante matriculado que
 solicite una tutoría al principio de curso para recibir orientación
 sobre el mismo.
 
-Criterios de evaluación
----
+## Criterios de evaluación
 
 Los [criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado][guia-docente], y [se especifican en el repositorio de la clase][evaluacion].
 
 [guia-docente]: https://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada
 [evaluacion]: https://github.com/JJ/CC-20-21/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
 
-Sesiones, objetivos e hitos de años anteriores
----
+## Sesiones, objetivos e hitos de años anteriores
 
 * [Año 16-17](https://github.com/JJ/CC16-17)
 * [Año 17-18](https://github.com/JJ/CC-17-18)

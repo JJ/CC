@@ -1,5 +1,4 @@
-Automatizando el despliegue en la nube
-======================================
+# Automatizando el despliegue en la nube
 
 
 <!--@
@@ -9,7 +8,7 @@ next: Orquestacion
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos</h2>
+## Objetivos
 
 1.   Conocer las diferentes tecnologías y herramientas de
 virtualización tanto para procesamiento, comunicación y
@@ -24,8 +23,7 @@ proceso de datos virtual.
 
 </div>
 
-Introducción
-------------------
+## Introducción
 
 El objetivo de las plataformas de virtualización es, eventualmente,
 crear y gestionar una máquina virtual completa que funcione de forma aislada 
@@ -124,8 +122,7 @@ ahí. Generalmente son libres, así que también se pueden usar desde tu
 propio programa. A continuación veremos como trabajar en alguna de
 ellas. 
 
-Trabajando con máquinas virtuales en la nube
-----
+## Trabajando con máquinas virtuales en la nube
 
 Vamos a ver cómo funcionan algunas de estas utilidades de línea de
 órdenes, empezando por el CLI de Azure clásico, luego el moderno, y
@@ -363,8 +360,7 @@ que se pueda acceder, provisionándola con algún *script* disponible.
 
 </div>
 
-A dónde ir desde aquí
------
+## A dónde ir desde aquí
 
 Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones) pondremos en
 práctica todos los conceptos aprendidos en este tema. También se

@@ -1,5 +1,4 @@
-Desplegando aplicaciones en la nube: Uso de PaaS y DBaaS
-==
+# Desplegando aplicaciones en la nube: Uso de PaaS y DBaaS
 
 <!--@
 prev: Desarrollo_basado_en_pruebas
@@ -8,10 +7,10 @@ next: Provision
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos</h2>
+## Objetivos
 
 
-<h3>Cubre los siguientes objetivos de la asignatura</h3>
+### Cubre los siguientes objetivos de la asignatura
 
 2. Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica.
@@ -1089,8 +1088,7 @@ aplicación de calificación de empresas realizada anteriormente.
 </div>
 
 
-A dónde ir desde aquí
------
+## A dónde ir desde aquí
 
 En el [capítulo sobre contenedores](Contenedores.md) usaremos
 diferentes técnicas de virtualización para la creación de contenedores

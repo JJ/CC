@@ -1,5 +1,4 @@
-Virtualización completa: uso de máquinas virtuales
-==
+# Virtualización completa: uso de máquinas virtuales
 
 <!--@
 prev: Almacenamiento
@@ -8,7 +7,7 @@ next: Gestion_de_configuraciones
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos</h2>
+## Objetivos
 
 1.   Conocer las diferentes tecnologías y herramientas de
 virtualización tanto para procesamiento, comunicación y
@@ -23,8 +22,7 @@ proceso de datos virtual.
 
 </div>
 
-Introducción
-------------------
+## Introducción
 
 El objetivo de las plataformas de virtualización es, eventualmente,
 crear y gestionar una máquina virtual completa que funcione de forma aislada 
@@ -78,8 +76,7 @@ caso de que el procesador tenga soporte.
 A continuación veremos el uso básico de estos sistemas de
 virtualización basándonos, sobre todo, en uno de ellos KVM.
 
-Creando máquinas virtuales desde la línea de órdenes.
-------
+## Creando máquinas virtuales desde la línea de órdenes.
 
 Crear una máquina virtual requiere seguir un proceso similar a la
 construcción e instalación del sistema operativo de un ordenador por
@@ -223,8 +220,7 @@ LXDE a la que se pueda acceder mediante VNC y `ssh`.
 
 </div>
 
-Trabajando con máquinas virtuales en la nube
-----
+## Trabajando con máquinas virtuales en la nube
 
 Azure permite,
 [tras la creación de almacenamiento virtual](Almacenamiento.md), la
@@ -404,8 +400,7 @@ algunas preguntas.
 
 </div>
 
-A dónde ir desde aquí
------
+## A dónde ir desde aquí
 
 En el [siguiente tema](Gestion_de_configuraciones) pondremos en
 práctica todos los conceptos aprendidos en este tema y
