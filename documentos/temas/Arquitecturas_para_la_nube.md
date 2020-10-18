@@ -128,7 +128,7 @@ arquitectura.
 
 ### Arquitectura microkernel
 
-Se trata de [una arquitectura](https://viralpatel.net/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
+Se trata de [una arquitectura](https://www.viralpatel.net/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
 central al que se pueden añadir funcionalidades mediante plugins. Un
 tipo de arquitectura clásico que se usa en CMSs como Joomla o WordPress o en
 sistemas de aprendizaje como Moodle. El problema principal es la
@@ -250,7 +250,7 @@ nube se tendrá que hacer uso de este tipo de sistemas. Muchos
 *orquestadores* como Kubernetes tienen los suyos propios, pero
 familiarizarse con otros
 como
-[`etcd` o `consul`](https://www.consul.io/intro/vs/zookeeper.html)
+[`etcd` o `consul`](https://zookeeper.apache.org/)
 puede ayudar a entender su funcionamiento y, sobre todo, a usarlo en
 nuestras propias arquitecturas que no usen orquestadores. 
 
@@ -335,11 +335,25 @@ evento determinado.
 
 Hay una serie de estándares de mensajería, pero muchas de las
 implementaciones existentes se acogen a varios para que sea más simple
-la interoperabilidad. Y aparte de las [implementaciones libres](https://queues.io/) que uno
+la interoperabilidad. Y aparte de las [implementaciones libres](https://www.rabbitmq.com/) que uno
 puede usar dentro de su arquitectura, los proveedores de cloud tienen
 sus propias implementaciones tales como
 [Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
-o [Firebase de Google](https://firebase.google.com/docs/cloud-messaging/).
+o
+[Firebase de Google](https://firebase.google.com/docs/cloud-messaging/).
+
+### *Service mesh* y otros conceptos
+
+En arquitecturas complejas con decenas de microservicios, hay una
+malla de servicios que necesita responder a todas las peticiones y
+enrutarlas a donde sea conveniente. En este contexto, resulta
+imposible hacer que cada microservicio conozca las rutas y los
+endpoints del resto de los microservicios, que pueden además cambiar
+durante la vida de una aplicación. Una
+[malla o red de servicios, o *service mesh*](https://www.redhat.com/es/topics/microservices/what-is-a-service-mesh) te
+resuelve ese problema, usando configuraciones distribuidas y
+descubrimiento de servicios para poder enrutar toda petición a donde
+sea capaz de servirla.
 
 ### Resumiendo: hay todo un mundo ahí fuera
 
@@ -360,20 +374,25 @@ serían los más convenientes?
 
 ## Bibliografía y otros recursos
 
+En el [curso de calidad](https://jj.github.io/curso-tdd) en el
+software hay una serie de recursos que hablan de cómo diseñar
+arquitecturas de software modernas: por ejemplo, esta 
+[intro general a arquitecturas software](https://jj.github.io/curso-tdd/temas/aplicaciones.html).
+
 Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](https://biblioteca.ugr.es):
 
 -
-  [Pattern-oriented software architecture for dummies](https://bencore.ugr.es/iii/encore/record/C__Rb2243562__Ssoftware%20architecture%20patterns.__P1%2C29__Orightresult__X1?lang=spi&suite=pearl),
+  [Pattern-oriented software architecture for dummies](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991004762519704990),
   aunque es muy básico, por lo menos explica en qué se pueden usar los
   patrones de software y cómo aplicarlos en un momento determinado. 
   
 -
-  [Practical software architecture](https://bencore.ugr.es/iii/encore/record/C__Rb2557607__Ssoftware%20architecture__Orightresult__U__X6?lang=spi&suite=pearl)
+  [Practical software architecture](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014009511104990)
   Una visión más práctica de diferentes arquitecturas de software.
 
 -
-  [Building microservices](https://bencore.ugr.es/iii/encore/record/C__Rb2523920__Smicroservices__P0%2C3__Orightresult__U__X6?lang=spi&suite=pearl)
+  [Building microservices](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014288533304990)
   un recurso electrónico que explica cómo construir microservicios
   desde cero, la fase de modelización a la de construcción del mismo.
 
