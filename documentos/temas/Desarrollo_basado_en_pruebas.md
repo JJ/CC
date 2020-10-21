@@ -403,29 +403,29 @@ suelen situar en el directorio principal. Para la aplicación
 mencionada anteriormente, este es el fichero:
 
 ```Scala
-organization  := "info.CC_MII"
+import Dependencies._
 
-version       := "0.0.1"
+val circeVersion = "0.12.3"
 
-scalaVersion  := "2.11.7"
+libraryDependencies ++= Seq(
+  "io.circe" %% "circe-core",
+  "io.circe" %% "circe-generic",
+  "io.circe" %% "circe-parser"
+).map(_ % circeVersion)
 
-scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
+libraryDependencies +=
+    "org.scalatest" %% "scalatest" % "3.2.0" % Test
 
-libraryDependencies ++= {
-  val akkaV = "2.3.9"
-  val sprayV = "1.3.3"
-  Seq(
-    "io.spray"            %%  "spray-can"     % sprayV,
-    "io.spray"            %%  "spray-routing" % sprayV,
-    "io.spray"            %%  "spray-testkit" % sprayV  % "test",
-    "io.spray" 		  %%  "spray-json"    % "1.3.2",
-    "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
-    "com.typesafe.akka"   %%  "akka-testkit"  % akkaV   % "test",
-    "org.specs2"          %%  "specs2-core"   % "2.3.11" % "test"
+lazy val root = (project in file(".")).
+  settings(
+    inThisBuild(List(
+      organization := "com.jjmerelo",
+      scalaVersion := "2.12.10",
+      version      := "0.1.0"
+    )),
+    name := "Hitos",
+
   )
-}
-
-Revolver.settings
 
 cancelable in Global := true
 ```
@@ -434,10 +434,15 @@ cancelable in Global := true
 declarar la organización que se va a usar y la versión del propio
 paquete, declara una serie de versiones. Las declaraciones de
 dependencia de variables en `libraryDependencies` indican el paquete
-(tal como `io.spray`), el módulo específico (tal como `spray-can`) y
+(tal como `io.circe`), el módulo específico (tal como `circe-core`) y
 finalmente la versión. El resto son opciones, de las cuales la más
 interesante es la última que permite que se interrumpa el programa
-desde `sbt`
+desde `sbt`.
+
+> Incidentalmente, `sbt` es claramente una herramienta de construcción
+> junto con una de gestión de dependencias. *No* es un gestor de
+> tareas, aunque todas las tareas relacionadas con uno y otro se
+> pueden lanzar desde él.
 
 Al ejecutar `sbt` en el directorio donde se encuentre este fichero se
 cargará y se interpretará ese fichero y aparecerá una línea de
@@ -595,47 +600,47 @@ node. Sin embargo, el lenguaje en sí es un poco más estricto y tiene
 reglas más o menos precisas sobre dónde colocar los tests. Si las
 fuentes están en `src/main`, las pruebas estarán en `src/test` en el
 directorio correspondiente al nombre del paquete. Por ejemplo,
-`src/test/scala/info/CC_MII/` para el paquete `info.CC_MII` que es el
-que estamos usando en estos ejemplos.
+`src/test/scala/info/CC_MII/` para el paquete `info.CC_MII`, o
+simplemente `scala/jjmerelo` para el paquete `jjmerelo`, que es el de
+aquí.
 
 También Scala tiene diferentes formas de testear. Una similar a la que
 hemos usado anteriormente se llama `specs2`, una basada en
 comportamiento; así vemos la diferencia entre usar TDD (en la
-anterior) y BDD (en esta). La usamos en el ejemplo a continuación:
+anterior) y BDD (en esta). La usamos en
+el [ejemplo](https://github.com/JJ/prueba-IC-CC) a continuación:
 
 ```Scala
-package info.CC_MII
+package jjmerelo
 
-import org.specs2.mutable.Specification
+import io.circe._
+import org.specs2._
 
-class ApuestaSpec extends Specification {
+class Hitos_IVSpec2 extends Specification { def is = s2"""
 
-  "Apuesta" should {
+ Especificación para comprobar Hitos_IV
 
-    "almacenar correctamente las variables" in {
-      val esta_apuesta = new Apuesta( 2,3,"Dude")
-      esta_apuesta.local must be_==(2)
-      esta_apuesta.visitante must be_==(3)
-      esta_apuesta.quien must beEqualTo("Dude")
-    }
-
-
-  }
+ El objeto tipo Hitos en hitos_iv debe
+   existir                                         $exists """
+  var hitos_iv = new Hitos_IV
+  def exists = hitos_iv.hitos must beRight
 }
 ```
 
 Tras importar el módulo correspondiente a los tests, estos se agrupan
-en una serie de sentencias `should` que serán ejecutadas
+en una serie de sentencias `must` que serán ejecutadas
 secuencialmente. En este caso tenemos una sola, en la que creamos una
 instancia de la clase y comprobamos que efectivamente tiene los
-valores que debe tener. Las órdenes `must be_==` y `must beEqualTo`
+valores que debe tener. Las órdenes `must`
 comprueban el valor de diferentes tipos y devuelven los valores
-correspondientes si se cumple ese comportamiento y si no se cumple.
+correspondientes si se cumple ese comportamiento y si no se cumple. En
+este caso se comprueba si el resultado del valor ha sido correcto
+(correspondiente, en Scala, al tipo `Right`).
 
 Se ejecutaría con `sbt test` o ejecutando `test` desde `sbt`; el
 resultado sería:
 
-![Resultado del test de Scala](/documentos/img/test-scala.png)
+![Resultado del test de Scala (versión anterior)](/documentos/img/test-scala.png)
 
 
 ## Añadiendo integración continua.
