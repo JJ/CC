@@ -7,8 +7,7 @@ prev: Arquitecturas_para_la_nube
 next: Microservicios
 ---
 
-Desarrollo basado en pruebas
-=========================
+# Desarrollo basado en pruebas
 
 <!--@
 prev: Arquitecturas_para_la_nube
@@ -17,16 +16,16 @@ next: Microservicios
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos </h2>
+## Objetivos
 
-<h3>De la asignatura</h3>
+### De la asignatura
 
 <ul>
 <li> Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica.</li>
 </ul>
 
-<h3>Específicos </h3>
+### Específicos
 
 <ol>
 <li> Entender el concepto de <em>DevOps</em>.</li>
@@ -40,7 +39,7 @@ tanto de software como de hardware y ponerlos en práctica.</li>
 
 >Si no lo has hecho antes, conviene que en este momento
 >[aprendas git](https://mini-git.github.io/) y te abras una cuenta en
->[GitHub](https://github.com). 
+>[GitHub](https://github.com).
 
 Los ciclos de
 [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software):
@@ -61,21 +60,23 @@ metodología basada en pruebas con los entornos de computación en nube
 y cómo configurarlos y usarlos para hacer más rápida y eficiente el
 trabajo de un equipo de desarrollo, test y sistemas.
 
-El desarrollo basado en pruebas entra en relación con la computación nube dentro del concepto de
-[*DevOps*](https://en.wikipedia.org/wiki/DevOps), que
-abarca tanto sistemas, es decir, el soporte físico donde se van a
-ejecutar las aplicaciones, como desarrollo y test y que está a caballo
-entre los dos primeros. En primer lugar, *DevOps* implica la
-automatización de las 
-tareas de creación de un puesto de trabajo para desarrollo, pero
-también la sistematización de los entornos de pruebas y de despliegue y de las tareas
-de configuración relacionadas con la misma, todo ello en un entorno de
-desarrollo ágil. En concreto, *DevOps* comprende
-[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](https://www.rexify.org/): 
+El desarrollo basado en pruebas entra en relación con la computación
+nube dentro del concepto
+de [*DevOps*](https://en.wikipedia.org/wiki/DevOps), que abarca tanto
+sistemas, es decir, el soporte físico donde se van a ejecutar las
+aplicaciones, como desarrollo y test y que está a caballo entre los
+dos primeros. En primer lugar, *DevOps* implica la automatización de
+las tareas de creación de un puesto de trabajo para desarrollo, pero
+también la sistematización de los entornos de pruebas y de despliegue
+y de las tareas de configuración relacionadas con la misma, todo ello
+en un entorno de desarrollo ágil. En concreto, *DevOps*
+comprende
+[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](https://www.rexify.org/)
+:
 
 1. *Automatización de tareas relacionadas con el desarrollo*. En
    resumen, que no haya que recordar o tener apuntados en una libreta
-   comandos para hacer todo tipo de 
+   comandos para hacer todo tipo de
    cosas (instalación de librerías o configuración de una máquina)
    sino que haya *scripts* que lo homogeneicen y automaticen.
 
@@ -127,31 +128,33 @@ de instalación del mismo mediante el uso de una sola orden que
 seleccione la versión precisa que se va a usar.
 
 Estos entornos virtuales vienen del hecho de que los lenguajes de
-scripting o también conocidos como lenguajes interpretados tales 
-como Perl, Python y Ruby tienen ciclos de desarrollo
-muy rápidos que hacen que a veces convivan en producción diferentes
-versiones de los mismos, incluso versiones *major*. Eso hace
-complicado desarrollar e incluso probar los programas que se
-desarrollan: si el sistema operativo viene con Perl 5.14, puede que
-haga falta probar o desarrollar para 5.16 o 5.18 o incluso probar la
-versión más avanzada.
+scripting o también conocidos como lenguajes interpretados tales como
+Perl, Python y Ruby tienen ciclos de desarrollo muy rápidos que hacen
+que a veces convivan en producción diferentes versiones de los mismos,
+incluso versiones *major*. Eso hace complicado desarrollar e incluso
+probar los programas que se desarrollan: si el sistema operativo viene
+con Perl 5.14, puede que haga falta probar o desarrollar para 5.16 o
+5.18 o incluso probar la versión más avanzada.
 
 Por eso desde hacer cierto tiempo se han venido usando *entornos
 virtuales de desarrollo* tales como:
 
-*  [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
-*  [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
-*  [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
-*  [rbenv](https://github.com/sstephenson/rbenv)
+- [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
+- [nvm](https://github.com/creationix/nvm),
+  [`n`](https://github.com/tj/n)
+  y [nave](https://github.com/isaacs/nave) para node.js,
+- [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
+- [rbenv](https://github.com/sstephenson/rbenv)
    y [RVM](https://rvm.io) para Ruby
-*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](https://perlbrew.pl).
+- y [plenv](https://github.com/tokuhirom/plenv)
+  y [perlbrew para Perl](https://perlbrew.pl).
 
 Generalmente, estos programa funcionan instalando binarios en
 directorios del usuario y modificando el camino de ejecución para que
 se usen estas versiones en vez de las instaladas en el sistema. En la
 mayoría de los casos se coordinan también con el *shell* para mostrar
 la versión que se está ejecutando en la línea de órdenes o para llevar
-a cabo autocompletado. 
+a cabo autocompletado.
 
 Una vez instalados, estos programas permiten instalar fácilmente
 nuevas versiones de tu lenguaje de programación (con las librerías
@@ -170,12 +173,12 @@ de la 4.x y lo mismo para la 0.11 o alguna impar (de desarrollo).
 
 </div>
 
-Generalmente, las librerías asociadas a una aplicación determinada, es decir, las dependencias, 
-siguen un método similar. En vez de instalar en el sistema todas las
-librerías necesarias (o instalar una cada vez que hay algún error),
-la mayor parte de los entornos de programación incluyen alguna forma
-de definir qué librerías (o módulos) necesitan y qué versiones
-mínimas, máximas o exactas deben tener.
+Generalmente, las librerías asociadas a una aplicación determinada, es
+decir, las dependencias, siguen un método similar. En vez de instalar
+en el sistema todas las librerías necesarias (o instalar una cada vez
+que hay algún error), la mayor parte de los entornos de programación
+incluyen alguna forma de definir qué librerías (o módulos) necesitan y
+qué versiones mínimas, máximas o exactas deben tener.
 
 >Incidentalmente, el hecho de que todo sea software libre ayuda a que
 >en ningún paso de este proceso haya que decidir qué licencia o modelo
@@ -189,7 +192,7 @@ mínimas, máximas o exactas deben tener.
 >usar JavaScript,
 >[este curso](https://github.com/JJ/curso-js) o
 >[este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
->cualquier otro también. 
+>cualquier otro también.
 
 Una porra de fútbol básicamente tiene un partido, que tendrá un nombre
 y si acaso una fecha o descripción (por ejemplo, *Jaén-Osasuna Copa
@@ -388,17 +391,18 @@ versiones de todo que usa, inclusive el propio lenguaje, y las
 dependencias, y además un entorno de línea de órdenes desde el que se
 puede probar y ejecutar la aplicación.
 
->Vamos a usar en este ejemplo
+>Vamos a usar en este
+>ejemplo
 >[el mismo tipo de programa para gestionar porras, pero en Scala](https://github.com/JJ/spray-test). Usa
 >un marco REST llamado Spray, que funciona sobre un marco de
 >concurrencia llamado Akka. No es que sea el mejor y posiblemente sea
->una mala idea usarlo, pero para un ejemplo vale. 
+>una mala idea usarlo, pero para un ejemplo vale.
 
 Los ficheros de configuración para `sbt` llevan esa extensión y se
 suelen situar en el directorio principal. Para la aplicación
 mencionada anteriormente, este es el fichero:
 
-```
+```Scala
 organization  := "info.CC_MII"
 
 version       := "0.0.1"
@@ -439,7 +443,7 @@ Al ejecutar `sbt` en el directorio donde se encuentre este fichero se
 cargará y se interpretará ese fichero y aparecerá una línea de
 órdenes, desde la que podemos ejecutar el programa o
 testearlo. También se pueden compilar los fuentes con `sbt compile`
-directamente desde la línea de órdenes. 
+directamente desde la línea de órdenes.
 
 <div class='ejercicios' markdown='1'>
 
@@ -447,8 +451,8 @@ directamente desde la línea de órdenes.
  (principalmente Scala y sbt) y ejecutar el ejemplo desde
  `sbt`. Alternativamente, buscar otros marcos para REST en Scala tales
  como Finatra o Scalatra y probar los ejemplos que se incluyan en el
- repositorio. 
- 
+ repositorio.
+
 </div>
 
 ## Desarrollo basado en pruebas
@@ -525,7 +529,7 @@ que consiste en describir el comportamiento de un sistema más o menos
 de alto nivel. Como hay que escoger uno y parece que Mocha es más
 popular, nos quedamos con este para escribir este programa de test.
 
-~~~~~javascript
+```javascript
     var assert = require("assert"),
 		apuesta = require(__dirname+"/../Apuesta.js");
 
@@ -544,7 +548,8 @@ popular, nos quedamos con este para escribir este programa de test.
 		});
 		});
 	});
-~~~~~
+```
+
 
 Mocha puede usar diferentes librerías de test. En este caso hemos
 escogido la que ya habíamos usado, `assert`. A bajo nivel, los tests
@@ -557,9 +562,9 @@ el resultado de ejecutarlo será:
 
     Apuesta
       Carga
-        ✓ should be loaded 
+        ✓ should be loaded
       Crea
-        ✓ should create apuestas correctly 
+        ✓ should create apuestas correctly
 
 
     2 passing (6ms)
@@ -577,8 +582,10 @@ Para la aplicación que se está haciendo, escribir una serie de
 aserciones y probar que efectivamente no fallan. Añadir tests para una
 nueva funcionalidad, probar que falla y escribir el código para que no
 lo haga. A continuación, ejecutarlos desde *mocha* (u otro módulo de
-test de alto nivel), usando descripciones del test y
- del grupo de test de forma correcta. Si hasta ahora no has subido el código que has venido realizando a GitHub, es el momento de hacerlo, porque lo vamos a necesitar un poco más adelante. 
+test de alto nivel), usando descripciones del test y del grupo de test
+de forma correcta. Si hasta ahora no has subido el código que has
+venido realizando a GitHub, es el momento de hacerlo, porque lo vamos
+a necesitar un poco más adelante.
 </div>
 
 ### Realizando las pruebas en Scala
@@ -593,7 +600,8 @@ que estamos usando en estos ejemplos.
 
 También Scala tiene diferentes formas de testear. Una similar a la que
 hemos usado anteriormente se llama `specs2`, una basada en
-comportamiento. La usamos por ejemplo a continuación:
+comportamiento; así vemos la diferencia entre usar TDD (en la
+anterior) y BDD (en esta). La usamos en el ejemplo a continuación:
 
 ```Scala
 package info.CC_MII
@@ -601,7 +609,7 @@ package info.CC_MII
 import org.specs2.mutable.Specification
 
 class ApuestaSpec extends Specification {
-  
+
   "Apuesta" should {
 
     "almacenar correctamente las variables" in {
@@ -611,7 +619,7 @@ class ApuestaSpec extends Specification {
       esta_apuesta.quien must beEqualTo("Dude")
     }
 
- 
+
   }
 }
 ```
@@ -654,13 +662,14 @@ nuestro programa, aparte de la configuración que tendrá el programa en
 sí con las librerías del lenguaje de programación en el que está
 desarrollado.
 
-Un sistema bastante popular de integración continua es
-[Jenkins](https://jenkins.io/), pero está enfocado sobre todo a
-Java y no tiene una web gratuita que se pueda usar. Jenkins lo puedes usar en la nube o instalarte tu propio
-ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java
-por lo que hay otros sistemas como [Travis](https://travis-ci.org) o
-[Shippable](https://www.shippable.com/) que podemos usar también desde
-la nube y, además, están preparados para más lenguajes de
+Un sistema bastante popular de integración continua
+es [Jenkins](https://jenkins.io/), pero está enfocado sobre todo a
+Java y no tiene una web gratuita que se pueda usar. Jenkins lo puedes
+usar en la nube o instalarte tu propio ordenador para hacerlo. Sin
+embargo, está enfocado sobre todo a Java por lo que hay otros sistemas
+como [Travis](https://travis-ci.org)
+o [Shippable](https://www.shippable.com/) que podemos usar también
+desde la nube y, además, están preparados para más lenguajes de
 programación.
 
 Para trabajar con estos sistemas, generalmente hay que hacerlo en dos
