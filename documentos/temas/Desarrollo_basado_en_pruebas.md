@@ -38,9 +38,9 @@ aplicación y entender cuales son estos.</li>
 
 ## Introducción
 
->Si no lo has hecho antes, conviene que en este momento
->[aprendas git](https://mini-git.github.io/) y te abras una cuenta en
->[GitHub](https://github.com).
+> Si no lo has hecho antes, conviene que en este momento
+> [aprendas git](https://mini-git.github.io/) y te abras una cuenta en
+> [GitHub](https://github.com).
 
 Los ciclos de
 [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software):
@@ -86,20 +86,20 @@ menesteres](https://www.rexify.org/):
    publicación y, en general, todos los pasos del desarrollo y
    despliegue de software.
 
-5. *Provisionamiento de los servidores*: los servidores virtuales a los
+3. *Provisionamiento de los servidores*: los servidores virtuales a los
    que se despliegue deben estar preparados con todas las herramientas
    necesarias para publicar la aplicación.
 
-6. *Gestión de configuraciones*: la gestión de las configuraciones de
+4. *Gestión de configuraciones*: la gestión de las configuraciones de
    los servidores y las órdenes para provisionamiento deben estar
    controladas por un sistema de gestión de versiones que permita
    pruebas y también controlar en cada momento el entorno en el que
    efectivamente se está ejecutando el software.
 
-3. *Despliegue en la nube*: publicación de aplicaciones en servidores
+5. *Despliegue en la nube*: publicación de aplicaciones en servidores
    virtuales.
 
-4. [Ciclo de vida del software](https://es.slideshare.net/colmbennett/software-rollout)
+6. [Ciclo de vida del software](https://es.slideshare.net/colmbennett/software-rollout)
    definición de las diferentes fases en la vida de una aplicación,
    desde el diseño hasta el soporte.
 
@@ -187,13 +187,13 @@ qué versiones mínimas, máximas o exactas deben tener.
 
 ## Vamos a hacer una aplicación: gestionar porras de fútbol
 
->Primero, debe constar que esta aplicación solo está aquí a efectos de
->ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
->usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
->usar JavaScript,
->[este curso](https://github.com/JJ/curso-js) o
->[este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
->cualquier otro también.
+> Primero, debe constar que esta aplicación solo está aquí a efectos de
+> ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
+> usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
+> usar JavaScript,
+> [este curso](https://github.com/JJ/curso-js) o
+> [este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
+> cualquier otro también.
 
 Una porra de fútbol básicamente tiene un partido, que tendrá un nombre
 y si acaso una fecha o descripción (por ejemplo, *Jaén-Osasuna Copa
@@ -531,7 +531,9 @@ función `as_string` es la esperada.
 Hay un segundo nivel, el marco de ejecución de los tests. Los marcos
 son programas que, a su vez, ejecutan los programas de test y escriben
 un informe sobre cuáles han fallado y cuáles no con más o menos
-parafernalia y farfolla. Una vez más, [hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
+parafernalia y farfolla. Una vez
+más,
+[hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
 nodejs (y, por supuesto, uno propio para cada uno de los lenguajes de
 programación, aunque en algunos están realmente estandarizados).
 
@@ -572,13 +574,15 @@ tipo, porque mocha funciona a un nivel superior, con funciones como
 test y cuál es el resultado que necesitamos. Se ejecuta con `mocha` y
 el resultado de ejecutarlo será:
 
-    Apuesta
-      Carga
-        ✓ should be loaded
-      Crea
-        ✓ should create apuestas correctly
+```text
+Apuesta
+  Carga
+    ✓ should be loaded
+  Crea
+    ✓ should create apuestas correctly
 
-    2 passing (6ms)
+2 passing (6ms)
+```
 
 (pero con más colorines).
 
@@ -749,8 +753,8 @@ y también se enviará por correo electrónico. Y te da también un
 *badge* que puedes poner en tu fichero para indicar que, por lo
 pronto, todo funciona.
 
-Si el informe indica que las pruebas son correctas, se puede proceder al despliegue. Pero eso
-ya será en la siguiente clase.
+Si el informe indica que las pruebas son correctas, se puede proceder
+al despliegue. Pero eso ya será en la siguiente clase.
 
 > Configurar integración continua para nuestra aplicación usando
 > Travis o algún otro sitio.
@@ -770,7 +774,6 @@ Algunos recursos a los que puedes acceder desde la
 - [DevOps: a software architect's perspective](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991008320919704990)
 , un libro en general teórico y "a vista de pájaro" de la creación de
   equipos de desarrollo y aplicaciones basadas en esa filosofía.
-
 - [DevOps for developers](https://granatensis.ugr.es/discovery/fulldisplay?docid=alma991013959592104990&context=L&vid=34CBUA_UGR:VU1&lang=es&search_scope=MyInstitution&adaptor=Local%20Search%20Engine&tab=Granada&query=any,contain,DevOps%20for%20developers%20&offset=0)
   también con poco código, pero con una visión a más bajo nivel de
   cómo organizar y montar grupos DevOps.
