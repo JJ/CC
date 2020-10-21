@@ -105,8 +105,7 @@ comprende
    ligado a ciclos de desarrollo ágiles en los que cada nueva
    característica se introduzca tan pronto esté lista y probada; el
    despliegue continuo implica integración continua de las nuevas
-   características y arreglos, tanto en el software como el hardware. 
-
+   características y arreglos, tanto en el software como el hardware.
 
 En este tema veremos la mayoría; en los siguientes se verá la
 gestión de configuraciones, provisionamiento de los servidores,
@@ -116,7 +115,7 @@ despliegue continuo y virtualización.
 > el [curso de calidad en el software](https://jj.github.io/curso-tdd)
 > que se ha impartido en octubre-noviembre de 2019.
 
-## Entornos virtuales de desarrollo.
+## Entornos virtuales de desarrollo
 
 Una de las partes esenciales de la cultura *DevOps* es la gestión de
 configuraciones y posteriormente,  la automatización. El uso de entornos
@@ -207,7 +206,7 @@ La aplicación podrá tener, o no, un interfaz web, pero por lo pronto,
 y a efectos de la prueba continua de más adelante, vamos a quedarnos
 solo con un pequeño programa que sirva para comprobar que funciona.
 
-### Configuración de una aplicación en node.
+### Configuración de una aplicación en node
 
 Podemos almacenar esta información en una base de datos como SQLite
 (la clásica).
@@ -223,31 +222,32 @@ ficheros que describen qué se usa y, en general, que es necesario
 instalar y tener para ejecutarlo. En node se usa un fichero en formato
 JSON tal como este:
 
-	{
-	  "author": "J. J. Merelo <jjmerelo@gmail.com> (https://github.com/JJ/desarrollo-basado-pruebas)",
-	  "name": "porrio",
-	  "description": "Apuesta en una porra",
-	  "version": "0.0.1",
-	  "repository": {
-	  "url": "git://github.com/JJ/desarrollo-basado-pruebas.git"
-	  },
-	  "main": "./Apuesta.js",
-	  "scripts": {
-	  "test": "make test"
-	  },
-	  "dependencies": {"sqlite3": "~3.0"},
-	  "devDependencies": {},
-	  "optionalDependencies": {},
-	  "engines": {
-	  "node": ">=0.8"
-	  }
-	}
-
+```javascript
+    {
+      "author": "J. J. Merelo <jjmerelo@gmail.com> (https://github.com/JJ/desarrollo-basado-pruebas)",
+      "name": "porrio",
+      "description": "Apuesta en una porra",
+      "version": "0.0.1",
+      "repository": {
+      "url": "git://github.com/JJ/desarrollo-basado-pruebas.git"
+      },
+      "main": "./Apuesta.js",
+      "scripts": {
+      "test": "make test"
+      },
+      "dependencies": {"sqlite3": "~3.0"},
+      "devDependencies": {},
+      "optionalDependencies": {},
+      "engines": {
+      "node": ">=0.8"
+      }
+    }
+```
 
 Las partes que más nos interesan están hacia el final: las
 dependencias diversas (`dependencies`). Es un *hash* que dice qué
 módulo se usan (en este caso, `sqlite` sólo) y qué versiones harán
-falta. Al desplegarse, el entorno dependerá de muchas cuestiones y hay 
+falta. Al desplegarse, el entorno dependerá de muchas cuestiones y hay
 que asegurarse de que donde va a acabar el programa tiene todo lo
 necesario. En caso de que no lo tuviera, el programa no se instalará.
 
@@ -257,12 +257,12 @@ caso no se permitirá la ejecución.
 
 Este fichero, además, permite instalar todas las dependencias usando
 solo `npm install .`. Casi todos los lenguajes habituales tienen algún
-sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo. 
+sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo.
 
 <div class='ejercicios' markdown='1'>
 
  Crear una descripción del módulo usando `package.json`. En caso de
- que se trate de otro lenguaje, usar el método correspondiente.  
+ que se trate de otro lenguaje, usar el método correspondiente.
 
 </div>
 
@@ -299,54 +299,63 @@ vamos a usar `grunt` para documentar el código. Tras la instalación de
 `grunt`, que no viene instalado por defecto en nodejs, se puede usar
 directamente.
 
-	npm install -g grunt-cli
+```bash
+npm install -g grunt-cli
+```
 
 `-g` indica que se trata de una instalación global, aunque también se
-puede instalar localmente. 
+puede instalar localmente.
 
 Igual que make usa
 Makefiles, `grunt` usa `Gruntfile.js` tal como este
 
-    'use strict';
+```javascript
+'use strict';
 
-    module.exports = function(grunt) {
+module.exports = function(grunt) {
 
-	  // Configuración del proyecto
-	  grunt.initConfig({
-	  pkg: grunt.file.readJSON('package.json'),
-	  docco: {
-		  debug: {
-		  src: ['*.js'],
-		  options: {
-			  output: 'docs/'
-		  }
-		  }
-	  }
-	  });
+  // Configuración del proyecto
+  grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  docco: {
+      debug: {
+      src: ['*.js'],
+      options: {
+          output: 'docs/'
+      }
+      }
+  }
+  });
 
-	  // Carga el plugin de grunt para hacer esto
-	  grunt.loadNpmTasks('grunt-docco');
+  // Carga el plugin de grunt para hacer esto
+  grunt.loadNpmTasks('grunt-docco');
 
-	  // Tarea por omisión: generar la documentación
-	  grunt.registerTask('default', ['docco']);
-    };
+  // Tarea por omisión: generar la documentación
+  grunt.registerTask('default', ['docco']);
+};
+```
 
-Es necesario instalar `docco` si queremos que funcione. Y
-`grunt` enfoca el procesamiento de las tareas como una serie de *plugins* que hay que
-instalar, en este caso `grunt-docco`. Para instalarlos se usa la
-herramienta habitual de instalación en node, `npm`, pero una vez que
-usamos `package.json`, `npm` puede editarlo y cambiar la configuración
-automáticamente si lo usamos de esta forma
+Es necesario instalar `docco` si queremos que funcione. Y `grunt`
+enfoca el procesamiento de las tareas como una serie de *plugins* que
+hay que instalar, en este caso `grunt-docco`. Para instalarlos se usa
+la herramienta habitual de instalación en node, `npm`, pero una vez
+que usamos `package.json`, `npm` puede editarlo y cambiar la
+configuración automáticamente si lo usamos de esta forma
 
-	npm install docco grunt-docco --save-dev
+```shell
+npm install docco grunt-docco --save-dev
+```
 
 El `--save-dev` indica que se guarde la configuración correspondiente
 en `package.json`, donde efectivamente se puede ver:
 
-	"devDependencies": {
-	  "docco": "~0.6",
-	  "grunt-docco": "~0.3.3"
-	},
+```json
+"devDependencies": {
+  "docco": "~0.6",
+  "grunt-docco": "~0.3.3"
+},
+```
+
 
 El fichero que se ve arriba tiene tres partes: la definición de la
 tarea (en este caso, la que genera la documentación), la carga de la
@@ -360,7 +369,7 @@ pronto, no vamos a hacerlo). Luego, definimos la tarea llamada
 fuentes contenidos en el array indicado y deposita la salida en el
 directorio que le indicamos. No existe en Grunt una forma general de
 expresar este tipo de dependencias como en los Makefiles, solo una
-buena práctica: usar `src`, por ejemplo, para las fuentes. 
+buena práctica: usar `src`, por ejemplo, para las fuentes.
 
 La siguiente parte carga el plugin de `grunt` necesario para ejecutar
 docco. Y finalmente, con `grunt.registerTask('default', ['docco']);`
@@ -368,25 +377,30 @@ indicamos que la tarea que ejecuta docco es la que se ejecutará por
 defecto simplemente ejecutando `grunt`. También se puede ejecutar con
 `grunt docco` o `grunt docco:debug` que sacará esto en el terminal:
 
-	bash$ grunt docco
-	Running "docco:src" (docco) task
-	docco: Apuesta.js -> docs/Apuesta.html
-	docco: Gruntfile.js -> docs/Gruntfile.html
+```bash
+bash$ grunt docco
+Running "docco:src" (docco) task
+docco: Apuesta.js -> docs/Apuesta.html
+docco: Gruntfile.js -> docs/Gruntfile.html
+```
 
-y producirá una documentación tal como [esta](https://jj.github.io/desarrollo-basado-pruebas/src/docs/Apuesta.html).
+y producirá una documentación tal
+como
+[esta](https://jj.github.io/desarrollo-basado-pruebas/src/docs/Apuesta.html).
 
 La automatización de Grunt se puede usar tanto para prueba como para
 despliegue. Pero hay también otras formas de realizar pruebas en la nube, y lo
 veremos a continuación.
 
-
 ### Configuración en Scala: Usando Scala Build Tool
 
-A diferencia de node.js y de otros lenguajes,
-[Scala](https://www.scala-lang.org/) tiene una herramienta de
-configuración y construcción que forma parte del lenguaje y que se
-llama, precisamente, [`sbt` o Scala Build Tool](https://www.scala-sbt.org/). `sbt` incluye un DSL
-(Domain Specific Language) para configurar la aplicación, las
+A diferencia de node.js y de otros
+lenguajes, [Scala](https://www.scala-lang.org/) tiene una herramienta
+de configuración y construcción que forma parte del lenguaje y que se
+llama,
+precisamente,
+[`sbt` o Scala Build Tool](https://www.scala-sbt.org/). `sbt` incluye
+un DSL (Domain Specific Language) para configurar la aplicación, las
 versiones de todo que usa, inclusive el propio lenguaje, y las
 dependencias, y además un entorno de línea de órdenes desde el que se
 puede probar y ejecutar la aplicación.
@@ -503,14 +517,14 @@ aserciones. Hay
 forma parte de la estándar de JS, y por tanto la que vamos a usar. Se
 usa de la forma siguiente
 
-```
-	var apuesta = require("./Apuesta.js"),
-	assert= require("assert");
+```Javascript
+var apuesta = require("./Apuesta.js"),
+assert= require("assert");
 
-	var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
-	assert(nueva_apuesta, "Creada apuesta");
-	assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
-	console.log("Si has llegado aquí, han pasado todos los tests");
+var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
+assert(nueva_apuesta, "Creada apuesta");
+assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
+console.log("Si has llegado aquí, han pasado todos los tests");
 ```
 
 Este programa usa `assert` directamente y como se ve por la línea del
@@ -536,25 +550,24 @@ popular, nos quedamos con este para escribir este programa de test.
 
 ```javascript
     var assert = require("assert"),
-		apuesta = require(__dirname+"/../Apuesta.js");
+        apuesta = require(__dirname+"/../Apuesta.js");
 
-	describe('Apuesta', function(){
-		// Testea que se haya cargado bien la librería
-		describe('Carga', function(){
-		it('should be loaded', function(){
-			assert(apuesta, "Cargado");
-		});
+    describe('Apuesta', function(){
+        // Testea que se haya cargado bien la librería
+        describe('Carga', function(){
+        it('should be loaded', function(){
+            assert(apuesta, "Cargado");
+        });
 
-		});
-		describe('Crea', function(){
-		it('should create apuestas correctly', function(){
-			var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
-			assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
-		});
-		});
-	});
+        });
+        describe('Crea', function(){
+        it('should create apuestas correctly', function(){
+            var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
+            assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
+        });
+        });
+    });
 ```
-
 
 Mocha puede usar diferentes librerías de test. En este caso hemos
 escogido la que ya habíamos usado, `assert`. A bajo nivel, los tests
@@ -564,13 +577,11 @@ tipo, porque mocha funciona a un nivel superior, con funciones como
 test y cuál es el resultado que necesitamos. Se ejecuta con `mocha` y
 el resultado de ejecutarlo será:
 
-
     Apuesta
       Carga
         ✓ should be loaded
       Crea
         ✓ should create apuestas correctly
-
 
     2 passing (6ms)
 
@@ -642,8 +653,7 @@ resultado sería:
 
 ![Resultado del test de Scala (versión anterior)](/documentos/img/test-scala.png)
 
-
-## Añadiendo integración continua.
+## Añadiendo integración continua
 
 A un primer nivel, la integración continua consiste en integrar los
 cambios hechos por un miembro del equipo en el momento que estén y
@@ -692,7 +702,6 @@ pasos
 3. Crear un fichero de configuración para que se ejecute la
    integración y añadirlo al repositorio.
 
-
 <div class='ejercicios' markdown='1'>
 *Ejercicio*: Haced los dos primeros pasos antes de pasar al tercero.
 </div>
@@ -704,16 +713,16 @@ tests. Para ello se provisiona una máquina virtual (o contenedor), se
 le carga el sistema operativo y se instala lo necesario, indicado en
 el fichero de configuración tal como este para Travis.
 
-~~~~~YAML
-	language: node_js
-	node_js:
-	  - "0.10"
-	  - "0.11"
-	before_install:
-	  - npm install -g mocha
-	  - cd src; npm install .
-	script: cd src; mocha
-~~~~~
+```YAML
+    language: node_js
+    node_js:
+      - "0.10"
+      - "0.11"
+    before_install:
+      - npm install -g mocha
+      - cd src; npm install .
+    script: cd src; mocha
+```
 
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
