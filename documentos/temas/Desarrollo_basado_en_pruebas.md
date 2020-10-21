@@ -20,7 +20,8 @@ tanto de software como de hardware y ponerlos en práctica.</li>
 
 <ol>
 <li> Entender el concepto de <em>DevOps</em>.</li>
-<li> Usar herramientas para gestión de los ciclos de desarrollo de una aplicación y entender cuales son estos.</li>
+<li> Usar herramientas para gestión de los ciclos de desarrollo de una
+aplicación y entender cuales son estos.</li>
 <li> Aprender a usar integración continua en cualquier aplicación.</li>
 </ol>
 
@@ -62,8 +63,9 @@ también la sistematización de los entornos de pruebas y de despliegue
 y de las tareas de configuración relacionadas con la misma, todo ello
 en un entorno de desarrollo ágil. En concreto, *DevOps*
 comprende
-[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](https://www.rexify.org/)
-:
+[los 7 aspectos siguientes, vistos en la página de una herramienta,
+Rex, que es parte de la panoplia usada para esos
+menesteres](https://www.rexify.org/):
 
 1. *Automatización de tareas relacionadas con el desarrollo*. En
    resumen, que no haya que recordar o tener apuntados en una libreta
@@ -103,7 +105,7 @@ gestión de configuraciones, provisionamiento de los servidores,
 despliegue continuo y virtualización.
 
 > Este tema (y bastantes más) están cubiertos en
-> el [curso de calidad en el software](https://jj.github.io/curso-tdd)
+> el [curso de calidad en el software](https://jj.github.io/curso-tdd/)
 > que se ha impartido en octubre-noviembre de 2019.
 
 ## Entornos virtuales de desarrollo
@@ -130,11 +132,11 @@ Por eso desde hacer cierto tiempo se han venido usando *entornos
 virtuales de desarrollo* tales como:
 
 - [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
-- [nvm](https://github.com/creationix/nvm),
+- [nvm](https://github.com/nvm-sh/nvm),
   [`n`](https://github.com/tj/n)
   y [nave](https://github.com/isaacs/nave) para node.js,
 - [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
-- [rbenv](https://github.com/sstephenson/rbenv)
+- [rbenv](https://github.com/rbenv/rbenv)
    y [RVM](https://rvm.io) para Ruby
 - y [plenv](https://github.com/tokuhirom/plenv)
   y [perlbrew para Perl](https://perlbrew.pl).
@@ -379,8 +381,8 @@ como
 [esta](https://jj.github.io/desarrollo-basado-pruebas/src/docs/Apuesta.html).
 
 La automatización de Grunt se puede usar tanto para prueba como para
-despliegue. Pero hay también otras formas de realizar pruebas en la nube, y lo
-veremos a continuación.
+despliegue. Pero hay también otras formas de realizar pruebas en la
+nube, y lo veremos a continuación.
 
 ### Configuración en Scala: Usando Scala Build Tool
 
@@ -394,13 +396,6 @@ un DSL (Domain Specific Language) para configurar la aplicación, las
 versiones de todo que usa, inclusive el propio lenguaje, y las
 dependencias, y además un entorno de línea de órdenes desde el que se
 puede probar y ejecutar la aplicación.
-
->Vamos a usar en este
->ejemplo
->[el mismo tipo de programa para gestionar porras, pero en Scala](https://github.com/JJ/spray-test). Usa
->un marco REST llamado Spray, que funciona sobre un marco de
->concurrencia llamado Akka. No es que sea el mejor y posiblemente sea
->una mala idea usarlo, pero para un ejemplo vale.
 
 Los ficheros de configuración para `sbt` llevan esa extensión y se
 suelen situar en el directorio principal. Para la aplicación
@@ -499,9 +494,10 @@ efectivamente se está usando.
 
 Vamos a ir al nivel más bajo: el de las
 aserciones. Hay
-[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
-[Chai](https://chaijs.com/),
-[Should.js](https://github.com/visionmedia/should.js),
+[múltiples bibliotecas que se pueden
+usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
+[Chai](https://www.chaijs.com/),
+[Should.js](https://github.com/tj/should.js),
 [Must.js](https://github.com/moll/js-must) y
 [`assert`](https://nodejs.org/api/assert.html) que es la librería que
 forma parte de la estándar de JS, y por tanto la que vamos a usar. Se
@@ -668,7 +664,7 @@ sí con las librerías del lenguaje de programación en el que está
 desarrollado.
 
 Un sistema bastante popular de integración continua
-es [Jenkins](https://jenkins.io/), pero está enfocado sobre todo a
+es [Jenkins](https://www.jenkins.io/), pero está enfocado sobre todo a
 Java y no tiene una web gratuita que se pueda usar. Jenkins lo puedes
 usar en la nube o instalarte tu propio ordenador para hacerlo. Sin
 embargo, está enfocado sobre todo a Java por lo que hay otros sistemas
@@ -762,8 +758,8 @@ para el despliegue continuo, que se verá más adelante.
 Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](https://biblioteca.ugr.es):
 
-- [DevOps: a software architect's perspective](https://bencore.ugr.es/iii/encore/record/C__Rb2526268__Sdevops__P0%2C2__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl),
-  un libro en general teórico y "a vista de pájaro" de la creación de
+- [DevOps: a software architect's perspective](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991008320919704990)
+, un libro en general teórico y "a vista de pájaro" de la creación de
   equipos de desarrollo y aplicaciones basadas en esa filosofía.
 
 - [DevOps for developers](https://granatensis.ugr.es/discovery/fulldisplay?docid=alma991013959592104990&context=L&vid=34CBUA_UGR:VU1&lang=es&search_scope=MyInstitution&adaptor=Local%20Search%20Engine&tab=Granada&query=any,contain,DevOps%20for%20developers%20&offset=0)
@@ -781,8 +777,9 @@ atrasados (y uno está en chino, así que no tengo ni idea).
 
 Este artículo te
 cuenta
-[qué hacer cuando testear es complicado](https://www.thoughtworks.com/insights/blog/test-driven-development-best-thing-has-happened-software-design). Una
-serie de técnicas, como mocking, te ayudan a probar en circunstancias
+[qué hacer cuando testear es complicado](https://www.thoughtworks.com/insights/blog/test-driven-development-best-thing-has-happened-software-design).
+Una
+serie de técnicas, como *mocking*, te ayudan a probar en circunstancias
 que podrían ser complicadas o simplemente específicas (como la hora
 del día).
 
@@ -790,7 +787,7 @@ Durante la realización de los ejercicios de este tema se habrá tenido
 que hacer el
 [primer hito del proyecto de la asignatura](https://jj.github.io/CC/documentos/proyecto/1.Infraestructura),
 para pasar al
-[segundo hito](https://jj.github.io/CC/documentos/proyecto/2.CI)
+[segundo hito](https://jj.github.io/CC/documentos/proyecto/2.Tests)
 cuando se haya concluido.
 
 A continuación se
