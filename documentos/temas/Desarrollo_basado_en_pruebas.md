@@ -347,7 +347,6 @@ en `package.json`, donde efectivamente se puede ver:
 },
 ```
 
-
 El fichero que se ve arriba tiene tres partes: la definición de la
 tarea (en este caso, la que genera la documentación), la carga de la
 tarea y finalmente el registro de la tarea.
@@ -500,7 +499,7 @@ efectivamente se está usando.
 
 Vamos a ir al nivel más bajo: el de las
 aserciones. Hay
-[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js): 
+[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
 [Chai](https://chaijs.com/),
 [Should.js](https://github.com/visionmedia/should.js),
 [Must.js](https://github.com/moll/js-must) y
@@ -776,7 +775,7 @@ Esta
 lista una serie de recursos útiles, incluyendo blogs y canales de IRC,
 aparte de diferentes herramientas que deben estar en el carcaj del
 arquero DevOps, aunque la mayoría de los enlaces a estos están
-atrasados (y uno está en chino, así que no tengo ni idea). 
+atrasados (y uno está en chino, así que no tengo ni idea).
 
 ## A dónde ir desde aquí
 
