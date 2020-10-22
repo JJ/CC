@@ -19,10 +19,14 @@ Estos son los [objetivos de la
 asignatura](documentos/objetivos.md). En resumen, el objetivo
 principal es que el estudiante, al final de la asignatura, sea capaz de hacer lo siguiente:
 
-1. Definir el entorno de trabajo para desarrollo de una aplicación en particular y usarlo en IaaS.
+1. Definir el entorno de trabajo para desarrollo de una aplicación en
+   particular y usarlo en IaaS.
 2. Usar ese entorno para configurar integración continua en una aplicación.
-3. Crear un entorno virtual para desarrollar y alojar la aplicación y comprenda el soporte físico de las técnicas usadas para crear tal entorno virtual.
-4. Entender las técnicas de configuración automática de entornos virtuales y las sepa aplicar en los entornos anteriores.
+3. Crear un entorno virtual para desarrollar y alojar la aplicación y
+   comprenda el soporte físico de las técnicas usadas para crear tal
+   entorno virtual.
+4. Entender las técnicas de configuración automática de entornos
+   virtuales y las sepa aplicar en los entornos anteriores.
 5. Usar lo aprendido para despliegue masivo de aplicaciones en la nube.
 
 [ugr-website]: https://www.ugr.es
@@ -37,16 +41,16 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 
 1. [Arquitecturas software para la nube][t1]
 2. [Desarrollo basado en pruebas][t2]
-3. [Microservicios][t3]
-7. [Usando contenedores][t7]
-4. [Gestión de configuraciones][t4]
-5. [Creación de infraestructuras virtuales reproducibles][t5]
-6. [Orquestación de máquinas virtuales][t6]
+3. [Usando contenedores][t7]
+4. [Microservicios][t3]
+5. [Gestión de configuraciones][t4]
+6. [Creación de infraestructuras virtuales reproducibles][t5]
+7. [Orquestación de máquinas virtuales][t6]
 
 
 La temporización de la asignatura y la interacción entre estudiantes y
-con los profesores están en 
-[un repositorio de GitHub][cc-course-repo]. 
+con los profesores están en
+[un repositorio de GitHub][cc-course-repo].
 
 [cc-general-repo]: http://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
@@ -82,8 +86,6 @@ hitos se organizarán de la forma siguiente.
 5. [Medición de prestaciones de MVs][p5]
 4. [Provisionamiento de máquinas virtuales][p6]
 
-
-
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
 [p2]: documentos/proyecto/1.Infraestructura.md
@@ -91,7 +93,6 @@ hitos se organizarán de la forma siguiente.
 [p4]: documentos/proyecto/3.Docker.md
 [p5]: documentos/proyecto/4.Prestaciones.md
 [p6]: documents/proyecto/5.Provisionamiento.md
-
 
 ## Tutorías virtuales y presenciales
 
@@ -103,7 +104,9 @@ sobre el mismo.
 
 ## Criterios de evaluación
 
-Los [criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado][guia-docente], y [se especifican en el repositorio de la clase][evaluacion].
+Los
+[criterios de evaluación figuran en la ficha de la asignatura en la web de posgrado][guia-docente],
+y [se especifican en el repositorio de la clase][evaluacion].
 
 [guia-docente]: https://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada
 [evaluacion]: https://github.com/JJ/CC-20-21/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
