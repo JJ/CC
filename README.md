@@ -15,9 +15,10 @@ las clases. Se usará [GitHub][github-website] para los ejercicios y el
 proyecto; también para los objetivos semanales, que estarán (año
 2020-21) en [este repositorio][cc-course-repo].
 
-Estos son los [objetivos de la
-asignatura](documentos/objetivos.md). En resumen, el objetivo
-principal es que el estudiante, al final de la asignatura, sea capaz de hacer lo siguiente:
+Estos son
+los [objetivos de la asignatura](documentos/objetivos.md). En resumen,
+el objetivo principal es que el estudiante, al final de la asignatura,
+sea capaz de hacer lo siguiente:
 
 1. Definir el entorno de trabajo para desarrollo de una aplicación en
    particular y usarlo en IaaS.
@@ -46,7 +47,6 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 5. [Gestión de configuraciones][t4]
 6. [Creación de infraestructuras virtuales reproducibles][t5]
 7. [Orquestación de máquinas virtuales][t6]
-
 
 La temporización de la asignatura y la interacción entre estudiantes y
 con los profesores están en
@@ -79,12 +79,13 @@ decir, de definición de infraestructura para un proyecto existente o
 que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
 
-1. [Puesta a punto del repositorio de la asignatura y buenas prácticas en el uso de los mismos][p1]
-2. [Elección de un proyecto][p2]
+1. [Puesta a punto del repositorio de la asignatura y buenas 
+    prácticas en el uso de los mismos][p1]
+2. [Planificación de oyecto][p2]
 3. [Creación de tests y configuración de integración continua][p3]
-7. [Uso de contenedores][p4]
+4. [Uso de contenedores][p4]
 5. [Medición de prestaciones de MVs][p5]
-4. [Provisionamiento de máquinas virtuales][p6]
+6. [Provisionamiento de máquinas virtuales][p6]
 
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
