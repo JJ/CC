@@ -1,5 +1,4 @@
-Desarrollo basado en pruebas
-=========================
+# Desarrollo basado en pruebas
 
 <!--@
 prev: Arquitecturas_para_la_nube
@@ -8,20 +7,21 @@ next: Microservicios
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos </h2>
+## Objetivos
 
-<h3>De la asignatura</h3>
+### De la asignatura
 
 <ul>
 <li> Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica.</li>
 </ul>
 
-<h3>Específicos </h3>
+### Específicos
 
 <ol>
 <li> Entender el concepto de <em>DevOps</em>.</li>
-<li> Usar herramientas para gestión de los ciclos de desarrollo de una aplicación y entender cuales son estos.</li>
+<li> Usar herramientas para gestión de los ciclos de desarrollo de una
+aplicación y entender cuales son estos.</li>
 <li> Aprender a usar integración continua en cualquier aplicación.</li>
 </ol>
 
@@ -29,9 +29,9 @@ tanto de software como de hardware y ponerlos en práctica.</li>
 
 ## Introducción
 
->Si no lo has hecho antes, conviene que en este momento
->[aprendas git](https://mini-git.github.io/) y te abras una cuenta en
->[GitHub](https://github.com). 
+> Si no lo has hecho antes, conviene que en este momento
+> [aprendas git](https://mini-git.github.io/) y te abras una cuenta en
+> [GitHub](https://github.com).
 
 Los ciclos de
 [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software):
@@ -48,26 +48,28 @@ recursos *elásticos* y disponibles bajo demanda, algunos de ellos
 gratuitos.
 
 Por eso, en esta parte del curso, veremos cómo desarrollar según la
-metodología basada en pruebas con los
-entornos de computación en nube y cómo configurarlos y usarlos para
-hacer más rápida y eficiente el trabajo de un equipo de desarrollo,
-test y sistemas.
+metodología basada en pruebas con los entornos de computación en nube
+y cómo configurarlos y usarlos para hacer más rápida y eficiente el
+trabajo de un equipo de desarrollo, test y sistemas.
 
-El desarrollo basado en pruebas entra en relación con la computación nube dentro del concepto de
-[*DevOps*](https://en.wikipedia.org/wiki/DevOps), que
-abarca tanto sistemas, es decir, el soporte físico donde se van a
-ejecutar las aplicaciones, como desarrollo y test y que está a caballo
-entre los dos primeros. En primer lugar, *DevOps* implica la
-automatización de las 
-tareas de creación de un puesto de trabajo para desarrollo, pero
-también la sistematización de los entornos de pruebas y de despliegue y de las tareas
-de configuración relacionadas con la misma, todo ello en un entorno de
-desarrollo ágil. En concreto, *DevOps* comprende
-[los 7 aspectos siguientes, vistos en la página de una herramienta, Rex, que es parte de la panoplia usada para esos menesteres](https://www.rexify.org/): 
+El desarrollo basado en pruebas entra en relación con la computación
+nube dentro del concepto
+de [*DevOps*](https://en.wikipedia.org/wiki/DevOps), que abarca tanto
+sistemas, es decir, el soporte físico donde se van a ejecutar las
+aplicaciones, como desarrollo y test y que está a caballo entre los
+dos primeros. En primer lugar, *DevOps* implica la automatización de
+las tareas de creación de un puesto de trabajo para desarrollo, pero
+también la sistematización de los entornos de pruebas y de despliegue
+y de las tareas de configuración relacionadas con la misma, todo ello
+en un entorno de desarrollo ágil. En concreto, *DevOps*
+comprende
+[los 7 aspectos siguientes, vistos en la página de una herramienta,
+Rex, que es parte de la panoplia usada para esos
+menesteres](https://www.rexify.org/):
 
 1. *Automatización de tareas relacionadas con el desarrollo*. En
    resumen, que no haya que recordar o tener apuntados en una libreta
-   comandos para hacer todo tipo de 
+   comandos para hacer todo tipo de
    cosas (instalación de librerías o configuración de una máquina)
    sino que haya *scripts* que lo homogeneicen y automaticen.
 
@@ -75,20 +77,20 @@ desarrollo ágil. En concreto, *DevOps* comprende
    publicación y, en general, todos los pasos del desarrollo y
    despliegue de software.
 
-5. *Provisionamiento de los servidores*: los servidores virtuales a los
+3. *Provisionamiento de los servidores*: los servidores virtuales a los
    que se despliegue deben estar preparados con todas las herramientas
    necesarias para publicar la aplicación.
 
-6. *Gestión de configuraciones*: la gestión de las configuraciones de
+4. *Gestión de configuraciones*: la gestión de las configuraciones de
    los servidores y las órdenes para provisionamiento deben estar
    controladas por un sistema de gestión de versiones que permita
    pruebas y también controlar en cada momento el entorno en el que
    efectivamente se está ejecutando el software.
 
-3. *Despliegue en la nube*: publicación de aplicaciones en servidores
+5. *Despliegue en la nube*: publicación de aplicaciones en servidores
    virtuales.
 
-4. [Ciclo de vida del software](https://es.slideshare.net/colmbennett/software-rollout)
+6. [Ciclo de vida del software](https://es.slideshare.net/colmbennett/software-rollout)
    definición de las diferentes fases en la vida de una aplicación,
    desde el diseño hasta el soporte.
 
@@ -96,18 +98,17 @@ desarrollo ágil. En concreto, *DevOps* comprende
    ligado a ciclos de desarrollo ágiles en los que cada nueva
    característica se introduzca tan pronto esté lista y probada; el
    despliegue continuo implica integración continua de las nuevas
-   características y arreglos, tanto en el software como el hardware. 
-
+   características y arreglos, tanto en el software como el hardware.
 
 En este tema veremos la mayoría; en los siguientes se verá la
 gestión de configuraciones, provisionamiento de los servidores,
 despliegue continuo y virtualización.
 
 > Este tema (y bastantes más) están cubiertos en
-> el [curso de calidad en el software](https://jj.github.io/curso-tdd)
+> el [curso de calidad en el software](https://jj.github.io/curso-tdd/)
 > que se ha impartido en octubre-noviembre de 2019.
 
-## Entornos virtuales de desarrollo.
+## Entornos virtuales de desarrollo
 
 Una de las partes esenciales de la cultura *DevOps* es la gestión de
 configuraciones y posteriormente,  la automatización. El uso de entornos
@@ -119,31 +120,33 @@ de instalación del mismo mediante el uso de una sola orden que
 seleccione la versión precisa que se va a usar.
 
 Estos entornos virtuales vienen del hecho de que los lenguajes de
-scripting o también conocidos como lenguajes interpretados tales 
-como Perl, Python y Ruby tienen ciclos de desarrollo
-muy rápidos que hacen que a veces convivan en producción diferentes
-versiones de los mismos, incluso versiones *major*. Eso hace
-complicado desarrollar e incluso probar los programas que se
-desarrollan: si el sistema operativo viene con Perl 5.14, puede que
-haga falta probar o desarrollar para 5.16 o 5.18 o incluso probar la
-versión más avanzada.
+scripting o también conocidos como lenguajes interpretados tales como
+Perl, Python y Ruby tienen ciclos de desarrollo muy rápidos que hacen
+que a veces convivan en producción diferentes versiones de los mismos,
+incluso versiones *major*. Eso hace complicado desarrollar e incluso
+probar los programas que se desarrollan: si el sistema operativo viene
+con Perl 5.14, puede que haga falta probar o desarrollar para 5.16 o
+5.18 o incluso probar la versión más avanzada.
 
 Por eso desde hacer cierto tiempo se han venido usando *entornos
 virtuales de desarrollo* tales como:
 
-*  [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
-*  [nvm](https://github.com/creationix/nvm), [`n`](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js,
-*  [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
-*  [rbenv](https://github.com/sstephenson/rbenv)
+- [virtualenv para Python](https://virtualenv.pypa.io/en/latest/),
+- [nvm](https://github.com/nvm-sh/nvm),
+  [`n`](https://github.com/tj/n)
+  y [nave](https://github.com/isaacs/nave) para node.js,
+- [`phpenv` para, lo adivinaste, PHP](https://github.com/phpenv/phpenv),
+- [rbenv](https://github.com/rbenv/rbenv)
    y [RVM](https://rvm.io) para Ruby
-*  y [plenv](https://github.com/tokuhirom/plenv) y [perlbrew para Perl](https://perlbrew.pl).
+- y [plenv](https://github.com/tokuhirom/plenv)
+  y [perlbrew para Perl](https://perlbrew.pl).
 
 Generalmente, estos programa funcionan instalando binarios en
 directorios del usuario y modificando el camino de ejecución para que
 se usen estas versiones en vez de las instaladas en el sistema. En la
 mayoría de los casos se coordinan también con el *shell* para mostrar
 la versión que se está ejecutando en la línea de órdenes o para llevar
-a cabo autocompletado. 
+a cabo autocompletado.
 
 Una vez instalados, estos programas permiten instalar fácilmente
 nuevas versiones de tu lenguaje de programación (con las librerías
@@ -162,12 +165,12 @@ de la 4.x y lo mismo para la 0.11 o alguna impar (de desarrollo).
 
 </div>
 
-Generalmente, las librerías asociadas a una aplicación determinada, es decir, las dependencias, 
-siguen un método similar. En vez de instalar en el sistema todas las
-librerías necesarias (o instalar una cada vez que hay algún error),
-la mayor parte de los entornos de programación incluyen alguna forma
-de definir qué librerías (o módulos) necesitan y qué versiones
-mínimas, máximas o exactas deben tener.
+Generalmente, las librerías asociadas a una aplicación determinada, es
+decir, las dependencias, siguen un método similar. En vez de instalar
+en el sistema todas las librerías necesarias (o instalar una cada vez
+que hay algún error), la mayor parte de los entornos de programación
+incluyen alguna forma de definir qué librerías (o módulos) necesitan y
+qué versiones mínimas, máximas o exactas deben tener.
 
 >Incidentalmente, el hecho de que todo sea software libre ayuda a que
 >en ningún paso de este proceso haya que decidir qué licencia o modelo
@@ -175,13 +178,13 @@ mínimas, máximas o exactas deben tener.
 
 ## Vamos a hacer una aplicación: gestionar porras de fútbol
 
->Primero, debe constar que esta aplicación solo está aquí a efectos de
->ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
->usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
->usar JavaScript,
->[este curso](https://github.com/JJ/curso-js) o
->[este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
->cualquier otro también. 
+> Primero, debe constar que esta aplicación solo está aquí a efectos de
+> ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
+> usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
+> usar JavaScript,
+> [este curso](https://github.com/JJ/curso-js) o
+> [este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
+> cualquier otro también.
 
 Una porra de fútbol básicamente tiene un partido, que tendrá un nombre
 y si acaso una fecha o descripción (por ejemplo, *Jaén-Osasuna Copa
@@ -196,7 +199,7 @@ La aplicación podrá tener, o no, un interfaz web, pero por lo pronto,
 y a efectos de la prueba continua de más adelante, vamos a quedarnos
 solo con un pequeño programa que sirva para comprobar que funciona.
 
-### Configuración de una aplicación en node.
+### Configuración de una aplicación en node
 
 Podemos almacenar esta información en una base de datos como SQLite
 (la clásica).
@@ -212,31 +215,32 @@ ficheros que describen qué se usa y, en general, que es necesario
 instalar y tener para ejecutarlo. En node se usa un fichero en formato
 JSON tal como este:
 
-	{
-	  "author": "J. J. Merelo <jjmerelo@gmail.com> (https://github.com/JJ/desarrollo-basado-pruebas)",
-	  "name": "porrio",
-	  "description": "Apuesta en una porra",
-	  "version": "0.0.1",
-	  "repository": {
-	  "url": "git://github.com/JJ/desarrollo-basado-pruebas.git"
-	  },
-	  "main": "./Apuesta.js",
-	  "scripts": {
-	  "test": "make test"
-	  },
-	  "dependencies": {"sqlite3": "~3.0"},
-	  "devDependencies": {},
-	  "optionalDependencies": {},
-	  "engines": {
-	  "node": ">=0.8"
-	  }
-	}
-
+```javascript
+    {
+      "author": "J. J. Merelo <jjmerelo@gmail.com> (https://github.com/JJ/desarrollo-basado-pruebas)",
+      "name": "porrio",
+      "description": "Apuesta en una porra",
+      "version": "0.0.1",
+      "repository": {
+      "url": "git://github.com/JJ/desarrollo-basado-pruebas.git"
+      },
+      "main": "./Apuesta.js",
+      "scripts": {
+      "test": "make test"
+      },
+      "dependencies": {"sqlite3": "~3.0"},
+      "devDependencies": {},
+      "optionalDependencies": {},
+      "engines": {
+      "node": ">=0.8"
+      }
+    }
+```
 
 Las partes que más nos interesan están hacia el final: las
 dependencias diversas (`dependencies`). Es un *hash* que dice qué
 módulo se usan (en este caso, `sqlite` sólo) y qué versiones harán
-falta. Al desplegarse, el entorno dependerá de muchas cuestiones y hay 
+falta. Al desplegarse, el entorno dependerá de muchas cuestiones y hay
 que asegurarse de que donde va a acabar el programa tiene todo lo
 necesario. En caso de que no lo tuviera, el programa no se instalará.
 
@@ -246,12 +250,12 @@ caso no se permitirá la ejecución.
 
 Este fichero, además, permite instalar todas las dependencias usando
 solo `npm install .`. Casi todos los lenguajes habituales tienen algún
-sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo. 
+sistema similar: `bundle` para Ruby o `cpanm` para Perl, por ejemplo.
 
 <div class='ejercicios' markdown='1'>
 
  Crear una descripción del módulo usando `package.json`. En caso de
- que se trate de otro lenguaje, usar el método correspondiente.  
+ que se trate de otro lenguaje, usar el método correspondiente.
 
 </div>
 
@@ -288,54 +292,62 @@ vamos a usar `grunt` para documentar el código. Tras la instalación de
 `grunt`, que no viene instalado por defecto en nodejs, se puede usar
 directamente.
 
-	npm install -g grunt-cli
+```bash
+npm install -g grunt-cli
+```
 
 `-g` indica que se trata de una instalación global, aunque también se
-puede instalar localmente. 
+puede instalar localmente.
 
 Igual que make usa
 Makefiles, `grunt` usa `Gruntfile.js` tal como este
 
-    'use strict';
+```javascript
+'use strict';
 
-    module.exports = function(grunt) {
+module.exports = function(grunt) {
 
-	  // Configuración del proyecto
-	  grunt.initConfig({
-	  pkg: grunt.file.readJSON('package.json'),
-	  docco: {
-		  debug: {
-		  src: ['*.js'],
-		  options: {
-			  output: 'docs/'
-		  }
-		  }
-	  }
-	  });
+  // Configuración del proyecto
+  grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  docco: {
+      debug: {
+      src: ['*.js'],
+      options: {
+          output: 'docs/'
+      }
+      }
+  }
+  });
 
-	  // Carga el plugin de grunt para hacer esto
-	  grunt.loadNpmTasks('grunt-docco');
+  // Carga el plugin de grunt para hacer esto
+  grunt.loadNpmTasks('grunt-docco');
 
-	  // Tarea por omisión: generar la documentación
-	  grunt.registerTask('default', ['docco']);
-    };
+  // Tarea por omisión: generar la documentación
+  grunt.registerTask('default', ['docco']);
+};
+```
 
-Es necesario instalar `docco` si queremos que funcione. Y
-`grunt` enfoca el procesamiento de las tareas como una serie de *plugins* que hay que
-instalar, en este caso `grunt-docco`. Para instalarlos se usa la
-herramienta habitual de instalación en node, `npm`, pero una vez que
-usamos `package.json`, `npm` puede editarlo y cambiar la configuración
-automáticamente si lo usamos de esta forma
+Es necesario instalar `docco` si queremos que funcione. Y `grunt`
+enfoca el procesamiento de las tareas como una serie de *plugins* que
+hay que instalar, en este caso `grunt-docco`. Para instalarlos se usa
+la herramienta habitual de instalación en node, `npm`, pero una vez
+que usamos `package.json`, `npm` puede editarlo y cambiar la
+configuración automáticamente si lo usamos de esta forma
 
-	npm install docco grunt-docco --save-dev
+```shell
+npm install docco grunt-docco --save-dev
+```
 
 El `--save-dev` indica que se guarde la configuración correspondiente
 en `package.json`, donde efectivamente se puede ver:
 
-	"devDependencies": {
-	  "docco": "~0.6",
-	  "grunt-docco": "~0.3.3"
-	},
+```json
+"devDependencies": {
+  "docco": "~0.6",
+  "grunt-docco": "~0.3.3"
+},
+```
 
 El fichero que se ve arriba tiene tres partes: la definición de la
 tarea (en este caso, la que genera la documentación), la carga de la
@@ -349,7 +361,7 @@ pronto, no vamos a hacerlo). Luego, definimos la tarea llamada
 fuentes contenidos en el array indicado y deposita la salida en el
 directorio que le indicamos. No existe en Grunt una forma general de
 expresar este tipo de dependencias como en los Makefiles, solo una
-buena práctica: usar `src`, por ejemplo, para las fuentes. 
+buena práctica: usar `src`, por ejemplo, para las fuentes.
 
 La siguiente parte carga el plugin de `grunt` necesario para ejecutar
 docco. Y finalmente, con `grunt.registerTask('default', ['docco']);`
@@ -357,63 +369,62 @@ indicamos que la tarea que ejecuta docco es la que se ejecutará por
 defecto simplemente ejecutando `grunt`. También se puede ejecutar con
 `grunt docco` o `grunt docco:debug` que sacará esto en el terminal:
 
-	bash$ grunt docco
-	Running "docco:src" (docco) task
-	docco: Apuesta.js -> docs/Apuesta.html
-	docco: Gruntfile.js -> docs/Gruntfile.html
+```bash
+bash$ grunt docco
+Running "docco:src" (docco) task
+docco: Apuesta.js -> docs/Apuesta.html
+docco: Gruntfile.js -> docs/Gruntfile.html
+```
 
-y producirá una documentación tal como [esta](https://jj.github.io/desarrollo-basado-pruebas/src/docs/Apuesta.html).
+y producirá una documentación tal
+como
+[esta](https://jj.github.io/desarrollo-basado-pruebas/src/docs/Apuesta.html).
 
 La automatización de Grunt se puede usar tanto para prueba como para
-despliegue. Pero hay también otras formas de realizar pruebas en la nube, y lo
-veremos a continuación.
-
+despliegue. Pero hay también otras formas de realizar pruebas en la
+nube, y lo veremos a continuación.
 
 ### Configuración en Scala: Usando Scala Build Tool
 
-A diferencia de node.js y de otros lenguajes,
-[Scala](https://www.scala-lang.org/) tiene una herramienta de
-configuración y construcción que forma parte del lenguaje y que se
-llama, precisamente, [`sbt` o Scala Build Tool](https://www.scala-sbt.org/). `sbt` incluye un DSL
-(Domain Specific Language) para configurar la aplicación, las
+A diferencia de node.js y de otros
+lenguajes, [Scala](https://www.scala-lang.org/) tiene una herramienta
+de configuración y construcción que forma parte del lenguaje y que se
+llama,
+precisamente,
+[`sbt` o Scala Build Tool](https://www.scala-sbt.org/). `sbt` incluye
+un DSL (Domain Specific Language) para configurar la aplicación, las
 versiones de todo que usa, inclusive el propio lenguaje, y las
 dependencias, y además un entorno de línea de órdenes desde el que se
 puede probar y ejecutar la aplicación.
-
->Vamos a usar en este ejemplo
->[el mismo tipo de programa para gestionar porras, pero en Scala](https://github.com/JJ/spray-test). Usa
->un marco REST llamado Spray, que funciona sobre un marco de
->concurrencia llamado Akka. No es que sea el mejor y posiblemente sea
->una mala idea usarlo, pero para un ejemplo vale. 
 
 Los ficheros de configuración para `sbt` llevan esa extensión y se
 suelen situar en el directorio principal. Para la aplicación
 mencionada anteriormente, este es el fichero:
 
-```
-organization  := "info.CC_MII"
+```Scala
+import Dependencies._
 
-version       := "0.0.1"
+val circeVersion = "0.12.3"
 
-scalaVersion  := "2.11.7"
+libraryDependencies ++= Seq(
+  "io.circe" %% "circe-core",
+  "io.circe" %% "circe-generic",
+  "io.circe" %% "circe-parser"
+).map(_ % circeVersion)
 
-scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
+libraryDependencies +=
+    "org.scalatest" %% "scalatest" % "3.2.0" % Test
 
-libraryDependencies ++= {
-  val akkaV = "2.3.9"
-  val sprayV = "1.3.3"
-  Seq(
-    "io.spray"            %%  "spray-can"     % sprayV,
-    "io.spray"            %%  "spray-routing" % sprayV,
-    "io.spray"            %%  "spray-testkit" % sprayV  % "test",
-    "io.spray" 		  %%  "spray-json"    % "1.3.2",
-    "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
-    "com.typesafe.akka"   %%  "akka-testkit"  % akkaV   % "test",
-    "org.specs2"          %%  "specs2-core"   % "2.3.11" % "test"
+lazy val root = (project in file(".")).
+  settings(
+    inThisBuild(List(
+      organization := "com.jjmerelo",
+      scalaVersion := "2.12.10",
+      version      := "0.1.0"
+    )),
+    name := "Hitos",
+
   )
-}
-
-Revolver.settings
 
 cancelable in Global := true
 ```
@@ -422,16 +433,21 @@ cancelable in Global := true
 declarar la organización que se va a usar y la versión del propio
 paquete, declara una serie de versiones. Las declaraciones de
 dependencia de variables en `libraryDependencies` indican el paquete
-(tal como `io.spray`), el módulo específico (tal como `spray-can`) y
+(tal como `io.circe`), el módulo específico (tal como `circe-core`) y
 finalmente la versión. El resto son opciones, de las cuales la más
 interesante es la última que permite que se interrumpa el programa
-desde `sbt`
+desde `sbt`.
+
+> Incidentalmente, `sbt` es claramente una herramienta de construcción
+> junto con una de gestión de dependencias. *No* es un gestor de
+> tareas, aunque todas las tareas relacionadas con uno y otro se
+> pueden lanzar desde él.
 
 Al ejecutar `sbt` en el directorio donde se encuentre este fichero se
 cargará y se interpretará ese fichero y aparecerá una línea de
 órdenes, desde la que podemos ejecutar el programa o
 testearlo. También se pueden compilar los fuentes con `sbt compile`
-directamente desde la línea de órdenes. 
+directamente desde la línea de órdenes.
 
 <div class='ejercicios' markdown='1'>
 
@@ -439,8 +455,8 @@ directamente desde la línea de órdenes.
  (principalmente Scala y sbt) y ejecutar el ejemplo desde
  `sbt`. Alternativamente, buscar otros marcos para REST en Scala tales
  como Finatra o Scalatra y probar los ejemplos que se incluyan en el
- repositorio. 
- 
+ repositorio.
+
 </div>
 
 ## Desarrollo basado en pruebas
@@ -478,22 +494,23 @@ efectivamente se está usando.
 
 Vamos a ir al nivel más bajo: el de las
 aserciones. Hay
-[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js): 
-[Chai](https://chaijs.com/),
-[Should.js](https://github.com/visionmedia/should.js),
+[múltiples bibliotecas que se pueden
+usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js):
+[Chai](https://www.chaijs.com/),
+[Should.js](https://github.com/tj/should.js),
 [Must.js](https://github.com/moll/js-must) y
 [`assert`](https://nodejs.org/api/assert.html) que es la librería que
 forma parte de la estándar de JS, y por tanto la que vamos a usar. Se
 usa de la forma siguiente
 
-```
-	var apuesta = require("./Apuesta.js"),
-	assert= require("assert");
+```Javascript
+var apuesta = require("./Apuesta.js"),
+assert= require("assert");
 
-	var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
-	assert(nueva_apuesta, "Creada apuesta");
-	assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
-	console.log("Si has llegado aquí, han pasado todos los tests");
+var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
+assert(nueva_apuesta, "Creada apuesta");
+assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
+console.log("Si has llegado aquí, han pasado todos los tests");
 ```
 
 Este programa usa `assert` directamente y como se ve por la línea del
@@ -505,7 +522,9 @@ función `as_string` es la esperada.
 Hay un segundo nivel, el marco de ejecución de los tests. Los marcos
 son programas que, a su vez, ejecutan los programas de test y escriben
 un informe sobre cuáles han fallado y cuáles no con más o menos
-parafernalia y farfolla. Una vez más, [hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
+parafernalia y farfolla. Una vez
+más,
+[hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
 nodejs (y, por supuesto, uno propio para cada uno de los lenguajes de
 programación, aunque en algunos están realmente estandarizados).
 
@@ -517,26 +536,26 @@ que consiste en describir el comportamiento de un sistema más o menos
 de alto nivel. Como hay que escoger uno y parece que Mocha es más
 popular, nos quedamos con este para escribir este programa de test.
 
-~~~~~javascript
+```javascript
     var assert = require("assert"),
-		apuesta = require(__dirname+"/../Apuesta.js");
+        apuesta = require(__dirname+"/../Apuesta.js");
 
-	describe('Apuesta', function(){
-		// Testea que se haya cargado bien la librería
-		describe('Carga', function(){
-		it('should be loaded', function(){
-			assert(apuesta, "Cargado");
-		});
+    describe('Apuesta', function(){
+        // Testea que se haya cargado bien la librería
+        describe('Carga', function(){
+        it('should be loaded', function(){
+            assert(apuesta, "Cargado");
+        });
 
-		});
-		describe('Crea', function(){
-		it('should create apuestas correctly', function(){
-			var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
-			assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
-		});
-		});
-	});
-~~~~~
+        });
+        describe('Crea', function(){
+        it('should create apuestas correctly', function(){
+            var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
+            assert.equal(nueva_apuesta.as_string(), "Polopos: Alhama - 2-3","Creado");
+        });
+        });
+    });
+```
 
 Mocha puede usar diferentes librerías de test. En este caso hemos
 escogido la que ya habíamos usado, `assert`. A bajo nivel, los tests
@@ -546,15 +565,15 @@ tipo, porque mocha funciona a un nivel superior, con funciones como
 test y cuál es el resultado que necesitamos. Se ejecuta con `mocha` y
 el resultado de ejecutarlo será:
 
+```text
+Apuesta
+  Carga
+    ✓ should be loaded
+  Crea
+    ✓ should create apuestas correctly
 
-    Apuesta
-      Carga
-        ✓ should be loaded 
-      Crea
-        ✓ should create apuestas correctly 
-
-
-    2 passing (6ms)
+2 passing (6ms)
+```
 
 (pero con más colorines).
 
@@ -569,8 +588,10 @@ Para la aplicación que se está haciendo, escribir una serie de
 aserciones y probar que efectivamente no fallan. Añadir tests para una
 nueva funcionalidad, probar que falla y escribir el código para que no
 lo haga. A continuación, ejecutarlos desde *mocha* (u otro módulo de
-test de alto nivel), usando descripciones del test y
- del grupo de test de forma correcta. Si hasta ahora no has subido el código que has venido realizando a GitHub, es el momento de hacerlo, porque lo vamos a necesitar un poco más adelante. 
+test de alto nivel), usando descripciones del test y del grupo de test
+de forma correcta. Si hasta ahora no has subido el código que has
+venido realizando a GitHub, es el momento de hacerlo, porque lo vamos
+a necesitar un poco más adelante.
 </div>
 
 ### Realizando las pruebas en Scala
@@ -580,49 +601,49 @@ node. Sin embargo, el lenguaje en sí es un poco más estricto y tiene
 reglas más o menos precisas sobre dónde colocar los tests. Si las
 fuentes están en `src/main`, las pruebas estarán en `src/test` en el
 directorio correspondiente al nombre del paquete. Por ejemplo,
-`src/test/scala/info/CC_MII/` para el paquete `info.CC_MII` que es el
-que estamos usando en estos ejemplos.
+`src/test/scala/info/CC_MII/` para el paquete `info.CC_MII`, o
+simplemente `scala/jjmerelo` para el paquete `jjmerelo`, que es el de
+aquí.
 
 También Scala tiene diferentes formas de testear. Una similar a la que
 hemos usado anteriormente se llama `specs2`, una basada en
-comportamiento. La usamos por ejemplo a continuación:
+comportamiento; así vemos la diferencia entre usar TDD (en la
+anterior) y BDD (en esta). La usamos en
+el [ejemplo](https://github.com/JJ/prueba-IC-CC) a continuación:
 
 ```Scala
-package info.CC_MII
+package jjmerelo
 
-import org.specs2.mutable.Specification
+import io.circe._
+import org.specs2._
 
-class ApuestaSpec extends Specification {
-  
-  "Apuesta" should {
+class Hitos_IVSpec2 extends Specification { def is = s2"""
 
-    "almacenar correctamente las variables" in {
-      val esta_apuesta = new Apuesta( 2,3,"Dude")
-      esta_apuesta.local must be_==(2)
-      esta_apuesta.visitante must be_==(3)
-      esta_apuesta.quien must beEqualTo("Dude")
-    }
+ Especificación para comprobar Hitos_IV
 
- 
-  }
+ El objeto tipo Hitos en hitos_iv debe
+   existir                                         $exists """
+  var hitos_iv = new Hitos_IV
+  def exists = hitos_iv.hitos must beRight
 }
 ```
 
 Tras importar el módulo correspondiente a los tests, estos se agrupan
-en una serie de sentencias `should` que serán ejecutadas
+en una serie de sentencias `must` que serán ejecutadas
 secuencialmente. En este caso tenemos una sola, en la que creamos una
 instancia de la clase y comprobamos que efectivamente tiene los
-valores que debe tener. Las órdenes `must be_==` y `must beEqualTo`
+valores que debe tener. Las órdenes `must`
 comprueban el valor de diferentes tipos y devuelven los valores
-correspondientes si se cumple ese comportamiento y si no se cumple.
+correspondientes si se cumple ese comportamiento y si no se cumple. En
+este caso se comprueba si el resultado del valor ha sido correcto
+(correspondiente, en Scala, al tipo `Right`).
 
 Se ejecutaría con `sbt test` o ejecutando `test` desde `sbt`; el
 resultado sería:
 
-![Resultado del test de Scala](/documentos/img/test-scala.png)
+![Resultado del test de Scala (versión anterior)](/documentos/img/test-scala.png)
 
-
-## Añadiendo integración continua.
+## Añadiendo integración continua
 
 A un primer nivel, la integración continua consiste en integrar los
 cambios hechos por un miembro del equipo en el momento que estén y
@@ -646,13 +667,14 @@ nuestro programa, aparte de la configuración que tendrá el programa en
 sí con las librerías del lenguaje de programación en el que está
 desarrollado.
 
-Un sistema bastante popular de integración continua es
-[Jenkins](https://jenkins.io/), pero está enfocado sobre todo a
-Java y no tiene una web gratuita que se pueda usar. Jenkins lo puedes usar en la nube o instalarte tu propio
-ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java
-por lo que hay otros sistemas como [Travis](https://travis-ci.org) o
-[Shippable](https://www.shippable.com/) que podemos usar también desde
-la nube y, además, están preparados para más lenguajes de
+Un sistema bastante popular de integración continua
+es [Jenkins](https://www.jenkins.io/), pero está enfocado sobre todo a
+Java y no tiene una web gratuita que se pueda usar. Jenkins lo puedes
+usar en la nube o instalarte tu propio ordenador para hacerlo. Sin
+embargo, está enfocado sobre todo a Java por lo que hay otros sistemas
+como [Travis](https://travis-ci.org)
+o [Shippable](https://www.shippable.com/) que podemos usar también
+desde la nube y, además, están preparados para más lenguajes de
 programación.
 
 Para trabajar con estos sistemas, generalmente hay que hacerlo en dos
@@ -670,7 +692,6 @@ pasos
 3. Crear un fichero de configuración para que se ejecute la
    integración y añadirlo al repositorio.
 
-
 <div class='ejercicios' markdown='1'>
 *Ejercicio*: Haced los dos primeros pasos antes de pasar al tercero.
 </div>
@@ -682,16 +703,16 @@ tests. Para ello se provisiona una máquina virtual (o contenedor), se
 le carga el sistema operativo y se instala lo necesario, indicado en
 el fichero de configuración tal como este para Travis.
 
-~~~~~YAML
-	language: node_js
-	node_js:
-	  - "0.10"
-	  - "0.11"
-	before_install:
-	  - npm install -g mocha
-	  - cd src; npm install .
-	script: cd src; mocha
-~~~~~
+```YAML
+    language: node_js
+    node_js:
+      - "0.10"
+      - "0.11"
+    before_install:
+      - npm install -g mocha
+      - cd src; npm install .
+    script: cd src; mocha
+```
 
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
@@ -723,8 +744,8 @@ y también se enviará por correo electrónico. Y te da también un
 *badge* que puedes poner en tu fichero para indicar que, por lo
 pronto, todo funciona.
 
-Si el informe indica que las pruebas son correctas, se puede proceder al despliegue. Pero eso
-ya será en la siguiente clase.
+Si el informe indica que las pruebas son correctas, se puede proceder
+al despliegue. Pero eso ya será en la siguiente clase.
 
 > Configurar integración continua para nuestra aplicación usando
 > Travis o algún otro sitio.
@@ -741,10 +762,9 @@ para el despliegue continuo, que se verá más adelante.
 Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](https://biblioteca.ugr.es):
 
-- [DevOps: a software architect's perspective](https://bencore.ugr.es/iii/encore/record/C__Rb2526268__Sdevops__P0%2C2__Orightresult__X6;jsessionid=E36643C65032CABF72B40984567B5435?lang=spi&suite=pearl),
-  un libro en general teórico y "a vista de pájaro" de la creación de
+- [DevOps: a software architect's perspective](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991008320919704990)
+, un libro en general teórico y "a vista de pájaro" de la creación de
   equipos de desarrollo y aplicaciones basadas en esa filosofía.
-
 - [DevOps for developers](https://granatensis.ugr.es/discovery/fulldisplay?docid=alma991013959592104990&context=L&vid=34CBUA_UGR:VU1&lang=es&search_scope=MyInstitution&adaptor=Local%20Search%20Engine&tab=Granada&query=any,contain,DevOps%20for%20developers%20&offset=0)
   también con poco código, pero con una visión a más bajo nivel de
   cómo organizar y montar grupos DevOps.
@@ -754,14 +774,15 @@ Esta
 lista una serie de recursos útiles, incluyendo blogs y canales de IRC,
 aparte de diferentes herramientas que deben estar en el carcaj del
 arquero DevOps, aunque la mayoría de los enlaces a estos están
-atrasados (y uno está en chino, así que no tengo ni idea). 
+atrasados (y uno está en chino, así que no tengo ni idea).
 
 ## A dónde ir desde aquí
 
 Este artículo te
 cuenta
-[qué hacer cuando testear es complicado](https://www.thoughtworks.com/insights/blog/test-driven-development-best-thing-has-happened-software-design). Una
-serie de técnicas, como mocking, te ayudan a probar en circunstancias
+[qué hacer cuando testear es complicado](https://www.thoughtworks.com/insights/blog/test-driven-development-best-thing-has-happened-software-design).
+Una
+serie de técnicas, como *mocking*, te ayudan a probar en circunstancias
 que podrían ser complicadas o simplemente específicas (como la hora
 del día).
 
@@ -769,7 +790,7 @@ Durante la realización de los ejercicios de este tema se habrá tenido
 que hacer el
 [primer hito del proyecto de la asignatura](https://jj.github.io/CC/documentos/proyecto/1.Infraestructura),
 para pasar al
-[segundo hito](https://jj.github.io/CC/documentos/proyecto/2.CI)
+[segundo hito](https://jj.github.io/CC/documentos/proyecto/2.Tests)
 cuando se haya concluido.
 
 A continuación se

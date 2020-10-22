@@ -1,5 +1,4 @@
-Arquitecturas software para la nube
-=========================
+# Arquitecturas software para la nube
 
 <!--@
 next: Desarrollo_basado_en_pruebas
@@ -36,7 +35,7 @@ desplegables en la nube.
 ## Introducción
 
 >Puedes echarle un vistazo a
->[esta colección de transpas](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
+>[esta colección de transparencias](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
 >con información de un par de presentaciones sobre arquitectura
 >moderna de aplicaciones. Aunque centrado en microservicios,
 >[este conjunto de patrones](https://microservices.io/patterns/index.html)
@@ -331,7 +330,21 @@ la interoperabilidad. Y aparte de las [implementaciones libres](https://www.rabb
 puede usar dentro de su arquitectura, los proveedores de cloud tienen
 sus propias implementaciones tales como
 [Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
-o [Firebase de Google](https://firebase.google.com/docs/cloud-messaging/).
+o
+[Firebase de Google](https://firebase.google.com/docs/cloud-messaging/).
+
+### *Service mesh* y otros conceptos
+
+En arquitecturas complejas con decenas de microservicios, hay una
+malla de servicios que necesita responder a todas las peticiones y
+enrutarlas a donde sea conveniente. En este contexto, resulta
+imposible hacer que cada microservicio conozca las rutas y los
+endpoints del resto de los microservicios, que pueden además cambiar
+durante la vida de una aplicación. Una
+[malla o red de servicios, o *service mesh*](https://www.redhat.com/es/topics/microservices/what-is-a-service-mesh) te
+resuelve ese problema, usando configuraciones distribuidas y
+descubrimiento de servicios para poder enrutar toda petición a donde
+sea capaz de servirla.
 
 ### Resumiendo: hay todo un mundo ahí fuera
 
@@ -374,6 +387,9 @@ Algunos recursos a los que puedes acceder desde la
   un recurso electrónico que explica cómo construir microservicios
   desde cero, la fase de modelización a la de construcción del mismo.
 
+-
+  [What are microservices really all about? - Microservices Basics Tutorial](https://youtu.be/j1gU2oGFayY) Video explicativo sobre ventajas y desventajas de diferentes arquitecturas software en referencia a los microservicios.
+
 ## A dónde ir desde aquí
 
 Este tema sirve como introducción para elegir el proyecto que se va a
@@ -389,3 +405,4 @@ pueden desplegar aplicaciones para prototipo o para producción de
 forma relativamente simple, o bien al tema dedicado a los
 [*contenedores*](Contenedores), que es el siguiente en el temario
 de la asignatura.
+

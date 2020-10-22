@@ -1,11 +1,9 @@
-Una introducción ligera al lenguaje Ruby
-===
+# Una introducción ligera al lenguaje Ruby
 
 <div class="objetivos" markdown="1">
 
 
-Objetivos específicos
---
+## Objetivos específicos
 
  * Conocer la historia y origenes de este lenguaje
  * Entender los conceptos principales detrás del mismo
@@ -17,8 +15,7 @@ Objetivos específicos
 </div>
 
 
-¿Ruby? Pero si es muy fácil
----
+## ¿Ruby? Pero si es muy fácil
 
 Si alguna vez habéis oído hablar de este lenguaje, posiblemente conozcáis [Ruby](http://ruby-lang.org) por [Ruby on Rails](http://rubyonrails.org), un marco
   web que sigue el paradigma MVC (*Model, View, Controller*) creado alrededor de 2005 que usa Ruby como lenguaje
@@ -57,8 +54,7 @@ para comprobar la versión instalada. A la vez, conviene instalar también `irb`
 
 </div>
 
-Primer programa
---
+## Primer programa
 
 
 Para programar en Ruby necesitas el editor y el intérprete de Ruby propiamente
@@ -262,8 +258,7 @@ Recorrer una estructura compleja exhaustivamente, imprimiendo todos los datos.
 </div>
 
 
-Leyendo y escribiendo
---
+## Leyendo y escribiendo
 
 Tratándose de un lenguaje orientado a objetos, habrá que buscar la
   clase para abrir y cerrar ficheros, que se llama en un alarde de
@@ -376,8 +371,7 @@ Nuestra cosecha incluye una interrogación y un `if`, que no
 
 </div>
 
-Bloques
-----
+## Bloques
 
 Después de las variables uno de los conceptos importantes en Ruby
   son los bloques. Un bloque es una secuencia de código con sus
@@ -543,8 +537,7 @@ En algunos casos puede que dé error, porque falte alguna
 
 
 
-Referencias adicionales
---
+## Referencias adicionales
 
 
  Como es de esperar, hay libros enteros gratuitos sobre

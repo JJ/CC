@@ -1,5 +1,4 @@
-Contenedores y cómo usarlos
-===
+# Contenedores y cómo usarlos
 
 <!--@
 prev: Microservicios
@@ -7,8 +6,7 @@ prev: Microservicios
 
 <div class="objetivos" markdown="1">
 
-Objetivos
---
+## Objetivos
 
 ### Cubre los siguientes objetivos de la asignatura
 
@@ -36,8 +34,7 @@ Objetivos
 
 
 
-Introducción a Docker
----
+## Introducción a Docker
 
 > Previamente a este tema conviene consultar la historia del
 > aislamiento de aplicaciones en [este capítulo](Aislamiento.md), que
@@ -1344,8 +1341,7 @@ mismo. Hay
 [trabajo en curso](https://github.com/opencontainers/image-tools) para
 comprobar imágenes, por ejemplo. 
 
-A dónde ir desde aquí
------
+## A dónde ir desde aquí
 
 Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/3.Docker).
 
