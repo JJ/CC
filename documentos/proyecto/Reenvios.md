@@ -2,7 +2,8 @@
 
 ## Descripción
 
-Puedes reenviar los hitos las veces que quieras, pero sigue estas instrucciones para que se pueda evaluar correctamente.
+Puedes reenviar los hitos las veces que quieras, pero sigue estas
+instrucciones para que se pueda evaluar correctamente.
 
 ## Entrega de la práctica
 
@@ -34,8 +35,9 @@ en la entrega por ser anterior a la introducción de dicho test).
 
 Cada reenvío puntuará sobre un punto menos que la nota máxima,
 multiplicado por el número de semanas desde corrección de la misma. Es
-decir, primera semana, un eenvío, -0.5 puntos; segunda semana, -1 punto
-y así sucesivamente.
+decir, primera semana, un reenvío, -1 puntos; segunda semana, -2
+puntos y así sucesivamente. Si se reenvía en las próximas horas a la
+corrección, se podrá rebajar la penalización.
 
 No hay compromiso de fecha de corrección para reenvíos. En general, se
 tratarán de tener en una semana desde el envío, pero podría retrasarse
