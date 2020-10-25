@@ -79,10 +79,10 @@ decir, de definición de infraestructura para un proyecto existente o
 que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
 
-1. [Puesta a punto del repositorio de la asignatura y buenas 
+1. [Puesta a punto del repositorio de la asignatura y buenas
     prácticas en el uso de los mismos][p1]
-2. [Planificación de oyecto][p2]
-3. [Creación de tests y configuración de integración continua][p3]
+2. [Planificación del proyecto][p2]
+3. [Tests][p3]
 4. [Uso de contenedores][p4]
 5. [Medición de prestaciones de MVs][p5]
 6. [Provisionamiento de máquinas virtuales][p6]
@@ -90,7 +90,7 @@ hitos se organizarán de la forma siguiente.
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
 [p2]: documentos/proyecto/1.Infraestructura.md
-[p3]: documentos/proyecto/2.CI.md
+[p3]: documentos/proyecto/2.Tests.md
 [p4]: documentos/proyecto/3.Docker.md
 [p5]: documentos/proyecto/4.Prestaciones.md
 [p6]: documents/proyecto/5.Provisionamiento.md
