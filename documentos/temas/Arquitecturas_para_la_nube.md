@@ -374,7 +374,7 @@ Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](https://biblioteca.ugr.es):
 
 -
-  [Pattern-oriented software architecture for dummies](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991004762519704990),
+  [Pattern-oriented software architecture for dummies](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991013990907504990),
   aunque es muy básico, por lo menos explica en qué se pueden usar los
   patrones de software y cómo aplicarlos en un momento determinado. 
   
