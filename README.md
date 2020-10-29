@@ -52,7 +52,7 @@ La temporización de la asignatura y la interacción entre estudiantes y
 con los profesores están en
 [un repositorio de GitHub][cc-course-repo].
 
-[cc-general-repo]: http://github.com/JJ/CC
+[cc-general-repo]: https://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
 [t2]: documentos/temas/Desarrollo_basado_en_pruebas.md
 [t3]: documentos/temas/Microservicios.md
