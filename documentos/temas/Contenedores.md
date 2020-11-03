@@ -95,7 +95,7 @@ Aunque en una primera aproximación Docker es, como hemos dicho arriba,
 similar a otras aplicaciones de virtualización *ligera*  como
 `lxc/lxd`, que lo precedieron en el tiempo, sin embargo el enfoque de
 Docker
-[es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/) es
+[es fundamentalmente diferente](https://archives.flockport.com/lxc-vs-docker/) es
 fundamentalmente diferente,
 aunque las tecnologías subyacentes de virtualización por software son
 las mismas. La principal diferencia es que Docker hace
@@ -172,9 +172,13 @@ instalación de nuestro propio ordenador, se aconseja que se instale
 Con cualquiera de las formas que hayamos elegido para instalar Docker,
 vamos a comenzar desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
 
-> Recientemente (2019), Red Hat ha liberado un gestor "serverless" de contenedores llamado [Podman](https://podman.io/). Podman usa exactamente las mismas órdenes que Docker, pero no necesita un daemon con privilegios para funcionar.
-
 ## Comenzando a ejecutar Docker
+
+> Red Hat ha liberado un gestor "serverless" (sin un servicio
+> ejecutándose con priviletios) de contenedores
+> llamado [Podman](https://podman.io/). Podman usa exactamente las
+> mismas órdenes que Docker, pero no necesita un daemon con
+> privilegios para funcionar.
 
 Docker consiste, entre otras cosas, en un servicio que se encarga de
 gestionar los contenedores y una herramienta de línea de ordenes que
@@ -209,7 +213,7 @@ comenzará a ejecutarlo.
 
 >Tras
 >instalarlo
->[debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user).
+>[debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 
 Una vez
 instalado, se puede ejecutar el clásico
@@ -545,8 +549,10 @@ está haciendo en un momento determinado.
 Para finalizar, se puede parar usando `stop`.
 
 Hasta ahora el uso de
-Docker [no es muy diferente de `lxc`, pero lo interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-lxc-tools-the-userspace-lxc-tools) es que se puede guardar el estado de un contenedor tal
-como está usando [commit](https://docs.docker.com/engine/reference/commandline/cli/#commit)
+Docker [no es muy diferente de `lxc`, pero lo
+interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-lxc-tools-the-userspace-lxc-tools)
+es que se puede guardar el estado de un contenedor tal
+como está usando [commit](https://docs.docker.com/engine/reference/commandline/commit)
 
 ```
 docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
@@ -795,7 +801,7 @@ tiene que instalarse, no forma parte del conjunto de herramientas que
 se instalan por omisión. Su principal tarea es crear aplicaciones que
 usen diferentes contenedores, entre los que se citan
 [entornos de desarrollo, entornos de prueba o en general despliegues
-que usen un solo nodo](https://docs.docker.com/compose/overview/#common-use-cases).
+que usen un solo nodo](https://docs.docker.com/compose/#common-use-cases).
 Para
 entornos que escalen automáticamente, o entornos que se vayan a
 desplegar en la nube las herramientas necesarias son muy diferentes.
@@ -929,7 +935,7 @@ totalmente diferente al de estas. Conviene seguir este tipo de reglas,
 sacadas entre otros sitios de
 [esta lista de buenas prácticas con Docker](https://github.com/FuriKuri/docker-best-practices)
 y
-[esta otra](https://containerjournal.com/2016/03/21/5-docker-best-practices-follow/).
+[esta otra](https://containerjournal.com/features/5-docker-best-practices-follow/).
 
 ### Simplicidad
 
@@ -1347,17 +1353,10 @@ docker run --rm -t -v
 La infraestructura basada en contenedores ha tenido tanto éxito que
 han surgido diferentes tipos y también iniciativas de
 estandarización. El principal competidor este área es
-[`rkt`](https://github.com/coreos/rkt), que además es nativo en el
-sistema operativo basado en contenedores CoreOS y que puede usar de
-forma nativa el formato de contenedores de Docker, aparte de tener el
-suyo propio llamado APPC y
-[su propio lenguaje para provisionar contenedores](https://github.com/coreos/rkt/blob/master/Documentation/getting-started-guide).
-A diferencia de Docker, se pueden firmar y verificar imágenes, para
-evitar su manipulación externa, y, al estar basado en estándares,
-puede usar herramientas de orquestación como Kubernetes u otras.
+[Podman/buildah](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users/).
 
 Por otro lado,
-la [*Open Container Initiative*](https://www.opencontainers.org/) está
+la [*Open Container Initiative*](https://opencontainers.org/) está
 todavía en una fase muy preliminar. Aunque contiene especificaciones
 tanto apara ejecutarlos como para especificar imágenes, por lo pronto
 no hay muchas implementaciones de referencia que se puedan usar. Si
