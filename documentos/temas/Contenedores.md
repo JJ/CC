@@ -10,11 +10,15 @@ prev: Microservicios
 
 ### Cubre los siguientes objetivos de la asignatura
 
-* Conocer las diferentes tecnologías y herramientas de virtualización tanto para procesamiento, comunicación y almacenamiento.
-* Instalar, configurar, evaluar y optimizar las prestaciones de un servidor virtual.
+* Conocer las diferentes tecnologías y herramientas de virtualización
+  tanto para procesamiento, comunicación y almacenamiento.
+* Instalar, configurar, evaluar y optimizar las prestaciones de un
+  servidor virtual.
 * Configurar los diferentes dispositivos físicos para acceso a los
-  servidores virtuales: acceso de usuarios, redes de comunicaciones o entrada/salida.
-* Diseñar, implementar y construir un centro de procesamiento de datos virtual.
+  servidores virtuales: acceso de usuarios, redes de comunicaciones o
+  entrada/salida.
+* Diseñar, implementar y construir un centro de procesamiento de datos
+  virtual.
 * Documentar y mantener una plataforma virtual.
 * Optimizar aplicaciones sobre plataformas virtuales.
 * Conocer diferentes tecnologías relacionadas con la virtualización
@@ -48,7 +52,7 @@ aplicaciones tales como LXC/LXD o incluso las *jaulas `chroot`*, es
 decir, una forma de empaquetar una aplicación con todo lo necesario
 para que opere de forma independiente del resto de las aplicaciones y
 se pueda, por tanto, replicar, escalar, desplegar, arrancar y destruir
-de forma también independiente. 
+de forma también independiente.
 
 >Una traducción más precisa de *container*
 >sería
@@ -65,9 +69,9 @@ se puedan desplegar en diferentes servicios en la nube. La tecnología de
 relativamente reciente, habiendo sido publicada en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
 desarrollo paralelo de sistemas operativos tales como
-[CoreOS](https://coreos.com/), 
+[CoreOS](https://coreos.com/),
 basado en Linux y que permite despliegue masivo de servidores. Pero no
-adelantemos acontecimientos. 
+adelantemos acontecimientos.
 
 >Docker funciona mejor en Linux, fue creado para Linux y es donde
 >tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
@@ -77,14 +81,14 @@ adelantemos acontecimientos.
 >(Ubuntu y últimamente OpenSuSE) para interactuar con
 >Docker. Finalmente, aunque es usable desde Mac, en realidad el
 >sistema operativo no tiene soporte para el mismo. Es mejor que en
->este caso se use una máquina virtual local o en la nube. 
+>este caso se use una máquina virtual local o en la nube.
 
 Aunque en una primera aproximación Docker es, como hemos dicho arriba,
 similar a otras aplicaciones de virtualización *ligera*  como
 `lxc/lxd`, que lo precedieron en el tiempo, sin embargo el enfoque de
 Docker
 [es fundamentalmente diferente](https://www.flockport.com/lxc-vs-docker/) es
-fundamentalmente diferente, 
+fundamentalmente diferente,
 aunque las tecnologías subyacentes de virtualización por software son
 las mismas. La principal diferencia es que Docker hace
 énfasis en la gestión centralizada de recursos y, en una línea que va
@@ -111,17 +115,17 @@ para que esta funcione), que a una máquina virtual, por lo que es más
 preciso decir que *ejecutamos* un táper (que utilizaremos a partir de
 ahora como sinónimo de "contenedor Docker") que *estamos ejecutando
 algo en un táper*, de la misma forma que ejecutaríamos algo en una
-máquina virtual. 
+máquina virtual.
 
 A continuación vamos a ver cómo podemos usar Docker como simples
 usuarios, para ver a continuación como se puede diseñar una
-arquitectura usándolo, empezando por el principio, como instalarlo. 
+arquitectura usándolo, empezando por el principio, como instalarlo.
 
 >Conviene que, en este momento o un poco más adelante, tengas preparad
 >una instalación de un hipervisor o gestor de máquinas virtuales tipo
 >VirtualBox o similar. Sea porque quieras tener una máquina virtual
 >Linux específica para esto, o para tener varias máquinas virtuales
->funcionando a la vez. 
+>funcionando a la vez.
 
 ## Instalación de Docker
 
@@ -138,13 +142,13 @@ hacer
 aunque la versión en los repositorios oficiales suele ser más antigua que la que
 se descargue de la web o los repositorios adicionales. Este paquete incluye varias aplicaciones: un *daemon*, `dockerd`, y un cliente de línea de órdenes, `docker`. La instalación dejará este *daemon* ejecutándose y lo configurará para que se   arranque con el inicio del
 sistema. También una serie de *imágenes* genéricas con las que se
-puede empezar a trabajar de forma más o menos inmediata. 
+puede empezar a trabajar de forma más o menos inmediata.
 
 >Hay
 >también
 >[diferentes opciones para instalar Docker en Windows](https://docs.docker.com/engine/installation/windows/) o
 >en
->[un Mac](https://docs.docker.com/engine/installation/mac/). 
+>[un Mac](https://docs.docker.com/engine/installation/mac/).
 
 Otra posibilidad para trabajar con Docker es usar
 [el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/). *Container
@@ -166,7 +170,7 @@ vamos a comenzar desde el principio. Veremos a continuación cómo empezar a eje
 
 Docker consiste, entre otras cosas, en un servicio que se encarga de
 gestionar los contenedores y una herramienta de línea de ordenes que
-es la que vamos a usar, en general, para trabajar con él. 
+es la que vamos a usar, en general, para trabajar con él.
 
 Los paquetes de instalación estándar generalmente instalan Docker como
 servicio para que comience a ejecutarse en el momento que arranque el
@@ -180,7 +184,7 @@ también como superusuario, al tener que contactar con este *daemon*
 usando un socket protegido.
 
 
-Con una instalación estándar, 
+Con una instalación estándar,
 
 ```
 sudo status docker
@@ -192,10 +196,12 @@ debería responder si se está ejecutando o no. Si está parado,
 sudo start docker
 ```
 
-comenzará a ejecutarlo. 
+comenzará a ejecutarlo.
 
 
->Tras instalarlo [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user). 
+>Tras
+>instalarlo
+>[debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/installation/linux/ubuntulinux/#manage-docker-as-a-non-root-user).
 
 Una vez
 instalado, se puede ejecutar el clásico
@@ -212,37 +218,38 @@ hace esta orden.
 
 1. Busca una *imagen* de Docker llamada `hello-world`. Una imagen es
 equivalente a un *disco de instalación* que contiene los elementos que
-se van a aislar dentro del contenedor. 
-2. Al no encontrar esa imagen localmente, la descarga del [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+se van a aislar dentro del contenedor.
+2. Al no encontrar esa imagen localmente, la descarga del
+[Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
 se suben las imágenes de Docker y donde puedes encontrar muchas más;
 más adelante se verán.
 
 ```
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
-78445dd45222: Pull complete 
+78445dd45222: Pull complete
 Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
 Status: Downloaded newer image for hello-world:latest
 ```
 
 3. Crea un *contenedor* usando como base esa imagen, es decir, el
    equivalente a *arrancar* un sistema usando como disco duro esa
-   imagen. 
+   imagen.
 
 4. Ejecuta un programa llamado `hello` situado *dentro* de esa
    imagen. Ese programa simplemente muestra el mensaje que nos
    aparece. Este es un programa que el autor ha configurado para que
    sea ejecutado cuando se ejecute el comando `run` sobre esa
    imagen. Este programa se está ejecutando *dentro* del contenedor y,
-   por tanto, aislado del resto del sistema. 
-   
+   por tanto, aislado del resto del sistema.
+  
 5. Sale del contenedor y te deposita en la línea de órdenes. El
    contenedor deja de ejecutarse. La imagen se queda almacenada
-   localmente, para la próxima vez que se vaya a ejecutar. 
+   localmente, para la próxima vez que se vaya a ejecutar.
 
 De los pasos anteriores habrás deducido que se ha descargado una
 imagen cuyo nombre es `hello-world` y se ha creado un contenedor, en
-principio sin nombre. Puedes listar las imágenes que tienes con 
+principio sin nombre. Puedes listar las imágenes que tienes con
 
 ```
 docker images
@@ -250,7 +257,7 @@ docker images
 
 que, en principio, solo listará una llamada `hello-world` en la
 segunda columna, etiquetada IMAGES. Pero esto incluye solo las
-imágenes en sí. Para listas los contenedores que tienes, 
+imágenes en sí. Para listas los contenedores que tienes,
 
 ```
 docker ps -a
@@ -278,7 +285,7 @@ mantiene el número de contenedores bajo y sobre todo se guardan solo y
 exclusivamente los que se piensen mantener o trabajar más
 adelante. Esta orden pone también de manifiesto la idea de
 *contenedores de usar y tirar*. Una vez ejecutado el contenedor, se
-dispone de la memoria y el disco que usa. 
+dispone de la memoria y el disco que usa.
 
 Como vemos, los contenedores pueden actuar como un *ejecutable*, una
 forma de distribuir aplicaciones de forma independiente de la versión
@@ -290,22 +297,23 @@ docker run --rm jjmerelo/docker-daleksay -f smiling-octopus Uso argumentos, ea
 ```
 
 que usa
-[el contenedor `daleksay`](https://hub.docker.com/r/jjmerelo/docker-daleksay/) para
+[el contenedor `daleksay`](https://hub.docker.com/r/jjmerelo/docker-daleksay/)
+para
 imprimir a un pulpo sonriente diciendo cosas. Como vemos, se le pasa
 como argumentos `-f smiling-octopus Uso argumentos, ea` de forma que
 el contenedor actúa, para casi todos los efectos, como el propio
-programa al que aísla. 
+programa al que aísla.
 
 <div class='ejercicios' markdown='1'>
 
 Buscar alguna demo interesante de Docker y ejecutarla localmente, o en
 su defecto, ejecutar la imagen anterior y ver cómo funciona y los
 procesos que se llevan a cabo la primera vez que se ejecuta y las
-siguientes ocasiones. 
+siguientes ocasiones.
 
 </div>
 
-## Trabajando *dentro* de contenedores. 
+## Trabajando *dentro* de contenedores.
 
 Pero no solo podemos descargar y ejecutar contenedores de forma
 efímera. También se puede crear un contenedor y trabajar en
@@ -322,7 +330,7 @@ Esta orden descarga una imagen de
 [Alpine Linux](https://alpinelinux.org/) y la instala, haciéndola
 disponible para que se creen, a partir de ella, contenedores. Como se
 ha visto antes, las imágenes que hay disponibles en el sistema se
-listan con 
+listan con
 
 ```
 docker images
@@ -340,7 +348,8 @@ la tarea, el prototipo o la prueba que se quiera realizar. Hay
 muchas imágenes creadas y se pueden crear y compartir en el sitio web
 de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
-[buscar todas las imágenes de un tipo determinado, como Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
+[buscar todas las imágenes de un tipo determinado, como
+Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
 o
 [buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image). Estas
 imágenes contienen no solo sistemas operativos *bare bones*, sino
@@ -348,7 +357,7 @@ también otros con una funcionalidad determinada. Por ejemplo, una de
 las imágenes más populares es la de
 [`nginx`](https://hub.docker.com/_/nginx/), la de Redis o la de
 Busybox, un sustituto del *shell* que incluye también una serie de
-utilidades externas y que se pueden usar como imagen base. 
+utilidades externas y que se pueden usar como imagen base.
 
 <div class='ejercicios' markdown='1'>
 
@@ -363,7 +372,7 @@ menos dependiendo de la conexión; hay también otro factor que veremos
 más adelante. Una vez bajada, se pueden empezar a ejecutar comandos. Lo
 bueno de `docker` es que permite ejecutarlos directamente, y en esto
 tenemos que tener en cuenta que se va a tratar de comandos *aislados*
-y que, en realidad, no tenemos una máquina virtual *diferente*. 
+y que, en realidad, no tenemos una máquina virtual *diferente*.
 
 Podemos ejecutar, por ejemplo, un listado de los directorios
 
@@ -387,7 +396,7 @@ por lo que podremos *meternos* en la misma ejecutando
 
 ```
 docker run -it alpine sh
-``` 
+```
 
 Dentro de ella podemos trabajar como un consola cualquiera, pero
 teniendo acceso solo a los recursos propios.
@@ -410,7 +419,9 @@ apk update
 apk upgrade
 ```
 
-Para que actualice la lista de paquetes disponibles. Después, se pueden instalar paquetes, por ejemplo  
+Para que actualice la lista de paquetes disponibles. Después, se
+pueden instalar paquetes, por ejemplo
+
 ```
 apk add git perl
 ```
@@ -434,7 +445,7 @@ siempre que se esté ejecutando, obteniendo algo así:
 
 ```
 	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-b76f70b6c5ce        ubuntu:12.04        /bin/bash           About an hour ago   Up About an hour                        sharp_brattain     
+b76f70b6c5ce        ubuntu:12.04        /bin/bash           About an hour ago   Up About an hour                        sharp_brattain
 ```
 
 El primer número es el ID de la máquina que podemos usar también para
@@ -482,18 +493,18 @@ un intérprete de línea de órdenes o *shell* de forma aislada del resto
 de los recursos. Hablar de *conectarte* a un contenedor, en este caso,
 no tendría mucho sentido, o al menos tanto sentido como *conectarse* a
 un proceso que está ejecutándose. De hecho, una segunda ejecución del
-mismo comando 
+mismo comando
 
 	docker run -it ubuntu /bin/bash
 
 (donde hemos abreviado las opciones `-i` y `-t` juntándolas) crearía, a partir de
-la imagen de Ubuntu, un nuevo contenedor. 
+la imagen de Ubuntu, un nuevo contenedor.
 
 En cualquiera de los casos, cuando se ejecuta `exit` o `Control-D`
 para salir del contenedor, este deja de ejecutarse. Ejecutar
 
 	docker ps -l
-	
+
 mostrará  que ese contenedor está `exited`, es decir, que ha salido,
 pero también mostrará en la primera columna el ID del
 mismo. *Arrancarlo* de nuevo no nos traerá la línea de órdenes, pero
@@ -502,7 +513,7 @@ algo como la línea de órdenes, tendremos que arrancarlo y a
 continuación efectivamente ejecutar algo como el *shell*
 
 	docker start 6dc8ddb51cd6 && docker exec -it 6dc8ddb51cd6 sh
-	
+
 Sin embargo, en este caso simplemente salir del shell no dejará de
 ejecutar el contenedor, por lo que habrá que pararlo
 
@@ -514,14 +525,14 @@ y, a continuación, si no se va a usar más el contenedor, borrarlo
 
 Las imágenes que se han creado se pueden examinar con `inspect`, lo
 que nos da información sobre qué metadatos se le han asignado por
-omisión, incluyendo una IP. 
+omisión, incluyendo una IP.
 
 ```
 docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
 ```
 
 te dirá toda la información sobre la misma, incluyendo qué es lo que
-está haciendo en un momento determinado. 
+está haciendo en un momento determinado.
 
 Para finalizar, se puede parar usando `stop`.
 
@@ -538,7 +549,7 @@ momento, convirtiéndolo en una nueva imagen, a la que podemos acceder
 si usamos
 
 ```
-docker images 
+docker images
 ```
 
 Este `commit` es equivalente al que se hace en un
@@ -555,17 +566,17 @@ Crear a partir del contenedor anterior una imagen persistente con
 El hacer `commit` de una imagen crea una capa adicional, identificada
 por un SHA específico, en el sistema de ficheros de Docker. Por
 ejemplo, si trabajamos con una imagen cualquiera y hacemos commit de
-esta forma 
+esta forma
 
 	docker commit 3465c7cef2ba jjmerelo/bbtest
-	
+
 creamos una nueva imagen, que vamos a llamar `jjmerelo/bbtest`. Esta
 imagen contendrá, sobre la capa original, la capa adicional que hemos
 creado. Este comando devolverá un determinado SHA, de la forma:
 
 	sha256:d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
 
-Para examinar las capas, 
+Para examinar las capas,
 
 	 sudo jq '.' /var/lib/docker/image/aufs/imagedb/content/sha256/d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
 
@@ -573,7 +584,7 @@ nos mostrará un JSON bien formateado (por eso usamos `jq`, una
 herramienta imprescindible) que, en el elemento `diff_ids`, nos
 mostrará las capas. Si repetimos esta operación cada vez que hagamos
 un commit sobre una nueva imagen, nos mostrará las capas adicionales
-que se van formando. 
+que se van formando.
 
 <div class='ejercicios' markdown='1'>
 
@@ -598,14 +609,16 @@ sistemas de ficheros posibles; Docker usa diferentes drivers
 estructurar la información dentro del contenedor pero generalmente usa
 un sistema *copy on write* que escribe en sistema de ficheros
 anfitrión cada vez que se produce una modificación en el sistema de
-ficheros superpuesto. 
+ficheros superpuesto.
 
 En general, salvo que haya algún problema crítico de prestaciones, es
 mejor usar el driver que se use por defecto; dependerá de la
 implementación de Docker (CE o EE) y de la versión del
 kernel. En
-[esta página](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver) se
-indica como configurar el driver que se va a usar. 
+[esta
+página](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver)
+se
+indica como configurar el driver que se va a usar.
 
 Hay una forma de usar contenedores solo para almacenar datos, sin que
 haya ningún proceso que se ejecute en ellos usando los
@@ -642,13 +655,13 @@ hecho eso, puedes ejecutar ese programa en cualquier distro, de esta
 forma:
 
 ```
-docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh    
+docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh   
   87631   81506 1240789
 docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
     72284     67414    974042
 docker run -it --rm -v benchmark:/app busybox sh /app/bm.sh
     72141     67339    972158
-``` 
+```
 > Incidentalmente, se observa que de las tres imágenes de
 > contenedores, la que tiene una mínima cantidad de ficheros es
 > `busybox`. Alpine, como se ha comentado antes, es una distribución
@@ -656,7 +669,7 @@ docker run -it --rm -v benchmark:/app busybox sh /app/bm.sh
 > que fedora.
 
 La utilidad para este tipo de aplicaciones es relativamente limitada;
-estos volúmenes, en general, se crean para ser usados por otros 
+estos volúmenes, en general, se crean para ser usados por otros
 contenedores con algún tipo de aplicación, por tanto. Por ejemplo con
 [este microservicio en Perl Dancer2](https://github.com/JJ/p5-hitos)
 de la forma siguiente
@@ -701,7 +714,7 @@ almacenado incluso en otro volumen si se desea.
 <div class='ejercicios' markdown='1'>
 
 Crear un volumen y usarlo, por ejemplo, para escribir la salida de un
-programa determinado. 
+programa determinado.
 
 </div>
 
@@ -773,7 +786,9 @@ habilitado otras herramientas para poder hacer esto de forma ágil:
 tiene que instalarse, no forma parte del conjunto de herramientas que
 se instalan por omisión. Su principal tarea es crear aplicaciones que
 usen diferentes contenedores, entre los que se citan
-[entornos de desarrollo, entornos de prueba o en general despliegues que usen un solo nodo](https://docs.docker.com/compose/overview/#common-use-cases). Para
+[entornos de desarrollo, entornos de prueba o en general despliegues
+que usen un solo nodo](https://docs.docker.com/compose/overview/#common-use-cases).
+Para
 entornos que escalen automáticamente, o entornos que se vayan a
 desplegar en la nube las herramientas necesarias son muy diferentes.
 
@@ -817,9 +832,9 @@ está en el mismo directorio que el fichero, que tiene que llamarse
 puertos, con el 5000 interno cambiando al 80 externo (que, recordemos,
 es un puerto privilegiado) y usando `volumes_from` para usar los
 volúmenes, es decir, los datos, contenidos en el fichero
-correspondiente. 
+correspondiente.
 
-Para ejecutarlo, 
+Para ejecutarlo,
 
 
 ```
@@ -829,7 +844,7 @@ docker-compose up
 Esto construirá las imágenes de los servicios, si no existen, y les
 asignará un nombre que tiene que ver con el nombre del servicio;
 también ejecutará el programa, en este caso de `web`. Evidentemente,
-`docker-compose down` parará la máquina virtual. 
+`docker-compose down` parará la máquina virtual.
 
 <div class='ejercicios' markdown='1'>
 
@@ -840,12 +855,13 @@ finalmente se ejecuta y sirve como "frontend".
 </div>
 
 > En
-> [este artículo](https://www.freecodecamp.org/news/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a/) se
+> [este artículo](https://www.freecodecamp.org/news/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a/)
+> se
 > explica cómo se puede montar un entorno de desarrollo con Python y
 > Postgres usando Docker Compose. Montar entornos de desarrollo
 > independientemente del sistema operativo en el que se encuentre el
 > usuario es, precisamente, uno de los casos de uso de esta
-> herramienta. 
+> herramienta.
 
 La ventaja de describir la infraestructura como código es que, entre
  otras cosas, se puede introducir en un entorno de test tal como
@@ -861,14 +877,14 @@ services:
   - docker
 env:
   - DOCKER_COMPOSE_VERSION=1.17.0
-  
+ 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up
-  
+ 
 script:
   - docker ps -a | grep -q web
 ```
@@ -886,12 +902,12 @@ los tests se comprueba que haya un contenedor que incluya el nombre
 `web` (el nombre real será algo así como `web-algo-1`, pero siempre
 incluirá el nombre del servicio en compose). Si es así, el test
 pasará, si no, el test fallará, con lo que podremos comprobar offline
-si el código es correcto o no. 
+si el código es correcto o no.
 
 > Estos tests se pueden hacer también con simples Dockerfile, y de
 > hecho sería conveniente combinar los tests de los servicios
 > conjuntos con los tests de Dockerfile. Cualquier infraestructura es
-> código, y como tal si no está testeado está roto. 
+> código, y como tal si no está testeado está roto.
 
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
@@ -927,7 +943,7 @@ contenedores mucho más ligeros y rápidos de cargar y que tengan toda
 la funcionalidad que se necesita. También conviene eliminar toda
 aquella funcionalidad que no se necesite y que se haya usado solamente
 para construir el contenedor, tales como compiladores o ficheros
-intermedios. 
+intermedios.
 
 ### Seguridad
 
@@ -935,15 +951,17 @@ Los contenedores docker se ejecutan de forma aislada del resto del
 sistema operativo, pero eso no significa que no se pueda penetrar en
 ellos y llevar a cabo diferentes actividades no deseadas. Es
 importante, por ejemplo, que siempre que sea posible se ejecute la
-aplicación como un usuario no privilegiado. 
+aplicación como un usuario no privilegiado.
 
 ### Recomendaciones a la hora de construir un contenedor
 
-[Docker da una serie de recomendaciones a la hora de construir contenedores](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/). Para
+[Docker da una serie de recomendaciones a la hora de construir
+contenedores](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
+Para
 hacerlo reproducible, se deben usar Dockerfile o el equivalente en
 otro tipo de contenedores, y las órdenes que se
 deben usar y cómo usarlas constituye un acervo que conviene conocer y
-usar. 
+usar.
 
 ## Usando Dockerfiles
 
@@ -1025,14 +1043,14 @@ línea. Una vez hecho esto, si funciona la construcción, se
 podrá ejecutar con
 
 ```
-docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot 
+docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot
 ```
 
 donde --env se usa para pasar la variable de entorno de Telegram que
 necesita el bot para funcionar.
 
 Si queremos simplemente examinar el contenedor, podemos entrar en él
-de la forma habitual 
+de la forma habitual
 
 ```
 docker run -it jjmerelo/bot sh
@@ -1053,7 +1071,7 @@ Se pueden construir contenedores más complejos. Una funcionalidad interesante
 de los contenedores es la posibilidad de usarlos como *sustitutos* de
 una orden, de forma que sea mucho más fácil trabajar con alguna
 configuración específica de una aplicación o de un lenguaje de
-programación determinado. 
+programación determinado.
 
 Por
 ejemplo,
@@ -1118,7 +1136,7 @@ docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5
 ```
 
 Si tuviéramos perl6 instalado en local, se podría escribir
-directamente 
+directamente
 
 ```
 perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
@@ -1126,18 +1144,18 @@ perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
 
 o algún
 otro
-[*one-liner* de Perl6](https://gist.github.com/JJ/9953ba0a98800fed205eaae5b5a6410a). 
+[*one-liner* de Perl6](https://gist.github.com/JJ/9953ba0a98800fed205eaae5b5a6410a).
 
 En caso de que se trate de un servicio o algún otro tipo de programa
 de ejecución continua, se puede usar directamente `CMD`. En este caso,
-`ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando 
+`ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando
 
 ```
 docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
 ```
 
 que accederá directamente a la línea de órdenes, en este caso
-`busybox`, que es el *shell* que provee Alpine. 
+`busybox`, que es el *shell* que provee Alpine.
 
 Por otro lado, otra característica que tiene este contenedor es que, a
 través de `VOLUME`, hemos creado un directorio sobre el que podemos
@@ -1146,7 +1164,7 @@ través de `VOLUME`, hemos creado un directorio sobre el que podemos
 ```
 docker run --rm -t -v `pwd`:/app  \
 	    jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
-``` 
+```
 
 En realidad, usando `-v` se puede montar cualquier directorio externo
 en cualquier directorio interno. `VOLUME` únicamente *marca* un
@@ -1155,12 +1173,12 @@ usar de forma genérica para interaccionar con el contenedor a través
 de ficheros externos o para *copiar* (en realidad, simplemente hacer
 accesibles) estos ficheros al contenedor. En el caso anterior,
 podíamos haber sustituido `/app` en los dos lugares donde aparece por
-cualquier otro valor y habría funcionado igualmente. 
+cualquier otro valor y habría funcionado igualmente.
 
 En este caso, además, usamos `--rm` para borrar el contenedor una vez
 se haya usado y `-t` en vez de `-it` para indicar que solo estamos
 interesados en que se asigne un terminal y la salida del mismo, no
-vamos a interaccionar con él. 
+vamos a interaccionar con él.
 
 
 ## Provisión de contenedores docker con herramientas estándar
@@ -1169,7 +1187,7 @@ vamos a interaccionar con él.
 otros [sistemas (tales como Vagrant](Gestion_de_configuraciones) usando
 [*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
 ejemplo,
-[se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/). 
+[se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
 
 
 ## Gestionando contenedores remotos
@@ -1181,38 +1199,38 @@ haya que trabajar con muchos contenedores, generaría todo tipo de
 inconvenientes. Para eso
 está
 [`docker-machine`](https://docs.docker.com/machine/overview/),
-que en general sirve 
+que en general sirve
 para trabajar con gestores de contenedores en la nube o con
 hipervisores locales, aunque solo funciona con unos pocos, y
-generalmente privativos. 
+generalmente privativos.
 
 [Docker machine se descarga desde Docker](https://docs.docker.com/machine/) y
 su funcionamiento es similar a otras herramientas como Vagrant. En
 general, tras crear y gestionar un sistema en la nube, o bien instalar
 un *daemon* que se pueda controlar localmente, crea un entorno en la
 línea de órdenes que permite usar el cliente `docker` con estos
-entornos remotos. 
+entornos remotos.
 
-Vamos a trabajar con VirtualBox localmente. Ejecutando 
+Vamos a trabajar con VirtualBox localmente. Ejecutando
 
 	docker-machine create --driver=virtualbox maquinilla
-	
+
 se le indica a `docker-machine` que vamos a crear una máquina llamada
 `maquinilla` y que vamos a usar el driver de VirtualBox. Esta orden,
 en realidad, trabaja sobre VirtualBox instalando una imagen llamada
 `boot2docker`, una versión de sistema operativo un poco destripada que
 arranca directamente en Docker. Como también suele suceder en gestores
 de este estilo, se crea un par clave pública-privada que nos va a
-servir más adelante para trabajar con esa máquina.  
+servir más adelante para trabajar con esa máquina.
 
 Con `ls` listamos las máquinas virtuales que hemos gestionado, así
-como alguna información adicional: 
+como alguna información adicional:
 
 ~~~
-$ docker-machine ls                                                                                
+$ docker-machine ls
 NAME     ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
-maquinilla   -    virtualbox   Running   tcp://192.168.99.104:2376        v1.12.5   
-vbox-test    -    virtualbox   Running   tcp://192.168.99.100:2376        v1.12.5   
+maquinilla   -    virtualbox   Running   tcp://192.168.99.104:2376        v1.12.5
+vbox-test    -    virtualbox   Running   tcp://192.168.99.100:2376        v1.12.5
 ~~~
 
 Aquí hay dos máquinas, cada una con una dirección IP virtual que vamos
@@ -1241,13 +1259,13 @@ Docker version 1.12.5, build 7392c3b
 Como vemos, estamos
 en [Boot2Docker](https://github.com/boot2docker/boot2docker), un Linux
 ligero, con el servicio de Docker incluido, que vamos a poder usar
-para desplegar y demás. 
+para desplegar y demás.
 
 Si queremos usarlo más en serio, desde nuestra línea de órdenes,
-tenemos que ejecutar 
+tenemos que ejecutar
 
 	docker-machine env maquinilla
-	
+
 Que devolverá algo así:
 
 ~~~
@@ -1255,7 +1273,7 @@ export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.104:2376"
 export DOCKER_CERT_PATH="/home/jmerelo/.docker/machine/machines/maquinilla"
 export DOCKER_MACHINE_NAME="maquinilla"
-# Run this command to configure your shell: 
+# Run this command to configure your shell:
 # eval $(docker-machine env maquinilla)
 ~~~
 
@@ -1269,7 +1287,7 @@ Esa orden exporta las variables anteriores, que le indicarán a docker
 qué tiene que usar en ese *shell* explícitamente. Cada nuevo shell
 tendrá también que exportar esas variables para poder usar la máquina
 virtual. Las órdenes docker que se ejecuten a continuación se
-ejecutarán en esa máquina; por ejemplo, 
+ejecutarán en esa máquina; por ejemplo,
 
 ```
 sudo -E docker pull jjmerelo/alpine-perl6
@@ -1293,7 +1311,7 @@ usar los drivers correspondientes.
 <div class='ejercicios' markdown='1'>
 
 Crear con docker-machine una máquina virtual local que permita desplegar contenedores y ejecutar en él
-contenedores creados con antelación. 
+contenedores creados con antelación.
 
 </div>
 
@@ -1339,7 +1357,7 @@ acaba cuajando puede hacer que el campo de los contenedores evite
 monopolios, así que habrá que estar atentos al
 mismo. Hay
 [trabajo en curso](https://github.com/opencontainers/image-tools) para
-comprobar imágenes, por ejemplo. 
+comprobar imágenes, por ejemplo.
 
 ## A dónde ir desde aquí
 
