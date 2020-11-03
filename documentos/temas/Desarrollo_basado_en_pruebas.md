@@ -584,14 +584,15 @@ hacer un *benchmark* de tu código en los diferentes entornos en los
 que se ejecute.
 
 <div class='ejercicios' markdown='1'>
-Para la aplicación que se está haciendo, escribir una serie de
-aserciones y probar que efectivamente no fallan. Añadir tests para una
-nueva funcionalidad, probar que falla y escribir el código para que no
-lo haga. A continuación, ejecutarlos desde *mocha* (u otro módulo de
-test de alto nivel), usando descripciones del test y del grupo de test
-de forma correcta. Si hasta ahora no has subido el código que has
-venido realizando a GitHub, es el momento de hacerlo, porque lo vamos
-a necesitar un poco más adelante.
+Para la aplicación que se está haciendo para la asignatura, escribir
+una serie de aserciones y probar que efectivamente no fallan. Añadir
+tests para una nueva funcionalidad, probar que falla y escribir el
+código para que no lo haga. A continuación, ejecutarlos desde *mocha*
+(u otro módulo de test de alto nivel en el lenguaje que se esté
+usando), usando descripciones del test y del grupo de test de forma
+correcta. Si hasta ahora no has subido el código que has venido
+realizando a GitHub, es el momento de hacerlo, porque lo vamos a
+necesitar un poco más adelante.
 </div>
 
 ### Realizando las pruebas en Scala
