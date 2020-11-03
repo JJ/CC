@@ -641,7 +641,7 @@ este caso se comprueba si el resultado del valor ha sido correcto
 Se ejecutaría con `sbt test` o ejecutando `test` desde `sbt`; el
 resultado sería:
 
-![Resultado del test de Scala (versión anterior)](/documentos/img/test-scala.png)
+![Resultado del test de Scala (versión anterior)](../img/test-scala.png)
 
 ## Añadiendo integración continua
 
