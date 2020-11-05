@@ -137,7 +137,9 @@ solo si se instalan kernels posteriores). En las últimas versiones, de
 hecho, ya está en los repositorios oficiales de Ubuntu y para instalarlo no hay más que
 hacer
 
-	sudo apt-get install docker-engine
+```bash
+sudo apt-get install docker-engine
+```
 
 aunque la versión en los repositorios oficiales suele ser más antigua que la que
 se descargue de la web o los repositorios adicionales. Este paquete incluye varias aplicaciones: un *daemon*, `dockerd`, y un cliente de línea de órdenes, `docker`. La instalación dejará este *daemon* ejecutándose y lo configurará para que se   arranque con el inicio del
@@ -167,7 +169,7 @@ vamos a comenzar desde el principio. Veremos a continuación cómo empezar a eje
 ## Comenzando a ejecutar Docker
 
 > Red Hat ha liberado un gestor "serverless" (sin un servicio
-> ejecutándose con priviletios) de contenedores
+> ejecutándose con privilegios) de contenedores
 > llamado [Podman](https://podman.io/). Podman usa exactamente las
 > mismas órdenes que Docker, pero no necesita un daemon con
 > privilegios para funcionar.
@@ -180,7 +182,10 @@ Los paquetes de instalación estándar generalmente instalan Docker como
 servicio para que comience a ejecutarse en el momento que arranque el
 sistema. Si no se está ejecutando ya, se puede arrancar como un servicio
 
-	sudo dockerd &
+```bash
+sudo dockerd &
+```
+
 
 La línea de órdenes de docker conectará con este daemon, que mantendrá
 el estado de docker y demás. Cada una de las órdenes se ejecutará
@@ -246,7 +251,7 @@ Status: Downloaded newer image for hello-world:latest
    sea ejecutado cuando se ejecute el comando `run` sobre esa
    imagen. Este programa se está ejecutando *dentro* del contenedor y,
    por tanto, aislado del resto del sistema.
-  
+
 5. Sale del contenedor y te deposita en la línea de órdenes. El
    contenedor deja de ejecutarse. La imagen se queda almacenada
    localmente, para la próxima vez que se vaya a ejecutar.
@@ -418,7 +423,7 @@ distribución. Alpine usa `apk` como gestor de paquetes, y la
 instalación base no permite hacer gran cosa, así que para empezar
 conviene hacer
 
-```
+```bash
 apk update
 apk upgrade
 ```
@@ -426,7 +431,7 @@ apk upgrade
 Para que actualice la lista de paquetes disponibles. Después, se
 pueden instalar paquetes, por ejemplo
 
-```
+```bash
 apk add git perl
 ```
 
@@ -436,33 +441,35 @@ ficheros y paquetes que necesites para compilar o instalar algo. En
 algunos casos puede ser un poco más complicado que para otras distros,
 pero merece la pena.
 
-
 ### Tareas adicionales con contenedores Docker
 
 La máquina instalada la podemos arrancar usando como ID el nombre de
 la imagen de la que procede, pero cada
 táper tiene un id único que se puede ver con
 
-	docker ps -a=false
+```bash
+docker ps -a=false
+```
+
 
 siempre que se esté ejecutando, obteniendo algo así:
 
-```
-	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+```text
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 b76f70b6c5ce        ubuntu:12.04        /bin/bash           About an hour ago   Up About an hour                        sharp_brattain
 ```
 
 El primer número es el ID de la máquina que podemos usar también para
 referirnos a ella en otros comandos. También se puede usar
 
-```
+```bash
 docker images
 ```
 
 Que, una vez más, devolverá algo así:
 
-```
-	REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+```text
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 ubuntu              latest              8dbd9e392a96        9 months ago        128 MB
 ubuntu              precise             8dbd9e392a96        9 months ago        128 MB
 ubuntu              12.10               b750fe79269d        9 months ago        175.3 MB
@@ -499,7 +506,10 @@ no tendría mucho sentido, o al menos tanto sentido como *conectarse* a
 un proceso que está ejecutándose. De hecho, una segunda ejecución del
 mismo comando
 
-	docker run -it ubuntu /bin/bash
+```bash
+docker run -it ubuntu /bin/bash
+```
+
 
 (donde hemos abreviado las opciones `-i` y `-t` juntándolas) crearía, a partir de
 la imagen de Ubuntu, un nuevo contenedor.
@@ -607,8 +617,10 @@ sucede y cómo se lleva a cabo.
 
 Docker crea
 un
-[sistema de ficheros superpuesto u *overlay*](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72). Este
-[sistema de ficheros superpuesto](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/) puede
+[sistema de ficheros superpuesto u *overlay*](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72).
+Este
+[sistema de ficheros superpuesto](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/)
+puede
 tener varias formas posibles, igual que en Linux hay varios tipos de
 sistemas de ficheros posibles; Docker usa diferentes drivers
 (denominados `overlay` u `overlay2`) para
@@ -661,7 +673,7 @@ hecho eso, puedes ejecutar ese programa en cualquier distro, de esta
 forma:
 
 ```
-docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh   
+docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh
   87631   81506 1240789
 docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
     72284     67414    974042
@@ -883,14 +895,14 @@ services:
   - docker
 env:
   - DOCKER_COMPOSE_VERSION=1.17.0
- 
+
 before_install:
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up
- 
+
 script:
   - docker ps -a | grep -q web
 ```
