@@ -1,6 +1,6 @@
 # Material docente para Cloud Computing
 
-[![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
+[![Build Status](https://travis-ci.com/JJ/CC.svg?branch=master)](https://travis-ci.com/JJ/CC)
 
 *Cloud Computing* es una asignatura anual del máster de ingeniería
 informática en la [UGR][ugr-website].
