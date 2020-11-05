@@ -175,7 +175,7 @@ vamos a comenzar desde el principio. Veremos a continuación cómo empezar a eje
 ## Comenzando a ejecutar Docker
 
 > Red Hat ha liberado un gestor "serverless" (sin un servicio
-> ejecutándose con priviletios) de contenedores
+> ejecutándose con privilegios) de contenedores
 > llamado [Podman](https://podman.io/). Podman usa exactamente las
 > mismas órdenes que Docker, pero no necesita un daemon con
 > privilegios para funcionar.
