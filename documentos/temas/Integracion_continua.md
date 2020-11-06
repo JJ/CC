@@ -273,12 +273,6 @@ diferentes sistemas de integración continua que tengas configurados.
   de cambios, o al final de una sesión.
 - Pon siempre el *badge*. Los badges son importantes.
 
-## A dónde ir desde aquí
-
-Una vez visto todo lo necesario para desplegar una aplicación, se puede pasar a
-estudiar los [*PaaS*, plataformas como servicio](PaaS), donde se pueden
-desplegar aplicaciones para prototipo o para producción de forma relativamente
-simple.
 
 ## Bibliografía y otros recursos
 
@@ -300,10 +294,8 @@ atrasados (y uno está en chino, así que no tengo ni idea).
 
 ## A dónde ir desde aquí
 
-A continuación se
-puede echar un vistazo a los
-[*PaaS*, plataformas como servicio](PaaS), que pueden resultar útiles
-en la misma. En este tema donde se explica cómo se
-pueden desplegar aplicaciones para prototipo o para producción de
-forma relativamente simple, o bien volver al tema dedicado a los
+Una vez visto todo lo necesario para desplegar una aplicación, se puede pasar a
+estudiar los [*PaaS*, plataformas como servicio](PaaS), donde se pueden
+desplegar aplicaciones para prototipo o para producción de forma relativamente
+simple, o bien volver al tema dedicado a los
 [*contenedores*](Contenedores).
