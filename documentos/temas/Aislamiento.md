@@ -6,8 +6,7 @@ apuntes: T
 prev: Orquestacion
 ---
 
-Aislamiento de recursos: el camino a Docker
-===
+# Aislamiento de recursos: el camino a Docker
 
 <!--@
 prev: Orquestacion
@@ -15,8 +14,7 @@ prev: Orquestacion
 
 <div class="objetivos" markdown="1">
 
-Objetivos
---
+## Objetivos
 
 ### Cubre los siguientes objetivos de la asignatura
 
@@ -37,8 +35,7 @@ Objetivos
 
 </div>
 
-Introducción a la virtualización ligera: *contenedores*
--------
+## Introducción a la virtualización ligera: *contenedores*
 
 > Llamar a los contenedores sistemas de *virtualización ligera* no
 > deja de ser inexacto. Solo desde el punto de vista de un usuario del
@@ -80,7 +77,8 @@ virtualización
 
 
 El mundo Linux no tendría capacidades similares hasta bien entrados los años 90, con
-[vServers, OpenVZ y finalmente LXC](https://en.wikipedia.org/wiki/Operating_system-level_virtualization#Implementations). Este
+[vServers, OpenVZ y finalmente LXC](https://en.wikipedia.org/wiki/Operating_system-level_virtualization#Implementations).
+Este
 último, [LXC](https://linuxcontainers.org/), se basa en el concepto de
 [grupos de control o CGROUPS](https://en.wikipedia.org/wiki/Cgroups),
 una capacidad del núcleo de Linux desde la versión 2.6.24 que crea
@@ -122,8 +120,7 @@ Esta virtualización *ligera* tiene, entre otras ventajas, una
 segundos y, además, tienes mayor control desde fuera (desde el anfitrión) del que se pueda
 tener usando máquinas virtuales.
 
-Usando `lxc`
---
+## Usando `lxc`
 
 No todas las versiones de los núcleos del sistema operativo pueden
 usar este tipo de container; para empezar, dependerá de cómo esté
@@ -155,7 +152,8 @@ pacaur -S lxc arch-install-scripts
 ```
 
 Así instalaremos LXC junto con otro módulo que se recomienda en la
-[documentación de Arch para este paquete](https://wiki.archlinux.org/index.php/Linux_Containers). Además
+[documentación de Arch para este paquete](https://wiki.archlinux.org/index.php/Linux_Containers).
+Además
 hemos de señalar que, por cuestiones de seguridad que también se
 comentan en esta documentación, los *namespaces* de usuario estarán
 deshabilitados (como veremos al usar `lxc-checkconfig`) ya que no se
@@ -167,11 +165,48 @@ error diciéndonos que no está disponible el comando `debootstrap`,
 solamente tendremos que instalarlo con la orden `sudo pacman -S
 debootstrap`, y ya podremos crear contenedores LXC sin problemas.
 
+Tras instalar LXC en Arch junto con el paquete *arch-install-scripts*
+(que sugiere en la documentación de Arch que se instale) con los
+comandos:
+
+```bash
+pacaur -S lxc
+pacaur -S arch-install-scripts
+```
+
+Lo primero que observamos es que, como dice en la documentación
+anteriormente nelazada, los namespaces de usuario no aparecen como
+disponibles cuando comprobamos con `lxc-checkconfig`, esto es
+aparentemente por un motivo de seguridad de Arch lo que nos obliga a
+ejecutar los comandos con sudo al parecer.
+
+Una vez hecho esto al intentar crear una máquina con Ubuntu con el
+comando `sudo lxc-create -t ubuntu -n una-caja` nos daba un error
+indicando que no podía ejecutar el comando debootstrap, con lo que lo
+hemos instalado por medio del comando `sudo pacman -S debootstrap`.
+
+Una vez hecho esto, y tras un tiempo de espera, se ha configurado un
+contenedor con Ubuntu que arrancamos son `sudo lxc-start -n una-caja`
+y a la que nos ponemos conectar con `sudo lxc-console -n una caja`. Al
+hacer esto antes de pulsar ENTER que nos iniciará la consola de dicho
+contenedor, hemos de fijarno que cuando queramos salir de dicha
+consola hemos de emplear `Ctrl+a q`, si empleamos el comando `exit` lo
+único que haremos será "salir" de la máquina y aparecerá de nuevo la
+petición de usuario y contraseña para volver a entrar en ella.
+
 ### Instalando LXC en Debian
 
-Para instalar LXC en Debian es necesario contar con una versión 8 (Jessie) o superior. Instalar LXC 2.0 en Debian 8 requiere añadir los [Jessie backports](https://backports.debian.org/Instructions/) un repositorio de paquetes inestables y/o de test, por ello contiene versiones de los paquetes bastante más nuevas que los repositorios oficiales.
+Para instalar LXC en Debian es necesario contar con una versión 8
+(Jessie) o superior. Instalar LXC 2.0 en Debian 8 requiere añadir
+los [Jessie backports](https://backports.debian.org/Instructions/) un
+repositorio de paquetes inestables y/o de test, por ello contiene
+versiones de los paquetes bastante más nuevas que los repositorios
+oficiales.
 
-Una vez hecho esto podemos instalar LXC usando las [instrucciones oficiales de instalación en Debian](https://wiki.debian.org/LXC) con los comandos:
+Una vez hecho esto podemos instalar LXC usando
+las
+[instrucciones oficiales de instalación en Debian](https://wiki.debian.org/LXC) con
+los comandos:
 ```
 sudo apt-get install -t jessie-backports  lxc libvirt0 linux-image-amd64
 
@@ -218,7 +253,9 @@ Alternativamente, se
 puede usar una imagen similar a la que se usa en
 [EC2 de Amazon](https://aws.amazon.com/es/ec2/), donde se denomina AMI:
 
-	sudo lxc-create -t ubuntu-cloud -n nubecilla
+```bash
+sudo lxc-create -t ubuntu-cloud -n nubecilla
+```
 
 que funciona de forma ligeramente diferente, porque se descarga un
 fichero `.tar.gz` usando `wget` (y tarda también un rato). Las
@@ -241,7 +278,9 @@ en este momento cualquier contenedor debería estar en estado
 
 Para arrancar el contenedor y conectarse a él,
 
-	sudo lxc-start -n nubecilla
+```bash
+sudo lxc-start -n nubecilla
+```
 
 , donde `-n` es la opción para dar el nombre del contenedor que se va
 a iniciar. Dependiendo del contenedor que se arranque, habrá una configuración
@@ -270,13 +309,13 @@ nombre de usuario y clave que indicará en su creación
 Una vez arrancados los
 contenedores, si se lista desde fuera aparecerá de esta forma:
 
-~~~
-$ sudo lxc-ls -f      
-NAME       STATE    IPV4        IPV6  AUTOSTART  
+```bash
+$ sudo lxc-ls -f
+NAME       STATE    IPV4        IPV6  AUTOSTART
 -----------------------------------------------
-nubecilla  RUNNING  10.0.3.171  -     NO         
-una-caja   STOPPED  -           -     NO         
-~~~
+nubecilla  RUNNING  10.0.3.171  -     NO
+una-caja   STOPPED  -           -     NO
+```
 
 Y, dentro de la misma, tendremos una máquina virtual con esta
 pinta:
@@ -306,10 +345,12 @@ existentes para que vaya todo rápidamente.
 >clave cada vez. Si lo vas a usar con cierta frecuencia, sobre todo en
 >desarrollo, puede ser una mejor opción.
 
-Los contenedores son la implementación de una serie de tecnologías
-[que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion): y como
-tales pueden ser configurados para usar solo una cuota determinada
-de recursos, por ejemplo
+Los contenedores son la implementación de una serie de
+tecnologías
+[que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion):
+y como tales pueden ser configurados para usar solo una cuota
+determinada de recursos, por
+ejemplo
 [la CPU](https://www.slideshare.net/dotCloud/scale11x-lxc-talk-16766275). Para
 ello se usan los ficheros de configuración de cada una de las máquinas
 virtuales. Sin embargo, tanto para controlar como para visualizar los
@@ -317,8 +358,8 @@ tápers (que así vamos a llamar a los contenedores a partir de ahora)
 es más fácil usar [lxc-webpanel](https://lxc-webpanel.github.io/), un
 centro de control por web que permite iniciar y parar las máquinas
 virtuales, aparte de controlar los recursos asignados a cada una de
-ellas y visualizarlos; la página principal te da una visión general de los contenedores
-instalados y desde ella se pueden arrancar o parar.
+ellas y visualizarlos; la página principal te da una visión general de
+los contenedores instalados y desde ella se pueden arrancar o parar.
 
 ![Página inicial de LXC-Webpanel](../img/Overview-lxc.png)
 
@@ -331,8 +372,7 @@ que haya una diferencia en las prestaciones, que puede ser apreciable
 en ciertas circunstancias.
 
 
-Configurando las aplicaciones en un táper
-----
+## Configurando las aplicaciones en un táper
 
 Una vez creados los tápers, son en casi todos los aspectos como una
 instalación normal de un sistema operativo: se puede instalar lo que
@@ -381,15 +421,19 @@ con Vagrant; eventualmente las cajas se tienen que introducir en el
 directorio de plantillas de `lxc` para que se puedan usar, o bien usar
 las de Atlas tales como esta
 
-	vagrant init fgrehm/wheezy64-lxc
+```bash
+vagrant init fgrehm/wheezy64-lxc
+```
 
 e iniciarlas con
 
-	sudo vagrant up --provider=lxc
+```bash
+sudo vagrant up --provider=lxc
+```
 
 Con esto se puede provisionar o conectarse usando las herramientas habituales,
 siempre que la imagen tenga soporte para ello. Por ejemplo, se puede
-conectar uno a esta imagen de Debian con `vagrant ssh`  
+conectar uno a esta imagen de Debian con `vagrant ssh`
 
 <div class='ejercicios' markdown="1">
 
@@ -399,8 +443,7 @@ de configuración que ya se haya usado
 </div>
 
 
-A dónde ir desde aquí
------
+## A dónde ir desde aquí
 
 Lo más conveniente es ir al capítulo sobre [Docker](Contenedores).
 
