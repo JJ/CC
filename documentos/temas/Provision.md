@@ -443,7 +443,7 @@ usando un *playbook* de Ansible.
 
 </div>
 
-También se pueden instalar varios paquetes a la vez, como en 
+También se pueden instalar varios paquetes a la vez, como en
 [este playbook](/ejemplos/vagrant/Debian2018/basico.yaml)  que instala
 node:
 
