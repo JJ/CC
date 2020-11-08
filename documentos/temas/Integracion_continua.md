@@ -273,7 +273,6 @@ diferentes sistemas de integración continua que tengas configurados.
   de cambios, o al final de una sesión.
 - Pon siempre el *badge*. Los badges son importantes.
 
-
 ## Bibliografía y otros recursos
 
 Algunos recursos a los que puedes acceder desde la
