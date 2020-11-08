@@ -10,15 +10,12 @@ next: Orquestacion
 
 ## Objetivos
 
-1.   Conocer las diferentes tecnologías y herramientas de
+1. Conocer las diferentes tecnologías y herramientas de
 virtualización tanto para procesamiento, comunicación y
 almacenamiento.
-
 2. Diseñar, construir y analizar las prestaciones de un centro de
 proceso de datos virtual.
-
 3. Documentar y mantener una plataforma virtual.
-
 4. Realizar tareas de administración de infraestructuras virtuales.
 
 </div>
@@ -58,7 +55,9 @@ hipervisores alojados que se ejecutan desde un sistema operativo.
 
 Para apoyar la virtualización, casi todos los procesadores actuales y
 especialmente
-[los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](https://en.wikipedia.org/wiki/X86_virtualization).
+[los de las líneas más populares basadas en la arquitectura x86
+tienen una serie de instrucciones que permiten usarla de manera segura
+y eficiente](https://en.wikipedia.org/wiki/X86_virtualization).
 Esta arquitectura tiene dos ramas: la Intel y la AMD, cada uno de los
 cuales tiene un conjunto de instrucciones diferentes para llevarla a
 cabo. Aunque la mayoría de los procesadores lo incluyen, los
@@ -146,14 +145,16 @@ relativamente fácil trabajar con ellos de forma automática.
 
 Comencemos por crear un grupo de recursos
 
-```
+```bash
 az group create -l westeurope -n CCGroupEU
 ```
 
 Esto crea un grupo de recursos en Europa Occidental. Vamos a usarlo
 más adelante para crear nuestras instancias.
 
-	az vm image list
+```bash
+az vm image list
+```
 
 Te devolverá el grupo de máquinas virtuales disponibles. Pero, como se
 ha dicho antes, te lo devuelve en JSON, con lo que es conveniente
@@ -165,7 +166,7 @@ Si se añade `--all` te devolverá todas las imágenes disponibles, pero
 eso puede tardar bastante tiempo. En todo caso, se puede filtrar de
 esta forma.
 
-```
+```bash
 az vm image list | jq '.[] | select( .offer | contains("buntu"))'
 ```
 
@@ -177,16 +178,16 @@ así:
 
 Se puede trabajar también de forma interactiva, lo que tiene al menos
 la ventaja de que se completan automáticamente las opciones, y puedes
-ver las formas de filtrar. 
+ver las formas de filtrar.
 
 ![Imágenes de Ubuntu desde `az interactive`](../img/az-vm-image.png)
 
 Con esto se pueden buscar, y
 filtrar,
-[las imágenes que cumplan](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage) unas
-condiciones:
+[las imágenes que cumplan](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage)
+unas condiciones:
 
-```
+```bash
 vm image list --publisher RedHat --output table --all
 ```
 
@@ -200,14 +201,14 @@ gitlab o Postgres.
 También se pueden buscar los proveedores de una imagen
 determinada. Por ejemplo
 
-```
+```bash
 vm image list --offer CentOS --all --location uksouth --output table
 ```
 
 listará todas las imágenes que incluyan esa cadena en la `location`
 indicada. Esta, por ejemplo,
 
-```
+```bash
 vm image list --offer BSD --all --location uksouth --output table
 ```
 
@@ -223,7 +224,7 @@ De esta imagen hay que usar dos IDs: `urn` y `urnAlias`, que nos
 permitirán identificar la imagen con la que vamos a trabajar a
 continuación:
 
-```
+```bash
 az vm create -g CCGroupEU -n bobot --image UbuntuLTS
 ```
 
@@ -237,7 +238,7 @@ a ella con su dirección IP y ssh.
 
 Una vez que se deje de usar, conviene pararla con
 
-```
+```bash
 az vm stop -g CCGroupEU -n bobot
 ```
 Si no, seguirá disminuyendo el crédito.
@@ -265,7 +266,7 @@ Para crear una imagen que tenga no solo una IP pública, sino también
 una entrada DNS, que puede ser conveniente para referirse a ella en el
 futuro, se puede usar la orden siguiente:
 
-```
+```bash
 az vm create --name cc-hito-4 --nsg-rule ssh --ssh-key-value\
     @~/.ssh/id_rsa.pub --output tsv --image UbuntuLTS\
     --public-ip-address-dns-name cc-hito-4
@@ -274,17 +275,17 @@ az vm create --name cc-hito-4 --nsg-rule ssh --ssh-key-value\
 Aquí no solo hemos creado una máquina cuyo nombre interno es
 `cc-hito-4`, sino que también usaremos el mismo nombre para referirnos
 a ella desde nuestra máquina local. El nombre completo (Fully
-    Qualified DNS, FQDNS) será el resultado de componer este nombre +
-    la *location* + `cloudapp.azure.net`. Por ejemplo,
-    `cc-hito-4.westeurope.cloudapp.azure.com`.
-    
+Qualified DNS, FQDNS) será el resultado de componer este nombre + la
+*location* + `cloudapp.azure.net`. Por ejemplo,
+`cc-hito-4.westeurope.cloudapp.azure.com`.
+
 Dado que estamos escribiendo la salida en TSV ese nombre se presentará
 al salir, pero no hace falta capturarlo, porque se puede calcular
 automáticamente de esa forma. Si hace falta tener en todo caso la IP o
 el nombre, se pueden usar también las peticiones habituales de la
 línea de órdenes:
 
-```
+```bash
 az vm show -d -n cc-hito-4 --query "fqdns"
 az vm show -d -n cc-hito-4 --query "publicIps"
 ```
@@ -296,11 +297,14 @@ contienen la información indicada.
 
 ## CLI de OpenStack
 
-[OpenStack](https://docs.openstack.org/victoria) es un sistema libre de gestión
-de nubes privadas que se ha hecho muy popular incluso en revendedores
-de sistemas como IBM u otros, que en realidad ofrecen este tipo de
-acceso. Se puede probar en alguna instalación disponible en la
-Facultad o Escuela o bien en [OpenStack Public Cloud Passport](https://www.openstack.org/passport/) si te admiten.
+[OpenStack](https://docs.openstack.org/victoria) es un sistema libre
+de gestión de nubes privadas que se ha hecho muy popular incluso en
+revendedores de sistemas como IBM u otros, que en realidad ofrecen
+este tipo de acceso. Se puede probar en alguna instalación disponible
+en la Facultad o Escuela o bien
+en
+[OpenStack Public Cloud Passport](https://www.openstack.org/passport/)
+si te admiten.
 
 Como arriba, hay también un
 [sistema de línea de órdenes](https://docs.openstack.org/user-guide/cli.html),
@@ -310,9 +314,9 @@ inicialmente uno para cada uno de los subsistemas de OpenStack pero
 [configurar una serie de variables de entorno descargándose un fichero](https://docs.openstack.org/victoria/user/),
 que él mismo pone las API keys y demás. Una vez ejecutado ese *script*
 de configuración se puede, por ejemplo, crear una clave para acceder
-a las instancias que se vayan a crear 
+a las instancias que se vayan a crear
 
-```
+```bash
 nova keypair-add Try > openstack-key.pem
 ```
 
@@ -355,12 +359,12 @@ openstack floating ip create b96fdf8d-99ca-3333-5555-38ccd03a4a3c
 ```
 
 * Si eso falla, se puede asignar una IP flotante desde el interfaz
-  gráfico, yendo a la lista de instancias. 
+  gráfico, yendo a la lista de instancias.
 
 <div class='ejercicios' markdown='1'>
 
 Conseguir una cuenta de prueba en OpenStack y crear una instancia a la
-que se pueda acceder, provisionándola con algún *script* disponible. 
+que se pueda acceder, provisionándola con algún *script* disponible.
 
 </div>
 
