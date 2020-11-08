@@ -12,10 +12,10 @@ next: Orquestacion
 
 1.   Conocer las diferentes tecnologías y herramientas de
 virtualización tanto para procesamiento, comunicación y
-almacenamiento. 
+almacenamiento.
 
 2. Diseñar, construir y analizar las prestaciones de un centro de
-proceso de datos virtual. 
+proceso de datos virtual.
 
 3. Documentar y mantener una plataforma virtual.
 
@@ -26,12 +26,13 @@ proceso de datos virtual.
 ## Introducción
 
 El objetivo de las plataformas de virtualización es, eventualmente,
-crear y gestionar una máquina virtual completa que funcione de forma aislada 
-del resto del sistema y que permita trabajar con sistemas
+crear y gestionar una máquina virtual completa que funcione de forma
+aislada del resto del sistema y que permita trabajar con sistemas
 virtualizados de forma flexible, escalable y adaptada a cualquier
 objetivo. Eventualmente, el objetivo de este este tema es aprender a
 crear
-[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico). Para
+[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico).
+Para
 ello necesitamos configurar una serie de infraestructuras virtuales,
 especialmente
 [almacenamiento como se explica en el tema dedicado a almacenamiento](Almacenamiento).
@@ -56,23 +57,26 @@ hipervisores alojados que se ejecutan desde un sistema operativo.
 ![Ilustración de los dos tipos de hipervisores (alojada en la Wikipedia)](https://upload.wikimedia.org/wikipedia/commons/e/e1/Hyperviseur.png)
 
 Para apoyar la virtualización, casi todos los procesadores actuales y
-especialmente [los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](https://en.wikipedia.org/wiki/X86_virtualization). Esta
-arquitectura tiene dos ramas: la Intel y la AMD, cada uno de los
+especialmente
+[los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](https://en.wikipedia.org/wiki/X86_virtualization).
+Esta arquitectura tiene dos ramas: la Intel y la AMD, cada uno de los
 cuales tiene un conjunto de instrucciones diferentes para llevarla a
 cabo. Aunque la mayoría de los procesadores lo incluyen, los
 portátiles de gama baja y algunos ordenadores de sobremesa antiguos no
 la incluyen, por lo que habrá que comprobar si nuestro procesador lo
-hace. Si no lo hiciera, se habla de
+hace. Si no lo hiciera, se habla
+de
 [paravirtualización](https://en.wikipedia.org/wiki/Paravirtualization)
 en la que los hipervisores tienen que *interpretar* cada imagen del
 sistema operativo que alojan (llamado *invitado*) y convertirla en
 instrucciones del que aloja (llamado *anfitrión* o *host*). La mayor
-parte de los hipervisores, como
-[Xen](https://xenproject.org/) o [KVM](https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
-también la capacidad de paravirtualizar ciertos sistemas operativos en
-caso de que los anfitriones no tengan soporte; por ejemplo, KVM se ha
-asociado con [QEMU](https://en.wikipedia.org/wiki/QEMU) que lo usa en
-caso de que el procesador tenga soporte. 
+parte de los hipervisores, como [Xen](https://xenproject.org/)
+o [KVM](https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine)
+incluyen también la capacidad de paravirtualizar ciertos sistemas
+operativos en caso de que los anfitriones no tengan soporte; por
+ejemplo, KVM se ha asociado
+con [QEMU](https://en.wikipedia.org/wiki/QEMU) que lo usa en caso de
+que el procesador tenga soporte.
 
 Por encima de los hipervisores están los sistemas de gestión de
 máquinas virtuales en la nube que, aunque se puedan usar desde las
@@ -82,7 +86,7 @@ independientemente del hipervisor real que esté por debajo. Estos
 sistemas de gestión de máquinas virtuales pueden ser libres, como
 OpenStack u OpenNebula, o privativos, como los que se usan en la
 mayoría de los sistemas de la nube. Todos, sin embargo, permiten
-realizar una serie de tareas que veremos a continuación. 
+realizar una serie de tareas que veremos a continuación.
 
 ## Pasos a dar para creación de una instancia en la nube
 
@@ -120,7 +124,7 @@ Todas las plataformas suelen tener una utilidad de línea de órdenes, o
 varias, que permite acceder al API de la misma una vez identificados
 ahí. Generalmente son libres, así que también se pueden usar desde tu
 propio programa. A continuación veremos como trabajar en alguna de
-ellas. 
+ellas.
 
 ## Trabajando con máquinas virtuales en la nube
 
@@ -133,7 +137,7 @@ más adelante el de OpenStack
 
 El
 [CLI de Azure](https://github.com/Azure/azure-cli#installation) en su
-segunda versión 
+segunda versión
 está basado en Python y se puede instalar siguiendo las instrucciones
 arriba. Es bastante similar al anterior, pero hay muchas tareas que se
 realizan mucho más fácilmente usando valores por omisión relativamente
@@ -292,7 +296,7 @@ contienen la información indicada.
 
 ## CLI de OpenStack
 
-[OpenStack](https://docs.openstack.org) es un sistema libre de gestión
+[OpenStack](https://docs.openstack.org/victoria) es un sistema libre de gestión
 de nubes privadas que se ha hecho muy popular incluso en revendedores
 de sistemas como IBM u otros, que en realidad ofrecen este tipo de
 acceso. Se puede probar en alguna instalación disponible en la
@@ -303,7 +307,7 @@ Como arriba, hay también un
 inicialmente uno para cada uno de los subsistemas de OpenStack pero
 últimamente unificado a una sola orden, `openstack`. Para trabajar con
 él, tras descargar el cliente, hay que
-[configurar una serie de variables de entorno descargándose un fichero](https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html),
+[configurar una serie de variables de entorno descargándose un fichero](https://docs.openstack.org/victoria/user/),
 que él mismo pone las API keys y demás. Una vez ejecutado ese *script*
 de configuración se puede, por ejemplo, crear una clave para acceder
 a las instancias que se vayan a crear 
