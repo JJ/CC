@@ -478,7 +478,9 @@ mismo, porque no tenemos más. El formato de instalación de paquetes es
 ligeramente diferente, pero nos permite instalar diferentes paquetes a
 la vez.
 
-Ansible usa el concepto de [*rol*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) para agrupar en un directorio una
+Ansible usa el concepto de
+[*rol*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
+para agrupar en un directorio una
 serie de tareas que puedan estar relacionadas; por ejemplo, un
 framework específico junto con lo que ese framework necesite, como un
 conjunto de herramientas. A un nivel muy básico, un rol es el
@@ -508,7 +510,7 @@ que van a ser comunes a varios playbooks en un proyecto. Este será el
     - common
 ```
 
-> Normalmente, habría otras tareas (no comunes) en este playbook. 
+> Normalmente, habría otras tareas (no comunes) en este playbook.
 
 En el directorio `roles/common/tasks` estará este [fichero](/ejemplos/vagrant/Debian2018/roles/common/tasks/main.yaml)
 
@@ -521,7 +523,7 @@ En el directorio `roles/common/tasks` estará este [fichero](/ejemplos/vagrant/D
 
 Como ya está calificado como tareas, en este fichero se pondría
 directamente lo que estaría dentro de la lista de `tasks` en un
-playbook. 
+playbook.
 
 Este sistema de roles, además, permite extender ansible con un sistema llamado
 [*Galaxy*](https://galaxy.ansible.com/), una colección de roles libres
@@ -537,10 +539,8 @@ esta forma:
 ansible-galaxy install geerlingguy.nodejs
 ```
 
-
-Se
-usa en un [playbook](/ejemplos/vagrant/Debian2018/node-versions.yml)
-usando el nombre completo, tras instalarlo:
+Se usa en un [playbook](/ejemplos/vagrant/Debian2018/node-versions.yml)
+con su nombre completo, tras instalarlo:
 
 ```
 ---
@@ -602,20 +602,20 @@ de infraestructura virtual a través de código y un repaso de todas las
 herramientas usadas en el mismo. También está disponible
 como
 [recurso electrónico](https://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
-la biblioteca de la [UGR](https://www.ugr.es). 
+la biblioteca de la [UGR](https://www.ugr.es).
 
 ## A donde ir desde aquí
 
 Para empezar, hay que
 hacer [el hito del proyecto correspondiente](../proyecto/3.Provisionamiento.md).
 
-Desde aquí se podría ir directamente al tema de 
+Desde aquí se podría ir directamente al tema de
 [orquestación de máquinas virtuales](Orquestacion.md), donde se
 aprenderá a trabajar con configuraciones más complejas que usen varias
 máquinas virtuales a la vez, pero en la asignatura continuaremos
 con [la automatización de tareas en la nube](Automatizando_cloud.md)
 para aprender como trabajar con diferentes proveedores cloud usando
-sus propias herramientas.  
+sus propias herramientas.
 
 
 A partir de aquí se puede
@@ -635,7 +635,4 @@ como una categoría en sí. En
 también los comparan y en
 [este último](https://jjasghar.github.io/blog/2015/12/20/chef-puppet-ansible-salt-rosetta-stone/)
 llevan a cabo la configuración de un servidor simple usando los
-cuatro. 
-
-
-	
+cuatro.
