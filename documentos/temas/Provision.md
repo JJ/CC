@@ -7,8 +7,7 @@ prev: PaaS
 next: Automatizando_cloud
 ---
 
-Provisionamiento en infraestructuras virtuales
-===
+# Provisionamiento en infraestructuras virtuales
 
 <!--@
 prev: PaaS
@@ -17,7 +16,7 @@ next: Automatizando_cloud
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos de la asignatura</h2>
+## Objetivos de la asignatura
 
 * Diseñar, construir y analizar las prestaciones de un centro de
   proceso de datos virtual.
@@ -26,7 +25,7 @@ next: Automatizando_cloud
 
 * Realizar tareas de administración en infraestructura virtual.
 
-<h2>Objetivos específicos</h2>
+## Objetivos específicos
 
 1. Aprender lenguajes de configuración usados en infraestructuras virtuales.
 2. Saber cómo aplicarlos en un caso determinado.
@@ -35,8 +34,7 @@ provisionamiento y monitorización más usados hoy en día.
 
 </div>
 
-Introducción
----
+## Introducción
 
 Los
 [gestores de configuraciones](https://en.wikipedia.org/wiki/Configuration_management)
@@ -263,8 +261,7 @@ para los hitos anteriores) usando Salt.
 	  
 </div>
 
-Usando Ansible
----
+## Usando Ansible
 
 Las principales alternativas a Chef son [Ansible](https://www.ansible.com),
 y [Puppet](https://puppet.com/docs/puppet/3.8/pre_install.html). Todos ellos se comparan en
@@ -455,7 +452,7 @@ usando un *playbook* de Ansible.
 
 </div>
 
-También se pueden instalar varios paquetes a la vez, como en 
+También se pueden instalar varios paquetes a la vez, como en
 [este playbook](/ejemplos/vagrant/Debian2018/basico.yaml)  que instala
 node:
 
@@ -600,8 +597,7 @@ como
 [recurso electrónico](https://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
 la biblioteca de la [UGR](https://www.ugr.es). 
 
-A donde ir desde aquí
--------
+## A donde ir desde aquí
 
 Para empezar, hay que
 hacer [el hito del proyecto correspondiente](../proyecto/3.Provisionamiento).
