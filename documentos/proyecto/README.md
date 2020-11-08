@@ -11,11 +11,11 @@ infraestructura, test y despliegue tenga una mínima complejidad. Un
 proyecto con dos herramientas y un script de dos líneas para
 desplegar, mientras que es válido (*a priori*, claro, esto tampoco
 implica que apruebe automáticamente) no se calificaría con una nota
-demasiado alta. 
+demasiado alta.
 
-Por otro lado, el
-objetivo del proyecto es crear un proyecto de despliegue de aplicación
-en nube que sea mínimamente viable, del tipo *DevOps*. Los *proyectos son individuales* y cada persona será
+Por otro lado, el objetivo del proyecto es crear un proyecto de
+despliegue de aplicación en nube que sea mínimamente viable, del tipo
+*DevOps*. Los *proyectos son individuales* y cada persona será
 evaluada según el avance en su propio proyecto. Eso no quiere decir
 que un proyecto corresponda a una aplicación: una sola aplicación se
 puede dividir en varios proyectos individuales, pero cada uno de esos
@@ -23,7 +23,7 @@ proyectos tiene que tocar un porcentaje considerable de objetivos de
 la asignatura. Es decir, no se puede dividir un proyecto en test,
 infraestructura y despliegue y que cada parte la haga una persona,
 pero sí puede haber un proyeco que consista en test y infraestructura
-y otro que consista en otra parte de la infraestructura y despliegue. 
+y otro que consista en otra parte de la infraestructura y despliegue.
 
 Los proyectos podrán usar el lenguaje y herramientas que se desee,
 siempre que sean libres o se usen de forma legal. Se valorará
@@ -38,12 +38,12 @@ de *infraestructura virtual* formará parte de la aplicación.
 En estos proyectos se desarrolla principalmente la infraestructura
 necesaria para desarrollar, probar y desplegar una aplicación que no
 necesariamente tiene que ser parte del mismo. Tendrá, por tanto, tres
-partes 
+partes
 
 * Configuración y gestión de la infraestructura de desarrollo:
   entornos virtuales y librerías y otros entornos necesarios para
   trabajar, infraestructura de integración continua y de *staging*.
-  para desplegar la aplicación antes de llevarla a producción. 
+  para desplegar la aplicación antes de llevarla a producción.
 * Configuración de los tests necesarios para llevar a cabo integración
   y publicación continua. En caso de que no estén desarrollados, habrá
   que llevar a cabo ese desarrollo.
@@ -56,7 +56,7 @@ partes
 ## Hitos del proyecto
 
 Los hitos del proyecto corresponderán a las prácticas de la asignatura
-y se listarán a continuación. 
+y se listarán a continuación.
 
 ## Concluyendo
 
