@@ -1042,7 +1042,7 @@ raku -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
 
 o algún
 otro
-[*one-liner* de Perl6](https://gist.github.com/JJ/9953ba0a98800fed205eaae5b5a6410a).
+[*one-liner* de Raku](https://gist.github.com/JJ/9953ba0a98800fed205eaae5b5a6410a).
 
 En caso de que se trate de un servicio o algún otro tipo de programa
 de ejecución continua, se puede usar directamente `CMD`. En este caso,
@@ -1097,11 +1097,11 @@ de llegar a eso, conviene recordar la opción `--rm` para ejecutar
 órdenes dentro del contenedor, que limpia automáticamente el
 contenedor y lo elimina cuando se sale del mismo:
 
-~~~
+```shell
 docker run --rm -t -v
     /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test
       jjmerelo/test-perl6 /test/t
-~~~
+```
 
 ## Composición de servicios con `docker compose`
 
@@ -1137,8 +1137,7 @@ services:
 ```
 
 La especificación de la versión indica de qué versión del interfaz se
-trata. Hay hasta una versión 3,
-con
+trata. Hay hasta una versión 3, con
 [cambios sustanciales](https://docs.docker.com/compose/compose-file/). En
 este caso, esta versión permite crear dos servicios, uno que
 denominamos `config`, que será el contenedor que tenga la
@@ -1159,7 +1158,6 @@ volúmenes, es decir, los datos, contenidos en el fichero
 correspondiente.
 
 Para ejecutarlo,
-
 
 ```
 docker-compose up
