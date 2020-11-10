@@ -950,22 +950,24 @@ repos para que no haya problemas.
 El resto son otras órdenes `RUN`, que ejecutan directamente órdenes
 dentro del contenedor, y que en este caso descargan un paquete, que es
 la forma como se distribuye `sbt`, y lo ponen como ejecutable. Hay que
-hacer una cosa adicional: copiar mediante `COPY` un par de ficheros
-locales, el `.jar` que contiene el programa y el fichero de hitos que
-se va a usar para responder al usuario.
+hacer una cosa adicional: mover los ejecutables a un sitio que esté
+localizable en el path.
 
 Para crear una imagen a partir de esto se usa
 
 ```shell
-docker build -t jjmerelo/bobot .
+docker build -t jjmerelo/scala-test .
 ```
 
-(o el nick que tengas en GitHub). El `-t` es, como es habitual, para
+(o el nick que tengas en Docker Hub). El `-t` es, como es habitual, para
 asignar un *tag*, en este caso uno que se puede usar más adelante en
 el Docker Hub. Tardará un rato, sobre todo por la descarga de unas
 cuantas bibliotecas por parte de sbt, lo que se hace en la última
 línea. Una vez hecho esto, si funciona la construcción, se
-podrá ejecutar con
+podrá ejecutar con `docker run`, con lo que saldrá la línea de órdenes
+de `sbt` (y un error si no hay ningún fichero `sbt` presente).
+
+
 
 ```shell
 docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot
