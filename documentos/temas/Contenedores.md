@@ -494,7 +494,9 @@ docker run b750fe79269d du
 
 ## Cómo crear imágenes docker interactivamente.
 
-En vez de ejecutar las cosas una a una podemos directamente [ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
+En vez de ejecutar las cosas una a una podemos
+directamente
+[ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
 
 ```
 docker run -i -t ubuntu /bin/bash
@@ -525,7 +527,9 @@ la imagen de Ubuntu, un nuevo contenedor.
 En cualquiera de los casos, cuando se ejecuta `exit` o `Control-D`
 para salir del contenedor, este deja de ejecutarse. Ejecutar
 
-	docker ps -l
+```bash
+docker ps -l
+```
 
 mostrará  que ese contenedor está `exited`, es decir, que ha salido,
 pero también mostrará en la primera columna el ID del
@@ -534,16 +538,17 @@ sí se arrancará el entorno de ejecución; si queremos volver a ejecutar
 algo como la línea de órdenes, tendremos que arrancarlo y a
 continuación efectivamente ejecutar algo como el *shell*
 
-	docker start 6dc8ddb51cd6 && docker exec -it 6dc8ddb51cd6 sh
+```shell
+docker start 6dc8ddb51cd6 && docker exec -it 6dc8ddb51cd6 sh
 
 Sin embargo, en este caso simplemente salir del shell no dejará de
 ejecutar el contenedor, por lo que habrá que pararlo
-
-	docker stop 6dc8ddb51cd6
+```shell
+docker stop 6dc8ddb51cd6
 
 y, a continuación, si no se va a usar más el contenedor, borrarlo
-
-	docker rm 6dc8ddb51cd6
+```shell
+docker rm 6dc8ddb51cd6
 
 Las imágenes que se han creado se pueden examinar con `inspect`, lo
 que nos da información sobre qué metadatos se le han asignado por
@@ -591,18 +596,18 @@ El hacer `commit` de una imagen crea una capa adicional, identificada
 por un SHA específico, en el sistema de ficheros de Docker. Por
 ejemplo, si trabajamos con una imagen cualquiera y hacemos commit de
 esta forma
-
-	docker commit 3465c7cef2ba jjmerelo/bbtest
+```shell
+docker commit 3465c7cef2ba jjmerelo/bbtest
 
 creamos una nueva imagen, que vamos a llamar `jjmerelo/bbtest`. Esta
 imagen contendrá, sobre la capa original, la capa adicional que hemos
 creado. Este comando devolverá un determinado SHA, de la forma:
-
-	sha256:d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
+```shell
+sha256:d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
 
 Para examinar las capas,
-
-	 sudo jq '.' /var/lib/docker/image/aufs/imagedb/content/sha256/d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
+```shell
+ sudo jq '.' /var/lib/docker/image/aufs/imagedb/content/sha256/d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
 
 nos mostrará un JSON bien formateado (por eso usamos `jq`, una
 herramienta imprescindible) que, en el elemento `diff_ids`, nos
@@ -898,7 +903,7 @@ La ventaja de describir la infraestructura como código es que, entre
 
 Y en estos tests podemos usar `docker-compose` y lanzarlo:
 
-```
+```shell
 services:
   - docker
 env:
@@ -1000,7 +1005,7 @@ en [el Docker hub](https://hub.docker.com) hay multitud de contenedores
 ya hechos, que se pueden usar directamente. Veamos un ejemplo, como es
 habitual para el bot en Scala que hemos venido usando.
 
-~~~
+```shell
 FROM frolvlad/alpine-scala
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
@@ -1016,14 +1021,14 @@ RUN mv /usr/local/sbt-launcher-packaging-0.13.13/bin/sbt-launch.jar /usr/local/b
 COPY sbt /usr/local/bin
 RUN chmod 0755 /usr/local/bin/sbt
 RUN /usr/local/bin/sbt
-~~~
+```
 
 Para empezar, puede ser que dentro de la UGR y de alguna otra
 instalación similar tengáis problemas de acceso a Internet desde
 dentro de un contenedor. En ese caso, meted esto en el `daemon.json`
 en el directorio `/etc/docker`
 
-```
+```json
 {"dns": ["150.214.204.10", "8.8.8.8"] }
 ```
 
@@ -1057,7 +1062,7 @@ se va a usar para responder al usuario.
 
 Para crear una imagen a partir de esto se usa
 
-```
+```shell
 docker build -t jjmerelo/bobot .
 ```
 
@@ -1068,7 +1073,7 @@ cuantas bibliotecas por parte de sbt, lo que se hace en la última
 línea. Una vez hecho esto, si funciona la construcción, se
 podrá ejecutar con
 
-```
+```shell
 docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot
 ```
 
@@ -1078,7 +1083,7 @@ necesita el bot para funcionar.
 Si queremos simplemente examinar el contenedor, podemos entrar en él
 de la forma habitual
 
-```
+```shell
 docker run -it jjmerelo/bot sh
 ```
 
@@ -1105,18 +1110,15 @@ ejemplo,
 se puede usar en lugar del intérprete de Perl6 y usa como base la
 distro ligera Alpine:
 
-```
+```shell
 FROM alpine:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
-ENTRYPOINT ["perl6"]
+ENTRYPOINT ["raku"]
 
 #Basic setup
-RUN apk update
-RUN apk upgrade
-
-#Add basic programs
-RUN apk add gcc git linux-headers make musl-dev perl
+RUN apk update && apk upgrade \
+     apk add gcc git linux-headers make musl-dev perl
 
 #Download and install rakudo
 RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
@@ -1150,22 +1152,22 @@ de órdenes, en este caso, tratándose del intérprete de Perl 6, se
 comportará exactamente como él. Para que esto funcione también se ha
 definido una variable de entorno en:
 
-```
+```shell
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 ```
 
 que añade al `PATH` el directorio donde se encuentra. Con estas dos
 características se puede ejecutar el contenedor con:
 
-```
+```shell
 docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
 ```
 
 Si tuviéramos perl6 instalado en local, se podría escribir
 directamente
 
-```
-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```shell
+raku -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
 ```
 
 o algún
@@ -1176,7 +1178,7 @@ En caso de que se trate de un servicio o algún otro tipo de programa
 de ejecución continua, se puede usar directamente `CMD`. En este caso,
 `ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando
 
-```
+```shell
 docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
 ```
 
@@ -1187,7 +1189,7 @@ Por otro lado, otra característica que tiene este contenedor es que, a
 través de `VOLUME`, hemos creado un directorio sobre el que podemos
 *montar* un directorio externo, tal como hacemos aquí:
 
-```
+```shell
 docker run --rm -t -v `pwd`:/app  \
 	    jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
 ```
@@ -1206,140 +1208,12 @@ se haya usado y `-t` en vez de `-it` para indicar que solo estamos
 interesados en que se asigne un terminal y la salida del mismo, no
 vamos a interaccionar con él.
 
-
-## Provisión de contenedores docker con herramientas estándar
-
-`docker` tiene capacidades de provisionamiento similares a
+Con esto, `docker` tiene capacidades de provisionamiento similares a
 otros [sistemas (tales como Vagrant](Gestion_de_configuraciones) usando
 [*Dockerfiles*](https://docs.docker.com/engine/reference/builder/). Por
 ejemplo,
-[se puede crear fácilmente un Dockerfile para instalar node.js con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
-
-
-## Gestionando contenedores remotos
-
-Docker es una aplicación cliente-servidor que se ejecuta
-localmente. Gestionar contenedores remotos implicaría, generalmente,
-trabajar con ejecutores remotos tipo Ansible lo que, en caso de que
-haya que trabajar con muchos contenedores, generaría todo tipo de
-inconvenientes. Para eso
-está
-[`docker-machine`](https://docs.docker.com/machine/overview/),
-que en general sirve
-para trabajar con gestores de contenedores en la nube o con
-hipervisores locales, aunque solo funciona con unos pocos, y
-generalmente privativos.
-
-[Docker machine se descarga desde Docker](https://docs.docker.com/machine/) y
-su funcionamiento es similar a otras herramientas como Vagrant. En
-general, tras crear y gestionar un sistema en la nube, o bien instalar
-un *daemon* que se pueda controlar localmente, crea un entorno en la
-línea de órdenes que permite usar el cliente `docker` con estos
-entornos remotos.
-
-Vamos a trabajar con VirtualBox localmente. Ejecutando
-
-	docker-machine create --driver=virtualbox maquinilla
-
-se le indica a `docker-machine` que vamos a crear una máquina llamada
-`maquinilla` y que vamos a usar el driver de VirtualBox. Esta orden,
-en realidad, trabaja sobre VirtualBox instalando una imagen llamada
-`boot2docker`, una versión de sistema operativo un poco destripada que
-arranca directamente en Docker. Como también suele suceder en gestores
-de este estilo, se crea un par clave pública-privada que nos va a
-servir más adelante para trabajar con esa máquina.
-
-Con `ls` listamos las máquinas virtuales que hemos gestionado, así
-como alguna información adicional:
-
-~~~
-$ docker-machine ls
-NAME     ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
-maquinilla   -    virtualbox   Running   tcp://192.168.99.104:2376        v1.12.5
-vbox-test    -    virtualbox   Running   tcp://192.168.99.100:2376        v1.12.5
-~~~
-
-Aquí hay dos máquinas, cada una con una dirección IP virtual que vamos
-a usar para conectarnos a ellas directamente o desde nuestro cliente
-docker. Por ejemplo, hacer `ssh`
-
-~~~
-$ docker-machine ssh maquinilla
-                        ##         .
-                  ## ## ##        ==
-               ## ## ## ## ##    ===
-           /"""""""""""""""""\___/ ===
-      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
-           \______ o           __/
-             \    \         __/
-              \____\_______/
- _                 _   ____     _            _
-| |__   ___   ___ | |_|___ \ __| | ___   ___| | _____ _ __
-| '_ \ / _ \ / _ \| __| __) / _` |/ _ \ / __| |/ / _ \ '__|
-| |_) | (_) | (_) | |_ / __/ (_| | (_) | (__|   <  __/ |
-|_.__/ \___/ \___/ \__|_____\__,_|\___/ \___|_|\_\___|_|
-Boot2Docker version 1.12.5, build HEAD : fc49b1e - Fri Dec 16 12:44:49 UTC 2016
-Docker version 1.12.5, build 7392c3b
-~~~
-
-Como vemos, estamos
-en [Boot2Docker](https://github.com/boot2docker/boot2docker), un Linux
-ligero, con el servicio de Docker incluido, que vamos a poder usar
-para desplegar y demás.
-
-Si queremos usarlo más en serio, desde nuestra línea de órdenes,
-tenemos que ejecutar
-
-	docker-machine env maquinilla
-
-Que devolverá algo así:
-
-~~~
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.104:2376"
-export DOCKER_CERT_PATH="/home/jmerelo/.docker/machine/machines/maquinilla"
-export DOCKER_MACHINE_NAME="maquinilla"
-# Run this command to configure your shell:
-# eval $(docker-machine env maquinilla)
-~~~
-
-Si estamos ejecutando desde superusuario, habrá que ejecutar
-
-```
-eval $(docker-machine env maquinilla)
-```
-
-Esa orden exporta las variables anteriores, que le indicarán a docker
-qué tiene que usar en ese *shell* explícitamente. Cada nuevo shell
-tendrá también que exportar esas variables para poder usar la máquina
-virtual. Las órdenes docker que se ejecuten a continuación se
-ejecutarán en esa máquina; por ejemplo,
-
-```
-sudo -E docker pull jjmerelo/alpine-perl6
-```
-
-descargará dentro de la máquina virtual esa imagen y se ejecutará
-dentro de ella cualquier orden. En este caso, -E sirve para que las
-variables de entorno del shell local, que hemos establecido
-anteriormente, se transporten al nuevo shell. Efectivamente, desde el
-nuevo shell podemos comprobar que existen
-
-~~~
-REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
-jjmerelo/alpine-perl6   latest              837fc8bf9307        10
-hours ago        491.5 MB
-~~~
-
-De la misma forma podemos operar con servidores en la nube, con solo
-usar los drivers correspondientes.
-
-<div class='ejercicios' markdown='1'>
-
-Crear con docker-machine una máquina virtual local que permita desplegar contenedores y ejecutar en él
-contenedores creados con antelación.
-
-</div>
+[se puede crear fácilmente un Dockerfile para instalar node.js
+con el módulo express](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
 
 ## Limpieza de contenedores
 
@@ -1359,7 +1233,6 @@ docker run --rm -t -v
       jjmerelo/test-perl6 /test/t
 ~~~
 
-
 ## Otros gestores de contenedores
 
 La infraestructura basada en contenedores ha tenido tanto éxito que
@@ -1377,6 +1250,14 @@ monopolios, así que habrá que estar atentos al
 mismo. Hay
 [trabajo en curso](https://github.com/opencontainers/image-tools) para
 comprobar imágenes, por ejemplo.
+
+## Ver también
+
+En caso de que tu máquina principal de desarrollo sea Windows o Mac,
+puede que te
+interese [trabajar con *docker machines*](Docker-machines), una
+herramienta para gestionar localmente contenedores alojados en otro
+ordenador o máquina virtual.
 
 ## A dónde ir desde aquí
 
