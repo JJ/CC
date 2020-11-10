@@ -488,7 +488,7 @@ El *IMAGE ID* es el ID interno del contenedor, que se puede usar para
 trabajar en una u otra máquina igual que antes hemos usado el nombre
 de la imagen:
 
-```
+```shell
 docker run b750fe79269d du
 ```
 
@@ -540,21 +540,25 @@ continuación efectivamente ejecutar algo como el *shell*
 
 ```shell
 docker start 6dc8ddb51cd6 && docker exec -it 6dc8ddb51cd6 sh
+```
 
 Sin embargo, en este caso simplemente salir del shell no dejará de
 ejecutar el contenedor, por lo que habrá que pararlo
+
 ```shell
 docker stop 6dc8ddb51cd6
-
+```
 y, a continuación, si no se va a usar más el contenedor, borrarlo
+
 ```shell
 docker rm 6dc8ddb51cd6
+```
 
 Las imágenes que se han creado se pueden examinar con `inspect`, lo
 que nos da información sobre qué metadatos se le han asignado por
 omisión, incluyendo una IP.
 
-```
+```shell
 docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
 ```
 
@@ -569,7 +573,7 @@ interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-t
 es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/commit)
 
-```
+```shell
 docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c nuevo-nombre
 ```
 
@@ -577,7 +581,7 @@ que guardará el estado del contenedor tal como está en ese
 momento, convirtiéndolo en una nueva imagen, a la que podemos acceder
 si usamos
 
-```
+```shell
 docker images
 ```
 
@@ -596,18 +600,24 @@ El hacer `commit` de una imagen crea una capa adicional, identificada
 por un SHA específico, en el sistema de ficheros de Docker. Por
 ejemplo, si trabajamos con una imagen cualquiera y hacemos commit de
 esta forma
+
 ```shell
 docker commit 3465c7cef2ba jjmerelo/bbtest
+```
 
 creamos una nueva imagen, que vamos a llamar `jjmerelo/bbtest`. Esta
 imagen contendrá, sobre la capa original, la capa adicional que hemos
 creado. Este comando devolverá un determinado SHA, de la forma:
-```shell
+
+```text
 sha256:d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
+```
 
 Para examinar las capas,
+
 ```shell
- sudo jq '.' /var/lib/docker/image/aufs/imagedb/content/sha256/d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
+sudo jq '.' /var/lib/docker/image/aufs/imagedb/content/sha256/d092d86c2bcde671ccb7bb66aca28a09d710e49c56ad8c1f6a4c674007d912f3
+```
 
 nos mostrará un JSON bien formateado (por eso usamos `jq`, una
 herramienta imprescindible) que, en el elemento `diff_ids`, nos
@@ -628,8 +638,7 @@ Ya hemos visto cómo se convierte un contenedor en imagen, al menos de
 forma local, con `commit`. Pero veamos exactamente qué es lo que
 sucede y cómo se lleva a cabo.
 
-Docker crea
-un
+Docker crea un
 [sistema de ficheros superpuesto u *overlay*](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72).
 Este
 [sistema de ficheros superpuesto](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/)
@@ -657,7 +666,7 @@ llamados
 [volúmenes](https://docs.docker.com/engine/reference/commandline/volume_create/#related-commands). Se
 crea usando `volume create`
 
-```
+```shell
 docker volume create log
 ```
 
@@ -808,138 +817,7 @@ Como se ve, se ejecutan varios pasos uno de los cuales implica "tomar"
 un ID e usarlo más adelante en el montaje. No es difícil de resolver
 con un script del shell, pero como es una necesidad habitual se han
 habilitado otras herramientas para poder hacer esto de forma ágil:
-`compose`
-
-## Composición de servicios con `docker compose`
-
-
-[Docker compose](https://docs.docker.com/compose/install/#install-compose)
-tiene que instalarse, no forma parte del conjunto de herramientas que
-se instalan por omisión. Su principal tarea es crear aplicaciones que
-usen diferentes contenedores, entre los que se citan
-[entornos de desarrollo, entornos de prueba o en general despliegues
-que usen un solo nodo](https://docs.docker.com/compose/#common-use-cases).
-Para
-entornos que escalen automáticamente, o entornos que se vayan a
-desplegar en la nube las herramientas necesarias son muy diferentes.
-
-`docker-compose` es una herramienta que parte de una descripción de
-las relaciones entre diferentes contenedores y que construye y arranca
-los mismos, relacionando los puertos y los volúmenes; por ejemplo,
-puede usarse para conectar un contenedor con otro contenedor de datos,
-de la forma siguiente:
-
-```
-version: '2'
-
-services:
-  config:
-    build: config
-  web:
-    build: .
-    ports:
-      - "80:5000"
-    volumes_from:
-      - config:ro
-```
-
-La especificación de la versión indica de qué versión del interfaz se
-trata. Hay hasta una versión 3,
-con
-[cambios sustanciales](https://docs.docker.com/compose/compose-file/). En
-este caso, esta versión permite crear dos servicios, uno que
-denominamos `config`, que será el contenedor que tenga la
-configuración en un fichero, y otro que se llama `web`. YAML se
-organiza como un *hash* o diccionario, de forma que `services` tiene
-dos claves `config` y `web`. Dentro de cada una de las claves se
-especifica como se levantan esos servicios. En el primer caso se trata
-de `build` o construir el servicio a partir del Dockerfile, y se
-especifica el directorio donde se encuentra; solo puede haber un
-Dockerfile por directorio, así que para construir varios servicios
-tendrán que tendrán que ponerse en directorios diferentes, como
-en [este caso](https://github.com/JJ/p5-hitos). El segundo servicio
-está en el mismo directorio que el fichero, que tiene que llamarse
-`docker-compose.yml`, pero en este estamos indicando un mapeo de
-puertos, con el 5000 interno cambiando al 80 externo (que, recordemos,
-es un puerto privilegiado) y usando `volumes_from` para usar los
-volúmenes, es decir, los datos, contenidos en el fichero
-correspondiente.
-
-Para ejecutarlo,
-
-
-```
-docker-compose up
-```
-
-Esto construirá las imágenes de los servicios, si no existen, y les
-asignará un nombre que tiene que ver con el nombre del servicio;
-también ejecutará el programa, en este caso de `web`. Evidentemente,
-`docker-compose down` parará la máquina virtual.
-
-<div class='ejercicios' markdown='1'>
-
-Usar un miniframework REST para crear un servicio web y introducirlo
-en un contenedor, y componerlo con un cliente REST que sea el que
-finalmente se ejecuta y sirve como "frontend".
-
-</div>
-
-> En
-> [este artículo](https://www.freecodecamp.org/news/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a/)
-> se
-> explica cómo se puede montar un entorno de desarrollo con Python y
-> Postgres usando Docker Compose. Montar entornos de desarrollo
-> independientemente del sistema operativo en el que se encuentre el
-> usuario es, precisamente, uno de los casos de uso de esta
-> herramienta.
-
-La ventaja de describir la infraestructura como código es que, entre
- otras cosas, se puede introducir en un entorno de test tal como
- [Travis](https://travis-ci.org). Travis permite instalar cualquier
- tipo de servicio y lanzar tests; estos tests se interpretan de forma
- que se da un aprobado global a los tests o se indica cuales no han
- pasado.
-
-Y en estos tests podemos usar `docker-compose` y lanzarlo:
-
-```shell
-services:
-  - docker
-env:
-  - DOCKER_COMPOSE_VERSION=1.17.0
-
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-  - docker-compose up
-
-script:
-  - docker ps -a | grep -q web
-```
-
-Como se ve más o menos, este fichero de configuración en YAML
-reproduce diferentes fases del test. Después de seleccionar la versión
-con la que vamos a trabajar, en la fase `before_install` borramos (por
-si hubiera una versión anterior) e instalamos desde cero
-`docker-compose`, y finalmente hacemos un `build` usando el fichero
-`docker-compose.yml` que debe estar en el directorio principal; con
-`up` además levantamos el servicio. Si hay
-algún problema a la hora de construir el test parará; si no lo hay,
-además, en la fase `script` que es la que efectivamente lleva a cabo
-los tests se comprueba que haya un contenedor que incluya el nombre
-`web` (el nombre real será algo así como `web-algo-1`, pero siempre
-incluirá el nombre del servicio en compose). Si es así, el test
-pasará, si no, el test fallará, con lo que podremos comprobar offline
-si el código es correcto o no.
-
-> Estos tests se pueden hacer también con simples Dockerfile, y de
-> hecho sería conveniente combinar los tests de los servicios
-> conjuntos con los tests de Dockerfile. Cualquier infraestructura es
-> código, y como tal si no está testeado está roto.
-
+`compose`.
 
 ## Algunas buenas prácticas en el uso de virtualización ligera
 
@@ -1232,6 +1110,136 @@ docker run --rm -t -v
     /home/jmerelo/Code/forks/perl6/perl6-Math-Sequences:/test
       jjmerelo/test-perl6 /test/t
 ~~~
+
+## Composición de servicios con `docker compose`
+
+
+[Docker compose](https://docs.docker.com/compose/install/#install-compose)
+tiene que instalarse, no forma parte del conjunto de herramientas que
+se instalan por omisión. Su principal tarea es crear aplicaciones que
+usen diferentes contenedores, entre los que se citan
+[entornos de desarrollo, entornos de prueba o en general despliegues
+que usen un solo nodo](https://docs.docker.com/compose/#common-use-cases).
+Para
+entornos que escalen automáticamente, o entornos que se vayan a
+desplegar en la nube las herramientas necesarias son muy diferentes.
+
+`docker-compose` es una herramienta que parte de una descripción de
+las relaciones entre diferentes contenedores y que construye y arranca
+los mismos, relacionando los puertos y los volúmenes; por ejemplo,
+puede usarse para conectar un contenedor con otro contenedor de datos,
+de la forma siguiente:
+
+```
+version: '2'
+
+services:
+  config:
+    build: config
+  web:
+    build: .
+    ports:
+      - "80:5000"
+    volumes_from:
+      - config:ro
+```
+
+La especificación de la versión indica de qué versión del interfaz se
+trata. Hay hasta una versión 3,
+con
+[cambios sustanciales](https://docs.docker.com/compose/compose-file/). En
+este caso, esta versión permite crear dos servicios, uno que
+denominamos `config`, que será el contenedor que tenga la
+configuración en un fichero, y otro que se llama `web`. YAML se
+organiza como un *hash* o diccionario, de forma que `services` tiene
+dos claves `config` y `web`. Dentro de cada una de las claves se
+especifica como se levantan esos servicios. En el primer caso se trata
+de `build` o construir el servicio a partir del Dockerfile, y se
+especifica el directorio donde se encuentra; solo puede haber un
+Dockerfile por directorio, así que para construir varios servicios
+tendrán que tendrán que ponerse en directorios diferentes, como
+en [este caso](https://github.com/JJ/p5-hitos). El segundo servicio
+está en el mismo directorio que el fichero, que tiene que llamarse
+`docker-compose.yml`, pero en este estamos indicando un mapeo de
+puertos, con el 5000 interno cambiando al 80 externo (que, recordemos,
+es un puerto privilegiado) y usando `volumes_from` para usar los
+volúmenes, es decir, los datos, contenidos en el fichero
+correspondiente.
+
+Para ejecutarlo,
+
+
+```
+docker-compose up
+```
+
+Esto construirá las imágenes de los servicios, si no existen, y les
+asignará un nombre que tiene que ver con el nombre del servicio;
+también ejecutará el programa, en este caso de `web`. Evidentemente,
+`docker-compose down` parará la máquina virtual.
+
+<div class='ejercicios' markdown='1'>
+
+Usar un miniframework REST para crear un servicio web y introducirlo
+en un contenedor, y componerlo con un cliente REST que sea el que
+finalmente se ejecuta y sirve como "frontend".
+
+</div>
+
+> En
+> [este artículo](https://www.freecodecamp.org/news/docker-development-workflow-a-guide-with-flask-and-postgres-db1a1843044a/)
+> se
+> explica cómo se puede montar un entorno de desarrollo con Python y
+> Postgres usando Docker Compose. Montar entornos de desarrollo
+> independientemente del sistema operativo en el que se encuentre el
+> usuario es, precisamente, uno de los casos de uso de esta
+> herramienta.
+
+La ventaja de describir la infraestructura como código es que, entre
+ otras cosas, se puede introducir en un entorno de test tal como
+ [Travis](https://travis-ci.org). Travis permite instalar cualquier
+ tipo de servicio y lanzar tests; estos tests se interpretan de forma
+ que se da un aprobado global a los tests o se indica cuales no han
+ pasado.
+
+Y en estos tests podemos usar `docker-compose` y lanzarlo:
+
+```shell
+services:
+  - docker
+env:
+  - DOCKER_COMPOSE_VERSION=1.17.0
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker-compose up
+
+script:
+  - docker ps -a | grep -q web
+```
+
+Como se ve más o menos, este fichero de configuración en YAML
+reproduce diferentes fases del test. Después de seleccionar la versión
+con la que vamos a trabajar, en la fase `before_install` borramos (por
+si hubiera una versión anterior) e instalamos desde cero
+`docker-compose`, y finalmente hacemos un `build` usando el fichero
+`docker-compose.yml` que debe estar en el directorio principal; con
+`up` además levantamos el servicio. Si hay
+algún problema a la hora de construir el test parará; si no lo hay,
+además, en la fase `script` que es la que efectivamente lleva a cabo
+los tests se comprueba que haya un contenedor que incluya el nombre
+`web` (el nombre real será algo así como `web-algo-1`, pero siempre
+incluirá el nombre del servicio en compose). Si es así, el test
+pasará, si no, el test fallará, con lo que podremos comprobar offline
+si el código es correcto o no.
+
+> Estos tests se pueden hacer también con simples Dockerfile, y de
+> hecho sería conveniente combinar los tests de los servicios
+> conjuntos con los tests de Dockerfile. Cualquier infraestructura es
+> código, y como tal si no está testeado está roto.
 
 ## Otros gestores de contenedores
 
