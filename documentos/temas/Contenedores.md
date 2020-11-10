@@ -551,17 +551,28 @@ que nos da información sobre qué metadatos se le han asignado por
 omisión, incluyendo una IP.
 
 ```shell
-docker inspect	ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
+docker inspect ed747e1b64506ac40e585ba9412592b00719778fd1dc55dc9bc388bb22a943a8
 ```
 
 te dirá toda la información sobre la misma, incluyendo qué es lo que
-está haciendo en un momento determinado.
+está haciendo en un momento determinado. La información la escribe en
+JSON, por eso puede ser conveniente instalar `jq`, una herramienta
+para imprimir de forma más visible JSON, pero también para poder
+extraer información de los mismos:
 
-Para finalizar, se puede parar usando `stop`.
+```shell
+docker inspect jjmerelo/scala-testing:latest | jq
+```
+
+> En vez de este nombre, usar el nombre o id del contenedor que se
+> quiere examinar.
 
 Hasta ahora el uso de
-Docker [no es muy diferente de `lxc`, pero lo
-interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-lxc-tools-the-userspace-lxc-tools)
+Docker
+[no es muy diferente de `lxc`](Aislamiento.md); es decir, se aisla un
+proceso y se van creando interactivamente los diferentes componentes
+del mismo, pero
+[lo interesante](https://stackoverflow.com/questions/17989306/what-does-docker-add-to-lxc-tools-the-userspace-lxc-tools)
 es que se puede guardar el estado de un contenedor tal
 como está usando [commit](https://docs.docker.com/engine/reference/commandline/commit)
 
@@ -624,7 +635,7 @@ a partir de contenedores que se hayan estado ejecutando.
 
 </div>
 
-## Almacenamiento de datos y creación de volúmenes Docker.
+## Almacenamiento de datos y creación de volúmenes Docker
 
 Ya hemos visto cómo se convierte un contenedor en imagen, al menos de
 forma local, con `commit`. Pero veamos exactamente qué es lo que
@@ -872,28 +883,39 @@ construir contenedores o tápers de forma que lo que quede en control
 de versiones sea el código en sí, no el contenedor, con el
 consiguiente ahorro de espacio. La ventaja además es que
 en [el Docker hub](https://hub.docker.com) hay multitud de contenedores
-ya hechos, que se pueden usar directamente. Veamos un ejemplo, como es
-habitual para el bot en Scala que hemos venido usando.
+ya hechos, que se pueden usar directamente. 
+
+
+El ejemplo a continuación conteneriza `sbt`, la Scala Build Tool, de
+forma que haga falta instalarla o podamos construir sobre ella algún
+otro contenedor que la use.
+
+> De hecho, es más fácil buscar en Docker Hub a ver si hay algún
+> contenedor similar; de
+> hecho,
+> [lo hay](https://hub.docker.com/r/digitalgenius/alpine-scala-sbt)
+> aunque que no muestre los Dockerfiles puede dar luga a alguna que
+> otra sospecha.
 
 ```shell
 FROM frolvlad/alpine-scala
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
 CMD ["/usr/local/bin/sbt"]
+ARG SBT_VERSION=1.4.2
 
 RUN apk update && apk upgrade
 RUN apk add git
 RUN apk add curl
 
-RUN curl -sL "https://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz" -o /usr/local/sbt.tgz
+RUN curl -sL "https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.tgz" -o /usr/local/sbt.tgz
 RUN cd /usr/local && tar xvfz sbt.tgz
-RUN mv /usr/local/sbt-launcher-packaging-0.13.13/bin/sbt-launch.jar /usr/local/bin
-COPY sbt /usr/local/bin
+RUN mv /usr/local/sbt/bin/* /usr/local/bin
 RUN chmod 0755 /usr/local/bin/sbt
-RUN /usr/local/bin/sbt
 ```
 
-Para empezar, puede ser que dentro de la UGR y de alguna otra
+A la hora de hacer `docker build` puede ser que dentro de la UGR y de
+alguna otra
 instalación similar tengáis problemas de acceso a Internet desde
 dentro de un contenedor. En ese caso, meted esto en el `daemon.json`
 en el directorio `/etc/docker`
@@ -905,8 +927,10 @@ en el directorio `/etc/docker`
 > La primera IP es solamente para la UGR. Fuera de la UGR tendréis que
 > averiguar uno de los servidores DNS que os sirva.
 
-En la primera línea se establece cuál es el contenedor de origen que
-estamos usando. Siempre es conveniente usar distros ligeras, y en este
+En la primera línea se establece cuál es
+el
+[contenedor de origen](https://hub.docker.com/r/frolvlad/alpine-scala)
+que vamos a usar. Siempre es conveniente usar distros ligeras, y en este
 caso usamos la ya conocida Alpine, que tiene ya una versión que
 incluye Scala. A continuación se pone la dirección del mantenedor,
 servidor, y el directorio de trabajo `WORKDIR` en el que se va a
