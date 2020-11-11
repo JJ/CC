@@ -132,8 +132,9 @@ usar los drivers correspondientes.
 
 <div class='ejercicios' markdown='1'>
 
-Crear con docker-machine una máquina virtual local que permita desplegar contenedores y ejecutar en él
-contenedores creados con antelación.
+Crear con docker-machine una máquina virtual local que permita
+desplegar contenedores y ejecutar en él contenedores creados con
+antelación.
 
 </div>
 
