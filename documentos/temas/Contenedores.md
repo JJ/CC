@@ -887,7 +887,9 @@ en [el Docker hub](https://hub.docker.com) hay multitud de contenedores
 ya hechos, que se pueden usar directamente.
 
 
-El ejemplo a continuación conteneriza `sbt`, la Scala Build Tool, de
+El
+[ejemplo](https://github.com/JJ/CC/blob/53382c0258edda645bd0027b7b094ac9c7d1b36a/ejemplos/Scala/Dockerfile)
+a continuación conteneriza `sbt`, la Scala Build Tool, de
 forma que haga falta instalarla o podamos construir sobre ella algún
 otro contenedor que la use.
 
@@ -968,6 +970,79 @@ línea. Una vez hecho esto, si funciona la construcción, se
 podrá ejecutar con `docker run`, con lo que saldrá la línea de órdenes
 de `sbt` (y un error si no hay ningún fichero `sbt` presente).
 
+Con esto ya tenemos un contenedor funcionar para ejecutar `sbt`, pero
+el problema es cuanto ocupa. Los contenedores deben ser lo más simples
+posibles para que tarden poco en descargarse, arrancarse y
+cargarse. Con `docker images` podemos ver lo que ocupa:
+
+```text
+jjmerelo/scala-testing         latest                 dd34369171bb        13 hours ago        331MB
+```
+
+¿A qué se debe esto? Principalmente, a la cantidad de capas que
+tiene. Podemos descargarnos dos
+utilidades, [`skopeo`](https://github.com/containers/skopeo), que es
+un programa para examinar imágenes con más posibilidades que `docker
+images`, y también [`jq`](https://stedolan.github.io/jq/), un
+programar para examinar estructuras JSON complejas, ya que el
+resultado lo da en este formato (también otros como `docker
+inspect`). Ejecutamos:
+
+```shell
+skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers | length"
+```
+
+Que usa la suborden `inspect` para examinar la imagen, que se tiene
+que especificar como una imagen local (con `docker-daemon`). `jq`
+extrae una de las claves del JSON resultante, `Layers`, y simplemente
+la cuenta (con `length`). Resultado: 11 capas. Vamos entonces a
+reducirlas en lo posible, haciendo lo siguiente
+
+- Borrando ficheros innecesarios
+- Agrupando órdenes para reducir el número de capas
+
+Así está en el ejemplo siguiente
+
+```Dockerfile
+FROM frolvlad/alpine-scala
+LABEL maintainer="JJ Merelo <jjmerelo@GMail.com>"
+WORKDIR /root
+CMD ["/usr/local/bin/sbt"]
+ARG SBT_VERSION=1.4.2
+
+RUN apk update && apk upgrade && apk add curl \
+    && curl -sL "https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.tgz" -o /usr/local/sbt.tgz \
+    && cd /usr/local && tar xvfz sbt.tgz \
+    &&  mv /usr/local/sbt/bin/* /usr/local/bin \
+    && apk del curl \
+    && rm /usr/local/sbt.tgz
+
+```
+
+Donde, además, se ha usado `LABEL` para `maintainer`, en vez del
+anterior, que estaba deprecado. En este caso, el tamaño es:
+
+```
+jjmerelo/scala-testing         latest                 24c3ab20c2cd        8 seconds ago        248MB
+```
+
+Se han ahorrado más de 50 MBs. Aparte de lo que hemos borrado, esta
+orden
+
+```bash
+skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers "
+
+[
+  "sha256:503e53e365f34399c4d58d8f4e23c161106cfbce4400e3d0a0357967bad69390",
+  "sha256:e32a020a29e2566c96697b7ed1538e0b72e65616bfb56037c9727bc102a8a3c5",
+  "sha256:161733eb0605b3af381a4bcb6325708b0e2f659e04fb0a253b88f7eb8c8ed580",
+  "sha256:1f1f384806d20a378fbd8085956704b71f6dde33d1e077dd48c8eab268965d51",
+  "sha256:1a03f5e9c8a404ff58ec812e3dab012808580e84f2de54e74a2b07883a6631dc"
+]
+```
+
+Muestra que de las 11 capas originales lo hemos reducido sólo a 5
+capas, y el contenido es exactamente el mismo.
 
 <!-- esto no corresponde al actual
 
@@ -1006,7 +1081,8 @@ programación determinado.
 Por ejemplo,
 [esta, llamada `alpine-perl6`](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
 que se puede usar en lugar del intérprete de Perl6 y usa como base la
-distro ligera Alpine:
+distro ligera Alpine. Una vez más, usamos órdenes separadas y sin
+optimizar simplemente por cuestiones de claridad;
 
 ```Dockerfile
 FROM alpine:latest
@@ -1044,7 +1120,7 @@ un buen rato, hasta minutos, en construir el intérprete a través de
 diferentes fases de compilación, por eso este contenedor sustituye eso
 por la simple descarga del mismo. Instala además alguna utilidad
 relativamente común, pero lo que lo hace trabajar "como" el intérprete
-es la orden `ENTRYPOINT ["perl6"]`. `ENTRYPOINT` se usa para señalar
+es la orden `ENTRYPOINT ["raku"]`. `ENTRYPOINT` se usa para señalar
 a qué orden se va a concatenar el resto de los argumentos en la línea
 de órdenes, en este caso, tratándose del intérprete de Perl 6, se
 comportará exactamente como él. Para que esto funcione también se ha
