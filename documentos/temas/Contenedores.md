@@ -139,7 +139,9 @@ arquitectura usándolo, empezando por el principio, como instalarlo.
 
 [Instalar `docker`](https://www.docker.com/) es sencillo desde que se
 publicó la versión 1.0, especialmente en distribuciones de Linux. Por
-ejemplo, para [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
+ejemplo,
+para
+[Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 y no funcionará con versiones más antiguas de la 12.04 (y en este caso
 solo si se instalan kernels posteriores). En las últimas versiones, de
 hecho, ya está en los repositorios oficiales de Ubuntu y para instalarlo no hay más que
