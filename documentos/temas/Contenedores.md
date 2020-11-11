@@ -36,8 +36,6 @@ prev: Microservicios
 
 </div>
 
-
-
 ## Introducción a Docker
 
 > Previamente a este tema conviene consultar la historia del
@@ -163,7 +161,6 @@ configuración distribuida, tiene un gestor de Docker instalado en la
 configuración base. Si es para experimentar Docker sin afectar la
 instalación de nuestro propio ordenador, se aconseja que se instale
 [Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html).
-
 
 Con cualquiera de las formas que hayamos elegido para instalar Docker,
 vamos a comenzar desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
@@ -885,7 +882,7 @@ construir contenedores o tápers de forma que lo que quede en control
 de versiones sea el código en sí, no el contenedor, con el
 consiguiente ahorro de espacio. La ventaja además es que
 en [el Docker hub](https://hub.docker.com) hay multitud de contenedores
-ya hechos, que se pueden usar directamente. 
+ya hechos, que se pueden usar directamente.
 
 
 El ejemplo a continuación conteneriza `sbt`, la Scala Build Tool, de
@@ -1089,7 +1086,7 @@ través de `VOLUME`, hemos creado un directorio sobre el que podemos
 
 ```shell
 docker run --rm -t -v `pwd`:/app  \
-	    jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
+ jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
 ```
 
 En realidad, usando `-v` se puede montar cualquier directorio externo
