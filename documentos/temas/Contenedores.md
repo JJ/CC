@@ -969,6 +969,7 @@ podrá ejecutar con `docker run`, con lo que saldrá la línea de órdenes
 de `sbt` (y un error si no hay ningún fichero `sbt` presente).
 
 
+<!-- esto no corresponde al actual
 
 ```shell
 docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot
@@ -988,6 +989,7 @@ para entrar directamente en la línea de órdenes. El repositorio está
 en [bobot](https://github.com/JJ/BoBot), como es habitual. En este
 caso usamos `CMD` para ejecutar la orden, ya que el contenedor no
 recibe ningún parámetro adicional.
+-->
 
 <div class='ejercicios' markdown='1'>
 
