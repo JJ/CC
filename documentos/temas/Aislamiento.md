@@ -72,10 +72,13 @@ contenedores y cuáles son sus ventajas frente a otros métodos de
 virtualización
 </div>
 
-El mundo Linux no tendría capacidades similares hasta bien entrados los años 90, con
+El mundo Linux no tendría capacidades similares hasta bien entrados
+los años 90,
+con
 [vServers, OpenVZ y finalmente LXC](https://en.wikipedia.org/wiki/Operating_system-level_virtualization#Implementations).
-Este
-último, [LXC](https://linuxcontainers.org/), se basa en el concepto de
+Este último, [LXC](https://linuxcontainers.org/), se basa en el
+concepto
+de
 [grupos de control o CGROUPS](https://en.wikipedia.org/wiki/Cgroups),
 una capacidad del núcleo de Linux desde la versión 2.6.24 que crea
 *contenedores* de procesos unificando diferentes capacidades del
@@ -349,14 +352,15 @@ existentes para que vaya todo rápidamente.
 
 > La
 > [guía del usuario](https://help.ubuntu.com/lts/serverguide/lxc.html#lxc-startup)
-> indica también cómo usarlo como usuario sin privilegios, lo que mayormente
->te ahorra la molestia de introducir sudo y en su caso la clave cada
->vez. Si lo vas a usar con cierta frecuencia, sobre todo en
->desarrollo, puede ser una mejor opción.
+> indica también cómo usarlo como usuario sin privilegios, lo que
+> mayormente te ahorra la molestia de introducir sudo y en su caso la
+> clave cada vez. Si lo vas a usar con cierta frecuencia, sobre todo
+> en desarrollo, puede ser una mejor opción.
 
 Los contenedores son la implementación de una serie de
 tecnologías
-[que tienen soporte en el sistema operativo: espacios de nombres, CGroups y puentes de red](Tecnicas_de_virtualizacion):
+[que tienen soporte en el sistema operativo: espacios de nombres,
+CGroups y puentes de red](Tecnicas_de_virtualizacion):
 y como tales pueden ser configurados para usar solo una cuota
 determinada de recursos, por
 ejemplo
@@ -449,7 +453,6 @@ Provisionar un contenedor LXC usando Ansible o alguna otra herramienta
 de configuración que ya se haya usado
 
 </div>
-
 
 ## A dónde ir desde aquí
 
