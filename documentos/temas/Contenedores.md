@@ -134,17 +134,21 @@ para
 [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 y no funcionará con versiones más antiguas de la 12.04 (y en este caso
 solo si se instalan kernels posteriores). En las últimas versiones, de
-hecho, ya está en los repositorios oficiales de Ubuntu y para instalarlo no hay más que
+hecho, ya está en los repositorios oficiales de Ubuntu y para
+instalarlo no hay más que
 hacer
 
 ```bash
 sudo apt-get install docker-engine
 ```
 
-aunque la versión en los repositorios oficiales suele ser más antigua que la que
-se descargue de la web o los repositorios adicionales. Este paquete incluye varias aplicaciones: un *daemon*, `dockerd`, y un cliente de línea de órdenes, `docker`. La instalación dejará este *daemon* ejecutándose y lo configurará para que se   arranque con el inicio del
-sistema. También una serie de *imágenes* genéricas con las que se
-puede empezar a trabajar de forma más o menos inmediata.
+aunque la versión en los repositorios oficiales suele ser más antigua
+que la que se descargue de la web o los repositorios adicionales. Este
+paquete incluye varias aplicaciones: un *daemon*, `dockerd`, y un
+cliente de línea de órdenes, `docker`. La instalación dejará este
+*daemon* ejecutándose y lo configurará para que se arranque con el
+inicio del sistema. También una serie de *imágenes* genéricas con las
+que se puede empezar a trabajar de forma más o menos inmediata.
 
 >Hay
 >también
@@ -152,18 +156,22 @@ puede empezar a trabajar de forma más o menos inmediata.
 >en
 >[un Mac](https://docs.docker.com/engine/installation/mac/).
 
-Otra posibilidad para trabajar con Docker es usar
-[el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/). *Container
-Linux* es una distribución diseñada
-para usar aplicaciones distribuidas, casi de forma exclusiva, en contenedores, y aparte de
+Otra posibilidad para trabajar con Docker es
+usar
+[el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/).
+*Container
+Linux* es una distribución diseñada para usar aplicaciones
+distribuidas, casi de forma exclusiva, en contenedores, y aparte de
 una serie de características interesantes, como el uso de `etcd` para
 configuración distribuida, tiene un gestor de Docker instalado en la
 configuración base. Si es para experimentar Docker sin afectar la
-instalación de nuestro propio ordenador, se aconseja que se instale
+instalación de nuestro propio ordenador, se aconseja que se
+instale
 [Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html).
 
 Con cualquiera de las formas que hayamos elegido para instalar Docker,
-vamos a comenzar desde el principio. Veremos a continuación cómo empezar a ejecutar Docker.
+vamos a comenzar desde el principio. Veremos a continuación cómo
+empezar a ejecutar Docker.
 
 ## Comenzando a ejecutar Docker
 
@@ -185,7 +193,6 @@ sistema. Si no se está ejecutando ya, se puede arrancar como un servicio
 sudo dockerd &
 ```
 
-
 La línea de órdenes de docker conectará con este daemon, que mantendrá
 el estado de docker y demás. Cada una de las órdenes se ejecutará
 también como superusuario, al tener que contactar con este *daemon*
@@ -194,7 +201,7 @@ usando un socket protegido.
 
 Con una instalación estándar,
 
-```
+```bash
 sudo status docker
 ```
 
@@ -205,7 +212,6 @@ sudo start docker
 ```
 
 comenzará a ejecutarlo.
-
 
 >Tras
 >instalarlo
@@ -370,8 +376,9 @@ utilidades externas y que se pueden usar como imagen base.
 <div class='ejercicios' markdown='1'>
 
 Tomar algún programa simple, "Hola mundo" impreso desde el intérprete
-de línea de órdenes, y comparar el tamaño de las imágenes de diferentes sistemas operativos
-base, Fedora, CentOS y Alpine, por ejemplo.
+de línea de órdenes, y comparar el tamaño de las imágenes de
+diferentes sistemas operativos base, Fedora, CentOS y Alpine, por
+ejemplo.
 
 </div>
 
@@ -388,12 +395,12 @@ Podemos ejecutar, por ejemplo, un listado de los directorios
 docker run --rm alpine ls
 ```
 
-Tras el sudo, hace falta el comando docker; `run` es el comando de docker que
-estamos usando, `--rm` hace que la máquina se borre una vez ejecutado
-el comando. `alpine` es el nombre de la máquina, el mismo que le
-hayamos dado antes cuando hemos hecho pull y finalmente `ls`, el
-comando que estamos ejecutando. Este comando arranca el contenedor, lo
-ejecuta y a continuación sale de él. Esta es una de las ventajas de
+Tras el sudo, hace falta el comando docker; `run` es el comando de
+docker que estamos usando, `--rm` hace que la máquina se borre una vez
+ejecutado el comando. `alpine` es el nombre de la máquina, el mismo
+que le hayamos dado antes cuando hemos hecho pull y finalmente `ls`,
+el comando que estamos ejecutando. Este comando arranca el contenedor,
+lo ejecuta y a continuación sale de él. Esta es una de las ventajas de
 este tipo de virtualización: es tan rápido arrancar que se puede usar
 para un simple comando y dejar de usarse a continuación, y de hecho
 hasta se puede borrar el contenedor correspondiente.
@@ -450,7 +457,6 @@ táper tiene un id único que se puede ver con
 docker ps -a=false
 ```
 
-
 siempre que se esté ejecutando, obteniendo algo así:
 
 ```text
@@ -489,7 +495,7 @@ En vez de ejecutar las cosas una a una podemos
 directamente
 [ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
 
-```
+```shell
 docker run -i -t ubuntu /bin/bash
 ```
 
@@ -510,7 +516,6 @@ mismo comando
 ```bash
 docker run -it ubuntu /bin/bash
 ```
-
 
 (donde hemos abreviado las opciones `-i` y `-t` juntándolas) crearía, a partir de
 la imagen de Ubuntu, un nuevo contenedor.
@@ -644,14 +649,12 @@ Docker crea un
 [sistema de ficheros superpuesto u *overlay*](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72).
 Este
 [sistema de ficheros superpuesto](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/)
-puede
-tener varias formas posibles, igual que en Linux hay varios tipos de
-sistemas de ficheros posibles; Docker usa diferentes drivers
-(denominados `overlay` u `overlay2`) para
-estructurar la información dentro del contenedor pero generalmente usa
-un sistema *copy on write* que escribe en sistema de ficheros
-anfitrión cada vez que se produce una modificación en el sistema de
-ficheros superpuesto.
+puede tener varias formas posibles, igual que en Linux hay varios
+tipos de sistemas de ficheros posibles; Docker usa diferentes drivers
+(denominados `overlay` u `overlay2`) para estructurar la información
+dentro del contenedor pero generalmente usa un sistema *copy on write*
+que escribe en sistema de ficheros anfitrión cada vez que se produce
+una modificación en el sistema de ficheros superpuesto.
 
 En general, salvo que haya algún problema crítico de prestaciones, es
 mejor usar el driver que se use por defecto; dependerá de la
@@ -659,8 +662,7 @@ implementación de Docker (CE o EE) y de la versión del
 kernel. En
 [esta
 página](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver)
-se
-indica como configurar el driver que se va a usar.
+se indica como configurar el driver que se va a usar.
 
 Hay una forma de usar contenedores solo para almacenar datos, sin que
 haya ningún proceso que se ejecute en ellos usando los
@@ -999,13 +1001,12 @@ una orden, de forma que sea mucho más fácil trabajar con alguna
 configuración específica de una aplicación o de un lenguaje de
 programación determinado.
 
-Por
-ejemplo,
-[esta, llamada `alpine-perl6`](https://hub.docker.com/r/jjmerelo/alpine-perl6/) que
-se puede usar en lugar del intérprete de Perl6 y usa como base la
+Por ejemplo,
+[esta, llamada `alpine-perl6`](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
+que se puede usar en lugar del intérprete de Perl6 y usa como base la
 distro ligera Alpine:
 
-```shell
+```Dockerfile
 FROM alpine:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
@@ -1147,7 +1148,7 @@ los mismos, relacionando los puertos y los volúmenes; por ejemplo,
 puede usarse para conectar un contenedor con otro contenedor de datos,
 de la forma siguiente:
 
-```
+```yaml
 version: '2'
 
 services:
