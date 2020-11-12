@@ -18,11 +18,12 @@ next: Serverless
 
 ## Objetivos
 
-
 ### Cubre los siguientes objetivos de la asignatura
 
 1. Conocer los conceptos relacionados con el proceso de virtualización
-tanto de software como de hardware y ponerlos en práctica.
+   tanto de software como de hardware y ponerlos en práctica.
+2. Conocer las diferentes tecnologías y herramientas de virtualización
+   tanto para procesamiento, comunicación y almacenamiento.
 
 ### Objetivos específicos
 
@@ -85,7 +86,7 @@ servidor) no serán códigos que podamos tratar, en general, desde
 nuestra aplicación, porque indican que ha habido una excepción no
 capturada en la misma.
 
-Es conveniente conocer esta ectructura general del protocolo HTTP,
+Es conveniente conocer esta estructura general del protocolo HTTP,
 porque se aprovechará para escribir APIs que usen su semántica tanto
 para las peticiones como para las respuestas. En estas, diferentes
 frameworks ofrecerán un API que permitirá trabajar fácilmente con las
