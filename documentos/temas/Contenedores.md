@@ -899,7 +899,7 @@ otro contenedor que la use.
 > contenedor similar; de
 > hecho,
 > [lo hay](https://hub.docker.com/r/digitalgenius/alpine-scala-sbt)
-> aunque que no muestre los Dockerfiles puede dar luga a alguna que
+> aunque que no muestre los Dockerfiles puede dar lugar a alguna que
 > otra sospecha.
 
 ```shell
@@ -1967,7 +1967,7 @@ otro contenedor que la use.
 > contenedor similar; de
 > hecho,
 > [lo hay](https://hub.docker.com/r/digitalgenius/alpine-scala-sbt)
-> aunque que no muestre los Dockerfiles puede dar luga a alguna que
+> aunque que no muestre los Dockerfiles puede dar lugar a alguna que
 > otra sospecha.
 
 ```shell
