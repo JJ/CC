@@ -222,6 +222,7 @@ Podemos comprobar que se ha instalado correctamente ejecutando
 ```bash
 lxc-checkconfig
 ```
+
 Lo que nos debería de dar todo enabled; también podemos comprobar la
 versión de LXC instalada con
 
