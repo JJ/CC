@@ -68,15 +68,6 @@ con los profesores están en
 [t6]: documentos/temas/Orquestacion.md
 [t7]: documentos/temas/Contenedores.md
 
-## Seminarios y material adicional
-
-Material adicional de la asignatura, que se usará en clase pero que el
-alumno tendrá que aprender a su ritmo
-
-1. [Introducción ligera al lenguaje Ruby][s1]
-
-[s1]: documentos/seminarios/ruby.md
-
 ## Prácticas - Actividades académicas dirigidas
 
 El objetivo de la asignatura es la realización de un proyecto con
@@ -91,6 +82,7 @@ hitos se organizarán de la forma siguiente.
 2. [Planificación del proyecto][p2]
 3. [Tests][p3]
 4. [Uso de contenedores][p4]
+5. [Integración continua][p5]
 5. [Medición de prestaciones de MVs][p5]
 6. [Provisionamiento de máquinas virtuales][p6]
 
@@ -99,8 +91,18 @@ hitos se organizarán de la forma siguiente.
 [p2]: documentos/proyecto/1.Infraestructura.md
 [p3]: documentos/proyecto/2.Tests.md
 [p4]: documentos/proyecto/3.Docker.md
-[p5]: documentos/proyecto/4.Prestaciones.md
-[p6]: documents/proyecto/5.Provisionamiento.md
+[p5]: documentos/proyecto/4.CI.md
+[p6]: documentos/proyecto/4.Prestaciones.md
+[p7]: documents/proyecto/5.Provisionamiento.md
+
+## Seminarios y material adicional
+
+Material adicional de la asignatura, que se usará en clase pero que el
+alumno tendrá que aprender a su ritmo
+
+1. [Introducción ligera al lenguaje Ruby][s1]
+
+[s1]: documentos/seminarios/ruby.md
 
 ## Tutorías virtuales y presenciales
 
