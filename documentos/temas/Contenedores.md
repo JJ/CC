@@ -214,18 +214,17 @@ sudo status docker
 
 debería responder si se está ejecutando o no. Si está parado,
 
-```
+```shell
 sudo start docker
 ```
 
-comenzará a ejecutarlo.
-
-> Tras instalarlo
-> [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+comenzará a ejecutarlo. Tras instalarlo
+[debes seguir estas instrucciones](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
+para poder usar el cliente desde un usuario sin privilegios.
 
 Una vez instalado, se puede ejecutar el clásico
 
-```
+```shell
 docker run hello-world
 ```
 
@@ -236,14 +235,14 @@ Docker está funcionando. Sin embargo, veamos por partes qué es lo que
 hace esta orden.
 
 1. Busca una *imagen* de Docker llamada `hello-world`. Una imagen es
-equivalente a un *disco de instalación* que contiene los elementos que
-se van a aislar dentro del contenedor.
+   equivalente a un *disco de instalación* que contiene los elementos que
+   se van a aislar dentro del contenedor.
 2. Al no encontrar esa imagen localmente, la descarga del
-[Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
-se suben las imágenes de Docker y donde puedes encontrar muchas más;
-más adelante se verán.
+   [Hub de Docker](https://hub.docker.com/_/hello-world/), el lugar donde
+   se suben las imágenes de Docker y donde puedes encontrar muchas más;
+   más adelante se verán.
 
-```
+```text
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 78445dd45222: Pull complete
@@ -251,18 +250,16 @@ Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
 Status: Downloaded newer image for hello-world:latest
 ```
 
-3. Crea un *contenedor* usando como base esa imagen, es decir, el
+1. Crea un *contenedor* usando como base esa imagen, es decir, el
    equivalente a *arrancar* un sistema usando como disco duro esa
    imagen.
-
-4. Ejecuta un programa llamado `hello` situado *dentro* de esa
+2. Ejecuta un programa llamado `hello` situado *dentro* de esa
    imagen. Ese programa simplemente muestra el mensaje que nos
    aparece. Este es un programa que el autor ha configurado para que
    sea ejecutado cuando se ejecute el comando `run` sobre esa
    imagen. Este programa se está ejecutando *dentro* del contenedor y,
    por tanto, aislado del resto del sistema.
-
-5. Sale del contenedor y te deposita en la línea de órdenes. El
+3. Sale del contenedor y te deposita en la línea de órdenes. El
    contenedor deja de ejecutarse. La imagen se queda almacenada
    localmente, para la próxima vez que se vaya a ejecutar.
 
@@ -270,7 +267,7 @@ De los pasos anteriores habrás deducido que se ha descargado una
 imagen cuyo nombre es `hello-world` y se ha creado un contenedor, en
 principio sin nombre. Puedes listar las imágenes que tienes con
 
-```
+```shell
 docker images
 ```
 
@@ -278,24 +275,25 @@ que, en principio, solo listará una llamada `hello-world` en la
 segunda columna, etiquetada IMAGES. Pero esto incluye solo las
 imágenes en sí. Para listas los contenedores que tienes,
 
-```
+```shell
 docker ps -a
 ```
 
 listará los contenedores que efectivamente se han creado, por ejemplo:
 
-~~~
+```text
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
 1e9e7dfe46e3        hello-world         "/hello"            3 seconds ago       Exited (0) 2 seconds ago                           focused_poincare
 ec9ba7a27e93        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       dreamy_goldstine
-~~~
+```
+
 
 Vemos dos contenedores, con dos IDs de contenedor diferentes, ambas
 correspondientes a la misma imagen, `hello-world`. Cada vez que
 ejecutemos la imagen crearemos un contenedor nuevo, por lo que
 conviene que recordemos ejecutarlo, siempre que no vayamos a necesitarlo, con
 
-```
+```shell
 docker run --rm hello-world
 ```
 
@@ -341,7 +339,7 @@ reproducible y automática, pero se puede usar para crear prototipos o
 para probar cosas sobre contenedores cuya creación se automatizará a
 continuación. Comencemos por descargar la imagen.
 
-```
+```shell
 docker pull alpine
 ```
 
@@ -351,7 +349,7 @@ disponible para que se creen, a partir de ella, contenedores. Como se
 ha visto antes, las imágenes que hay disponibles en el sistema se
 listan con
 
-```
+```shell
 docker images
 ```
 
@@ -367,8 +365,7 @@ la tarea, el prototipo o la prueba que se quiera realizar. Hay
 muchas imágenes creadas y se pueden crear y compartir en el sitio web
 de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
-[buscar todas las imágenes de un tipo determinado, como
-Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
+[buscar todas las imágenes de un tipo determinado, como Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
 o
 [buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image). Estas
 imágenes contienen no solo sistemas operativos *bare bones*, sino
@@ -396,7 +393,7 @@ y que, en realidad, no tenemos una máquina virtual *diferente*.
 
 Podemos ejecutar, por ejemplo, un listado de los directorios
 
-```
+```shell
 docker run --rm alpine ls
 ```
 
@@ -414,7 +411,7 @@ Esta imagen de Alpine no contiene bash, pero si el shell básico
 llamado `ash` y que está instalado en `sh`,
 por lo que podremos *meternos* en la misma ejecutando
 
-```
+```shell
 docker run -it alpine sh
 ```
 
@@ -549,6 +546,7 @@ ejecutar el contenedor, por lo que habrá que pararlo
 ```shell
 docker stop 6dc8ddb51cd6
 ```
+
 y, a continuación, si no se va a usar más el contenedor, borrarlo
 
 ```shell
@@ -692,7 +690,7 @@ Por ejemplo, podemos usar un volumen para montar el `/app` de
 diferentes sistemas operativos, de forma que podamos probar una
 aplicación determinada en los mismos. Hagamos
 
-```
+```shell
 docker volume create benchmark
 docker pull fedora
 docker run -it --rm -v benchmark:/app fedora /bin/bash
@@ -703,7 +701,7 @@ el número de ficheros `ls -R / | wc` y se guarda en `/app`. Una vez
 hecho eso, puedes ejecutar ese programa en cualquier distro, de esta
 forma:
 
-```
+```shell
 docker run -it --rm -v benchmark:/app fedora sh /app/bm.sh
   87631   81506 1240789
 docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
@@ -711,6 +709,7 @@ docker run -it --rm -v benchmark:/app alpine sh /app/bm.sh
 docker run -it --rm -v benchmark:/app busybox sh /app/bm.sh
     72141     67339    972158
 ```
+
 > Incidentalmente, se observa que de las tres imágenes de
 > contenedores, la que tiene una mínima cantidad de ficheros es
 > `busybox`. Alpine, como se ha comentado antes, es una distribución
