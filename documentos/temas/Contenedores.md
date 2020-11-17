@@ -1039,28 +1039,6 @@ skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers "
 Muestra que de las 11 capas originales lo hemos reducido sólo a 5
 capas, y el contenido es exactamente el mismo.
 
-<!-- esto no corresponde al actual
-
-```shell
-docker run --rm -t --env BOBOT_TOKEN=un:token:tocho jjmerelo/bobot
-```
-
-donde --env se usa para pasar la variable de entorno de Telegram que
-necesita el bot para funcionar.
-
-Si queremos simplemente examinar el contenedor, podemos entrar en él
-de la forma habitual
-
-```shell
-docker run -it jjmerelo/bot sh
-```
-
-para entrar directamente en la línea de órdenes. El repositorio está
-en [bobot](https://github.com/JJ/BoBot), como es habitual. En este
-caso usamos `CMD` para ejecutar la orden, ya que el contenedor no
-recibe ningún parámetro adicional.
--->
-
 <div class='ejercicios' markdown='1'>
 
 Reproducir los contenedores creados anteriormente usando un `Dockerfile`.
