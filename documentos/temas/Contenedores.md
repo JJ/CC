@@ -56,12 +56,11 @@ para que opere de forma independiente del resto de las aplicaciones y
 se pueda, por tanto, replicar, escalar, desplegar, arrancar y destruir
 de forma también independiente.
 
->Una traducción más precisa de *container*
->sería
->[táper](https://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
->es decir, un recipiente, generalmente de plástico, usado en
->cocina. Si me refiero a un táper a continuación, es simplemente por
->esta razón.
+> Una traducción más precisa de *container* sería
+> [táper](https://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
+> es decir, un recipiente, generalmente de plástico, usado en
+> cocina. Si me refiero a un táper a continuación, es simplemente por
+> esta razón.
 
 [Docker](https://www.docker.com) es una herramienta de gestión de
 contenedores que permite no solo instalarlos, sino trabajar con el
@@ -75,15 +74,15 @@ desarrollo paralelo de sistemas operativos tales como
 basado en Linux y que permite despliegue masivo de servidores. Pero no
 adelantemos acontecimientos.
 
->Docker funciona mejor en Linux, fue creado para Linux y es donde
->tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
->última versión de Windows, la 10, funciona relativamente bien también
->en este sistema operativo. Si no tienes esa versión no te molestes;
->en todo caso, también en Windows 10 puedes usar el subsistema Linux
->(Ubuntu y últimamente OpenSuSE) para interactuar con
->Docker. Finalmente, aunque es usable desde Mac, en realidad el
->sistema operativo no tiene soporte para el mismo. Es mejor que en
->este caso se use una máquina virtual local o en la nube.
+> Docker funciona mejor en Linux, fue creado para Linux y es donde
+> tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
+> última versión de Windows, la 10, funciona relativamente bien también
+> en este sistema operativo. Si no tienes esa versión no te molestes;
+> en todo caso, también en Windows 10 puedes usar el subsistema Linux
+> (Ubuntu y últimamente OpenSuSE) para interactuar con
+> Docker. Finalmente, aunque es usable desde Mac, en realidad el
+> sistema operativo no tiene soporte para el mismo. Es mejor que en
+> este caso se use una máquina virtual local o en la nube.
 
 Aunque en una primera aproximación Docker es, como hemos dicho arriba,
 similar a otras aplicaciones de virtualización *ligera*  como
@@ -123,24 +122,23 @@ A continuación vamos a ver cómo podemos usar Docker como simples
 usuarios, para ver a continuación como se puede diseñar una
 arquitectura usándolo, empezando por el principio, como instalarlo.
 
->Conviene que, en este momento o un poco más adelante, tengas preparad
->una instalación de un hipervisor o gestor de máquinas virtuales tipo
->VirtualBox o similar. Sea porque quieras tener una máquina virtual
->Linux específica para esto, o para tener varias máquinas virtuales
->funcionando a la vez.
+> Conviene que, en este momento o un poco más adelante, tengas
+> preparada una instalación de un hipervisor o gestor de máquinas
+> virtuales tipo VirtualBox o similar. Sea porque quieras tener una
+> máquina virtual Linux específica para esto, o para tener varias
+> máquinas virtuales funcionando a la vez.
 
 ## Instalación de Docker
 
 [Instalar `docker`](https://www.docker.com/) es sencillo desde que se
 publicó la versión 1.0, especialmente en distribuciones de Linux. Por
-ejemplo,
-para
+ejemplo, para
 [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
-y no funcionará con versiones más antiguas de la 12.04 (y en este caso
-solo si se instalan kernels posteriores). En las últimas versiones, de
-hecho, ya está en los repositorios oficiales de Ubuntu y para
-instalarlo no hay más que
-hacer
+
+aunque no funcionará con versiones más antiguas de la 12.04 (y en este
+caso solo si se instalan kernels posteriores). En las últimas
+versiones, de hecho, ya está en los repositorios oficiales de Ubuntu y
+para instalarlo no hay más que hacer
 
 ```bash
 sudo apt-get install docker-engine
@@ -215,12 +213,10 @@ sudo start docker
 
 comenzará a ejecutarlo.
 
->Tras
->instalarlo
->[debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+> Tras instalarlo
+> [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 
-Una vez
-instalado, se puede ejecutar el clásico
+Una vez instalado, se puede ejecutar el clásico
 
 ```
 docker run hello-world
@@ -669,8 +665,8 @@ se indica como configurar el driver que se va a usar.
 Hay una forma de usar contenedores solo para almacenar datos, sin que
 haya ningún proceso que se ejecute en ellos usando los
 llamados
-[volúmenes](https://docs.docker.com/engine/reference/commandline/volume_create/#related-commands). Se
-crea usando `volume create`
+[volúmenes](https://docs.docker.com/engine/reference/commandline/volume_create/#related-commands).
+Se crea usando `volume create`
 
 ```shell
 docker volume create log
@@ -720,7 +716,7 @@ contenedores con algún tipo de aplicación, por tanto. Por ejemplo con
 [este microservicio en Perl Dancer2](https://github.com/JJ/p5-hitos)
 de la forma siguiente
 
-```
+```shell
 docker run -it --rm -v log:/log -p5000:5000 jjmerelo/p5hitos
 ```
 
@@ -744,7 +740,7 @@ que los datos que se escriben ahí se pueden guardar o enviar; también
 se puede usar simultáneamente por parte de otro contenedor,
 *montándolo* de esta forma:
 
-```
+```shell
 docker run -it --rm -v log:/log jjmerelo/checklog
 ```
 
@@ -773,7 +769,7 @@ conjunto de datos de un lugar a otro de forma que puedan ser
 compartidos. Crear un contenedor de datos se puede hacer de la forma
 siguiente:
 
-```
+```Dockerfile
 FROM busybox
 
 WORKDIR /data
@@ -787,7 +783,7 @@ volúmenes de datos, estos contenedores de datos sí hay que
 ejecutarlos. En realidad es igual lo que se esté ejecutando, por lo
 que generalmente se ejecutan de esta forma:
 
-```
+```shell
 docker run -d -it --rm jjmerelo/datos sh
 ```
 
@@ -800,7 +796,7 @@ monitorizarlo, pero lo interesante de él es que se va a usar para
 cargar ese fichero de configuración desde diferentes contenedores, de
 esta forma:
 
-```
+```shell
 docker run -it --rm --volumes-from 8d1e385 jjmerelo/p5hitos
 ```
 
@@ -812,7 +808,7 @@ volúmenes, por lo que el contenedor se ejecutará y tendrá en `/data`
 el mismo contenido. Se puede montar también el contenedor en modo de
 solo lectura:
 
-```
+```shell
 docker run -it --rm --volumes-from 8d1e385:ro jjmerelo/p5hitos
 ```
 
@@ -901,7 +897,7 @@ otro contenedor que la use.
 > aunque que no muestre los Dockerfiles puede dar lugar a alguna que
 > otra sospecha.
 
-```shell
+```Dockerfile
 FROM frolvlad/alpine-scala
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
@@ -999,8 +995,8 @@ extrae una de las claves del JSON resultante, `Layers`, y simplemente
 la cuenta (con `length`). Resultado: 11 capas. Vamos entonces a
 reducirlas en lo posible, haciendo lo siguiente:
 
-- Borrando ficheros innecesarios.
-- Agrupando órdenes para reducir el número de capas.
+* Borrando ficheros innecesarios.
+* Agrupando órdenes para reducir el número de capas.
 
 Así está en el ejemplo siguiente
 
@@ -1023,7 +1019,7 @@ RUN apk update && apk upgrade && apk add curl \
 Donde, además, se ha usado `LABEL` para `maintainer`, en vez del
 anterior, que estaba deprecado. En este caso, el tamaño es:
 
-```
+```shell
 jjmerelo/scala-testing         latest                 24c3ab20c2cd        8 seconds ago        248MB
 ```
 
@@ -1123,12 +1119,11 @@ para que opere de forma independiente del resto de las aplicaciones y
 se pueda, por tanto, replicar, escalar, desplegar, arrancar y destruir
 de forma también independiente.
 
->Una traducción más precisa de *container*
->sería
->[táper](https://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
->es decir, un recipiente, generalmente de plástico, usado en
->cocina. Si me refiero a un táper a continuación, es simplemente por
->esta razón.
+> Una traducción más precisa de *container* sería
+> [táper](https://www.fundeu.es/recomendacion/taper-adaptacion-espanola-del-anglicismo-tupper-1475/),
+> es decir, un recipiente, generalmente de plástico, usado en
+> cocina. Si me refiero a un táper a continuación, es simplemente por
+> esta razón.
 
 [Docker](https://www.docker.com) es una herramienta de gestión de
 contenedores que permite no solo instalarlos, sino trabajar con el
@@ -1142,15 +1137,15 @@ desarrollo paralelo de sistemas operativos tales como
 basado en Linux y que permite despliegue masivo de servidores. Pero no
 adelantemos acontecimientos.
 
->Docker funciona mejor en Linux, fue creado para Linux y es donde
->tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
->última versión de Windows, la 10, funciona relativamente bien también
->en este sistema operativo. Si no tienes esa versión no te molestes;
->en todo caso, también en Windows 10 puedes usar el subsistema Linux
->(Ubuntu y últimamente OpenSuSE) para interactuar con
->Docker. Finalmente, aunque es usable desde Mac, en realidad el
->sistema operativo no tiene soporte para el mismo. Es mejor que en
->este caso se use una máquina virtual local o en la nube.
+> Docker funciona mejor en Linux, fue creado para Linux y es donde
+> tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
+> última versión de Windows, la 10, funciona relativamente bien también
+> en este sistema operativo. Si no tienes esa versión no te molestes;
+> en todo caso, también en Windows 10 puedes usar el subsistema Linux
+> (Ubuntu y últimamente OpenSuSE) para interactuar con
+> Docker. Finalmente, aunque es usable desde Mac, en realidad el
+> sistema operativo no tiene soporte para el mismo. Es mejor que en
+> este caso se use una máquina virtual local o en la nube.
 
 Aunque en una primera aproximación Docker es, como hemos dicho arriba,
 similar a otras aplicaciones de virtualización *ligera*  como
@@ -1190,24 +1185,23 @@ A continuación vamos a ver cómo podemos usar Docker como simples
 usuarios, para ver a continuación como se puede diseñar una
 arquitectura usándolo, empezando por el principio, como instalarlo.
 
->Conviene que, en este momento o un poco más adelante, tengas preparad
->una instalación de un hipervisor o gestor de máquinas virtuales tipo
->VirtualBox o similar. Sea porque quieras tener una máquina virtual
->Linux específica para esto, o para tener varias máquinas virtuales
->funcionando a la vez.
+> Conviene que, en este momento o un poco más adelante, tengas
+> preparada una instalación de un hipervisor o gestor de máquinas
+> virtuales tipo VirtualBox o similar. Sea porque quieras tener una
+> máquina virtual Linux específica para esto, o para tener varias
+> máquinas virtuales funcionando a la vez.
 
 ## Instalación de Docker
 
 [Instalar `docker`](https://www.docker.com/) es sencillo desde que se
 publicó la versión 1.0, especialmente en distribuciones de Linux. Por
-ejemplo,
-para
+ejemplo, para
 [Ubuntu hay que dar de alta una serie de repositorios](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
-y no funcionará con versiones más antiguas de la 12.04 (y en este caso
-solo si se instalan kernels posteriores). En las últimas versiones, de
-hecho, ya está en los repositorios oficiales de Ubuntu y para
-instalarlo no hay más que
-hacer
+
+aunque no funcionará con versiones más antiguas de la 12.04 (y en este
+caso solo si se instalan kernels posteriores). En las últimas
+versiones, de hecho, ya está en los repositorios oficiales de Ubuntu y
+para instalarlo no hay más que hacer
 
 ```bash
 sudo apt-get install docker-engine
@@ -1282,12 +1276,10 @@ sudo start docker
 
 comenzará a ejecutarlo.
 
->Tras
->instalarlo
->[debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+> Tras instalarlo
+> [debes seguir estas instrucciones para poder usar el cliente desde un usuario sin privilegios.](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 
-Una vez
-instalado, se puede ejecutar el clásico
+Una vez instalado, se puede ejecutar el clásico
 
 ```
 docker run hello-world
@@ -1736,8 +1728,8 @@ se indica como configurar el driver que se va a usar.
 Hay una forma de usar contenedores solo para almacenar datos, sin que
 haya ningún proceso que se ejecute en ellos usando los
 llamados
-[volúmenes](https://docs.docker.com/engine/reference/commandline/volume_create/#related-commands). Se
-crea usando `volume create`
+[volúmenes](https://docs.docker.com/engine/reference/commandline/volume_create/#related-commands).
+Se crea usando `volume create`
 
 ```shell
 docker volume create log
@@ -1787,7 +1779,7 @@ contenedores con algún tipo de aplicación, por tanto. Por ejemplo con
 [este microservicio en Perl Dancer2](https://github.com/JJ/p5-hitos)
 de la forma siguiente
 
-```
+```shell
 docker run -it --rm -v log:/log -p5000:5000 jjmerelo/p5hitos
 ```
 
@@ -1811,7 +1803,7 @@ que los datos que se escriben ahí se pueden guardar o enviar; también
 se puede usar simultáneamente por parte de otro contenedor,
 *montándolo* de esta forma:
 
-```
+```shell
 docker run -it --rm -v log:/log jjmerelo/checklog
 ```
 
@@ -1840,7 +1832,7 @@ conjunto de datos de un lugar a otro de forma que puedan ser
 compartidos. Crear un contenedor de datos se puede hacer de la forma
 siguiente:
 
-```
+```Dockerfile
 FROM busybox
 
 WORKDIR /data
@@ -1854,7 +1846,7 @@ volúmenes de datos, estos contenedores de datos sí hay que
 ejecutarlos. En realidad es igual lo que se esté ejecutando, por lo
 que generalmente se ejecutan de esta forma:
 
-```
+```shell
 docker run -d -it --rm jjmerelo/datos sh
 ```
 
@@ -1867,7 +1859,7 @@ monitorizarlo, pero lo interesante de él es que se va a usar para
 cargar ese fichero de configuración desde diferentes contenedores, de
 esta forma:
 
-```
+```shell
 docker run -it --rm --volumes-from 8d1e385 jjmerelo/p5hitos
 ```
 
@@ -1879,7 +1871,7 @@ volúmenes, por lo que el contenedor se ejecutará y tendrá en `/data`
 el mismo contenido. Se puede montar también el contenedor en modo de
 solo lectura:
 
-```
+```shell
 docker run -it --rm --volumes-from 8d1e385:ro jjmerelo/p5hitos
 ```
 
@@ -1968,7 +1960,7 @@ otro contenedor que la use.
 > aunque que no muestre los Dockerfiles puede dar lugar a alguna que
 > otra sospecha.
 
-```shell
+```Dockerfile
 FROM frolvlad/alpine-scala
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
@@ -2066,8 +2058,8 @@ extrae una de las claves del JSON resultante, `Layers`, y simplemente
 la cuenta (con `length`). Resultado: 11 capas. Vamos entonces a
 reducirlas en lo posible, haciendo lo siguiente:
 
-- Borrando ficheros innecesarios.
-- Agrupando órdenes para reducir el número de capas.
+* Borrando ficheros innecesarios.
+* Agrupando órdenes para reducir el número de capas.
 
 Así está en el ejemplo siguiente
 
@@ -2090,7 +2082,7 @@ RUN apk update && apk upgrade && apk add curl \
 Donde, además, se ha usado `LABEL` para `maintainer`, en vez del
 anterior, que estaba deprecado. En este caso, el tamaño es:
 
-```
+```shell
 jjmerelo/scala-testing         latest                 24c3ab20c2cd        8 seconds ago        248MB
 ```
 
@@ -2330,7 +2322,7 @@ correspondiente.
 
 Para ejecutarlo,
 
-```
+```shell
 docker-compose up
 ```
 
@@ -2432,7 +2424,8 @@ ordenador o máquina virtual.
 
 Primero, hay que [llevar a cabo el hito del proyecto correspondiente a este tema](../proyecto/3.Docker).
 
-Si te interesa, puedes consultar cómo se [virtualiza el almacenamiento](Almacenamiento) que, en general, es independiente de la
-generación de una máquina virtual. También puedes ir directamente al
-[tema de uso de sistemas](Uso_de_sistemas) en el que se trabajará
-con sistemas de virtualización completa.
+Si te interesa, puedes consultar cómo
+se [virtualiza el almacenamiento](Almacenamiento) que, en general, es
+independiente de la generación de una máquina virtual. También puedes
+ir directamente al [tema de uso de sistemas](Uso_de_sistemas) en el
+que se trabajará con sistemas de virtualización completa.
