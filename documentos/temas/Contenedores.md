@@ -28,7 +28,8 @@ prev: Microservicios
 
 ### Objetivos específicos
 
-1. Entender cómo las diferentes tecnologías de virtualización se integran en la creación de contenedores.
+1. Entender cómo las diferentes tecnologías de virtualización se
+   integran en la creación de contenedores.
 
 2. Crear infraestructuras virtuales completas.
 
@@ -150,11 +151,10 @@ cliente de línea de órdenes, `docker`. La instalación dejará este
 inicio del sistema. También una serie de *imágenes* genéricas con las
 que se puede empezar a trabajar de forma más o menos inmediata.
 
->Hay
->también
->[diferentes opciones para instalar Docker en Windows](https://docs.docker.com/engine/installation/windows/) o
->en
->[un Mac](https://docs.docker.com/engine/installation/mac/).
+> Hay también
+> [diferentes opciones para instalar Docker en Windows](https://docs.docker.com/engine/installation/windows/)
+> o en
+> [un Mac](https://docs.docker.com/engine/installation/mac/).
 
 Otra posibilidad para trabajar con Docker es
 usar
@@ -197,7 +197,6 @@ La línea de órdenes de docker conectará con este daemon, que mantendrá
 el estado de docker y demás. Cada una de las órdenes se ejecutará
 también como superusuario, al tener que contactar con este *daemon*
 usando un socket protegido.
-
 
 Con una instalación estándar,
 
@@ -327,7 +326,7 @@ siguientes ocasiones.
 
 </div>
 
-## Trabajando *dentro* de contenedores.
+## Trabajando *dentro* de contenedores
 
 Pero no solo podemos descargar y ejecutar contenedores de forma
 efímera. También se puede crear un contenedor y trabajar en
@@ -489,7 +488,7 @@ de la imagen:
 docker run b750fe79269d du
 ```
 
-## Cómo crear imágenes docker interactivamente.
+## Cómo crear imágenes de Docker interactivamente
 
 En vez de ejecutar las cosas una a una podemos
 directamente
@@ -886,7 +885,6 @@ consiguiente ahorro de espacio. La ventaja además es que
 en [el Docker hub](https://hub.docker.com) hay multitud de contenedores
 ya hechos, que se pueden usar directamente.
 
-
 El
 [ejemplo](https://github.com/JJ/CC/blob/53382c0258edda645bd0027b7b094ac9c7d1b36a/ejemplos/Scala/Dockerfile)
 a continuación conteneriza `sbt`, la Scala Build Tool, de
@@ -996,10 +994,10 @@ Que usa la suborden `inspect` para examinar la imagen, que se tiene
 que especificar como una imagen local (con `docker-daemon`). `jq`
 extrae una de las claves del JSON resultante, `Layers`, y simplemente
 la cuenta (con `length`). Resultado: 11 capas. Vamos entonces a
-reducirlas en lo posible, haciendo lo siguiente
+reducirlas en lo posible, haciendo lo siguiente:
 
-- Borrando ficheros innecesarios
-- Agrupando órdenes para reducir el número de capas
+- Borrando ficheros innecesarios.
+- Agrupando órdenes para reducir el número de capas.
 
 Así está en el ejemplo siguiente
 
@@ -1208,7 +1206,6 @@ docker run --rm -t -v
 ```
 
 ## Composición de servicios con `docker compose`
-
 
 [Docker compose](https://docs.docker.com/compose/install/#install-compose)
 tiene que instalarse, no forma parte del conjunto de herramientas que
