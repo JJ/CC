@@ -3,24 +3,24 @@ layout: index
 
 apuntes: T
 
-prev: Desarrollo_basado_en_pruebas
-next: Contenedores
+prev: Integracion_continua
+next: PaaS
 ---
 
 # Microservicios
 
 
 <!--@
-prev: Desarrollo_basado_en_pruebas
-next: Contenedores
+prev: Integracion_continua
+next: PaaS
 -->
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos</h2>
+## Objetivos
 
 
-<h3>Cubre los siguientes objetivos de la asignatura</h3>
+### Cubre los siguientes objetivos de la asignatura
 
 2. Conocer los conceptos relacionados con el proceso de virtualización
 tanto de software como de hardware y ponerlos en práctica.
@@ -87,7 +87,8 @@ correctamente recuperado el código 200.
 ## Creando un microservicio desde cero
 
 > En este ejemplo usaremos Node; una alternativa está en
-> [esta presentación sobre servicios web en Python](https://jj.github.io/tests-python/ws.html), en la que se da
+> [esta presentación sobre servicios web en Python](https://jj.github.io/tests-python/ws.html),
+> en la que se da
 > se da una introducción a los servicios web y cómo desplegarlos
 > usando el micromarco de aplicaciones Hug.
 
@@ -390,7 +391,8 @@ bien. Sin embargo, las funciones a las que se llaman desde un servicio
 web son en realidad simples funciones, por lo que hay tanto marcos
 como bibliotecas de test que te permiten probarlas.
 
-> Consultad [esta pregunta en SO](https://stackoverflow.com/questions/2741832/unit-tests-vs-functional-tests)
+> Consultad
+> [esta pregunta en SO](https://stackoverflow.com/questions/2741832/unit-tests-vs-functional-tests)
 > para entender las diferencias entre tests unitarios y de integración
 > o funcionales.
 
@@ -423,7 +425,7 @@ resto). En vez de ejecutar la aplicación (que también podríamos
 hacerlo), lo que hacemos es que añadimos al final de `index.js` la
 línea:
 
-```
+```javascript
 module.exports = app;
 ```
 
@@ -446,7 +448,8 @@ pero usamos funciones específicas:
   correcta. Y como esta es la última de la cadena, llamamos a `done`
   que es en realidad una función que usa como parámetro el callback.
 
-Podemos hacer más pruebas, usando `get`, por ejemplo, pero se deja como ejercicio al alumno.
+Podemos hacer más pruebas, usando `get`, por ejemplo, pero se deja
+como ejercicio al alumno.
 
 Estas pruebas permiten que no nos encontremos con sorpresas una vez
 que despeguemos en el PaaS. Así sabemos que, al menos, todas las rutas
@@ -496,7 +499,9 @@ o
 
 para parar todos los procesos que gestione. Los logs se almacenan en un directorio específico y se pueden consultar con
 
-    pm2 logs
+```shell
+pm2 logs
+```
 
 
 Hay [muchos otros gestores de procesos](https://www.tecmint.com/process-managers-for-node-js-applications-in-linux/), pero esto incluye también el systemd de Linux, un gestor que se puede usar con éxito en sistemas que lo implementen, como es natural, y que está incluido en cualquier distribución.
@@ -670,10 +675,18 @@ fácilmente desde la línea de órdenes.
 
 ## Niveles de servicio, medida y mejora
 
-Las prestaciones de un microservicio se deben de tener en cuenta, como la calidad y la seguridad, desde el principio, y de hecho el nivel de servicio esperado, en términos de *uptime* y de número de peticiones por segundo a las que se va a responder, es algo que se debe establecer en la fase de diseño.
+Las prestaciones de un microservicio se deben de tener en cuenta, como
+la calidad y la seguridad, desde el principio, y de hecho el nivel de
+servicio esperado, en términos de *uptime* y de número de peticiones
+por segundo a las que se va a responder, es algo que se debe
+establecer en la fase de diseño.
 
 
 ## A dónde ir desde aquí
 
 
-En el [siguiente tema](Contenedores) veremos cómo hacer efectivamente el despliegue en la nube.
+Ya se puede hacer
+[el hito del proyecto correspondiente](../proyecto/5.Microservicio).
+
+En el [siguiente tema](PaaS) veremos cómo hacer efectivamente el
+despliegue en la nube.
