@@ -881,7 +881,7 @@ si nos facilita alcanzarlos en un futuro.
 
 Una herramienta que permite realizar un análisis previo sin necesidad
 de probar todas las imágenes es [container-diff](https://github.com/GoogleContainerTools/container-diff).
-Esta herramienta nos permite ver caracerísticas como *tamaño*,
+Esta herramienta nos permite ver características como *tamaño*,
 *historial*, *sistema de archivos*, *paquetes instalados* (tanto en
 *apt*, *rpm*, *pip* o *Node*). Permite además analizar y comparar dos
 contenedores distintos.
@@ -932,8 +932,8 @@ Por otro lado, si se realiza una comparativa, un ejemplo sería:
 -----Size-----
 
 Image size difference between ubuntu:focal and ubuntu:bionic:
-SIZE1        SIZE2
-72.9M        62.4M
+SIZE1    SIZE2
+72.9M    62.4M
 
 ```
 
