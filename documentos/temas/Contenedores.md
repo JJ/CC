@@ -871,6 +871,72 @@ otro tipo de contenedores, y las órdenes que se
 deben usar y cómo usarlas constituye un acervo que conviene conocer y
 usar.
 
+## Elección de contenedor base
+
+Una de las decisiones más complejas a la hora de construir nuestro
+contenedor es una buena elección de la imagen que utilizaremos como base.
+El principal problema consiste en conocer los requisitos para nuestro
+proyecto, y saber si la imagen base cumple con dichos requisitos o
+si nos facilita alcanzarlos en un futuro.
+
+Una herramienta que permite realizar un análisis previo sin necesidad
+de probar todas las imágenes es [container-diff](https://github.com/GoogleContainerTools/container-diff).
+Esta herramienta nos permite ver caracerísticas como *tamaño*,
+*historial*, *sistema de archivos*, *paquetes instalados* (tanto en
+*apt*, *rpm*, *pip* o *Node*). Permite además analizar y comparar dos
+contenedores distintos.
+
+Si queremos analizar la imagen oficial de **ubuntu:bionic**:
+
+```shell
+container-diff analyze ubuntu:bionic --type=size --type=apt --type=history
+```
+
+Al ejecutar esta orden, se mostrará como un listado de diferentes
+secciones, donde muestra los paquetes instalados mediante *apt*,
+el historial de la imagen y el tamaño de la imagen. Esta herramienta
+nos ahorra la necesidad de crear una imagen y comprobarla paso a paso.
+
+Por otro lado, si queremos comparar dos imágenes diferentes, como
+**ubuntu:focal** y **ubuntu:bionic**, se haría:
+
+```shell
+container-diff diff ubuntu:focal ubuntu:bionic --type=size --type=apt
+```
+
+A continuación se muestra un listado donde se ven los paquetes *apt*
+que poseen cada imagen y que no posee la otra, seguido de aquellos paquetes
+en común pero que poseen diferentes versiones. Por último se muestran los
+tamaños de ambas imágenes.
+
+La principal ventaja de esta herramienta es el poder realizar un análisis
+de forma simple y clara, ahorrando tiempo de configuración y creación de
+imágenes y ahorrando espacio. Además, es completamente configurable, por
+lo que se pueden comparar únicamente aquellas características que se
+indiquen mediante el parámetro ```--type=``` (si se omite por defecto
+toma ```--type=size```).
+
+Un ejemplo de como se muestra un análisis del tamaño de una imagen sería:
+
+```
+-----Size-----
+
+Analysis for ubuntu:bionic:
+IMAGE                DIGEST                                                                     SIZE
+ubuntu:bionic        sha256:45c6f8f1b2fe15adaa72305616d69a6cd641169bc8b16886756919e7c01fa48b    62.4M
+```
+
+Por otro lado, si se realiza una comparativa, un ejemplo sería:
+
+```
+-----Size-----
+
+Image size difference between ubuntu:focal and ubuntu:bionic:
+SIZE1        SIZE2
+72.9M        62.4M
+
+```
+
 ## Usando Dockerfiles
 
 La infraestructura se debe crear usando código, y en Docker pasa
