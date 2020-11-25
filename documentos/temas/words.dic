@@ -413,6 +413,7 @@ bin
 bin
 binarytides
 binding
+bionic
 blob
 blobs
 bobot
@@ -525,6 +526,7 @@ devDependencies
 developers
 devs
 df
+diff
 directory
 discovery
 discovirtual
@@ -1028,6 +1030,7 @@ rm
 root
 roster
 router
+rpm
 ruby
 rubygems
 run
