@@ -1052,6 +1052,11 @@ inspect`). Ejecutamos:
 skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers | length"
 ```
 
+En caso de usar `docker inspect`, la orden sería:
+```shell
+docker inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".[].RootFS.Layers | length"
+```
+
 Que usa la suborden `inspect` para examinar la imagen, que se tiene
 que especificar como una imagen local (con `docker-daemon`). `jq`
 extrae una de las claves del JSON resultante, `Layers`, y simplemente
