@@ -1049,7 +1049,12 @@ resultado lo da en este formato (también otros como `docker
 inspect`). Ejecutamos:
 
 ```shell
-skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".[].RootFS.Layers | length"
+skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers | length"
+```
+
+En caso de usar `docker inspect`, la orden sería:
+```shell
+docker inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".[].RootFS.Layers | length"
 ```
 
 Que usa la suborden `inspect` para examinar la imagen, que se tiene
