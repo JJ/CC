@@ -287,7 +287,6 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 ec9ba7a27e93        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       dreamy_goldstine
 ```
 
-
 Vemos dos contenedores, con dos IDs de contenedor diferentes, ambas
 correspondientes a la misma imagen, `hello-world`. Cada vez que
 ejecutemos la imagen crearemos un contenedor nuevo, por lo que
@@ -367,8 +366,8 @@ de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
 [buscar todas las imágenes de un tipo determinado, como Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
 o
-[buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image). Estas
-imágenes contienen no solo sistemas operativos *bare bones*, sino
+[buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image).
+Estas imágenes contienen no solo sistemas operativos *bare bones*, sino
 también otros con una funcionalidad determinada. Por ejemplo, una de
 las imágenes más populares es la de
 [`nginx`](https://hub.docker.com/_/nginx/), la de Redis o la de
@@ -880,6 +879,72 @@ otro tipo de contenedores, y las órdenes que se
 deben usar y cómo usarlas constituye un acervo que conviene conocer y
 usar.
 
+## Elección de contenedor base
+
+Una de las decisiones más complejas a la hora de construir nuestro
+contenedor es una buena elección de la imagen que utilizaremos como base.
+El principal problema consiste en conocer los requisitos para nuestro
+proyecto, y saber si la imagen base cumple con dichos requisitos o
+si nos facilita alcanzarlos en un futuro.
+
+Una herramienta que permite realizar un análisis previo sin necesidad
+de probar todas las imágenes es [container-diff](https://github.com/GoogleContainerTools/container-diff).
+Esta herramienta nos permite ver características como *tamaño*,
+*historial*, *sistema de archivos*, *paquetes instalados* (tanto en
+*apt*, *rpm*, *pip* o *Node*). Permite además analizar y comparar dos
+contenedores distintos.
+
+Si queremos analizar la imagen oficial de **ubuntu:bionic**:
+
+```shell
+container-diff analyze ubuntu:bionic --type=size --type=apt --type=history
+```
+
+Al ejecutar esta orden, se mostrará como un listado de diferentes
+secciones, donde muestra los paquetes instalados mediante *apt*,
+el historial de la imagen y el tamaño de la imagen. Esta herramienta
+nos ahorra la necesidad de crear una imagen y comprobarla paso a paso.
+
+Por otro lado, si queremos comparar dos imágenes diferentes, como
+**ubuntu:focal** y **ubuntu:bionic**, se haría:
+
+```shell
+container-diff diff ubuntu:focal ubuntu:bionic --type=size --type=apt
+```
+
+A continuación se muestra un listado donde se ven los paquetes *apt*
+que poseen cada imagen y que no posee la otra, seguido de aquellos paquetes
+en común pero que poseen diferentes versiones. Por último se muestran los
+tamaños de ambas imágenes.
+
+La principal ventaja de esta herramienta es el poder realizar un análisis
+de forma simple y clara, ahorrando tiempo de configuración y creación de
+imágenes y ahorrando espacio. Además, es completamente configurable, por
+lo que se pueden comparar únicamente aquellas características que se
+indiquen mediante el parámetro ```--type=``` (si se omite por defecto
+toma ```--type=size```).
+
+Un ejemplo de como se muestra un análisis del tamaño de una imagen sería:
+
+```text
+-----Size-----
+
+Analysis for ubuntu:bionic:
+IMAGE                DIGEST                                                                     SIZE
+ubuntu:bionic        sha256:45c6f8f1b2fe15adaa72305616d69a6cd641169bc8b16886756919e7c01fa48b    62.4M
+```
+
+Por otro lado, si se realiza una comparativa, un ejemplo sería:
+
+```text
+-----Size-----
+
+Image size difference between ubuntu:focal and ubuntu:bionic:
+SIZE1    SIZE2
+72.9M    62.4M
+
+```
+
 ## Usando Dockerfiles
 
 La infraestructura se debe crear usando código, y en Docker pasa
@@ -995,6 +1060,12 @@ inspect`). Ejecutamos:
 skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers | length"
 ```
 
+En caso de usar `docker inspect`, la orden sería:
+
+```shell
+docker inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".[].RootFS.Layers | length"
+```
+
 Que usa la suborden `inspect` para examinar la imagen, que se tiene
 que especificar como una imagen local (con `docker-daemon`). `jq`
 extrae una de las claves del JSON resultante, `Layers`, y simplemente
@@ -1046,6 +1117,25 @@ skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers "
 
 Muestra que de las 11 capas originales lo hemos reducido sólo a 5
 capas, y el contenido es exactamente el mismo.
+
+Otra herramienta interesante para examinar las capas y poder disminuir
+el tamaño es [dive](https://github.com/wagoodman/dive). Para poder
+examinar una imagen que ya tenemos creada, basta con ejecutar la orden
+
+```bash
+dive <nombre-imagen>
+```
+
+Una vez ha sido cargada, se nos presentan dos paneles (podemos cambiar
+de uno a otro usando el tabulador). En el de la izquierda podemos ver
+las capas existentes junto con el comando que las generó. Por su
+parte, en la derecha podemos navegar por el árbol de directorios en el
+que se indican los archivos nuevos, modificados y eliminados respecto
+a la capa anterior así como el tamaño de cada uno de los mismos. Un
+aspecto a destacar lo encontramos en el panel de la izquierda donde da
+una visión global de la imagen. Utiliza una métrica para determinar la
+"eficiencia" de la misma indicando potenciales archivos que podrían no
+ser del todo útiles.
 
 <div class='ejercicios' markdown='1'>
 
