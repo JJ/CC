@@ -278,7 +278,6 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 ec9ba7a27e93        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       dreamy_goldstine
 ```
 
-
 Vemos dos contenedores, con dos IDs de contenedor diferentes, ambas
 correspondientes a la misma imagen, `hello-world`. Cada vez que
 ejecutemos la imagen crearemos un contenedor nuevo, por lo que
@@ -358,8 +357,8 @@ de Docker, al estilo de las librerías de Python o los paquetes
 Debian. Se pueden
 [buscar todas las imágenes de un tipo determinado, como Ubuntu](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=ubuntu&starCount=0)
 o
-[buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image). Estas
-imágenes contienen no solo sistemas operativos *bare bones*, sino
+[buscar las imágenes más populares](https://hub.docker.com/search/?q=&type=image).
+Estas imágenes contienen no solo sistemas operativos *bare bones*, sino
 también otros con una funcionalidad determinada. Por ejemplo, una de
 las imágenes más populares es la de
 [`nginx`](https://hub.docker.com/_/nginx/), la de Redis o la de
@@ -918,7 +917,7 @@ toma ```--type=size```).
 
 Un ejemplo de como se muestra un análisis del tamaño de una imagen sería:
 
-```
+```text
 -----Size-----
 
 Analysis for ubuntu:bionic:
@@ -928,7 +927,7 @@ ubuntu:bionic        sha256:45c6f8f1b2fe15adaa72305616d69a6cd641169bc8b168867569
 
 Por otro lado, si se realiza una comparativa, un ejemplo sería:
 
-```
+```text
 -----Size-----
 
 Image size difference between ubuntu:focal and ubuntu:bionic:
@@ -1053,6 +1052,7 @@ skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers | lengt
 ```
 
 En caso de usar `docker inspect`, la orden sería:
+
 ```shell
 docker inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".[].RootFS.Layers | length"
 ```
@@ -1109,13 +1109,24 @@ skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers "
 Muestra que de las 11 capas originales lo hemos reducido sólo a 5
 capas, y el contenido es exactamente el mismo.
 
-Otra herramienta interesante para examinar las capas y poder disminuir el tamaño es [dive](https://github.com/wagoodman/dive). Para poder examinar una imagen que ya tenemos creada, basta con ejecutar la orden
+Otra herramienta interesante para examinar las capas y poder disminuir
+el tamaño es [dive](https://github.com/wagoodman/dive). Para poder
+examinar una imagen que ya tenemos creada, basta con ejecutar la orden
 
 ```bash
 dive <nombre-imagen>
 ```
 
-Una vez ha sido cargada, se nos presentan dos paneles (podemos cambiar de uno a otro usando el tabulador). En el de la izquierda podemos ver las capas existentes junto con el comando que las generó. Por su parte, en la derecha podemos navegar por el árbol de directorios en el que se indican los archivos nuevos, modificados y eliminados respecto a la capa anterior así como el tamaño de cada uno de los mismos. Un aspecto a destacar lo encontramos en el panel de la izquierda donde da una visión global de la imagen. Utiliza una métrica para determinar la "eficiencia" de la misma indicando potenciales archivos que podrían no ser del todo útiles. 
+Una vez ha sido cargada, se nos presentan dos paneles (podemos cambiar
+de uno a otro usando el tabulador). En el de la izquierda podemos ver
+las capas existentes junto con el comando que las generó. Por su
+parte, en la derecha podemos navegar por el árbol de directorios en el
+que se indican los archivos nuevos, modificados y eliminados respecto
+a la capa anterior así como el tamaño de cada uno de los mismos. Un
+aspecto a destacar lo encontramos en el panel de la izquierda donde da
+una visión global de la imagen. Utiliza una métrica para determinar la
+"eficiencia" de la misma indicando potenciales archivos que podrían no
+ser del todo útiles.
 
 <div class='ejercicios' markdown='1'>
 
