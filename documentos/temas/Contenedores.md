@@ -1109,6 +1109,14 @@ skopeo inspect docker-daemon:jjmerelo/scala-testing:latest | jq ".Layers "
 Muestra que de las 11 capas originales lo hemos reducido sólo a 5
 capas, y el contenido es exactamente el mismo.
 
+Otra herramienta interesante para examinar las capas y poder disminuir el tamaño es [dive](https://github.com/wagoodman/dive). Para poder examinar una imagen que ya tenemos creada, basta con ejecutar la orden
+
+```bash
+dive <nombre-imagen>
+```
+
+Una vez ha sido cargada, se nos presentan dos paneles (podemos cambiar de uno a otro usando el tabulador). En el de la izquierda podemos ver las capas existentes junto con el comando que las generó. Por su parte, en la derecha podemos navegar por el árbol de directorios en el que se indican los archivos nuevos, modificados y eliminados respecto a la capa anterior así como el tamaño de cada uno de los mismos. Un aspecto a destacar lo encontramos en el panel de la izquierda donde da una visión global de la imagen. Utiliza una métrica para determinar la "eficiencia" de la misma indicando potenciales archivos que podrían no ser del todo útiles. 
+
 <div class='ejercicios' markdown='1'>
 
 Reproducir los contenedores creados anteriormente usando un `Dockerfile`.
