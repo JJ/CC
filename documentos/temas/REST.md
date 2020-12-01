@@ -49,10 +49,17 @@ Las *peticiones* HTTP tienen varias partes diferenciadas:
   [tipo MIME](https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
   que se está enviando, y, sobre todo, *tokens* que permitan al
   autenticación.
-- Un [comando HTTP como PUT o GET](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)),
+- Un [comando HTTP como PUT o GET](https://developer.mozilla.org/es/docs/Web/HTTP/Methods),
   que indique qué es lo que se quiere que haga.
-- Un URI, o *uniform resource locator*, un identificador único de un
-  recurso sobre cuyo estado se quiere actuar.
+- Un
+  [URI](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme),
+  o *uniform resource identifier*, un identificador único de un
+  recurso sobre cuyo estado se quiere actuar. Para enviar datos en el
+  URI, se usa la
+  [*codificación porcentaje*](https://en.wikipedia.org/wiki/Percent-encoding)
+  que permite meter todo tipo de información con cualquier
+  codificación en la parte `query`(la que sigue al `?`, con estructura
+  variable = valor).
 - Un *cuerpo*, no siempre presente, que contiene los datos que se
   adjuntan a la petición; estos datos pueden ir añadidos como rutas o
   fragmentos en el URI anterior.
