@@ -49,20 +49,21 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 2. [Desarrollo basado en pruebas][t2]
 3. [Usando contenedores][t7]
 4. [Integración continua][ci]
+4. [REST](rest)
 5. [Microservicios][t3]
 6. [Gestión de configuraciones][t4]
 7. [Creación de infraestructuras virtuales reproducibles][t5]
 8. [Orquestación de máquinas virtuales][t6]
 
 La temporización de la asignatura y la interacción entre estudiantes y
-con los profesores están en
-[un repositorio de GitHub][cc-course-repo].
+el profesor están en [un repositorio de GitHub][cc-course-repo].
 
 [cc-general-repo]: https://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
 [t2]: documentos/temas/Desarrollo_basado_en_pruebas.md
 [t3]: documentos/temas/Microservicios.md
 [ci]: documentos/temas/Integracion_continua.md
+[rest]: documentos/temas/REST.md
 [t4]: documentos/temas/Provision.md
 [t5]: documentos/temas/Automatizando_cloud.md
 [t6]: documentos/temas/Orquestacion.md
