@@ -9,7 +9,6 @@ next: PaaS
 
 # Microservicios
 
-
 <!--@
 prev: REST
 next: PaaS
@@ -19,22 +18,23 @@ next: PaaS
 
 ## Objetivos
 
-
 ### Cubre los siguientes objetivos de la asignatura
 
-2. Conocer los conceptos relacionados con el proceso de virtualización
-tanto de software como de hardware y ponerlos en práctica.
+1. Conocer los conceptos relacionados con el proceso de virtualización
+   tanto de software como de hardware y ponerlos en práctica.
 
-4. Justificar la necesidad de procesamiento virtual frente a real en
+2. Justificar la necesidad de procesamiento virtual frente a real en
    el contexto de una infraestructura TIC de una organización.
 
 ### Objetivos específicos
 
-5. Entender los mecanismos de diseño, prueba y despliegue de un microservicio antes de efectuarlo y enviarlo a la nube.
+1. Entender los mecanismos de diseño, prueba y despliegue de un
+   microservicio antes de efectuarlo y enviarlo a la nube.
 
-6. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
+2. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
 
-7. Aprender prácticas seguras en el desarrollo de aplicaciones en la nube.
+3. Aprender prácticas seguras en el desarrollo de aplicaciones en la
+   nube.
 
 </div>
 
@@ -752,12 +752,10 @@ ejemplo en la sección anterior.
 
 </div>
 
-
-> Adicionalmente, la herramienta `systemd` que es común en todos los
-> sistemas Linux actuales se puede usar
-> también
-> [para gestionar procesos](http://alesnosek.com/blog/2016/12/04/controlling-a-multi-service-application-with-systemd/). Como
-> desventaja, aparte de no ser portable a diferentes sistemas
+> Adicionalmente, la herramienta `systemd`, que es común en todos los
+> sistemas Linux actuales se puede usar también
+> [para gestionar procesos](http://alesnosek.com/blog/2016/12/04/controlling-a-multi-service-application-with-systemd/).
+> Como desventaja, aparte de no ser portable a diferentes sistemas
 > operativos, es que hacen falta ficheros de configuración específicos
 > por cada uno de los servicios.
 
@@ -849,9 +847,7 @@ servicio esperado, en términos de *uptime* y de número de peticiones
 por segundo a las que se va a responder, es algo que se debe
 establecer en la fase de diseño.
 
-
 ## A dónde ir desde aquí
-
 
 Ya se puede hacer
 [el hito del proyecto correspondiente](../proyecto/5.Microservicio).
