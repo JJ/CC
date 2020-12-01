@@ -4,14 +4,14 @@ layout: index
 apuntes: T
 
 prev: Contenedores
-next: Microservicios
+next: REST
 ---
 
 # Integración continua
 
 <!--@
 prev: Contenedores
-next: Microservicios
+next: REST
 -->
 
 <div class="objetivos" markdown="1">
