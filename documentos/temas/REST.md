@@ -42,7 +42,7 @@ Las *peticiones* HTTP tienen varias partes diferenciadas:
   autenticación.
 - Un [comando HTTP como PUT o GET](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)),
   que indique qué es lo que se quiere que haga.
-- Un URI, o *uniform resource locator*, un identificador único de un
+- Un URI, o *uniform resource identifier*, un identificador único de un
   recurso sobre cuyo estado se quiere actuar.
 - Un *cuerpo*, no siempre presente, que contiene los datos que se
   adjuntan a la petición; estos datos pueden ir añadidos como rutas o
