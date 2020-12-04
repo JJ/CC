@@ -89,7 +89,7 @@ hitos se organizarán de la forma siguiente.
 [p3]: documentos/proyecto/2.Tests.md
 [p4]: documentos/proyecto/3.Docker.md
 [p5]: documentos/proyecto/4.CI.md
-[p5]: documentos/proyecto/5.Microservicio.md
+[p6]: documentos/proyecto/5.Microservicio.md
 [p7]: documentos/proyecto/4.Prestaciones.md
 [p8]: documents/proyecto/5.Provisionamiento.md
 
