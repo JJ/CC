@@ -43,11 +43,11 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 2. [Desarrollo basado en pruebas][t2]
 3. [Usando contenedores][t7]
 4. [Integración continua][ci]
-4. [REST](rest)
-5. [Microservicios][t3]
-6. [Gestión de configuraciones][t4]
-7. [Creación de infraestructuras virtuales reproducibles][t5]
-8. [Orquestación de máquinas virtuales][t6]
+5. [REST](rest)
+6. [Microservicios][t3]
+7. [Gestión de configuraciones][t4]
+8. [Creación de infraestructuras virtuales reproducibles][t5]
+9. [Orquestación de máquinas virtuales][t6]
 
 La temporización de la asignatura y la interacción entre estudiantes y
 el profesor están en [un repositorio de GitHub][cc-course-repo].
