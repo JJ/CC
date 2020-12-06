@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Comprueba perl
+        run: perl --version
       - uses: actions/checkout@v2
       - name: "Set up Ruby"
         uses: actions/setup-ruby@v1
