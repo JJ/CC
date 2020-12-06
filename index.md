@@ -11,9 +11,8 @@ layout: index
 informática en la [UGR][ugr-website].
 
 La asignatura se imparte en el curso 2020-2021 de lunes a
-miércoles de 15:30 a 17:30. Las clases de "prácticas" de lunes y
-miércoles serán virtuales. Las clases de "teoría" de los martes serán
-presenciales en el aula 1.6.
+miércoles de 15:30 a 17:30. Desde las nuevas medidas de la Junta,
+todas las clases son virtuales y se emiten usando Jitsi.
 
 Tendrás que llevar tu portátil a todas
 las clases. Se usará [GitHub][github-website] para los ejercicios y el
@@ -94,7 +93,7 @@ hitos se organizarán de la forma siguiente.
 [p3]: documentos/proyecto/2.Tests.md
 [p4]: documentos/proyecto/3.Docker.md
 [p5]: documentos/proyecto/4.CI.md
-[p5]: documentos/proyecto/5.Microservicio.md
+[p6]: documentos/proyecto/5.Microservicio.md
 [p7]: documentos/proyecto/4.Prestaciones.md
 [p8]: documents/proyecto/5.Provisionamiento.md
 
