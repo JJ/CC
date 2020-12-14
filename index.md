@@ -48,7 +48,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 2. [Desarrollo basado en pruebas][t2]
 3. [Usando contenedores][t7]
 4. [Integración continua][ci]
-5. [REST](rest)
+5. [REST][rest]
 6. [Microservicios][t3]
 7. [Gestión de configuraciones][t4]
 8. [Creación de infraestructuras virtuales reproducibles][t5]
@@ -84,8 +84,8 @@ hitos se organizarán de la forma siguiente.
 4. [Uso de contenedores][p4]
 5. [Integración continua][p5]
 6. [Microservicios][p6]
-6. [Medición de prestaciones de MVs][p7]
-7. [Provisionamiento de máquinas virtuales][p8]
+7. [Medición de prestaciones de MVs][p7]
+8. [Provisionamiento de máquinas virtuales][p8]
 
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
