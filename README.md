@@ -43,7 +43,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 2. [Desarrollo basado en pruebas][t2]
 3. [Usando contenedores][t7]
 4. [Integración continua][ci]
-5. [REST](rest)
+5. [REST][rest]
 6. [Microservicios][t3]
 7. [Gestión de configuraciones][t4]
 8. [Creación de infraestructuras virtuales reproducibles][t5]
