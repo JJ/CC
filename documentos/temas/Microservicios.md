@@ -349,7 +349,9 @@ seguir las instrucciones en el sitio para instalarlo (o, en el caso de Ubuntu,
 instalarlo desde Synaptic o con `apt-get`), vamos al directorio en el que
 vayamos a crear el programa y escribimos
 
-`npm install express --save`
+```shell
+npm install express --save
+```
 
 en general, no hace falta tener permiso de administrador, solo el necesario
 para crear, leer y ejecutar ficheros en el directorio en el que se esté
@@ -389,12 +391,13 @@ de cada función de respuesta podemos procesar las órdenes que
 queramos. Dado que JS es un lenguaje asíncrono, la llamada a la
 función será también asíncrona.
 
-Por otro lado, se usa `send` sobre el objeto respuesta (`res`) para enviar el
-resultado,
-[una orden más flexible](https://expressjs.com/en/api.html#res.send) que admite
-todo tipo de datos que son procesados para enviar al cliente la respuesta
-correcta. Tampoco hace falta establecer explícitamente el tipo MIME que se
-devuelve, encargándose `send` del mismo.
+Por otro lado, se usa `send` sobre el objeto respuesta (`res`) para
+enviar el resultado,
+[una orden más flexible](https://expressjs.com/en/api.html#res.send)
+que admite todo tipo de datos que son procesados para enviar al
+cliente la respuesta correcta. Tampoco hace falta establecer
+explícitamente el tipo MIME que se devuelve, encargándose `send` del
+mismo.
 
 En los dos casos, las peticiones devuelven JSON. Una aplicación de
 este tipo puede devolver cualquier cosa, HTML o texto, pero conviene
@@ -405,8 +408,13 @@ mediante JavaScript.
 
 <div class='ejercicios' markdown="1">
 
-Realizar una aplicación básica que use `express` para devolver alguna
-estructura de datos del modelo que se viene usando en el curso.
+Realizar una aplicación básica que use algún microframework para
+devolver alguna estructura de datos del modelo que se viene usando en
+el curso u otra que se desee. La intención de este ejercicio es
+simplemente que se vea el funcionamiento básico de un microframework,
+especialmente si es alguno que, como `express`, tiene un generador de
+código. Se puede usar, por otro lado, el lenguaje y microframework que
+se desee.
 
 </div>
 
@@ -421,7 +429,8 @@ Con el mismo `express` se pueden generar aplicaciones no tan básicas instalando
 express prueba-rest
 ```
 
-> No estamos recomendando que se use express, y mucho menos el
+> No estamos recomendando que se use expresamente express, ni siquiera
+> si el lenguaje con el que se está trabajando es Node.JS, y mucho menos el
 > generador, para tu caso particular, simplemente estamos explicando
 > la posibilidad de hacerlo, sólo si `express` es el framework
 > adecuado para el problema que se está tratando de resolver, y sólo
