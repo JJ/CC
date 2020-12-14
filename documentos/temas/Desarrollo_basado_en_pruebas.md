@@ -38,9 +38,9 @@ aplicación y entender cuales son estos.</li>
 
 ## Introducción
 
-> Si no lo has hecho antes, conviene que en este momento
-> [aprendas git](https://mini-git.github.io/) y te abras una cuenta en
-> [GitHub](https://github.com).
+> Si no lo has hecho antes, conviene que en este
+> momento [aprendas git](https://mini-git.github.io/) y te abras una
+> cuenta en [GitHub](https://github.com).
 
 Los ciclos de
 [desarrollo de software actuales son ágiles y rápidos](https://es.wikipedia.org/wiki/Desarrollo_%C3%A1gil_de_software):
@@ -190,8 +190,7 @@ qué versiones mínimas, máximas o exactas deben tener.
 > Primero, debe constar que esta aplicación solo está aquí a efectos de
 > ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
 > usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
-> usar JavaScript,
-> [este curso](https://github.com/JJ/curso-js) o
+> usar JavaScript, [este curso](https://github.com/JJ/curso-js) o
 > [este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
 > cualquier otro también.
 
@@ -468,7 +467,7 @@ directamente desde la línea de órdenes.
 
 </div>
 
-## Desarrollo basado en pruebas
+## Usando TDD en la práctica
 
 El desarrollo basado en pruebas es una metodología que se integra con
 el desarrollo en la nube que hemos venido viendo de forma inconsútil
@@ -533,9 +532,10 @@ son programas que, a su vez, ejecutan los programas de test y escriben
 un informe sobre cuáles han fallado y cuáles no con más o menos
 parafernalia y farfolla. Una vez
 más,
-[hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
-nodejs (y, por supuesto, uno propio para cada uno de los lenguajes de
-programación, aunque en algunos están realmente estandarizados).
+[hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js)
+para nodejs (y, por supuesto, uno propio para cada uno de los
+lenguajes de programación, aunque en algunos están realmente
+estandarizados).
 
 Cada uno de ellos tendrá sus promotores y detractores, pero
 [Mocha](https://mochajs.org/) y [Jasmine](https://jasmine.github.io/)
@@ -659,7 +659,7 @@ Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](https://biblioteca.ugr.es):
 
 - [DevOps: a software architect's perspective](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991008320919704990)
-, un libro en general teórico y "a vista de pájaro" de la creación de
+  , un libro en general teórico y "a vista de pájaro" de la creación de
   equipos de desarrollo y aplicaciones basadas en esa filosofía.
 - [DevOps for developers](https://granatensis.ugr.es/discovery/fulldisplay?docid=alma991013959592104990&context=L&vid=34CBUA_UGR:VU1&lang=es&search_scope=MyInstitution&adaptor=Local%20Search%20Engine&tab=Granada&query=any,contain,DevOps%20for%20developers%20&offset=0)
   también con poco código, pero con una visión a más bajo nivel de
@@ -677,8 +677,7 @@ atrasados (y uno está en chino, así que no tengo ni idea).
 Este artículo te
 cuenta
 [qué hacer cuando testear es complicado](https://www.thoughtworks.com/insights/blog/test-driven-development-best-thing-has-happened-software-design).
-Una
-serie de técnicas, como *mocking*, te ayudan a probar en circunstancias
+Una serie de técnicas, como *mocking*, te ayudan a probar en circunstancias
 que podrían ser complicadas o simplemente específicas (como la hora
 del día).
 
