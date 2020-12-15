@@ -611,7 +611,14 @@ Crear pruebas para las diferentes rutas de la aplicación.
 
 ## Microservicios en producción
 
-En general, todos los microframeworks tienen un servidor web que es
+> Conviene que leas previamente
+> [este material sobre inyección de dependencias](https://jj.github.io/curso-tdd/temas/inversi%C3%B3n.html).
+> Si lanzas varias copias de un microservicio, todas tienen que
+> trabajar contra la misma fuente de datos, y hay que asegurarse de
+> que haya una única fuente de verdad (SSOT, *single source of
+> truth*).
+
+En general, todos los microframeworks incluyen un servidor web que es
 usable principalmente para desarrollo. Casi ninguno te aconseja que se
 use en producción, y esto por varias razones: si ocurre algún error no
 recuperable, el programa dejará de ejecutarse, dejando el servicio
@@ -663,11 +670,16 @@ pm2 logs
 
 Hay
 [muchos otros gestores de procesos](https://www.tecmint.com/process-managers-for-node-js-applications-in-linux/),
-pero esto incluye también el systemd de Linux, un gestor que se puede usar con
+pero esto incluye también el `systemd` de Linux, un gestor que se puede usar con
 éxito en sistemas que lo implementen, como es natural, y que está incluido en
 cualquier distribución.
 
-Pero en muchos lenguajes, estos gestores de procesos van un poco más allá, y
+## Servidores web para microservicios
+
+Mientras que en Node el servidor que tiene `express` (y otra serie de
+microframeworks) se puede usar sin ningún problema en producción y lo
+único que necesita uno delante es ese lanzador de tareas, en la
+mayoría de los lenguajes estos gestores de procesos van un poco más allá, y
 tienen un interfaz específico para llamar a las funciones a través de un
 interfaz web. Este tipo de interfaz, que se llama genéricamente `*SGI`, de
 *services (o server) gateway interface*, se implementa en lenguajes como
@@ -677,8 +689,10 @@ antes es en Python, donde se llama
 server gateway interface*.
 
 En lenguajes como este, los gestores de de procesos tendrán además un
-interfaz WSGI para conectar directamente con las
-funciones. Generalmente, el interfaz es un objeto creado
+interfaz para conectar directamente con las
+funciones, que se denomina de diferentes maneras en diferentes
+lenguajes, casi siempre generalmente con el sufijo -SGI. Generalmente,
+el interfaz es un objeto creado
 automáticamente por el microframework; en otros casos tendremos que
 programarlo específicamente. Estos programas hacen más énfasis en el
 hecho de que se tratan de un servidor HTTP con WSGI que con el hecho
@@ -723,7 +737,8 @@ En todo caso, cuando se ejecuta `gunicorn` la consola se queda
 bloqueada; tampoco te permite arrancar o rearrancar los procesos, o
 añadir más workers. De hecho, `pm2` es independiente del proceso que
 se ejecute o el lenguaje en el que se esté trabajando, y se puede usar
-con [microframeworks en Python](https://stackoverflow.com/questions/53686057/running-gunicorn-flask-with-pm2-doesnt-load-proper-css),
+con
+[microframeworks en Python](https://stackoverflow.com/questions/53686057/running-gunicorn-flask-with-pm2-doesnt-load-proper-css),
 pero para reducir las dependencias, es mejor usar una herramienta que
 esté escrita también en Python. Esta herramienta puede ser `fabric`
 (de la que se hablará más adelante), pero mientras tanto pm2 es
@@ -776,7 +791,8 @@ conveniente usar una sola herramienta para que una orden +
 estándar. Normalmente las herramientas de construcción o gestores de
 tareas como gulp, babel, `yarn` o `grunt` pueden encargarse de este tipo de cosas.
 
-Por ejemplo, podemos usar `gulp` con el servidor de porras anterior:
+Por ejemplo, podemos usar `gulp` con el servidor de porras
+futbolísticas anterior:
 
 ```javascript
 const gulp  = require('gulp');
@@ -784,34 +800,47 @@ const mocha = require('gulp-mocha');
 const pm2   = require('pm2');
 var shell = require('gulp-shell');
 
-gulp.task('test', () => (
-    gulp.src('test/porra.js', {read: false})
-        // `gulp-mocha` needs filepaths so you can't have any plugins before it
-        .pipe(mocha({reporter: 'nyan'}))
-));
+gulp.task('test', async () => {
+  gulp.src('test/test_*.js', {read: false})
+  .pipe(mocha({reporter: 'nyan'}))
+});
 
-gulp.task('start', function () {
-  pm2.connect(true, function () {
+gulp.task('start', async () => {
+  pm2.connect(true, async () => {
     pm2.start({
       name: 'Porra',
-      script: 'index.js',
+      script: 'lib/index.js',
       exec_mode: 'cluster',
       instances: 4
-    }, function () {
+    }, async () => {
          console.log('Arranca porra');
-         pm2.streamLogs('all', 0);
        });
   });
 });
 
-gulp.task('stop', shell.task(['pm2 stop Porra' ]));
+gulp.task('stop', async () => {
+  pm2.connect(true, async () => {
+    pm2.stop( "Porra", async ( err, proc ) => {
+      pm2.disconnect();
+      console.log("Parando la porra");
+    });
+  });
+});
+
 ```
 
 [`gulp`](https://gulpjs.com/) es un programa para automatizar el
 workflow que funciona de forma asíncrona y que permite definir con
 código las tareas a realizar. En este caso solo tres tareas: test,
-start y stop, y para ello usamos una serie de *plug-ins* que integran
-gulp con utilidades como `mocha` o el shell.
+start y stop, y para ello usamos una serie de *plugins* que integran
+gulp con utilidades como `mocha` o el shell. En este caso estamos
+usando `pm2` como una biblioteca externa, en vez de usarlo desde la
+línea de órdenes; es la ventaja de usar una herramienta que está
+escrita en el mismo lenguaje que nuestra aplicación. `pm2` tiene un
+API, y cada vez que trabajamos con él tenemos que conectarnos
+explícitalmente al mismo con `connect`. En este caso, como se ve, se
+han evitado totalmente los comandos externos y se ha usado siempre el
+API nativo de los módulos en Node que se están usando.
 
 Usando esto, con
 
@@ -833,7 +862,7 @@ el shell.
 
 Usar `rake`, `invoke` o la herramienta equivalente en tu lenguaje de
 programación para programar diferentes tareas que se puedan lanzar
-fácilmente desde la línea de órdenes.
+fácilmente desde la línea de órdenes un microservicio.
 
 </div>
 
