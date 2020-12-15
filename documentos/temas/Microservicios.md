@@ -484,7 +484,7 @@ const crea_id = porra.crea_id;
 // Crea una porra
 app.put('/porra/:competition/:year/:local/:visitante', function( req, response ) {
     const nueva_porra = new porra.Porra(req.params.local,req.params.visitante,
-				      req.params.competition, req.params.year );
+                      req.params.competition, req.params.year );
     porras.nueva( nueva_porra );
     response.status(200).send( nueva_porra );
 });
@@ -492,13 +492,13 @@ app.put('/porra/:competition/:year/:local/:visitante', function( req, response )
 
 app.put('/apuesta/:menda/:competition/:year/:local/:goles_local/:visitante/:goles_visitante', function( req, response ) {
     const ID = crea_id(req.params.local,req.params.visitante,
-		     req.params.competition, req.params.year );
+             req.params.competition, req.params.year );
     if ( !porras.porra(ID) ) {
-	response.status(404).send("No existe esa porra");
+    response.status(404).send("No existe esa porra");
     } else {
-      const esta_apuesta = porras.apuesta( porras.porra(ID), req.params.menda, 
-					 req.params.goles_local, 
-					 req.params.goles_visitante );
+      const esta_apuesta = porras.apuesta( porras.porra(ID), req.params.menda,
+                     req.params.goles_local,
+                     req.params.goles_visitante );
       response.status(200).send( esta_apuesta );
     }
 
@@ -507,12 +507,12 @@ app.put('/apuesta/:menda/:competition/:year/:local/:goles_local/:visitante/:gole
 // Establece el resultado de la porra
 app.post('/porra/resultado/:competition/:year/:local/:goles_local/:visitante/:goles_visitante', function( req, response ) {
     const ID = crea_id(req.params.local,req.params.visitante,
-		     req.params.competition, req.params.year );
+             req.params.competition, req.params.year );
     if ( !porras.porra(ID) ) {
-	    response.status(404).send("No existe esa porra");
+        response.status(404).send("No existe esa porra");
     } else {
-	    porras.resultado(ID, req.params.goles_local, req.params.goles_visitante );
-	    response.status(200).send( porras.porra(ID) );
+        porras.resultado(ID, req.params.goles_local, req.params.goles_visitante );
+        response.status(200).send( porras.porra(ID) );
     }
 
 });
@@ -527,24 +527,24 @@ app.get('/porras', function(request, response) {
 app.get('/porra/:ID', function(request, response) {
     const esta_porra_ID = request.params.ID;
     if ( !porras.porra(esta_porra_ID ) ) {
-	response.status(404).send("No existe esa porra");
+        response.status(404).send("No existe esa porra");
     } else {
-	response.status(200).send( porras.porra(esta_porra_ID) );
+        response.status(200).send( porras.porra(esta_porra_ID) );
     }
 });
 
 // Recupera el ganador o ganadores de la porra
 app.get('/porra/ganador/:competition/:year/:local/:visitante/', function( req, response ) {
     const ID= crea_id(req.params.local,req.params.visitante,
-		    req.params.competition, req.params.year );
+            req.params.competition, req.params.year );
     if ( !porras.porra(ID) ) {
-	response.status(404).send("No existe esa porra");
+    response.status(404).send("No existe esa porra");
     } else {
-	if ( !porras.porra(ID).resultado ) {
-	    response.status(404).send("No hay resultado para ese partido");
-	} else {
-	    response.status(200).send( porras.ganadores( ID ) );
-	}
+        if ( !porras.porra(ID).resultado ) {
+            response.status(404).send("No hay resultado para ese partido");
+        } else {
+            response.status(200).send( porras.ganadores( ID ) );
+        }
     }
 
 });
@@ -658,10 +658,10 @@ con `mocha`
 que [ya se ha visto](https://jj.github.io/desarrollo-basado-pruebas/)
 pero usamos funciones específicas:
 
-* `request` hace una llamada sobre `app` como si la hiciéramos *desde
+- `request` hace una llamada sobre `app` como si la hiciéramos *desde
   fuera*; `put`, por tanto, llamará a la ruta correspondiente, que
   crea un partido sobre el que apostar.
-* `expect` expresa qué se puede esperar de la respuesta. Por ejemplo,
+- `expect` expresa qué se puede esperar de la respuesta. Por ejemplo,
   se puede esperar que sea de tipo JSON (porque es lo que enviamos, un
   JSON del partido añadido) y además que sea de tipo '200', respuesta
   correcta. Y como esta es la última de la cadena, llamamos a `done`
