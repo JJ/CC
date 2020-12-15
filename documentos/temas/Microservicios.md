@@ -390,6 +390,13 @@ app.listen(port);
 console.log('Server running at http://127.0.0.1:'+port+'/');
 ```
 
+> Este ejemplo es solamente ilustrativo de los diferentes elementos de
+> un microservicio: configuración, rutas, arranque. En ninguno de los
+> casos se han tratado de seguir buenas prácticas en el mismo. En cada
+> uno de los elementos deberá seguirse las buenas prácticas
+> correspondientes, incluyendo el desacoplamiento de las rutas y el
+> programa principal que las lanza desde a un puerto.
+
 Para empezar, `express` nos evita todas las molestias de tener que
 procesar nosotros el URL: directamente escribimos una
 función para cada respuesta que queramos tener, lo que facilita mucho la
@@ -464,61 +471,125 @@ denomina enrutado. En `express` se pueden definir los parámetros de forma
 bastante simple, usando marcadores precedidos por `:`.
 
 Por ejemplo, si queremos tener diferentes contadores podríamos usar el
-[programa siguiente](https://github.com/JJ/node-app-cc/blob/master/lib/index.js):
+[programa siguiente](https://github.com/JJ/node-app-cc/blob/master/lib/Rutas.js):
 
 ```javascript
-var express = require('express');
-var app = express();
+"use strict";
 
-// recuerda ejecutar antes grunt creadb
-var db_file = "porrio.db.sqlite3";
-var apuesta = require("./Apuesta.js");
-var porra = require("./Porra.js");
+const express = require('express');
+const app = express();
 
-var porras = new Array;
+const { Apuesta } = require("./Apuesta.js");
+const { Porras } = require( "./Porras.js" );
+const { FSDator } = require( "./FSDator.js" );
 
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
+const porra = require("./Porra.js");
 
-app.put('/porra/:local/:visitante/:competition/:year',
-    function( req, response ) {
-        var nueva_porra = new porra.Porra(
-            req.params.local,req.params.visitante,
-            req.params.competition, req.params.year
-        );
-        porras.push(nueva_porra);
-        response.send(nueva_porra);
+const dator = new FSDator("porras");
+const porras = new Porras( dator );
+const crea_id = porra.crea_id;
+
+
+// Crea una porra
+app.put('/porra/:competition/:year/:local/:visitante', function( req, response ) {
+    const nueva_porra = new porra.Porra(req.params.local,req.params.visitante,
+				      req.params.competition, req.params.year );
+    porras.nueva( nueva_porra );
+    response.status(200).send( nueva_porra );
 });
 
+
+app.put('/apuesta/:menda/:competition/:year/:local/:goles_local/:visitante/:goles_visitante', function( req, response ) {
+    const ID = crea_id(req.params.local,req.params.visitante,
+		     req.params.competition, req.params.year );
+    if ( !porras.porra(ID) ) {
+	response.status(404).send("No existe esa porra");
+    } else {
+      const esta_apuesta = porras.apuesta( porras.porra(ID), req.params.menda, 
+					 req.params.goles_local, 
+					 req.params.goles_visitante );
+      response.status(200).send( esta_apuesta );
+    }
+
+});
+
+// Establece el resultado de la porra
+app.post('/porra/resultado/:competition/:year/:local/:goles_local/:visitante/:goles_visitante', function( req, response ) {
+    const ID = crea_id(req.params.local,req.params.visitante,
+		     req.params.competition, req.params.year );
+    if ( !porras.porra(ID) ) {
+	    response.status(404).send("No existe esa porra");
+    } else {
+	    porras.resultado(ID, req.params.goles_local, req.params.goles_visitante );
+	    response.status(200).send( porras.porra(ID) );
+    }
+
+});
+
+
+// Baja todas las porras que haya en un momento determinado
 app.get('/porras', function(request, response) {
-response.send( porras );
+    response.send( porras.todas() );
 });
 
-app.listen(app.get('port'), function() {
-    console.log("Node app is running at localhost:" + app.get('port'));
+// Baja todas las apuestas de un partido determinado
+app.get('/porra/:ID', function(request, response) {
+    const esta_porra_ID = request.params.ID;
+    if ( !porras.porra(esta_porra_ID ) ) {
+	response.status(404).send("No existe esa porra");
+    } else {
+	response.status(200).send( porras.porra(esta_porra_ID) );
+    }
 });
+
+// Recupera el ganador o ganadores de la porra
+app.get('/porra/ganador/:competition/:year/:local/:visitante/', function( req, response ) {
+    const ID= crea_id(req.params.local,req.params.visitante,
+		    req.params.competition, req.params.year );
+    if ( !porras.porra(ID) ) {
+	response.status(404).send("No existe esa porra");
+    } else {
+	if ( !porras.porra(ID).resultado ) {
+	    response.status(404).send("No hay resultado para ese partido");
+	} else {
+	    response.status(200).send( porras.ganadores( ID ) );
+	}
+    }
+
+});
+
+// Exporta la variable para poder hacer tests
+module.exports = app;
 ```
 
-Este [programa
-(express-count.js)](https://github.com/JJ/node-app-cc/blob/master/index.js)
-introduce otras dos órdenes REST: PUT, que, como recordamos, sirve para crear
-nuevos recurso y es idempotente (se puede usar varias veces con el mismo
-resultado) y además GET. Esa orden la vamos a usar para crear contadores a los
-que posteriormente accederemos con `get`. PUT no es una orden a la que se pueda
-acceder desde el navegador, así que para usarla necesitaremos hacer algo así
-desde la línea de órdenes:
-`curl -X PUT http://127.0.0.1:5000/porra/local/visitante/Copa/2013` para lo que
-previamente habrá que haber instalado `curl`, claro. Esta orden llama a PUT
-sobre el programa, y crea un partido con esas características. Una vez creado,
-podemos acceder a él desde la línea de órdenes o desde el navegador; la
-dirección `http://127.0.0.1:5000/porras` nos devolverá en formato JSON todo lo
-que hayamos almacenado hasta el momento.
+Este programa usa diferentes órdenes REST:
+
+- `PUT`, que, como recordamos, sirve para crear nuevos recurso y es
+  idempotente (se puede usar varias veces con el mismo resultado). PUT
+  no es una orden a la que se pueda acceder desde el navegador, así
+  que para usarla necesitaremos hacer algo así desde la línea de
+  órdenes: `curl -X PUT
+  http://127.0.0.1:5000/porra/local/visitante/Copa/2013` para lo que
+  previamente habrá que haber instalado `curl`, claro. Esta orden
+  llama a `PUT` sobre el programa, y crea un partido con esas
+  características, que además será el URI del mismo. Una vez creado,
+  podemos acceder a él desde la línea de órdenes o desde el navegador; la
+  dirección `http://127.0.0.1:5000/porras` nos devolverá en formato JSON todo lo
+  que hayamos almacenado hasta el momento.
+- `GET`, que se va a usar para acceder a los diferentes URIs creados.
+- `POST` en este caso nos sirve no para modificar un URI, sino para
+  añadir datos a un URI (recurso) existente, en este caso el
+  resultado, que se añade al URI que representa la porra; en este
+  caso, aunque tenga parámetros intercalados (para mayor legibilidad),
+  el URI sería
+  `/porra/resultado/:competition/:year/:local/:visitante/`, que es el
+  mismo URI que hemos usado para definirlo con `PUT`.
 
 Todas las órdenes definen una *ruta*, que es como se denominan cada
 una de las funciones del API REST. Las
 [rutas](https://hub.packtpub.com/understanding-express-routes/)
 pueden ser simples cadenas (como `/porras` en el caso de `get`) o
-incluir parámetros, como en el caso de `put`:
+incluir parámetros, como en el caso de `app.put`:
 `/porra/:local/:visitante/:competition/:year` incluye una orden al
 principio y cuatro parámetros. Estos parámetros se recuperan dentro de
 la función *callback* como atributos de la variable `req.params`,
