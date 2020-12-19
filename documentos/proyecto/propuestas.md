@@ -29,7 +29,6 @@ layout: index
 * Aplicación móvil para flujo de relaciones con los clientes: un
   tracking, básicamente que finalmente permita descargar la factura.
 
-
 ## Granada tierra soñada
 
 * Proyecto granadino que ha creado una tipografía.
@@ -52,7 +51,6 @@ layout: index
 * Miguel, de una empresa de traducción
 * Subir archivo: hacer un servidor, login, registro, recordar la clave
 * Usar bootstrap con una plantilla y con Django poder enviar correos.
-
 
 ## Máquinas de café
 
