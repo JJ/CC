@@ -10,10 +10,8 @@ next: Contenedores
 ## Objetivos de la asignatura
 
 * Diseñar, construir y analizar las prestaciones de un centro de
-  proceso de datos virtual. 
-  
+  proceso de datos virtual.
 * Documentar y mantener una plataforma virtual.
-
 * Realizar tareas de administración en infraestructura virtual.
 
 ## Objetivos específicos
@@ -27,42 +25,44 @@ next: Contenedores
 ## Introducción
 
 Antes de poder provisionar, es decir, configurar los servicios en una
-máquina o conjunto de máquinas 
-virtuales, es necesario poder crearlas a partir de imágenes de
-sistemas operativos, en un remedo de *arranque* tal como se hace en
-una máquina real. En el espíritu DevOps, tiene
-que haber una forma de hacerlo automáticamente y de forma reproducible
-con código, usando este como infraestructura. También es deseable
-hacerlo de forma que sea totalmente portable de una infraestructura a otra; en general,
-debe haber un procedimiento para que las infraestructuras como servicio (IaaS)
-sean controladas programáticamente, aparte de las otras dos formas que
-suelen ofrecer, a través de la web y a través de los interfaces de
-línea de órdenes. Trabajar con la web no es escalable y apenas es reproducible, porque solo
-permite crear infraestructuras una por una o por grupos si es que son similares; la segunda no es portable,
-porque cada servicio *cloud* tiene sus propias órdenes como se ha
-visto
+máquina o conjunto de máquinas virtuales, es necesario poder crearlas
+a partir de imágenes de sistemas operativos, en un remedo de
+*arranque* tal como se hace en una máquina real. En el espíritu
+DevOps, tiene que haber una forma de hacerlo automáticamente y de
+forma reproducible con código, usando este como
+infraestructura. También es deseable hacerlo de forma que sea
+totalmente portable de una infraestructura a otra; en general, debe
+haber un procedimiento para que las infraestructuras como servicio
+(IaaS) sean controladas programáticamente, aparte de las otras dos
+formas que suelen ofrecer, a través de la web y a través de los
+interfaces de línea de órdenes. Trabajar con la web no es escalable y
+apenas es reproducible, porque solo permite crear infraestructuras una
+por una o por grupos si es que son similares; la segunda no es
+portable, porque cada servicio *cloud* tiene sus propias órdenes como
+se ha visto
 en
 [el tema de automatizar servicios *cloud*](Automatizando_cloud.md). Solo
 el trabajar con código desde una herramienta que permita trabajar con
-cualquier servicio cloud permite
-reproducir configuraciones de un vendedor a otro sin ningún problema.
+cualquier servicio cloud permite reproducir configuraciones de un
+vendedor a otro sin ningún problema.
 
 Estas herramientas se denominan herramientas de *orquestación* o de
-*gestión de configuraciones*, aunque a veces en esta denominación también
-incluyen a otras de más bajo nivel como Ansible o Chef. En realidad
-hoy en día la única herramienta existente y en uso amplio es
+*gestión de configuraciones*, aunque a veces en esta denominación
+también incluyen a otras de más bajo nivel como Ansible o Chef. En
+realidad hoy en día la única herramienta existente y en uso amplio es
 Vagrant. Otras herramientas, como Vortex, parecen abandonadas y otras
-como [Juju](https://docs.jujucharms.com/2.4/en/getting-started) o [Cobbler](http://cobbler.github.io/manuals/quickstart/)
-funcionan a otro nivel diferente, trabajando para configurar desde
-cero *bare metal* o máquinas sin ningún sistema operativo instalado
-que usan arranque
-remoto. [Terraform](https://github.com/hashicorp/terraform), por otro
-lado, es una herramienta que sí permite tratar la infraestructura como
-código y se encuentra más o menos en la misma área,
+como [Juju](https://docs.jujucharms.com/2.4/en/getting-started)
+o [Cobbler](http://cobbler.github.io/manuals/quickstart/) funcionan a
+otro nivel diferente, trabajando para configurar desde cero *bare
+metal* o máquinas sin ningún sistema operativo instalado que usan
+arranque remoto. [Terraform](https://github.com/hashicorp/terraform),
+por otro lado, es una herramienta que sí permite tratar la
+infraestructura como código y se encuentra más o menos en la misma
+área,
 aunque
 [Vagrant se centra en gestionar entornos de desarrollo y Terraform es para construir infraestructura](https://www.vagrantup.com/intro/vs/terraform.html);
 en ese sentido, Vagrant es de más alto nivel que Terraform, aunque se
-pueden usar de forma complementaria. 
+pueden usar de forma complementaria.
 
 La ventaja de Vagrant es que puede trabajar de forma indistinta con
 máquinas virtuales locales o remotas e incluso, en las últimas
@@ -73,7 +73,7 @@ No vamos a dedicar demasiado tiempo a la creación y configuración de
 máquinas virtuales específicas, aunque en el tema adicional de
 [uso de sistemas en la nube](Uso_de_sistemas.md) se explica como
 trabajar con máquinas virtuales con `kvm` y cómo definir, desde la
-línea de órdenes, máquinas virtuales en sistemas en cloud como Azure. 
+línea de órdenes, máquinas virtuales en sistemas en cloud como Azure.
 
 
 ## Orquestación de máquinas virtuales
@@ -83,7 +83,7 @@ orquestación y gestión de las mismas, herramientas como
 [Vagrant](https://www.vagrantup.com) ayudan a hacerlo, aunque también
 Puppet e incluso Juju pueden hacer muchas de las funciones de
 Vagrant, salvo por el hecho de que no pueden trabajar directamente con
-el hipervisor.  
+el hipervisor.
 
 > Realmente no hay muchas alternativas a
 > Vagrant. En
@@ -91,7 +91,7 @@ el hipervisor.
 > algunos, pero ninguno es lo suficientemente amplio o aceptado para
 > hacerle sombra. Únicamente sistemas basados en contenedores pueden
 > acercársele; por ejemplo Kubernetes. Pero ninguno para orquestación
-> de máquinas virtuales. 
+> de máquinas virtuales.
 
 La ventaja de Vagrant es que permite gestionar el ciclo de vida
 completo de una máquina virtual, desde la creación hasta su
@@ -103,7 +103,7 @@ como en local.
 Sigue las
 [instrucciones en la web](https://www.vagrantup.com/downloads.html),
 para instalarte Vagrant, la versión 2.0.1 ha salido en noviembre
-de 2017. 
+de 2017.
 Es una aplicación escrita en Ruby, por lo que
 tendrás que tener una instalación preparada. Te aconsejamos que uses
 un gestor de versiones como [RVM](http://rvm.io) o RBEnv para poder
@@ -116,7 +116,7 @@ trabajar con él en espacio de usuario fácilmente.
 >instalar *gemas* (bibliotecas), que se usarán para los *plugin* de
 >Vagrant y también cómo trabajar con bucles y variables, que se usarán
 >en el fichero de definición de máquinas virtuales denominado
->`Vagrantfile`. 
+>`Vagrantfile`.
 
 Con Vagrant [te puedes descargar directamente](https://gist.github.com/dergachev/3866825)
 [una máquina configurada de esta lista](http://www.vagrantbox.es/) o
@@ -131,7 +131,7 @@ vagrant box add centos7 https://github.com/vezzoni/vagrant-vboxes/releases/downl
 ~~~
 
 >Para conocer todos los comandos de vagrant, `vagrant help` o `vagrant
->list-commands`. 
+>list-commands`.
 
 En este caso usamos un subcomando de `vagrant box`,
 que permite añadir nuevas imágenes a nuestro gestor de máquinas
@@ -208,7 +208,7 @@ a Vagrant) tendrás que hacerlo así:
 > Lo que también se puede hacer con `vagrant ssh`, claro. El hacerlo
 > así es para que quede claro cómo se hace la conexión directa desde
 > ssh para poder provisionar directamente la máquina virtual sin pasar
-> necesariamente por vagrant. 
+> necesariamente por vagrant.
 
 Para suspender el estado de la máquina virtual y guardarlo se usa
 
@@ -237,7 +237,7 @@ no se podrá hacer desde Vagrant sino desde alguna otra herramienta
 
 ### Trabajando con proveedores cloud.
 
-Vagrant tiene una serie de drivers para trabajar con los 
+Vagrant tiene una serie de drivers para trabajar con los
 [proveedores de cloud más habituales](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins#providers), así como con herramientas libres como
 [OpenStack](https://github.com/mat128/vagrant-openstack-cloud-provider). Vagrant
 trabaja con el API de estos servicios, que en la jerga de Vagrant se
@@ -250,7 +250,7 @@ ejemplo,
 [el *driver* para Azure](https://github.com/Azure/vagrant-azure) se
 configura como una aplicación cliente de Azure.
 
-> Para lo que es conveniente ver el 
+> Para lo que es conveniente ver el
 > [tutorial de uso de Azure desde la línea de órdenes](https://www.youtube.com/watch?v=c9Wg1R-bCqQ), donde explica
 > entre otras cosas el concepto de Service Principal, usado para
 > configurar el driver.
@@ -267,7 +267,6 @@ a tener en cuenta a la hora de crear el Vagrantfile
   no es en conjunción con otros. Aparte de por una razón de seguridad
   básica, también por el hecho de que usar variables de entorno u otro
   sistema es configurable para cada uno de los usuarios.
-  
 * Vagrant, en general, tiene un modelo abstracto y un acceso al API
   del sistema nube en el que la trata como si se tratara de un un
   conjunto de máquinas virtuales. Se puede gestionar también
@@ -275,8 +274,8 @@ a tener en cuenta a la hora de crear el Vagrantfile
   de forma directa dentro de este concepto, como por ejemplo, la
   creación de un *service principal* que es necesaria para acceder
   desde el propio Vagrant, requerirán de otra herramienta o del uso de
-  scripts de línea de órdenes o del SDK. 
-  
+  scripts de línea de órdenes o del SDK.
+
 >  Un Vagrantfile es un programa
 >  en Ruby y por tanto se podrá usar el SDK de Ruby para la nube
 >  correspondiente para realizar este tipo de tareas. En la práctica,
@@ -294,7 +293,7 @@ imágenes tienen formato VirtualBox, pero algunas tienen formato
 `Vagrant-lxc` (para usar en el sistema de virtualización ligera `lxc`), VMWare,
 KVM, Parallels o `libvirt`. Ninguno de estos formatos está instalado
 por defecto en Vagrant y para trabajar con ellos habrá que instalar un
-plugin. 
+plugin.
 
 Instalemos el
 [plugin de `libvirt`](https://github.com/vagrant-libvirt/vagrant-libvirt),
@@ -308,10 +307,10 @@ propio `lxc` mencionado anteriormente. Una vez instalada esta
 biblioteca, no hay que preocuparse tanto por el sistema de
 virtualización que tengamos debajo e incluso podemos trabajar con ella
 de forma programática para crear y configurar máquinas virtuales sin
-tener que recurrir a sistemas de orquestación o provisionamiento.  
+tener que recurrir a sistemas de orquestación o provisionamiento.
 
 Simultáneamente a la instalación, podemos descargarnos esta máquina
-virtual que está en ese formato. 
+virtual que está en ese formato.
 
 ~~~
 vagrant box add viniciusfs/centos7 https://atlas.hashicorp.com/viniciusfs/boxes/centos7/
@@ -342,7 +341,7 @@ sudo vagrant up --provider=libvirt
 donde la principal diferencia es que le estamos indicando que queremos
 usar el *proveedor* `libvirt`, en vez de el que usa por omisión, Virtual
 Box. Dado que este proveedor conecta con un daemon que se ejecuta en
-modo privilegiado, habrá que usar `sudo` en este caso. 
+modo privilegiado, habrá que usar `sudo` en este caso.
 
 >Puede que
 >tengas
@@ -364,7 +363,7 @@ Y todos los demás comandos, también con `sudo`, por lo indicado anteriormente.
 <div class='ejercicios' markdown='1'>
 
 Instalar una máquina virtual ArchLinux o FreeBSD para KVM, otro
-hipervisor libre, usando Vagrant y conectar con ella. 
+hipervisor libre, usando Vagrant y conectar con ella.
 
 </div>
 
@@ -404,7 +403,7 @@ seguridad.
 
 La imagen que se usa en el segundo caso es una que incluye Redis y
 PostgreSQL, y que por tanto se puede usar como base para cualquier
-aplicación que las use. 
+aplicación que las use.
 
 ## Provisionando máquinas virtuales.
 
@@ -414,12 +413,12 @@ sabiendo lo que sabemos sobre provisionamiento por el tema correspondiente, Vagr
 [provisionarla de muchas maneras diferentes](https://www.vagrantup.com/docs/provisioning/index.html). En
 general, Vagrant usará opciones de configuración diferente dependiendo
 del provisionador, subirá un fichero a un directorio temporal del
-mismo y lo ejecutará (tras ejecutar todo lo necesario para el mismo). 
+mismo y lo ejecutará (tras ejecutar todo lo necesario para el mismo).
 
 La provisión tiene lugar cuando se *alza* una máquina virtual (con
 `vagrant up`) o bien explícitamente haciendo `vagrant provision`. En
 cualquier caso se lee del Vagrantfile y se llevan a cabo las acciones
-especificadas en el fichero de configuración. 
+especificadas en el fichero de configuración.
 
 En general, trabajar con un provisionador requiere especificar de cuál
 se trata y luego dar una serie de órdenes específicas. Comenzaremos
@@ -453,7 +452,7 @@ comandos; se le pasa un hash en Ruby  (variable: valor, tal como en
 javascript, separados por comas) en el que la clave `inline` indica el
 comando que se va a ejecutar, en este caso `yum`, el programa para
 instalar paquetes en CentOS, y al que se le indica `-y` para que
-conteste *Yes* a todas las preguntas sobre la instalación. 
+conteste *Yes* a todas las preguntas sobre la instalación.
 
 Este Vagrantfile no necesita nada especial para ejecutarse: se le
 llama directamente cuando se ejecuta `vagrant up` o explícitamente
@@ -462,9 +461,9 @@ este programa bajándose todas sus dependencias (y tardará un rato).
 
 <div class='ejercicios' markdown='1'>
 
-	Crear un script para provisionar de forma básica una máquina
-    virtual para el proyecto que se esté llevando a cabo en la asignatura. 
-	
+Crear un script para provisionar de forma básica una máquina
+virtual para el proyecto que se esté llevando a cabo en la asignatura.
+
 </div>
 
 <div class='nota' markdown='1'>
@@ -478,12 +477,12 @@ se puede usar un fichero externo o incluso alojado en un sitio web
 
 </div>
 
-El problema con los guiones de *shell* 
+El problema con los guiones de *shell*
 
 >y no sé por qué diablos pongo
 >guiones si pongo shell, podía poner scripts de shell directamente y
 >todo el mundo me entendería, o guiones de la concha y nadie me
->entendería 
+>entendería
 
 es que son específicos de un sistema operativo determinado. Por eso Vagrant
 permite muchas otras formas de configuración, incluyendo casi todos
@@ -500,9 +499,9 @@ con chef-solo y hay que hacerlo desde shell o Ansible;
 [este ejemplo](../../ejemplos/vagrant/provision/chef-with-shell/Vagrantfile)
 que usa
 [este fichero shell](../../ejemplos/vagrant/provision/chef-with-shell/chef-solo.sh)
-puede provisionar, por ejemplo, una máquina CentOS. 
+puede provisionar, por ejemplo, una máquina CentOS.
 
-Una vez preinstalado Chef 
+Una vez preinstalado Chef
 
 >Lo que también podíamos haber hecho con
 >[una máquina que ya lo tuviera instalado, de las que hay muchas en `vagrantbox.es`](http://www.vagrantbox.es/)
@@ -510,9 +509,9 @@ Una vez preinstalado Chef
 >la versión 6.5 de CentOS fácilmente por no tener una versión
 >actualizada de Ruby)
 
-lo incluimos en el Vagrantfile, tal como [este](../../ejemplos/vagrant/provision/chef/Vagrantfile) 
+lo incluimos en el Vagrantfile, tal como [este](../../ejemplos/vagrant/provision/chef/Vagrantfile)
 
-~~~
+```Ruby
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -523,13 +522,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	end
 
 end
-~~~
+```
 
 Este fichero usa un bloque de Ruby para pasarle variables y
 simplemente declara que se va a usar la receta `emacs`, que
 previamente tendremos que haber creado en un subdirectorio cookbooks
 que descienda exactamente del mismo directorio y que contenga
-simplemente `package 'emacs'` que tendrá que estar en un fichero 
+simplemente `package 'emacs'` que tendrá que estar en un fichero
 
 ~~~
 cookbooks/emacs/recipes/default.rb
@@ -538,13 +537,13 @@ cookbooks/emacs/recipes/default.rb
 Con todo esto se puede configurar emacs. Pero, la verdad, seguro que
 es más fácil hacerlo en Ansible y/o en otro sistema operativo que no
 sea CentOS porque yo, por lo pronto, no he logrado instalar chef-solo
-en ninguna de las máquinas pre-configuradas de VagrantBoxes. 
+en ninguna de las máquinas pre-configuradas de VagrantBoxes.
 
 <div class='ejercicios' markdown='1'>
 
-	Configurar tu máquina virtual usando `vagrant` con el provisionador
-	ansible
-	
+Configurar tu máquina virtual usando `vagrant` con el provisionador
+ansible
+
 </div>
 
 Desde Vagrant se puede crear también una
@@ -553,7 +552,7 @@ mínimo necesario para poder funcionar, incluyendo el soporte para ssh
 y provisionadores como Chef o Puppet. Se puede crear directamente en
 VirtualBox y usar
 [`vagrant package`](https://www.vagrantup.com/docs/cli/package.html)
-para *empaquetarla* y usarla para su consumo posterior. 
+para *empaquetarla* y usarla para su consumo posterior.
 
 ## Configuración de sistemas distribuidos
 
@@ -568,20 +567,21 @@ precisamente por la facilidad para configurarlos como sistemas
 distribuidos, que proviene de su diseño para ser anfitriones de
 contenedores pero también a su uso de `etcd`, una base de datos
 clave-valor distribuida que se usa en este caso principalmente para
-guardar las configuraciones. 
+guardar las configuraciones.
 
 Veamos en el siguiente ejemplo cómo se
 puede
-[configurar un sistema con varias máquinas virtuales coordinadas usando CoreOS](https://github.com/JJ/vagrant-coreos/blob/master/Vagrantfile) (originalmente
+[configurar un sistema con varias máquinas virtuales coordinadas usando CoreOS](https://github.com/JJ/vagrant-coreos/blob/master/Vagrantfile)
+(originalmente
 estaba [aquí](https://github.com/coreos/coreos-vagrant). Es un fichero
 un tanto largo y complicado, pero veamos las partes más
 interesantes. Primero, usa un fichero externo de
 configuración,
 [`config.rb`](https://github.com/JJ/vagrant-coreos/blob/master/config.rb). A
 pesar de su nombre, no es un fichero de Chef, simplemente un fichero
-que se va a incluir en la configuración de Vagrant que se llama así. 
+que se va a incluir en la configuración de Vagrant que se llama así.
 
-~~~
+```ruby
 # Size of the CoreOS cluster created by Vagrant
 $num_instances=3
 
@@ -616,7 +616,7 @@ if File.exists?('user-data') && ARGV[0].eql?('up')
   yaml = YAML.dump(data)
   File.open('user-data', 'w') { |file| file.write("#cloud-config\n\n#{yaml}") }
 end
-~~~
+```
 
 Este fichero, después de definir el número de máquinas virtuales que
   tenemos, busca un fichero llamado `user-data` que es privado porque
@@ -626,8 +626,8 @@ Este fichero, después de definir el número de máquinas virtuales que
   trabajar. En
   [la muestra](https://github.com/JJ/vagrant-coreos/blob/master/user-data.sample) indica
   qué es lo que hay que hacer para obtenerla. Por lo demás, lo único
-  que hay que cambiar es el número de instancias que se desean. 
-  
+  que hay que cambiar es el número de instancias que se desean.
+
 El `Vagrantfile`, por otro lado, realiza una serie de adaptaciones de
 la máquina virtual usada y crea una red privada virtual que una a las
 tres máquinas, de forma que se puedan comunicar de forma segura. Una
@@ -636,27 +636,24 @@ el nombre definido (`core-0x`) pero también se pueden usar para
 escalar aplicaciones basadas en contenedores en
 el
 [*cluster* de CoreOS](https://coreos.com/os/docs/latest/cluster-architectures.html) creado,
-con el que puedes
-ejecutar
-[múltiples copias de tu aplicación](https://coreos.com/os/docs/latest/cluster-architectures.html) para
-replicación o escalado automático. 
-
+con el que puedes ejecutar
+[múltiples copias de tu aplicación](https://coreos.com/os/docs/latest/cluster-architectures.html)
+para replicación o escalado automático.
 
 ## Algunos ejemplos interesantes
 
 La migración a la nube ha hecho que se creen ciertos sistemas
-operativos cuyo fin sea servir de soporte exclusivamente a servicios
+operativos (o sabores de los mismos) cuyo fin sea servir de soporte
+exclusivamente a servicios
 en la misma. Uno de ellos es [Scotch Box](https://box.scotch.io/), que
 empaqueta una serie de herramientas de cliente servidor para ejecutar
-una pila de desarrollo completa,
-o
+una pila de desarrollo completa, o
 [`bosh-lite`](https://app.vagrantup.com/cloudfoundry/boxes/bosh-lite) para
-[BOSH, una herramienta de gestión de sistemas distribuidos](https://bosh.io/). Otra
-posibilidad es
+[BOSH, una herramienta de gestión de sistemas distribuidos](https://bosh.io/).
+Otra posibilidad es
 [una máquina virtual para empezar con ciencia de datos](https://app.vagrantup.com/data-science-toolbox/boxes/dst).
 
-Pero una de las más interesantes que podemos usar
-es
+Pero una de las más interesantes que podemos usar es
 [RancherOS](https://github.com/rancher/os-vagrant),
 otro sistema operativo, como CoreOS, diseñado para ejecutar
 contenedores. En el repo dice que ya no se apoya esa versión, pero se
@@ -665,7 +662,7 @@ puede al menos ejecutar y probar si se desea.
 También se puede probar [NixOps](https://nixos.org/nixops/), que
 aunque está diseñado especialmente para una versión del sistema
 operativo llamado NixOS, puede usarse también para orquestar máquinas
-virtuales en una serie de entornos. 
+virtuales en una serie de entornos.
 
 ## A donde ir desde aquí
 
@@ -683,7 +680,6 @@ supuesto [Terraform](https://www.terraform.io/).
 
 Por otro lado, [Kubernetes](https://kubernetes.io/) es el estándar
 para trabajar con contenedores y orquestarlos, aunque hay otras
-alternativas. Los contenedores, precisamente, [son el objetivo del siguiente tema](http://jj.github.io/CC/documentos/temas/Contenedores).
-
-
-	
+alternativas. Los contenedores,
+precisamente,
+[son el objetivo del siguiente tema](http://jj.github.io/CC/documentos/temas/Contenedores).
