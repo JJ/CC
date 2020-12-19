@@ -136,13 +136,19 @@ tres pasos:
    integración y añadirlo al repositorio.
 
 <div class='ejercicios' markdown='1'>
-*Ejercicio*: Haced los dos primeros pasos antes de pasar al tercero.
+*Ejercicio*: Haced los dos primeros pasos antes de pasar al tercero en
+un repositorio de nuestra elección, tal como el del proyecto que se
+hace para la asignatura (que se hará en el ejercicio siguiente).
 </div>
 
 Los ficheros de configuración de las máquinas de integración continua
 corresponden, aproximadamente, a una configuración de una máquina
-virtual que hiciera solo y exclusivamente la ejecución de los
-tests. Para ello se provisiona una máquina virtual (o contenedor), se
+virtual (o un conjunto de ellas, definidas por las versiones del
+lenguaje y otras variables de entorno incluidas en lo que se llama la
+[*matrix*](https://docs.travis-ci.com/user/multi-os/#example-multi-os-build-matrix))
+que hiciera solo y exclusivamente la ejecución de los
+tests. Para ello se provisiona una máquina virtual (o se elige un
+contenedor), se
 le carga el sistema operativo y se instala lo necesario, indicado en
 el fichero de configuración tal como este para Travis.
 
@@ -160,12 +166,21 @@ script: cd src; mocha
 
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
-- `language` indica qué lenguaje se va a usar. Travis tiene
+- `language` indica
+  qué
+  [lenguaje](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/)
+  se va a usar. Travis tiene
   [varios lenguajes](https://docs.travis-ci.com/user/getting-started/),
-  incluyendo por supuesto nodejs. Las máquinas virtuales no suelen
+  incluyendo por supuesto JavaScript/nodejs. Las máquinas virtuales no suelen
   estar configuradas para lenguajes arbitrarios, aunque por supuesto
   se puede poner un lenguaje tal como C y luego descargar lo necesario
-  para otro lenguaje.
+  para otro lenguaje. Las versiones y cómo
+  expresarlas
+  [dependen del lenguaje](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/#specifying-nodejs-versions),
+  pero siempre suelen tener una denominación para la última versión
+  (incluso la que hay en la rama principal de desarrollo). Aparte,
+  cuando se pone una versión *major* como en este caso se suele
+  referir a la última versión *minor* con esa misma *major*.
 
 - `node_js` en este caso indica las versiones que vamos a probar. Por
   el mismo precio podemos probar varias versiones, en este caso las
@@ -203,8 +218,8 @@ y también se enviará por correo electrónico. Y te da también un
 *badge* que puedes poner en tu fichero para indicar que, por lo
 pronto, todo funciona.
 
-Si el informe indica que las pruebas son correctas, se puede proceder al
-despliegue. Pero eso ya será en la siguiente clase.
+Si el informe indica que las pruebas han pasado, se puede proceder al
+despliegue.
 
 <div class='ejercicios' markdown='1'>
 
