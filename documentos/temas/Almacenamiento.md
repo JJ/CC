@@ -22,14 +22,11 @@ next: Uso_de_sistemas
 
 * Conocer las diferentes tecnologías y herramientas de virtualización
   tanto para procesamiento, comunicación y almacenamiento.
- 
  * Configurar los diferentes dispositivos físicos para acceso a los
   servidores virtuales: acceso de usuarios, redes de comunicaciones o
   entrada/salida
- 
  * Diseñar, implementar y construir un centro de procesamiento de
    datos virtual.
-  
  * Realizar tareas de administración en infraestructura virtual.
 
 ### Objetivos específicos
@@ -37,11 +34,10 @@ next: Uso_de_sistemas
  * Conocer las técnicas de provisionamiento de almacenamiento de datos
    para
    máquinas virtuales.
-  
+
  * Saber usar diferentes órdenes y utilidades para crearlas.
 
  </div>
-
 
 ## La parte verdadera: un disco físico.
 
@@ -65,9 +61,15 @@ next: Uso_de_sistemas
 
  Cada disco, partición o LUN constituye un volumen físico que tiene
  una serie de bloques llamados *physical extents* (PEs, extensiones
- físicas) y se puede combinar en un [*physical volume group* o PVG, grupo de volúmenes físicos](http://h30499.www3.hp.com/t5/LVM-and-VxVM/what-is-PVG-Physical-Volume-Group/td-p/4675294), de forma que un PE de cada volumen en el PVG se usará de forma combinada a la hora de escribir.
+ físicas) y se puede combinar en
+ un
+ [*physical volume group* o PVG, grupo de volúmenes físicos](http://h30499.www3.hp.com/t5/LVM-and-VxVM/what-is-PVG-Physical-Volume-Group/td-p/4675294),
+ de forma que un PE de cada volumen en el PVG se usará de forma
+ combinada a la hora de escribir.
 
- Esta estructura física se reflejará en la estructura lógica, pero la virtualización lo que hace es transformarla de forma que cada elemento lógico equivalga a uno, varios o ningún elemento físico. 
+ Esta estructura física se reflejará en la estructura lógica, pero la
+ virtualización lo que hace es transformarla de forma que cada
+ elemento lógico equivalga a uno, varios o ningún elemento físico.
 
 Los
 [volúmenes lógicos](http://en.wikipedia.org/wiki/Logical_volume_management)
@@ -101,8 +103,6 @@ hay un resumen de todos los comandos usados para trabajar con
 volúmenes físicos y lógicos en Linux.
 
 </div>
-
-
 
 ## Sistemas de ficheros en espacio de usuario
 
@@ -177,31 +177,30 @@ de estos recursos tendrá que estar disponible (es decir,
 conviene *tenerlo a mano* previamente, junto con las herramientas que
 trabajan con él. Algunos formatos que son populares son
 
-*
-  [`raw` o *poco poblado* (*sparse*)](http://en.wikipedia.org/wiki/Sparse_file):
+* [`raw` o *poco poblado* (*sparse*)](http://en.wikipedia.org/wiki/Sparse_file):
   son ficheros cuyo formato evita los espacios sin asignar, que se
   representan por metadatos y por lo tanto puede usar en el
   almacenamiento físico menos espacio del asignado inicialmente. Lo
   admiten la mayoría de los sistemas operativos modernos. Para el
   usuario se comportan como los ficheros normales, pero su creación
   necesitará una orden de Linux como esta:
- 
+
 	  dd of=fichero-suelto.img bs=1k seek=5242879 count=0
-	 
-, donde `of` indica el nombre de fichero de salida, `bs` es el tamaño
-del bloque y `seek` es el tamaño del fichero en bytes  (menos uno);
-mientras que
+
+  , donde `of` indica el nombre de fichero de salida, `bs` es el tamaño
+  del bloque y `seek` es el tamaño del fichero en bytes  (menos uno);
+  mientras que
 
 	ls -lks fichero-suelto.img
-	
-dice cuantos bloques se han ocupado realmente. También se
-[puede hacer](http://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system)
-usando `fallocate`:
+
+  dice cuantos bloques se han ocupado realmente. También se
+  [puede hacer](http://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system)
+  usando `fallocate`:
 
 	fallocate -l 5M fichero-suelto.img
-	
-lo que tendrá el mismo resultado, aunque este último no funciona en
-algunos sistemas de ficheros (como ZFS).
+
+  lo que tendrá el mismo resultado, aunque este último no funciona en
+  algunos sistemas de ficheros (como ZFS).
 
 * [`qcow2`](https://people.gnome.org/~markmc/qcow-image-format.html)
   es un formato usado inicialmente por QEMU pero más adelante
@@ -211,9 +210,9 @@ algunos sistemas de ficheros (como ZFS).
   mantener la coherencia del resultado en memoria con lo que hay en
   disco a la vez que se optimiza el acceso al mismo. Una forma de
   crear este fichero es con `qemu-img`:
- 
+
 	  qemu-img create -f qcow2 fichero-cow.qcow2 5M
-	 
+
 lo que aparecerá como un fichero normal y corriente de un tamaño
 inferior al indicado (5M).
 
@@ -222,7 +221,7 @@ eso no quiere decir que haga falta una máquina virtual para
 leerlos; se pueden [montar usando `mount`](http://en.wikibooks.org/wiki/QEMU/Images) de la forma siguiente:
 
 	mount -o loop,offset=32256 /camino/a/fichero-suelto.img	/mnt/mountpoint
-	
+
 aunque dará un error en caso de no haber sido formateado (lo que se
 verá un poco más adelante). En el caso de qcow2, usando qemu-nbd
 
@@ -230,13 +229,13 @@ verá un poco más adelante). En el caso de qcow2, usando qemu-nbd
 	qemu-nbd -c /dev/nbd0 fichero-cow.qcow2
 	partprobe /dev/nbd0
 	mount /dev/nbd0p1 /mnt/image
-	
+
 , donde
 [NBD se refiere a Network Block Device](http://en.wikipedia.org/wiki/Network_block_device).
 En cualquier caso, el objetivo de estas imágenes es precisamente ser
 usadas como sistemas de ficheros montables, por lo que, en cualquier
 caso, la forma de manipularlas es montándolas en algún anfitrión.
-	
+
 <div class='ejercicios' markdown='1'>
 
 Crear imágenes con estos formatos (y otros que se encuentren tales
@@ -281,7 +280,7 @@ o la que sea. Por ejemplo, para formatearlo con el
 [sistema de ficheros `btrfs`](http://en.wikipedia.org/wiki/Btrfs)
 
 	sudo mkfs.btrfs /dev/loop0
-	
+
 Y una vez formateado, ya se puede montar como cualquier otro
 dispositivo usando el tipo de sistema de ficheros con el que se haya
 formateado y usarse como cualquier otro sistema de ficheros que se
@@ -306,9 +305,6 @@ Una lista de
 [cosas chulas que se pueden hacer con ficheros sueltecillos (o sea, *sparse*)](http://www.ogris.de/docs/sparse.html)
 
 </div>
-
-
-
 
 ## Almacenamiento de objetos
 
@@ -386,7 +382,7 @@ instalarlos en el mismo sistema.
 Primero, habrá que instalar varios paquetes
 
 	sudo apt-get install ceph-mds
-	
+
 te instala las dependencias necesarias (que incluyen el paquete
 ceph-fs-common, ceph y ceph-common.
 
@@ -420,7 +416,7 @@ siguiente:
 	[osd.0]
 	host = penny
 	devs = /dev/loop0
- 
+
  Aparte de declarar los ficheros de logs y demás, el fichero de
  configuración tiene tres partes: `mon`, para configurar el monitor,
  `mds`, para configurar el servidor de metadatos, y `osd`, para
@@ -455,7 +451,7 @@ siguiente:
  preguntéis por qué, pero es así y [aquí lo dicen](http://tracker.ceph.com/issues/1015))
 
 	 sudo mkdir /srv/ceph/osd/osd.0
-	
+
 y ya podemos crear el sistema de ficheros de objetos con
 
 	sudo /sbin/mkcephfs -a -c /etc/ceph/ceph.conf
@@ -464,9 +460,9 @@ Por favor notad que en este caso, a diferencia del tutorial enlazado,
 no especificamos BTRFS sino XFS, con lo que nos ahorramos
 opciones. Esa orden da un montón de resultados diferentes, pero
 finalmente ya está el sistema ceph creado. Iniciamos el servicio con
-	
+
 		sudo /etc/init.d/ceph -a start
-		
+
 (lo que dará un montón de mensajes sobre los diferentes servidores que
 están empezando). Puedes comprobar si todo ha ido (más o menos) bien
 con
@@ -476,7 +472,7 @@ con
 y ya lo podemos montar con
 
 	sudo mount -t ceph penny:/ /mnt/ceph
-	
+
 (previamente habrá que habido que crear el directorio que se va a usar
 como punto de montaje).  Con un poco de suerte, aparecerá el sistema
 de ficheros montado como un sistema normal, aunque no se tratará de un
@@ -514,36 +510,36 @@ hace falta indicarle los monitores y todas esas cosas. Tal como se ha
 creado, la orden que funciona es
 
 	rados lspools
-	
+
 que devolverá
 
 	data
 	metadata
 	rbd
-	
+
 Esta orden lista los *pools* o "directorios" (cubos, en realidad) en
 los que se van a colocar los diferentes objetos. Podemos crear nuevos
 *pools* con
 
 	sudo rados mkpool esa-piscina
-	
+
 (con `rmpool`, por supuesto, se puede borrar). La orden
 
 	sudo rados df
-	
+
 te mostrará qué hay en cada uno de los pools. Hay
 [muchos más comandos](https://synnefo.readthedocs.org/en/latest/storage.html?highlight=import)
 pero tampoco me voy a poner a hacer todos y cada uno de ellos. Para
 almacenar objetos, por ejemplo, se usa put
 
 	sudo rados put -p esa-piscina objeto-almacenado	fichero-que-almacenaremos.whatever
-	
+
 
 <div class='ejercicios' markdown='1'>
 
 Almacenar objetos y ver la forma de almacenar directorios
 completos usando `ceph` y `rados`.
-	
+
 </div>
 
 En infraestructuras virtuales como OpenStack hay servicios que usan
@@ -553,8 +549,8 @@ misma. Se verá más adelante cuando usemos este tipo de sistemas. En
 concreto,
 [el servicio de almacenamiento de objetos en OpenStack se llama Swift](http://en.wikipedia.org/wiki/Openstack#Object_Storage_.28Swift.29)
 y se
-[usa principalmente almacenamiento de imágenes (discos duros completos) y *snapshots* (estado de un disco duro en un momento determinado](http://www.openstack.org/software/openstack-storage/). En
-Amazon, [Elastic Block Storage](http://aws.amazon.com/es/ebs/) forma
+[usa principalmente almacenamiento de imágenes (discos duros completos) y *snapshots* (estado de un disco duro en un momento determinado](http://www.openstack.org/software/openstack-storage/).
+En Amazon, [Elastic Block Storage](http://aws.amazon.com/es/ebs/) forma
 parte de las ofertas de servicios web del mismo y permite trabajar con
 bloques desde las instancias EC2.
 
@@ -599,7 +595,7 @@ control de Azure o bien
 [desde la línea de órdenes con](https://github.com/WindowsAzure/azure-sdk-tools-xplat)
 
 	azure account storage create esacuenta
-	
+
 te presentará una lista de las localizaciones y habrá que elegir la
 más conveniente (según lo indicado antes). El nombre de la cuenta no
 admite guiones. Dependiendo del tipo de suscripción te permitirá crear
@@ -608,16 +604,19 @@ una o más cuentas, pero seguramente solo una.
 Para manejar esta cuenta se necesitan una serie de claves. Con
 
 	azure account storage keys list esacuenta
-	
+
 te dará una clave primaria y otra secundaria. Esta información se debe
 copiar en variables de entorno (que tendrás que cargar en tu
 `.profile` o bien establecerlas cada vez que vayas a usarlo con
 
 	export AZURE_STORAGE_ACCOUNT=esacuenta
 	export AZURE_STORAGE_ACCESS_KEY=unaclavemuylargaquetieneigualesalfinal==
-	
-Una vez creada la cuenta y establecida la configuración ya [se pueden crear cosas en ella](http://www.azure.microsoft.com/en-us/manage/linux/other-resources/command-line-tools/?fb=es-es)
-se puede empezar a manejar la cuenta; una vez más,
+
+Una vez creada la cuenta y establecida la configuración
+ya
+[se pueden crear cosas en ella](http://www.azure.microsoft.com/en-us/manage/linux/other-resources/command-line-tools/?fb=es-es) se
+puede empezar a manejar la cuenta; una vez
+más,
 [se pueden crear diferentes contenedores desde el panel de control](http://www.azure.microsoft.com/en-us/manage/services/storage/what-is-a-storage-account/?fb=es-es),
 pero es más práctico hacerlo desde la línea de órdenes.
 
@@ -628,7 +627,7 @@ los contenedores son simplemente una forma de agrupar a las *masas* o
 anterior. Los containers se crean de forma más o menos obvia:
 
 	azure storage container create taper
-	
+
 pero esto crea un contenedor de acceso privado; los contenedores
 pueden ser públicos o privados y por defecto se crean privados; [los niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
 
@@ -640,7 +639,7 @@ pueden ser públicos o privados y por defecto se crean privados; [los niveles de
  a los *blobs* se crea con
 
 	 azure storage container create otrotaper -p blob
-	
+
 En este caso, se contesta con
 
 ![Contestación a una creación de contenedor con acceso a nivel de blob](../img/container-con-acceso-blob.png)
