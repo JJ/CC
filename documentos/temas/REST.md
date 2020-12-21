@@ -121,7 +121,48 @@ para acceder a él.
 
 ## Buenos usos de las respuestas
 
+Las respuestas también tienen su importancia, y se deben de configurar
+correctamente para que el cliente entienda perfectamente qué es lo que
+está recibiendo.
 
+- El contenido estará en JSON, incluso cuando haya que dar algún
+  mensaje de error.
+- Las cabeceras se usarán en algunos casos: por ejemplo, devolviendo
+  la cabecera `Location` cuando se cree un recurso, con el URI del
+  mismo.
+- Los tipos MIME serán los correspondientes a lo que se va a enviar;
+  si no lo hace por omisión el microframework, habrá que usar, por
+  ejemplo, `application/json` para el caso de que sea JSON. Cuando se
+  vayan a enviar ficheros, habrá que poner correctamente el tipo
+  correspondiente.
+- El código de estado debe ser el más adecuado a la respuesta y
+  también a la petición, claro. Lo veremos a continuación.
+
+## Buenos usos códigos de estado
+
+Hemos visto antes que hay un montón de códigos de estado. En la mayor
+parte de los casos, bastará con los código 2XX y 4xx, en concreto los
+siguientes.
+
+- 200 para una petición correcta. En general, el microframework
+  devolverá este estado por ti si no hay nada chungo.
+- 201 cuando se haya creado un recurso, cada vez que se use `POST` y
+  `PUT`.
+- 404 es el célebre no encontrado, pero debe usarse sólo cuando el
+  recurso al que se refiere el URI no existe.
+- 403 no autorizado también se puede usar en estos casos.
+- 400 sólo se debe usar si el URI o la petición se han construido de
+  forma incorrecta.
+- 409 es un conflicto, y tiene unos usos muy
+  específicos. [En este artículo](https://dev.to/jj/solving-the-conflict-of-using-the-http-status-409-2iib)
+  cuento posibles usos para el mismo.
+
+El código 500 no se debe usar nunca, porque indica que la aplicación
+está en un estado incorrecto y no se puede hacer nada al respecto. Hay
+una posibilidad, y es que se esté lanzando desde nuestra aplicación
+otra aplicación externa, pero en todo caso es mucho mejor si se
+detecta un error de este estilo simplemente cesar la aplicación porque
+en la mayor parte de los casos no se podrá hacer nada al respecto.
 
 ## Buenos usos de los verbos HTTP
 
@@ -137,11 +178,17 @@ URI.
 Los buenos usos dicen que se usa `PUT` cuando se conoce el URI, `POST`
 cuando es el propio sistema el que lo va a generar.
 
-## Buenos usos en el diseño de un API.
+## Buenos usos en el diseño de un API
 
 Los APIs se diseñan alrededor del concepto de *recurso*, y el nombre
 del recurso deberá ser el prefijo o primera parte en el *path* del URI
-correspondiente.  A continuación, generalmente, se usará el ID. 
+correspondiente.  A continuación, generalmente, se usará el ID del
+recurso. Si hay parámetros que no se puedan confundir, u opciones que
+tengan una sola palabra, se pondrán a continuación en el PATH. El
+resto de la información se debe pasar mediante el *query* o en el
+cuerpo de la petición.
+
+## Ejemplo de diseño de un API y prueba del mismo
 
 ## A dónde ir desde aquí
 
