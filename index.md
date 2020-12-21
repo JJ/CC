@@ -5,15 +5,14 @@ layout: index
 ---
 # Material docente para Cloud Computing
 
-[![Build Status](https://travis-ci.org/JJ/CC.svg?branch=master)](https://travis-ci.org/JJ/CC)
+[![Build Status](https://travis-ci.com/JJ/CC.svg?branch=master)](https://travis-ci.com/JJ/CC)
 
 *Cloud Computing* es una asignatura anual del máster de ingeniería
 informática en la [UGR][ugr-website].
 
 La asignatura se imparte en el curso 2020-2021 de lunes a
-miércoles de 15:30 a 17:30. Las clases de "prácticas" de lunes y
-miércoles serán virtuales. Las clases de "teoría" de los martes serán
-presenciales en el aula 1.6.
+miércoles de 15:30 a 17:30. Desde las nuevas medidas de la Junta,
+todas las clases son virtuales y se emiten usando Jitsi.
 
 Tendrás que llevar tu portátil a todas
 las clases. Se usará [GitHub][github-website] para los ejercicios y el
@@ -48,32 +47,26 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 1. [Arquitecturas software para la nube][t1]
 2. [Desarrollo basado en pruebas][t2]
 3. [Usando contenedores][t7]
-4. [Microservicios][t3]
-5. [Gestión de configuraciones][t4]
-6. [Creación de infraestructuras virtuales reproducibles][t5]
-7. [Orquestación de máquinas virtuales][t6]
+4. [Integración continua][ci]
+5. [REST][rest]
+6. [Microservicios][t3]
+7. [Gestión de configuraciones][t4]
+8. [Creación de infraestructuras virtuales reproducibles][t5]
+9. [Orquestación de máquinas virtuales][t6]
 
 La temporización de la asignatura y la interacción entre estudiantes y
-con los profesores están en
-[un repositorio de GitHub][cc-course-repo].
+el profesor están en [un repositorio de GitHub][cc-course-repo].
 
-[cc-general-repo]: http://github.com/JJ/CC
+[cc-general-repo]: https://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
 [t2]: documentos/temas/Desarrollo_basado_en_pruebas.md
 [t3]: documentos/temas/Microservicios.md
+[ci]: documentos/temas/Integracion_continua.md
+[rest]: documentos/temas/REST.md
 [t4]: documentos/temas/Provision.md
 [t5]: documentos/temas/Automatizando_cloud.md
 [t6]: documentos/temas/Orquestacion.md
 [t7]: documentos/temas/Contenedores.md
-
-## Seminarios y material adicional
-
-Material adicional de la asignatura, que se usará en clase pero que el
-alumno tendrá que aprender a su ritmo
-
-1. [Introducción ligera al lenguaje Ruby][s1]
-
-[s1]: documentos/seminarios/ruby.md
 
 ## Prácticas - Actividades académicas dirigidas
 
@@ -84,28 +77,34 @@ decir, de definición de infraestructura para un proyecto existente o
 que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
 
-<<<<<<< HEAD
 1. [Puesta a punto del repositorio de la asignatura y buenas
     prácticas en el uso de los mismos][p1]
 2. [Planificación del proyecto][p2]
 3. [Tests][p3]
-=======
-1. [Puesta a punto del repositorio de la asignatura y buenas 
-    prácticas en el uso de los mismos][p1]
-2. [Planificación de oyecto][p2]
-3. [Creación de tests y configuración de integración continua][p3]
->>>>>>> 6e5b7b2aaf49a9a2dccf7bf0c0e18fe6853f5948
 4. [Uso de contenedores][p4]
-5. [Medición de prestaciones de MVs][p5]
-6. [Provisionamiento de máquinas virtuales][p6]
+5. [Integración continua][p5]
+6. [Microservicios][p6]
+7. [Medición de prestaciones de MVs][p7]
+8. [Provisionamiento de máquinas virtuales][p8]
 
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
 [p2]: documentos/proyecto/1.Infraestructura.md
 [p3]: documentos/proyecto/2.Tests.md
 [p4]: documentos/proyecto/3.Docker.md
-[p5]: documentos/proyecto/4.Prestaciones.md
-[p6]: documents/proyecto/5.Provisionamiento.md
+[p5]: documentos/proyecto/4.CI.md
+[p6]: documentos/proyecto/5.Microservicio.md
+[p7]: documentos/proyecto/4.Prestaciones.md
+[p8]: documents/proyecto/5.Provisionamiento.md
+
+## Seminarios y material adicional
+
+Material adicional de la asignatura, que se usará en clase pero que el
+alumno tendrá que aprender a su ritmo
+
+1. [Introducción ligera al lenguaje Ruby][s1]
+
+[s1]: documentos/seminarios/ruby.md
 
 ## Tutorías virtuales y presenciales
 

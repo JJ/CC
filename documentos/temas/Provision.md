@@ -7,8 +7,7 @@ prev: PaaS
 next: Automatizando_cloud
 ---
 
-Provisionamiento en infraestructuras virtuales
-===
+# Provisionamiento en infraestructuras virtuales
 
 <!--@
 prev: PaaS
@@ -17,7 +16,7 @@ next: Automatizando_cloud
 
 <div class="objetivos" markdown="1">
 
-<h2>Objetivos de la asignatura</h2>
+## Objetivos de la asignatura
 
 * Diseñar, construir y analizar las prestaciones de un centro de
   proceso de datos virtual.
@@ -26,7 +25,7 @@ next: Automatizando_cloud
 
 * Realizar tareas de administración en infraestructura virtual.
 
-<h2>Objetivos específicos</h2>
+## Objetivos específicos
 
 1. Aprender lenguajes de configuración usados en infraestructuras virtuales.
 2. Saber cómo aplicarlos en un caso determinado.
@@ -35,8 +34,7 @@ provisionamiento y monitorización más usados hoy en día.
 
 </div>
 
-Introducción
----
+## Introducción
 
 Los
 [gestores de configuraciones](https://en.wikipedia.org/wiki/Configuration_management)
@@ -60,26 +58,25 @@ se explicarán de forma independiente.
 
 La expansión de la creación de aplicaciones en la nube hasta ser la
 arquitectura contemporánea con más extensión hace que haya muchas
-herramientas de gestión de
-configuraciones libres:
+herramientas de gestión de configuraciones
+libres:
 [Chef](https://www.chef.io/chef/),
 [Salt](https://docs.saltstack.com/en/latest/),
 Ansible, [`mgmt`](https://github.com/purpleidea/mgmt) (este último un
-poco experimental) y Puppet, por
-ejemplo. Todos son libres, pero
+poco experimental) y Puppet, por ejemplo. Todos son libres,
+pero
 [tienen características específicas](https://en.wikipedia.org/wiki/Comparison_of_open_source_configuration_management_software)
-que hay que tener en cuenta a la hora de elegir uno u otro; entre
-otras cosas, se dividen entre herramientas de configuración de
-sistemas operativos (que asumen que el sistema operativo ya está
-instalado) y otro tipo de herramientas; en el caso
-específico de
+que hay que tener en cuenta a la hora de elegir uno u otro; entre otras
+cosas, se dividen entre herramientas de configuración de sistemas
+operativos (que asumen que el sistema operativo ya está instalado) y
+otro tipo de herramientas; en el caso específico de
 [sistemas operativos](https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management),
-que es del que vamos a hablar aquí, 
-se trata de gestionar automáticamente todas las tareas de
-configuración de un sistema, automatizando la edición de ficheros de
-configuración, instalación de software y configuración del mismo,
-creación de usuarios y autenticación y comprobación del estado de ejecución, de forma que se pueda hacer de
-forma automática y masiva. 
+que es del que vamos a hablar aquí, se trata de gestionar
+automáticamente todas las tareas de configuración de un sistema,
+automatizando la edición de ficheros de configuración, instalación de
+software y configuración del mismo, creación de usuarios y
+autenticación y comprobación del estado de ejecución, de forma que se
+pueda hacer de forma automática y masiva.
 
 > Para poder configurar máquinas virtuales específicas primero hay que
 > instanciarlas. Dejaremos para más adelante cómo hacerlo de forma
@@ -97,7 +94,7 @@ conjuntos de diccionarios específicos de JSON o de YAML (en algunos
 casos, TOML), dos lenguajes
 de serialización de estructuras de datos.
 
-Estos DSL, en general, son 
+Estos DSL, en general, son
 [declarativos](https://en.wikipedia.org/wiki/Declarative_programming) en
 el sentido que suelen especificar o declarar la configuración que se quiere
 alcanzar, no qué acciones hay que llevar a cabo para alcanzar esa
@@ -168,17 +165,17 @@ complicada de configurar que Ansible, tiene como ventaja que permite
 modularizar la configuración para poder adaptarla a sistemas de la
 forma más conveniente. `salt-ssh` está basado en Python y solo
 requiere, en principio, que este lenguaje esté instalado en el sistema
-que se va a provisionar. 
+que se va a provisionar.
 
-La mejor forma de empezar es
-[instalarlo desde Github](https://github.com/saltstack/salt) aunque
-nosotros vamos a trabajar con
-[`salt-ssh`](https://docs.saltstack.com/en/latest/topics/ssh/), una
-herramienta de línea de órdenes que no requiere ningún tipo de instalación en el ordenador
-objetivo y que se puede usar, hasta cierto punto, como Ansible. Vamos
-a usarlo para
+La mejor forma de empezar
+es [instalarlo desde Github](https://github.com/saltstack/salt) aunque
+nosotros vamos a trabajar
+con [`salt-ssh`](https://docs.saltstack.com/en/latest/topics/ssh/),
+una herramienta de línea de órdenes que no requiere ningún tipo de
+instalación en el ordenador objetivo y que se puede usar, hasta cierto
+punto, como Ansible. Vamos a usarlo para
 [instalar los servicios necesarios para el bot de Telegram en Scala](https://github.com/JJ/BoBot)
-que hemos visto en alguna otra ocasión. 
+que hemos visto en alguna otra ocasión.
 
 Una vez instalado `salt-ssh`, uno de los principales problemas es que
 requiere una cierta cantidad de configuración global. Generalmente
@@ -190,23 +187,25 @@ usar el directorio local de usuario, pero en ese caso habrá que decir
 específicamente donde se encuentra cada tipo de fichero. En el
 [`README.md` del bot](https://github.com/JJ/BoBot/tree/master/provision)
 vienen las instrucciones necesarias para crear ese fichero de
-provisionamiento y la configuración global. 
+provisionamiento y la configuración global.
 
 Para configurar la instancia específica sobre la que vamos a trabajar,
 uno de los ficheros más importantes es el fichero `roster`:
 
-~~~
-app: 
+```yaml
+app:
   host: 104.196.9.185
   user: one_user
 sudo: True
-~~~
+```
 
 Aquí no solo se declara la dirección a la que vamos a conectar, sino
 también si hace falta ser `sudo` o no. Con esto podemos ejecutar ya
 parte de la configuración que vamos a ejecutar más adelante:
 
-	salt-ssh '*' --roster-file=./roster -r "sudo apt-get install python-apt" -c ~/lib/salt --force-color
+```bash
+salt-ssh '*' --roster-file=./roster -r "sudo apt-get install python-apt" -c ~/lib/salt --force-color
+```
 
 En este caso, se trata de ejecutar una orden para poder instalar
 `python-apt`, un módulo para poder ejecutar órdenes de instalación de
@@ -232,18 +231,19 @@ pkg.installed
 
 Este fichero se ejecutaría con
 
-	salt-ssh app state.apply scala --roster-file=./roster -c ~/lib/salt --force-color
+```bash
+salt-ssh app state.apply scala --roster-file=./roster -c ~/lib/salt --force-color
+```
 
 Este programa, como otras herramientas de configuración, actúa de
-manera descriptiva. Indica que 
-el paquete `scala` tiene que estar instalado, pero para ello tiene que
-cumplir una serie de prerrequisitos incluidos en el fichero
-`javasetup.sls`; el nombre de estado se tiene que corresponder con el
-nombre del fichero en sí. Este a su vez requiere la instalación de otra serie
-de paquetes, e incluye otro fichero. Lo bueno es que esos dos
-ficheros, `javasetup` y `java`, se pueden usar para todos los paquetes
-que usen esa máquina virtual; para instalar Scala solo hay que crear
-este último fichero.
+manera descriptiva. Indica que el paquete `scala` tiene que estar
+instalado, pero para ello tiene que cumplir una serie de
+prerrequisitos incluidos en el fichero `javasetup.sls`; el nombre de
+estado se tiene que corresponder con el nombre del fichero en sí. Este
+a su vez requiere la instalación de otra serie de paquetes, e incluye
+otro fichero. Lo bueno es que esos dos ficheros, `javasetup` y `java`,
+se pueden usar para todos los paquetes que usen esa máquina virtual;
+para instalar Scala solo hay que crear este último fichero.
 
 Todos estos, por cierto, tienen que ejecutarse desde directorios
 específicos, al menos la forma más simple de hacerlo es copiar todos
@@ -253,24 +253,24 @@ En general, y por la forma que tiene un poco rígida de hacer las
 cosas, resulta algo más complicado usarlo que Ansible o incluso
 Chef. Sin embargo y limitado a `salt-ssh`, una vez que la
 configuración está completa y si se tienen ya programadas una serie de
-configuraciones base, construir a partir de ellas es relativamente sencillo. 
+configuraciones base, construir a partir de ellas es relativamente sencillo.
 
 <div class='ejercicios' markdown='1'>
 
 Provisionar una máquina virtual en algún entorno con los que
 trabajemos habitualmente (incluyendo el programa que se haya realizado
-para los hitos anteriores) usando Salt. 
-	  
+para los hitos anteriores) usando Salt.
+
 </div>
 
-Usando Ansible
----
+## Usando Ansible
 
 Las principales alternativas a Chef son [Ansible](https://www.ansible.com),
 y [Puppet](https://puppet.com/docs/puppet/3.8/pre_install.html). Todos ellos se comparan en
 [este artículo](https://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html),
 aunque los principales contendientes son
-[Puppet y Chef, sin que ninguno de los dos sea perfecto](https://www.infoworld.com/d/data-center/puppet-or-chef-the-configuration-management-dilemma-215279?source=fssr). 
+[Puppet y Chef, sin que ninguno de los dos sea
+perfecto](https://www.infoworld.com/d/data-center/puppet-or-chef-the-configuration-management-dilemma-215279?source=fssr).
 
 De todas ellas, vamos a
 [ver Ansible](https://semaphoreci.com/community/tutorials/introduction-to-ansible)
@@ -288,7 +288,7 @@ instalación de módulos `pip` (que habrá que instalar si no se tiene).
 > lo que aconsejamos vivamente, no solo para este lenguaje, sino para
 > todos los demás.
 
-Si no usas un gestor de versiones, lo más conveniente instalarlo desde su propio repositorio PPA. 
+Si no usas un gestor de versiones, lo más conveniente instalarlo desde su propio repositorio PPA.
 
 ```
 sudo apt-add-repository ppa:ansible/ansible
@@ -296,18 +296,27 @@ sudo apt-get install ansible
 ```
 Ansible va a necesitar tres ficheros para provisionar una máquina virtual.
 * Un fichero de configuración general, que se suele llamar `ansible.cfg`
-* Un fichero de configuración específica de los *hosts* con los que se va a trabajar o inventario , que habitualmente se llama `ansible_hosts`.
-* Una o varias recetas o *playbooks* que indican qué se va a instalar, y declara el estado en el que se debe encontrar el sistema al final. 
+* Un fichero de configuración específica de los *hosts* con los que se
+  va a trabajar o inventario , que habitualmente se llama
+  `ansible_hosts`.
+* Una o varias recetas o *playbooks* que indican qué se va a instalar,
+  y declara el estado en el que se debe encontrar el sistema al
+  final.
 
-Comencemos por el fichero de configuración, tal como [este](/ejemplos/vagrant/Debian2018/ansible.cfg):
+Comencemos por el fichero de configuración, tal
+como [este](/ejemplos/vagrant/Debian2018/ansible.cfg):
 
-```
+```ini
 [defaults]
 host_key_checking = False
 inventory = ./ansible_hosts
 ```
 
-Lo principal es la primera opción, que permite que la conexión con nuevas máquinas virtuales por `ssh` no pregunte si se acepta la clave nueva de una nueva MAC detectada. La segunda instrucción indica dónde se va a encontrar, por omisión, el fichero de inventario, en este caso en el mismo directorio.
+Lo principal es la primera opción, que permite que la conexión con
+nuevas máquinas virtuales por `ssh` no pregunte si se acepta la clave
+nueva de una nueva MAC detectada. La segunda instrucción indica dónde
+se va a encontrar, por omisión, el fichero de inventario, en este caso
+en el mismo directorio.
 
 
 Cada máquina que se añada al control de Ansible se tiene que añadir a
@@ -316,7 +325,7 @@ un
 que contiene las diferentes máquinas controladas por el mismo. Por
 ejemplo esta orden
 
-```
+```bash
 $ echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
 ```
 
@@ -326,13 +335,13 @@ fichero `ansible_hosts` situado en mi directorio raíz. El lugar de ese
 fichero es arbitrario, por lo que habrá que avisar a Ansible donde
 está usando una variable de entorno:
 
-```
+```bash
 export ANSIBLE_HOSTS=~/ansible_hosts
 ```
 
-Y, con un nodo, ya se puede comprobar si Ansible funciona con 
+Y, con un nodo, ya se puede comprobar si Ansible funciona con
 
-```
+```bash
 $ ansible all -u jjmerelo -m ping
 ```
 
@@ -340,13 +349,14 @@ Esta orden hace un *ping*, es decir, simplemente comprueba si la
 máquina es accesible desde la máquina local. `-u` incluye el nombre
 del usuario (si es diferente del de la máquina local); habrá que
 añadir `--ask-pass` si no se ha configurado la máquina remota para
-poder acceder a ella sin clave. 
+poder acceder a ella sin clave.
 
 De forma básica, lo que hace Ansible es simplemente ejecutar comandos
 de forma remota y simultáneamente. Para hacerlo, podemos usar el
-[inventario para agrupar los servidores](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html), por ejemplo
+[inventario para agrupar los servidores](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html),
+por ejemplo
 
-```
+```ini
 [azure]
 iv-ansible.cloudapp.net
 ```
@@ -354,32 +364,33 @@ iv-ansible.cloudapp.net
 crearía un grupo `azure` (con un solo ordenador), en el cual podemos
 ejecutar comandos de forma remota
 
-```
+```bash
 $ ansible azure -u jjmerelo -a df
 ```
 
 nos mostraría en todas las máquinas de Azure la organización del
 sistema de ficheros (que es lo que hace el comando `df`). Una vez más,
-`-u` es opcional. 
+`-u` es opcional.
 
 Esta orden usa un *módulo* de ansible y se puede ejecutar también de
 esta forma:
 
-```
+```bash
 $ ansible azure -m shell ls
 ```
 
 haciendo uso del módulo `shell`. Hay muchos
-[más módulos](https://docs.ansible.com/ansible/latest/user_guide/modules.html) a los que se le
-pueden enviar comandos del tipo "variable = valor". Por ejemplo, se
-puede trabajar con servidores web o
-[copiar ficheros](https://www.infoworld.com/article/2614204/puppet-or-chef--the-configuration-management-dilemma.html)
-o
+[más módulos](https://docs.ansible.com/ansible/latest/user_guide/modules.html) a
+los que se le pueden enviar comandos del tipo "variable = valor". Por
+ejemplo, se puede trabajar con servidores web o
+[copiar ficheros](https://www.infoworld.com/article/2614204/puppet-or-chef--the-configuration-management-dilemma.html) o
 [incluso desplegar aplicaciones directamente usando el módulo `git`](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#managing-packages).
 
-Nosotros nos vamos a conectar a una máquina virtual local creada con Vagrant, usando [este](/ejemplos/vagrant/Debian2018/ansible_hosts) inventario:
+Nosotros nos vamos a conectar a una máquina virtual local creada con
+Vagrant, usando [este](/ejemplos/vagrant/Debian2018/ansible_hosts)
+inventario:
 
-```
+```ini
 [vagrantboxes]
 debianita ansible_ssh_port=2222 ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 
@@ -412,7 +423,7 @@ que instalar en *tareas* o `tasks`, de la forma que se ve en
 
 
 
-```
+```yaml
 ---
 - hosts: all
   become: yes
@@ -426,7 +437,8 @@ En este caso `all` va a ser una denominación genérica de todos los
 hosts, pero a continuación le indicamos con `become` que es necesario
 adquirir privilegios para ejecutar el resto del fichero. Las tareas se
 llevarán a cabo secuencialmente, pero solo tenemos una, que invoca el
-comando `apt`, indicándole que el paquete git tiene que estar presente.
+comando `apt`, indicándole que el paquete git tiene que estar
+presente.
 
 ```
 ansible-playbook basico.yaml
@@ -455,7 +467,7 @@ usando un *playbook* de Ansible.
 
 </div>
 
-También se pueden instalar varios paquetes a la vez, como en 
+También se pueden instalar varios paquetes a la vez, como en
 [este playbook](/ejemplos/vagrant/Debian2018/basico.yaml)  que instala
 node:
 
@@ -470,11 +482,14 @@ node:
 ```
 
 En vez de usar un genérico `all` en este caso estamos especificando un
-conjunto de nodos definido en `ansible_hosts`, que en realidad es el mismo, porque no tenemos
-más. El formato de instalación de paquetes es ligeramente diferente,
-pero nos permite instalar diferentes paquetes a la vez.
+conjunto de nodos definido en `ansible_hosts`, que en realidad es el
+mismo, porque no tenemos más. El formato de instalación de paquetes es
+ligeramente diferente, pero nos permite instalar diferentes paquetes a
+la vez.
 
-Ansible usa el concepto de [*rol*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) para agrupar en un directorio una
+Ansible usa el concepto de
+[*rol*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
+para agrupar en un directorio una
 serie de tareas que puedan estar relacionadas; por ejemplo, un
 framework específico junto con lo que ese framework necesite, como un
 conjunto de herramientas. A un nivel muy básico, un rol es el
@@ -504,7 +519,7 @@ que van a ser comunes a varios playbooks en un proyecto. Este será el
     - common
 ```
 
-> Normalmente, habría otras tareas (no comunes) en este playbook. 
+> Normalmente, habría otras tareas (no comunes) en este playbook.
 
 En el directorio `roles/common/tasks` estará este [fichero](/ejemplos/vagrant/Debian2018/roles/common/tasks/main.yaml)
 
@@ -517,7 +532,7 @@ En el directorio `roles/common/tasks` estará este [fichero](/ejemplos/vagrant/D
 
 Como ya está calificado como tareas, en este fichero se pondría
 directamente lo que estaría dentro de la lista de `tasks` en un
-playbook. 
+playbook.
 
 Este sistema de roles, además, permite extender ansible con un sistema llamado
 [*Galaxy*](https://galaxy.ansible.com/), una colección de roles libres
@@ -533,10 +548,8 @@ esta forma:
 ansible-galaxy install geerlingguy.nodejs
 ```
 
-
-Se
-usa en un [playbook](/ejemplos/vagrant/Debian2018/node-versions.yml)
-usando el nombre completo, tras instalarlo:
+Se usa en un [playbook](/ejemplos/vagrant/Debian2018/node-versions.yml)
+con su nombre completo, tras instalarlo:
 
 ```
 ---
@@ -598,21 +611,20 @@ de infraestructura virtual a través de código y un repaso de todas las
 herramientas usadas en el mismo. También está disponible
 como
 [recurso electrónico](https://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
-la biblioteca de la [UGR](https://www.ugr.es). 
+la biblioteca de la [UGR](https://www.ugr.es).
 
-A donde ir desde aquí
--------
+## A donde ir desde aquí
 
 Para empezar, hay que
 hacer [el hito del proyecto correspondiente](../proyecto/3.Provisionamiento).
 
-Desde aquí se podría ir directamente al tema de 
+Desde aquí se podría ir directamente al tema de
 [orquestación de máquinas virtuales](Orquestacion), donde se
 aprenderá a trabajar con configuraciones más complejas que usen varias
 máquinas virtuales a la vez, pero en la asignatura continuaremos
 con [la automatización de tareas en la nube](Automatizando_cloud)
 para aprender como trabajar con diferentes proveedores cloud usando
-sus propias herramientas.  
+sus propias herramientas.
 
 
 A partir de aquí se puede
@@ -632,7 +644,4 @@ como una categoría en sí. En
 también los comparan y en
 [este último](https://jjasghar.github.io/blog/2015/12/20/chef-puppet-ansible-salt-rosetta-stone/)
 llevan a cabo la configuración de un servidor simple usando los
-cuatro. 
-
-
-	
+cuatro.

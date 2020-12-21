@@ -6,8 +6,7 @@ apuntes: T
 next: Desarrollo_basado_en_pruebas
 ---
 
-Arquitecturas software para la nube
-=========================
+# Arquitecturas software para la nube
 
 <!--@
 next: Desarrollo_basado_en_pruebas
@@ -15,7 +14,7 @@ next: Desarrollo_basado_en_pruebas
 
 <div class="objetivos" markdown="1">
 
-## Objetivos 
+## Objetivos
 
 ### De la asignatura
 
@@ -26,10 +25,10 @@ el contexto de una infraestructura TIC de una organización.
 - Optimizar aplicaciones sobre plataformas virtuales.
 - Conocer diferentes tecnologías relacionadas con la virtualización
   (Computación Nube, Utility Computing, Software as a Service) e
-  implementaciones tales como Google AppSpot, OpenShift o Heroku. 
+  implementaciones tales como Google AppSpot, OpenShift o Heroku.
 
 
-### Específicos 
+### Específicos
 
 1. Comprender los ecosistemas de despliegue de aplicaciones modernos
 y su relación con la nube.
@@ -44,7 +43,7 @@ desplegables en la nube.
 ## Introducción
 
 >Puedes echarle un vistazo a
->[esta colección de transpas](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
+>[esta colección de transparencias](https://www.slideshare.net/jjmerelo/clipboards/my-clips)
 >con información de un par de presentaciones sobre arquitectura
 >moderna de aplicaciones. Aunque centrado en microservicios,
 >[este conjunto de patrones](https://microservices.io/patterns/index.html)
@@ -75,14 +74,26 @@ arquitecturas de software con ejemplos concretos, ejemplos que se
 podrán usar, siquiera de una forma básica, para elegir una aplicación
 para la cual crear la arquitectura virtual.
 
-> Las aplicaciones en la nube también tienen sus propios patrones de diseño, que son específicos y apuntan a dividir la aplicación en partes que se puedan implementar generalmente en un microservicio (aunque también puede haber servicios completos, y funciones sin estado). Para el diseño completo los principios de [diseño dirigido por el dominio](https://www.ibm.com/garage/method/practices/code/domain-driven-design/), que dividen el dominio del problema en entidades (que pueden ser agregadas), servicios, repositorios y objetos-valor que son indistinguibles. Adicionalmente, artículos como [este](https://hackernoon.com/clean-domain-driven-design-in-10-minutes-6037a59c8b7b) aclaran el concepto y permiten usarlo con más profundidad.
+> Las aplicaciones en la nube también tienen sus propios patrones de
+> diseño, que son específicos y apuntan a dividir la aplicación en
+> partes que se puedan implementar generalmente en un microservicio
+> (aunque también puede haber servicios completos, y funciones sin
+> estado). Para el diseño completo los principios
+> de
+> [diseño dirigido por el dominio](https://www.ibm.com/garage/method/practices/code/domain-driven-design/),
+> que dividen el dominio del problema en entidades (que pueden ser
+> agregadas), servicios, repositorios y objetos-valor que son
+> indistinguibles. Adicionalmente, artículos
+> como
+> [este](https://hackernoon.com/clean-domain-driven-design-in-10-minutes-6037a59c8b7b) aclaran
+> el concepto y permiten usarlo con más profundidad.
 
 ## Arquitecturas software
 
 >En gran parte, este apartado está sacado de
 >[Software Architecture Patterns, de Mark Richards](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/?intcmp=il-prog-free-article-sa15_sa_patterns),
 >un *ebook* gratuito que te puedes descargar dando tu email, lo que
->aconsejo vivamente que hagas. 
+>aconsejo vivamente que hagas.
 
 En general, las arquitecturas software modernas tienen como objetivo
 común el
@@ -91,7 +102,7 @@ elementos comunes son el uso de recursos propios combinados con
 recursos de diferentes empresas o *vendors*, y que se basan
 en unas metodologías de desarrollo ágil e integración y despliegue
 continuo. Veremos qué arquitecturas son las más comunes en este
-contexto. 
+contexto.
 
 ### Arquitectura en capas
 
@@ -107,18 +118,19 @@ capas, siendo al final alguna de ellas un cuello de botella.
 
 ### Arquitectura dirigida por eventos
 
-[Este tipo de arquitectura](https://en.wikipedia.org/wiki/Event-driven_architecture) representa un cambio fundamental con
-respecto a la arquitectura tradicional. El elemento fundamental de
-esta arquitectura es la cola de eventos, que se originan en el
-usuario, pero también de una parte a otra de la arquitectura. A través
-de una cola de eventos, diferentes procesadores de eventos van
-extrayendo eventos de la cola y procesándolos de forma asíncrona. El
-hecho de que pueda haber una cantidad de procesadores de eventos
-indeterminada y que puedan estar en cualquier sitio (nube privada o
-pública) hace que sea una arquitectura que escala de forma fácil,
-aunque haya que monitorizar todo el sistema de forma que se pueda
-recuperar fácilmente en caso de fallo. También permite desplegar o
-rearrancar cada uno de los procesadores de forma independiente.
+[Este tipo de arquitectura](https://en.wikipedia.org/wiki/Event-driven_architecture)
+representa
+un cambio fundamental con respecto a la arquitectura tradicional. El
+elemento fundamental de esta arquitectura es la cola de eventos, que
+se originan en el usuario, pero también de una parte a otra de la
+arquitectura. A través de una cola de eventos, diferentes procesadores
+de eventos van extrayendo eventos de la cola y procesándolos de forma
+asíncrona. El hecho de que pueda haber una cantidad de procesadores de
+eventos indeterminada y que puedan estar en cualquier sitio (nube
+privada o pública) hace que sea una arquitectura que escala de forma
+fácil, aunque haya que monitorizar todo el sistema de forma que se
+pueda recuperar fácilmente en caso de fallo. También permite desplegar
+o rearrancar cada uno de los procesadores de forma independiente.
 
 El principal problema es que es más difícil de testear y también su
 desarrollo se hace un poco más complicado que en el caso anterior.
@@ -128,12 +140,14 @@ arquitectura.
 
 ### Arquitectura microkernel
 
-Se trata de [una arquitectura](https://www.viralpatel.net/microkernel-architecture-pattern-apply-software-systems/) más o menos monolítica, con un núcleo
+Se trata de
+[una arquitectura](https://www.viralpatel.net/microkernel-architecture-pattern-apply-software-systems/)
+más o menos monolítica, con un núcleo
 central al que se pueden añadir funcionalidades mediante plugins. Un
 tipo de arquitectura clásico que se usa en CMSs como Joomla o WordPress o en
 sistemas de aprendizaje como Moodle. El problema principal es la
 escalabilidad, ya que el núcleo puede representar un cuello de
-botella. 
+botella.
 
 ### Arquitectura basada en microservicios.
 
@@ -179,9 +193,13 @@ unidades de procesamiento, que se comunican entre sí principalmente a
 través de ese espacio. A diferencia de la arquitectura basada en
 eventos, ese espacio está desestructurado, aunque internamente tiene
 un espacio de mensajería tal como las arquitecturas mencionadas
-anteriormente. Sin embargo, es un [patrón](https://es.slideshare.net/amin59/an-introduction-to-space-based-architecture) con una implementación
-relativamente simple que puede servir para aplicaciones a pequeña
-escala, aunque es más complicado de desarrollar que otros.
+anteriormente. Sin embargo, es
+un
+[patrón](https://es.slideshare.net/amin59/an-introduction-to-space-based-architecture)
+con
+una implementación relativamente simple que puede servir para
+aplicaciones a pequeña escala, aunque es más complicado de desarrollar
+que otros.
 
 ### Resumen
 
@@ -192,7 +210,7 @@ dificultad de desarrollo si no se hace con cuidado.
 
 Todas estas arquitecturas, además, asumen un entorno de integración y
 despliegue continuo, que a su vez necesita una metodología de
-desarrollo basada en tests, tal como la que se verá más adelante. 
+desarrollo basada en tests, tal como la que se verá más adelante.
 
 Lo principal, en todo caso, es buscar la arquitectura más adecuada
 para una aplicación en vez de aceptar como un hecho una arquitectura
@@ -220,8 +238,9 @@ en REST. Tercero, están basadas en diferentes componentes. Y, por
 último, usan y/o despliegan servicios en la nube. A su vez, esto
 implica una serie de cosas que veremos a continuación.
 
-Para definir estas arquitecturas se usan principios como el 
-[diseño dirigido por el dominio](https://medium.com/@jonathanloscalzo/domain-driven-design-principios-beneficios-y-elementos-primera-parte-aad90f30aa35). Aparte
+Para definir estas arquitecturas se usan principios como el
+[diseño dirigido por el dominio](https://medium.com/@jonathanloscalzo/domain-driven-design-principios-beneficios-y-elementos-primera-parte-aad90f30aa35).
+Aparte
 de las reglas en las que se crearán diferentes entidades y se
 implementarán como servidores de tareas o microservicios, hay que
 distinguir entre el dominio de nuestro problema y su modelo y los
@@ -243,7 +262,7 @@ de la nube para coordinarse correctamente y también para que los
 sistemas de escalado automático sepan con qué nodos cuentan para
 ello. Estos sistemas de descubrimiento con, en una primera
 aproximación, unos ficheros de configuración dinámicos y
-distribuidos. 
+distribuidos.
 
 En casi todos los casos en que se despliegue una arquitectura en la
 nube se tendrá que hacer uso de este tipo de sistemas. Muchos
@@ -252,14 +271,14 @@ familiarizarse con otros
 como
 [`etcd` o `consul`](https://zookeeper.apache.org/)
 puede ayudar a entender su funcionamiento y, sobre todo, a usarlo en
-nuestras propias arquitecturas que no usen orquestadores. 
+nuestras propias arquitecturas que no usen orquestadores.
 
 Hay
 muchos
 [patrones de uso de estos sistemas de descubrimiento de servicios](https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/),
 pero en general se trata de tener, cuando se lanza un nuevo proveedor,
 un URL que proporcione información y un cliente que sea capaz de
-procesarla. 
+procesarla.
 
 ### Almacenes de datos: más allá del SQL
 
@@ -280,7 +299,7 @@ MongoDB hasta Redis pasando por Cassandra o Elastic.
 
 En algunos casos también se pueden usar los sistemas de descubrimiento
 mencionados anteriormente, que esencialmente son almacenes
-clave-valor. 
+clave-valor.
 
 ### Lenguajes de programación: programación políglota
 
@@ -376,32 +395,33 @@ serían los más convenientes?
 
 En el [curso de calidad](https://jj.github.io/curso-tdd) en el
 software hay una serie de recursos que hablan de cómo diseñar
-arquitecturas de software modernas: por ejemplo, esta 
+arquitecturas de software modernas: por ejemplo, esta
 [intro general a arquitecturas software](https://jj.github.io/curso-tdd/temas/aplicaciones.html).
 
 Algunos recursos a los que puedes acceder desde la
 [Biblioteca de la UGR](https://biblioteca.ugr.es):
 
--
-  [Pattern-oriented software architecture for dummies](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991004762519704990),
+- [Pattern-oriented software architecture for dummies](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991013990907504990),
   aunque es muy básico, por lo menos explica en qué se pueden usar los
-  patrones de software y cómo aplicarlos en un momento determinado. 
-  
--
-  [Practical software architecture](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014009511104990)
+  patrones de software y cómo aplicarlos en un momento determinado.
+
+- [Practical software architecture](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014009511104990)
   Una visión más práctica de diferentes arquitecturas de software.
 
--
-  [Building microservices](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014288533304990)
+- [Building microservices](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014288533304990)
   un recurso electrónico que explica cómo construir microservicios
   desde cero, la fase de modelización a la de construcción del mismo.
+
+- [What are microservices really all about? - Microservices Basics Tutorial](https://youtu.be/j1gU2oGFayY) Video
+  explicativo sobre ventajas y desventajas de diferentes arquitecturas
+  software en referencia a los microservicios.
 
 ## A dónde ir desde aquí
 
 Este tema sirve como introducción para elegir el proyecto que se va a
 desarrollar durante la asignatura. Habrá que realizar estos ejercicios
 para superar el
-[primer hito del proyecto](http://jj.github.io/CC/documentos/proyecto/0.Repositorio). 
+[primer hito del proyecto](http://jj.github.io/CC/documentos/proyecto/0.Repositorio).
 
 A continuación se
 puede echar un vistazo a los
@@ -411,3 +431,4 @@ pueden desplegar aplicaciones para prototipo o para producción de
 forma relativamente simple, o bien al tema dedicado a los
 [*contenedores*](Contenedores), que es el siguiente en el temario
 de la asignatura.
+
