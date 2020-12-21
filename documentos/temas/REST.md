@@ -190,6 +190,110 @@ cuerpo de la petición.
 
 ## Ejemplo de diseño de un API y prueba del mismo
 
+Vamos a diseñar un API usando [Starlette](https://www.starlette.io/),
+un framework asíncrono en Python, que tiene una forma de crear las
+rutas que permite diferenciar claramente entre las mismas y la
+aplicación que las sirve. Al servirlas, se podrá hacer con cualquier
+tipo de programa que use un interfaz asíndrono. Este API está definido
+en [este repo](https://github.com/JJ/tests-python)
+
+> Era un repositorio para practicar TDD con Python, pero me acabé
+> viniendo arriba...
+
+En este fichero se definen las rutas:
+
+```Python
+from starlette.applications import Starlette
+from starlette.routing import Route, Router
+from starlette.responses import JSONResponse
+
+from HitosIV.core import HitosIV
+
+""" Declara clase """
+estos_hitos = HitosIV()
+
+""" Define API """
+async def hitos(request):
+    """Devuelve todos los hitos o crea uno dependiendo del método"""
+    if request.method == "GET":
+        return JSONResponse( estos_hitos.todos_hitos() )
+    elif request.method == "POST":
+        file = str(int( estos_hitos.cuantos() ) + 1)
+        return await construyeHito( file, request )
+
+async def construyeHito( file, request ):
+    print("Construye hito")
+    form = await request.form()
+    data = {}
+    for i in ['title','fecha']:
+        data[i] = form[i]
+    data['file'] = file
+    estos_hitos.nuevo( file, form['title'], form['fecha'] )
+    return JSONResponse( data, status_code=201, headers={ 'Location': f"/hitos/{file}" })
+
+async def unHito( request ):
+    """ Crea un hito """
+    file = request.path_params["file"]
+    print("unHito ",  file, " ", request.method )
+    print("unHito ", estos_hitos.uno_por_clave( file ))
+    if request.method == "PUT":
+        response = await construyeHito( file, request )
+        print( "Response ", response )
+        return response
+    elif request.method == "GET":
+        print("unHito ", estos_hitos.uno_por_clave( file ))
+        try:
+            return JSONResponse(estos_hitos.uno_por_clave( file ))
+        except:
+            return JSONResponse( { "error": f"No existe {file}" }, status_code=404 )
+    else:
+        return JSONResponse( { "error": f"Método no implementado {request.method}" }, status_code=405 )
+
+rutas = Router( routes = [
+    Route("/hitos/{file}", endpoint=unHito, methods=["GET","PUT"]),
+    Route("/hitos", endpoint=hitos, methods=["GET","POST"])
+])
+```
+
+Empecemos por las últimas líneas, aquí arriba. Starlette permite
+definir directamente las rutas, asignándolas a una función que la
+procesa, y con los métodos a los que va a responder.
+
+> Es posible que se puedan definir diferentes rutas para diferentes
+> métodos, pero en principio no he visto como, así que hay sólo dos
+> funciones.
+
+En este caso, el API que definimos tiene un solo sujeto: `hitos`. A
+este sujeto se le añade el nombre del fichero donde está almacenado
+(que es único). Podemos crear un recursos de dos formas: o bien
+poniendo directamente un nombre de fichero y llamando a `PUT` o bien
+dejando que `POST` lo haga por nosotros, en cuyo caso simplemente
+usará un número que será posterior a los que ya tenemos en el objeto.
+
+Por otro lado, hay dos rutas `GET`. Si no decimos nada, se devuelve el
+objeto completo; si se usa como sufijo un ID, se tratará de recuperar
+el recurso correspondiente.
+
+Como se ve en el código, se usan los códigos 201 cuando se crea algo,
+y adicionalmente se devuelve una cabecera con `Location`, que podemos
+usar inmediatamente para recuperar ese recurso. Por otro lado, usamos
+404 para no encontrado, y 405 para el caso de que estuviéramos usando
+un método que no estuviera implementado (difícil, porque simplemente
+no pasaría el filtro de rutas, pero quién sabe lo que se puede
+programar).
+
+> Conviene ver que se están creando funciones asíncronas, y así habrá
+> que llamarlas. Cuando se usa await dentro de una función, se tiene
+> que convertir a su vez en asíncrona.
+
+<div class='ejercicios' markdown="1">
+
+Diseñar un API teniendo en cuenta las historias de usuario que se
+hayan hecho (u otras inventadas) teniendo en cuenta los principios y
+buenas prácticas que se han mostrado arriba.
+
+</div>
+
 ## A dónde ir desde aquí
 
 En el [siguiente tema](Microservicios.md) veremos cómo se usan estas
