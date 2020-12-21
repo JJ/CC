@@ -203,7 +203,7 @@ Vamos a diseñar un API usando [Starlette](https://www.starlette.io/),
 un framework asíncrono en Python, que tiene una forma de crear las
 rutas que permite diferenciar claramente entre las mismas y la
 aplicación que las sirve. Al servirlas, se podrá hacer con cualquier
-tipo de programa que use un interfaz asíndrono. Este API está definido
+tipo de programa que use un interfaz asíncrono. Este API está definido
 en [este repo](https://github.com/JJ/tests-python)
 
 > Era un repositorio para practicar TDD con Python, pero me acabé
@@ -292,7 +292,7 @@ no pasaría el filtro de rutas, pero quién sabe lo que se puede
 programar).
 
 > Conviene ver que se están creando funciones asíncronas, y así habrá
-> que llamarlas. Cuando se usa await dentro de una función, se tiene
+> que llamarlas. Cuando se usa `await` dentro de una función, se tiene
 > que convertir a su vez en asíncrona.
 
 <div class='ejercicios' markdown="1">
