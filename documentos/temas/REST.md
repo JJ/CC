@@ -119,13 +119,29 @@ de la aplicación, *tokens* de autenticación y datos que, en general,
 no formen parte del propio recurso, pero sirvan para interpretarlo o
 para acceder a él.
 
+## Buenos usos de las respuestas
+
+
+
 ## Buenos usos de los verbos HTTP
 
 Aunque es decisión del usuario de un microframework escoger qué hacer
 con cada una de las peticiones, generalmente hay una serie de reglas
 para cada uno de ellos, siguiendo [consejos de buenas
 prácticas](https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9)
-relacionados con el significado implícito de cada uno de ellos.
+relacionados con su significado implícito. Para ello habrá que tener
+en cuenta lo comentado arriba: los que son idempotentes y los que
+cambian el estado. Y en todo caso, trabajar siempre con el concepto de
+URI.
+
+Los buenos usos dicen que se usa `PUT` cuando se conoce el URI, `POST`
+cuando es el propio sistema el que lo va a generar.
+
+## Buenos usos en el diseño de un API.
+
+Los APIs se diseñan alrededor del concepto de *recurso*, y el nombre
+del recurso deberá ser el prefijo o primera parte en el *path* del URI
+correspondiente.  A continuación, generalmente, se usará el ID. 
 
 ## A dónde ir desde aquí
 
