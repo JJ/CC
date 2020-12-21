@@ -99,7 +99,60 @@ para las peticiones como para las respuestas. En estas, diferentes
 frameworks ofrecerán un API que permitirá trabajar fácilmente con las
 cabeceras, los contenidos y los metadatos correspondientes.
 
+## Buenos usos de las peticiones
+
+Hay cuatro formas de enviar información en una petición:
+
+- Mediante la petición en sí, es decir, componiéndolo en un URI.
+- Mediante la cabecera HTTP.
+- Mediante *queries* añadidos al URI, que no forman parte de él.
+- Mediante el cuerpo de la petición.
+
+Usar unos u otros no es arbitraria, sino que conviene seguir [una
+serie de reglas](https://stackoverflow.com/q/25385559/891440). Para
+empezar, normalmente ni `GET` ni `DELETE` van a tener nada en el
+cuerpo; sólo se usará el cuerpo de la petición en `PUT` y `POST`. En
+estos casos, usar el *path* o el body dependerá, principalmente, del
+tipo de información.
+
+- Si hace falta simplemente un valor o valores, sin diferentes
+  opciones, se puede usar el path, en plan `recursos/valor1/valor2`.
+- Si hay varias combinaciones variable-valor, algunas de las cuales
+  son optativas, se puede usar el *query*:
+  `recursos/id?variable1=valor1`.
+- Finalmente, para tipos de datos más complejos, o simplemente de más
+  longitud, es mejor usar el cuerpo de la petición.
+
+La cabecera del mensaje se usará para metadatos: cabeceras específicas
+de la aplicación, *tokens* de autenticación y datos que, en general,
+no formen parte del propio recurso, pero sirvan para interpretarlo o
+para acceder a él.
+
+## Buenos usos de las respuestas
+
+
+
+## Buenos usos de los verbos HTTP
+
+Aunque es decisión del usuario de un microframework escoger qué hacer
+con cada una de las peticiones, generalmente hay una serie de reglas
+para cada uno de ellos, siguiendo [consejos de buenas
+prácticas](https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9)
+relacionados con su significado implícito. Para ello habrá que tener
+en cuenta lo comentado arriba: los que son idempotentes y los que
+cambian el estado. Y en todo caso, trabajar siempre con el concepto de
+URI.
+
+Los buenos usos dicen que se usa `PUT` cuando se conoce el URI, `POST`
+cuando es el propio sistema el que lo va a generar.
+
+## Buenos usos en el diseño de un API.
+
+Los APIs se diseñan alrededor del concepto de *recurso*, y el nombre
+del recurso deberá ser el prefijo o primera parte en el *path* del URI
+correspondiente.  A continuación, generalmente, se usará el ID. 
+
 ## A dónde ir desde aquí
 
-En el [siguiente tema](Serverless) veremos cómo se usan estas
+En el [siguiente tema](Microservicios) veremos cómo se usan estas
 cabeceras para estructurar peticiones.
