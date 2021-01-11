@@ -1,57 +1,64 @@
 # Desplegando aplicaciones en la nube: Uso de PaaS y DBaaS
 
 <!--@
-prev: Desarrollo_basado_en_pruebas
-next: Provision
+prev: Microservicios
+next: Intro_gestion_de_configuraciones
 -->
 
 <div class="objetivos" markdown="1">
 
 ## Objetivos
 
-
 ### Cubre los siguientes objetivos de la asignatura
 
-2. Conocer los conceptos relacionados con el proceso de virtualización
-tanto de software como de hardware y ponerlos en práctica.
+1. Conocer los conceptos relacionados con el proceso de virtualización
+   tanto de software como de hardware y ponerlos en práctica.
 
-4. Justificar la necesidad de procesamiento virtual frente a real en
+2. Justificar la necesidad de procesamiento virtual frente a real en
    el contexto de una infraestructura TIC de una organización.
 
 ### Objetivos específicos
 
-5. Comprender los conceptos necesarios para trabajar con diferentes
+1. Comprender los conceptos necesarios para trabajar con diferentes
    plataformas PaaS
 
-6. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
+2. Aplicar el concepto de *DevOps* a este tipo específico de plataforma.
 
-7. Aplicar el sistema de control de fuentes `git` para despliegue de aplicaciones en la nube.
+3. Aplicar el sistema de control de fuentes `git` para despliegue de
+   aplicaciones en la nube.
 
 </div>
 
 ## Introducción
 
->Esta [presentación](https://jj.github.io/pispaas/#/) es un resumen del concepto de Plataforma como Servicio
->(PaaS) y alguna cosa adicional que no está incluida en este tema pero que conviene conocer de todas formas.
+> Esta [presentación](https://jj.github.io/pispaas/) es un resumen del
+> concepto de Plataforma como Servicio (PaaS) y alguna cosa adicional que no
+> está incluida en este tema pero que conviene conocer de todas formas.
 
-Cuando uno quiere desplegar una aplicación sobre una infraestructura ya definida y que no va a cambiar, teniendo parte del trabajo de instalación ya hecho, o al menos preparado
-para hacerse con la pulsación de un botón, a la vez que tiene
-flexibilidad para trabajar con marcos de aplicaciones más allá de lo
+Cuando uno quiere desplegar una aplicación sobre una infraestructura ya
+definida y que no va a cambiar, teniendo parte del trabajo de instalación ya
+hecho, o al menos preparado para hacerse con la pulsación de un botón, a la vez
+que tiene flexibilidad para trabajar con marcos de aplicaciones más allá de lo
 que ofrece programar *plugins* (como en el *SaaS*), necesita un
-[*Platform as a Service* o PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service). Un
-PaaS proporciona una *pila*, es decir, varias capas de servicios
-apilados de forma que cada uno usa al siguiente, que incluye, generalmente, almacenamiento de
-datos, un marco concreto para trabajar (tal como Django o Ruby on
-Rails) y, adicionalmente, un servidor web.
+[*Platform as a Service* o PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service).
+Un PaaS proporciona una *pila*, es decir, varias capas de servicios apilados de
+forma que cada uno usa al siguiente, que incluye, generalmente, almacenamiento
+de datos, un marco concreto para trabajar (tal como Django o Ruby on Rails) y,
+adicionalmente, un servidor web.
 
 El elegir un PaaS conlleva una cierta falta de flexibilidad: se pueden usar las
-pilas que proporciona en servicio y el usuario solo puede subir su
-aplicación que las use, no instalar elementos adicionales que necesiten permisos de
+pilas que proporciona en servicio y el usuario solo puede subir su aplicación
+que las use, no instalar elementos adicionales que necesiten permisos de
 superusuario. Pero, por otro lado, ofrece la comodidad de tener que
-concentrarse solo en la aplicación en sí y no en la
-infraestructura si se trata de una aplicación que use los marcos más comunes. Es, por eso, menos *DevOps* que una solución *IaaS*,
-pero por otro lado también tiene una parte que es la configuración y
-despliegue de la aplicación en sí y los tests que se vayan a usar. Hay que tener en cuenta que, en general, la definición de la infraestructura depende del PaaS que se use y por eso es bastante menos portable que usar un IaaS. Sin embargo, para un microservicio específico, o para una parte de la aplicación que sea invariable, puede ser bastante útil y conveniente.
+concentrarse solo en la aplicación en sí y no en la infraestructura si se trata
+de una aplicación que use los marcos más comunes. Es, por eso, menos *DevOps*
+que una solución *IaaS*, pero por otro lado también tiene una parte que es la
+configuración y despliegue de la aplicación en sí y los tests que se vayan a
+usar. Hay que tener en cuenta que, en general, la definición de la
+infraestructura depende del PaaS que se use y por eso es bastante menos
+portable que usar un IaaS. Sin embargo, para un microservicio específico, o
+para una parte de la aplicación que sea invariable, puede ser bastante útil y
+conveniente.
 
 ## Usando un servicio PaaS
 
@@ -63,32 +70,39 @@ muchos, por ejemplo, en torno a [node.js](https://nodejs.org), un
 intérprete de JavaScript asíncrono que permite crear fácilmente
 aplicaciones REST.
 
->Pila que se ha venido en llamar [MEAN](https://mean.io/) e incluye
->también Mongo y Express.
+> Pila que se ha venido en
+> llamar [MEAN](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) e incluye
+> también Mongo y Express.
 
-Algunos servicios PaaS son específicos (solo alojan una solución
-determinada, como [CloudAnt](https://www.ibm.com/cloud/cloudant) que aloja una base
-de datos con CouchDB o genéricos), permitiendo una serie de soluciones
-en general relativamente limitada; [Heroku](https://www.heroku.com) y
-[OpenShift](https://www.openshift.com) están entre estos últimos, pero
-también [hay otros](https://www.codediesel.com/nodejs/5-paas-solutions-to-host-your-nodejs-apps/), dependiendo
-del tipo de pila que quieras alojar; los tres anteriores son los que
-trabajan bien con
-node.js, [igual que nitrous.io](https://blog.blakepatches.me/blog/2013/11/04/comparison-of-node-dot-js-hosting/) o [IBM BlueMix](https://console.ng.bluemix.net/#/pricing/cloudOEPaneId=pricing) (que ofrece un período de prueba gratuito, que no se puede renovar, lo sé por experiencia).
+Algunos servicios PaaS son específicos (solo alojan una solución determinada,
+como [CloudAnt](https://www.ibm.com/cloud/cloudant) que aloja una base de datos
+con CouchDB o genéricos), permitiendo una serie de soluciones en general
+relativamente limitada; [Heroku](https://www.heroku.com) y
+[OpenShift](https://www.openshift.com) están entre estos últimos, pero también
+[hay otros](https://www.codediesel.com/nodejs/5-paas-solutions-to-host-your-nodejs-apps/),
+dependiendo del tipo de pila que quieras alojar; los tres anteriores son los
+que trabajan bien con node.js, [igual que platform.sh](https://platform.sh/) o
+[IBM BlueMix](https://cloud.ibm.com/) (que ofrece un período de prueba
+gratuito, que no se puede renovar, lo sé por experiencia, y que ahora
+está integrado directamente ne la nube de IBM).
 
->Después de probar casi todos los servicios anteriores, me da la
->impresión de que poco hay más allá de Heroku y OpenShift. AppFog, después de la efervescencia inicial, dan 30 días de prueba
->solamente. nitrous.io también da un periodo de prueba y se puede usar como IaaS, pero del resto, al menos
->los que funcionan con node.js, poco más hay.  
+> Después de probar casi todos los servicios anteriores, me da la impresión de
+> que poco hay más allá de Heroku y Openshift. AppFog, después de la
+> efervescencia inicial, dan 30 días de prueba solamente. nitrous.io también da
+> un periodo de prueba y se puede usar como IaaS, pero del resto, al menos los
+> que funcionan con node.js, poco más hay.
 
-[AppAgile](https://cloud.telekom.de/de/infrastruktur/appagile/)
-trabaja con Perl, por ejemplo, como lo hacía 
-Stackato y otras. En general, si necesitas otros lenguajes, tendrás que buscar porque la oferta variará. Los más fiables son OpenShift y Heroku, y los que ofrecen más opciones a la hora de elegir lenguajes.
+[AppAgile](https://cloud.telekom.de/en/infrastructure/appagile-paas-big-data/paas)
+trabaja con Perl, por ejemplo, como lo hacía Stackato y otras. En general, si
+necesitas otros lenguajes, tendrás que buscar porque la oferta variará. Los más
+fiables son OpenShift y Heroku, y los que ofrecen más opciones a la hora de
+elegir lenguajes.
 
 <div class='ejercicios' markdown="1">
 
-Darse de alta en algún servicio PaaS tal como Heroku,
-[zeit](https://zeit.co), [BlueMix](https://console.bluemix.net/) u OpenShift.
+Darse de alta en algún servicio PaaS tal como Heroku
+o [BlueMix](https://cloud.ibm.com/) o usar alguno de los PaaS de otros
+servicios cloud en los que ya se esté dado de alta.
 
 </div>
 
@@ -112,9 +126,9 @@ aplicación. El propio *middleware* del PaaS se encarga de equilibrar
 la carga
 
 > Aunque
-> [no necesariamente lo hace de la mejor forma](https://genius.com/James-somers-herokus-ugly-secret-annotated). Heroku
-> cambió el enrutado de forma que ya no funciona tan bien como lo
-> hacía 5 años atrás.
+> [no necesariamente lo hace de la mejor forma](https://genius.com/James-somers-herokus-ugly-secret-annotated).
+> Heroku cambió el enrutado de forma que ya no funciona tan bien como lo hacía
+> 5 años atrás.
 
 entre los diferentes nodos que uno tenga. La ventaja es que te ofrece
 un PaaS es que, aunque evidentemente haya que pagar por lo que se
@@ -125,7 +139,7 @@ que hagan esto de forma más o menos automática.
 
 La interacción con los PaaS se hace en general a través de una
 herramienta de línea de órdenes que permite, para empezar, crear
-fácilmente a partir de una plantilla una aplicación básica con las
+fácilmente, a partir de una plantilla, una aplicación básica con las
 características definidas; en ambos casos habrá que descargar una
 aplicación libre para llevar a cabo ciertas tareas como monitorizar el
 estatus y hacer tests básicos; una vez creado el fuente de la
@@ -151,7 +165,7 @@ enseñanza.
 
 Crear una aplicación en OpenShift o en algún otro PaaS en el que se
 haya dado uno de alta. Realizar un despliegue de prueba usando alguno
-de los ejemplos incluidos con el PaaS.  
+de los ejemplos incluidos con el PaaS.
 
 </div>
 
@@ -191,225 +205,25 @@ te explica cómo usarlo. No hay muchos vídeos en español, pero en
 [este explica cómo crear una aplicación Django y subirla a Heroku](https://www.youtube.com/watch?v=3k2eg0stnCI)
 y
 [este es una introducción general con ejemplos de Ruby](https://www.youtube.com/watch?v=ii9G9JMvoXM).
-En 
+En
 [este otro encuentras cómo hacer un despliegue de Python y Flask en Heroku](https://www.youtube.com/watch?v=pmRT8QQLIqk).
-
-</div>
-
-## Creando una aplicación para su despliegue en un PaaS
-
-> Un PaaS sirve para desplegar todo tipo de aplicaciones, pero estamos
-> especialmente interesados en el despliegue de servicios web. En
-> [esta presentación sobre servicios web en Python](https://jj.github.io/tests-python/ws.html)
-> se da una introducción a los servicios web y cómo desplegarlos
-> usando el micromarco de aplicaciones Hug.
-
-Se pueden diseñar servicios web en cualquier lenguaje de programación;
-pero en este apartado optaremos inicialmente por Node.js/Javascript;
-que para diseñar interfaces REST de forma bastante simple, tiene
-un [módulo llamado express](https://expressjs.com/). La idea de este módulo
-es reflejar en el código, de la forma más natural posible, el diseño del
-interfaz REST.
-
-Pero primero hay que instalarlo. Node.js tiene un sistema de gestión de
-módulos bastante simple llamado [npm](https://www.npmjs.org/) que ya hemos usado. Tras seguir las instrucciones en el
-sitio para instalarlo (o, en el caso de Ubuntu, instalarlo desde
-Synaptic o con `apt-get`), vamos al directorio en el que vayamos a crear
-el programa y escribimos
-
-`npm install express --save`
-
-en general, no hace falta tener permiso de administrador, solo el
-necesario para crear, leer y ejecutar ficheros en el directorio en el
-que se esté trabajando. `--save` guarda la dependencia en `package.json` siempre que esté en el mismo directorio, que convendría que estuviera, así no tenemos que recordar qué es lo que está instalado.
-
-Tras la instalación, el programa que hemos visto más arriba se
-transforma en el siguiente:
-
-```
-	#!/usr/bin/env node
-
-	var express=require('express');
-	var app = express();
-	var port = process.env.PORT || 8080;
-
-	app.get('/', function (req, res) {
-		res.send( { Portada: true } );
-	});
-
-	app.get('/proc', function (req, res) {
-		res.send( { Portada: false} );
-	});  
-
-	app.listen(port);
-	console.log('Server running at http://127.0.0.1:'+port+'/');
-```
-
-
-Para empezar, `express` nos evita todas las molestias de tener que
-procesar nosotros la línea de órdenes: directamente escribimos una
-función para cada respuesta que queramos tener, lo que facilita mucho la
-programación. Las órdenes reflejan directamente las órdenes de
-HTTP a las que queremos responder, en este caso `get` y por
-otro lado se pone directamente la función para cada una de ellas. Dentro
-de cada función de respuesta podemos procesar las órdenes que queramos.
-
-Por otro lado, se usa `send`  para enviar el resultado,
-[una orden más flexible](https://expressjs.com/en/api.html#res.send)
-que admite todo
-tipo de datos que son procesados para enviar al cliente la respuesta
-correcta. Tampoco hace falta establecer explícitamente el tipo MIME que
-se devuelve, encargándose `send` del mismo.
-
-En los dos casos, las peticiones devuelven JSON. Una aplicación de
-este tipo puede devolver cualquier cosa, HTML o texto, pero conviene
-acostumbrarse a pensar en estas aplicaciones como servidores a los
-cuales se va a acceder desde un cliente, sea un programa que use un
-cliente REST o el mismo cliente REST usando el navegador, es decir,
-mediante JavaScript.
-
->Realizar una aplicación básica que use `express` para devolver alguna
->estructura de datos del modelo que se viene usando en el curso.
-
-Con el mismo `express` se pueden generar aplicaciones no tan básicas
-instalando [`express-generator`](https://expressjs.com/es/starter/generator.html) o el generador de aplicaciones [`yeoman`](https://yeoman.io)
-
-    express prueba-rest
-
-Se indica el camino completo a la aplicación, que sería el
-puesto. Con esto se genera un directorio prueba-rest. Cambiándoos al
-mismo y escribiendo simplemente `npm install` se instalarán las
-dependencias necesarias. La aplicación estará en el fichero `index.js`,
-lista para funcionar, pero evidentemente habrá que adaptarla a nuestras
-necesidades particulares.
-
-El acceso a los parámetros de la llamada y la realización de diferentes
-actividades según el mismo se denomina enrutado. En express se pueden
-definir los parámetros de forma bastante simple, usando marcadores
-precedidos por `:`. Por ejemplo, si queremos tener diferentes contadores
-podríamos usar el [programa
-siguiente](https://github.com/JJ/node-app-cc/blob/master/index.js):
-
-```
-	var express = require('express');
-	var app = express();
-
-	// recuerda ejecutar antes grunt creadb
-	var db_file = "porrio.db.sqlite3";
-	var apuesta = require("./Apuesta.js");
-	var porra = require("./Porra.js");
-
-	var porras = new Array;
-
-	app.set('port', (process.env.PORT || 5000));
-	app.use(express.static(__dirname + '/public'));
-
-	app.put('/porra/:local/:visitante/:competition/:year', function( req, response ) {
-		var nueva_porra = new porra.Porra(req.params.local,req.params.visitante,
-						  req.params.competition, req.params.year );
-		porras.push(nueva_porra);
-		response.send(nueva_porra);
-	});
-
-	app.get('/porras', function(request, response) {
-		response.send( porras );
-	});
-
-	app.listen(app.get('port'), function() {
-	  console.log("Node app is running at localhost:" + app.get('port'));
-	});
-```
-
-
-Este [programa
-(express-count.js)](https://github.com/JJ/node-app-cc/blob/master/index.js)
-introduce otras dos órdenes REST: PUT, que, como recordamos, sirve para
-crear nuevos recurso y es idempotente (se puede usar varias veces con el
-mismo resultado) y además GET. Esa orden la vamos a usar para crear
-contadores a los que posteriormente accederemos con `get`. PUT no es una
-orden a la que se pueda acceder desde el navegador, así que para usarla
-necesitaremos hacer algo así desde la línea de órdenes:
-`curl -X PUT http://127.0.0.1:8080/porra/local/visitante/Copa/2013` para lo que
-previamente habrá que haber instalado `curl`, claro. Esta orden llama a
-PUT sobre el programa, y crea un partido con esas características. Una
-vez creado, podemos acceder a él desde la línea de órdenes o desde el
-navegador; la dirección `http://127.0.0.1:8080/porras` nos devolverá
-en formato JSON todo lo que hayamos almacenado hasta el momento.
-
-Todas las órdenes definen una *ruta*, que es como se denominan cada
-una de las funciones del API REST. Las
-[rutas](https://hub.packtpub.com/understanding-express-routes)
-pueden ser simples cadenas (como `/porras` en el caso de `get`) o
-incluir parámetros, como en el caso de `put`:
-`/porra/:local/:visitante/:competition/:year` incluye una orden al
-principio y cuatro parámetros. Estos parámetros se recuperan dentro de
-la función *callback* como atributos de la variable `req.params`,
-tales como `req.params.local` en las siguientes líneas.
-
-
-<div class='ejercicios' markdown="1">
-
-Realizar una app en express (o el lenguaje y marco elegido) que
-incluya variables como en el caso anterior.
-
-</div>
-
-## Probando nuestra aplicación en la nube
-
-Porque esté en la nube no significa que no tengamos que testearla como cualquier hija de vecina. En este caso no vamos a usar tests unitarios, sino test funcionales (o como se llamen); de lo que se trata es que tenemos que levantar la web y que vaya todo medianamente bien.
-
-Los tests podemos integrarlos, como es natural, en el mismo marco que el resto de la aplicación, solo que tendremos que usar librerías de aserciones ligeramente diferentes, en este caso `supertest`
-
-```
-	var request = require('supertest'),
-	app = require('../index.js');
-
-	describe( "PUT porra", function() {
-		it('should create', function (done) {
-		request(app)
-			.put('/porra/uno/dos/tres/4')
-			.expect('Content-Type', /json/)
-			.expect(200,done);
-		});
-	});
-```
-
-(que tendrá que estar incluido en el directorio `test/`, como el resto). En vez de ejecutar la aplicación (que también podríamos hacerlo), lo que hacemos es que añadimos al final de `index.js` la línea:
-
-```
-module.exports = app;
-```
-
-con lo que se exporta la app que se crea; `require` ejecuta el código y recibe la variable que hemos exportado, que podemos usar como si se tratara de parte de esta misma aplicación. `app` en este test, por tanto, contendrá lo mismo que en la aplicación principal, `index.js`. Usamos el mismo estilo de test con `mocha` que [ya se ha visto](https://jj.github.io/desarrollo-basado-pruebas/) pero usamos funciones específicas:
-
-* `request` hace una llamada sobre `app` como si la hiciéramos *desde
-  fuera*; `put`, por tanto, llamará a la ruta correspondiente, que
-  crea un partido sobre el que apostar.
-* `expect` expresa qué se puede esperar de la respuesta. Por ejemplo,
-  se puede esperar que sea de tipo JSON (porque es lo que enviamos, un
-  JSON del partido añadido) y además que sea de tipo '200', respuesta
-  correcta. Y como esta es la última de la cadena, llamamos a `done`
-  que es en realidad una función que usa como parámetro el callback.
-
-Podemos hacer más pruebas, usando get, por ejemplo. Pero se deja como ejercicio al alumno.
-
-Estas pruebas permiten que no nos encontremos con sorpresas una vez que despeguemos en el PaaS. Así sabemos que, al menos, todas las rutas que hemos creado funcionan correctamente.
-
-<div class='ejercicios' markdown="1">
-
- Crear pruebas para las diferentes rutas de la aplicación.
 
 </div>
 
 ## Desplegando en el PaaS
 
-Podemos, por ejemplo, desplegarlo en Heroku. Tras abrir una cuenta en
-el mismo, crear una
+Como ejemplo vamos a usar Heroku.
+
+> Sitios como Openshift tienen sistemas también similares,
+> pero por lo pronto vamos a usar este, que tiene un sistema un poco
+> más abierto y completo.
+
+Tras abrir una cuenta en Heroku, crear una
 [aplicación en Node](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)
-es bastante directo. Primero, hay que tener en cuenta que en el PaaS,
-como debería de ser obvio, se trata de aplicaciones web. Por eso la
-aplicación más simple que se propone usa ya `express` (o, para el
-caso, cualquier otro marco de servicios REST).
+es bastante directo. Primero, hay que tener en cuenta que en el PaaS, como
+debería de ser obvio, se trata de aplicaciones web. Por eso la aplicación más
+simple que se propone usa ya `express` (o, para el caso, cualquier otro marco
+de servicios REST).
 
 1. Descarga
    [el *cinturón de herramientas* de Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
@@ -418,40 +232,42 @@ caso, cualquier otro marco de servicios REST).
    [la aplicación de ejemplo para node](https://github.com/heroku/node-js-getting-started.git). Es
    una aplicación simple de node y express. Heroku tiene una serie de
    ejemplos para diferentes lenguajes de programación. Por ejemplo,
-   [para PHP](https://devcenter.heroku.com/articles/getting-started-with-php#prepare-the-app). Heroku
-   admite [7 lenguajes, Scala, Clojure, Java, Ruby y Python](https://devcenter.heroku.com/start)
+   [para PHP](https://devcenter.heroku.com/articles/getting-started-with-php#prepare-the-app).
+   Heroku admite
+   [7 lenguajes, que incluyen Scala, Clojure, Java, Ruby y Python](https://devcenter.heroku.com/start),
+   aparte de permitir también despliegue de contenedores.
 4. Con `heroku create` (dentro del directorio descargado) se crea la
    aplicación en heroku. Previamente lo único que había era un repo,
    con esta orden se crea una aplicación en heroku y se conecta con el
    repositorio descargado; esencialmente lo que se hace es que se
    añade un destino, `heroku` al que podemos hacer push. Con esto se
    crea una app de nombre aleatorio, que luego podremos modificar.
-Puedes darle también un nombre a la aplicación y asignarle un servidor
-   en Europa (legalmente obligatorio) escribiendo `heroku apps:create
-   --region eu nombre_muy_chulo` Si te asignan un nombre puedes
-   cambiarlo también más adelante, en la web y en el repo.
 
-Esto crea una aplicación en la web de Heroku, que al hacer `git push
-heroku master` se pondrá en marcha. La mayoría de los PaaS usa `git
-push` como modo de despliegue, que permite tener controlada la versión
-de todos los ficheros que hay en el mismo y además, con los *ganchos*
-post-`push`,
-[compilar y ejecutar la aplicación a través de los llamados *Buildpacks*](https://www.jamesward.com/2012/07/18/the-magic-behind-herokus-git-push-deployment).  
+Puedes darle también un nombre a la aplicación y asignarle un servidor en
+Europa (legalmente obligatorio) escribiendo `heroku apps:create --region eu
+nombre_muy_chulo` Si te asignan un nombre puedes cambiarlo también más
+adelante, en la web y en el repo.
+
+Esto crea una aplicación en la web de Heroku, que al hacer `git push heroku
+master` se pondrá en marcha. La mayoría de los PaaS usa `git push` como modo de
+despliegue, que permite tener controlada la versión de todos los ficheros que
+hay en el mismo y además, con los *ganchos* post-`push`,
+[compilar y ejecutar la aplicación a través de los llamados *Buildpacks*](https://jamesward.com/2012/07/18/the-magic-behind-herokus-git-push-deployment/).
 
 <div class='ejercicios' markdown="1">
 
- Instalar y echar a andar tu primera aplicación en Heroku.
+Instalar y echar a andar tu primera aplicación en Heroku.
 
 </div>
 
 Solo hemos, por lo pronto, desplegado la aplicación por omisión.
 
->Y en esta aplicación por omisión se ha usado también el *buildpack*,
->es decir, el proceso y herramientas de construcción, que esté programado para tu pila, el de
->Node o el que sea. Pero si eres un poco atrevido, puedes
->[crear tu propio Buildpack](https://devcenter.heroku.com/articles/buildpack-api),
->que puede estar escrito en cualquier lenguaje y consiste en realidad
->en tres scripts.
+> Y en esta aplicación por omisión se ha usado también el *buildpack*, es
+> decir, el proceso y herramientas de construcción, que esté programado para tu
+> pila, el de Node o el que sea. Pero si eres un poco atrevido, puedes
+> [crear tu propio Buildpack](https://devcenter.heroku.com/articles/buildpack-api),
+> que puede estar escrito en cualquier lenguaje y consiste en realidad en tres
+> scripts.
 
 Se
 habrá generado un fichero denominado `index.js` que será,
@@ -459,29 +275,32 @@ efectivamente, el que se ejecute. Pero ¿cómo sabe Heroku qué es lo que
 hay que ejecutar? Si miramos el fichero `Procfile` encontraremos algo
 así
 
-```
-	web: node index.js
+```plain
+web: node index.js
 ```
 
-Este [Procfile](https://devcenter.heroku.com/articles/procfile) se usa
-para indicar a heroku qué es lo que tiene que ejecutar. En casi todos
-los casos se tratará de una aplicación web, y por tanto la parte
-izquierda, `web:` será común. Dependiendo del lenguaje, variará la
-parte derecha; en este caso le estamos indicando la línea de órdenes
-que hay que ejecutar para *levantar* la web que hemos creado.
+Este [Procfile](https://devcenter.heroku.com/articles/procfile) se usa para
+indicar a heroku qué es lo que tiene que ejecutar. En casi todos los casos se
+tratará de una aplicación web, y por tanto la parte izquierda, `web:` será
+común. Dependiendo del lenguaje, variará la parte derecha; en este caso le
+estamos indicando la línea de órdenes que hay que ejecutar para *levantar* la
+web que hemos creado.
 
-Localmente, se recrea (aproximadamente) el entorno de Heroku usando
-Foreman. Para ejecutar localmente nuestra aplicación ejecutaremos
+Localmente, se recrea (aproximadamente) el entorno de Heroku usando Foreman. En
+versiones tempranas de `heroku` estaba incluido, pero ahora tendrás que
+instalarlo de forma independiente.
 
-```
-	foreman start web
+Para ejecutar localmente nuestra aplicación ejecutaremos
+
+```shell
+foreman start web
 ```
 
 `foreman` leerá el `Procfile` y ejecutará la
 tarea correspondiente a `web`, en este caso `index.js`.  Podemos
 interrumpirlo simplemente tecleando Ctrl-C.
 
-[`foreman`](https://blog.daviddollar.org/2011/05/06/introducing-foreman.html)
+[`foreman`](https://github.com/ddollar/foreman)
 actúa como un envoltorio de tu aplicación, ejecutando todo lo
 necesario para que funcione (no solo la web, sino bases de datos o
 cualquier otra cosa que haya que levantar antes) codificando por
@@ -502,11 +321,11 @@ volver a desplegar en heroku.
 
 Si está `package.json` bien configurado, por ejemplo, de esta forma
 
-```
+```json
     "scripts": {
-	  "test": "mocha",
-	  "start": "node index.js"
-	},
+      "test": "mocha",
+      "start": "node index.js"
+    },
 ```
 
 se puede arrancar también la aplicación, sin ningún tipo de
@@ -514,7 +333,9 @@ envoltorio, simplemente con `npm start`, que ejecutará lo que hay a su
 izquierda. La clave `scripts` de `package.json` contiene una serie de
 tareas o procesos que se pueden comenzar; en ese sentido, la
 funcionalidad se solapa con el `Gruntfile` que se ha visto
-anteriormente.
+anteriormente, sin embargo y como se ha visto en el hito anterior,
+aconsejamos vivamente tener todas las tareas centralizadas en un solo
+sistema de lanzamiento de tareas.
 
 >Siempre hay más de una manera de hacer las cosas.
 
@@ -525,7 +346,7 @@ hacer `git push heroku master`; `heroku` aquí no es más que un alias a
 la dirección de tu aplicación, que si miras en `.git/config` estará
 definido de una forma similar a la siguiente
 
-```
+```ini
 [remote "heroku"]
    url = git@heroku.com:porrio.git
    fetch = +refs/heads/*:refs/remotes/heroku/*
@@ -533,7 +354,7 @@ definido de una forma similar a la siguiente
 
 Es el mismo resultado que si hubiéramos dado la orden
 
-```
+```shell
 git remote add heroku git@heroku.com:porrio.git
 ```
 
@@ -546,7 +367,7 @@ de GitHub y seguido las instrucciones anteriores, tendrás que crear un
 repositorio vacío propio en GitHub y añadirle este como `origin` de la
 forma siguiente
 
-```
+```shell
 # Borra el origen inicial, que será el de la aplicación de ejemplo
 git remote rm origin
 # Crea el nuevo origin
@@ -557,34 +378,27 @@ Todo esto puedes ahorrártelo si desde el principio haces un *fork* de
 la aplicación de node y trabajas con ese *fork*; el origen estará ya
 definido.
 
-Ahora tienes dos repositorios: el que está efectivamente desplegado y
-el que contiene los fuentes. ¿No sería una buena idea que se trabajara
-con uno solo? Efectivamente, [GitHub permite desplegar directamente a Heroku cuando se hace un `push` a la rama `master`](https://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository),
-aunque no es inmediato, sino que pasa por usar un servicio de
-integración continua, que se asegure de que todo funciona
-correctamente.
-
-Para eso, evidentemente, el sitio en el que se despliegue debe estar
-preparado. No es el caso de Heroku.
-
->Heroku tiene, sin embargo,
->[una beta reciente en GitHub y posiblemente funcione en el futuro próximo](https://github.com/github/github-services/tree/master/docs), que necesita un servicio
->intermedio para llevarlo a cabo, aunque
->[se puede probar ahora mismo en beta](https://devcenter.heroku.com/articles/github-integration)
+Ahora tienes dos repositorios: el que está efectivamente desplegado y el que
+contiene los fuentes. ¿No sería una buena idea que se trabajara con uno solo?
+Efectivamente,
+[GitHub permite desplegar directamente a Heroku](https://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository)
+cuando se hace un `push` a la rama `master`, aunque no es inmediato, sino que
+pasa por usar un servicio de integración continua, que se asegure de que todo
+funciona correctamente.
 
 Otros sistemas, como
-[AWS CodeDeploy de Amazon pueden desplegar a una instancia en la nube de esta empresa](https://medium.com/aws-activate-startup-blog/simplify-code-deployments-with-aws-codedeploy-e95599091304). Sin
-embargo,
-[no es complicado configurar un servicio de integración continua como Snap CI](https://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository). Después
-de [darte de alta en el Snap CI](https://snap-ci.com/), la
-configuración se hace desde un panel de control y, si ya lo tienes
-configurado para Travis (como deberías) el propio sitio detecta la
-configuración automáticamente.
+[AWS CodeDeploy de Amazon pueden desplegar a una instancia en la nube de esta empresa](https://medium.com/aws-activate-startup-blog/simplify-code-deployments-with-aws-codedeploy-e95599091304).
+Sin embargo,
+[no es complicado configurar un servicio de integración continua como Snap CI](https://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository).
+Después de [darte de alta en el Snap CI](https://snap-ci.com/), la
+configuración se hace desde un panel de control y, si ya lo tienes configurado
+para Travis (como deberías) el propio sitio detecta la configuración
+automáticamente.
 
-Para añadir el paso de despliegue a Heroku hay que hacer un paso
-adicional: en el menú de Configuración se puede añadir un paso
-adicional tras el de Test, en el que no hay que más que decirle el
-repositorio de Heroku al que se va a desplegar.
+Para añadir el paso de despliegue a Heroku desde un sistema de integración
+continua hay que hacer una configuración adicional adicional: en el menú de
+Configuración se puede añadir un paso adicional tras el de Test, en el que no
+hay que más que decirle el repositorio de Heroku al que se va a desplegar.
 
 ![Panel de control de Snap CI con despliegue a Heroku](/documentos/img/despliegue-snap-ci.png)
 
@@ -592,39 +406,58 @@ Con esto, un simple push a una rama determinada, que sería la
 `master`, se hará que se pruebe y, en caso de pasar los tests, se
 despliegue automáticamente en Heroku.
 
-
 <div class='ejercicios' markdown="1">
- Haz alguna modificación a tu aplicación en node.js para Heroku, sin
- olvidar añadir los tests para la nueva funcionalidad, y configura el
- despliegue automático a Heroku usando Snap CI o
- [alguno de los otros servicios, como Codeship, mencionados en StackOverflow](https://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository)
- </div>
 
-En principio se ha preparado [a la aplicación](https://github.com/JJ/node-app-cc/blob/master/index.js) para su despliegue en un solo PaaS, Heroku. Pero, ¿se podría desplegar en otro PaaS también?
+Haz alguna modificación a tu aplicación en node.js para Heroku, sin olvidar
+añadir los tests para la nueva funcionalidad, y configura el despliegue
+automático a Heroku usando
+[algún servicio de los mencionados en
+StackOverflow](https://stackoverflow.com/questions/17558007/deploy-to-heroku-directly-from-my-github-repository)
 
-Hay que dar un paso atrás y ver qué es necesario para desplegar en Heroku, aparte de lo obvio, tener una cuenta. Hacen falta varias cosas:
+</div>
 
-1. Un `packaje.json`, aunque en realidad esto no es específico de Heroku sino de cualquier aplicación y cualquier despliegue.
-2. El fichero `Procfile` con el trabaja Foreman y que distribuye las tareas entre los diferentes *dynos*: `web`, `worker` y los demás.
-3. Requisitos específicos de IP y puerto al que escuchar y que se pasan a `app.listen`. Estos parámetros se definen como variables de entorno.
+En principio se ha preparado
+[a la aplicación](https://github.com/JJ/node-app-cc/blob/master/lib/index.js) para
+su despliegue en un solo PaaS, Heroku. Pero, ¿se podría desplegar en otro PaaS
+también?
 
-Teniendo en cuenta esto, no es difícil cambiar la aplicación para que
-pueda funcionar correctamente al menos en otro PaaS como OpenShift o BlueMix,
-siempre que todavía se tenga acceso al mismo, que son los
-más populares. Como no tiene el concepto de diferentes tipos de dynos,
-usa directamente `package.json` para iniciar la aplicación. Por otro
-lado, los requisitos específicos de puerto e IP se tienen en cuenta en
-estas dos órdenes: 
+Hay que dar un paso atrás y ver qué es necesario para desplegar en Heroku,
+aparte de lo obvio, tener una cuenta. Hacen falta varias cosas:
 
-```
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP
-	                          || '0.0.0.0';
+1. Un `packaje.json`, aunque en realidad esto no es específico de Heroku sino
+   de cualquier aplicación y cualquier despliegue. En general, hará falta un
+   fichero de una herramienta de construcción al que se pueda invocar para
+   arrancar la aplicación.
+2. El fichero `Procfile` con el trabaja Foreman y que distribuye las tareas
+   entre los diferentes *dynos*: `web`, `worker` y los demás. Desde este
+   fichero habrá que usar el target que hayamos definido previamente para
+   arrancar el servicio.
+3. Requisitos específicos de IP y puerto al que escuchar y que se pasan a
+   `app.listen`. Estos parámetros se definen como variables de entorno, como se
+   ha explicado en el capítulo anterior.
+
+Teniendo en cuenta esto, no es difícil cambiar la aplicación para que pueda
+funcionar correctamente al menos en esos dos PaaS, que son los más populares.
+En Openshift, en realidad, no hace falta `Procfile`. Como no tiene el concepto
+de diferentes tipos de dynos, usa directamente `package.json` para iniciar la
+aplicación. Por otro lado, los requisitos específicos de puerto e IP se tienen
+en cuenta en estas dos órdenes:
+
+```javascript
+const server_ip_address = process.env.OPENSHIFT_NODEJS_IP
+                              || '0.0.0.0';
 app.set('port', (process.env.PORT
 	                 || process.env.OPENSHIFT_NODEJS_PORT
 					 || 5000));
 ```
 
-En la primera se establece la IP en la que tiene que escuchar la aplicación. En el caso por omisión, el segundo, la dirección `0.0.0.0` indica que Express escuchará en todas las IPs. Sin embargo, eso no es correcto ni posible en OpenShift, que tiene una IP específica, contenida en la variable de entorno `OPENSHIFT_NODEJS_IP` y que será una IP de tipo local (aunque realmente esto no tiene que importarnos salvo por el caso de que no podremos acceder a esa IP directamente).
+En la primera se establece la IP en la que tiene que escuchar la aplicación. En
+el caso por omisión, el segundo, la dirección `0.0.0.0` indica que Express
+escuchará en todas las IPs. Sin embargo, eso no es correcto ni posible en
+OpenShift, que tiene una IP específica, contenida en la variable de entorno
+`OPENSHIFT_NODEJS_IP` y que será una IP de tipo local (aunque realmente esto no
+tiene que importarnos salvo por el caso de que no podremos acceder a esa IP
+directamente).
 
 En cuanto al puerto, en los dos casos hay variables de entorno para
 definirlo. Simplemente las vamos comprobando con \|\| (OR) y si no está
@@ -1090,8 +923,8 @@ aplicación de calificación de empresas realizada anteriormente.
 
 ## A dónde ir desde aquí
 
-En el [capítulo sobre contenedores](Contenedores.md) usaremos
-diferentes técnicas de virtualización para la creación de contenedores
- que aislan procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas *virtuales*. Previamente habrá que [realizar la
-práctica correspondiente a esta materia](../proyecto/2.PaaS.md).
-
+En el [siguiente tema](Tecnicas_de_virtualizacion.md) usaremos diferentes
+técnicas de virtualización para la creación de contenedores que aíslan
+procesos, usuarios y recursos del resto del sistema, creando por tanto máquinas
+*virtuales*. Previamente habrá que [realizar la práctica correspondiente a esta
+materia](../proyecto/4.PaaS.md).
