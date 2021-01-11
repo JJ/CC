@@ -228,8 +228,8 @@ de servicios REST).
    [el *cinturón de herramientas* de Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
 2. Haz *login* con `heroku login`.
 3. Descarga
-   [la aplicación de ejemplo para node](https://github.com/heroku/node-js-getting-started). Es
-   una aplicación simple de node y express. Heroku tiene una serie de
+   [la aplicación de ejemplo para node](https://github.com/heroku/node-js-getting-started).
+   Es una aplicación simple de node y express. Heroku tiene una serie de
    ejemplos para diferentes lenguajes de programación. Por ejemplo,
    [para PHP](https://devcenter.heroku.com/articles/getting-started-with-php#prepare-the-app).
    Heroku admite
@@ -438,7 +438,6 @@ aparte de lo obvio, tener una cuenta. Hacen falta varias cosas:
 Teniendo en cuenta esto, no es difícil cambiar la aplicación para que pueda
 funcionar correctamente al menos en esos dos PaaS, que son los más populares.
 
-
 ```javascript
 const server_ip_address = process.env.OPENSHIFT_NODEJS_IP
                               || '0.0.0.0';
@@ -528,8 +527,6 @@ mayoría de los PaaS, por otro lado, ofrecen también DBaaS como
 añadidos a sus plataformas; es decir, tarde o temprano se acabarán
 usando.
 
-
-
 ## Un ejemplo de base de datos NoSQL: Redis
 
 Vamos a aprovechar que estamos hablando de nuevas bases de datos para
@@ -549,7 +546,6 @@ en
 [el siguiente programa](https://github.com/JJ/node-app-cc/blob/master/pruebas/redis.js),
 que prueba las principales características trabajando con pares
 variable-valor y *hashes*:
-
 
 ```shell
     var redis = require('redis');
@@ -594,7 +590,6 @@ esta forma:
 export
 REDISCLOUD_URL=https://daigual:esta_es_la_clave@cosas.garantiadata.com:12345
 ```
-
 
 ; lo que tendrás que escribir en la línea de órdenes y nunca, nunca,
 dejar en el sistema de control de fuentes.  Es un URL un tanto
@@ -655,15 +650,16 @@ cliente de Redis). Cualquier programa en Redis tiene que terminar de
 esa forma.
 
 <div class='ejercicios' markdown="1">
-1.  Darse de alta en un servicio Redis en la nube y
-realizar sobre él las operaciones básicas desde el panel de control.
 
-2. Instalar un cliente de línea de órdenes de Redis o una biblioteca cliente REST
-y realizar desde él las operaciones básicas de creación y lectura de
-información.
+1. Darse de alta en un servicio Redis en la nube y realizar sobre él
+   las operaciones básicas desde el panel de control.
+
+2. Instalar un cliente de línea de órdenes de Redis o una biblioteca
+   cliente REST y realizar desde él las operaciones básicas de
+   creación y lectura de información.
 
 3. Ejecutar ejemplos de cualquier lenguaje de programación sobre la
-instalación realizada.
+   instalación realizada.
 
 </div>
 
@@ -686,11 +682,11 @@ línea de órdenes) y la clave que hayamos establecido (con `-a`) y
 podemos hacer consultas usando las órdenes de Redis, por ejemplo:
 
 ```shell
-    pub-redis-12345.us-east-1-2.3.ec2.garantiadata.com:12345> keys *
-    1) "Granada-C\xc3\xb3rdoba-Liga-2018"
-    2) "zape"
-    3) "un_foo"
-    ...
+pub-redis-12345.us-east-1-2.3.ec2.garantiadata.com:12345> keys *
+1) "Granada-C\xc3\xb3rdoba-Liga-2018"
+2) "zape"
+3) "un_foo"
+...
 ```
 
 Aunque las claves estén almacenadas al alimón, en realidad las órdenes
@@ -752,7 +748,6 @@ en el espacio `porra:` y podríamos buscarlas usando `keys
         client.end();
     });
 ```
-
 
 El
 [programa, denominado obviamente `porredis.js`](https://github.com/JJ/node-app-cc/)
@@ -824,7 +819,6 @@ resultado será algo así:
         6: bet:OTROMAS
     End
 ```
-
 
 Las primeras `Reply`s son el número de registros insertados. El resto
 muestra las claves del *hash* que se ha creado, que serán siempre las
@@ -919,7 +913,6 @@ de datos "tradicional" elegida (PostgreSQL o cualquiera que se pueda usar online
 que realice el ciclo básico de una base de datos. Puede ser la
 aplicación de calificación de empresas realizada anteriormente.
 </div>
-
 
 ## A dónde ir desde aquí
 
