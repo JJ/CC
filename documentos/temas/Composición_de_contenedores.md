@@ -165,3 +165,6 @@ si el código es correcto o no.
 
 ## A dónde ir desde aquí
 
+En producción habría que usar algo más avanzado
+como
+[Kubernetes](https://kubernetes.io/es/docs/concepts/overview/what-is-kubernetes/).
