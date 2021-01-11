@@ -228,7 +228,7 @@ de servicios REST).
    [el *cinturón de herramientas* de Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
 2. Haz *login* con `heroku login`.
 3. Descarga
-   [la aplicación de ejemplo para node](https://github.com/heroku/node-js-getting-started.git). Es
+   [la aplicación de ejemplo para node](https://github.com/heroku/node-js-getting-started). Es
    una aplicación simple de node y express. Heroku tiene una serie de
    ejemplos para diferentes lenguajes de programación. Por ejemplo,
    [para PHP](https://devcenter.heroku.com/articles/getting-started-with-php#prepare-the-app).
@@ -609,7 +609,7 @@ datos. Previamente a esto habrá que haber creado una *suscripción* de
 Redis en "My Resources -> Manage"; hay derecho al menos a uno gratuito
 por persona aunque solo te
 permiten
-[25 MB y 10 conexiones simultáneas](https://redislabs.com/pricing).
+[30 MB y 10 conexiones simultáneas](https://redislabs.com/redis-enterprise-cloud/pricing/).
 
 >Redis, de todas formas, es software libre y puedes instalarlo sin
 >ninguna limitación en tu propio alojamiento si lo tienes; también en tu
