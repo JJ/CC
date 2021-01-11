@@ -77,8 +77,8 @@ aplicaciones REST.
 Algunos servicios PaaS son específicos (solo alojan una solución determinada,
 como [CloudAnt](https://www.ibm.com/cloud/cloudant) que aloja una base de datos
 con CouchDB o genéricos), permitiendo una serie de soluciones en general
-relativamente limitada; [Heroku](https://www.heroku.com) y
-[OpenShift](https://www.openshift.com) están entre estos últimos, pero también
+relativamente limitada; [Heroku](https://www.heroku.com) es el más
+conocido, pero también
 [hay otros](https://www.codediesel.com/nodejs/5-paas-solutions-to-host-your-nodejs-apps/),
 dependiendo del tipo de pila que quieras alojar; los tres anteriores son los
 que trabajan bien con node.js, [igual que `platform.sh`](https://platform.sh/) o
@@ -461,12 +461,6 @@ definirlo. Simplemente las vamos comprobando con \|\| (OR) y si no está
 establecida ninguna, se asigna el valor por defecto, que también sirve
 para la ejecución local.
 
-<div class='ejercicios' markdown="1">
- Preparar la aplicación con la que se ha
- venido trabajando hasta este momento para ejecutarse en un PaaS, el
- que se haya elegido.
-</div>
-
 En Heroku se puede trabajar también con
 Travis para el despliegue automático, aunque es mucho más simple
 hacerlo con Snap CI como se ha indicado más arriba.
@@ -487,7 +481,7 @@ de la aplicación.
 Este sistema se llama
 [*buildpacks* en Heroku](https://devcenter.heroku.com/articles/buildpacks)
 y
-[otros PaaS](http://www.activestate.com/blog/2014/04/paas-buildpacks)
+[otros PaaS](https://www.activestate.com/blog/paas-buildpacks/)
 basados en CloudFoundry y en Stackato. En general, estos mecanismos
 incluyen operaciones para
 
@@ -552,7 +546,7 @@ vamos a empezar trabajando con un sistema cliente-servidor para hacer
 porras futbolísticas con el que seguiremos trabajando más
 adelante. Pero antes, una aproximación básica a Redis
 en
-[el siguiente programa](https://github.com/JJ/node-app-cc/blob/master/redis.js),
+[el siguiente programa](https://github.com/JJ/node-app-cc/blob/master/pruebas/redis.js),
 que prueba las principales características trabajando con pares
 variable-valor y *hashes*:
 
