@@ -81,21 +81,22 @@ relativamente limitada; [Heroku](https://www.heroku.com) y
 [OpenShift](https://www.openshift.com) están entre estos últimos, pero también
 [hay otros](https://www.codediesel.com/nodejs/5-paas-solutions-to-host-your-nodejs-apps/),
 dependiendo del tipo de pila que quieras alojar; los tres anteriores son los
-que trabajan bien con node.js, [igual que platform.sh](https://platform.sh/) o
+que trabajan bien con node.js, [igual que `platform.sh`](https://platform.sh/) o
 [IBM BlueMix](https://cloud.ibm.com/) (que ofrece un período de prueba
 gratuito, que no se puede renovar, lo sé por experiencia, y que ahora
 está integrado directamente ne la nube de IBM).
 
-> Después de probar casi todos los servicios anteriores, me da la impresión de
-> que poco hay más allá de Heroku y Openshift. AppFog, después de la
-> efervescencia inicial, dan 30 días de prueba solamente. nitrous.io también da
-> un periodo de prueba y se puede usar como IaaS, pero del resto, al menos los
-> que funcionan con node.js, poco más hay.
+> Después de probar casi todos los servicios anteriores, me da la
+> impresión de que poco hay más allá de Heroku y los incluidos en GCP,
+> AWS y Azure. AppFog, después de la efervescencia inicial, dan 30
+> días de prueba solamente. nitrous.io también da un periodo de prueba
+> y se puede usar como IaaS, pero del resto, al menos los que
+> funcionan con node.js, poco más hay.
 
 [AppAgile](https://cloud.telekom.de/en/infrastructure/appagile-paas-big-data/paas)
 trabaja con Perl, por ejemplo, como lo hacía Stackato y otras. En general, si
-necesitas otros lenguajes, tendrás que buscar porque la oferta variará. Los más
-fiables son OpenShift y Heroku, y los que ofrecen más opciones a la hora de
+necesitas otros lenguajes, tendrás que buscar porque la oferta variará. El más
+fiables es Heroku, que ofrece bastantes opciones a la hora de
 elegir lenguajes.
 
 <div class='ejercicios' markdown="1">
@@ -111,9 +112,7 @@ siguen en general un modelo *freemium*: capacidades básicas son
 gratuitas y para conseguir mayores prestaciones o un uso más
 intensivo, o bien capacidades que no entren en el paquete básico, hay
 que pasar al modelo de pago. Estas máquinas virtuales se denominan
-[*dynos*](https://devcenter.heroku.com/articles/dynos) en Heroku y
-simplemente aplicaciones en OpenShift, aunque los *dynos* son mucho
-más flexibles que las aplicaciones de OpenShift.
+[*dynos*](https://devcenter.heroku.com/articles/dynos) en Heroku.
 
 Para trabajar con estas configuraciones, generalmente, los
 PaaS proporcionan un *toolbelt* o herramientas de línea de órdenes que
@@ -163,7 +162,7 @@ enseñanza.
 
 <div class='ejercicios' markdown="1">
 
-Crear una aplicación en OpenShift o en algún otro PaaS en el que se
+Crear una aplicación en Heroku o en algún otro PaaS en el que se
 haya dado uno de alta. Realizar un despliegue de prueba usando alguno
 de los ejemplos incluidos con el PaaS.
 
@@ -214,7 +213,7 @@ En
 
 Como ejemplo vamos a usar Heroku.
 
-> Sitios como Openshift tienen sistemas también similares,
+> Los PaaS de los "cloud players" tienen sistemas también similares,
 > pero por lo pronto vamos a usar este, que tiene un sistema un poco
 > más abierto y completo.
 
@@ -438,10 +437,6 @@ aparte de lo obvio, tener una cuenta. Hacen falta varias cosas:
 
 Teniendo en cuenta esto, no es difícil cambiar la aplicación para que pueda
 funcionar correctamente al menos en esos dos PaaS, que son los más populares.
-En Openshift, en realidad, no hace falta `Procfile`. Como no tiene el concepto
-de diferentes tipos de dynos, usa directamente `package.json` para iniciar la
-aplicación. Por otro lado, los requisitos específicos de puerto e IP se tienen
-en cuenta en estas dos órdenes:
 
 
 ```javascript
@@ -454,9 +449,10 @@ app.set('port', (process.env.PORT
 
 En la primera se establece la IP en la que tiene que escuchar la aplicación. En
 el caso por omisión, el segundo, la dirección `0.0.0.0` indica que Express
-escuchará en todas las IPs. Sin embargo, eso no es correcto ni posible en
-OpenShift, que tiene una IP específica, contenida en la variable de entorno
-`OPENSHIFT_NODEJS_IP` y que será una IP de tipo local (aunque realmente esto no
+escuchará en todas las IPs. Sin embargo, eso no era correcto ni
+posible en entornos como OpenShift, que tiene una IP específica,
+contenida en la variable de entorno `OPENSHIFT_NODEJS_IP` y que será
+una IP de tipo local (aunque realmente esto no
 tiene que importarnos salvo por el caso de que no podremos acceder a esa IP
 directamente).
 
@@ -471,8 +467,7 @@ para la ejecución local.
  que se haya elegido.
 </div>
 
-También en OpenShift se puede desplegar automáticamente usando Travis,
-por ejemplo. De hecho, incluso en Heroku se puede trabajar también con
+En Heroku se puede trabajar también con
 Travis para el despliegue automático, aunque es mucho más simple
 hacerlo con Snap CI como se ha indicado más arriba.
 
@@ -489,16 +484,12 @@ los más populares tienen una serie de mecanismos que permiten usar
 prácticamente cualquier lenguaje, biblioteca y mecanismo de despliegue
 de la aplicación.
 
-> El problema es que [no son estándar](https://blog.openshift.com/paas-standards-standardize-on-what/), con lo que es imposible llevar una aplicación definida
-> de esta forma de un PaaS a otro.
-
 Este sistema se llama
 [*buildpacks* en Heroku](https://devcenter.heroku.com/articles/buildpacks)
 y
 [otros PaaS](http://www.activestate.com/blog/2014/04/paas-buildpacks)
-basados en CloudFoundry y en Stackato y
-[*cartridges*](https://developers.openshift.com/en/languages-overview.html)
-en OpenShift. En general, estos mecanismos incluyen operaciones para
+basados en CloudFoundry y en Stackato. En general, estos mecanismos
+incluyen operaciones para
 
 * Detectar si los fuentes tienen los ficheros correctos para ser
   desplegados. Por ejemplo, el `package.json` en el caso de node.js
@@ -506,23 +497,13 @@ en OpenShift. En general, estos mecanismos incluyen operaciones para
   a ejecutar directamente.
 * Informar al PaaS del resultado de estas operaciones.
 
-En Heroku se trata de tres scripts llamados de esa forma. Los
-[*cartridges* de OpenShift](https://docs.openshift.org/origin-m4/oo_cartridge_developers_guide.html)
-son algo más complicados pero, a cambio, son mucho más flexibles y
-permiten controlar de forma total qué se hace con los fuentes y cómo
-se despliega. No todos los ficheros son necesarios y en
-[este blog](https://blog.openshift.com/new-openshift-cartridge-format-part-2/)
-nos explica cómo empaquetarlos para crear un paquete; básicamente
-hacen falta dos ficheros, `control` y `metadata/manifest.yml` que
-contiene datos sobre el paquete. El resto, inclusive algunos parecidos
-a los de arriba, con opcionales aunque convenientes. En general, de
-todas formas, parece mucho más simple extender Heroku que OpenShift y
-cualquiera de los casos algo más complicados que usar simplemente un
-IaaS para lo mismo.
+En Heroku se trata de tres scripts llamados de esa forma.
 
 <div class='ejercicios' markdown="1">
+
 Crear una aplicación mínima y usar un buildpack no estándar para
-desplegarla en Heroku o un *cartridge* no estándar en OpenShift.
+desplegarla en Heroku. Esto será imprescindible si se usan lenguajes
+como Rust, por ejemplo.
 
 </div>
 
