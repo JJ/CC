@@ -443,12 +443,13 @@ de diferentes tipos de dynos, usa directamente `package.json` para iniciar la
 aplicación. Por otro lado, los requisitos específicos de puerto e IP se tienen
 en cuenta en estas dos órdenes:
 
+
 ```javascript
 const server_ip_address = process.env.OPENSHIFT_NODEJS_IP
                               || '0.0.0.0';
 app.set('port', (process.env.PORT
-	                 || process.env.OPENSHIFT_NODEJS_PORT
-					 || 5000));
+                     || process.env.OPENSHIFT_NODEJS_PORT
+                     || 5000));
 ```
 
 En la primera se establece la IP en la que tiene que escuchar la aplicación. En
@@ -566,41 +567,43 @@ tiene buen soporte en JavaScript, tanto en cliente como en node.
 
 En vez de ir
 [característica por característica u orden por orden (que, además, son un montón)](http://redis.io/commands),
-vamos a empezar 
-trabajando con un sistema cliente-servidor para hacer porras
-futbolísticas con el que seguiremos trabajando más adelante. Pero
-antes, una aproximación básica a Redis en [el siguiente programa](https://github.com/JJ/node-app-cc/blob/master/redis.js), que
-prueba las principales características trabajando con pares
+vamos a empezar trabajando con un sistema cliente-servidor para hacer
+porras futbolísticas con el que seguiremos trabajando más
+adelante. Pero antes, una aproximación básica a Redis
+en
+[el siguiente programa](https://github.com/JJ/node-app-cc/blob/master/redis.js),
+que prueba las principales características trabajando con pares
 variable-valor y *hashes*:
 
 
-	var redis = require('redis');
-	var url = require('url');
+```shell
+    var redis = require('redis');
+    var url = require('url');
 
-	var redisURL = url.parse(process.env.REDISCLOUD_URL);
-	console.log(redisURL);
-	var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true, auth_pass: redisURL.auth.split(":")[1]});
+    var redisURL = url.parse(process.env.REDISCLOUD_URL);
+    console.log(redisURL);
+    var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true, auth_pass: redisURL.auth.split(":")[1]});
 
-	client.set("zape", "zipi", redis.print );
-	client.get("zape", function (err, reply) {
-		console.log( 'Get ' );
-		if ( err ) {
-		console.log( err );
-		} else {
-		console.log(reply.toString());
-		}
-	});
-	client.hset("un_foo", "bar", "baz", redis.print);
-	client.hset("un_foo", "quux", "zuuz", redis.print);
-	client.hkeys("un_foo", function (err, replies) {
-		console.log( 'hkeys');
-		replies.forEach(function (reply, i) {
-			console.log("    " + i + ": " + reply);
-		});
-		console.log( "End " );
-		client.end();
-	});
-
+    client.set("zape", "zipi", redis.print );
+    client.get("zape", function (err, reply) {
+        console.log( 'Get ' );
+        if ( err ) {
+        console.log( err );
+        } else {
+        console.log(reply.toString());
+        }
+    });
+    client.hset("un_foo", "bar", "baz", redis.print);
+    client.hset("un_foo", "quux", "zuuz", redis.print);
+    client.hkeys("un_foo", function (err, replies) {
+        console.log( 'hkeys');
+        replies.forEach(function (reply, i) {
+            console.log("    " + i + ": " + reply);
+        });
+        console.log( "End " );
+        client.end();
+    });
+```
 
 El programa tiene tres partes. En la primera se conecta al DBaaS que
 previamente hemos tenido que crear en RedisLabs o, para el caso, en
@@ -612,20 +615,21 @@ y será por el estilo de
 tendrás que combinarla con la clave para acceder a la base de datos de
 esta forma:
 
-	export REDISCLOUD_URL=http://daigual:esta_es_la_clave@cosas.garantiadata.com:12345
+    export REDISCLOUD_URL=http://daigual:esta_es_la_clave@cosas.garantiadata.com:12345
 
 ; lo que tendrás que escribir en la línea de órdenes y nunca, nunca,
-dejar en el sistema de control de fuentes. 
-Es un URL un tanto complejo, pero la parte principal es la que hay
-detrás del `//`, de la forma `usuario:clave@dominio:puerto`. Es imprescindible
-autenticarse, para que solo uno pueda usar el recurso. En realidad, el
-usuario no se usa, por eso pone `daigual`, sin embargo la clave es la
-que estableceremos para el recurso cuando nos demos de alta; por
-defecto, es la misma que se usa para la cuenta general, aunque puedes
+dejar en el sistema de control de fuentes.  Es un URL un tanto
+complejo, pero la parte principal es la que hay detrás del `//`, de la
+forma `usuario:clave@dominio:puerto`. Es imprescindible autenticarse,
+para que solo uno pueda usar el recurso. En realidad, el usuario no se
+usa, por eso pone `daigual`, sin embargo la clave es la que
+estableceremos para el recurso cuando nos demos de alta; por defecto,
+es la misma que se usa para la cuenta general, aunque puedes
 establecer claves específicas para cada uno de los depósitos de
 datos. Previamente a esto habrá que haber creado una *suscripción* de
 Redis en "My Resources -> Manage"; hay derecho al menos a uno gratuito
-por persona aunque solo te permiten
+por persona aunque solo te
+permiten
 [25 MB y 10 conexiones simultáneas](https://redislabs.com/pricing).
 
 >Redis, de todas formas, es software libre y puedes instalarlo sin
@@ -650,7 +654,8 @@ El tercer bloque trabaja con un [HSET](http://redis.io/commands/HSET),
 un conjunto de pares clave-valor indexados, a su vez, con una sola
 clave. Redis tiene varios tipos de datos y tratándose de una base de
 datos NoSQL,
-[sus propios comandos para acceder a los mismos](http://openmymind.net/2011/11/8/Redis-Zero-To-Master-In-30-Minutes-Part-1/). Usamos
+[sus propios comandos para acceder a los mismos](http://openmymind.net/2011/11/8/Redis-Zero-To-Master-In-30-Minutes-Part-1/).
+Usamos
 dos sentencias con la misma clave, `un_foo`, que será la clave del
 HSET, y le asignamos dos pares variable-valor. Es una estructura de
 datos un poco más compleja, que nos puede servir para almacenar las
@@ -666,9 +671,9 @@ Redis), también funciona de esta forma.
 
 Es importante también que el cliente de Redis se cierre, como se hace
 en la penúltima línea con `client.end();`. Si no, el programa queda en
-espera. Esa orden, 
-efectivamente, termina el programa (aparte del cliente de
-Redis). Cualquier programa en Redis tiene que terminar de esa forma.
+espera. Esa orden, efectivamente, termina el programa (aparte del
+cliente de Redis). Cualquier programa en Redis tiene que terminar de
+esa forma.
 
 <div class='ejercicios' markdown="1">
 1.  Darse de alta en un servicio Redis en la nube y
@@ -692,7 +697,7 @@ clave. Se puede acceder a todas las claves o hacer búsquedas con
 patrones. Con los resultados del ejemplo anterior se puede instalar el
 cliente de redis (`sudo apt-get redis-cli`) y acceder de esta forma
 
-```
+```shell
 redis-cli -h pub-redis-12345.us-east-1-2.3.ec2.garantiadata.com -p
 12345 -a esta-es-la-clave
 ```
@@ -701,21 +706,24 @@ es decir, usando el URL anterior (que se pasa con la opción `-h` a la
 línea de órdenes) y la clave que hayamos establecido (con `-a`) y
 podemos hacer consultas usando las órdenes de Redis, por ejemplo:
 
-	pub-redis-12345.us-east-1-2.3.ec2.garantiadata.com:12345> keys *
-	1) "Granada-C\xc3\xb3rdoba-Liga-2018"
-	2) "zape"
-	3) "un_foo"
-	...
+```shell
+    pub-redis-12345.us-east-1-2.3.ec2.garantiadata.com:12345> keys *
+    1) "Granada-C\xc3\xb3rdoba-Liga-2018"
+    2) "zape"
+    3) "un_foo"
+    ...
+```
 
 Aunque las claves estén almacenadas al alimón, en realidad las órdenes
 que se pueden aplicar sobre ellas son diferentes: `zape` tenía
 asignada una cadena, y `un_foo` un hash. Eso lo averiguamos con `type`
 
-	Pub-Redis-12345.Us-east-1-2.3.ec2.garantiadata.com:12345> type "zape"
-	string
-	pub-redis-12345.us-east-1-2.3.ec2.garantiadata.com:12345> type "un_foo"
-	hash
-
+```shell
+    Pub-Redis-12345.Us-east-1-2.3.ec2.garantiadata.com:12345> type "zape"
+    string
+    pub-redis-12345.us-east-1-2.3.ec2.garantiadata.com:12345> type "un_foo"
+    hash
+```
 
 Con esto, la estrategia de usar tablas para cosas se va un poco por
 ahí. Tenemos que pensar en almacenar claves, con un criterio.
@@ -731,47 +739,49 @@ nombres". Por ejemplo, podíamos meter todas claves referidas a porras
 en el espacio `porra:` y podríamos buscarlas usando `keys
 "porra:*"`. Algo así hacemos en el siguiente programa:
 
-	var redis = require('redis');
-	var url = require('url');
+```javascript
+    var redis = require('redis');
+    var url = require('url');
 
-	var apuesta = require("./Apuesta.js"),
-	porra = require("./Porra.js");
+    var apuesta = require("./Apuesta.js"),
+    porra = require("./Porra.js");
 
-	var redisURL = url.parse(process.env.REDISCLOUD_URL);
-	var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true, auth_pass: redisURL.auth.split(":")[1]});
+    var redisURL = url.parse(process.env.REDISCLOUD_URL);
+    var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true, auth_pass: redisURL.auth.split(":")[1]});
 
-	var esta_porra = new porra.Porra("FLA", "FLU", "Premier", 1950+Math.floor(Math.random()*70) );
-	console.log(esta_porra);
-	for ( var i in esta_porra.vars() ) {
-		client.hset(esta_porra.ID, "var:"+esta_porra.vars()[i], esta_porra[i], redis.print);
-	}
+    var esta_porra = new porra.Porra("FLA", "FLU", "Premier", 1950+Math.floor(Math.random()*70) );
+    console.log(esta_porra);
+    for ( var i in esta_porra.vars() ) {
+        client.hset(esta_porra.ID, "var:"+esta_porra.vars()[i], esta_porra[i], redis.print);
+    }
 
-	var bettors = ['UNO', 'OTRO','OTROMAS'];
+    var bettors = ['UNO', 'OTRO','OTROMAS'];
 
-	for ( var i in bettors ) {
-		var esta_apuesta = new apuesta.Apuesta(esta_porra, bettors[i], Math.floor(Math.random()*5), Math.floor(Math.random()*4) );
-		client.hset(esta_porra.ID, "bet:"+esta_apuesta.quien, esta_apuesta.resultado());
-		client.sadd(esta_porra.ID+":"+esta_apuesta.resultado(), esta_apuesta.quien,redis.print );
+    for ( var i in bettors ) {
+        var esta_apuesta = new apuesta.Apuesta(esta_porra, bettors[i], Math.floor(Math.random()*5), Math.floor(Math.random()*4) );
+        client.hset(esta_porra.ID, "bet:"+esta_apuesta.quien, esta_apuesta.resultado());
+        client.sadd(esta_porra.ID+":"+esta_apuesta.resultado(), esta_apuesta.quien,redis.print );
 
-	}
+    }
 
-	client.hkeys(esta_porra.ID, function (err, replies) {
-		console.log( 'hkeys');
-		replies.forEach(function (reply, i) {
-			console.log("    " + i + ": " + reply);
-		});
-		console.log( "End " );
-		client.end();
-	});
-
+    client.hkeys(esta_porra.ID, function (err, replies) {
+        console.log( 'hkeys');
+        replies.forEach(function (reply, i) {
+            console.log("    " + i + ": " + reply);
+        });
+        console.log( "End " );
+        client.end();
+    });
+```
 
 
 El
 [programa, denominado obviamente `porredis.js`](https://github.com/JJ/node-app-cc/)
-también se divide en varias partes. La primera parte es la conexión a
-la base de datos, que es exactamente igual que en el programa
-anterior. A continuación se crea una porra con elementos aleatorios
-(el año) para que se cree ligeramente diferente en cada ejecución. 
+también
+se divide en varias partes. La primera parte es la conexión a la base
+de datos, que es exactamente igual que en el programa anterior. A
+continuación se crea una porra con elementos aleatorios (el año) para
+que se cree ligeramente diferente en cada ejecución.
 
 > Si tenéis curiosidad de qué se trata esta porra, es del célebre
 > [derby entre el Fluminense y el Flamingo](http://es.wikipedia.org/wiki/Fla-Flu),
@@ -795,17 +805,20 @@ resultado podemos acceder, en una sola petición, a los ganadores de la
 misma, si es que los hay. Por ejemplo, se busca así todos los
 resultados de una porra:
 
-	pub-redis-13876.us-east-1-2.3.ec2.garantiadata.com:13876> keys "FLA-FLU*1998:*"
-	1) "FLA-FLU-Premier-1998:4-2"
-	2) "FLA-FLU-Premier-1998:3-2"
+```shell
+    pub-redis-13876.us-east-1-2.3.ec2.garantiadata.com:13876> keys "FLA-FLU*1998:*"
+    1) "FLA-FLU-Premier-1998:4-2"
+    2) "FLA-FLU-Premier-1998:3-2"
+```
 
 (se puede hacer algo equivalente desde el cliente en node). Y una vez
 localizado el resultado,
 
-	pub-redis-13876.us-east-1-2.3.ec2.garantiadata.com:13876> smembers "FLA-FLU-Premier-1998:3-2"
-	1) "OTRO"
-	2) "OTROMAS"
-
+```shell
+    pub-redis-13876.us-east-1-2.3.ec2.garantiadata.com:13876> smembers "FLA-FLU-Premier-1998:3-2"
+    1) "OTRO"
+    2) "OTROMAS"
+```
 
 que da como afortunados ganadores a OTRO y a OTROMAS. Siempre
 aciertan, los tíos.
@@ -814,22 +827,24 @@ El último bloque del programa recupera todas las apuestas que haya
 almacenadas para una porra determinada, las tres que se han hecho. El
 resultado será algo así:
 
-	Reply: 1
-	Reply: 1
-	Reply: 1
-	Reply: 1
-	Reply: 1
-	Reply: 1
-	Reply: 1
-	hkeys
-		0: var:local
-		1: var:visitante
-		2: var:competition
-		3: var:year
-		4: bet:UNO
-		5: bet:OTRO
-		6: bet:OTROMAS
-	End 
+```plain
+    Reply: 1
+    Reply: 1
+    Reply: 1
+    Reply: 1
+    Reply: 1
+    Reply: 1
+    Reply: 1
+    hkeys
+        0: var:local
+        1: var:visitante
+        2: var:competition
+        3: var:year
+        4: bet:UNO
+        5: bet:OTRO
+        6: bet:OTROMAS
+    End
+```
 
 
 Las primeras `Reply`s son el número de registros insertados. El resto
@@ -849,7 +864,9 @@ suficiente.
 Como en el caso anterior, se usa un URL de conexión para acceder a los
 servicios, algo del tipo
 
-	postgres://usuario:clave@fizzy-cherry.db.elephantsql.com:5432/usuario
+```plain
+    postgres://usuario:clave@fizzy-cherry.db.elephantsql.com:5432/usuario
+```
 
 al que puedes acceder, tras crear un servicio, en
 [el área de cliente](https://customer.elephantsql.com/customer/).
@@ -857,41 +874,45 @@ al que puedes acceder, tras crear un servicio, en
 Una vez establecida la conexión, el resto del acceso se hace de forma
 tradicional, como en el siguiente programa
 
-	#!/usr/bin/env node
+```javascript
+    #!/usr/bin/env node
 
-	var fs = require('fs')
-	, pg = require('pg')
-	, connectionString = process.env.DATABASE_URL;
+    var fs = require('fs')
+    , pg = require('pg')
+    , connectionString = process.env.DATABASE_URL;
 
-	var apuesta = require("./Apuesta.js");
-	var porra = require("./Porra.js");
+    var apuesta = require("./Apuesta.js");
+    var porra = require("./Porra.js");
 
-	var client = new pg.Client(connectionString);
-	client.connect();
+    var client = new pg.Client(connectionString);
+    client.connect();
 
-	// Crea la base de datos
-	var create_sql = fs.readFileSync("porrio.sql","utf8");
-	console.log(create_sql);
-	var query = client.query(create_sql);
-	query.on('end', function() { 
+    // Crea la base de datos
+    var create_sql = fs.readFileSync("porrio.sql","utf8");
+    console.log(create_sql);
+    var query = client.query(create_sql);
+    query.on('end', function() {
 
-		console.log("Creada");
-		client.end();
-	});
+        console.log("Creada");
+        client.end();
+    });
+```
 
 Este programa crea las dos tablas que se van a usar para almacenar los
 datos. `porrio.sql` contiene una declaración SQL así:
 
-	CREATE TABLE IF NOT EXISTS  apuesta(partido varchar(50), 
-       quien_apuesta varchar(50) not null, 
+```sql
+    CREATE TABLE IF NOT EXISTS  apuesta(partido varchar(50),
+       quien_apuesta varchar(50) not null,
        goles_local  int not null,
        goles_visitante  int not null);
 
-	CREATE TABLE IF NOT EXISTS partido( id varchar(50) not null primary key,
+    CREATE TABLE IF NOT EXISTS partido( id varchar(50) not null primary key,
        equipo_local varchar(50) not null,
-       equipo_visitante varchar(50) not null, 
+       equipo_visitante varchar(50) not null,
        competicion varchar(20)  not null,
        year  int not null);
+```
 
 Donde es importante que añadamos `IF NOT EXISTS` para que no dé error
 cuando ejecutemos el programa por segunda vez. Estas tablas almacenan
