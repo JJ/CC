@@ -514,7 +514,7 @@ como Rust, por ejemplo.
 
 Como las bases de datos son, en realidad, una aplicación como otra
 cualquiera,
-[las bases de datos como servicio, bases de datos en la nube o *DBaaS*](http://en.wikipedia.org/wiki/Cloud_database)
+[las bases de datos como servicio, bases de datos en la nube o *DBaaS*](https://en.wikipedia.org/wiki/Cloud_database)
 encajan mejor dentro de este capítulo que de ningún otro sitio, aunque en
 realidad no son una solución completa, sino que se tienen que combinar
 con un PaaS o un IaaS para crear una aplicación. Sin embargo, es
@@ -531,7 +531,7 @@ Los DBaaS ofrecen acceso tanto bases de datos clásicas, es decir, con
 el lenguaje SQL, como a bases de datos *sin esquemas* o NoSQL como
 Redis, CouchDB, Riak o MongoDB. También hay modelos *freemium* o gratuitos
 con tarjeta de crédito, tales como
-[Amazon DynamoDB](http://aws.amazon.com/es/dynamodb/?nc2=h_l3_db) o
+[Amazon DynamoDB](https://aws.amazon.com/es/dynamodb/?nc2=h_l3_db) o
 [ClearDB, que provee servicio MySQL](https://www.cleardb.com/pricing.view). La
 mayoría de los PaaS, por otro lado, ofrecen también DBaaS como
 añadidos a sus plataformas; es decir, tarde o temprano se acabarán
@@ -542,7 +542,7 @@ usando.
 ## Un ejemplo de base de datos NoSQL: Redis
 
 Vamos a aprovechar que estamos hablando de nuevas bases de datos para
-trabajar con [Redis](http://redis.io). Redis es una base de datos no
+trabajar con [Redis](https://redis.io). Redis es una base de datos no
 persistente, en memoria, de altas prestaciones, y que permite trabajar
 de forma muy eficiente con estructuras de datos simples. Otros
 sistemas noSQL como CouchDB o MongoDB también son bastante populares,
@@ -550,7 +550,7 @@ pero Redis se está convirtiendo en uno de los estándares emergentes y
 tiene buen soporte en JavaScript, tanto en cliente como en node.
 
 En vez de ir
-[característica por característica u orden por orden (que, además, son un montón)](http://redis.io/commands),
+[característica por característica u orden por orden (que, además, son un montón)](https://redis.io/commands),
 vamos a empezar trabajando con un sistema cliente-servidor para hacer
 porras futbolísticas con el que seguiremos trabajando más
 adelante. Pero antes, una aproximación básica a Redis
@@ -599,7 +599,11 @@ y será por el estilo de
 tendrás que combinarla con la clave para acceder a la base de datos de
 esta forma:
 
-    export REDISCLOUD_URL=http://daigual:esta_es_la_clave@cosas.garantiadata.com:12345
+```shell
+export
+REDISCLOUD_URL=https://daigual:esta_es_la_clave@cosas.garantiadata.com:12345
+```
+
 
 ; lo que tendrás que escribir en la línea de órdenes y nunca, nunca,
 dejar en el sistema de control de fuentes.  Es un URL un tanto
@@ -634,11 +638,11 @@ respuesta.
 >servidor. En este caso, sin embargo, funciona por la rapidez de
 >Redis, aunque no tiene por qué funcionar en todos los casos.
 
-El tercer bloque trabaja con un [HSET](http://redis.io/commands/HSET),
+El tercer bloque trabaja con un [HSET](https://redis.io/commands/HSET),
 un conjunto de pares clave-valor indexados, a su vez, con una sola
 clave. Redis tiene varios tipos de datos y tratándose de una base de
 datos NoSQL,
-[sus propios comandos para acceder a los mismos](http://openmymind.net/2011/11/8/Redis-Zero-To-Master-In-30-Minutes-Part-1/).
+[sus propios comandos para acceder a los mismos](https://openmymind.net/2011/11/8/Redis-Zero-To-Master-In-30-Minutes-Part-1/).
 Usamos
 dos sentencias con la misma clave, `un_foo`, que será la clave del
 HSET, y le asignamos dos pares variable-valor. Es una estructura de
@@ -648,7 +652,7 @@ hecho esto de forma asíncrona, pero también, y en general (y en
 Redis), también funciona de esta forma.
 
 > Redis también permite trabajar con conjuntos usando la orden
-> [SADD](http://redis.io/commands/sadd). Se trataría de varias
+> [SADD](https://redis.io/commands/sadd). Se trataría de varias
 > variables asignadas a un solo valor (el nombre del conjunto). Crear
 > un programa que cree un conjunto, el de todas las porras existentes,
 > por ejemplo.
@@ -768,7 +772,7 @@ continuación se crea una porra con elementos aleatorios (el año) para
 que se cree ligeramente diferente en cada ejecución.
 
 > Si tenéis curiosidad de qué se trata esta porra, es del célebre
-> [derby entre el Fluminense y el Flamingo](http://es.wikipedia.org/wiki/Fla-Flu),
+> [derby entre el Fluminense y el Flamingo](https://es.wikipedia.org/wiki/Fla-Flu),
 > tradicionales rivales del estado de Río de Janeiro.
 
 Vamos a usar un HSET para almacenar cada porra, y usamos un campo con
@@ -839,9 +843,9 @@ mismas. Por supuesto, la final del programa se cierra el cliente.
 >en Redis.
 
 También hay bases de datos SQL que se pueden usar desde la nube. Por
-ejemplo, [ElephantSQL](http://www.elephantsql.com/) ofrece la base de
+ejemplo, [ElephantSQL](https://www.elephantsql.com/) ofrece la base de
 datos PostgreSQL como un servicio, también en modo Freemium. El modo
-[gratuito ofrece 20 megas](http://www.elephantsql.com/plans.html) y
+[gratuito ofrece 20 megas](https://www.elephantsql.com/plans.html) y
 cinco conexiones concurrentes, pero para pruebas y prototipos es
 suficiente.
 
