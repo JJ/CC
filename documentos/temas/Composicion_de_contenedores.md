@@ -1,8 +1,7 @@
 # Composición de contenedores
 
 <!--@
-prev: Desarrollo_basado_en_pruebas
-next: Integracion_continua
+prev: Microservicios
 -->
 
 <div class="objetivos" markdown="1">
@@ -34,6 +33,15 @@ next: Integracion_continua
 3. Comprender los pasos necesarios para la configuración automática de las mismas.
 
 </div>
+
+## Composición de servicios
+
+Una aplicación consiste generalmente en un conjunto de servicios
+interconectados (y acoplados de forma ligera) que se van a desplegar
+de forma conjunta; el código que describe la infraestructura debe
+incluir la descripción de esta estructura para que los despliegues
+puedan ser fácilmente reproducibles.
+
 
 ## Composición de servicios con `docker compose`
 
