@@ -50,6 +50,40 @@ de forma conjunta; el código que describe la infraestructura debe
 incluir la descripción de esta estructura para que los despliegues
 puedan ser fácilmente reproducibles.
 
+En *clusters* o grupos de contenedores, a veces llamados *pods*, se
+consigue que los diferentes servicios ejecutándose en los diferentes
+contenedores usen una red común, y estén conectados entre sí como si
+se tratara de servicios ejecutándose simplemente en el sistema
+operativo. Esto añade una capa de seguridad, pero también de
+funcionalidad, que no se puede conseguir de otra forma.
+
+En la mayor parte de los despliegues de aplicaciones habrá que crear
+este tipo de clusters; todos las aplicaciones van a necesitar
+servicios externos, como mínimo un almacenamiento de logs,
+adicionalmente a cualquier servicio de datos que vaya a
+necesitar. Usando esta composición de servicios se pueden hacer
+pruebas de integración o end to end, o crear entornos de desarrollo
+que se asemejen lo más posible al entorno de producción final. En
+general, para pasar a producción habrá que usar herramientas más
+potentes como [Nomad](https://nomad.io)
+o [Kubernetes](https://kubernetes.io).
+
+A continuación veremos diferentes formas de crear grupos de
+contenedores y manejarlos, comenzando con la forma más simple, usar
+pods.
+
+## Pods con `podman`
+
+Podman recibe su nombre, precisamente, del hecho que se puede trabajar
+con estos pods.
+
+> Si no has instalado
+> podman, [hazlo ya](https://podman.io/getting-started/installation) y
+> recuerda
+> [instalarlo para que se ejecute sin root](https://www.vultr.com/docs/how-to-install-and-use-podman-on-ubuntu-20-04#5__Using_Podman_without_Sudo),
+> lo que es imprescindible si quieres manejar usuarios dentro de los
+> contenedores.
+
 
 ## Composición de servicios con `docker compose`
 
