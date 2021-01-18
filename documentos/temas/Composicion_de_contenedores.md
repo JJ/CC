@@ -112,7 +112,40 @@ Con `podman logs [número]` se puede acceder a los logs de cada uno de
 los contenedores que se han creado.
 
 Nuestro `podman pod` maneja de esta forma el grupo de contenedores, y
-podemos pararlo con `podman pod stop hugitos`.
+podemos pararlo con `podman pod stop hugitos`. Alternativamente,
+podemos arrancar el pod directamente con el primer contenedor que
+arranquemos:
+
+```shell
+podman run -p 31415:31415 --pod new:hugitos --name hugitos_web --rm -dt jjmerelo/hugitos:test
+```
+
+Con esto, además, exponemos el puerto 31415 y lo conectamos al
+interior, y le damos un nombre al contenedor para que sea sencillo
+acceder a sus logs. La clave para crear el pod es el usar `--pod
+new:`, que avisa a podman que se trata de un pod; además le asignamos
+un nombre al contenedor para que sea más fácil acceder a los
+logs. El
+[Dockerfile](https://github.com/JJ/tests-python/blob/master/Dockerfile) incluye
+la definición del puerto correspondiente, así como la ejecución de un
+servicio web lanzado con Green Unicorn como se indicó en [el tema de
+microservicios](http://jj.github.io/IV/documentos/temas/Microservicios#microservicios-en-producci%C3%B3n).
+
+Con estas dos órdenes creamos el pod, y además, a partir de él se
+puede generar la configuración de Kubernetes (que, recordemos, sería
+necesaria para hacer un despliegue).
+
+```shell
+podman generate kube -s hugitos
+```
+
+<div class='ejercicios' markdown='1'>
+
+Crear un pod con dos o más contenedores, de forma que se pueda usar
+uno desde el otro. Uno de los contenedores contendrá la aplicación que
+queramos desplegar.
+
+</div>
 
 ## Composición de servicios con `docker compose`
 
@@ -241,6 +274,14 @@ si el código es correcto o no.
 > hecho sería conveniente combinar los tests de los servicios
 > conjuntos con los tests de Dockerfile. Cualquier infraestructura es
 > código, y como tal si no está testeado está roto.
+
+<div class='ejercicios' markdown='1'>
+
+Crear un cluster con dos o más contenedores usando Docker Compose, de
+forma que se pueda usar uno desde el otro. Uno de los contenedores
+contendrá la aplicación que queramos desplegar.
+
+</div>
 
 ## A dónde ir desde aquí
 
