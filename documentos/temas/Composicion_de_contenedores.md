@@ -84,6 +84,43 @@ con estos pods.
 > lo que es imprescindible si quieres manejar usuarios dentro de los
 > contenedores.
 
+Todas las órdenes relacionadas con pod se ejecutan con `podman
+pod`. Crearemos para empezar un pod y expondremos un puerto del mismo.
+
+```shell
+podman pod create -n hugitos -p 1415
+```
+
+Esto crea un pod llamado `hugitos` y expone el puerto 1415 del
+mismo. Es un pod vacío, ahora mismo no hay nada. Para ver todo lo que
+se puede hacer ahora mismo, como listar los pods existentes,
+ver
+[este tutorial](https://developers.redhat.com/blog/2019/01/15/podman-managing-containers-pods/?intcmp=701f20000012ngPAAQ).
+
+Vamos a añadirle un contenedor con Logstash. Vamos a utilizar [este
+contenedor de Logstash](https://github.com/bitnami/bitnami-docker-logstash)
+proporcionado por Bitnami. La configuración es la necesaria para que
+funcione y reciba entradas de un programa externo.
+
+```shell
+export LOGSTASH_CONF_STRING='input {      tcp {     port => 8080     codec => json   } } output { stdout {} }'
+podman run --pod hugitos --rm -dt --env LOGSTASH_CONF_STRING=$LOGSTASH_CONF_STRING --name logstash bitnami/logstash:latest
+```
+
+Con `--pod hugitos` añadimos este contenedor al pod que hemos creado
+anteriormente; con `--dt` lo ejecutamos como daemon, de forma que esté
+disponible. En principio, este contenedor estaría ya listo para
+ejercer de log de cualquier otro. Así que le añadimos otro:
+
+```shell
+podman run --pod hugitos --rm -dt jjmerelo/hugitos:test
+```
+
+Con `podman logs [número]` se puede acceder a los logs de cada uno de
+los contenedores que se han creado.
+
+Nuestro `podman pod` maneja de esta forma el grupo de contenedores, y
+podemos pararlo con `podman pod stop hugitos`.
 
 ## Composición de servicios con `docker compose`
 
