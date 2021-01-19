@@ -271,7 +271,7 @@ servir.
 
 El servicio `web` usa ahora dos variables de entorno para establecer
 dónde se encuentra el log (y esas variables de entorno se usan desde
-el interior dle mismo, como es natural).
+el interior del mismo, como es natural).
 
 finalmente, para simplificar un poco el fichero, en el caso de de
 Logstash usamos un *fichero de entorno* en vez de definir las

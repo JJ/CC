@@ -1288,3 +1288,9 @@ pods
 clusters
 Nomad
 Kubernetes
+podman
+pod
+Logstash
+Bitnami
+actions
+
