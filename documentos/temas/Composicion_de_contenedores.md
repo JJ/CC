@@ -356,13 +356,27 @@ si el código es correcto o no.
 > conjuntos con los tests de Dockerfile. Cualquier infraestructura es
 > código, y como tal si no está testeado está roto.
 
-<div class='ejercicios' markdown='1'>
+Alternativamente, podemos usar este test exclusivo para comprobar que
+se puede construir y funciona
 
-Crear un cluster con dos o más contenedores usando Docker Compose, de
-forma que se pueda usar uno desde el otro. Uno de los contenedores
-contendrá la aplicación que queramos desplegar.
+```yaml
+name: Comprobar que docker compose funciona
+on: [push,pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Construye el cluster
+        run: docker-compose up -d
+      - name: Testea el cluster
+        run: wget http://localhost:31415/status || exit 1
+```
 
-</div>
+Esencialmente, lanza el cluster y a continuación hace una petición
+sobre el mismo para comprobar que está funcionando, saliendo si `wget`
+devuelve un error. No es que sea muy extensivo, pero fallará si no se
+puede construir, por ejemplo.
 
 ## A dónde ir desde aquí
 
