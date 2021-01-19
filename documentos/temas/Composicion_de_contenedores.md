@@ -212,6 +212,79 @@ asignará un nombre que tiene que ver con el nombre del servicio;
 también ejecutará el programa, en este caso de `web`. Evidentemente,
 `docker-compose down` parará la máquina virtual.
 
+Podemos reproducir en Docker Compose el "pod" creado anteriormente
+usando podman y combinarlo con este. Este fichero lo haría:
+
+```YAML
+version: "3.9"
+services:
+  data:
+    build: data
+  web:
+    build:
+      context: .
+      dockerfile: nodata.Dockerfile
+    environment:
+      LOG_HOST: log
+      LOG_PORT: 8080
+    ports:
+      - "31415:31415"
+    volumes_from:
+      - data:ro
+  log:
+    image: bitnami/logstash:latest
+    env_file: ./log.env
+    ports:
+      - "8080:8080"
+```
+
+Ha habido que hacer unos pequeños cambios, en el fichero y en los
+contenedores. Para empezar, el contenedor anterior incluía también el
+fichero de datos que ahora hemos decidido externalizar, por lo que el
+nuevo `nodata.Dockerfile` sería este:
+
+```Dockerfile
+FROM bitnami/python:3.9
+LABEL version="1.0.1" maintainer="JJMerelo@GMail.com"
+
+ARG PORT
+ENV PORT=${PORT:-31415}
+RUN useradd -ms /bin/bash hugitos
+USER hugitos
+WORKDIR /home/hugitos
+
+ENV PATH $PATH:/home/hugitos/.poetry/bin
+
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+ADD pyproject.toml .
+ADD HitosIV/* HitosIV/
+RUN poetry install
+
+EXPOSE 31415
+
+CMD [ "sh", "-c", "poetry run gunicorn --bind 0.0.0.0:${PORT} HitosIV.hugitos:__hug_wsgi__ --log-file -" ]
+```
+
+La única diferencia es, en realidad, que se elimina la copia al
+contenedor, en el directorio `/data`, de los datos que se van a
+servir.
+
+> Que constituyen en este caso la única fuente de verdad, SSOT.
+
+El servicio `web` usa ahora dos variables de entorno para establecer
+dónde se encuentra el log (y esas variables de entorno se usan desde
+el interior dle mismo, como es natural).
+
+finalmente, para simplificar un poco el fichero, en el caso de de
+Logstash usamos un *fichero de entorno* en vez de definir las
+variables de entorno. Ese fichero de entorno contiene la definición,
+en el formato VARIABLE=valor, de las variables de entorno que se usan,
+en este caso la definición de la configuración de Logstash.
+
+Como en el caso anterior, se puede usar `build` para construirlo y a
+continuación `up` para lanzarlo.
+
 <div class='ejercicios' markdown='1'>
 
 Usar un miniframework REST para crear un servicio web y introducirlo
