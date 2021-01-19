@@ -18,9 +18,6 @@ prev: Microservicios
   virtual.
 * Documentar y mantener una plataforma virtual.
 * Optimizar aplicaciones sobre plataformas virtuales.
-* Conocer diferentes tecnologías relacionadas con la virtualización
-  (Computación Nube, Utility Computing, Software as a Service) e
-  implementaciones tales como Google AppSpot, OpenShift o Heroku.
 * Realizar tareas de administración en infraestructura virtual.
 
 ### Objetivos específicos
@@ -348,8 +345,8 @@ si el código es correcto o no.
 > conjuntos con los tests de Dockerfile. Cualquier infraestructura es
 > código, y como tal si no está testeado está roto.
 
-Alternativamente, podemos usar este test exclusivo para comprobar que
-se puede construir y funciona
+Alternativamente, podemos usar este test exclusivo, usando GitHub
+actions, para comprobar que se puede construir y funciona
 
 ```yaml
 name: Comprobar que docker compose funciona
