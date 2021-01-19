@@ -144,17 +144,21 @@ Hemos visto antes que hay un montón de códigos de estado. En la mayor
 parte de los casos, bastará con los código 2XX y 4xx, en concreto los
 siguientes.
 
-- 200 para una petición correcta. En general, el microframework
+- **200** para una petición correcta. En general, el microframework
   devolverá este estado por ti si no hay nada chungo.
-- 201 cuando se haya creado un recurso, cada vez que se use `POST` y
+- **201** cuando se haya creado un recurso, cada vez que se use `POST` y
   `PUT`.
-- 404 es el célebre no encontrado, pero debe usarse sólo cuando el
-  recurso al que se refiere el URI no existe.
-- 403 no autorizado también se puede usar en estos casos.
-- 400 sólo se debe usar si el URI o la petición se han construido de
+- **204** se devuelve cuando el *body* está vacío a propósito, simplemente
+  con la intención de que el cliente entienda que toda la información
+  está en la cabecera y no necesita leerlo.
+- **400** sólo se debe usar si el URI o la petición se han construido de
   forma incorrecta.
-- 409 es un conflicto, y tiene unos usos muy
-  específicos. [En este artículo](https://dev.to/jj/solving-the-conflict-of-using-the-http-status-409-2iib)
+- **404** es el célebre no encontrado, pero debe usarse sólo cuando el
+  recurso al que se refiere el URI no existe.
+- **403** no autorizado también se puede usar en estos casos.
+- **409** es un conflicto, y tiene unos usos muy
+  específicos.
+  [En este artículo](https://dev.to/jj/solving-the-conflict-of-using-the-http-status-409-2iib)
   cuento posibles usos para el mismo.
 
 El código 500 no se debe usar nunca, porque indica que la aplicación
