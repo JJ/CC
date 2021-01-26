@@ -80,7 +80,7 @@ const { config }  = require("dotenv").config();
 class Config {
   constructor() {
     this.listening_ip_address = process.env.LISTENING_IP_ADDRESS || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-    this.port = process.env.PORT || process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000;
+    this.port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000;
   }
 
 }
@@ -139,7 +139,7 @@ Con estos sistemas de configuración distribuida, se debe tanto
 establecer la configuración (antes de lanzarlo), como leer la
 configuración. Y evidentemente, la configuración se tendrá que
 almacenar en algún lugar. Por ejemplo, este script en Python (que está
-alojado [aquí](https://github.com/JJ/tests-python) servirá para
+alojado [aquí](https://github.com/JJ/tests-python)) servirá para
 establecer un valor leyéndolo desde varias fuentes diferentes:
 
 ```python
