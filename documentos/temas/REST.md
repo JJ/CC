@@ -176,6 +176,11 @@ error y se considera que el cliente debe hacer algo para repararlo.
 - **404** es el célebre no encontrado, pero debe usarse sólo cuando el
   recurso al que se refiere el URI no existe.
 - **403** no autorizado también se puede usar en estos casos.
+- **405**,
+  [método no permitido](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405),
+  se puede usar en ciertos casos cuando 
+  se trata de usar un método incorrecto (digamos un POST) sobre un URI
+  que sólo admite PUT y GET.
 - **409** es un conflicto, y tiene unos usos muy
   específicos.
   [En este artículo](https://dev.to/jj/solving-the-conflict-of-using-the-http-status-409-2iib)
@@ -313,7 +318,8 @@ procesa, y con los métodos a los que va a responder.
 > métodos, pero en principio no he visto como, así que hay sólo dos
 > funciones.
 
-En este caso, el API que definimos tiene un solo sujeto: `hitos`. A
+En este caso, el API que definimos tiene un solo sujeto,
+correspondiente a una sola entidad o recurso: `hitos`. A
 este sujeto se le añade el nombre del fichero donde está almacenado
 (que es único). Podemos crear un recursos de dos formas: o bien
 poniendo directamente un nombre de fichero y llamando a `PUT` o bien
