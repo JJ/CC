@@ -53,7 +53,7 @@ configuración, siguiendo el principio de *separation of concerns*,
 debe ser un objeto externo que encapsule todo lo necesario para
 acceder a la configuración que una aplicación necesita.
 
-En todo caso, se ebe evitar la configuración también desde línea de
+En todo caso, se debe evitar la configuración también desde línea de
 órdenes, aunque se puede dejar como *fallback* en caso de que otros no
 funcionen, de la misma forma, la configuración "por omisión" puede
 usarse como una característica para test o desarrollo, pero que se
