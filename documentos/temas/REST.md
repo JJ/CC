@@ -178,7 +178,7 @@ error y se considera que el cliente debe hacer algo para repararlo.
 - **403** no autorizado también se puede usar en estos casos.
 - **405**,
   [método no permitido](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405),
-  se puede usar en ciertos casos cuando 
+  se puede usar en ciertos casos cuando
   se trata de usar un método incorrecto (digamos un POST) sobre un URI
   que sólo admite PUT y GET.
 - **409** es un conflicto, y tiene unos usos muy
