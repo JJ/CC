@@ -152,6 +152,7 @@ siguientes.
 Los códigos 200 son códigos que indica que la petición ha ido bien,
 por lo tanto sólo se deben usar en este caso; si ha habido algún error
 o excepción, se deben usar códigos 4xx.
+
 - **200** para una petición correcta. En general, el microframework
   devolverá este estado por ti si no hay nada chungo.
 - **201** cuando se haya creado un recurso, cada vez que se use `POST` y
@@ -169,6 +170,7 @@ o excepción, se deben usar códigos 4xx.
 
 Los códigos 4XX sólo se deben usar en caso de que haya habido algún
 error y se considera que el cliente debe hacer algo para repararlo.
+
 - **400** sólo se debe usar si el URI o la petición se han construido de
   forma incorrecta.
 - **404** es el célebre no encontrado, pero debe usarse sólo cuando el
