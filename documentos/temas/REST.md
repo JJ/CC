@@ -246,6 +246,10 @@ en [este repo](https://github.com/JJ/tests-python)
 > Era un repositorio para practicar TDD con Python, pero me acabé
 > viniendo arriba...
 
+En este caso, el *recurso* del que estamos tratando es el `hito`. Por
+eso usamos plural en las rutas: `hitos`, y las operaciones están
+relacionadas con un URI que identifica, de forma única, un hito.
+
 En este fichero se definen las rutas:
 
 ```Python
