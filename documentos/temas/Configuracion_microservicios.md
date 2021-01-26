@@ -67,7 +67,57 @@ trabajar con este entorno con un fichero (una vez más, configuración
 como código) que esté bajo control de un sistema de control de fuentes
 y permita su evolución y también su despliegue fácilmente.
 
+Por ejemplo, la
+siguiente
+[clase](https://github.com/JJ/node-app-cc/blob/master/lib/Config.js)
+en JavaScript incorpora diferentes formas de configuración y le da un
+interfaz común, cono los atributos de un objeto.
 
+```javascript
+
+const { config }  = require("dotenv").config();
+
+class Config {
+  constructor() {
+    this.listening_ip_address = process.env.LISTENING_IP_ADDRESS || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+    this.port = process.env.PORT || process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000;
+  }
+
+}
+
+module.exports = { Config };
+```
+
+Usa el módulo [`dotenv`](https://www.npmjs.com/package/dotenv), que
+incorpora como variables de entorno lo que se escriba en un fichero
+`.env` con el formato indicado anteriormente.
+
+Esto se puede usar directamente de la siguiente forma:
+
+```javascript
+"use strict";
+
+const express = require('express');
+const app = require("./Rutas.js");
+const { Config } = require("./Config.js");
+
+const config = new Config;
+
+app.use(express.static(__dirname + '/public'));
+
+// Escucha en un puerto determinado.
+app.listen(config.port, config.listening_ip_address, function() {
+  console.log("Node app is running at " + config.listening_ip_address + ":" + config.port );
+});
+```
+
+De forma que únicamente trabajando con un objeto de clase `Config`
+encapsulamos todos los sistemas de configuración que se pudieran usar,
+incluso los siguientes (que se pueden incorporar más adelante a la
+misma clase). De esta forma se consigue la *separation of concerns*:
+la configuración es sólo cosa de la clase Config. El fichero principal
+de la aplicación, `config.js`, sólo tiene que preocuparse de
+arrancarla usando el interfaz correspondiente.
 
 ## Usando `etcd3`
 
