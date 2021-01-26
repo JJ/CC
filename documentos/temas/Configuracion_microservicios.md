@@ -35,18 +35,18 @@ next: Microservicios
 
 </div>
 
-# Introducción
+## Introducción
 
 La
 [configuración externa](https://microservices.io/patterns/externalized-configuration.html)
-es
-uno de los patrones imprescindibles en la creación de aplicaciones
-nativas en la nube. Una de las principales formas de llevar a cabo la misma es el uso de un servicio
-externo para todas las diferentes opciones que haya que usar en cada
-uno de las instancias de los servicios que se vayan a usar. Otra forma
-es la propuesta por la [aplicación de 12 factores](https://12factor.net/config),
-que dice que hay que almacenar la aplicación en el entorno. No tiene
-que ser necesariamente *las* variables de entorno, claro.
+es uno de los patrones imprescindibles en la creación de aplicaciones
+nativas en la nube. Una de las principales formas de llevar a cabo la
+misma es el uso de un servicio externo para todas las diferentes
+opciones que haya que usar en cada uno de las instancias de los
+servicios que se vayan a usar. Otra forma es la propuesta por
+la [aplicación de 12 factores](https://12factor.net/config), que dice
+que hay que almacenar la aplicación en el entorno. No tiene que ser
+necesariamente *las* variables de entorno, claro.
 
 Hay varios servidores de configuración distribuida, pero el más
 usado es `etcd`; otras alternativas son Zookeeper y
