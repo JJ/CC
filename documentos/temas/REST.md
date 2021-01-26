@@ -79,6 +79,11 @@ estado).
 - `POST` no es idempotente ni seguro. Se usa para cambiar o parte de
   un recurso, o para crear un recurso cuyo URI no sabemos de antemano.
 - `DELETE` es idempotente, pero no seguro.
+- `PATCH` se puede usar
+  para
+  [cambiar parte de un recurso](https://medium.com/backticks-tildes/restful-api-design-put-vs-patch-4a061aa3ed0b).
+  Si queremos hacer un API con separación estricta de
+  responsabilidades, se puede añadir este también al mismo.
 
 Lo anterior son convenciones, y lo que se ejecute por omisión
 dependerá en realidad de la persona que lo implemente.
@@ -147,19 +152,27 @@ está recibiendo.
 - El código de estado debe ser el más adecuado a la respuesta y
   también a la petición, claro. Lo veremos a continuación.
 
-## Buenos usos códigos de estado
+## Buenos usos de los códigos de estado
 
 Hemos visto antes que hay un montón de códigos de estado. En la mayor
 parte de los casos, bastará con los código 2XX y 4xx, en concreto los
 siguientes.
 
+Los códigos 200 son códigos que indica que la petición ha ido bien,
+por lo tanto sólo se deben usar en este caso; si ha habido algún error
+o excepción, se deben usar códigos 4xx.
 - **200** para una petición correcta. En general, el microframework
   devolverá este estado por ti si no hay nada chungo.
 - **201** cuando se haya creado un recurso, cada vez que se use `POST` y
   `PUT`.
-- **204** se devuelve cuando el *body* está vacío a propósito, simplemente
+- **202**
+- **204** o *no content* se devuelve cuando el *body* está vacío a
+  propósito, simplemente
   con la intención de que el cliente entienda que toda la información
   está en la cabecera y no necesita leerlo.
+
+Los códigos 4XX sólo se deben usar en caso de que haya habido algún
+error y se considera que el cliente debe hacer algo para repararlo.
 - **400** sólo se debe usar si el URI o la petición se han construido de
   forma incorrecta.
 - **404** es el célebre no encontrado, pero debe usarse sólo cuando el
