@@ -237,7 +237,7 @@ Por eso es esencial, desde el principio de la implementación de un
 sistema, tener claramente identificadas las diferentes entidades que
 van a participar en el mismo, porque son decisiones que, a través de
 las historias de usuario, van a ir a la lógica de negocio y
-eventualmetne al API externo (REST o de cualquier otro tipo).
+eventualmente al API externo (REST o de cualquier otro tipo).
 
 ## Ejemplo de diseño de un API y prueba del mismo
 
