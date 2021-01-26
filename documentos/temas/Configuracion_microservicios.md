@@ -26,25 +26,64 @@ next: Microservicios
 
 </div>
 
-# Configuración externa
+# Introducción
 
 La
 [configuración externa](https://microservices.io/patterns/externalized-configuration.html)
 es
 uno de los patrones imprescindibles en la creación de aplicaciones
-nativas en la nube. Lo principal de la misma es el uso de un servicio
+nativas en la nube. Una de las principales formas de llevar a cabo la misma es el uso de un servicio
 externo para todas las diferentes opciones que haya que usar en cada
-uno de las instancias de los servicios que se vayan a usar. También es
-parte de la [aplicación de 12 factores](https://12factor.net/config),
+uno de las instancias de los servicios que se vayan a usar. Otra forma
+es la propuesta por la [aplicación de 12 factores](https://12factor.net/config),
 que dice que hay que almacenar la aplicación en el entorno. No tiene
 que ser necesariamente *las* variables de entorno, claro.
 
-> Hay varios servidores de configuración distribuida, pero el más
-> usado es `etcd` (otras alternativas son Zookeeper y Consul). Se
-> puede instalar el cliente y servidor directamente de los
-> repositorios, y a continuación es conveniente escribir `export
-> ETCDCTL_API=3` para que funcione correctamente
-> el [cliente](https://etcd.io/docs/v3.4.0/dl-build/).
+Hay varios servidores de configuración distribuida, pero el más
+usado es `etcd`; otras alternativas son Zookeeper y
+Consul. Comenzaremos por el primero.
+
+En todo caso, el principio esencial que rige esto es el de
+configuración como código, que significa especialmente que la
+configuración debe tratarse como código pero también que la
+configuración debe ser *externa* al código. Nada que sea configurable
+debe estar incluido en el código, y mucho menos como un literal sin
+ningún tipo de configuración.  Llevándolo un poco más allá, la
+configuración, siguiendo el principio de *separation of concerns*,
+debe ser un objeto externo que encapsule todo lo necesario para
+acceder a la configuración que una aplicación necesita.
+
+En todo caso, se ebe evitar la configuración también desde línea de
+órdenes, aunque se puede dejar como *fallback* en caso de que otros no
+funcionen, de la misma forma, la configuración "por omisión" puede
+usarse como una característica para test o desarrollo, pero que se
+debe evitar de cualquier forma en producción.
+
+En general, la configuración debe usar, aparte de los sistemas de
+configuración distribuida de la que vamos a hablar más abajo, las
+variables de configuración y los ficheros de configuración o *ficheros
+de entorno* que siguen el mismo formato `clave=valor` y que permiten
+trabajar con este entorno con un fichero (una vez más, configuración
+como código) que esté bajo control de un sistema de control de fuentes
+y permita su evolución y también su despliegue fácilmente.
+
+
+
+## Usando `etcd3`
+
+De forma estricta, el único sistema de configuración distribuida que
+ahora mismo (2021) se usa de forma general
+es [`etcd3`](https://etcd.io). Esencialmente, es un sistema de
+almacenamiento clave/valor distribuido, que permite configurar las
+aplicaciones de forma sencilla y con un mínimo adicional de
+configuración, ya que etcd3 funciona en un puerto conocido y
+accesible.
+
+Se
+puede instalar el cliente y servidor directamente de los
+repositorios, y a continuación es conveniente escribir `export
+ETCDCTL_API=3` para que funcione correctamente
+el [cliente](https://etcd.io/docs/v3.4.0/dl-build/).
 
 Con estos sistemas de configuración distribuida, se debe tanto
 establecer la configuración (antes de lanzarlo), como leer la
