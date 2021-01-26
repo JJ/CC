@@ -157,6 +157,11 @@ o excepción, se deben usar códigos 4xx.
 - **201** cuando se haya creado un recurso, cada vez que se use `POST` y
   `PUT`.
 - **202**
+  significa
+  [aceptado](https://restfulapi.net/http-status-202-accepted/). Es
+  cuando se ha dado una orden y ha funcionado correctamente, pero su
+  efecto puede tardar un poco más; por ejemplo, cuando se ha dado una
+  orden de borrado con DELETE.
 - **204** o *no content* se devuelve cuando el *body* está vacío a
   propósito, simplemente
   con la intención de que el cliente entienda que toda la información
@@ -204,6 +209,28 @@ recurso. Si hay parámetros que no se puedan confundir, u opciones que
 tengan una sola palabra, se pondrán a continuación en el PATH. El
 resto de la información se debe pasar mediante el *query* o en el
 cuerpo de la petición.
+
+Lo importante, por tanto, es identificar de qué recursos estamos
+hablando. Un API REST puede tener por debajo cualquier tipo de lógica
+de negocio: funcional, orientada a objetos o procedural. Sobre esa
+lógica de negocio hay que poner una fachada en la cual el recurso sea
+el concepto principal. Recursos relacionados entre sí pueden tener
+diferentes URIs, pero en las peticiones en las que se usen
+conjuntamente deberá seguirse el principio de que los recursos  sean
+claramente identificables, y que se use siempre como prefijo el URI
+del recurso principal.
+
+Este recurso tendrá que haber sido identificado desde el principio,
+usando métodos de diseño dirigido por dominio como los indicados
+en [arquitecturas para la nube](Arquitecturas_para_la_nube). De esta
+forma queda manifiesta la arquitectura software que se está
+implementando.
+
+Por eso es esencial, desde el principio de la implementación de un
+sistema, tener claramente identificadas las diferentes entidades que
+van a participar en el mismo, porque son decisiones que, a través de
+las historias de usuario, van a ir a la lógica de negocio y
+eventualmetne al API externo (REST o de cualquier otro tipo).
 
 ## Ejemplo de diseño de un API y prueba del mismo
 
