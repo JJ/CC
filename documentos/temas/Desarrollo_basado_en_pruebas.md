@@ -178,11 +178,12 @@ qué versiones mínimas, máximas o exactas deben tener.
 
 ## Vamos a hacer una aplicación: gestionar porras de fútbol
 
-> Primero, debe constar que esta aplicación solo está aquí a efectos de
-> ejemplo, igual que el lenguaje en el que está escrita. Si se quiere
-> usar cualquier otro lenguaje o aplicación, se puede hacer. Si quieres
-> usar JavaScript, [este curso](https://github.com/JJ/curso-js) o
-> [este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
+> Primero, debe constar que esta aplicación solo está aquí a efectos
+> de ejemplo, igual que el lenguaje en el que está escrita. Si se
+> quiere usar cualquier otro lenguaje o aplicación, se puede hacer. Si
+> quieres usar
+> JavaScript, [este curso](https://github.com/JJ/curso-js)
+> o [este libro](https://amzn.to/2dQCdAn) te pueden ayudar, aunque
 > cualquier otro también.
 
 Una porra de fútbol básicamente tiene un partido, que tendrá un nombre
