@@ -223,6 +223,104 @@ clave; hacer el almacenamiento desde la línea de órdenes (con
 
 </div>
 
+## Consul
+
+`consul`, disponible en [`consul.io`](https://consul.io) es, en
+realidad, una herramienta bastante más compleja, incluyendo registro y
+descubrimiento de servicios. Es una herramienta que conviene conocer,
+pero en este capítulo nos vamos a limitar a ver su potencial para
+trabajar como sistema de configuración distribuida. Como la
+herramienta anterior, tiene un depósito distribuido clave-valor, así
+que tras arrancarlo con
+
+```shell
+consul agent -dev -node machine &
+```
+
+(lo que implica que se va
+a
+[arrancar en desarrollo](https://learn.hashicorp.com/tutorials/consul/get-started-agent),
+que el nodo va a ser la misma máquina, podemos usar los subcomandos de
+`consul kv` para establecer (y recuperar) valores, por ejemplo:
+
+```shell
+consul kv put hitosIV/port 31415
+```
+
+También lo podemos incorporar a nuestra clase configuración, para que
+lea (preferentemente) de este medio. La clase `Config` tendrá ahora
+esta apariencia:
+
+```javascript
+const { config }  = require("dotenv").config();
+const config_prefix = 'hitosIV';
+
+class Config {
+  constructor() {
+    var self = this;
+    self.assign_default_ip = () => {
+      self.listening_ip_address = process.env.LISTENING_IP_ADDRESS || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+    };
+    self.assign_default_port = () => {
+      self.port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000;
+    }
+    self.assign_defaults = () => {
+      self.assign_default_ip();
+      self.assign_default_port();
+    }
+    const consul = require('consul')();
+    consul.agent.service.list(function(err, result) {
+      if (err) {
+        console.log( "Consul no está conectado" );
+        self.assign_defaults();
+      } else {
+        consul.kv.get( config_prefix + 'listening_ip_address',
+                     function( err, result ) {
+                       if (result === undefined ) {
+                         self.assign_default_ip();
+                       } else {
+                         self.listening_ip_address = result;
+                       }
+                     });
+
+        consul.kv.get( config_prefix + 'listening_ip_port',
+                     function( err, result ) {
+                       if (result === undefined ) {
+                         self.assign_default_port();
+                       } else {
+                         self.port = result;
+                       }
+                     });
+      }
+    });
+
+  }
+}
+
+module.exports = { Config };
+```
+
+La mayor complejidad viene del hecho de que estamos definiendo como
+métodos dos para asignar valores por defecto; de esta forma podemos
+llamarlos desde varios puntos sin necesidad de repetir código. En este
+código comprobamos primero si `consul` está arrancado (llamando al
+comando `consul.agent.service.list`, que da la lista de agentes
+funcionando. Si no hay ninguno, entonces se usan los valores por
+defecto, si alguno de ellos no tiene ningún valor asignado, también.
+
+En este caso usamos, como en el anterior, un prefijo o espacio de
+nombres para almacenar los valores relativos a nuestra aplicación;
+simplemente es una buena práctica que evita colisiones con otras
+aplicaciones que quisieran también hacerlo.
+
+<div class='ejercicios' markdown="1">
+
+Instalar `consul`, averiguar qué bibliotecas funcionan bien con el
+lenguaje que estemos escribiendo el proyecto (u otro lenguaje), y
+hacer un pequeño ejemplo de almacenamiento y recuperación de una
+clave desde la línea de órdenes.
+
+</div>
 ## A dónde ir desde aquí
 
 En el [siguiente tema](Microservicios.md) veremos cómo hacer efectivamente el
