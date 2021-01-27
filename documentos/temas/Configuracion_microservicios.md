@@ -321,6 +321,21 @@ hacer un pequeño ejemplo de almacenamiento y recuperación de una
 clave desde la línea de órdenes.
 
 </div>
+
+
+## Algunos recursos adicionales
+
+Un
+[tutorial bastante completo de `consul`](https://learn.hashicorp.com/consul) en
+la página de Hashicorp, la empresa que lo creó. En
+el
+[Kubernetes Cookbook](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014010032804990)
+de O'Reilly también le dedican un capítulo a etcd, evidentemente en
+conjunción con ese sistema. En libros
+como
+[este](https://granatensis.ugr.es/permalink/34CBUA_UGR/1p2iirq/alma991014250380804990)
+también le dedican un capítulo a Consul.
+
 ## A dónde ir desde aquí
 
 En el [siguiente tema](Microservicios.md) veremos cómo hacer efectivamente el
