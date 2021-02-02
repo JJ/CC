@@ -61,6 +61,31 @@ A continuación veremos diferentes formas de crear grupos de
 contenedores y manejarlos, comenzando con la forma más simple, usar
 pods.
 
+Como estos *clusters* son contenedores + red + almacenamiento, haremos
+una pequeña introducción al uso de las redes virtuales, tal como se
+usan en Docker y su ecosistema.
+
+## Redes en Docker
+
+Una parte importante de la infraestructura virtual son las redes
+definidas por software, o [SDN (Software Defined
+Networks)](https://en.wikipedia.org/wiki/Software-defined_networking).
+En general, si creas algo que va a actuar como un nodo de la red,
+también puedes crear redes virtuales que se superpongan a las redes
+reales, lo que permite otra capa de seguridad y también funcionalidad
+específica.
+
+Docker es un protocolo de aislamiento, y como tal tiene también una
+serie de capacidades para crear, manejar y aislar redes virtuales.
+Docker, por omisión, asigna una MAC y una IP a cada uno de sus
+contenedores que se estén ejecutando, que forman por tanto un SDN.
+
+Sin embargo, también permite definir el tipo de red que van a
+usar. Por omisión, el tipo de red que usan se llama
+[*bridge*](https://docs.docker.com/network/bridge/), un tipo de red
+puente que permite que los contenedores se comuniquen entre sí, usando
+las IPs por omisión que cada uno reciben.
+
 ## Pods con `podman`
 
 Podman recibe su nombre, precisamente, del hecho que se puede trabajar
