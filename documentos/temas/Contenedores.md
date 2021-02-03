@@ -674,7 +674,7 @@ a otro. De la misma forma, la arquitectura de las aplicaciones
 varía. No vamos a tener una aplicación monolítica que escriba en el
 log, lo analice y lo lea, sino diferentes contenedores que
 interaccionarán no directamente, sino a través de este contenedor de
-almacenamiento.
+almacenamiento, o simplemente lo usarán para almacenar datos.
 
 Por ejemplo, podemos usar un volumen para montar el `/app` de
 diferentes sistemas operativos, de forma que podamos probar una
