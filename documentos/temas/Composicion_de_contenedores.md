@@ -65,6 +65,10 @@ Como estos *clusters* son contenedores + red + almacenamiento, haremos
 una pequeña introducción al uso de las redes virtuales, tal como se
 usan en Docker y su ecosistema.
 
+> Sobre almacenamiento, consultar [el tema sobre
+> contenedores](Contenedores.md), donde se habla de forma extensa del
+> mismo.
+
 ## Redes en Docker
 
 Una parte importante de la infraestructura virtual son las redes
@@ -85,6 +89,10 @@ usar. Por omisión, el tipo de red que usan se llama
 [*bridge*](https://docs.docker.com/network/bridge/), un tipo de red
 puente que permite que los contenedores se comuniquen entre sí, usando
 las IPs por omisión que cada uno reciben.
+
+La otra alternativa es *host*, que hace aparecer todos los servicios
+en el mismo nodo, y cualquier servicio se puede referir a cualquier
+otro como localhost.
 
 ## Pods con `podman`
 
