@@ -35,6 +35,11 @@ sea capaz de hacer lo siguiente:
 
 ## Temario - Programa de la asignatura
 
+> Este [curso cero](https://jj.github.io/curso-tdd) puede ayudarte a
+> navegar por muchos de los temas que se van a dar en la
+> asignatura. El curso se imparte periódicamente, conviene estar
+> atento a cuando se imparta.
+
 Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
 [GitHub][cc-general-repo].
