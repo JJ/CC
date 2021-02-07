@@ -71,7 +71,8 @@ el profesor están en [un repositorio de GitHub][cc-course-repo].
 
 El objetivo de la asignatura es la realización de un proyecto con
 diferentes hitos que correspondan a los objetivos cumplidos hasta ese
-momento. Los proyectos [seguirán un perfil DevOps][proyecto], es
+momento. Se trata de que los proyectos [sigan un sistema de desarrollo
+ágil][proyecto], es
 decir, de definición de infraestructura para un proyecto existente o
 que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
@@ -83,8 +84,7 @@ hitos se organizarán de la forma siguiente.
 4. [Uso de contenedores][p4]
 5. [Integración continua][p5]
 6. [Microservicios][p6]
-7. [Medición de prestaciones de MVs][p7]
-8. [Provisionamiento de máquinas virtuales][p8]
+7. [Composición de contenedores][pdc]
 
 [proyecto]: documentos/proyecto/README.md
 [p1]: documentos/proyecto/0.Repositorio.md
@@ -94,7 +94,8 @@ hitos se organizarán de la forma siguiente.
 [p5]: documentos/proyecto/4.CI.md
 [p6]: documentos/proyecto/5.Microservicio.md
 [p7]: documentos/proyecto/4.Prestaciones.md
-[p8]: documents/proyecto/5.Provisionamiento.md
+[p8]: documentos/proyecto/5.Provisionamiento.md
+[pdc]: documentos/proyecto/6.Compose.md
 
 ## Seminarios y material adicional
 
