@@ -45,9 +45,7 @@ disponibles con una licencia libre. Los fuentes de los mismos están en
 4. [Integración continua][ci]
 5. [REST][rest]
 6. [Microservicios][t3]
-7. [Gestión de configuraciones][t4]
-8. [Creación de infraestructuras virtuales reproducibles][t5]
-9. [Orquestación de máquinas virtuales][t6]
+7. [Composición de contenedores][tdc]
 
 La temporización de la asignatura y la interacción entre estudiantes y
 el profesor están en [un repositorio de GitHub][cc-course-repo].
@@ -62,6 +60,7 @@ el profesor están en [un repositorio de GitHub][cc-course-repo].
 [t5]: documentos/temas/Automatizando_cloud.md
 [t6]: documentos/temas/Orquestacion.md
 [t7]: documentos/temas/Contenedores.md
+[tdc]: documentos/temas/Composicion_de_contenedores.md
 
 ## Prácticas - Actividades académicas dirigidas
 
