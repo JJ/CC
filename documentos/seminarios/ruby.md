@@ -135,7 +135,7 @@ Pero Ruby es un lenguaje orientado a objetos, o más bien empotrado
  caracteres:
 
     usuario@usuario-desktop:~/code$ ./jauja-center.rb
-    --   Esto es jauja    -- 
+    --   Esto es jauja    --
 
 También podíamos haber creado el objeto explícitamente, pero
   hubiera sido mucho más clásico:
@@ -451,9 +451,9 @@ bloque, lo que le da más derechos, al parecer.
 <div class='ejercicios' markdown="1">
 
 1. Crear una serie de funciones instanciadas con un URL que devuelvan
-algún tipo de información sobre el mismo: fecha de última
-modificación, por ejemplo. *Pista*: esa información está en la
-cabecera HTTP que devuelve
+   algún tipo de información sobre el mismo: fecha de última
+   modificación, por ejemplo. *Pista*: esa información está en la
+   cabecera HTTP que devuelve
 
 </div>
 
@@ -537,7 +537,7 @@ En algunos casos puede que dé error, porque falte alguna
 
 <div class='ejercicios' markdown="1">
 
-1. Ver si está disponible Vagrant como una gema de Ruby e instalarla.
+Ver si está disponible Vagrant como una gema de Ruby e instalarla.
 
 </div>
 
