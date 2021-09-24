@@ -10,14 +10,14 @@ layout: index
 *Cloud Computing* es una asignatura anual del máster de ingeniería
 informática en la [UGR][ugr-website].
 
-La asignatura se imparte en el curso 2020-2021 de lunes a
-miércoles de 15:30 a 17:30. Desde las nuevas medidas de la Junta,
-todas las clases son virtuales y se emiten usando Jitsi.
+La asignatura se imparte en el curso 2020-2021 de martes a
+jueves de 18:00 a 20:00, martes  y jueves clase dividida en la 2.9, clase
+conjunta el miércoles en la 1.6.
 
 Tendrás que llevar tu portátil a todas
 las clases. Se usará [GitHub][github-website] para los ejercicios y el
 proyecto; también para los objetivos semanales, que estarán (año
-2020-21) en [este repositorio][cc-course-repo].
+2021-22) en [este repositorio][cc-course-repo].
 
 Estos son
 los [objetivos de la asignatura](documentos/objetivos). En resumen,
@@ -36,7 +36,7 @@ sea capaz de hacer lo siguiente:
 
 [ugr-website]: https://www.ugr.es
 [github-website]: https://github.com
-[cc-course-repo]: https://github.com/JJ/CC-20-21/
+[cc-course-repo]: https://github.com/JJ/CC-21-22/
 
 ## Temario - Programa de la asignatura
 
@@ -126,7 +126,7 @@ Los
 y [se especifican en el repositorio de la clase][evaluacion].
 
 [guia-docente]: https://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada
-[evaluacion]: https://github.com/JJ/CC-20-21/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
+[evaluacion]: https://github.com/JJ/CC-21-22/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
 
 ## Sesiones, objetivos e hitos de años anteriores
 
