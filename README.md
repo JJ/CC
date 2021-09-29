@@ -1,11 +1,11 @@
-# Material docente para Cloud Computing
+# Material docente para Cloud Computing: Fundamentos y Aplicaciones
 
 [![Build Status](https://travis-ci.com/JJ/CC.svg?branch=master)](https://travis-ci.com/JJ/CC)
 
-*Cloud Computing* es una asignatura anual del máster de ingeniería
+*Cloud Computing I* es una asignatura anual del máster de ingeniería
 informática en la [UGR][ugr-website].
 
-La asignatura se imparte en el curso 2020-2021 de martes a
+La asignatura se imparte en el curso 2021-2022 de martes a
 jueves de 18:00 a 20:00, martes  y jueves clase dividida en la 2.9, clase
 conjunta el miércoles en la 1.6.
 
@@ -15,8 +15,7 @@ proyecto; también para los objetivos semanales, que estarán (año
 2021-22) en [este repositorio][cc-course-repo].
 
 Estos son
-los [objetivos de la asignatura](documentos/objetivos.md). En resumen,
-el objetivo principal es que el estudiante, al final de la asignatura,
+los [objetivos de la asignatura](documentos/objetivos.md), con un objetivo principal es que el estudiante, al final de la asignatura,
 sea capaz de hacer lo siguiente:
 
 1. Definir el entorno de trabajo para desarrollo de una aplicación en
@@ -28,6 +27,8 @@ sea capaz de hacer lo siguiente:
 4. Entender las técnicas de configuración automática de entornos
    virtuales y las sepa aplicar en los entornos anteriores.
 5. Usar lo aprendido para despliegue masivo de aplicaciones en la nube.
+6. Entender las técnicas de diseño e implementación de aplicaciones nativas en
+   la nube.
 
 [ugr-website]: https://www.ugr.es
 [github-website]: https://github.com
@@ -78,7 +79,8 @@ que se irá mejorando a lo largo del cuatrimestre. A grosso modo, los
 hitos se organizarán de la forma siguiente.
 
 1. [Puesta a punto del repositorio de la asignatura y buenas
-    prácticas en el uso de los mismos][p1]
+    prácticas en el uso de los mismos y descripción del problema a resolver, la
+    lógica de negocio y su solución][p1]
 2. [Planificación del proyecto][p2]
 3. [Tests][p3]
 4. [Uso de contenedores][p4]
@@ -129,3 +131,4 @@ y [se especifican en el repositorio de la clase][evaluacion].
 * [Año 17-18](https://github.com/JJ/CC-17-18)
 * [Año 18-19](https://github.com/JJ/CC-18-19)
 * [Año 19-20](https://github.com/JJ/CC-19-20)
+* [Año 20-21](https://github.com/JJ/CC-20-21)
