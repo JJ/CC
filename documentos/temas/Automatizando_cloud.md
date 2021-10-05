@@ -1,6 +1,5 @@
 # Automatizando el despliegue en la nube
 
-
 <!--@
 prev: Provision
 next: Orquestacion
@@ -10,11 +9,10 @@ next: Orquestacion
 
 ## Objetivos
 
-1. Conocer las diferentes tecnologías y herramientas de
-virtualización tanto para procesamiento, comunicación y
-almacenamiento.
+1. Conocer las diferentes tecnologías y herramientas de virtualización tanto
+  para procesamiento, comunicación y almacenamiento.
 2. Diseñar, construir y analizar las prestaciones de un centro de
-proceso de datos virtual.
+  proceso de datos virtual.
 3. Documentar y mantener una plataforma virtual.
 4. Realizar tareas de administración de infraestructuras virtuales.
 
@@ -131,7 +129,6 @@ Vamos a ver cómo funcionan algunas de estas utilidades de línea de
 órdenes, empezando por el CLI de Azure clásico, luego el moderno, y
 más adelante el de OpenStack
 
-
 ### CLI de Azure
 
 El
@@ -241,6 +238,7 @@ Una vez que se deje de usar, conviene pararla con
 ```bash
 az vm stop -g CCGroupEU -n bobot
 ```
+
 Si no, seguirá disminuyendo el crédito.
 
 <div class='ejercicios' markdown='1'>
@@ -255,8 +253,8 @@ Tanto la elección de la imagen como del centro de datos debe obedecer
 a criterios medibles, tales como las prestaciones que se puedan
 alcanzar con los mismos. Para ello se pueden
 instalar
-[benchmarks tales como estos](https://geekflare.com/web-performance-benchmark/) y
-diseñar uno que permite elegir en cuál nos vamos a quedar. También se
+[benchmarks tales como estos](https://geekflare.com/web-performance-benchmark/)
+y diseñar uno que permite elegir en cuál nos vamos a quedar. También se
 puede simplemente medir cuanto tardan los tests de la aplicación en
 cada uno de los lugares, aunque será conveniente medir también la
 latencia, al menos desde local (o desde otra localización de posibles
@@ -339,10 +337,10 @@ te explica cómo crear el par de claves. Una vez creada
 * Finalmente, se crea la instancia. Esto sí se puede hacer desde línea
   de órdenes
 
-```
+```shell
 openstack server create --flavor m1.smaller --image Ubuntu16.04 \
-	  --nic net-id=b96fdf8d-99ca-3333-5555-38ccd03a4a3c \
-	  --security-group default --key-name Try bobot-x
+    --nic net-id=b96fdf8d-99ca-3333-5555-38ccd03a4a3c \
+    --security-group default --key-name Try bobot-x
 ```
 
 * La orden anterior crea una instancia llamada `bobot-x` con una
@@ -354,7 +352,7 @@ openstack server create --flavor m1.smaller --image Ubuntu16.04 \
   acceder desde fuera, teóricamente de esta forma, aunque da error
   (*Conflict*) al menos a mi
 
-```
+```shell
 openstack floating ip create b96fdf8d-99ca-3333-5555-38ccd03a4a3c
 ```
 
@@ -370,14 +368,12 @@ que se pueda acceder, provisionándola con algún *script* disponible.
 
 ## A dónde ir desde aquí
 
-Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones) pondremos en
-práctica todos los conceptos aprendidos en este tema. También se
+Si no lo has visto, en el [siguiente tema](Gestion_de_configuraciones)
+pondremos en práctica todos los conceptos aprendidos en este tema. También se
 puede ir a [el hito del proyecto](../proyecto/3.Provisionamiento)
 para aplicarlo al mismo. Puedes consultar como documentación adicional
-[el tema dedicado a almacenamiento](Almacenamiento) para crear configuraciones que sean
-fácilmente gestionables y adaptables a un fin determinado.
-
+[el tema dedicado a almacenamiento](Almacenamiento) para crear configuraciones
+que sean fácilmente gestionables y adaptables a un fin determinado.
 
 Si lo que necesitas es un sistema ligero de virtualización, puedes
 mirar cómo virtualizar con [contenedores](Contenedores).
-

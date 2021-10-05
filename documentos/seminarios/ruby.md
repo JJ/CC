@@ -50,9 +50,12 @@ de este tutorial, ¿por qué no?
 
 Instalar Ruby y usar
 
-    ruby --version
+```shell
+ruby --version
+```
 
-para comprobar la versión instalada. A la vez, conviene instalar también `irb`, `rubygems` y `rdoc`.
+para comprobar la versión instalada. A la vez, conviene instalar también `irb`,
+`rubygems` y `rdoc`.
 
 </div>
 
@@ -84,10 +87,12 @@ En cuanto al intérprete de Ruby que se puede instalar, hay muchas
   que se ha convertido a partir de la versión 1.9 en la "oficial". En
   tu ordenador puede que tengas una u otra, aunque también te puedes
   instalar [cualquier
-    otra](http://en.wikipedia.org/wiki/Ruby_(programming_language)#Implementations).
+  otra](http://en.wikipedia.org/wiki/Ruby_(programming_language)#Implementations).
 
-    #!/usr/bin/ruby
-    puts "Esto es jauja"
+```ruby
+#!/usr/bin/ruby
+puts "Esto es jauja"
+```
 
 La primera línea es la habitual en lenguajes interpretados: le dice
   al intérprete de órdenes de Linux (y al servidor Apache en Windows,
@@ -100,22 +105,26 @@ La primera línea es la habitual en lenguajes interpretados: le dice
   Y la otra no es tan habitual (aunque es como en C, `put
   string`), pero tampoco es que extrañe demasiado. La cadena va
   entre comillas, se usa el cambio de línea para acabar la sentencia,
-    y ya está.
+  y ya está.
 
 Para ejecutarlo se guarda y se hace lo que se ha dicho antes, no
   voy a repetirlo. Y el resultado será el esperado. También pasará lo
   mismo si lo hacemos desde `irb`:
 
-    [jmerelo@leonard ruby-para-impacientes]$ irb
-    pirb(main):001:0> puts "esto es jauja"
-    esto es jauja
-    => nil
+```shell
+[jmerelo@leonard ruby-para-impacientes]$ irb
+pirb(main):001:0> puts "esto es jauja"
+esto es jauja
+=> nil
+```
 
 Pero Ruby es un lenguaje orientado a objetos, o más bien empotrado
   de objetos: todo es un objeto en Ruby. Así que lo anterior (y algo más) podríamos
   escribirlo de la forma siguiente.
 
-    puts "--" << "Esto es jauja".center(20) << "--"
+```ruby
+puts "--" << "Esto es jauja".center(20) << "--"
+```
 
  Lo que consigue este program es escribir una cadena centrada en una línea de 20
  caracteres y rodeada por dos guiones (`--`). `<<` es el operador de
@@ -127,8 +136,10 @@ Pero Ruby es un lenguaje orientado a objetos, o más bien empotrado
  como ese. Pasándole el argumento 20, centra la cadena en un espacio de 20
  caracteres:
 
-    usuario@usuario-desktop:~/code$ ./jauja-center.rb
-    --   Esto es jauja    --
+```shell
+usuario@usuario-desktop:~/code$ ./jauja-center.rb
+--   Esto es jauja    --
+```
 
 También podíamos haber creado el objeto explícitamente, pero
   hubiera sido mucho más clásico:
@@ -162,8 +173,10 @@ sorpresa si uno proviene de otros lenguajes, que nos tienen mal acostumbrados),
 o más bien de la máxima coherencia: una vez aprendida parte del lenguaje, el
 resto es más o menos igual. Por ejemplo, las matrices:
 
-    matriz = ['esto','es',1,'matriz']
-    puts matriz.join << " " << matriz.join("-")
+```ruby
+matriz = ['esto','es',1,'matriz']
+puts matriz.join << " " << matriz.join("-")
+```
 
 Como ocurre en otros lenguajes dinámicos como el Ruby, no hay
 distinción de tipos: una matriz puede contener números enteros,
@@ -172,8 +185,10 @@ pleno derecho, pudiéndosele aplicar métodos como `join` que
 une todos los elementos de la matriz, con o sin algún carácter de por
 medio. Este pequeño programa imprimirá:
 
-    usuario@usuario-desktop:~/ruby-para-impacientes$ code/matriz.rb
-    estoes1matriz esto-es-1-matriz
+```shell
+usuario@usuario-desktop:~/ruby-para-impacientes$ code/matriz.rb
+estoes1matriz esto-es-1-matriz
+```
 
 como, imagino, era de esperar.
 
@@ -184,41 +199,43 @@ No son los únicos tipos de matrices: las matrices asociativas son
   múltiples matrices y su acceso fácil usando una clave
 
 ```ruby
-    sonido_de = { :vaca => 'muuu',
-      :buho => 'uuu',
-      :caballo => 'iiiii' }
-    puts sonido_de.inspect
+sonido_de = { :vaca => 'muuu',
+  :buho => 'uuu',
+  :caballo => 'iiiii' }
+puts sonido_de.inspect
 ```
 
 Que, aparte de introducir las llaves (para claves... ¿lo ves como se
-      trata de no sorprender?) pone unos dos puntitos delante de
-      las mismas que la verdad que sí sorprenden. Y es porque se
-      trata de cadens un poco especiales, denominadas
-      *símbolos*. Los símbolos en Ruby son como cadenas con las que
-      no se va hacer nada de lo que se suele hacer con las mismas:
-      ni partirlas, ni añadirles nada, ni quitarles nada. Unas
-      cadenas constantes, más o menos, que no es otra cosa lo que
+trata de no sorprender?) pone unos dos puntitos delante de
+las mismas que la verdad que sí sorprenden. Y es porque se
+trata de cadens un poco especiales, denominadas
+*símbolos*. Los símbolos en Ruby son como cadenas con las que
+no se va hacer nada de lo que se suele hacer con las mismas:
+ni partirlas, ni añadirles nada, ni quitarles nada. Unas
+cadenas constantes, más o menos, que no es otra cosa lo que
 necesitamos en una variable asociativa,
-      denominada [Hash](http://ruby-doc.org/core/classes/Hash.html)
-      en Ruby. Por supuesto, se puede usar una cadena normal y
-      corriente como clave:
+denominada [Hash](http://ruby-doc.org/core/classes/Hash.html)
+en Ruby. Por supuesto, se puede usar una cadena normal y
+corriente como clave:
 
-      precio_de = { "pipas" => 'bajo',
-      "coche" => 'depende',
-      "plan E" => 'exagerado' }
-      puts precio_de.to_s
+```ruby
+precio_de = { "pipas" => 'bajo',
+"coche" => 'depende',
+"plan E" => 'exagerado' }
+puts precio_de.to_s
+```
 
 que al ejecutarse, por usar `to_s` para convertir a una
-      cadena la matriz asociativa en vez del inspect anterior no
+cadena la matriz asociativa en vez del inspect anterior no
 se ve nada, pero es otra forma de hacer las cosas. `to_s` es también
-      un ejemplo de *casting*: convierte cualquier tipo (que use
-      ese método, claro) en una cadena. Ruby es un lenguaje con
-      tipificación fuerte, aunque dinámica: se le asigna tipo
-      dinámicamente a las variables, pero una vez asignado sólo se
-      pueden llevar a cabo las operaciones de ese tipo o bien se
-      les aplica las operaciones de una forma determinada: `+`
-      actúa como concatenación para cadenas y como suma para tipos
-      numéricos.
+un ejemplo de *casting*: convierte cualquier tipo (que use
+ese método, claro) en una cadena. Ruby es un lenguaje con
+tipificación fuerte, aunque dinámica: se le asigna tipo
+dinámicamente a las variables, pero una vez asignado sólo se
+pueden llevar a cabo las operaciones de ese tipo o bien se
+les aplica las operaciones de una forma determinada: `+`
+actúa como concatenación para cadenas y como suma para tipos
+numéricos.
 
 <div class='ejercicios' markdown="1">
 
@@ -230,12 +247,14 @@ de hashes de arrays e imprimirlo.
 Como los arrays y hashes son objetos, también se usa normalmente un
 método para recorrerlos, como en el ejemplo siguiente:
 
-    zipi = { :foo => 'bar',
-      :baz => 'quux'}
+```ruby
+zipi = { :foo => 'bar',
+  :baz => 'quux'}
 
-    zipi.keys().each do |zape|
-      puts zipi[zape]
-    end
+zipi.keys().each do |zape|
+  puts zipi[zape]
+end
+```
 
 `keys()` recorre las claves del hash y la función `each` ejecuta un
 bloque. Cómo funciona esto exactamente se verá más adelante, pero por
@@ -257,11 +276,13 @@ Tratándose de un lenguaje orientado a objetos, habrá que buscar la
   clase para abrir y cerrar ficheros, que se llama en un alarde de
   originalidad `File`.
 
-    fh = File::new( ARGV[0] )
-    while (line = fh.gets )
-        nombre, apellidos  = line.split(',')
-        puts "* Nombre #{nombre}\n\tapellidos #{apellidos}"
-    end
+```ruby
+fh = File::new( ARGV[0] )
+while (line = fh.gets )
+    nombre, apellidos  = line.split(',')
+    puts "* Nombre #{nombre}\n\tapellidos #{apellidos}"
+end
+```
 
 En este caso, tampoco es sorprendente la matriz que se usa para
 acceder a la línea de comandos: `ARGV`, igual que en C (pero en
@@ -284,22 +305,26 @@ Fijaros también en una cosa curiosa: el `=` de la primera línea
   que se trata de variables, y no de parte de la cadena. El
   resultado es el esperado:
 
-    $ ruby code/fichero.rb code/nombres.txt
-    * Nombre Ginés
-    apellidos  Ibn Hassan Rodríguez
-    * Nombre Sergei
-    apellidos  Ben Ayoun
-    * Nombre Malika
-    apellidos  Maliki
-    * Nombre Juan
-    apellidos  Gómez Gómez
+```shell
+$ ruby code/fichero.rb code/nombres.txt
+* Nombre Ginés
+apellidos  Ibn Hassan Rodríguez
+* Nombre Sergei
+apellidos  Ben Ayoun
+* Nombre Malika
+apellidos  Maliki
+* Nombre Juan
+apellidos  Gómez Gómez
+```
 
 al menos sobre el fichero
 
-    Ginés, Ibn Hassan Rodríguez
-    Sergei, Ben Ayoun
-    Malika, Maliki
-    Juan, Gómez Gómez</pre>
+```xml
+Ginés, Ibn Hassan Rodríguez
+Sergei, Ben Ayoun
+Malika, Maliki
+Juan, Gómez Gómez</pre>
+```
 
 Para leer de una web se tienen que usar módulos externos, que, como es
 natural, están también organizadas en clases, y clases están
@@ -313,8 +338,10 @@ organizadas jerárquicamente en espacios de
   *core*, así que tendremos que importarla explícitamente con
   `require`:
 
-    require 'net/http'
-    Net::HTTP.get_print  'osl.ugr.es', '/'
+```ruby
+require 'net/http'
+Net::HTTP.get_print  'osl.ugr.es', '/'
+```
 
 En `require` cambia un poco la sintaxis: se separan las partes de la
 librería con `/` y se pone todo en minúsculas. `require`
@@ -332,18 +359,20 @@ Juntando todo lo anterior, y añadiendo alguna cosilla más de
   nuestra cosecha, podemos bajarnos una página web y
   meterla en un fichero
 
-    require 'net/http'
+```ruby
+require 'net/http'
 
-    url = ARGV[0]
-    puts "La url es " << url
-    respuesta = Net::HTTP.get  url, '/'
-    fname =  "#{url}.html"
-    if ( File.writable?(fname) )
-        salida = File.new fname, "w"
-        salida.puts( respuesta )
-    else
-        puts("No puedo escribir en #{fname}")
-    end
+url = ARGV[0]
+puts "La url es " << url
+respuesta = Net::HTTP.get  url, '/'
+fname =  "#{url}.html"
+if ( File.writable?(fname) )
+    salida = File.new fname, "w"
+    salida.puts( respuesta )
+else
+    puts("No puedo escribir en #{fname}")
+end
+```
 
 Nuestra cosecha incluye una interrogación y un `if`, que no
   habíamos visto antes. La interrogación se usa en los métodos que
@@ -371,18 +400,20 @@ bloques. Un bloque es una secuencia de código con sus propias variables, y en
 Ruby se denota por llaves `{}` o por `do` - `done`. Se usa, por ejemplo, para
 bucles tales como los siguientes.
 
-    host = ARGV[0]
-    partes = host.split(".")
-    partes.each do |p|
-        puts "* #{p}"
-    end
+```ruby
+host = ARGV[0]
+partes = host.split(".")
+partes.each do |p|
+    puts "* #{p}"
+end
+```
 
 En este mini-programa le pasamos un nombre de servidor en internet
-    (del tipo subdominio.dominio.tld) y nos da cada una de sus partes,
-    que se guardan precisamente en una variable que se llama así. Pero
-    el truco está en la tercera línea: `partes.each` es una función
-    que recibe un bloque como argumento. También lo podríamos expresar
-    de la forma siguiente:
+(del tipo subdominio.dominio.tld) y nos da cada una de sus partes,
+que se guardan precisamente en una variable que se llama así. Pero
+el truco está en la tercera línea: `partes.each` es una función
+que recibe un bloque como argumento. También lo podríamos expresar
+de la forma siguiente:
 
 ```ruby
 host = ARGV[0]
@@ -409,15 +440,17 @@ Lo que ocurre con los bloques en Ruby es que tienen entidad
   tales; además, como todo en Ruby, son objetos, o sea que podemos
   crearlos y pasarlos por ahí como queramos.
 
-    prefijos = %w( pre post ante super macro mega)
-    prefijadores = Hash.new
-    prefijos.each { |p|
-        prefijadores[p] = lambda { |post| return "#{p}#{post}";}
-    }
+```ruby
+prefijos = %w( pre post ante super macro mega)
+prefijadores = Hash.new
+prefijos.each { |p|
+    prefijadores[p] = lambda { |post| return "#{p}#{post}";}
+}
 
-    puts prefijadores['macro'].call( 'objetivo' )
-    puts prefijadores['super'].call( 'chanchi' )
-    puts prefijadores['mega'].call( 'chuli' )
+puts prefijadores['macro'].call( 'objetivo' )
+puts prefijadores['super'].call( 'chanchi' )
+puts prefijadores['mega'].call( 'chuli' )
+```
 
 En este ejemplo hemos empezado definiendo una matriz de forma
 abreviada: usando `%w` para ahorrarnos comas y comillas, y
@@ -431,11 +464,13 @@ al método `call` de ese objeto). La
 función `prefijadores['macro']` se comportará de la misma
 forma que si la hubiéramos definido así
 
-    def prefijador( post )
-        "macro#{post}";
-    end
+```ruby
+def prefijador( post )
+    "macro#{post}";
+end
 
-    puts prefijador('micro');
+puts prefijador('micro');
+```
 
 la única diferencia es que en este caso no hace falta usar `call` para
 llamar a la función: se puede usar directamente el nombre de la
@@ -445,10 +480,10 @@ bloque, lo que le da más derechos, al parecer.
 
 <div class='ejercicios' markdown="1">
 
-1. Crear una serie de funciones instanciadas con un URL que devuelvan
-   algún tipo de información sobre el mismo: fecha de última
-   modificación, por ejemplo. *Pista*: esa información está en la
-   cabecera HTTP que devuelve
+Crear una serie de funciones instanciadas con un URL que devuelvan
+algún tipo de información sobre el mismo: fecha de última
+modificación, por ejemplo. *Pista*: esa información está en la
+cabecera HTTP que devuelve
 
 </div>
 

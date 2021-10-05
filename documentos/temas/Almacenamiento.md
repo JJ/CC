@@ -13,24 +13,22 @@ next: Uso_de_sistemas
 
 * Conocer las diferentes tecnologías y herramientas de virtualización
   tanto para procesamiento, comunicación y almacenamiento.
- * Configurar los diferentes dispositivos físicos para acceso a los
+* Configurar los diferentes dispositivos físicos para acceso a los
   servidores virtuales: acceso de usuarios, redes de comunicaciones o
   entrada/salida
- * Diseñar, implementar y construir un centro de procesamiento de
-   datos virtual.
- * Realizar tareas de administración en infraestructura virtual.
+* Diseñar, implementar y construir un centro de procesamiento de
+  datos virtual.
+* Realizar tareas de administración en infraestructura virtual.
 
 ### Objetivos específicos
 
- * Conocer las técnicas de provisionamiento de almacenamiento de datos
-   para
-   máquinas virtuales.
+* Conocer las técnicas de provisionamiento de almacenamiento de datos para
+  máquinas virtuales.
+* Saber usar diferentes órdenes y utilidades para crearlas.
 
- * Saber usar diferentes órdenes y utilidades para crearlas.
+</div>
 
- </div>
-
-## La parte verdadera: un disco físico.
+## La parte verdadera: un disco físico
 
  Aunque en principio esté claro que un disco es un disco, en la
  práctica no tiene que ser así. El soporte físico del almacenamiento
@@ -79,10 +77,10 @@ de particiones usual.
 <div class='ejercicios' markdown="1">
 
 1. ¿Cómo tienes instalado tu disco duro? ¿Usas particiones? ¿Volúmenes lógicos?
-
-2. Si tienes acceso en tu escuela o facultad a un ordenador común para las prácticas, ¿qué almacenamiento físico utiliza?
-
-3. Buscar ofertas SAN comerciales y comparar su precio con ofertas *locales* (en el propio ordenador) equivalentes.
+2. Si tienes acceso en tu escuela o facultad a un ordenador común para las
+  prácticas, ¿qué almacenamiento físico utiliza?
+3. Buscar ofertas SAN comerciales y comparar su precio con ofertas *locales*
+  (en el propio ordenador) equivalentes.
 
 </div>
 
@@ -114,8 +112,8 @@ solo permite visualizarlos y que está escrito en Python.
 En Linux se usa la librería [FUSE](http://fuse.sourceforge.net/) para
 implementarlo. Se puede usar directamente o mediante alguna adaptación
 a
-[cualquier lenguaje o a cualquier tipo de sistema](http://sourceforge.net/apps/mediawiki/fuse/index.php?title=FileSystems). Por
-ejemplo, se puede usar para acceder a ficheros comprimidos
+[cualquier lenguaje o a cualquier tipo de sistema](http://sourceforge.net/apps/mediawiki/fuse/index.php?title=FileSystems).
+Por ejemplo, se puede usar para acceder a ficheros comprimidos
 directamente, o a bases de datos, o a la red, o en realidad a casi
 cualquier cosa. Por ejemplo, `sshfs` (que debería estar instalado con
 el paquete OpenSSH) permite acceder a ficheros remotos como si fueran
@@ -145,7 +143,6 @@ sepa manejar ficheros. En cualquier caso, se trata de un ejemplo
 estupendo de virtualización de recursos y de un tipo de recurso que,
 también, se puede usar dentro de máquinas virtuales.
 
-
 ## Provisionamiento delgado
 
 Una máquina virtual puede usar directamente cualquiera de los
@@ -162,8 +159,9 @@ más espacio del que usan realmente.
 
 Este almacenamiento virtual puede tener muchos formatos
 diferentes. Cada hipervisor, librería, máquina virtual o incluso
-[*pools* de recursos admite unos cuantos; por ejemplo, `libvirt` admite hasta una docena](http://libvirt.org/storage.html). Cualquiera
-de estos recursos tendrá que estar disponible (es decir,
+*pools* de recursos admite unos cuantos; por ejemplo,
+[`libvirt` admite hasta una docena](http://libvirt.org/storage.html).
+Cualquiera de estos recursos tendrá que estar disponible (es decir,
 *provisionado*) antes de la creación de la máquina virtual, por lo que
 conviene *tenerlo a mano* previamente, junto con las herramientas que
 trabajan con él. Algunos formatos que son populares son
@@ -176,19 +174,25 @@ trabajan con él. Algunos formatos que son populares son
   usuario se comportan como los ficheros normales, pero su creación
   necesitará una orden de Linux como esta:
 
-      dd of=fichero-suelto.img bs=1k seek=5242879 count=0
+```shell
+dd of=fichero-suelto.img bs=1k seek=5242879 count=0
+```
 
   , donde `of` indica el nombre de fichero de salida, `bs` es el tamaño
   del bloque y `seek` es el tamaño del fichero en bytes  (menos uno);
   mientras que
 
-    ls -lks fichero-suelto.img
+```shell
+ls -lks fichero-suelto.img
+```
 
   dice cuantos bloques se han ocupado realmente. También se
   [puede hacer](http://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system)
   usando `fallocate`:
 
-    fallocate -l 5M fichero-suelto.img
+```shell
+fallocate -l 5M fichero-suelto.img
+```
 
   lo que tendrá el mismo resultado, aunque este último no funciona en
   algunos sistemas de ficheros (como ZFS).
@@ -202,24 +206,31 @@ trabajan con él. Algunos formatos que son populares son
   disco a la vez que se optimiza el acceso al mismo. Una forma de
   crear este fichero es con `qemu-img`:
 
-      qemu-img create -f qcow2 fichero-cow.qcow2 5M
+```shell
+qemu-img create -f qcow2 fichero-cow.qcow2 5M
+```
 
 lo que aparecerá como un fichero normal y corriente de un tamaño
 inferior al indicado (5M).
 
 Estos ficheros se van a usar como sistemas de ficheros virtuales, pero
 eso no quiere decir que haga falta una máquina virtual para
-leerlos; se pueden [montar usando `mount`](http://en.wikibooks.org/wiki/QEMU/Images) de la forma siguiente:
+leerlos; se pueden [montar usando `mount`](http://en.wikibooks.org/wiki/QEMU/Images)
+de la forma siguiente:
 
-    mount -o loop,offset=32256 /camino/a/fichero-suelto.img    /mnt/mountpoint
+```shell
+mount -o loop,offset=32256 /camino/a/fichero-suelto.img    /mnt/mountpoint
+```
 
 aunque dará un error en caso de no haber sido formateado (lo que se
 verá un poco más adelante). En el caso de qcow2, usando qemu-nbd
 
-    modprobe nbd max_part=16
-    qemu-nbd -c /dev/nbd0 fichero-cow.qcow2
-    partprobe /dev/nbd0
-    mount /dev/nbd0p1 /mnt/image
+```shell
+modprobe nbd max_part=16
+qemu-nbd -c /dev/nbd0 fichero-cow.qcow2
+partprobe /dev/nbd0
+mount /dev/nbd0p1 /mnt/image
+```
 
 , donde
 [NBD se refiere a Network Block Device](http://en.wikipedia.org/wiki/Network_block_device).
@@ -243,7 +254,9 @@ tenemos que convertirlos en un
 [dispositivo *loop*](http://en.wikipedia.org/wiki/Loop_device#Uses_of_loop_mounting)
 usando `losetup`
 
-    sudo losetup -v -f fichero-suelto.img
+```shell
+sudo losetup -v -f fichero-suelto.img
+```
 
 Un dispositivo *bucle* o *loop* es un seudo-dispositivo que presenta
 un fichero como si fuera un dispositivo de acceso por bloques (como un
@@ -261,7 +274,9 @@ te muestra el resultado. Dado que los dispositivos son privilegio del
 superusuario, hay que hacerlo en tal modo superusuario. La respuesta
 será algo así como
 
-    El dispositivo de bucle es /dev/loop1
+```shell
+El dispositivo de bucle es /dev/loop1
+```
 
 Lo que tenemos ahora mismo es un dispositivo *en crudo*, el
 equivalente a un disco duro no formateado. Si queremos formatearlo
@@ -270,7 +285,9 @@ usando las herramientas que hay para ello: `fdisk`, `mkfs`, `gparted`
 o la que sea. Por ejemplo, para formatearlo con el
 [sistema de ficheros `btrfs`](http://en.wikipedia.org/wiki/Btrfs)
 
-    sudo mkfs.btrfs /dev/loop0
+```shell
+sudo mkfs.btrfs /dev/loop0
+```
 
 Y una vez formateado, ya se puede montar como cualquier otro
 dispositivo usando el tipo de sistema de ficheros con el que se haya
@@ -348,8 +365,8 @@ almacenamiento en nube, como
 estos servicios son de pago (o *freemium* con una capa de pago), pero
 también existen soluciones open source que se pueden instalar
 localmente como [CEPH](http://ceph.com) u
-[OpenStack Cinder](http://en.wikipedia.org/wiki/Openstack#Object_Storage_.28Swift.29). También
-se pueden comprar dispositivos físicos que utilizan este tipo de
+[OpenStack Cinder](http://en.wikipedia.org/wiki/Openstack#Object_Storage_.28Swift.29).
+También se pueden comprar dispositivos físicos que utilizan este tipo de
 almacenamiento, como
 [Nexenta](http://en.wikipedia.org/wiki/Openstack#Object_Storage_.28Swift.29).
 
@@ -372,7 +389,9 @@ instalarlos en el mismo sistema.
 
 Primero, habrá que instalar varios paquetes
 
-    sudo apt-get install ceph-mds
+```shell
+sudo apt-get install ceph-mds
+```
 
 te instala las dependencias necesarias (que incluyen el paquete
 ceph-fs-common, ceph y ceph-common.
@@ -380,7 +399,9 @@ ceph-fs-common, ceph y ceph-common.
 Vamos a crear los directorios donde se va a almacenar la información
 de CEPH
 
-    mkdir -p /srv/ceph/{osd,mon,mds}
+```shell
+mkdir -p /srv/ceph/{osd,mon,mds}
+```
 
 (si no tenemos permiso de escritura en `/srv` habrá que hacerlo con
 superusuario). Estos directorios contendrán ficheros específicos de
@@ -389,24 +410,26 @@ ceph.
 Vamos a configurar ceph, creando un fichero de configuración como el
 siguiente:
 
-    [global]
-    log file = /var/log/ceph/$name.log
-    pid file = /var/run/ceph/$name.pid
-    [mon]
-    mon data = /srv/ceph/mon/$name
-    [mon.mio]
-    host = penny
-    mon addr = 127.0.0.1:6789
-    [mds]
-    [mds.mio]
-    host = penny
-    [osd]
-    osd data = /srv/ceph/osd/$name
-    osd journal = /srv/ceph/osd/$name/journal
-    osd journal size = 1000 ; journal size, in megabytes
-    [osd.0]
-    host = penny
-    devs = /dev/loop0
+```ini
+[global]
+log file = /var/log/ceph/$name.log
+pid file = /var/run/ceph/$name.pid
+[mon]
+mon data = /srv/ceph/mon/$name
+[mon.mio]
+host = penny
+mon addr = 127.0.0.1:6789
+[mds]
+[mds.mio]
+host = penny
+[osd]
+osd data = /srv/ceph/osd/$name
+osd journal = /srv/ceph/osd/$name/journal
+osd journal size = 1000 ; journal size, in megabytes
+[osd.0]
+host = penny
+devs = /dev/loop0
+```
 
  Aparte de declarar los ficheros de logs y demás, el fichero de
  configuración tiene tres partes: `mon`, para configurar el monitor,
@@ -441,28 +464,38 @@ siguiente:
  Una vez hecho esto, hay que crear un directorio a mano (no me
  preguntéis por qué, pero es así y [aquí lo dicen](http://tracker.ceph.com/issues/1015))
 
-     sudo mkdir /srv/ceph/osd/osd.0
+```shell
+sudo mkdir /srv/ceph/osd/osd.0
+```
 
 y ya podemos crear el sistema de ficheros de objetos con
 
-    sudo /sbin/mkcephfs -a -c /etc/ceph/ceph.conf
+```shell
+sudo /sbin/mkcephfs -a -c /etc/ceph/ceph.conf
+```
 
 Por favor notad que en este caso, a diferencia del tutorial enlazado,
 no especificamos BTRFS sino XFS, con lo que nos ahorramos
 opciones. Esa orden da un montón de resultados diferentes, pero
 finalmente ya está el sistema ceph creado. Iniciamos el servicio con
 
-        sudo /etc/init.d/ceph -a start
+```shell
+sudo /etc/init.d/ceph -a start
+```
 
 (lo que dará un montón de mensajes sobre los diferentes servidores que
 están empezando). Puedes comprobar si todo ha ido (más o menos) bien
 con
 
-    sudo ceph -s
+```shell
+sudo ceph -s
+```
 
 y ya lo podemos montar con
 
-    sudo mount -t ceph penny:/ /mnt/ceph
+```shell
+sudo mount -t ceph penny:/ /mnt/ceph
+```
 
 (previamente habrá que habido que crear el directorio que se va a usar
 como punto de montaje).  Con un poco de suerte, aparecerá el sistema
@@ -500,31 +533,40 @@ configuración que tentamos funcionando en ese momento, con lo que no
 hace falta indicarle los monitores y todas esas cosas. Tal como se ha
 creado, la orden que funciona es
 
-    rados lspools
+```shell
+rados lspools
+```
 
 que devolverá
 
-    data
-    metadata
-    rbd
+```shell
+data
+metadata
+rbd
+```
 
 Esta orden lista los *pools* o "directorios" (cubos, en realidad) en
 los que se van a colocar los diferentes objetos. Podemos crear nuevos
 *pools* con
 
-    sudo rados mkpool esa-piscina
+```shell
+sudo rados mkpool esa-piscina
+```
 
 (con `rmpool`, por supuesto, se puede borrar). La orden
 
-    sudo rados df
+```shell
+sudo rados df
+```
 
 te mostrará qué hay en cada uno de los pools. Hay
 [muchos más comandos](https://synnefo.readthedocs.org/en/latest/storage.html?highlight=import)
 pero tampoco me voy a poner a hacer todos y cada uno de ellos. Para
 almacenar objetos, por ejemplo, se usa put
 
-    sudo rados put -p esa-piscina objeto-almacenado    fichero-que-almacenaremos.whatever
-
+```shell
+sudo rados put -p esa-piscina objeto-almacenado    fichero-que-almacenaremos.whatever
+```
 
 <div class='ejercicios' markdown='1'>
 
@@ -540,7 +582,8 @@ misma. Se verá más adelante cuando usemos este tipo de sistemas. En
 concreto,
 [el servicio de almacenamiento de objetos en OpenStack se llama Swift](http://en.wikipedia.org/wiki/Openstack#Object_Storage_.28Swift.29)
 y se
-[usa principalmente almacenamiento de imágenes (discos duros completos) y *snapshots* (estado de un disco duro en un momento determinado](http://www.openstack.org/software/openstack-storage/).
+[usa principalmente almacenamiento de imágenes](http://www.openstack.org/software/openstack-storage/).
+(discos duros completos) y *snapshots* (estado de un disco duro en un momento determinado
 En Amazon, [Elastic Block Storage](http://aws.amazon.com/es/ebs/) forma
 parte de las ofertas de servicios web del mismo y permite trabajar con
 bloques desde las instancias EC2.
@@ -561,7 +604,8 @@ En [Microsoft Azure](http://azure.microsoft.com), por ejemplo,
 que estará asociada a la cuenta general que se use en el resto de
 Azure. La cuenta se activa en una zona geográfica determinada, lo que
 dependerá de nuestras preferencias o de las disposiciones legales al
-respecto. Se pueden obtener cuentas gratuitas de Azure siempre que no exceda un uso determinado.
+respecto. Se pueden obtener cuentas gratuitas de Azure siempre que no exceda
+un uso determinado.
 
 <div class='nota' markdown='1'>
 
@@ -585,7 +629,9 @@ Tal cuenta se puede crear de dos formas diferentes: desde el panel de
 control de Azure o bien
 [desde la línea de órdenes con](https://github.com/WindowsAzure/azure-sdk-tools-xplat)
 
-    azure account storage create esacuenta
+```shell
+azure account storage create esacuenta
+```
 
 te presentará una lista de las localizaciones y habrá que elegir la
 más conveniente (según lo indicado antes). El nombre de la cuenta no
@@ -594,20 +640,23 @@ una o más cuentas, pero seguramente solo una.
 
 Para manejar esta cuenta se necesitan una serie de claves. Con
 
-    azure account storage keys list esacuenta
+```shell
+azure account storage keys list esacuenta
+```
 
 te dará una clave primaria y otra secundaria. Esta información se debe
 copiar en variables de entorno (que tendrás que cargar en tu
 `.profile` o bien establecerlas cada vez que vayas a usarlo con
 
-    export AZURE_STORAGE_ACCOUNT=esacuenta
-    export AZURE_STORAGE_ACCESS_KEY=unaclavemuylargaquetieneigualesalfinal==
+```shell
+export AZURE_STORAGE_ACCOUNT=esacuenta
+export AZURE_STORAGE_ACCESS_KEY=unaclavemuylargaquetieneigualesalfinal==
+```
 
 Una vez creada la cuenta y establecida la configuración
 ya
-[se pueden crear cosas en ella](http://www.azure.microsoft.com/en-us/manage/linux/other-resources/command-line-tools/?fb=es-es) se
-puede empezar a manejar la cuenta; una vez
-más,
+[se pueden crear cosas en ella](http://www.azure.microsoft.com/en-us/manage/linux/other-resources/command-line-tools/?fb=es-es)
+se puede empezar a manejar la cuenta; una vez más,
 [se pueden crear diferentes contenedores desde el panel de control](http://www.azure.microsoft.com/en-us/manage/services/storage/what-is-a-storage-account/?fb=es-es),
 pero es más práctico hacerlo desde la línea de órdenes.
 
@@ -617,19 +666,24 @@ los contenedores son simplemente una forma de agrupar a las *masas* o
 *blobs* y equivalen a los *pools* o piscinas creadas en la sección
 anterior. Los containers se crean de forma más o menos obvia:
 
-    azure storage container create taper
+```shell
+azure storage container create taper
+```
 
 pero esto crea un contenedor de acceso privado; los contenedores
-pueden ser públicos o privados y por defecto se crean privados; [los niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
+pueden ser públicos o privados y por defecto se crean privados;
+[los niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
 
- * Públicos para que se vean los contenidos.
- * Blobs públicos solo.
- * Sin acceso público.
+* Públicos para que se vean los contenidos.
+* Blobs públicos solo.
+* Sin acceso público.
 
- Este último es el permiso por defecto, pero si queremos que se acceda
- a los *blobs* se crea con
+Este último es el permiso por defecto, pero si queremos que se acceda
+a los *blobs* se crea con
 
-     azure storage container create otrotaper -p blob
+```shell
+azure storage container create otrotaper -p blob
+```
 
 En este caso, se contesta con
 
@@ -646,7 +700,9 @@ como listarlos y borrarlos. Pero lo que nos interesa es como subir un
 blob a este almacenamiento, lo que también se puede hacer desde la
 línea de órdenes con `azure storage blob` tal como
 
-    azure storage blob upload container-con-acceso-blob.png imagenes-iv container-con-acceso-blob.png
+```shell
+azure storage blob upload container-con-acceso-blob.png imagenes-iv container-con-acceso-blob.png
+```
 
 que almacenará un fichero png usando como nombre de blob el mismo
 nombre en el contenedor `imagenes-iv`. Estos ficheros, dependiendo del
@@ -726,7 +782,6 @@ arranque, pero, como se verá más adelante, al crear una máquina
 virtual se crea simultáneamente el almacenamiento necesario para la
 misma, aunque, por supuesto, puedes usar almacenamiento virtual creado
 previamente.
-
 
 ## A dónde ir desde aquí
 

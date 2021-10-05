@@ -9,15 +9,12 @@ next: Gestion_de_configuraciones
 
 ## Objetivos
 
-1.   Conocer las diferentes tecnologías y herramientas de
-virtualización tanto para procesamiento, comunicación y
-almacenamiento.
-
+1. Conocer las diferentes tecnologías y herramientas de
+  virtualización tanto para procesamiento, comunicación y
+  almacenamiento.
 2. Diseñar, construir y analizar las prestaciones de un centro de
-proceso de datos virtual.
-
+  proceso de datos virtual.
 3. Documentar y mantener una plataforma virtual.
-
 4. Realizar tareas de administración de infraestructuras virtuales.
 
 </div>
@@ -30,8 +27,8 @@ del resto del sistema y que permita trabajar con sistemas
 virtualizados de forma flexible, escalable y adaptada a cualquier
 objetivo. Eventualmente, el objetivo de este este tema es aprender a
 crear
-[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico.md). Para
-ello necesitamos configurar una serie de infraestructuras virtuales,
+[infraestructura como servicio tal como vimos en el primer tema](Intro_concepto_y_soporte_fisico.md).
+Para ello necesitamos configurar una serie de infraestructuras virtuales,
 especialmente
 [almacenamiento como se vio en el tema anterior](Intro_concepto_y_soporte_fisico).
 
@@ -56,7 +53,8 @@ hipervisores alojados que se ejecutan desde un sistema operativo.
 
 Para apoyar la virtualización, casi todos los procesadores actuales y
 especialmente
-[los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](http://en.wikipedia.org/wiki/X86_virtualization).
+[los de las líneas más populares basadas en la arquitectura x86](http://en.wikipedia.org/wiki/X86_virtualization)
+tienen una serie de instrucciones que permiten usarla de manera segura y eficiente.
 Esta
 arquitectura tiene dos ramas: la Intel y la AMD, cada uno de los
 cuales tiene un conjunto de instrucciones diferentes para llevarla a
@@ -69,8 +67,8 @@ en la que los hipervisores tienen que *interpretar* cada imagen del
 sistema operativo que alojan (llamado *invitado*) y convertirla en
 instrucciones del que aloja (llamado *anfitrión* o *host*). La mayor
 parte de los hipervisores, como
-[Xen](http://en.wikipedia.org/wiki/Xen) o [KVM](http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) incluyen
-también la capacidad de paravirtualizar ciertos sistemas operativos en
+[Xen](http://en.wikipedia.org/wiki/Xen) o [KVM](http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine)
+incluyen también la capacidad de paravirtualizar ciertos sistemas operativos en
 caso de que los anfitriones no tengan soporte; por ejemplo, KVM se ha
 asociado con [QEMU](http://en.wikipedia.org/wiki/QEMU) que lo usa en
 caso de que el procesador tenga soporte.
@@ -78,7 +76,7 @@ caso de que el procesador tenga soporte.
 A continuación veremos el uso básico de estos sistemas de
 virtualización basándonos, sobre todo, en uno de ellos KVM.
 
-## Creando máquinas virtuales desde la línea de órdenes.
+## Creando máquinas virtuales desde la línea de órdenes
 
 Crear una máquina virtual requiere seguir un proceso similar a la
 construcción e instalación del sistema operativo de un ordenador por
@@ -112,17 +110,23 @@ Dado que KVM es un módulo del kernel, puede que no esté cargado por
 defecto. Dependiendo del procesador que usemos,
 [lo cargamos](http://www.linux-kvm.org/page/HOWTO1) con
 
-    sudo modprobe kvm-amd
+```shell
+sudo modprobe kvm-amd
+```
 
 o
 
-    sudo modprobe kvm-intel
+```shell
+sudo modprobe kvm-intel
+```
 
 Con los ficheros de almacenamiento virtual y una ISO para poder
 arrancar el sistema ya podemos arrancar KVM para instalarlo usando,
 por ejemplo
 
-    qemu-system-x86_64 -hda /media/Backup/Isos/discovirtual.img -cdrom    ~/tmp/debian-7.3.0-i386-netinst.iso
+```shell
+qemu-system-x86_64 -hda /media/Backup/Isos/discovirtual.img -cdrom    ~/tmp/debian-7.3.0-i386-netinst.iso
+```
 
 La opción `-hda` indica el fichero en el que se va a alojar el sistema
 operativo instalado y `-cdrom` recibe el camino a la ISO en la que
@@ -142,8 +146,10 @@ anterior tratará de arrancar de todas formas del disco duro. Se puede
 cortar la máquina virtual simplemente cerrando al ventana y [tratar de
 arrancar de nuevo empezando por el CD virtual usando](http://www.linux-kvm.com/content/some-new-kvm-options-boot-order-and-process-name)
 
-    qemu-system-x86_64 -hda otro-disco.img -cdrom picaros-diego-b.iso
-    -boot once=d
+```shell
+qemu-system-x86_64 -hda otro-disco.img -cdrom picaros-diego-b.iso
+-boot once=d
+```
 
 con `-boot` se le indica el orden de arranque; `once` indica que solo
 va a ser así esta vez y `d`, como antiguamente, es el CD
@@ -153,21 +159,19 @@ va a ser así esta vez y `d`, como antiguamente, es el CD
 <div class='ejercicios' markdown="1">
 
 1. Crear varias máquinas virtuales con algún sistema operativo libre,
-Linux o BSD. Si se
-quieren distribuciones que ocupen poco espacio con el objetivo
-principalmente de hacer pruebas se puede usar
-[CoreOS](http://coreos.com/) (que sirve como soporte para Docker)
-[GALPon Minino](http://minino.galpon.org/en), hecha en Galicia para el
-mundo,
-[Damn Small Linux](http://www.damnsmalllinux.org/download.html),
-[SliTaz](http://www.slitaz.org/en/) (que cabe en 35 megas) y
-[ttylinux](http://ttylinux.net/) (basado en línea de órdenes solo).
-
+  Linux o BSD. Si se
+  quieren distribuciones que ocupen poco espacio con el objetivo
+  principalmente de hacer pruebas se puede usar
+  [CoreOS](http://coreos.com/) (que sirve como soporte para Docker)
+  [GALPon Minino](http://minino.galpon.org/en), hecha en Galicia para el
+  mundo,
+  [Damn Small Linux](http://www.damnsmalllinux.org/download.html),
+  [SliTaz](http://www.slitaz.org/en/) (que cabe en 35 megas) y
+  [ttylinux](http://ttylinux.net/) (basado en línea de órdenes solo).
 2. Hacer un ejercicio equivalente usando otro hipervisor como Xen, VirtualBox o
-Parallels.
+  Parallels.
 
 </div>
-
 
 <div class='nota' markdown='1'>
 
@@ -180,7 +184,9 @@ una herramienta gráfica que trabaja sobre KVM.
 La máquina virtual, una vez instalada, se puede arrancar directamente
 desde el fichero en el que la hemos instalado, usando una orden [tal como esta](https://wiki.archlinux.org/index.php/QEMU#Creating_new_virtualized_system)
 
-    qemu-system-x86_64 -boot order=c -drive    file=/media/Backup/Isos/discovirtual.img,if=virtio
+```shell
+qemu-system-x86_64 -boot order=c -drive    file=/media/Backup/Isos/discovirtual.img,if=virtio
+```
 
 En este caso no necesitamos *pegarle* el CD, sino que le indicamos en
 qué orden tienen que arrancar (usando el DD, en este caso) y mediante
@@ -212,8 +218,8 @@ qemu-system-x86_64 -hda /media/Backup/Isos/discovirtual.img -vnc :1
 ```
 
 Con esto podemos conectar a la máquina virtual usando algún
-[cliente de VNC tal como `vinagre`](https://help.ubuntu.com/community/VNC/Clients). Hay
-[múltiples opciones más](http://man.cx/qemu-system-x86_64%281%29) en
+[cliente de VNC tal como `vinagre`](https://help.ubuntu.com/community/VNC/Clients).
+Hay [múltiples opciones más](http://man.cx/qemu-system-x86_64%281%29) en
 la línea de órdenes, que nos permiten establecer los tipos de CPU,
 todo tipo de periféricos, tamaño de memoria (son 128 megas por
 omisión) o nombre del invitado.
@@ -231,8 +237,8 @@ Azure permite,
 [tras la creación de almacenamiento virtual](Almacenamiento.md), la
 creación de máquinas virtuales, como es natural. Se puede crear una
 máquina virtual desde el panel de control, pero también desde
-la [línea de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat). Primero
-hay que saber qué imágenes hay disponibles:
+la [línea de órdenes](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
+Primero hay que saber qué imágenes hay disponibles:
 
 ```shell
 azure vm image list
@@ -246,7 +252,9 @@ nos muestra detalles sobre la imagen; entre otras cosas dónde está
 disponible y sobre si es Premium o no (en este caso no lo es). Con
 esta (o con otra) podemos crear una máquina virtual
 
-    azure vm create peasomaquina b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB peasousuario PeasoD2clav= --location "West Europe" --ssh
+```shell
+azure vm create peasomaquina b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_10-amd64-server-20131215-en-us-30GB peasousuario PeasoD2clav= --location "West Europe" --ssh
+```
 
 En esta clave tenemos que asignar un nombre de máquina (que se
 convertirá en un nombre de dominio `peasomaquina.cloudapp.net`, un
@@ -271,7 +279,9 @@ que queramos. El arranque tarda cierto tiempo y dependerá de la
 disponibilidad de recursos; evidentemente, mientras no esté arrancada
 no se puede usar, pero conviene de todas formas apagarla con
 
-    azure vm shutdown maquina
+```shell
+azure vm shutdown maquina
+```
 
 cuando terminemos la sesión y no sea necesaria, sobre todo porque,
 dado que se pagan por tiempo de uso, se puede incurrir en costes
@@ -310,7 +320,7 @@ configurar máquinas en instantes y personalizarlas de forma
 masiva. Veremos como hacerlo en el
 [siguiente tema](Gestion_de_configuraciones).
 
-##Automatizando la creación de máquinas virtuales
+## Automatizando la creación de máquinas virtuales
 
 Una máquina virtual es, desde el punto de vista del administrador,
 algo parecido a una máquina real: se arranca con el disco de
@@ -358,8 +368,10 @@ sudo ubuntu-vm-builder kvm virt-manager
 
 Con eso ya podemos crear una imagen para usar
 
-    sudo vmbuilder kvm ubuntu --suite precise --flavour server
-         -o --dest /un/directorio/vacío --hostname paraiv --domain paraiv
+```shell
+sudo vmbuilder kvm ubuntu --suite precise --flavour server
+     -o --dest /un/directorio/vacío --hostname paraiv --domain paraiv
+```
 
 Esta orden crea, usando el hipervisor kvm, una instalación de Ubuntu
 Precise Pangolin, o sea, 12.04. La versión más moderna que tienen es
@@ -373,13 +385,15 @@ externo que podamos usar nosotros desde `virt-manager`(`domain`)
 aunque ahora mismo hay un bug que impide usarlo correctamente, como un
 hombre interno para el propio ordenador.
 
-Esta orden creará, tras una buena cantidad de minutos, un fichero de nombre ignoto (algo así como
-`tmpGAPl8O.qcow2`) en el que habrá una distribución Ubuntu instalada
-con un solo usuario, `ubuntu` con la misma clave. Como no se le ha
+Esta orden creará, tras una buena cantidad de minutos, un fichero de nombre
+ignoto (algo así como `tmpGAPl8O.qcow2`) en el que habrá una distribución Ubuntu
+instalada con un solo usuario, `ubuntu` con la misma clave. Como no se le ha
 indicado ninguna personalización, tendrá el teclado en inglés y la
 hora que le parezca bien. Una vez construido podemos arrancarlo con
 
-    sudo qemu-system-x86_64 -drive file=/directorio/donde/este/tmpGAPl8O.qcow2,if=none,id=drive-ide0-0-0,format=qcow2
+```shell
+sudo qemu-system-x86_64 -drive file=/directorio/donde/este/tmpGAPl8O.qcow2,if=none,id=drive-ide0-0-0,format=qcow2
+```
 
 y trabajar con ella, o directamente con
 
@@ -398,10 +412,11 @@ tengas instalado.
 
 Como la máquina creada anteriormente necesita más trabajo todavía que
 una máquina instalada desde una ISO (por aquello de que necesita
-instalar idioma, usuarios y demás), en realidad ubuntu-vm-builder
-[permite configurar el tamaño del disco, la IP, qué mirror se va a usar para descargar los paquetes, usuarios, claves y también qué paquetes se van a instalar, al menos en el caso de los más comunes](https://help.ubuntu.com/community/KVM/CreateGuests).
-En
-todo caso, este programa permite crear configuraciones de forma fácil
+instalar idioma, usuarios y demás), en realidad [ubuntu-vm-builder](https://help.ubuntu.com/community/KVM/CreateGuests)
+permite configurar el tamaño del disco, la IP, qué mirror se va a usar para
+descargar los paquetes, usuarios, claves y también qué paquetes se van a
+instalar, al menos en el caso de los más comunes.
+En todo caso, este programa permite crear configuraciones de forma fácil
 y reproducible usando una sola orden.
 
 <div class='nota' markdown='1'>
@@ -427,4 +442,3 @@ Antes, habrá que hacer y entregar la
 
 Si lo que necesitas es un sistema ligero de virtualización, puedes
 mirar cómo virtualizar con [contenedores](Contenedores.mv).
-
