@@ -56,12 +56,3 @@ una máquina que se queda sin producto.
 La máquina tiene un acceso por puerto serie y el monedero también por
 puerto serie y lo saca en txt. Instalación de una raspberry pi o
 similar para enviar algo.
-
-
-
-
-
-
-
-
-
