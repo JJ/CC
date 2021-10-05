@@ -11,17 +11,15 @@ next: Automatizando_cloud
 
 * Diseñar, construir y analizar las prestaciones de un centro de
   proceso de datos virtual.
-
 * Documentar y mantener una plataforma virtual.
-
 * Realizar tareas de administración en infraestructura virtual.
 
 ## Objetivos específicos
 
 1. Aprender lenguajes de configuración usados en infraestructuras virtuales.
 2. Saber cómo aplicarlos en un caso determinado.
-3. Conocer los sistemas de gestión de la configuración,
-provisionamiento y monitorización más usados hoy en día.
+3. Conocer los sistemas de gestión de la configuración, provisionamiento y
+  monitorización más usados hoy en día.
 
 </div>
 
@@ -147,7 +145,6 @@ pública/privada y copiar la pública al objetivo.
 > clave privada para indicarle al sistema de aprovisionamiento dónde
 > está.
 
-
 ## Gestionando configuraciones con Salt
 
 [Salt](https://www.saltstack.com/) es una herramienta de configuración
@@ -219,7 +216,6 @@ scala:
 pkg.installed
 ~~~
 
-
 Este fichero se ejecutaría con
 
 ```bash
@@ -257,8 +253,8 @@ para los hitos anteriores) usando Salt.
 ## Usando Ansible
 
 Las principales alternativas a Chef son [Ansible](https://www.ansible.com),
-y [Puppet](https://puppet.com/docs/puppet/3.8/pre_install.html). Todos ellos se comparan en
-[este artículo](https://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html),
+y [Puppet](https://puppet.com/docs/puppet/3.8/pre_install.html). Todos ellos
+se comparan en [este artículo](https://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html),
 aunque los principales contendientes son
 [Puppet y Chef, sin que ninguno de los dos sea
 perfecto](https://www.infoworld.com/d/data-center/puppet-or-chef-the-configuration-management-dilemma-215279?source=fssr).
@@ -266,8 +262,8 @@ perfecto](https://www.infoworld.com/d/data-center/puppet-or-chef-the-configurati
 De todas ellas, vamos a
 [ver Ansible](https://semaphoreci.com/community/tutorials/introduction-to-ansible)
 que parece ser uno de los que se está desarrollando con más intensidad
-últimamente. [Ansible es](https://en.wikipedia.org/wiki/Ansible_%28software%29) un
-sistema de gestión remota de configuración que permite trabajar
+últimamente. [Ansible es](https://en.wikipedia.org/wiki/Ansible_%28software%29)
+un sistema de gestión remota de configuración que permite trabajar
 simultáneamente miles de sistemas diferentes. Está escrito en Python y
 para la descripción de las
 configuraciones de los sistemas usa YAML.
@@ -279,12 +275,14 @@ instalación de módulos `pip` (que habrá que instalar si no se tiene).
 > lo que aconsejamos vivamente, no solo para este lenguaje, sino para
 > todos los demás.
 
-Si no usas un gestor de versiones, lo más conveniente instalarlo desde su propio repositorio PPA.
+Si no usas un gestor de versiones, lo más conveniente instalarlo desde su propio
+repositorio PPA.
 
-```
+```shell
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get install ansible
 ```
+
 Ansible va a necesitar tres ficheros para provisionar una máquina virtual.
 * Un fichero de configuración general, que se suele llamar `ansible.cfg`
 * Un fichero de configuración específica de los *hosts* con los que se
@@ -309,7 +307,6 @@ nueva de una nueva MAC detectada. La segunda instrucción indica dónde
 se va a encontrar, por omisión, el fichero de inventario, en este caso
 en el mismo directorio.
 
-
 Cada máquina que se añada al control de Ansible se tiene que añadir a
 un
 [fichero, llamado inventario](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html),
@@ -317,7 +314,7 @@ que contiene las diferentes máquinas controladas por el mismo. Por
 ejemplo esta orden
 
 ```bash
-$ echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
+echo "ansible-iv.cloudapp.net" > ~/ansible_hosts
 ```
 
 se puede ejecutar desde el *shell* para meter (`echo`) una cadena con
@@ -333,7 +330,7 @@ export ANSIBLE_HOSTS=~/ansible_hosts
 Y, con un nodo, ya se puede comprobar si Ansible funciona con
 
 ```bash
-$ ansible all -u jjmerelo -m ping
+ansible all -u jjmerelo -m ping
 ```
 
 Esta orden hace un *ping*, es decir, simplemente comprueba si la
@@ -356,7 +353,7 @@ crearía un grupo `azure` (con un solo ordenador), en el cual podemos
 ejecutar comandos de forma remota
 
 ```bash
-$ ansible azure -u jjmerelo -a df
+ansible azure -u jjmerelo -a df
 ```
 
 nos mostraría en todas las máquinas de Azure la organización del
@@ -367,7 +364,7 @@ Esta orden usa un *módulo* de ansible y se puede ejecutar también de
 esta forma:
 
 ```bash
-$ ansible azure -m shell ls
+ansible azure -m shell ls
 ```
 
 haciendo uso del módulo `shell`. Hay muchos
@@ -406,13 +403,11 @@ forma similar.
 
 Pero esto es solo la configuración inicial para llevar a cabo el
 verdadero provisionamiento, usando *recetas* que en el caso de Ansible
-se denominan 
+se denominan
 [*playbooks*](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html).
 ficheros en YAML que le dicen a la máquina virtual qué es lo que hay
 que instalar en *tareas* o `tasks`, de la forma que se ve en
 [este fichero](/ejemplos/vagrant/Debian2018/basico.yaml).
-
-
 
 ```yaml
 ---
@@ -421,7 +416,6 @@ que instalar en *tareas* o `tasks`, de la forma que se ve en
   tasks:
     - name: Instala git
       apt: pkg=git state=present
-
 ```
 
 En este caso `all` va a ser una denominación genérica de todos los
@@ -431,7 +425,7 @@ llevarán a cabo secuencialmente, pero solo tenemos una, que invoca el
 comando `apt`, indicándole que el paquete git tiene que estar
 presente.
 
-```
+```shell
 ansible-playbook basico.yaml
 ```
 
@@ -492,7 +486,6 @@ provisionamiento de un módulo o conjunto de módulos.
 > año 2013. Es poco probable que tengas una versión anterior, pero
 > podría suceder.
 
-
 Un rol abarca variables, tareas y otro tipo de metadatos, y se
 agruparán en un directorio con un nombre determinado, por ejemplo, el
 rol `ol` estará en el directorio (a partir del playbook que lo use)
@@ -502,7 +495,7 @@ vamos a declarar un rol `common` que suele usarse para agrupar tareas
 que van a ser comunes a varios playbooks en un proyecto. Este será el
 [playbook](/ejemplos/vagrant/Debian2018/express.yaml):
 
-```
+```yaml
 ---
 - hosts: all
   become: yes
@@ -514,7 +507,7 @@ que van a ser comunes a varios playbooks en un proyecto. Este será el
 
 En el directorio `roles/common/tasks` estará este [fichero](/ejemplos/vagrant/Debian2018/roles/common/tasks/main.yaml)
 
-```
+```yaml
 ---
 - name: Instala básicos
   apt:
@@ -535,14 +528,14 @@ llamado
 [`geerlingguy.nodejs`](https://github.com/geerlingguy/ansible-role-nodejs) de
 esta forma:
 
-```
+```shell
 ansible-galaxy install geerlingguy.nodejs
 ```
 
 Se usa en un [playbook](/ejemplos/vagrant/Debian2018/node-versions.yml)
 con su nombre completo, tras instalarlo:
 
-```
+```yaml
 ---
 - hosts: debianita
   become: yes
@@ -556,7 +549,7 @@ En este caso el rol lo que incluye son variables, en vez de tareas,
 con concreto la indicada en la clave `vars_files`. Ese fichero
 contiene solamente:
 
-```
+```yaml
 nodejs_version: "12.x"
 ```
 
@@ -565,11 +558,8 @@ usará el rol para instalar la versión de node correspondiente.
 
 > Un tutorial bastante extenso de diferentes capacidades de ansible
 > en [Guru99](https://www.guru99.com/ansible-tutorial.html). Digital
-> Ocean también nos
-> enseña
-> [aquí](https://www.digitalocean.com/community/tutorials/configuration-management-101-writing-ansible-playbooks) diferentes
-> características de los playbooks que se pueden usar.
-
+> Ocean también nos enseña [aquí](https://www.digitalocean.com/community/tutorials/configuration-management-101-writing-ansible-playbooks)
+> diferentes características de los playbooks que se pueden usar.
 
 <div class='ejercicios' markdown='1'>
 
@@ -578,7 +568,6 @@ usar en todas las máquinas virtuales de los microservicios de la
 asignatura (o, para el caso, cualquier otra asignatura).
 
 </div>
-
 
 ## Chef
 
@@ -616,7 +605,6 @@ máquinas virtuales a la vez, pero en la asignatura continuaremos
 con [la automatización de tareas en la nube](Automatizando_cloud.md)
 para aprender como trabajar con diferentes proveedores cloud usando
 sus propias herramientas.
-
 
 A partir de aquí se puede
 seguir aprendiendo sobre DevOps en [el blog](https://devops.com/) o

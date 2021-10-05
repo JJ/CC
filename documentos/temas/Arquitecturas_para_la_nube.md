@@ -1,4 +1,4 @@
-# Arquitecturas software para la nube
+#Arquitecturas software para la nube
 
 <!--@
 next: Desarrollo_basado_en_pruebas
@@ -10,27 +10,25 @@ next: Desarrollo_basado_en_pruebas
 
 ### De la asignatura
 
--  Conocer los conceptos relacionados con el proceso de virtualización
-tanto de software como de hardware y ponerlos en práctica.
+- Conocer los conceptos relacionados con el proceso de virtualización
+  tanto de software como de hardware y ponerlos en práctica.
 - Justificar la necesidad de procesamiento virtual frente a real en
-el contexto de una infraestructura TIC de una organización.
+  el contexto de una infraestructura TIC de una organización.
 - Optimizar aplicaciones sobre plataformas virtuales.
 - Conocer diferentes tecnologías relacionadas con la virtualización
   (Computación Nube, Utility Computing, Software as a Service) e
   implementaciones tales como Google AppSpot, OpenShift o Heroku.
 
-
 ### Específicos
 
 1. Comprender los ecosistemas de despliegue de aplicaciones modernos
-y su relación con la nube.
+  y su relación con la nube.
 2. Entender las diferentes arquitecturas de software modernas y su
-relación con *cloud computing*.
+  relación con *cloud computing*.
 3. Aprender diseños que se puedan usar más adelante en aplicaciones
-desplegables en la nube.
+  desplegables en la nube.
 
 </div>
-
 
 ## Introducción
 
@@ -56,8 +54,8 @@ sus características de escalado ni por el reparto de tareas y datos
 entre diferentes partes de un equipo de desarrollo.
 
 > Este
-> [póster](https://raw.githubusercontent.com/cncf/trailmap/master/CNCF_TrailMap_latest.png) da
-> una visión completa, aunque centrada en herramientas de la Cloud
+> [póster](https://raw.githubusercontent.com/cncf/trailmap/master/CNCF_TrailMap_latest.png)
+> da una visión completa, aunque centrada en herramientas de la Cloud
 > Native Computing Foundation, de todo lo necesario para la creación
 > de aplicaciones nativas en la nube.
 
@@ -77,8 +75,8 @@ para la cual crear la arquitectura virtual.
 > agregadas), servicios, repositorios y objetos-valor que son
 > indistinguibles. Adicionalmente, artículos
 > como
-> [este](https://hackernoon.com/clean-domain-driven-design-in-10-minutes-6037a59c8b7b) aclaran
-> el concepto y permiten usarlo con más profundidad.
+> [este](https://hackernoon.com/clean-domain-driven-design-in-10-minutes-6037a59c8b7b)
+> aclaran el concepto y permiten usarlo con más profundidad.
 
 ## Arquitecturas software
 
@@ -141,7 +139,7 @@ sistemas de aprendizaje como Moodle. El problema principal es la
 escalabilidad, ya que el núcleo puede representar un cuello de
 botella.
 
-### Arquitectura basada en microservicios.
+### Arquitectura basada en microservicios
 
 Una de las arquitecturas más populares hoy en día, los
 [microservicios](https://microservices.io) se caracterizan por poder
@@ -282,10 +280,10 @@ todos los datos almacenados tengan la misma estructura, se desperdicia
 una cantidad considerable de espacio. Por eso en estas arquitecturas
 modernas están complementadas por las bases de datos NoSQL, de las que
 lo primero que hay que aprender es que no se trata de sistemas que
-usen un lenguaje llamado [NoSQL](https://es.wikipedia.org/wiki/NoSQL) (aunque algunos lo están tratando de
-diseñar) sino de base de datos muy diversas y que usan lenguajes
-propios o empotrados para acceder a ellas. Hay diferentes tipos de
-almacenes de datos: clave-valor, basadas en documentos, orientadas a
+usen un lenguaje llamado [NoSQL](https://es.wikipedia.org/wiki/NoSQL) (aunque
+algunos lo están tratando de diseñar) sino de base de datos muy diversas y que
+usan lenguajes propios o empotrados para acceder a ellas. Hay diferentes tipos
+de almacenes de datos: clave-valor, basadas en documentos, orientadas a
 columna o a grafos. Una aplicación moderna usará una, o varias, desde
 MongoDB hasta Redis pasando por Cassandra o Elastic.
 
@@ -309,7 +307,7 @@ un solo lenguaje limita mucho el tipo de aplicaciones que puedes
 hacer, aunque si hay uno que pueda abarcarlo casi todo, ese es
 JavaScript.
 
-### De aquí a allí, todo son nubes.
+### De aquí a allí, todo son nubes
 
 La nube, que parece algo genérico y que a veces se abstrae simplemente
 en máquinas virtuales que se pagan por uso, son un panorama mucho más
@@ -346,8 +344,8 @@ evento determinado.
 
 Hay una serie de estándares de mensajería, pero muchas de las
 implementaciones existentes se acogen a varios para que sea más simple
-la interoperabilidad. Y aparte de las [implementaciones libres](https://www.rabbitmq.com/) que uno
-puede usar dentro de su arquitectura, los proveedores de cloud tienen
+la interoperabilidad. Y aparte de las [implementaciones libres](https://www.rabbitmq.com/)
+que uno puede usar dentro de su arquitectura, los proveedores de cloud tienen
 sus propias implementaciones tales como
 [Amazon SQS](https://en.wikipedia.org/wiki/Amazon_Simple_Queue_Service)
 o
@@ -361,8 +359,8 @@ enrutarlas a donde sea conveniente. En este contexto, resulta
 imposible hacer que cada microservicio conozca las rutas y los
 endpoints del resto de los microservicios, que pueden además cambiar
 durante la vida de una aplicación. Una
-[malla o red de servicios, o *service mesh*](https://www.redhat.com/es/topics/microservices/what-is-a-service-mesh) te
-resuelve ese problema, usando configuraciones distribuidas y
+[malla o red de servicios, o *service mesh*](https://www.redhat.com/es/topics/microservices/what-is-a-service-mesh)
+te resuelve ese problema, usando configuraciones distribuidas y
 descubrimiento de servicios para poder enrutar toda petición a donde
 sea capaz de servirla.
 
@@ -381,7 +379,6 @@ anterior, ¿podría usar diferentes lenguajes? ¿Qué almacenes de datos
 serían los más convenientes?
 
 </div>
-
 
 ## Bibliografía y otros recursos
 
@@ -404,8 +401,8 @@ Algunos recursos a los que puedes acceder desde la
   un recurso electrónico que explica cómo construir microservicios
   desde cero, la fase de modelización a la de construcción del mismo.
 
-- [What are microservices really all about? - Microservices Basics Tutorial](https://youtu.be/j1gU2oGFayY) Video
-  explicativo sobre ventajas y desventajas de diferentes arquitecturas
+- [What are microservices really all about? - Microservices Basics Tutorial](https://youtu.be/j1gU2oGFayY)
+  Video explicativo sobre ventajas y desventajas de diferentes arquitecturas
   software en referencia a los microservicios.
 
 ## A dónde ir desde aquí
@@ -423,4 +420,3 @@ pueden desplegar aplicaciones para prototipo o para producción de
 forma relativamente simple, o bien al tema dedicado a los
 [*contenedores*](Contenedores), que es el siguiente en el temario
 de la asignatura.
-

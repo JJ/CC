@@ -75,11 +75,10 @@ máquinas virtuales específicas, aunque en el tema adicional de
 trabajar con máquinas virtuales con `kvm` y cómo definir, desde la
 línea de órdenes, máquinas virtuales en sistemas en cloud como Azure.
 
-
 ## Orquestación de máquinas virtuales
 
-A un nivel superior al provisionamiento de máquinas virtuales está la configuración,
-orquestación y gestión de las mismas, herramientas como
+A un nivel superior al provisionamiento de máquinas virtuales está la
+configuración, orquestación y gestión de las mismas, herramientas como
 [Vagrant](https://www.vagrantup.com) ayudan a hacerlo, aunque también
 Puppet e incluso Juju pueden hacer muchas de las funciones de
 Vagrant, salvo por el hecho de que no pueden trabajar directamente con
@@ -87,8 +86,8 @@ el hipervisor.
 
 > Realmente no hay muchas alternativas a
 > Vagrant. En
-> [este hilo de 2016 de YCombinator](https://news.ycombinator.com/item?id=14176191&source=techstories.org) mencionan
-> algunos, pero ninguno es lo suficientemente amplio o aceptado para
+> [este hilo de 2016 de YCombinator](https://news.ycombinator.com/item?id=14176191&source=techstories.org)
+> mencionan algunos, pero ninguno es lo suficientemente amplio o aceptado para
 > hacerle sombra. Únicamente sistemas basados en contenedores pueden
 > acercársele; por ejemplo Kubernetes. Pero ninguno para orquestación
 > de máquinas virtuales.
@@ -109,14 +108,14 @@ tendrás que tener una instalación preparada. Te aconsejamos que uses
 un gestor de versiones como [RVM](http://rvm.io) o RBEnv para poder
 trabajar con él en espacio de usuario fácilmente.
 
->Tendrás que tener
->[algunas nociones de Ruby](http://rubytutorial.wikidot.com/introduccion)
->para trabajar con Vagrant, que no es sino un DSL (Domain Specific
->Language) construido sobre él, al menos tendrás que saber como
->instalar *gemas* (bibliotecas), que se usarán para los *plugin* de
->Vagrant y también cómo trabajar con bucles y variables, que se usarán
->en el fichero de definición de máquinas virtuales denominado
->`Vagrantfile`.
+> Tendrás que tener
+> [algunas nociones de Ruby](http://rubytutorial.wikidot.com/introduccion)
+> para trabajar con Vagrant, que no es sino un DSL (Domain Specific
+> Language) construido sobre él, al menos tendrás que saber como
+> instalar *gemas* (bibliotecas), que se usarán para los *plugin* de
+> Vagrant y también cómo trabajar con bucles y variables, que se usarán
+> en el fichero de definición de máquinas virtuales denominado
+> `Vagrantfile`.
 
 Con Vagrant [te puedes descargar directamente](https://gist.github.com/dergachev/3866825)
 [una máquina configurada de esta lista](http://www.vagrantbox.es/) o
@@ -126,19 +125,19 @@ que uno de los que usa Vagrant.
 Trabajemos con la configuración por omisión añadiendo la siguiente
 `box`:
 
-~~~
+```shell
 vagrant box add centos7 https://github.com/vezzoni/vagrant-vboxes/releases/download/0.0.1/centos-7-x86_64.box
-~~~
+```
 
->Para conocer todos los comandos de vagrant, `vagrant help` o `vagrant
->list-commands`.
+> Para conocer todos los comandos de vagrant, `vagrant help` o `vagrant
+> list-commands`.
 
 En este caso usamos un subcomando de `vagrant box`,
 que permite añadir nuevas imágenes a nuestro gestor de máquinas
 virtuales; `add` añade uno nuevo en este caso usando el gestor por
-omisión que es Virtual Box. El formato determinará en qué tipo de hipervisor se puede ejecutar; en
-general, Vagrant usa VirtualBox, y los `.box` se pueden importar
-directamente en esta aplicación; los formatos vienen listados en la
+omisión que es Virtual Box. El formato determinará en qué tipo de hipervisor se
+puede ejecutar; en general, Vagrant usa VirtualBox, y los `.box` se pueden
+importar directamente en esta aplicación; los formatos vienen listados en la
 página anterior. Las *boxes* disponibles se pueden consultar
 en [Vagrantbox.es](http://www.vagrantbox.es/); en esa dirección hay
 diferentes sistemas operativos en diferentes formatos, aunque
@@ -154,9 +153,9 @@ generalmente la mayoría son para VirtualBox.
 
 A continuación
 
-~~~
+```shell
 vagrant init centos7
-~~~
+```
 
 creará un `Vagrantfile` en el directorio en el que te encuentres, por
 lo que es conveniente que el directorio esté vacío. En este caso crea
@@ -167,16 +166,16 @@ llegar a configurar de forma más completa.
 
 Para comenzar a usar la máquina virtual se usa
 
-~~~
+```shell
 vagrant up
-~~~
+```
 
 En ese momento Virtual Box arrancará la máquina y te podrás conectar a
 ella usando
 
-~~~
+```shell
 vagrant ssh
-~~~
+```
 
 Si quieres conectar por `ssh` desde algún otro programa, por ejemplo,
 Ansible, tendrás que fijarte en cómo se configura la conexión y que
@@ -187,23 +186,26 @@ desde un terminal o bien
 [usando el propio Vagrantfile](https://stackoverflow.com/questions/30075461/how-do-i-add-my-own-public-key-to-vagrant-vm)
 añadiendo las dos líneas siguientes:
 
-~~~
+```shell
 #Copy public key
 ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
 config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys", privileged: false
-~~~
+```
 
 Una vez creada la máquina, para que use estas líneas y se provisione
 hay que hacer
 
-	vagrant provision
+```shell
+vagrant provision
+```
 
 Hay que seguir teniendo en cuenta que se usa el puerto 2222, o sea que
 para conectarte a la máquina (o usar un provisionador de forma externa
 a Vagrant) tendrás que hacerlo así:
 
-	ssh vagrant@127.0.0.1 -p 2222
-
+```shell
+ssh vagrant@127.0.0.1 -p 2222
+```
 
 > Lo que también se puede hacer con `vagrant ssh`, claro. El hacerlo
 > así es para que quede claro cómo se hace la conexión directa desde
@@ -212,17 +214,21 @@ a Vagrant) tendrás que hacerlo así:
 
 Para suspender el estado de la máquina virtual y guardarlo se usa
 
-	vagrant suspend
+```shell
+vagrant suspend
+```
 
 Esto dejará la máquina virtual en el estado en el que esté, que se
 podrá recuperar en la próxima sesión. Cuando quieras deshacerte de
 ella,
 
-	vagrant destroy
+```shell
+vagrant destroy
+```
 
 <div class='ejercicios' markdown='1'>
 
-	Instalar una máquina virtual Debian usando Vagrant y conectar con ella.
+Instalar una máquina virtual Debian usando Vagrant y conectar con ella.
 
 </div>
 
@@ -235,10 +241,11 @@ que las imágenes estén preparadas específicamente para hacerlo; si no,
 no se podrá hacer desde Vagrant sino desde alguna otra herramienta
 (como Ansible o Chef).
 
-### Trabajando con proveedores cloud.
+### Trabajando con proveedores cloud
 
 Vagrant tiene una serie de drivers para trabajar con los
-[proveedores de cloud más habituales](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins#providers), así como con herramientas libres como
+[proveedores de cloud más habituales](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins#providers),
+así como con herramientas libres como
 [OpenStack](https://github.com/mat128/vagrant-openstack-cloud-provider). Vagrant
 trabaja con el API de estos servicios, que en la jerga de Vagrant se
 denominan *providers* o proveedores. En algunos casos, estos
@@ -251,8 +258,8 @@ ejemplo,
 configura como una aplicación cliente de Azure.
 
 > Para lo que es conveniente ver el
-> [tutorial de uso de Azure desde la línea de órdenes](https://www.youtube.com/watch?v=c9Wg1R-bCqQ), donde explica
-> entre otras cosas el concepto de Service Principal, usado para
+> [tutorial de uso de Azure desde la línea de órdenes](https://www.youtube.com/watch?v=c9Wg1R-bCqQ),
+> donde explica entre otras cosas el concepto de Service Principal, usado para
 > configurar el driver.
 
 En general, dado que estos drivers trabajan con el API, hay dos cosas
@@ -276,17 +283,14 @@ a tener en cuenta a la hora de crear el Vagrantfile
   desde el propio Vagrant, requerirán de otra herramienta o del uso de
   scripts de línea de órdenes o del SDK.
 
->  Un Vagrantfile es un programa
->  en Ruby y por tanto se podrá usar el SDK de Ruby para la nube
->  correspondiente para realizar este tipo de tareas. En la práctica,
->  no he visto ningún Vagrantfile que haga este tipo de cosas, porque
->  si se tiene que usar el SDK, finalmente es más práctico que la
->  orquestación se haga también desde el SDK.
+> Un Vagrantfile es un programa
+> en Ruby y por tanto se podrá usar el SDK de Ruby para la nube
+> correspondiente para realizar este tipo de tareas. En la práctica,
+> no he visto ningún Vagrantfile que haga este tipo de cosas, porque
+> si se tiene que usar el SDK, finalmente es más práctico que la
+> orquestación se haga también desde el SDK.
 
-
-
-
-### Trabajando con otro tipo de máquinas virtuales e hipervisores.
+### Trabajando con otro tipo de máquinas virtuales e hipervisores
 
 En [`vagrantbox.es`](http://www.vagrantbox.es) la mayor parte de las
 imágenes tienen formato VirtualBox, pero algunas tienen formato
@@ -312,21 +316,22 @@ tener que recurrir a sistemas de orquestación o provisionamiento.
 Simultáneamente a la instalación, podemos descargarnos esta máquina
 virtual que está en ese formato.
 
-~~~
+```shell
 vagrant box add viniciusfs/centos7 https://atlas.hashicorp.com/viniciusfs/boxes/centos7/
-~~~
+```
 
 A continuación, la inicialización será de la misma forma
 
-~~~
+```shell
 vagrant init viniciusfs/centos7
-~~~
+```
 
 que, igual que en el caso anterior, crea un fichero `Vagrantfile` (y
-así te lo dice; este fichero será parecido a [este](https://github.com/JJ/CC/blob/master/ejemplos/centos7/Vagrantfile) que ya sabemos que permite trabajar
-y llevar a cabo cualquier configuración adicional.
+así te lo dice; este fichero será parecido a [este](https://github.com/JJ/CC/blob/master/ejemplos/centos7/Vagrantfile)
+que ya sabemos que permite trabajar y llevar a cabo cualquier configuración
+adicional.
 
->Podemos añadirle también la clave pública propia si queremos usarlo
+> Podemos añadirle también la clave pública propia si queremos usarlo
 > "desde fuera", tal como también se ha hecho antes.
 
 Una vez hecho eso
@@ -334,29 +339,30 @@ ya podemos inicializar la máquina y trabajar con ella (pero antes voy
 a apagar la máquina Azure que tengo ejecutándose desde que empecé a
 contar lo anterior)
 
-~~~
+```shell
 sudo vagrant up --provider=libvirt
-~~~
+```
 
 donde la principal diferencia es que le estamos indicando que queremos
 usar el *proveedor* `libvirt`, en vez de el que usa por omisión, Virtual
 Box. Dado que este proveedor conecta con un daemon que se ejecuta en
 modo privilegiado, habrá que usar `sudo` en este caso.
 
->Puede que
->tengas
->[un problema con libvirt](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/669) con
->"dhcp_leases: undefined method" o similar comprobad la versión que
->tenéis. Si estáis usando la 0.0.36 desinstaladla e instalad la 0.0.35
->como indican en el mismo issue. Alternativamente, también se puede
->pasar de este ejemplo, que era simplemente una forma de ilustrar
->diferentes proveedores aparte del que aparece por defecto.
+> Puede que
+> tengas
+> [un problema con libvirt](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/669)
+> con "dhcp_leases: undefined method" o similar comprobad la versión que
+> tenéis. Si estáis usando la 0.0.36 desinstaladla e instalad la 0.0.35
+> como indican en el mismo issue. Alternativamente, también se puede
+> pasar de este ejemplo, que era simplemente una forma de ilustrar
+> diferentes proveedores aparte del que aparece por defecto.
 
-Usando esta orden (pero solo en este caso),  puedes conectarte con la máquina usando
+Usando esta orden (pero solo en este caso),  puedes conectarte con la máquina
+usando
 
-~~~
+```shell
 sudo vagrant ssh
-~~~
+```
 
 Y todos los demás comandos, también con `sudo`, por lo indicado anteriormente.
 
@@ -367,7 +373,7 @@ hipervisor libre, usando Vagrant y conectar con ella.
 
 </div>
 
-## Orquestando varias máquinas virtuales.
+## Orquestando varias máquinas virtuales
 
 Una de las capacidades más interesantes de Vagrant es la posibilidad
 de *orquestar*, es decir, configurar varias máquinas simultáneamente
@@ -376,7 +382,7 @@ sí. En esto hay que tener en cuenta que se pueden configurar
 diferentes aspectos de las mismas y su conexión, tal como IPs. Por
 ejemplo, con este `Vagrantfile`:
 
-```
+```ruby
 Vagrant.configure("2") do |config|
   config.vm.define 'public' do |public|
     public.vm.box = "debian/stretch64"
@@ -405,13 +411,14 @@ La imagen que se usa en el segundo caso es una que incluye Redis y
 PostgreSQL, y que por tanto se puede usar como base para cualquier
 aplicación que las use.
 
-## Provisionando máquinas virtuales.
+## Provisionando máquinas virtuales
 
 Una vez creada la máquina virtual se puede entrar en ella,
-configurarla e instalar todo lo necesario desde la línea de órdenes. Pero, por supuesto,
-sabiendo lo que sabemos sobre provisionamiento por el tema correspondiente, Vagrant permite
-[provisionarla de muchas maneras diferentes](https://www.vagrantup.com/docs/provisioning/index.html). En
-general, Vagrant usará opciones de configuración diferente dependiendo
+configurarla e instalar todo lo necesario desde la línea de órdenes. Pero,
+por supuesto, sabiendo lo que sabemos sobre provisionamiento por el tema
+correspondiente, Vagrant permite
+[provisionarla de muchas maneras diferentes](https://www.vagrantup.com/docs/provisioning/index.html).
+En general, Vagrant usará opciones de configuración diferente dependiendo
 del provisionador, subirá un fichero a un directorio temporal del
 mismo y lo ejecutará (tras ejecutar todo lo necesario para el mismo).
 
@@ -429,15 +436,15 @@ las órdenes a mano. Instalaremos, como hemos hecho en otras ocasiones,
 el utilísimo editor `emacs`usando este
 [`Vagrantfile`](../../ejemplos/vagrant/provision/Vagrantfile):
 
-~~~
+```ruby
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-	config.vm.box = "centos7"
+    config.vm.box = "centos7"
     config.vm.provision "shell",
-	inline: "yum install -y python"
+    inline: "yum install -y python"
 end
-~~~
+```
 
 Recordemos que se trata de un programa en Ruby en el cual configuramos
 la máquina virtual. La 4ª línea indica el nombre de la máquina con la
@@ -479,10 +486,10 @@ se puede usar un fichero externo o incluso alojado en un sitio web
 
 El problema con los guiones de *shell*
 
->y no sé por qué diablos pongo
->guiones si pongo shell, podía poner scripts de shell directamente y
->todo el mundo me entendería, o guiones de la concha y nadie me
->entendería
+> y no sé por qué diablos pongo
+> guiones si pongo shell, podía poner scripts de shell directamente y
+> todo el mundo me entendería, o guiones de la concha y nadie me
+> entendería
 
 es que son específicos de un sistema operativo determinado. Por eso Vagrant
 permite muchas otras formas de configuración, incluyendo casi todos
@@ -503,11 +510,11 @@ puede provisionar, por ejemplo, una máquina CentOS.
 
 Una vez preinstalado Chef
 
->Lo que también podíamos haber hecho con
->[una máquina que ya lo tuviera instalado, de las que hay muchas en `vagrantbox.es`](http://www.vagrantbox.es/)
->y de hecho es la mejor opción porque `chef-solo` no se puede instalar en
->la versión 6.5 de CentOS fácilmente por no tener una versión
->actualizada de Ruby)
+> Lo que también podíamos haber hecho con
+> [una máquina que ya lo tuviera instalado, de las que hay muchas en `vagrantbox.es`](http://www.vagrantbox.es/)
+> y de hecho es la mejor opción porque `chef-solo` no se puede instalar en
+> la versión 6.5 de CentOS fácilmente por no tener una versión
+> actualizada de Ruby)
 
 lo incluimos en el Vagrantfile, tal como [este](../../ejemplos/vagrant/provision/chef/Vagrantfile)
 
@@ -515,11 +522,11 @@ lo incluimos en el Vagrantfile, tal como [este](../../ejemplos/vagrant/provision
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-	config.vm.box = "centos7"
+    config.vm.box = "centos7"
 
     config.vm.provision "chef_solo" do |chef|
-		chef.add_recipe "emacs"
-	end
+        chef.add_recipe "emacs"
+    end
 
 end
 ```
@@ -530,9 +537,9 @@ previamente tendremos que haber creado en un subdirectorio cookbooks
 que descienda exactamente del mismo directorio y que contenga
 simplemente `package 'emacs'` que tendrá que estar en un fichero
 
-~~~
+```ruby
 cookbooks/emacs/recipes/default.rb
-~~~
+```
 
 Con todo esto se puede configurar emacs. Pero, la verdad, seguro que
 es más fácil hacerlo en Ansible y/o en otro sistema operativo que no
@@ -619,14 +626,14 @@ end
 ```
 
 Este fichero, después de definir el número de máquinas virtuales que
-  tenemos, busca un fichero llamado `user-data` que es privado porque
-  contiene un *token* obtenido de https://discovery.etcd.io. Este
-  token da acceso al registro de todas las instancias de `etcd` con
-  las que vamos a
-  trabajar. En
-  [la muestra](https://github.com/JJ/vagrant-coreos/blob/master/user-data.sample) indica
-  qué es lo que hay que hacer para obtenerla. Por lo demás, lo único
-  que hay que cambiar es el número de instancias que se desean.
+tenemos, busca un fichero llamado `user-data` que es privado porque
+contiene un *token* obtenido de https://discovery.etcd.io. Este
+token da acceso al registro de todas las instancias de `etcd` con
+las que vamos a
+trabajar. En
+[la muestra](https://github.com/JJ/vagrant-coreos/blob/master/user-data.sample)
+indica qué es lo que hay que hacer para obtenerla. Por lo demás, lo único
+que hay que cambiar es el número de instancias que se desean.
 
 El `Vagrantfile`, por otro lado, realiza una serie de adaptaciones de
 la máquina virtual usada y crea una red privada virtual que una a las
@@ -635,8 +642,8 @@ vez ejecutado `vagrant up` se puede acceder a las máquinas por ssh con
 el nombre definido (`core-0x`) pero también se pueden usar para
 escalar aplicaciones basadas en contenedores en
 el
-[*cluster* de CoreOS](https://coreos.com/os/docs/latest/cluster-architectures.html) creado,
-con el que puedes ejecutar
+[*cluster* de CoreOS](https://coreos.com/os/docs/latest/cluster-architectures.html)
+creado, con el que puedes ejecutar
 [múltiples copias de tu aplicación](https://coreos.com/os/docs/latest/cluster-architectures.html)
 para replicación o escalado automático.
 
