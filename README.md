@@ -14,9 +14,9 @@ las clases. Se usará [GitHub][github-website] para los ejercicios y el
 proyecto; también para los objetivos semanales, que estarán (año
 2021-22) en [este repositorio][cc-course-repo].
 
-Estos son
-los [objetivos de la asignatura](documentos/objetivos.md), con un objetivo principal es que el estudiante, al final de la asignatura,
-sea capaz de hacer lo siguiente:
+Estos son los [objetivos de la asignatura](documentos/objetivos.md), con un
+objetivo principal es que el estudiante, al final de la asignatura, sea capaz de
+hacer lo siguiente:
 
 1. Definir el entorno de trabajo para desarrollo de una aplicación en
    particular y usarlo en IaaS.
