@@ -20,7 +20,7 @@ next: Contenedores
 
 ## Objetivos específicos
 
-1.  Conocer las diferentes tecnologías y herramientas de virtualización tanto
+1. Conocer las diferentes tecnologías y herramientas de virtualización tanto
   para procesamiento, comunicación y almacenamiento.
 2. Crear infraestructuras virtuales básicas: dispositivos.
 3. Aislar recursos (incluyendo todos los relacionados con un usuario) usando
@@ -130,7 +130,8 @@ anfitrión. Además de actuar como tal, el interfaz de red virtual
 tendrá que actuar como *puente*, enrutando todos los paquetes Ethernet
 del invitado al anfitrión o a donde corresponda. Por eso las máquinas
 virtuales usan interfaces de red virtuales llamados *puentes*. Para
-usarlos necesitaremos instalar un [paquete de linux (y sus dependencias) denominado `bridge-utils`](http://www.linuxfromscratch.org/blfs/view/svn/basicnet/bridge-utils.html).
+usarlos necesitaremos instalar un paquete de linux (y sus dependencias)
+denominado [`bridge-utils`](http://www.linuxfromscratch.org/blfs/view/svn/basicnet/bridge-utils.html).
 
 La principal orden que provee este paquete
 es [`brctl` que podemos usar directamente](https://wiki.debian.org/BridgeNetworkConnections)
@@ -361,7 +362,8 @@ superusuario.
 
 Otro de los problemas será la configuración del Locale; muchos
 comandos darán un error indicando que no está
-establecido. [Otros pasos resolverán este tema, incluyendo la instalación de los Locales necesarios](https://wiki.ubuntu.com/DebootstrapChroot).
+establecido. Otros pasos resolverán este tema, incluyendo
+[la instalación de los Locales necesarios](https://wiki.ubuntu.com/DebootstrapChroot).
 Habrá que actualizar la distribución, los locales, y configurarlos.
 
 ```shell

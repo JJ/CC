@@ -208,13 +208,13 @@ en la versión necesaria para poder instalar más adelante Scala. Y
 Scala lo instalamos en
 [este fichero](https://github.com/JJ/BoBot/blob/master/provision/scala/scala.sls)
 
-~~~
+```yaml
 include:
   - javasetup
 
 scala:
 pkg.installed
-~~~
+```
 
 Este fichero se ejecutaría con
 
@@ -284,6 +284,7 @@ sudo apt-get install ansible
 ```
 
 Ansible va a necesitar tres ficheros para provisionar una máquina virtual.
+
 * Un fichero de configuración general, que se suele llamar `ansible.cfg`
 * Un fichero de configuración específica de los *hosts* con los que se
   va a trabajar o inventario , que habitualmente se llama
@@ -371,8 +372,8 @@ haciendo uso del módulo `shell`. Hay muchos
 [más módulos](https://docs.ansible.com/ansible/latest/user_guide/modules.html) a
 los que se le pueden enviar comandos del tipo "variable = valor". Por
 ejemplo, se puede trabajar con servidores web o
-[copiar ficheros](https://www.infoworld.com/article/2614204/puppet-or-chef--the-configuration-management-dilemma.html) o
-[incluso desplegar aplicaciones directamente usando el módulo `git`](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#managing-packages).
+[copiar ficheros](https://www.infoworld.com/article/2614204/puppet-or-chef--the-configuration-management-dilemma.html)
+o [incluso desplegar aplicaciones directamente usando el módulo `git`](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#managing-packages).
 
 Nosotros nos vamos a conectar a una máquina virtual local creada con
 Vagrant, usando [este](/ejemplos/vagrant/Debian2018/ansible_hosts)
@@ -590,8 +591,8 @@ un resumen muy acertado de todos los principios que rigen la gestión
 de infraestructura virtual a través de código y un repaso de todas las
 herramientas usadas en el mismo. También está disponible
 como
-[recurso electrónico](https://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl) en
-la biblioteca de la [UGR](https://www.ugr.es).
+[recurso electrónico](https://bencore.ugr.es/iii/encore/record/C__Rb2606707__Sinfrastructure%20as%20code__Orightresult__X6?lang=spi&suite=pearl)
+en la biblioteca de la [UGR](https://www.ugr.es).
 
 ## A donde ir desde aquí
 

@@ -12,7 +12,7 @@ next: Orquestacion
 1. Conocer las diferentes tecnologías y herramientas de virtualización tanto
   para procesamiento, comunicación y almacenamiento.
 2. Diseñar, construir y analizar las prestaciones de un centro de
-proceso de datos virtual.
+  proceso de datos virtual.
 3. Documentar y mantener una plataforma virtual.
 4. Realizar tareas de administración de infraestructuras virtuales.
 

@@ -159,7 +159,8 @@ más espacio del que usan realmente.
 
 Este almacenamiento virtual puede tener muchos formatos
 diferentes. Cada hipervisor, librería, máquina virtual o incluso
-[*pools* de recursos admite unos cuantos; por ejemplo, `libvirt` admite hasta una docena](http://libvirt.org/storage.html).
+*pools* de recursos admite unos cuantos; por ejemplo,
+[`libvirt` admite hasta una docena](http://libvirt.org/storage.html).
 Cualquiera de estos recursos tendrá que estar disponible (es decir,
 *provisionado*) antes de la creación de la máquina virtual, por lo que
 conviene *tenerlo a mano* previamente, junto con las herramientas que
@@ -581,7 +582,8 @@ misma. Se verá más adelante cuando usemos este tipo de sistemas. En
 concreto,
 [el servicio de almacenamiento de objetos en OpenStack se llama Swift](http://en.wikipedia.org/wiki/Openstack#Object_Storage_.28Swift.29)
 y se
-[usa principalmente almacenamiento de imágenes (discos duros completos) y *snapshots* (estado de un disco duro en un momento determinado](http://www.openstack.org/software/openstack-storage/).
+[usa principalmente almacenamiento de imágenes](http://www.openstack.org/software/openstack-storage/).
+(discos duros completos) y *snapshots* (estado de un disco duro en un momento determinado
 En Amazon, [Elastic Block Storage](http://aws.amazon.com/es/ebs/) forma
 parte de las ofertas de servicios web del mismo y permite trabajar con
 bloques desde las instancias EC2.
@@ -669,7 +671,8 @@ azure storage container create taper
 ```
 
 pero esto crea un contenedor de acceso privado; los contenedores
-pueden ser públicos o privados y por defecto se crean privados; [los niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
+pueden ser públicos o privados y por defecto se crean privados;
+[los niveles de permisos existentes son](http://msdn.microsoft.com/en-us/library/windowsazure/dd179354.aspx):
 
 * Públicos para que se vean los contenidos.
 * Blobs públicos solo.

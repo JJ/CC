@@ -58,9 +58,8 @@ metal* o máquinas sin ningún sistema operativo instalado que usan
 arranque remoto. [Terraform](https://github.com/hashicorp/terraform),
 por otro lado, es una herramienta que sí permite tratar la
 infraestructura como código y se encuentra más o menos en la misma
-área,
-aunque
-[Vagrant se centra en gestionar entornos de desarrollo y Terraform es para construir infraestructura](https://www.vagrantup.com/intro/vs/terraform.html);
+área, aunque Vagrant se centra en gestionar entornos de desarrollo y
+[Terraform es para construir infraestructura](https://www.vagrantup.com/intro/vs/terraform.html);
 en ese sentido, Vagrant es de más alto nivel que Terraform, aunque se
 pueden usar de forma complementaria.
 
@@ -627,11 +626,9 @@ end
 
 Este fichero, después de definir el número de máquinas virtuales que
 tenemos, busca un fichero llamado `user-data` que es privado porque
-contiene un *token* obtenido de https://discovery.etcd.io. Este
+contiene un *token* obtenido de [](https://discovery.etcd.io). Este
 token da acceso al registro de todas las instancias de `etcd` con
-las que vamos a
-trabajar. En
-[la muestra](https://github.com/JJ/vagrant-coreos/blob/master/user-data.sample)
+las que vamos a trabajar. En [la muestra](https://github.com/JJ/vagrant-coreos/blob/master/user-data.sample)
 indica qué es lo que hay que hacer para obtenerla. Por lo demás, lo único
 que hay que cambiar es el número de instancias que se desean.
 

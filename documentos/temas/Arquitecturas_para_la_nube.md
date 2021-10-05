@@ -1,4 +1,4 @@
-#Arquitecturas software para la nube
+# Arquitecturas software para la nube
 
 <!--@
 next: Desarrollo_basado_en_pruebas

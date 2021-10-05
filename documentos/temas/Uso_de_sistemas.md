@@ -53,7 +53,8 @@ hipervisores alojados que se ejecutan desde un sistema operativo.
 
 Para apoyar la virtualización, casi todos los procesadores actuales y
 especialmente
-[los de las líneas más populares basadas en la arquitectura x86 tienen una serie de instrucciones que permiten usarla de manera segura y eficiente](http://en.wikipedia.org/wiki/X86_virtualization).
+[los de las líneas más populares basadas en la arquitectura x86](http://en.wikipedia.org/wiki/X86_virtualization)
+tienen una serie de instrucciones que permiten usarla de manera segura y eficiente.
 Esta
 arquitectura tiene dos ramas: la Intel y la AMD, cada uno de los
 cuales tiene un conjunto de instrucciones diferentes para llevarla a
@@ -411,10 +412,11 @@ tengas instalado.
 
 Como la máquina creada anteriormente necesita más trabajo todavía que
 una máquina instalada desde una ISO (por aquello de que necesita
-instalar idioma, usuarios y demás), en realidad ubuntu-vm-builder
-[permite configurar el tamaño del disco, la IP, qué mirror se va a usar para descargar los paquetes, usuarios, claves y también qué paquetes se van a instalar, al menos en el caso de los más comunes](https://help.ubuntu.com/community/KVM/CreateGuests).
-En
-todo caso, este programa permite crear configuraciones de forma fácil
+instalar idioma, usuarios y demás), en realidad [ubuntu-vm-builder](https://help.ubuntu.com/community/KVM/CreateGuests)
+permite configurar el tamaño del disco, la IP, qué mirror se va a usar para
+descargar los paquetes, usuarios, claves y también qué paquetes se van a
+instalar, al menos en el caso de los más comunes.
+En todo caso, este programa permite crear configuraciones de forma fácil
 y reproducible usando una sola orden.
 
 <div class='nota' markdown='1'>
