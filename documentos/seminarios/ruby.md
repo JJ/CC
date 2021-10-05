@@ -2,7 +2,6 @@
 
 <div class="objetivos" markdown="1">
 
-
 ## Objetivos específicos
 
  * Conocer la historia y origenes de este lenguaje
@@ -13,7 +12,6 @@
  * Hacer un pequeño programa
 
 </div>
-
 
 ## ¿Ruby? Pero si es muy fácil
 
@@ -38,15 +36,15 @@ El lenguaje Ruby lo creó
   con un poco de Lisp y Smalltalk espolvoreado para que no falte de
   nada.
 
-¿Y qué es lo que sale? Pues un lenguaje interpretado, dinámico,
-  orientado a objeto, reflexivo, que hasta no hace mucho no era
-  demasiado rápido pero que últimamente está experimentando un
-  incremento de rendimiento considerable. Ahora mismo va por la
-  versión 1.9 (aunque es normal encontrarse instaladas versiones anteriores), pero la 2.0 no está lejos (menos que la 6.0 de Perl,
-  seguro). Por supuesto que por lo que más se le sigue conociendo es
-  por Ruby on Rails, pero aplicaciones muy populares como Amarok, Vagrant o Sketchup usan
-  este lenguaje. Y tú puedes tambien usarlo, si prestas atención y
-  haces los ejemplos y actividades de este tutorial, ¿por qué no?
+¿Y qué es lo que sale? Pues un lenguaje interpretado, dinámico, orientado a
+objeto, reflexivo, que hasta no hace mucho no era demasiado rápido pero que
+últimamente está experimentando un incremento de rendimiento considerable. Ahora
+mismo va por la versión 1.9 (aunque es normal encontrarse instaladas versiones
+anteriores), pero la 2.0 no está lejos (menos que la 6.0 de Perl, seguro). Por
+supuesto que por lo que más se le sigue conociendo es por Ruby on Rails, pero
+aplicaciones muy populares como Amarok, Vagrant o Sketchup usan este lenguaje. Y
+tú puedes tambien usarlo, si prestas atención y haces los ejemplos y actividades
+de este tutorial, ¿por qué no?
 
 <div class='ejercicios' markdown="1">
 
@@ -60,16 +58,14 @@ para comprobar la versión instalada. A la vez, conviene instalar también `irb`
 
 ## Primer programa
 
-
 Para programar en Ruby necesitas el editor y el intérprete de Ruby propiamente
-  dicho. Descárgatelo e instálalo (o haz las dos cosas a la vez), aunque te vendrá bien también
-  bajarte `irb`, un intérprete interactivo que te permitirá
-  probar cosas sobre la marcha. Servidor usa Emacs como editor, pero
-  cualquier otra cosa también servirá, incluso Notepad. Ahora, si
-  quieres ir un poco más allá, te puedes
-  descargar [un plugin para Eclipse](http://www.ibm.com/developerworks/opensource/library/os-rubyeclipse/) o
-  el [RDE, sólo
-    para Windows](http://homepage2.nifty.com/sakazuki/rde_en/).
+dicho. Descárgatelo e instálalo (o haz las dos cosas a la vez), aunque te vendrá
+bien también bajarte `irb`, un intérprete interactivo que te permitirá probar
+cosas sobre la marcha. Servidor usa Emacs como editor, pero cualquier otra cosa
+también servirá, incluso Notepad. Ahora, si quieres ir un poco más allá, te
+puedes descargar [un plugin para
+Eclipse](http://www.ibm.com/developerworks/opensource/library/os-rubyeclipse/) o
+el [RDE, sólo para Windows](http://homepage2.nifty.com/sakazuki/rde_en/).
 
 Ruby es un intérprete, así que no se "ejecuta" desde el menú. El
   ciclo es el habitual en programas para lenguajes interpretados: se
@@ -121,17 +117,14 @@ Pero Ruby es un lenguaje orientado a objetos, o más bien empotrado
 
     puts "--" << "Esto es jauja".center(20) << "--"
 
- Lo que consigue este program es escribir una cadena centrada en
- una línea de 20 caracteres y rodeada por dos guiones
-  (`--`). `<<` es el operador de
- concatenación, que pega una cadena a la siguiente. Pero la
- parte orientada a objetos está alrededor del
-    `.` .`center` es un método de la
- clase [String](http://ruby-doc.org/core/classes/String.html),
- pero como todo es un objeto en Ruby, no hace falta que lo
- declaremos explícitamente, ya es un objeto de por sí, por lo que
- podemos aplicarle los métodos correspondientes, tales como
- ese. Pasándole el argumento 20, centra la cadena en un espacio de 20
+ Lo que consigue este program es escribir una cadena centrada en una línea de 20
+ caracteres y rodeada por dos guiones (`--`). `<<` es el operador de
+ concatenación, que pega una cadena a la siguiente. Pero la parte orientada a
+ objetos está alrededor del `.` .`center` es un método de la clase
+ [String](http://ruby-doc.org/core/classes/String.html), pero como todo es un
+ objeto en Ruby, no hace falta que lo declaremos explícitamente, ya es un objeto
+ de por sí, por lo que podemos aplicarle los métodos correspondientes, tales
+ como ese. Pasándole el argumento 20, centra la cadena en un espacio de 20
  caracteres:
 
     usuario@usuario-desktop:~/code$ ./jauja-center.rb
@@ -140,20 +133,21 @@ Pero Ruby es un lenguaje orientado a objetos, o más bien empotrado
 También podíamos haber creado el objeto explícitamente, pero
   hubiera sido mucho más clásico:
 
-    jauja = String::new( "Esto es jauja" )
-    puts "--" << jauja.center(20) << "--"
+```ruby
+jauja = String::new( "Esto es jauja" )
+puts "--" << jauja.center(20) << "--"
+```
 
-En la primera línea vemos un par de cosas: como en otros lenguajes,
-las variables en Ruby no tienen ningún tipo de carácter
-adicional (en realidad se verán más adelante algunos caracteres, que
-    se usan principalmente para resolución de ámbito). Sólo la variable, lo que tiene sentido, porque hace que uno
-tenga que escribir menos. Por otro lado, `String` es una
-clase, y además una clase estándar, por lo que no hay que decirle al
-programa que la incluya ni nada. El método `new` es un
-método de clase, con lo que la sintaxis para llamarlo, a diferencia del método de un
-objeto, es de cuatro puntos (dos puntos dobles). El contenido de la
-variable sigue siendo un objeto, así que se usa de la misma forma que
-antes.
+En la primera línea vemos un par de cosas: como en otros lenguajes, las
+variables en Ruby no tienen ningún tipo de carácter adicional (en realidad se
+verán más adelante algunos caracteres, que se usan principalmente para
+resolución de ámbito). Sólo la variable, lo que tiene sentido, porque hace que
+uno tenga que escribir menos. Por otro lado, `String` es una clase, y además una
+clase estándar, por lo que no hay que decirle al programa que la incluya ni
+nada. El método `new` es un método de clase, con lo que la sintaxis para
+llamarlo, a diferencia del método de un objeto, es de cuatro puntos (dos puntos
+dobles). El contenido de la variable sigue siendo un objeto, así que se usa de
+la misma forma que antes.
 
 <div class='ejercicios' markdown="1">
 
@@ -162,10 +156,10 @@ otro contenido en una variable.
 
 </div>
 
-El resto de los tipos de datos se define también de la forma más
-lógica; Ruby trabaja bajo el principio de la mínima sorpresa (lo que
-muchas veces provoca sorpresa si uno proviene de otros lenguajes, que nos tienen mal acostumbrados), o más bien
-de la máxima coherencia: una vez aprendida parte del lenguaje, el
+El resto de los tipos de datos se define también de la forma más lógica; Ruby
+trabaja bajo el principio de la mínima sorpresa (lo que muchas veces provoca
+sorpresa si uno proviene de otros lenguajes, que nos tienen mal acostumbrados),
+o más bien de la máxima coherencia: una vez aprendida parte del lenguaje, el
 resto es más o menos igual. Por ejemplo, las matrices:
 
     matriz = ['esto','es',1,'matriz']
@@ -257,13 +251,11 @@ Recorrer una estructura compleja exhaustivamente, imprimiendo todos los datos.
 
 </div>
 
-
 ## Leyendo y escribiendo
 
 Tratándose de un lenguaje orientado a objetos, habrá que buscar la
   clase para abrir y cerrar ficheros, que se llama en un alarde de
   originalidad `File`.
-
 
     fh = File::new( ARGV[0] )
     while (line = fh.gets )
@@ -367,16 +359,17 @@ Nuestra cosecha incluye una interrogación y un `if`, que no
 
 <div class='ejerccios' maridown='1'>
 
-1. Almacenar un array en formato JSON en un fichero cuyo nombre se pase por línea de órdenes.
+1. Almacenar un array en formato JSON en un fichero cuyo nombre se pase por
+   línea de órdenes.
 
 </div>
 
 ## Bloques
 
-Después de las variables uno de los conceptos importantes en Ruby
-  son los bloques. Un bloque es una secuencia de código con sus
-  propias variables, y en Ruby se denota por
-  llaves `{}` o por `do` - `done`. Se usa, por ejemplo, para bucles tales como los siguientes.
+Después de las variables uno de los conceptos importantes en Ruby son los
+bloques. Un bloque es una secuencia de código con sus propias variables, y en
+Ruby se denota por llaves `{}` o por `do` - `done`. Se usa, por ejemplo, para
+bucles tales como los siguientes.
 
     host = ARGV[0]
     partes = host.split(".")
@@ -391,13 +384,16 @@ En este mini-programa le pasamos un nombre de servidor en internet
     que recibe un bloque como argumento. También lo podríamos expresar
     de la forma siguiente:
 
-    host = ARGV[0]
-    partes = host.split(".")
-    partes.each { |p|
-        puts "* #{p}"
-    }
+```ruby
+host = ARGV[0]
+partes = host.split(".")
+partes.each { |p|
+    puts "* #{p}"
+}
+```
 
-y sería exactamente lo mismo (salvo la precedencia, pero eso no nos importa ahora).
+y sería exactamente lo mismo (salvo la precedencia, pero eso no nos importa
+ahora).
 
 Los bloques tienen todos la misma estructura: al principio se
   declara una variable, que será la variable que irá tomando los
@@ -447,7 +443,6 @@ misma. De camino, vemos como se definen funciones en Ruby: usando
 también `def`. Igual que antes, salvo que ahora damos un nombre al
 bloque, lo que le da más derechos, al parecer.
 
-
 <div class='ejercicios' markdown="1">
 
 1. Crear una serie de funciones instanciadas con un URL que devuelvan
@@ -459,26 +454,22 @@ bloque, lo que le da más derechos, al parecer.
 
 ## Instalando nuevos módulos
 
+Qué sería de cualquier lenguaje si tuviéramos que conformarnos con lo que nos
+  da, y no pudiéramos instalar cosas nuevas... El usar repositorios
+  centralizados de módulos o bibliotecas lo comenzó LaTeX con CTAN, luego siguió
+  Perl con CPAN, y Ruby tiene su colección de gemas para poder bajártelas
+  cómodamente. Sin embargo, hace falta instalar paquetes para usarlo, no se
+  instala automáticamente junto con el intérprete. En Ubuntu habrá que instalar
+  el paquete `rubygems`, y en otras distros hacer cosas más complicadas (o
+  no). La manera más general es [bajarse el paquete de Rubyforge e
+  instalarlo](http://docs.rubygems.org/read/chapter/3), tampoco es demasiado
+  complicado. Afortunadamente, a partir de la versión 1.9 (que a fecha de 2013
+  ya empieza a aparecer en las distros) vendrá incluida.
 
-Qué sería de cualquier lenguaje si tuviéramos que conformarnos con
-  lo que nos da, y no pudiéramos instalar cosas nuevas... El usar
-  repositorios centralizados de módulos o bibliotecas lo comenzó
-  LaTeX con CTAN, luego siguió Perl con CPAN, y Ruby tiene su
-  colección de gemas para poder bajártelas cómodamente. Sin embargo,
-  hace falta instalar paquetes para usarlo, no se instala
-  automáticamente junto con el
-  intérprete. En Ubuntu habrá que instalar el paquete `rubygems`, y
-  en otras distros hacer cosas más complicadas (o no). La manera más
-  general es [bajarse
-    el paquete de Rubyforge e instalarlo](http://docs.rubygems.org/read/chapter/3), tampoco es demasiado
-  complicado. Afortunadamente, a partir de la versión 1.9 (que a fecha
-  de 2013 ya empieza a aparecer en las distros) vendrá incluida.
-
-Aparte de `gem`, hay que instalarse alguna cosa más, porque muchos
-  módulos en Ruby necesitan herramientas de construcción
-  adicionales. En concreto, la versión `-dev` del paquete
-  Ruby que tengamos instalado. Por ejemplo, en alguna versión de Ubuntu habría que
-  escribir
+Aparte de `gem`, hay que instalarse alguna cosa más, porque muchos módulos en
+  Ruby necesitan herramientas de construcción adicionales. En concreto, la
+  versión `-dev` del paquete Ruby que tengamos instalado. Por ejemplo, en alguna
+  versión de Ubuntu habría que escribir
 
 ```shell
 sudo apt-get install ruby1.8-dev
@@ -498,15 +489,17 @@ jmerelo@sheldon:~/public_html/tutoriales/ruby-para-impacientes$ gem search mysql
 Joeves, no devuelve nada. Pero claro, es que busca en la colección
   local de gemas. Habrá que buscar en la remota:
 
-    jmerelo@sheldon:~/public_html/tutoriales/ruby-para-impacientes$ gem search --remote mysql
+```shell
+jmerelo@sheldon:~/public_html/tutoriales/ruby-para-impacientes$ gem search --remote mysql
 
-    *** REMOTE GEMS ***
+*** REMOTE GEMS ***
 
-    activerecord-jdbcmysql-adapter (0.9.6)
-    activerecord-mysql-adapter-flags (0.0.3)
-    dbd-mysql (0.4.4)
-    do_mysql (0.10.1)
-    ...
+activerecord-jdbcmysql-adapter (0.9.6)
+activerecord-mysql-adapter-flags (0.0.3)
+dbd-mysql (0.4.4)
+do_mysql (0.10.1)
+...
+```
 
 Y así hasta un mogollón de cosas. Tendremos un listado de todas las
   disponibles, y todas las versiones. Vamos a instalarnos la tercera;
