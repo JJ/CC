@@ -1,6 +1,8 @@
 # Material docente para Cloud Computing: Fundamentos y Aplicaciones
 
-[![Build Status](https://app.travis-ci.com/JJ/CC.svg?branch=master)](https://app.travis-ci.com/JJ/CC)
+[![Build Status](https://github.com/JJ/CC/actions/workflows/lint-markdown.yml/badge.svg)](https://github.com/JJ/CC/actions/workflows/lint-markdown.yml)
+
+https://github.com/JJ/CC/actions/workflows/lint-markdown.yml/badge.svg
 
 *Cloud Computing I* es una asignatura anual del máster de ingeniería
 informática en la [UGR][ugr-website].
