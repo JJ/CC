@@ -30,7 +30,6 @@ hacer lo siguiente:
    virtuales y las sepa aplicar en los entornos anteriores.
 6. Usar lo aprendido para despliegue masivo de aplicaciones en la nube.
 
-
 [ugr-website]: https://www.ugr.es
 [github-website]: https://github.com
 [cc-course-repo]: https://github.com/JJ/CC-21-22/
