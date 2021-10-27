@@ -68,7 +68,7 @@ se puedan desplegar en diferentes servicios en la nube. La tecnología de
 relativamente reciente, habiendo sido publicada en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
 desarrollo paralelo de sistemas operativos tales como
-[CoreOS](https://coreos.com/),
+[CoreOS](https://www.redhat.com/en/technologies/cloud-computing/openshift),
 basado en Linux y que permite despliegue masivo de servidores. Pero no
 adelantemos acontecimientos.
 
@@ -163,10 +163,7 @@ Linux* es una distribución diseñada para usar aplicaciones
 distribuidas, casi de forma exclusiva, en contenedores, y aparte de
 una serie de características interesantes, como el uso de `etcd` para
 configuración distribuida, tiene un gestor de Docker instalado en la
-configuración base. Si es para experimentar Docker sin afectar la
-instalación de nuestro propio ordenador, se aconseja que se
-instale
-[Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html).
+configuración base.
 
 Con cualquiera de las formas que hayamos elegido para instalar Docker,
 vamos a comenzar desde el principio. Veremos a continuación cómo
@@ -746,7 +743,7 @@ del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
 crea ese directorio y lo hace accesible a un programa, en este caso
 [un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
 que pasa del formato en texto plano de los logs de
-[Dancer2](http://perldancer.org/) a un formato JSON que puede ser
+[Dancer2](https://perldancer.org/) a un formato JSON que puede ser
 almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
@@ -845,7 +842,7 @@ Esto también implica una serie de cosas: usar la distribución más
 ligera que soporte la configuración, por ejemplo. El usar una
 distribución ligera y adaptada a contenedores como
 [Alpine Linux](https://alpinelinux.org/) o
-[Atomic Host](https://www.projectatomic.io/) hará que se creen
+[Atomic Host](https://projectatomic.io/) hará que se creen
 contenedores mucho más ligeros y rápidos de cargar y que tengan toda
 la funcionalidad que se necesita. También conviene eliminar toda
 aquella funcionalidad que no se necesite y que se haya usado solamente
@@ -1274,7 +1271,7 @@ docker run --rm -t -v
 La infraestructura basada en contenedores ha tenido tanto éxito que
 han surgido diferentes tipos y también iniciativas de
 estandarización. El principal competidor este área es
-[Podman/buildah](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users/).
+[Podman/buildah](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users).
 
 Por otro lado,
 la [*Open Container Initiative*](https://opencontainers.org/) está
