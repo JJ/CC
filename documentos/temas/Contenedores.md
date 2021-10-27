@@ -490,7 +490,6 @@ docker run b750fe79269d du
 
 ## Cómo trabajar imágenes de contenedores interactivamente
 
-
 En vez de ejecutar las cosas una a una podemos
 directamente
 [ejecutar un shell](https://docs.docker.com/engine/getstarted/step_two/):
