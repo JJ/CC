@@ -992,20 +992,17 @@ en el directorio `/etc/docker`
 > La primera IP es solamente para la UGR. Fuera de la UGR tendréis que
 > averiguar uno de los servidores DNS que os sirva.
 
-En la primera línea se establece cuál es
-el
-[contenedor de origen](https://hub.docker.com/r/frolvlad/alpine-scala)
-que vamos a usar. Siempre es conveniente usar distros ligeras, y en este
-caso usamos la ya conocida Alpine, que tiene ya una versión que
-incluye Scala. A continuación se pone la dirección del mantenedor,
-servidor, y el directorio de trabajo `WORKDIR` en el que se va a
-entrar cuando se ejecute algo en el contenedor. El siguiente comando
-`CMD` indica qué se va a ejecutar en caso de que se ejecute el
-contenedor directamente; se trata de `sbt`, el Scala Build Tool. Como
-se ve, la estructura siempre es la misma: órdenes en mayúsculas, al
-principio de la
-línea. La
-[referencia de las mismas se encuentra en la web de Docker](https://docs.docker.com/engine/reference/builder/#copy).
+En la primera línea se establece cuál es el [contenedor de
+origen](https://hub.docker.com/r/frolvlad/alpine-scala) que vamos a
+usar. Siempre es conveniente usar distros ligeras, y en este caso usamos la ya
+conocida Alpine, que tiene ya una versión que incluye Scala. A continuación se
+pone la dirección del mantenedor, servidor, y el directorio de trabajo `WORKDIR`
+en el que se va a entrar cuando se ejecute algo en el contenedor. El siguiente
+comando `CMD` indica qué se va a ejecutar en caso de que se ejecute el
+contenedor directamente; se trata de `sbt`, el Scala Build Tool. Como se ve, la
+estructura siempre es la misma: órdenes en mayúsculas, al principio de la
+línea. La [referencia de las mismas se encuentra en la web de
+Docker](https://docs.docker.com/engine/reference/builder/#copy).
 
 Las siguientes órdenes son todas `apk`, el gestor de paquetes de
 Alpine. No tiene tantos empaquetados como las distros más conocidas,
@@ -1144,7 +1141,7 @@ configuración específica de una aplicación o de un lenguaje de
 programación determinado.
 
 Por ejemplo,
-[esta, llamada `alpine-perl6`](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
+[esta, llamada `alpine-raku`](https://hub.docker.com/r/jjmerelo/alpine-raku/)
 que se puede usar en lugar del intérprete de Perl6 y usa como base la
 distro ligera Alpine. Una vez más, usamos órdenes separadas y sin
 optimizar simplemente por cuestiones de claridad;
@@ -1199,7 +1196,7 @@ que añade al `PATH` el directorio donde se encuentra. Con estas dos
 características se puede ejecutar el contenedor con:
 
 ```shell
-docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+docker run -t jjmerelo/alpine-raku -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
 ```
 
 Si tuviéramos perl6 instalado en local, se podría escribir
@@ -1218,7 +1215,7 @@ de ejecución continua, se puede usar directamente `CMD`. En este caso,
 `ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando
 
 ```shell
-docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
+docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-raku
 ```
 
 que accederá directamente a la línea de órdenes, en este caso
@@ -1230,7 +1227,7 @@ través de `VOLUME`, hemos creado un directorio sobre el que podemos
 
 ```shell
 docker run --rm -t -v `pwd`:/app  \
- jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
+ jjmerelo/alpine-raku /app/horadam.p6 100 3 7 0.25 0.33
 ```
 
 En realidad, usando `-v` se puede montar cualquier directorio externo
@@ -1292,11 +1289,10 @@ comprobar imágenes, por ejemplo.
 
 ## Ver también
 
-En caso de que tu máquina principal de desarrollo sea Windows o Mac,
-puede que te
-interese [trabajar con *docker machines*](Docker-machines.md), una
-herramienta para gestionar localmente contenedores alojados en otro
-ordenador o máquina virtual.
+En caso de que tu máquina principal de desarrollo sea Windows o Mac, puede que
+te interese [trabajar con *docker machines*](Docker-machines.md), una
+herramienta para gestionar localmente contenedores alojados en otro ordenador o
+máquina virtual.
 
 ## A dónde ir desde aquí
 
