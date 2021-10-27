@@ -5,7 +5,7 @@ layout: index
 ---
 # Material docente para Cloud Computing: Fundamentos y Aplicaciones
 
-[![Build Status](https://travis-ci.com/JJ/CC.svg?branch=master)](https://travis-ci.com/JJ/CC)
+[![Build Status](https://github.com/JJ/CC/actions/workflows/lint-markdown.yml/badge.svg)](https://github.com/JJ/CC/actions/workflows/lint-markdown.yml)
 
 *Cloud Computing I* es una asignatura anual del máster de ingeniería
 informática en la [UGR][ugr-website].
@@ -23,17 +23,18 @@ Estos son los [objetivos de la asignatura](documentos/objetivos), con un
 objetivo principal es que el estudiante, al final de la asignatura, sea capaz de
 hacer lo siguiente:
 
-1. Definir el entorno de trabajo para desarrollo de una aplicación en
+1. Entender las técnicas de diseño e implementación de aplicaciones nativas en
+   la nube.
+2. Definir el entorno de trabajo para desarrollo de una aplicación en
    particular y usarlo en IaaS.
-2. Usar ese entorno para configurar integración continua en una aplicación.
-3. Crear un entorno virtual para desarrollar y alojar la aplicación y
+3. Usar ese entorno para configurar integración continua en una aplicación.
+4. Crear un entorno virtual para desarrollar y alojar la aplicación y
    comprenda el soporte físico de las técnicas usadas para crear tal
    entorno virtual.
-4. Entender las técnicas de configuración automática de entornos
+5. Entender las técnicas de configuración automática de entornos
    virtuales y las sepa aplicar en los entornos anteriores.
-5. Usar lo aprendido para despliegue masivo de aplicaciones en la nube.
-6. Entender las técnicas de diseño e implementación de aplicaciones nativas en
-   la nube.
+6. Usar lo aprendido para despliegue masivo de aplicaciones en la nube.
+
 
 [ugr-website]: https://www.ugr.es
 [github-website]: https://github.com
