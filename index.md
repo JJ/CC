@@ -66,7 +66,6 @@ principal (pero se pueden consultar a título informativo)
 1. [Arquitecturas software para la nube][t1]
 2. [Orquestación de contenedores][t6]
 
-
 [cc-general-repo]: https://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
 [t2]: documentos/temas/Desarrollo_basado_en_pruebas.md
