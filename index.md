@@ -50,13 +50,12 @@ Los materiales de la asignatura están enlazados desde aquí y
 disponibles con una licencia libre. Los fuentes de los mismos están en
 [GitHub][cc-general-repo].
 
-1. [Arquitecturas software para la nube][t1]
-2. [Desarrollo basado en pruebas][t2]
-3. [Usando contenedores][t7]
-4. [Integración continua][ci]
-5. [REST][rest]
-6. [Microservicios][t3]
-7. [Composición de contenedores][tdc]
+1. [Desarrollo basado en pruebas][t2]
+2. [Usando contenedores][t7]
+3. [Integración continua][ci]
+4. [REST][rest]
+5. [Microservicios][t3]
+6. [Composición de contenedores][tdc]
 
 La temporización de la asignatura y la interacción entre estudiantes y
 el profesor están en [un repositorio de GitHub][cc-course-repo].
@@ -64,7 +63,9 @@ el profesor están en [un repositorio de GitHub][cc-course-repo].
 Temas que se han impartido otros años y ya no forman parte del contenido
 principal (pero se pueden consultar a título informativo)
 
-1. [Orquestación de contenedores][t6]
+1. [Arquitecturas software para la nube][t1]
+2. [Orquestación de contenedores][t6]
+
 
 [cc-general-repo]: https://github.com/JJ/CC
 [t1]: documentos/temas/Arquitecturas_para_la_nube.md
