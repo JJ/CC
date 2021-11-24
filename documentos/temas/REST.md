@@ -40,7 +40,7 @@ sistemas
 usan la sintaxis y semántica
 del protocolo HTTP tanto para llevar a cabo peticiones a un
 [microservicio](Microservicios) o una función en un
-marco [serverless](Serverless).
+marco [serverless](https://jj.github.io/IV/documentos/temas/Serverless).
 
 Las *peticiones* HTTP tienen varias partes diferenciadas:
 
@@ -140,7 +140,8 @@ correctamente para que el cliente entienda perfectamente qué es lo que
 está recibiendo.
 
 - El contenido estará en JSON, incluso cuando haya que dar algún
-  mensaje de error.
+  mensaje de error (cuyo contenido principal, por supuesto, se tendrá que dar
+  con el status de error correspondiente).
 - Las cabeceras se usarán en algunos casos: por ejemplo, devolviendo
   la cabecera `Location` cuando se cree un recurso, con el URI del
   mismo.
