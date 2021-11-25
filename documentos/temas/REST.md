@@ -176,7 +176,9 @@ error y se considera que el cliente debe hacer algo para repararlo.
   forma incorrecta.
 - **404** es el célebre no encontrado, pero debe usarse sólo cuando el
   recurso al que se refiere el URI no existe.
-- **403** no autorizado también se puede usar en estos casos.
+- **403** ó **401** no autorizado también se puede usar en estos casos. 
+  401 es similar a 403, con la diferencia de que para el segundo, la 
+  autenticación es posible.
 - **405**,
   [método no permitido](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405),
   se puede usar en ciertos casos cuando
