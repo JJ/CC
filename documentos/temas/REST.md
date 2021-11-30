@@ -83,9 +83,8 @@ relevancia cuando se trabaja con cosas como *firewalls*, [en este
 artículo](https://blog.eq8.eu/article/put-vs-patch-vs-your-firewall.html).
 
 La *respuesta HTTP* tendrá una estructura similar, pero incluirá
-también
-[códigos de estado HTTP](https://developer.mozilla.org/es/docs/Web/HTTP/Status)).
-Estos
+también [códigos de estado
+HTTP](https://developer.mozilla.org/es/docs/Web/HTTP/Status)). Estos
 códigos de estado pueden incluir códigos de error, que tendremos que
 interpretar desde nuestra aplicación; los códigos 500 (error del
 servidor) no serán códigos que podamos tratar, en general, desde
@@ -107,17 +106,22 @@ Hay cuatro formas de enviar información en una petición:
 - Mediante *queries* añadidos al URI, que no forman parte de él.
 - Mediante el cuerpo de la petición.
 
-Usar unos u otros no es arbitraria, sino que conviene seguir [una
-serie de reglas](https://stackoverflow.com/q/25385559/891440). Para
+La decisión de usar unos u otros no es arbitraria, sino que conviene
+seguir [una serie de reglas](https://stackoverflow.com/q/25385559/891440). Para
 empezar, normalmente ni `GET` ni `DELETE` van a tener nada en el
-cuerpo; sólo se usará el cuerpo de la petición en `PUT` y `POST`. En
-estos casos, usar el *path* o el body dependerá, principalmente, del
+cuerpo; sólo se usará el cuerpo de la petición en `PUT` y `POST`.
+
+> `PATCH` también tiene sus usos; para ver cuales son, ver más
+arriba.
+
+En estos casos, usar el *path* o el body dependerá, principalmente, del
 tipo de información.
 
 - Si hace falta simplemente un valor o valores, sin diferentes
-  opciones, se puede usar el path, en plan `recursos/valor1/valor2`.
+  opciones o valores por defecto se puede usar el path, en plan
+  `recursos/valor1/valor2`.
 - Si hay varias combinaciones variable-valor, algunas de las cuales
-  son optativas, se puede usar el *query*:
+  son optativas, se puede usar la parte del URL denominada *query*:
   `recursos/id?variable1=valor1`.
 - Finalmente, para tipos de datos más complejos, o simplemente de más
   longitud, es mejor usar el cuerpo de la petición.
@@ -179,9 +183,10 @@ error y se considera que el cliente debe hacer algo para repararlo.
   forma incorrecta.
 - **404** es el célebre no encontrado, pero debe usarse sólo cuando el
   recurso al que se refiere el URI no existe.
-- **403** ó **401** no autorizado también se puede usar en estos casos. 
-  401 es similar a 403, con la diferencia de que para el segundo, la 
-  autenticación es posible.
+- **403** ó **401** no autorizado también se puede usar en estos
+  casos.  La principal diferencia es que 401 indica que la
+  autenticación es posible; si se devuelve 403 está prohibido por
+  alguna otra razón.
 - **405**,
   [método no permitido](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405),
   se puede usar en ciertos casos cuando
