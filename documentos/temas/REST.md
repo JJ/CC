@@ -40,7 +40,7 @@ sistemas
 usan la sintaxis y semántica
 del protocolo HTTP tanto para llevar a cabo peticiones a un
 [microservicio](Microservicios) o una función en un
-marco [serverless](Serverless).
+marco [serverless](https://jj.github.io/IV/documentos/temas/Serverless).
 
 Las *peticiones* HTTP tienen varias partes diferenciadas:
 
@@ -86,7 +86,10 @@ estado).
   responsabilidades, se puede añadir este también al mismo.
 
 Lo anterior son convenciones, y lo que se ejecute por omisión
-dependerá en realidad de la persona que lo implemente.
+dependerá en realidad de la persona que lo implemente. Información
+adicional, incluyendo otras características que pueden tener
+relevancia cuando se trabaja con cosas como *firewalls*, [en este
+artículo](https://blog.eq8.eu/article/put-vs-patch-vs-your-firewall.html).
 
 La *respuesta HTTP* tendrá una estructura similar, pero incluirá
 también
@@ -140,7 +143,8 @@ correctamente para que el cliente entienda perfectamente qué es lo que
 está recibiendo.
 
 - El contenido estará en JSON, incluso cuando haya que dar algún
-  mensaje de error.
+  mensaje de error (cuyo contenido principal, por supuesto, se tendrá que dar
+  con el status de error correspondiente).
 - Las cabeceras se usarán en algunos casos: por ejemplo, devolviendo
   la cabecera `Location` cuando se cree un recurso, con el URI del
   mismo.
@@ -184,7 +188,9 @@ error y se considera que el cliente debe hacer algo para repararlo.
   forma incorrecta.
 - **404** es el célebre no encontrado, pero debe usarse sólo cuando el
   recurso al que se refiere el URI no existe.
-- **403** no autorizado también se puede usar en estos casos.
+- **403** ó **401** no autorizado también se puede usar en estos casos. 
+  401 es similar a 403, con la diferencia de que para el segundo, la 
+  autenticación es posible.
 - **405**,
   [método no permitido](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405),
   se puede usar en ciertos casos cuando
