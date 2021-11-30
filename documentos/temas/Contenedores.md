@@ -51,14 +51,17 @@ next: Integracion_continua
 
 > Previamente a este tema conviene consultar la historia del
 > aislamiento de aplicaciones en [este capítulo](Aislamiento), que
-> se ha eliminado del temario en esta edición..
+> se ha eliminado del temario en esta edición.
 
-Docker es una herramienta que permite *aislar* aplicaciones, creando
-*contenedores* que pueden almacenarse de forma permanente para
-permitir el despliegue de esas mismas aplicaciones en la nube. Por lo
-tanto, en una primera aproximación, Docker serían similares a otras
+Los contenedores, cuya primera implementación creó Docker pero ahora se trata de
+un estándar abierto, permiten *aislar* aplicaciones, creando
+*imágenes* que pueden almacenarse de forma permanente para
+permitir el despliegue de esas mismas aplicaciones en la nube.
+
+En una primera aproximación, la tecnología que usan los contenedores tiene la
+misma base que otras
 aplicaciones tales como LXC/LXD o incluso las *jaulas `chroot`*, es
-decir, una forma de empaquetar una aplicación con todo lo necesario
+decir, una forma de aislar un aplicación con todo lo necesario
 para que opere de forma independiente del resto de las aplicaciones y
 se pueda, por tanto, replicar, escalar, desplegar, arrancar y destruir
 de forma también independiente.
@@ -69,17 +72,21 @@ de forma también independiente.
 > cocina. Si me refiero a un táper a continuación, es simplemente por
 > esta razón.
 
-[Docker](https://www.docker.com) es una herramienta de gestión de
-contenedores que permite no solo instalarlos, sino trabajar con el
+Identificando la parte por el todo, también se llama
+[Docker](https://www.docker.com) a la herramienta de gestión de
+contenedores que permite no solo instalar imágenes de contenedores y ejecutar
+contenedores, sino trabajar con el
 conjunto de ellos instalados (orquestación) y exportarlos de forma que
 se puedan desplegar en diferentes servicios en la nube. La tecnología de
 [Docker](https://en.wikipedia.org/wiki/Docker_%28software%29) es
 relativamente reciente, habiendo sido publicada en marzo de 2013;
 actualmente está sufriendo una gran expansión, lo que ha llevado al
 desarrollo paralelo de sistemas operativos tales como
-[CoreOS](https://coreos.com/),
+[CoreOS](https://www.redhat.com/en/technologies/cloud-computing/openshift),
 basado en Linux y que permite despliegue masivo de servidores. Pero no
-adelantemos acontecimientos.
+adelantemos acontecimientos y de un estándar, el [*Open Container
+Initiative*](https://opencontainers.org/), que se encarga de estandarizar los
+diferentes aspectos de la gestión de contenedores.
 
 > Docker funciona mejor en Linux, fue creado para Linux y es donde
 > tiene mejor soporte a nivel de núcleo del sistema operativo. Desde la
@@ -91,33 +98,30 @@ adelantemos acontecimientos.
 > sistema operativo no tiene soporte para el mismo. Es mejor que en
 > este caso se use una máquina virtual local o en la nube.
 
-Aunque en una primera aproximación Docker es, como hemos dicho arriba,
-similar a otras aplicaciones de virtualización *ligera*  como
-`lxc/lxd`, que lo precedieron en el tiempo, sin embargo el enfoque de
-Docker
-[es fundamentalmente diferente](https://archives.flockport.com/lxc-vs-docker/) es
-fundamentalmente diferente,
-aunque las tecnologías subyacentes de virtualización por software son
-las mismas. La principal diferencia es que Docker hace
-énfasis en la gestión centralizada de recursos y, en una línea que va
-desde la virtualización por hardware hasta la generación de un
-ejecutable para su uso en cualquier otra máquina, estaría mucho más
-cerca de ésta que de la primera, mientras que `lxc/lxd` estarían más
-enfocados a empaquetar máquinas virtuales completas o casi. En la
-práctica, muchas aplicaciones, como la creación de máquinas virtuales
-efímeras para ejecución de aplicaciones, van a ser las mismas, pero
-los casos de uso son también diferentes, con Docker tendiendo más
-hacia uso de contenedores de *usar y tirar* y 'lxc/lxd' a una
-alternativa ligera al uso de máquinas virtuales completas.
+Aunque en una primera aproximación Docker es, como hemos dicho arriba, similar a
+otras aplicaciones de virtualización *ligera* como `lxc/lxd`, que lo precedieron
+en el tiempo, sin embargo el enfoque de los contenedores [es fundamentalmente
+diferente](https://archives.flockport.com/lxc-vs-docker/) es fundamentalmente
+diferente, aunque las tecnologías subyacentes de virtualización por software son
+las mismas. La principal diferencia es que Docker hace énfasis en la gestión
+centralizada de recursos y, en una línea que va desde la virtualización por
+hardware hasta la generación de un ejecutable para su uso en cualquier otra
+máquina, estaría mucho más cerca de ésta que de la primera, mientras que
+`lxc/lxd` estarían más enfocados a empaquetar máquinas virtuales completas o
+casi. En la práctica, muchas aplicaciones, como la creación de máquinas
+virtuales efímeras para ejecución de aplicaciones, van a ser las mismas, pero
+los casos de uso son también diferentes, con Docker tendiendo más hacia uso de
+contenedores de *usar y tirar* y 'lxc/lxd' a una alternativa ligera al uso de
+máquinas virtuales completas.
 
-En todo caso, Docker se ha convertido últimamente en una herramienta
+En todo caso, los contenedores se ha convertido  en una herramienta
 fundamental para el diseño de arquitecturas de software escalables,
 sobre todo por su combinación con otra serie de herramientas como
 Swarm o Kubernetes para orquestar conjuntos de contenedores, dando
 también lugar a todo un ecosistema de aplicaciones y servicios que
 permiten usarlo fácilmente e integrarlo dentro de los entornos de
 desarrollo de software habituales, especialmente los denominados
-*DevOps*. Y sí conviene tener en cuenta que un contenedor Docker sería
+*DevOps*. Y sí conviene tener en cuenta que un contenedor sería
 más parecido al ejecutable de una aplicación (con todo lo necesario
 para que esta funcione), que a una máquina virtual, por lo que es más
 preciso decir que *ejecutamos* un táper (que utilizaremos a partir de
@@ -135,7 +139,7 @@ arquitectura usándolo, empezando por el principio, como instalarlo.
 > máquina virtual Linux específica para esto, o para tener varias
 > máquinas virtuales funcionando a la vez.
 
-## Instalación de Docker
+## Instalación de un gestor de contenedores
 
 [Instalar `docker`](https://www.docker.com/) es sencillo desde que se
 publicó la versión 1.0, especialmente en distribuciones de Linux. Por
@@ -164,24 +168,18 @@ que se puede empezar a trabajar de forma más o menos inmediata.
 > o en
 > [un Mac](https://docs.docker.com/engine/installation/mac/).
 
-Otra posibilidad para trabajar con Docker es
-usar
-[el anteriormente denominado CoreOS, ahora Container Linux](https://coreos.com/).
-*Container
-Linux* es una distribución diseñada para usar aplicaciones
-distribuidas, casi de forma exclusiva, en contenedores, y aparte de
-una serie de características interesantes, como el uso de `etcd` para
-configuración distribuida, tiene un gestor de Docker instalado en la
-configuración base. Si es para experimentar Docker sin afectar la
-instalación de nuestro propio ordenador, se aconseja que se
-instale
-[Container Linux en una máquina virtual](https://coreos.com/os/docs/latest/booting-with-iso.html).
+Otra posibilidad para trabajar con Docker es usar [el anteriormente denominado
+CoreOS, ahora Container Linux](https://coreos.com/).  *Container Linux* es una
+distribución diseñada para usar aplicaciones distribuidas, casi de forma
+exclusiva, en contenedores, y aparte de una serie de características
+interesantes, como el uso de `etcd` para configuración distribuida, tiene un
+gestor de Docker instalado en la configuración base.
 
 Con cualquiera de las formas que hayamos elegido para instalar Docker,
 vamos a comenzar desde el principio. Veremos a continuación cómo
 empezar a ejecutar Docker.
 
-## Comenzando a ejecutar Docker
+## Comenzando a ejecutar el gestor de contenedores
 
 > Red Hat ha liberado un gestor "serverless" (sin un servicio
 > ejecutándose con privilegios) de contenedores
@@ -490,7 +488,7 @@ de la imagen:
 docker run b750fe79269d du
 ```
 
-## Cómo crear imágenes de Docker interactivamente
+## Cómo trabajar imágenes de contenedores interactivamente
 
 En vez de ejecutar las cosas una a una podemos
 directamente
@@ -587,8 +585,12 @@ docker commit 8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c n
 ```
 
 que guardará el estado del contenedor tal como está en ese
-momento, convirtiéndolo en una nueva imagen, a la que podemos acceder
-si usamos
+momento, convirtiéndolo en una nueva imagen.
+
+> En desarrollo cloud, hay muy pocos caso de uso para este tipo de comandos,
+> salvo quizás prototipado rápido.
+
+A esa imagen podemos acceder si usamos
 
 ```shell
 docker images
@@ -755,7 +757,7 @@ del filesystem de Linux, puede ser en uno cualquiera; el OverlayFS
 crea ese directorio y lo hace accesible a un programa, en este caso
 [un programa también dockerizado](https://github.com/JJ/p5-hitos/blob/master/check-log/log-to-json.pl)
 que pasa del formato en texto plano de los logs de
-[Dancer2](http://perldancer.org/) a un formato JSON que puede ser
+[Dancer2](https://perldancer.org/) a un formato JSON que puede ser
 almacenado incluso en otro volumen si se desea.
 
 <div class='ejercicios' markdown='1'>
@@ -854,7 +856,7 @@ Esto también implica una serie de cosas: usar la distribución más
 ligera que soporte la configuración, por ejemplo. El usar una
 distribución ligera y adaptada a contenedores como
 [Alpine Linux](https://alpinelinux.org/) o
-[Atomic Host](https://www.projectatomic.io/) hará que se creen
+[Atomic Host](https://projectatomic.io/) hará que se creen
 contenedores mucho más ligeros y rápidos de cargar y que tengan toda
 la funcionalidad que se necesita. También conviene eliminar toda
 aquella funcionalidad que no se necesite y que se haya usado solamente
@@ -998,20 +1000,17 @@ en el directorio `/etc/docker`
 > La primera IP es solamente para la UGR. Fuera de la UGR tendréis que
 > averiguar uno de los servidores DNS que os sirva.
 
-En la primera línea se establece cuál es
-el
-[contenedor de origen](https://hub.docker.com/r/frolvlad/alpine-scala)
-que vamos a usar. Siempre es conveniente usar distros ligeras, y en este
-caso usamos la ya conocida Alpine, que tiene ya una versión que
-incluye Scala. A continuación se pone la dirección del mantenedor,
-servidor, y el directorio de trabajo `WORKDIR` en el que se va a
-entrar cuando se ejecute algo en el contenedor. El siguiente comando
-`CMD` indica qué se va a ejecutar en caso de que se ejecute el
-contenedor directamente; se trata de `sbt`, el Scala Build Tool. Como
-se ve, la estructura siempre es la misma: órdenes en mayúsculas, al
-principio de la
-línea. La
-[referencia de las mismas se encuentra en la web de Docker](https://docs.docker.com/engine/reference/builder/#copy).
+En la primera línea se establece cuál es el [contenedor de
+origen](https://hub.docker.com/r/frolvlad/alpine-scala) que vamos a
+usar. Siempre es conveniente usar distros ligeras, y en este caso usamos la ya
+conocida Alpine, que tiene ya una versión que incluye Scala. A continuación se
+pone la dirección del mantenedor, servidor, y el directorio de trabajo `WORKDIR`
+en el que se va a entrar cuando se ejecute algo en el contenedor. El siguiente
+comando `CMD` indica qué se va a ejecutar en caso de que se ejecute el
+contenedor directamente; se trata de `sbt`, el Scala Build Tool. Como se ve, la
+estructura siempre es la misma: órdenes en mayúsculas, al principio de la
+línea. La [referencia de las mismas se encuentra en la web de
+Docker](https://docs.docker.com/engine/reference/builder/#copy).
 
 Las siguientes órdenes son todas `apk`, el gestor de paquetes de
 Alpine. No tiene tantos empaquetados como las distros más conocidas,
@@ -1150,7 +1149,7 @@ configuración específica de una aplicación o de un lenguaje de
 programación determinado.
 
 Por ejemplo,
-[esta, llamada `alpine-perl6`](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
+[esta, llamada `alpine-raku`](https://hub.docker.com/r/jjmerelo/alpine-raku/)
 que se puede usar en lugar del intérprete de Perl6 y usa como base la
 distro ligera Alpine. Una vez más, usamos órdenes separadas y sin
 optimizar simplemente por cuestiones de claridad;
@@ -1205,7 +1204,7 @@ que añade al `PATH` el directorio donde se encuentra. Con estas dos
 características se puede ejecutar el contenedor con:
 
 ```shell
-docker run -t jjmerelo/alpine-perl6 -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+docker run -t jjmerelo/alpine-raku -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
 ```
 
 Si tuviéramos perl6 instalado en local, se podría escribir
@@ -1224,7 +1223,7 @@ de ejecución continua, se puede usar directamente `CMD`. En este caso,
 `ENTRYPOINT` da más flexibilidad e incluso de puede evitar usando
 
 ```shell
-docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-perl6
+docker run -it --entrypoint "sh -l -c" jjmerelo/alpine-raku
 ```
 
 que accederá directamente a la línea de órdenes, en este caso
@@ -1236,7 +1235,7 @@ través de `VOLUME`, hemos creado un directorio sobre el que podemos
 
 ```shell
 docker run --rm -t -v `pwd`:/app  \
- jjmerelo/alpine-perl6 /app/horadam.p6 100 3 7 0.25 0.33
+ jjmerelo/alpine-raku /app/horadam.p6 100 3 7 0.25 0.33
 ```
 
 En realidad, usando `-v` se puede montar cualquier directorio externo
@@ -1283,7 +1282,7 @@ docker run --rm -t -v
 La infraestructura basada en contenedores ha tenido tanto éxito que
 han surgido diferentes tipos y también iniciativas de
 estandarización. El principal competidor este área es
-[Podman/buildah](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users/).
+[Podman/buildah](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users).
 
 Por otro lado,
 la [*Open Container Initiative*](https://opencontainers.org/) está
@@ -1298,11 +1297,10 @@ comprobar imágenes, por ejemplo.
 
 ## Ver también
 
-En caso de que tu máquina principal de desarrollo sea Windows o Mac,
-puede que te
-interese [trabajar con *docker machines*](Docker-machines), una
-herramienta para gestionar localmente contenedores alojados en otro
-ordenador o máquina virtual.
+En caso de que tu máquina principal de desarrollo sea Windows o Mac, puede que
+te interese [trabajar con *docker machines*](Docker-machines), una
+herramienta para gestionar localmente contenedores alojados en otro ordenador o
+máquina virtual.
 
 ## A dónde ir desde aquí
 

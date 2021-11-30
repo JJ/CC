@@ -22,13 +22,12 @@ instrucciones para que se pueda evaluar correctamente.
    convención [*semantic versioning*](https://semver.org/), es decir,
    esa columna tiene que incluir solamente una cadena de versión.
 2. Si se reenvía por segunda o tercera vez, la versión tendrá que
-   indicar esto claramente de la forma *2.R2* o con una *R* o *PL*
-   (patch level) dentro de las versiones que permitan identificar
+   indicar esto claramente de la forma *2-R2* o con una *R* o *PL*
+   (*patch level*) dentro de las versiones que permitan identificar
    claramente a quien corrija qué es lo que se ha reenviado. Una vez
    más, se confronta con la hoja de notas y se ve en cuales el número
    de correcciones no coincide con el nivel de revisión. Si hay una
-   corrección, sólo se corregirán los que lleven R o R1, si hay 2,
-   sólo los de R2/Reenvío 2, y así sucesivamente.
+   corrección, sólo se corregirán los que lleven R o R1.
 3. Indica claramente en el PR los cambios que se han hecho en el hito,
    y cómo se corresponden con los comentarios hechos en la corrección.
 4. Así mismo, indica qué issues del propio proyecto se han creado para
@@ -43,12 +42,4 @@ en la entrega por ser anterior a la introducción de dicho test).
 
 ## Valoración
 
-Cada reenvío puntuará sobre un punto menos que la nota máxima,
-multiplicado por el número de semanas desde corrección de la misma. Es
-decir, primera semana, un reenvío, -1 puntos; segunda semana, -2
-puntos y así sucesivamente. Si se reenvía en las próximas horas a la
-corrección, se podrá rebajar la penalización.
-
-No hay compromiso de fecha de corrección para reenvíos. En general, se
-tratarán de tener en una semana desde el envío, pero podría retrasarse
-dependiendo de la carga de trabajo.
+Cada reenvío podrá puntuar sobre un punto menos que la nota máxima.
