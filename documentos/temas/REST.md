@@ -77,7 +77,10 @@ estado).
   responsabilidades, se puede añadir este también al mismo.
 
 Lo anterior son convenciones, y lo que se ejecute por omisión
-dependerá en realidad de la persona que lo implemente.
+dependerá en realidad de la persona que lo implemente. Información
+adicional, incluyendo otras características que pueden tener
+relevancia cuando se trabaja con cosas como *firewalls*, [en este
+artículo](https://blog.eq8.eu/article/put-vs-patch-vs-your-firewall.html).
 
 La *respuesta HTTP* tendrá una estructura similar, pero incluirá
 también
