@@ -71,7 +71,7 @@ Por ejemplo, la
 siguiente
 [clase](https://github.com/JJ/node-app-cc/blob/master/lib/Config.js)
 en JavaScript incorpora diferentes formas de configuración y le da un
-interfaz común, cono los atributos de un objeto.
+interfaz común, como los atributos de un objeto.
 
 ```javascript
 
