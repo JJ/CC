@@ -119,6 +119,10 @@ la configuración es sólo cosa de la clase Config. El fichero principal
 de la aplicación, `config.js`, sólo tiene que preocuparse de
 arrancarla usando el interfaz correspondiente.
 
+En este caso, estamos ejemplificando con un programa main, pero es
+importante tener en cuenta que el uso de variables globales es desaconsejable,
+y más si se tratase de un módulo.
+
 ## Usando `etcd3`
 
 De forma estricta, el único sistema de configuración distribuida que
