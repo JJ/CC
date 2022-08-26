@@ -129,11 +129,3 @@ y [se especifican en el repositorio de la clase][evaluacion].
 
 [guia-docente]: https://masteres.ugr.es/ing-informatica/pages/info_academica/guias/curso_actual/1semestre/gd_mii_cloud_comp_fi_201718firmada
 [evaluacion]: https://github.com/JJ/CC-21-22/blob/master/Metodolog%C3%ADa_y_criterios_de_evaluaci%C3%B3n.md
-
-## Sesiones, objetivos e hitos de años anteriores
-
-* [Año 16-17](https://github.com/JJ/CC16-17)
-* [Año 17-18](https://github.com/JJ/CC-17-18)
-* [Año 18-19](https://github.com/JJ/CC-18-19)
-* [Año 19-20](https://github.com/JJ/CC-19-20)
-* [Año 20-21](https://github.com/JJ/CC-20-21)
