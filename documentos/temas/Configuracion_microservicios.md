@@ -39,9 +39,9 @@ la [aplicación de 12 factores](https://12factor.net/config), que dice
 que hay que almacenar la aplicación en el entorno. No tiene que ser
 necesariamente *las* variables de entorno, claro.
 
-Hay varios servidores de configuración distribuida, pero el más
-usado es `etcd`; otras alternativas son Zookeeper y
-Consul. Comenzaremos por el primero.
+Hay varios servidores de configuración distribuida, pero el más usado es `etcd`;
+otras alternativas son [Zookeeper](https://zookeeper.apache.org/) y
+[Consul](https://consul.io). Comenzaremos por el primero.
 
 En todo caso, el principio esencial que rige esto es el de
 configuración como código, que significa especialmente que la
